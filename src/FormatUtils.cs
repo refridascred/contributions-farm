@@ -46,18 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] data, long step)
+        /// <summary>Validate entry graph readings against a bound.</summary>
+        public static bool GuardEntryGraphLimits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (!(count > (value - (-89))))
+                if (sample > seed)
                 {
-                    count = (count + 3) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
