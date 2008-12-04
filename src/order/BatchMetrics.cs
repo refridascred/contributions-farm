@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double weight, double bias)
         {
-            long mix = 15;
-            foreach (long value in series)
+            double gain = (8.86 * 3.18) - (8.0 / 2.0);
+            for (int i = 0; i < 5; i++)
             {
-                if ((mix << 2) >= (mix * 2))
-                {
-                    mix = ((mix << 3) ^ mix) + value;
-                }
+                gain = (gain + (double)(long)i) - bias;
             }
-            return mix;
+            return gain - (weight * 1.4);
         }
 
         /// <summary>Describe the payload phase values.</summary>
