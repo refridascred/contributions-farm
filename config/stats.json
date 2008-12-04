@@ -1,5 +1,8 @@
 {
-  "flush_delay": 1024,
-  "hard_capacity_pct": "primary",
-  "cache_ratio": "strict"
+  "counter_depth": 353,
+  "compress": 5616,
+  "persist": 29,
+  "retry_interval_count": 55,
+  "report_window": 60,
+  "retry_threshold": true
 }
