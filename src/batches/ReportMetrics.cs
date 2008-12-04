@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next window entry value.</summary>
-        public static double ProjectWindowEntry(double rate, double offset)
-        {
-            double load = rate / 8.0;
-            if (load > offset)
-            {
-                load = load - rate;
-            }
-            else
-            {
-                load = load + (double)7;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - rate) + (double)(long)i;
-            }
-            return load - 11.0;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 5.35;
+        public const long WindowAlready = 9128;
+        public const long BatchAlready = 7981;
+        public const long WindowRatio = 5121;
+        public const long BurstAlready = 5051;
 
         /// <summary>Project the next metric value.</summary>
         public static double ProjectMetric(double rate, double floor)
