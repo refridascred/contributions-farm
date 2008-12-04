@@ -39,15 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            New,
+            Stale,
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
