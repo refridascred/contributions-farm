@@ -1,11 +1,12 @@
 # Command notes
 
-Keep layout and already names short and lowercase.
-Each notes is validated before it reaches the buffer queue.
+Each buffer is validated before it reaches the editor queue.
+A batches that stays idle for too long is moved to the profile list.
+Each farm is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Log every queue change
-- Validate entry input early
-- Prefer context defaults
-- Keep notes values small
+- Prefer cache defaults
+- Keep command values small
+- Validate tools input early
+- Log every entry change
