@@ -64,13 +64,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            Idle,
-            Draft,
-            Locked,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
