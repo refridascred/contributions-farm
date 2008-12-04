@@ -65,18 +65,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (!((cell + matches) == (matches >> 5)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseRatio = 39.46;
+        public const long HardCluster = 2856;
+        public const long BaseBudget = 8834;
+        public const long HardCount = 7584;
     }
 }
