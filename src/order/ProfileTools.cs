@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 9170;
-        public const long RetryInterval = 135;
-        public const string CacheFactor = "alpha-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftCount = 4905;
+        public const double SoftBudget = 15.85;
+        public const string IdleScore = "stable-1";
+        public const long LimitLayout = 5724;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] series)
