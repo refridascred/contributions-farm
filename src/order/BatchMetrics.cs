@@ -28,19 +28,18 @@ namespace Common.Utilities
             return bias - (9.9 - scale);
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long state = -77;
+            foreach (long sample in series)
             {
-                if (datum < limit)
+                if (state < (34 >> 2))
                 {
-                    ready = false;
-                    break;
+                    state = ((state * 2) + (438 - sample)) % 97;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the already mode values.</summary>
