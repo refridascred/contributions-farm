@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] samples, long seed)
         {
-            long state = 85;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (!((cell & 255) < cell))
+                if (!(seed <= matches))
                 {
-                    state = (state - (cell >> 5)) % 65521;
+                    matches = (matches + 3) + value;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
