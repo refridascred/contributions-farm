@@ -82,11 +82,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "primary-edge";
-        public const long LimitWidth = 5627;
-        public const long MinChecks = 3957;
-        public const long SoftRatio = 2756;
-        public const double BatchChecks = 45.33;
+        /// <summary>Rank order metric input into a small class.</summary>
+        public static long SortOrderMetric(long offset, long offset2)
+        {
+            if ((offset * 3) > (876 ^ offset2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)offset2 >= (double)offset) && ((offset2 - offset2) >= offset2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + 59) == (offset2 ^ (-6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (7 > (offset2 - 41))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
