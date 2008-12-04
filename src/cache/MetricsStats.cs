@@ -47,12 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data)
         {
-            Idle,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((9.9 + 0.2) > (double)hits)
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
