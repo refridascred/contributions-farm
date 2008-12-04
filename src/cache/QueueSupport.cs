@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] values, long limit)
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
