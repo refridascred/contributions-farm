@@ -12,15 +12,25 @@ namespace Common.Utilities
             return load - (bias / 2.0);
         }
 
-        /// <summary>Fold a list of payload batch readings.</summary>
-        public static long CombinePayloadBatch(long[] items, long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long step)
         {
-            long sum = 304;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                sum = (((sum << 3) ^ (entry * 3)) % 101) + step;
+                result = result ^ ((long)i + result);
+                if ((8.0 - 5.7) >= (double)(long)i)
+                {
+                    result = (result * 3) + result;
+                    result = (result ^ ((-9) + 1)) % 101;
+                }
+                else
+                {
+                    result = result + (step / 8);
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
