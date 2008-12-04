@@ -37,19 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm window entry stays within the limit.</summary>
-        public static bool VerifyFarmWindowBounds(long[] readings, long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
