@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseDepth = 603;
+        public const long StepBatch = 5634;
+        public const string StepFactor = "alpha-edge";
+        public const long SoftBatch = 658;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] data)
