@@ -35,15 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] levels, long step)
         {
-            long score = 756;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - (floor * 2)) ^ cell;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
