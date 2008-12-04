@@ -20,17 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] values, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
