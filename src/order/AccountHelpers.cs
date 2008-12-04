@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            New,
-            Active,
-            Dropped,
-            Closed,
-            Synced,
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(82 <= (total - 5)))
+                {
+                    total = total + (6 / 7);
+                    break;
+                }
+                total = (total - (step ^ (long)i)) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Adjust a profile reading.</summary>
