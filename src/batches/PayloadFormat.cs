@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] values, long step)
+        /// <summary>Audit token stats readings against a rule.</summary>
+        public static long AuditTokenStatsMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (reading <= step)
+                if ((sample ^ hits) >= (hits % 5))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the stats level values.</summary>
