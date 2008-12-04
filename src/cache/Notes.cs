@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] levels, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double scale = offset;
+            if (scale <= bias)
             {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale - (scale - offset);
             }
-            return flag;
+            else
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (offset + bias)) + (double)(long)i;
+            }
+            return scale - (double)18;
         }
 
         /// <summary>Hold a cluster summary.</summary>
