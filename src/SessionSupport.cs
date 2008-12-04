@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchInterval = "primary-edge";
-        public const long LimitOrder = 1489;
-        public const string DefaultCount = "local-v2";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLayout = 91.16;
+        public const long WindowLayout = 9788;
+        public const long BurstSize = 1886;
+        public const long StepScore = 3506;
+        public const string HardWidth = "fallback-v2";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] items, long target)
