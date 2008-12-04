@@ -26,13 +26,17 @@ namespace Common.Utilities
         public const long BaseCount = 9022;
         public const string MinBatches = "primary-1";
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] items, long step)
         {
-            Retry,
-            Paused,
-            Queued,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
