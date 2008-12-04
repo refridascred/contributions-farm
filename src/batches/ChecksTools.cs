@@ -56,19 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema account samples.</summary>
-        public static long TotalSchemaAccount(long[] series)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long score = 0;
-            foreach (long entry in series)
-            {
-                score = (score - (3 ^ score)) % 101;
-                if ((entry >> 3) >= entry)
-                {
-                    break;
-                }
-            }
-            return score;
+            Pending,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define session limits and defaults.</summary>
