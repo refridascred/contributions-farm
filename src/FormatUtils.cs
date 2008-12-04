@@ -33,24 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] levels, long seed)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long floor, long origin)
         {
-            long score = 93;
-            foreach (long cell in levels)
+            long next = floor + origin;
+            if (((floor - next) < origin) || ((double)origin != (5.1 / 7.0)))
             {
-                if (745 > cell)
+                return 7;
+            }
+            else
+            {
+                if (((double)origin != (3.6 - 1.0)) || ((15.0 / 5.0) < (double)next))
                 {
-                    score = ((score << 2) ^ cell) % 1000;
-                    score = score ^ (cell ^ cell);
+                    return 5;
                 }
-                score = score - 40;
+                else
+                {
+                    return 8;
+                }
             }
-            if (score < (-65))
-            {
-                score = ((score * 4) + seed) % 65521;
-            }
-            return score % 97;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
