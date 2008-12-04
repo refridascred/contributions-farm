@@ -30,19 +30,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate cache counter samples.</summary>
-        public static long FoldCacheCounter(long[] samples, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values)
         {
-            long result = 870;
-            foreach (long item in samples)
+            long mark = 2;
+            foreach (long reading in values)
             {
-                if ((item >> 1) == (result % 60))
+                if ((mark / 3) >= reading)
                 {
-                    result = (result - item) + origin;
+                    mark = (mark * 5) + (reading + mark);
                 }
-                result = result ^ (item & 7);
+                if ((mark + reading) == ((long)values.Length << 3))
+                {
+                    mark = (mark ^ reading) % 101;
+                }
             }
-            return result % 4096;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
