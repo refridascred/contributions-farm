@@ -23,22 +23,19 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] readings, long step)
+        /// <summary>Validate metrics schema readings against a bound.</summary>
+        public static bool ValidateMetricsSchemaBounds(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((double)step != (6.57 / 4.0))
+                if (value < step)
                 {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the checks status values.</summary>
