@@ -36,13 +36,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long limit, long target)
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long step = limit - target;
+            if (((limit % 24) <= (target + step)) || ((step << 2) <= (196 - 6)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((limit - 3) == (target * 4)) && (target <= (target + step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((574 > target) && ((96 / 3) > (target - limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a support cluster counter forward.</summary>
