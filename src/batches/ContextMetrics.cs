@@ -20,11 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] data, long origin)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit payload support readings against a rule.</summary>
