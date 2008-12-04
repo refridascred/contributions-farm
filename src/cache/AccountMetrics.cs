@@ -72,22 +72,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] levels)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches << 2) <= ((long)levels.Length ^ matches))
-                {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Digest a series of route entries.</summary>
