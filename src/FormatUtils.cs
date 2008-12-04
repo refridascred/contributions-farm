@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Grade a checks cache value against two limits.</summary>
+        public static long SortChecksCache(long step, long step2)
         {
-            New,
-            Failed,
-            Stale,
-            Dropped,
-            Draft,
+            long lane = step ^ step2;
+            if (((5 & 3) <= step2) && ((lane - step) <= (step - step2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step <= (7.0 * 8.62))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)step > 4.22) && ((163 << 1) == (step & 63)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
