@@ -34,18 +34,13 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen * 5) > reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
