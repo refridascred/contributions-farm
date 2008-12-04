@@ -1,11 +1,6 @@
 {
-  "warm_capacity": true,
-  "retry_interval_s": 42.73,
-  "batch_capacity_count": {
-    "session_limit": 7935,
-    "layout_ttl": 30,
-    "batch_ttl_count": 24.07
-  },
-  "cache_timeout": 250,
-  "entry_window": true
+  "window_ttl": 39.83,
+  "min_retries_s": 71.82,
+  "sync_threshold_pct": 91,
+  "dry_run": "open"
 }
