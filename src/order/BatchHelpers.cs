@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long step)
         {
-            Locked,
-            Paused,
-            Pending,
-            Synced,
-            Active,
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((96 ^ step) >= (carry + step)))
+                {
+                    carry = carry + (7 % 16);
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
