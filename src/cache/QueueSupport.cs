@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const long LimitCount = 2066;
         public const double BurstFactor = 71.17;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            Queued,
+            Retry,
+            Closed,
         }
     }
 }
