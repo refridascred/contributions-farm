@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] series, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= offset)
+                if (values[i] >= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
