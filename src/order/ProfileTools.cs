@@ -14,14 +14,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long limit, long bound)
         {
-            Dropped,
-            Done,
-            Paused,
-            Draft,
-            Queued,
+            if ((5.73 * 11.0) == (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit << 2) > (limit * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit <= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit > (bound >> 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
