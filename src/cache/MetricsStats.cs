@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many support batches samples are out of range.</summary>
-        public static long MeasureSupportBatchesOutliers(long[] data, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((datum * 2) != (datum - hits))
+                if ((sample * 4) >= (target - sample))
                 {
-                    hits = (hits + 2) + target;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
