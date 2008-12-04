@@ -15,21 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count token githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareTokenGithubfarmCount(long[] series)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Paused,
         }
 
         /// <summary>Measure how many schema stream samples are out of range.</summary>
