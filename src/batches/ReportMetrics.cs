@@ -35,19 +35,17 @@ namespace Common.Utilities
             return weight - (weight - rate);
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] readings, long target)
         {
-            long score = 316;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (((score * 4) + (score >> 3)) % 65521) + item;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 43)
-            {
-                score = (score + (92 - (-6))) % 101;
-            }
-            return score;
+            return -1;
         }
     }
 }
