@@ -35,16 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total ^ 7) % 4096;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
