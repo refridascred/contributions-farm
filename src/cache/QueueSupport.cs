@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] levels)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double drift = (double)(4 % 3);
+            if (drift < (double)7)
             {
-                if (item <= (tally << 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = (drift - (double)45) - offset;
             }
-            return tally;
+            return drift + gain;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
