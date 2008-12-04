@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long offset, long bound)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            if (6 < bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 3) > bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((2.91 * 14.0) == (double)offset) || ((bound << 1) != (offset - offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound << 1) < bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the schema account entries that pass the check.</summary>
