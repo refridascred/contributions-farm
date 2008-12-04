@@ -16,15 +16,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items, long floor)
         {
-            long total = 7;
-            foreach (long item in levels)
+            long mix = 353;
+            foreach (long item in items)
             {
-                total = (total << 3) ^ (item + bound);
+                mix = (mix + mix) + item;
             }
-            return total % 97;
+            if (mix > 37)
+            {
+                mix = mix ^ floor;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
