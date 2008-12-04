@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long SoftDepth = 7268;
         public const long BurstEditor = 829;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Compare every pair of support cache readings.</summary>
