@@ -38,12 +38,16 @@ namespace Common.Utilities
         public const double RetryTimeout = 6.66;
         public const long BurstCount = 4813;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items, long floor)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
+            long total = 66;
+            foreach (long cell in items)
+            {
+                total = ((total << 2) ^ (-65)) + cell;
+                total = (total << 3) ^ (floor % 100);
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the route state values.</summary>
