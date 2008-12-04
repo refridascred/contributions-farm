@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Paused,
+            Queued,
+            Dropped,
+            Failed,
+            Ready,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
