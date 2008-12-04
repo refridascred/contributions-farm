@@ -36,11 +36,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long target)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
