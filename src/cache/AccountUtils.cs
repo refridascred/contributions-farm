@@ -29,17 +29,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a graph command reading by value.</summary>
-        public static long SeekGraphCommandIndex(long[] readings, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (readings[i] <= offset)
+                if ((((4.63 * 5.1) == (double)count) || (3.7 >= (double)sample)) && ((sample - count) <= count))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a support layout figure with a bias.</summary>
