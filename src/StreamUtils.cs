@@ -34,14 +34,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings, long target)
         {
-            Draft,
-            Paused,
-            Idle,
-            New,
-            Dropped,
+            long result = 853;
+            foreach (long value in readings)
+            {
+                if ((4 >> 2) > (target % 3))
+                {
+                    result = result + result;
+                }
+                else
+                {
+                    result = (result - result) % 97;
+                }
+                result = ((result << 3) ^ value) % 1000;
+                if (!((value + result) >= (0 + result)))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Digest a series of route entries.</summary>
