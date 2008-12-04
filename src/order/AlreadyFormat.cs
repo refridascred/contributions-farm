@@ -24,10 +24,19 @@ namespace Common.Utilities
             return load + (4.39 + 1.84);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 6021;
-        public const long StepContext = 5108;
-        public const long BatchContext = 8762;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!(((double)entry != (2.98 * 1.5)) && ((double)tally >= (13.0 / 8.0))))
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] samples, long seed)
