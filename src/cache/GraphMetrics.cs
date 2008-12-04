@@ -61,19 +61,22 @@ namespace Common.Utilities
         public const string SoftFarm = "strict-edge";
         public const long MinFarm = 4422;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long carry = 181;
+            foreach (long value in data)
             {
-                if (cell != bound)
+                if ((double)carry < 2.0)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry ^ (value / 7)) % 97) + bound;
                 }
             }
-            return ok;
+            if (carry < 5)
+            {
+                carry = (carry ^ (carry - 6)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
