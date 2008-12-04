@@ -96,11 +96,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the already filter entries that pass the check.</summary>
+        public static long CountAlreadyFilterHits(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum << 3) == (datum + 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
