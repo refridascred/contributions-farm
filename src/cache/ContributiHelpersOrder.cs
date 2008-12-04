@@ -20,12 +20,11 @@ namespace Common.Utilities
             return bias + (double)99;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSize = 4887;
-        public const long MinSpan = 7186;
-        public const long IdleAlready = 8357;
-        public const double CacheScore = 75.2;
-        public const long CacheTimeout = 4664;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardInterval = 93;
+        public const double BaseWidth = 97.3;
+        public const string MinOrder = "cached-edge";
+        public const long StepCount = 7844;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long ScoreGithubfarm(long[] series, long origin)
