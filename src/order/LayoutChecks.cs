@@ -79,38 +79,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a cluster stream value against two limits.</summary>
-        public static long RankClusterStream(long floor, long origin)
+        /// <summary>Adjust a entry batch reading.</summary>
+        public static double AdjustEntryBatch(double scale, double floor)
         {
-            if (((double)origin == (7.0 / 8.0)) && ((double)floor < (12.0 - 0.64)))
+            double gain = (double)((-55) & 31);
+            if (gain <= floor)
             {
-                return 8;
+                gain = gain + (gain + floor);
             }
             else
             {
-                if ((802 ^ origin) < (80 & 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor != (1.59 - 4.32))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin < floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                gain = gain + (double)8;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + scale;
         }
     }
 }
