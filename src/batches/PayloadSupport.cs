@@ -10,26 +10,19 @@ namespace Common.Utilities
         public const double WindowSupport = 71.92;
         public const string BatchSupport = "fallback-edge";
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series, long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double rate, double bias)
         {
-            long acc = 644;
-            foreach (long cell in series)
+            double rate2 = bias - bias;
+            if (rate2 < (1.0 / 6.0))
             {
-                if ((cell ^ cell) > limit)
-                {
-                    acc = (acc << 3) ^ (limit >> 1);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (cell + cell)) % 255;
-                }
+                rate2 = rate2 + 1.3;
             }
-            if (acc < (-44))
+            else
             {
-                acc = acc - (limit + 200);
+                rate2 = rate2 - rate2;
             }
-            return acc % 65521;
+            return rate2 - (rate / 6.0);
         }
 
         /// <summary>Accumulate entry samples.</summary>
