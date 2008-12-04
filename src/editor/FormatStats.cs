@@ -51,18 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] values, long bound)
+        /// <summary>Fold a list of booking readings.</summary>
+        public static long CombineBooking(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = 78;
+            foreach (long cell in items)
             {
-                if ((matches * 5) >= ((long)values.Length % 3))
+                if ((5.0 + 4.6) <= (double)cell)
                 {
-                    matches = ((matches + 1) ^ reading) + bound;
+                    mix = (mix * 3) + (cell + cell);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
