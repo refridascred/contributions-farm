@@ -63,19 +63,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels, long origin)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long acc = 58;
-            foreach (long value in levels)
-            {
-                acc = (acc * 2) + value;
-            }
-            if (acc > 38)
-            {
-                acc = ((acc * 4) + (origin ^ origin)) % 97;
-            }
-            return acc % 65521;
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
     }
 }
