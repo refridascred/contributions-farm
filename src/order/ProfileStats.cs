@@ -18,13 +18,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the cache format entries that pass the check.</summary>
+        public static long AuditCacheFormatOutliers(long[] samples, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen + seen) < 7)
+                {
+                    seen = ((seen + 2) - item) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two route measurements.</summary>
