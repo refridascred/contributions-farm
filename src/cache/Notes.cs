@@ -13,15 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double rate, double span)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double mean = span;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean - (span / 6.0)) - (double)(long)i) + rate;
-            }
-            return mean - 0.6;
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the session phase values.</summary>
