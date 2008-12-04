@@ -14,11 +14,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 9972;
-        public const long CacheAlready = 6415;
-        public const long StepWidth = 1594;
-        public const string SoftScore = "staging-v2";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Idle,
+            Synced,
+            Stale,
+            Pending,
+            New,
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long OverlapMetricCount(long[] levels)
