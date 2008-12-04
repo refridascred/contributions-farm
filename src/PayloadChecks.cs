@@ -25,12 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
+            Done,
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
