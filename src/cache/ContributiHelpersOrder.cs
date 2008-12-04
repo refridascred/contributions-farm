@@ -12,11 +12,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardInterval = 93;
-        public const double BaseWidth = 97.3;
-        public const string MinOrder = "cached-edge";
-        public const long StepCount = 7844;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total << 2) ^ (2 / 8);
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double ScaleEditor(double weight, double bias)
