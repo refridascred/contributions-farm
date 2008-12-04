@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftCount = 4905;
-        public const double SoftBudget = 15.85;
-        public const string IdleScore = "stable-1";
-        public const long LimitLayout = 5724;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell << 2) > cell))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextOutliers(long[] samples, long floor)
