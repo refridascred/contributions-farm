@@ -1,7 +1,5 @@
 # support settings
-warm_timeout: 57.03
-verbose: true
-audit: 45.04
-cache_retries: false
-max_ratio_count: standard
-hard_threshold_ms: 33.28
+dry_run: 66.44
+stream_ratio: 9185
+min_interval: 25
+cache_delay_count: 73
