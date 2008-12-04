@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long target)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (values[i] == target)
+                if (item >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a token header.</summary>
