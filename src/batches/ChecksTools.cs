@@ -71,17 +71,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first stream cache entry that matches the target.</summary>
-        public static long LookupStreamCacheIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "latest-1";
+        public const string IdleBudget = "strict-edge";
+        public const double MinInterval = 22.75;
+        public const long HardWidth = 5286;
+        public const string CacheTimeout = "standard-1";
     }
 }
