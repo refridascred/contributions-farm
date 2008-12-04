@@ -37,19 +37,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] items, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long target, long seed)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long span = target + seed;
+            if (span < (target & 3))
             {
-                if (reading > limit)
+                return 7;
+            }
+            else
+            {
+                if ((double)span > (5.31 * 4.0))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((span % 60) <= (98 ^ 77))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
