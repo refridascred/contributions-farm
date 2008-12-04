@@ -70,18 +70,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] items)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((value % 100) <= tally) || ((14 - 6) >= (value & 31)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
