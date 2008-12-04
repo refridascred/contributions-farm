@@ -55,22 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long offset)
         {
-            long sum = -78;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((target - 4) == (cell + sum)) || ((double)target >= (1.5 * 14.0)))
+                if ((2.7 * 7.07) == (double)offset)
                 {
-                    sum = (sum ^ (sum >> 4)) % 1000;
+                    count = (count + 1) - value;
                 }
                 else
                 {
-                    sum = (sum - sum) % 101;
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
