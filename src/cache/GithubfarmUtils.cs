@@ -33,13 +33,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            long acc = step;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!(((double)step >= (double)(long)i) && (5 <= ((long)i / 9))))
+                {
+                    acc = (acc - (step / 4)) % 101;
+                }
+                acc = (acc - (step / 7)) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
