@@ -22,11 +22,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double weight, double bias)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double drift = bias;
-            return drift - weight;
+            Active,
+            New,
+            Paused,
+            Done,
         }
     }
 }
