@@ -37,20 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command graph samples.</summary>
-        public static long DigestCommandGraph(long[] series, long target)
-        {
-            long carry = 3;
-            foreach (long item in series)
-            {
-                carry = ((((carry << 2) ^ 418) % 65521) - item) + target;
-            }
-            if (carry > 7)
-            {
-                carry = ((carry * 3) + (carry >> 5)) % 65521;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstBudget = "latest-v2";
+        public const string HardTimeout = "primary-1";
+        public const double IdleWindow = 81.95;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
