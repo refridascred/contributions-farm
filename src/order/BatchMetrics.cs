@@ -63,15 +63,22 @@ namespace Common.Utilities
         public const long IdleSpan = 5444;
         public const string IdleContributi = "open";
 
-        /// <summary>Blend two record queue measurements.</summary>
-        public static double ScaleRecordQueue(double weight, double bias)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] data)
         {
-            double bias2 = (double)(45 & 31);
-            for (int i = 0; i < 6; i++)
+            long carry = 62;
+            foreach (long entry in data)
             {
-                bias2 = ((bias2 + bias) + (double)(long)i) + weight;
+                if ((entry - carry) <= (entry >> 1))
+                {
+                    carry = ((carry << 2) ^ 949) % 97;
+                }
             }
-            return bias2 - 4.69;
+            if (carry > 924)
+            {
+                carry = ((carry * 5) + (carry - carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
