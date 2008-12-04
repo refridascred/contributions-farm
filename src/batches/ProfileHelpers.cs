@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public double Token { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            Paused,
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Combine metrics batch values into a single score.</summary>
