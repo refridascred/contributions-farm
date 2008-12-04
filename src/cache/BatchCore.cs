@@ -32,13 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Draft,
-            Closed,
-            Pending,
-            Paused,
+            public double Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
