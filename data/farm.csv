@@ -1,11 +1,6 @@
-id,owner,rank,weight
-1,standard,31.49,849
-2,455,566,94.9
-3,630,122,local
-4,82.44,open,97
-5,staging,32.06,local
-6,573,804,strict
-7,62.34,23.39,317
-8,22.6,349,strict
-9,41.48,65.64,65
-10,67.57,staging,39.8
+id,count,score
+1,247,24
+2,935,64.66
+3,505,strict
+4,679,latest
+5,279,10.73
