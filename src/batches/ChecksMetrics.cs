@@ -60,12 +60,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] data, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
