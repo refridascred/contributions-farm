@@ -1,5 +1,19 @@
 {
-  "soft_depth_ms": 4,
-  "base_timeout_s": 1206,
-  "tools_depth": "latest"
+  "hard_capacity_pct": 62.82,
+  "idle_size_pct": "eu-west",
+  "cache_ttl_pct": false,
+  "readonly": "fallback",
+  "cache_depth": {
+    "max_threshold_ms": "green",
+    "max_retries_count": {
+      "counter_ttl": 6820,
+      "cluster_size": [95, 275],
+      "warm_delay_pct": 33,
+      "warm_limit_s": 9.82,
+      "profile_interval": true,
+      "compress": "green"
+    },
+    "editor_depth": 3625,
+    "base_ratio_s": 100
+  }
 }
