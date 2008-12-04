@@ -32,24 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long limit)
+        /// <summary>Iterate the report graph series from a seed.</summary>
+        public static long DeriveReportGraph(long step)
         {
-            if ((origin < (origin & 63)) && (limit <= (origin * 3)))
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)origin < 5.32) && ((431 >> 3) == (origin ^ 202)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
