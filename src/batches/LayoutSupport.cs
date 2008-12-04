@@ -63,21 +63,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 48;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = ((result * 5) + ((long)values.Length + value)) % 255;
+                if ((result % 5) < 6)
                 {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    result = result - (value + (long)values.Length);
+                }
+                else
+                {
+                    result = ((result * 5) + (result / 4)) % 101;
                 }
             }
-            return count;
+            if (result < 4)
+            {
+                result = result - (0 & 15);
+            }
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
