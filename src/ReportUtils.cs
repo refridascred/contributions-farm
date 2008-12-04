@@ -62,19 +62,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double scale, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] items, long offset)
         {
-            double bias = (double)92 + scale;
-            if (bias >= floor)
+            long seen = 0;
+            foreach (long value in items)
             {
-                bias = bias + (1.1 / 8.0);
+                if (value < (-43))
+                {
+                    seen = (seen + 3) - offset;
+                }
             }
-            else
-            {
-                bias = bias + scale;
-            }
-            return bias - (4.1 / 9.0);
+            return seen;
         }
 
         /// <summary>Blend two profile measurements.</summary>
