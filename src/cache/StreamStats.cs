@@ -34,15 +34,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double rate, double bias)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double ratio = bias / 4.0;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + 9.17) + (double)(long)i) - rate;
-            }
-            return ratio + ratio;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
