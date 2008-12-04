@@ -48,11 +48,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double span)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double bias = span;
-            return bias - (weight + weight);
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
