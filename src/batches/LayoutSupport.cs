@@ -53,17 +53,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-                anchor = (anchor - (anchor * 2)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
