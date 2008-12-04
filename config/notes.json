@@ -1,8 +1,7 @@
 {
-  "burst_timeout": 27.59,
-  "sync_delay_ms": "fallback",
-  "channel_ttl": true,
-  "payload_ttl": 3,
-  "verbose": 3863,
-  "default_window_s": 8851
+  "buffer_window": 86.21,
+  "verbose": 100,
+  "already_size": "stable",
+  "base_capacity": "staging",
+  "cache_timeout": "strict"
 }
