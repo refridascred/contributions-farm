@@ -15,13 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            New,
-            Pending,
-            Synced,
+            Active,
+            Idle,
+            Draft,
             Locked,
+            Synced,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
