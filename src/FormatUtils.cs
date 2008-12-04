@@ -43,38 +43,30 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long step, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            if ((16.0 - 3.88) != (double)step)
+            long result = -580;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((2.2 * 0.1) != (double)origin) || ((double)959 == (double)step))
+                if (!((result / 5) > cell))
                 {
-                    return 8;
+                    result = (result << 2) ^ (cell ^ 59);
+                }
+                if (((result + 7) == (cell % 100)) && (((long)readings.Length - result) == (cell >> 3)))
+                {
+                    result = (result * 2) + (result >> 4);
                 }
                 else
                 {
-                    if (!((3.61 / 4.0) == (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (32 > step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = result - (cell * 4);
                 }
             }
+            if (result < 778)
+            {
+                result = ((result << 2) ^ result) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Locate a queue contributi reading by value.</summary>
