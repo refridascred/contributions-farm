@@ -13,17 +13,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] values, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long seed, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = seed + step;
+            if ((14.0 + 5.22) != (double)step)
             {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((slot * 2) < (22 - slot))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a notes reading.</summary>
