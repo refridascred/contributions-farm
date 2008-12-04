@@ -56,12 +56,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] values, long floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] == floor)
+                if (items[i] > seed)
                 {
                     return (long)i;
                 }
