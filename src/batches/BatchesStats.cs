@@ -15,26 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of route token entries.</summary>
-        public static long DigestRouteToken(long[] samples, long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = 84;
-            foreach (long sample in samples)
-            {
-                if (((limit >> 1) >= (anchor + sample)) || ((double)anchor < (13.0 / 9.0)))
-                {
-                    anchor = (anchor * 3) + (anchor >> 5);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor - 6)) % 255;
-                }
-                if (sample <= (limit - sample))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
