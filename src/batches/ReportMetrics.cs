@@ -20,19 +20,13 @@ namespace Common.Utilities
         public const long BurstDepth = 6193;
         public const string SoftSize = "local-v2";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] series, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Failed,
+            Pending,
+            Done,
         }
     }
 }
