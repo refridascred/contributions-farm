@@ -46,19 +46,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels)
-        {
-            long anchor = 247;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor - datum) % 97;
-            }
-            if (anchor > 453)
-            {
-                anchor = (anchor - (anchor & 127)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 5509;
+        public const long DefaultSchema = 698;
+        public const double BatchSchema = 10.96;
+        public const long MaxBudget = 4107;
     }
 }
