@@ -37,13 +37,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] data, long step)
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the route level values.</summary>
