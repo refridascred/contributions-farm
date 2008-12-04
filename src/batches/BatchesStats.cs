@@ -37,15 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] items, long target)
         {
-            long sum = 6;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum - sum) ^ datum) + seed;
+                if ((target & 255) > count)
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
