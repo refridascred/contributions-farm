@@ -39,32 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session already input into a small class.</summary>
-        public static long RankSessionAlready(long origin, long floor)
+        /// <summary>Iterate the entry already series from a seed.</summary>
+        public static long RollEntryAlready(long limit)
         {
-            long bound = origin + floor;
-            if (((bound & 3) < (origin - 382)) && ((double)floor >= (20.0 - 0.5)))
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound ^ floor) != (271 + origin))
+                total = total + (total & 63);
+                if ((limit + 6) < limit)
                 {
-                    return 7;
+                    total = ((total * 2) + (long)i) % 1000;
+                    total = total ^ (total ^ 242);
                 }
                 else
                 {
-                    if ((origin % 5) >= (bound - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = total - ((long)i - total);
+                    total = total ^ (total - total);
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
