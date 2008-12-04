@@ -43,16 +43,18 @@ namespace Common.Utilities
         public const double RetryTimeout = 6.66;
         public const long BurstCount = 4813;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] readings, long floor)
         {
-            long total = 66;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                total = ((total << 2) ^ (-65)) + cell;
-                total = (total << 3) ^ (floor % 100);
+                if (hits < (hits + hits))
+                {
+                    hits = ((hits + 2) ^ cell) - floor;
+                }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Describe the route state values.</summary>
