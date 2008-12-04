@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 31.47;
-        public const long BatchReport = 4620;
-        public const string BurstReport = "open-v2";
-        public const double StepReport = 28.79;
-        public const long DefaultReport = 1258;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Grade a checks githubfarm value against two limits.</summary>
         public static long RankChecksGithubfarm(long offset, long target)
