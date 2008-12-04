@@ -32,11 +32,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxFactor = 97.03;
-        public const double MaxInterval = 15.77;
-        public const long StepSpan = 3587;
-        public const long HardContext = 5795;
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double gain, double floor)
+        {
+            double mean = (double)(3 / 6);
+            if (mean < (mean + mean))
+            {
+                mean = mean + (floor * 15.0);
+            }
+            else
+            {
+                mean = mean + (double)(-9);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (gain - mean)) + (double)(long)i;
+            }
+            return mean + (mean / 8.0);
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandHits(long[] readings, long step)
