@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double rate, double floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            double bias = (double)(21 % 7);
-            if (bias >= rate)
+            double scale2 = scale;
+            if (scale2 > (scale2 / 4.0))
             {
-                bias = (bias - bias) + floor;
+                scale2 = (scale2 - scale) + floor;
             }
-            return bias - (0.06 / 4.0);
+            else
+            {
+                scale2 = scale2 + scale;
+            }
+            return scale2 + (double)74;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
