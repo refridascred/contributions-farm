@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepTimeout = 6927;
+        public const long HardChecks = 5980;
+        public const double BaseScore = 29.54;
+        public const long BatchChecks = 4414;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long GradeBuffer(long step, long bound)
