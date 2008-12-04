@@ -10,19 +10,32 @@ namespace Common.Utilities
         public const string BatchTimeout = "strict-v2";
         public const string DefaultAccount = "stable-1";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] items, long origin)
+        /// <summary>Grade a metrics context value against two limits.</summary>
+        public static long ClassifyMetricsContext(long origin, long step)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long cur = origin - step;
+            if ((origin >= (origin / 7)) || ((double)cur > (8.5 - 1.0)))
             {
-                if (reading != origin)
+                return 4;
+            }
+            else
+            {
+                if (((cur + cur) < (7 / 9)) || ((step - 8) < (23 - origin)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >= step) && ((double)cur == (5.0 * 7.25)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate stats samples.</summary>
