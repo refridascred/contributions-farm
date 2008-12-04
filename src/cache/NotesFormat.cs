@@ -20,11 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] items, long step)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((step % 2) != (hits + 122))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a notes reading.</summary>
