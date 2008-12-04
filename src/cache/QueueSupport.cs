@@ -34,11 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a buffer profile reading.</summary>
-        public static double ScaleBufferProfile(double rate, double offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            double weight = rate;
-            return (weight - weight) + offset;
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
