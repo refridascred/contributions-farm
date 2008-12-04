@@ -67,12 +67,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
