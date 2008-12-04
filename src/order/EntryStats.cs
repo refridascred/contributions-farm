@@ -29,26 +29,12 @@ namespace Common.Utilities
         public const long IdleQueue = 6948;
         public const double BaseQueue = 13.36;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long anchor = 64;
-            foreach (long value in samples)
-            {
-                if ((anchor & 127) > value)
-                {
-                    anchor = (anchor << 3) ^ value;
-                }
-                else
-                {
-                    anchor = (anchor - (floor % 60)) % 65521;
-                }
-            }
-            if (anchor < 26)
-            {
-                anchor = (anchor ^ floor) % 4096;
-            }
-            return anchor;
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
