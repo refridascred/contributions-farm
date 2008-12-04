@@ -15,17 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] samples, long bound)
+        /// <summary>Digest a series of profile command entries.</summary>
+        public static long CombineProfileCommand(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 789;
+            foreach (long value in data)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
+                if ((7.0 * 6.9) == (double)value)
                 {
-                    return (long)i;
+                    total = total - 882;
+                }
+                else
+                {
+                    total = (total - (total - value)) % 97;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Hold a profile record.</summary>
