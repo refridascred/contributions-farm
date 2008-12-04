@@ -52,13 +52,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            Paused,
-            Idle,
-            Locked,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
