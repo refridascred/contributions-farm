@@ -39,12 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long CountBufferMetricOutliers(long[] levels, long offset)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((7.0 + 6.0) != (double)tally)
+                {
+                    tally = ((tally + 2) + item) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
