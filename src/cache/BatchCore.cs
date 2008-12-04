@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] levels, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long step, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((step ^ step) == (step / 6)) || ((seed % 12) >= (step / 5)))
             {
-                if (levels[i] > offset)
+                return 4;
+            }
+            else
+            {
+                if ((seed / 9) >= (step << 1))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
