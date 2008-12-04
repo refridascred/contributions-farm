@@ -32,21 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer farm samples.</summary>
-        public static long OverlapBufferFarmCount(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seen >= 12.0)
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) - datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the schema phase values.</summary>
