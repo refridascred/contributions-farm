@@ -40,19 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] values, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (datum >= seed)
                 {
-                    carry = (carry - (carry + (long)i)) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
