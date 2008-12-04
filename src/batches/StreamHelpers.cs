@@ -27,12 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route state values.</summary>
