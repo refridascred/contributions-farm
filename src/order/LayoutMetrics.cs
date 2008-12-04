@@ -14,20 +14,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] samples, long target)
-        {
-            long anchor = 263;
-            foreach (long value in samples)
-            {
-                anchor = (((anchor << 2) ^ (anchor - target)) % 97) + value;
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor - (anchor & 3)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 9972;
+        public const long CacheAlready = 6415;
+        public const long StepWidth = 1594;
+        public const string SoftScore = "staging-v2";
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long OverlapMetricCount(long[] levels)
