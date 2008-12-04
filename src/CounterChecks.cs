@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] items)
         {
-            double mean = ratio * 0.9;
-            if (mean <= (ratio + 5.0))
+            long hits = 0;
+            foreach (long value in items)
             {
-                mean = mean - span;
+                if ((double)hits > (double)(long)items.Length)
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (5.82 / 5.0)) - (double)(long)i;
-            }
-            return mean - mean;
+            return hits;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
