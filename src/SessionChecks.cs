@@ -27,26 +27,22 @@ namespace Common.Utilities
             return (rate + gain) + span;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] data, long offset)
         {
-            long sum = 699;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (!((8.0 * 8.0) == (double)sum))
+                if ((item - item) == ((-3) << 1))
                 {
-                    sum = (sum ^ (sample ^ sum)) % 65521;
+                    tally = (tally + 2) + offset;
                 }
                 else
                 {
-                    sum = (sum - sample) % 97;
+                    tally = tally - 1;
                 }
             }
-            if (sum > (-1))
-            {
-                sum = ((sum << 2) ^ sum) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the route level values.</summary>
