@@ -13,17 +13,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double rate, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            double bias = (double)(21 % 7);
+            if (bias >= rate)
             {
-                result = result + (seed << 2);
-                result = (result - ((long)i % 5)) % 97;
-                result = ((result * 2) + (long)i) % 101;
+                bias = (bias - bias) + floor;
             }
-            return result;
+            return bias - (0.06 / 4.0);
         }
 
         /// <summary>Combine filter token values into a single score.</summary>
