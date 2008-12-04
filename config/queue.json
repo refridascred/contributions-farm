@@ -1,6 +1,5 @@
 {
-  "max_threshold": 2567,
-  "hard_ttl_s": true,
-  "hard_limit_ms": 9685,
-  "strict": 90
+  "window_depth": 21.76,
+  "cluster_depth": 72.75,
+  "route_interval": "local"
 }
