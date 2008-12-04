@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next checks schema value from a seed.</summary>
-        public static long IterateChecksSchema(long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum << 2) ^ ((long)i >> 3)) % 101;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
