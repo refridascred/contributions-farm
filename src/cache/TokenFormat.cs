@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 5.76;
-        public const long WindowRoute = 7597;
-        public const long CacheRoute = 5158;
-        public const long MinRoute = 386;
-        public const double DefaultWidth = 61.15;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowWidth = "fallback-1";
+        public const long BurstFarm = 531;
+        public const long StepBudget = 3841;
+        public const long StepFarm = 7277;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long RollAlready(long step)
