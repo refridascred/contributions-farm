@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            Done,
+            Failed,
+            New,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a entry info.</summary>
