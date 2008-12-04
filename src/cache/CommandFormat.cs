@@ -25,19 +25,32 @@ namespace Common.Utilities
         public const string StepFactor = "alpha-edge";
         public const long SoftBatch = 658;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Accumulate queue metrics samples.</summary>
+        public static long ScoreQueueMetrics(long[] series, long limit)
         {
-            long state = 2;
-            foreach (long sample in data)
+            long mark = 368;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 5; i++)
+                if ((double)limit == (double)sample)
                 {
-                    state = ((state << 3) ^ (state << 3)) ^ (long)i;
+                    long next = (sample - (-33)) >> 3;
+                    mark = (mark ^ (512 + next)) % 4096;
                 }
-                state = state ^ (1 + sample);
+                else
+                {
+                    mark = ((mark * 3) + (sample >> 1)) % 4096;
+                }
+                if ((mark << 3) > (sample / 4))
+                {
+                    mark = ((mark << 3) ^ (5 % 24)) % 4096;
+                }
+                mark = ((mark << 3) ^ (mark + limit)) % 65521;
             }
-            return state;
+            if (mark < 5)
+            {
+                mark = (mark * 2) + (limit * 2);
+            }
+            return mark;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
