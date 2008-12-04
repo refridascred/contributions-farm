@@ -1,11 +1,11 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
+    rank INTEGER,
+    owner TEXT NOT NULL,
+    weight REAL,
     token TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    rank INTEGER
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
-
-INSERT INTO commits_records (token, score, rank) VALUES ('fallback', 83.38, 46);
+CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
