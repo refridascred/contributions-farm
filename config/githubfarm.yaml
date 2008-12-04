@@ -1,7 +1,5 @@
 # githubfarm settings
-audit: cached
-persist: true
-strict: 8523
-retry_interval_s:
-  - 244
-  - 453
+commits_capacity: local
+persist: 9539
+warm_threshold_s: true
+verbose: eu-west
