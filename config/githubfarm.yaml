@@ -1,9 +1,4 @@
 # githubfarm settings
-buffer_threshold: 7176
-tools_delay: 552
-default_ttl: false
-profile_ratio: false
-poll_retries:
-  - legacy
-  - local
-hard_capacity_s: 500
+sync_size_pct: 36.68
+soft_limit_count: 500
+poll_ratio_count: staging
