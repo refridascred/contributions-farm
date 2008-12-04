@@ -20,22 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series, long target)
+        /// <summary>Validate checks contributi readings against a bound.</summary>
+        public static bool ValidateChecksContributiRange(long[] series, long seed)
         {
-            long score = 9;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((value + target) >= 1)
+                if (datum > seed)
                 {
-                    score = (score << 2) ^ target;
-                }
-                else
-                {
-                    score = (score + (value / 7)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
