@@ -48,10 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheInterval = 5675;
-        public const string WindowLevel = "latest-v2";
-        public const string DefaultSize = "alpha-1";
-        public const string BaseFactor = "primary";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] series, long offset)
+        {
+            long total = -4;
+            foreach (long entry in series)
+            {
+                if (!((7 & 255) > (total % 2)))
+                {
+                    total = (total ^ (entry + total)) + offset;
+                }
+            }
+            if (total < 879)
+            {
+                total = (total * 2) + (-9);
+            }
+            return total % 65521;
+        }
     }
 }
