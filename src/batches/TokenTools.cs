@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long BatchCount = 9734;
         public const long BatchFactor = 114;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] values, long seed)
         {
-            Synced,
-            Stale,
-            Paused,
-            Done,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits state values.</summary>
