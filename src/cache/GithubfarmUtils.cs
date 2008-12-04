@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a cluster githubfarm figure with a bias.</summary>
-        public static double BlendClusterGithubfarm(double weight, double span)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long target)
         {
-            double weight2 = span + (weight * 6.53);
-            if (weight2 >= weight)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                weight2 = weight2 + (double)78;
+                if (mark <= (target >> 5))
+                {
+                    continue;
+                }
+                if (((target * 5) < ((long)i - target)) && ((target % 5) >= (mark % 8)))
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                weight2 = weight2 - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 + (double)90;
+            return mark;
         }
 
         /// <summary>Hold a account header.</summary>
