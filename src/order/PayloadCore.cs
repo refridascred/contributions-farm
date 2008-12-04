@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings, long target)
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long DigestChannelRoute(long[] levels, long bound)
         {
-            long sum = 1;
-            foreach (long item in readings)
+            long state = 47;
+            foreach (long value in levels)
             {
-                if ((sum + target) < (target + item))
+                if (((double)state >= (double)value) || ((double)bound == (1.38 - 9.22)))
                 {
-                    sum = ((sum << 2) ^ (item >> 3)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (7 & 15)) % 101;
+                    state = (state + (state - 78)) % 65521;
                 }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Hold a stream entry.</summary>
