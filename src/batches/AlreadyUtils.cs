@@ -36,17 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] series, long step)
+        /// <summary>Measure how many schema stream samples are out of range.</summary>
+        public static long TallySchemaStreamHits(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (series[i] == step)
+                if (((bound % 16) < bound) && ((1.3 + 5.38) < (double)value))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
