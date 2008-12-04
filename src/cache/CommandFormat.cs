@@ -41,18 +41,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate context route samples.</summary>
-        public static long CombineContextRoute(long[] values)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long anchor = 29;
-            foreach (long reading in values)
-            {
-                if ((2.4 + 5.2) >= (double)anchor)
-                {
-                    anchor = (anchor + (reading + anchor)) % 65521;
-                }
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
