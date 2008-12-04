@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] levels, long floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long score = 1;
-            foreach (long cell in levels)
-            {
-                if ((score / 3) <= (cell - (long)levels.Length))
-                {
-                    score = (score ^ score) % 255;
-                }
-                else
-                {
-                    score = (score << 3) ^ (floor - cell);
-                }
-            }
-            return score % 97;
+            Dropped,
+            Locked,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
