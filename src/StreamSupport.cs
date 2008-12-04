@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long mix = 4;
-            foreach (long cell in values)
+            long total = 97;
+            foreach (long reading in series)
             {
-                mix = (mix - (mix - 782)) - cell;
+                if ((total + total) < (total >> 1))
+                {
+                    total = (((total << 3) ^ (long)series.Length) % 255) - reading;
+                }
+                else
+                {
+                    total = total - total;
+                }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Project the next report value.</summary>
