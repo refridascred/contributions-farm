@@ -1,5 +1,12 @@
 {
-  "sync_size_pct": 96,
-  "poll_size_s": 95.63,
-  "schema_interval": true
+  "readonly": [204, 389],
+  "idle_depth_count": [286, 202, 243],
+  "dry_run": {
+    "idle_limit_s": 8172,
+    "flush_limit_count": ["edge", "open"],
+    "verbose": false
+  },
+  "persist": "stable",
+  "cache_ttl_s": 1024,
+  "metric_ttl": 5061
 }
