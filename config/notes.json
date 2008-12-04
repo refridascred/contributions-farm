@@ -1,5 +1,5 @@
 {
-  "base_ratio_pct": "cached",
-  "flush_ttl_count": 9284,
-  "soft_window_ms": "eu-west"
+  "editor_timeout": 500,
+  "default_limit_s": "edge",
+  "default_threshold_count": ["local", "open"]
 }
