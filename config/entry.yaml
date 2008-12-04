@@ -1,6 +1,14 @@
 # entry settings
-soft_size: edge
-window_ttl: latest
-poll_ttl_pct: 21.89
-githubfarm_ratio: 34.08
-batch_depth_ms: 3435
+cluster_timeout:
+  default_size_count: 30
+  persist: local
+  batch_retries: strict
+  soft_delay_s: true
+  base_limit: 7919
+  report_depth: 9983
+idle_limit:
+  - eu-west
+  - strict
+stream_timeout: 95.15
+batch_depth: 60
+verbose: green
