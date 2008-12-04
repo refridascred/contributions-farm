@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] levels, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long acc = -767;
+            foreach (long datum in samples)
             {
-                if ((datum << 3) < (datum + datum))
+                acc = (((acc << 2) ^ acc) % 101) + datum;
+                if ((1.5 - 8.58) >= (double)acc)
                 {
-                    count = (count + 1) + origin;
+                    break;
                 }
             }
-            return count;
+            if (acc > 32)
+            {
+                acc = (acc * 2) + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Audit batch command readings against a rule.</summary>
