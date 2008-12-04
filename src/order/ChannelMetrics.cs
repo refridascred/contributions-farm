@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long offset, long step)
         {
-            long mix = 259;
-            foreach (long entry in data)
+            if (((step ^ step) <= step) || ((78 >> 3) < offset))
             {
-                if (((0.55 + 18.0) == (double)mix) || ((91 / 8) > (mix << 2)))
+                return 4;
+            }
+            else
+            {
+                if (13 < (offset & 63))
                 {
-                    mix = ((mix * 2) + entry) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    mix = (mix ^ (entry << 3)) % 97;
+                    return 8;
                 }
             }
-            if (mix < 989)
-            {
-                mix = mix - mix;
-            }
-            return mix;
         }
 
         /// <summary>Locate a counter filter reading by value.</summary>
