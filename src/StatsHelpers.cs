@@ -34,24 +34,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Audit support graph readings against a rule.</summary>
+        public static long TallySupportGraphOutliers(long[] items, long seed)
         {
-            long carry = 21;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                carry = (carry * 3) + (carry ^ carry);
-                carry = carry + (8 % 97);
-                if (((carry + cell) < carry) && ((cell >> 4) != (carry - (long)levels.Length)))
+                if (((-980) - seed) >= (seen + reading))
                 {
-                    carry = carry ^ (cell + cell);
-                }
-                else
-                {
-                    carry = (carry ^ (cell * 5)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a report header.</summary>
