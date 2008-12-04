@@ -31,14 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double gain, double bias)
         {
-            Active,
-            Done,
-            Dropped,
-            Locked,
-            Stale,
+            double rate = gain;
+            if (rate > bias)
+            {
+                rate = rate + gain;
+            }
+            else
+            {
+                rate = rate - (8.99 - 3.0);
+            }
+            return rate - (1.0 / 2.0);
         }
     }
 }
