@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheLevel = 1.67;
-        public const double SoftWindow = 74.11;
-        public const double BaseWindow = 70.8;
-        public const long LimitWindow = 3387;
-        public const long WindowInterval = 7841;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!!((sum / 2) < (sum << 1)))
+                {
+                    sum = ((sum << 2) ^ (offset & 63)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit githubfarm cache readings against a rule.</summary>
         public static long MeasureGithubfarmCacheMatches(long[] data, long origin)
