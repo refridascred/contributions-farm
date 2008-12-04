@@ -51,11 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchRatio = 7950;
-        public const string DefaultCount = "latest-edge";
-        public const long BatchTools = 4776;
-        public const long StepTools = 2089;
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Queued,
+            Failed,
+            Stale,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] data)
