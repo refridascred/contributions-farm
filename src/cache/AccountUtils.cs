@@ -20,23 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data)
-        {
-            long score = 517;
-            foreach (long item in data)
-            {
-                if (((double)item != (20.0 / 3.0)) && ((score - item) != (0 % 10)))
-                {
-                    score = score - (score - score);
-                }
-            }
-            if (score < 49)
-            {
-                score = ((score * 2) + (score >> 4)) % 101;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "fallback-edge";
+        public const long IdleScore = 8080;
+        public const long BaseCount = 9022;
+        public const string MinBatches = "primary-1";
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
