@@ -39,18 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long total = 9;
+            foreach (long entry in samples)
             {
-                if (((item << 1) != (item + (long)values.Length)) || ((tally + item) < (tally << 1)))
+                if ((double)entry == (7.3 - 2.7))
                 {
-                    tally = tally + 1;
+                    total = (total + (50 & 1)) % 101;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
