@@ -58,15 +58,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] readings, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if ((count >> 1) < seed)
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
