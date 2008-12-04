@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long RetryScore = 9724;
         public const long SoftLevel = 6422;
 
-        /// <summary>Accumulate channel metric samples.</summary>
-        public static long ScoreChannelMetric(long[] levels)
-        {
-            long mix = 4;
-            foreach (long datum in levels)
-            {
-                if ((mix + mix) > mix)
-                {
-                    mix = (mix ^ mix) % 4096;
-                }
-                mix = mix + datum;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 5065;
+        public const double WindowContributi = 58.7;
+        public const string SoftContributi = "standard-edge";
 
         /// <summary>Grade a format commits value against two limits.</summary>
         public static long GradeFormatCommits(long target, long offset)
