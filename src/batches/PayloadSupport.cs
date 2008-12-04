@@ -32,9 +32,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinRatio = "standard-v2";
-        public const string StepDepth = "alpha";
-        public const long StepCount = 5434;
+        /// <summary>Locate a graph metrics reading by value.</summary>
+        public static long SeekGraphMetricsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
