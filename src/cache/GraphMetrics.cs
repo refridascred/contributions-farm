@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long result = 313;
-            foreach (long reading in readings)
-            {
-                if ((result + result) < (reading * 5))
-                {
-                    result = result - ((long)readings.Length + reading);
-                    result = ((result * 2) + (reading + 68)) % 65521;
-                }
-                result = result + result;
-            }
-            if (result < 6)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
