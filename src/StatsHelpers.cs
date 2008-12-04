@@ -12,21 +12,39 @@ namespace Common.Utilities
             return ((load + 2.88) + scale) + span;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long prev = seed ^ seed2;
+            if (((seed - seed2) == (seed >> 3)) || ((seed2 / 4) < 60))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((4.99 / 8.0) == (double)seed2)
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
+                    return 2;
+                }
+                else
+                {
+                    if ((prev ^ seed) >= (prev << 1))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >= 4) || ((0.57 - 3.0) != (double)prev))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first account farm entry that matches the target.</summary>
