@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Look up the position of a record metric sample.</summary>
+        public static long LocateRecordMetricIndex(long[] readings, long origin)
         {
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph stats.</summary>
