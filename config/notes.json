@@ -1,16 +1,5 @@
 {
-  "sync_limit_s": [30, 369, 5],
-  "metrics_delay": "staging",
-  "base_capacity_count": 63,
-  "audit": {
-    "verbose": "edge",
-    "readonly": {
-      "queue_depth": "blue",
-      "retry_ratio_count": 3477,
-      "idle_retries_count": 95.77
-    },
-    "poll_limit_pct": 61.25,
-    "compress": "local"
-  },
-  "poll_limit": 6786
+  "readonly": true,
+  "cluster_retries": "eu-west",
+  "sync_delay_count": false
 }
