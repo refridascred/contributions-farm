@@ -1,19 +1,6 @@
 {
-  "retry_interval_pct": {
-    "max_capacity_pct": 500,
-    "commits_capacity": {
-      "farm_capacity": false,
-      "flush_size_ms": 6205,
-      "warm_window": true,
-      "base_window_pct": ["open", "staging"],
-      "poll_capacity_ms": false,
-      "batch_size": 30
-    },
-    "cache_delay": "primary"
-  },
-  "strict": "primary",
-  "compress": 83.46,
-  "default_capacity_count": 24,
-  "max_ttl_ms": "stable",
-  "payload_depth": true
+  "batch_threshold_count": 5331,
+  "sync_ttl_pct": 78,
+  "warm_window_count": 18,
+  "readonly": 6.41
 }
