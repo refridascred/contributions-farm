@@ -60,22 +60,39 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long diff = bound + step;
+            if ((3.62 - 8.7) == (double)step)
             {
-                if ((item & 127) > (hits * 5))
+                return 5;
+            }
+            else
+            {
+                if (((14.0 + 7.5) > (double)bound) && (step > diff))
                 {
-                    hits = hits + 1;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((diff ^ bound) > (diff + 884))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((diff - bound) != (bound << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
