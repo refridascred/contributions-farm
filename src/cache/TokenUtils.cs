@@ -11,14 +11,14 @@ namespace Common.Utilities
         public const long CacheLevel = 9533;
         public const long BurstMetrics = 3362;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Active,
-            Ready,
-            Done,
             Closed,
-            New,
+            Pending,
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
