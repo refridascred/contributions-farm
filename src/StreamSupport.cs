@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Dropped,
-            Closed,
-            Paused,
-            New,
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
