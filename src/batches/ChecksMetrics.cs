@@ -45,26 +45,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of tools editor readings.</summary>
-        public static long CombineToolsEditor(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            long score = -472;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = ((score << 2) ^ sample) - (long)i;
-                }
-                if (sample <= (sample % 7))
-                {
-                    score = score - (sample << 3);
-                }
-                if ((2.02 * 3.2) > (double)sample)
-                {
-                    score = (score + (sample + sample)) % 4096;
-                }
-            }
-            return score % 97;
+            double gain = 11.0 / 5.0;
+            return (gain + bias2) + bias;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
