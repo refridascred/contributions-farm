@@ -35,18 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] items, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((3.05 + 4.67) == (double)hits)
+                if (((double)84 != (double)seen) && ((9.54 - 4.05) > (double)seen))
                 {
-                    hits = ((hits + 2) ^ entry) + bound;
+                    seen = ((seen + 3) + sample) - limit;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
