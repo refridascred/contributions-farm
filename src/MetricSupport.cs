@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] data, long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < limit)
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Adjust a batches stats reading.</summary>
