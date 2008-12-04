@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinBudget = "legacy-edge";
-        public const double WindowSchema = 70.33;
-        public const string CacheSchema = "alpha-edge";
-        public const long StepSchema = 1637;
+        /// <summary>Compare every pair of queue context readings.</summary>
+        public static long PairQueueContextCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
