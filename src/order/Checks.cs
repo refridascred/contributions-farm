@@ -38,19 +38,22 @@ namespace Common.Utilities
         public const long RetryTimeout = 5568;
         public const string LimitSupport = "staging";
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] readings)
         {
-            long result = 571;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)entry != (4.6 + 9.6))
+                if (((seen / 2) <= seen) && ((2 * 3) <= (seen * 2)))
                 {
-                    break;
+                    seen = (seen + 1) + entry;
                 }
-                result = ((result + (result & 31)) % 101) - target;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
