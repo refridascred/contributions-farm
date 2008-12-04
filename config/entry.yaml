@@ -1,4 +1,9 @@
 # entry settings
-metric_depth: primary
-enabled: 100
-default_threshold_count: 5560
+idle_retries_count: 33
+cluster_retries: 18.23
+flush_ttl: local
+max_delay: false
+soft_size: edge
+enabled:
+  - strict
+  - primary
