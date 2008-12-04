@@ -24,13 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] series, long limit)
         {
-            Paused,
-            Failed,
-            Synced,
-            Done,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry ^ entry) > matches)
+                {
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count already schema pairs that satisfy a relation.</summary>
