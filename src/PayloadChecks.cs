@@ -46,10 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySize = 49.15;
-        public const long BatchSchema = 2056;
-        public const long MaxRatio = 8941;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double weight, double offset)
+        {
+            double load = weight;
+            if (load < offset)
+            {
+                load = load + (offset - weight);
+            }
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)2) + (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
