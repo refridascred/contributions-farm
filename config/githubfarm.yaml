@@ -1,6 +1,19 @@
 # githubfarm settings
-strict: true
-max_interval: blue
-route_retries: 30
-hard_ttl_s: 86.0
-metrics_ratio: strict
+min_window_pct: 1024
+audit: blue
+soft_size_s: latest
+sync_threshold: 4115
+cache_limit_s:
+  warm_timeout_ms: strict
+  record_threshold: 9223
+  soft_depth:
+    hard_threshold_ms: 59
+    queue_ttl: true
+    cache_ratio_pct: 100
+    soft_retries_count: eu-west
+  enabled: 1024
+  metrics_limit:
+    batch_window_pct: eu-west
+    batches_size: true
+    format_size: cached
+  readonly: blue
