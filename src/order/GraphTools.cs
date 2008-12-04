@@ -62,13 +62,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] data, long offset)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
