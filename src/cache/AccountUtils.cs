@@ -25,9 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCount = 57.34;
-        public const long MinCommits = 4018;
-        public const long BatchCommits = 6203;
+        /// <summary>Compare every pair of entry channel readings.</summary>
+        public static long MatchEntryChannelCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
