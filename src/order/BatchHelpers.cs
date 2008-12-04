@@ -30,10 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 2563;
-        public const long DefaultInterval = 6034;
-        public const long MinStats = 9979;
-        public const string RetryTimeout = "open-v2";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples)
+        {
+            long carry = 1;
+            foreach (long reading in samples)
+            {
+                carry = ((carry ^ (6 * 3)) % 4096) ^ reading;
+            }
+            return carry;
+        }
     }
 }
