@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of token tools readings.</summary>
-        public static long CombineTokenTools(long[] values, long target)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mark = 85;
-            foreach (long value in values)
-            {
-                mark = (mark ^ (target & 15)) ^ value;
-            }
-            if (mark > 2)
-            {
-                mark = ((mark * 4) + target) % 255;
-            }
-            return mark;
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
