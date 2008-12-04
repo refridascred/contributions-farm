@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowScore = 8597;
-        public const long RetryBuffer = 9569;
-        public const long BaseCount = 9937;
-        public const long DefaultCount = 4207;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Audit stream counter readings against a rule.</summary>
         public static long MeasureStreamCounterOutliers(long[] values, long target)
