@@ -1,7 +1,8 @@
-id,owner,weight,active,state
-1,latest,edge,923,35.6
-2,local,eu-west,253,blue
-3,175,93.0,97.07,823
-4,41.24,56.29,primary,6.71
-5,418,eu-west,46.13,cached
-6,eu-west,61.96,107,green
+id,region,active
+1,36.19,23.15
+2,eu-west,strict
+3,legacy,89.67
+4,413,staging
+5,384,215
+6,legacy,632
+7,strict,edge
