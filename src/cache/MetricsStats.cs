@@ -24,22 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batch command readings against a rule.</summary>
-        public static long AuditBatchCommandMatches(long[] series)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double mean = 4.07 - (floor - gain);
+            if (mean < (double)454)
             {
-                if ((hits >> 1) >= (cell ^ hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + gain;
             }
-            return hits;
+            return mean + 2.82;
         }
 
         /// <summary>Fold a list of context readings.</summary>
