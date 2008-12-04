@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] values)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches / 8) >= matches)
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate token already samples.</summary>
