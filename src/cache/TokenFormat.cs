@@ -12,16 +12,39 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long origin, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long cur = origin + limit;
+            if (((945 + cur) > (cur - 2)) && ((48 % 2) <= (cur + limit)))
             {
-                anchor = ((anchor << 2) ^ origin) % 255;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((limit / 3) != (cur << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((9 - cur) < (83 - limit)) && ((double)limit != (13.0 - 18.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit < (45 / 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
