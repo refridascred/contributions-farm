@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] values, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (values[i] < target)
+                if ((reading - (-715)) == (reading ^ reading))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
