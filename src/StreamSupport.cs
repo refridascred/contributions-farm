@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Count the window cache entries that pass the check.</summary>
+        public static long AuditWindowCacheMatches(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((54 + matches) > (entry - entry)) || ((double)entry > (13.0 * 2.2)))
                 {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
