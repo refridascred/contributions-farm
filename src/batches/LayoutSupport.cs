@@ -53,13 +53,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 6554;
+        public const long SoftDepth = 2098;
+        public const double BatchRoute = 1.53;
     }
 }
