@@ -41,17 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] samples, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
+                if ((tally - tally) <= (tally ^ floor))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
