@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const long StepBudget = 3841;
         public const long StepFarm = 7277;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (sample <= ((long)samples.Length + 6))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
