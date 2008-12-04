@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] values)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long total = 63;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading & 7) < (reading + reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total ^ (total & 31)) % 97;
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 844)
-            {
-                total = (total << 3) ^ (total - 9);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Rank route input into a small class.</summary>
