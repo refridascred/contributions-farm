@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long BaseCount = 9937;
         public const long DefaultCount = 4207;
 
-        /// <summary>Validate commits order readings against a bound.</summary>
-        public static bool ValidateCommitsOrderRange(long[] series, long seed)
+        /// <summary>Audit stream counter readings against a rule.</summary>
+        public static long MeasureStreamCounterOutliers(long[] values, long target)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (cell < seed)
+                if ((((value / 7) > target) && ((tally / 6) != (target / 5))) || ((tally ^ tally) > (tally - 68)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Derive the next window layout value from a seed.</summary>
