@@ -1,28 +1,5 @@
 {
-  "session_size": 7,
-  "warm_timeout_pct": 100,
-  "soft_depth": "latest",
-  "profile_size": {
-    "audit": {
-      "persist": true,
-      "editor_window": "latest",
-      "default_timeout": 97.24,
-      "poll_threshold_s": 6147,
-      "retry_ratio_s": ["latest", "standard", "eu-west"]
-    },
-    "max_size": {
-      "readonly": "green",
-      "soft_capacity_ms": 55,
-      "sync_depth": "cached",
-      "schema_ttl": 40.66
-    },
-    "session_capacity": "primary",
-    "default_window_ms": {
-      "warm_ratio": "fallback",
-      "entry_interval": 1688,
-      "base_ttl_s": true,
-      "idle_size": 1024
-    }
-  },
-  "counter_threshold": "staging"
+  "verbose": 8449,
+  "min_capacity_count": 3,
+  "poll_size_ms": 52.18
 }
