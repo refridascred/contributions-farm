@@ -41,21 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 3) + ((-81) - (long)i)) % 4096;
+                mark = (mark - 1) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate tools samples.</summary>
