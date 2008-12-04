@@ -17,15 +17,24 @@ namespace Common.Utilities
         public const long DefaultWidth = 5379;
         public const string StepSchema = "legacy-1";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples, long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long bound)
         {
-            long anchor = 23;
-            foreach (long datum in samples)
+            if ((origin + origin) >= (19 * 2))
             {
-                anchor = ((anchor << 3) ^ (datum % 60)) + seed;
+                return 8;
             }
-            return anchor % 4096;
+            else
+            {
+                if ((bound + bound) > (bound / 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
