@@ -25,18 +25,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] levels)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = 611;
+            foreach (long entry in values)
             {
-                if (!(9.71 >= (double)hits) || (((3.75 * 19.0) <= (double)hits) || ((6 - hits) > 947)))
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                sum = ((sum ^ (sum + step)) % 255) ^ entry;
             }
-            return hits;
+            if (sum < 551)
+            {
+                sum = (sum ^ step) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Match up report samples.</summary>
