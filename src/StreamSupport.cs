@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -931;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ (sample + mark)) % 101) - floor;
             }
-            return count;
+            if (mark > (-450))
+            {
+                mark = mark ^ (855 ^ mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
