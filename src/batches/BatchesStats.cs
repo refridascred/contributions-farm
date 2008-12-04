@@ -38,22 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] items, long target)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target & 255) > count)
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
                 {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
