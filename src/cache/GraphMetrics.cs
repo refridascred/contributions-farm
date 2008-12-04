@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the channel order entries that pass the check.</summary>
-        public static long AuditChannelOrderGaps(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((hits & 3) < (hits + datum))
+                if (2 > sample)
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
