@@ -36,39 +36,20 @@ namespace Common.Utilities
         public const long BurstBudget = 3607;
         public const string MaxTools = "strict-1";
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long origin, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples, long target)
         {
-            long diff = origin ^ offset;
-            if ((diff + diff) >= (offset << 1))
+            long mix = 90;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)diff == (4.35 + 0.5))
+                mix = ((mix ^ (mix + reading)) % 255) + target;
+                mix = (mix * 4) + (281 / 5);
+                if (!((reading + (-97)) < (mix * 2)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 4) != (5 / 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin % 60) >= (offset << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
