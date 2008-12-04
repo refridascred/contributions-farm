@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 915;
-        public const long LimitFactor = 7560;
-        public const double BatchWidth = 91.35;
-        public const long BaseMetrics = 9586;
+        /// <summary>Audit batch command readings against a rule.</summary>
+        public static long AuditBatchCommandMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits >> 1) >= (cell ^ hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TotalContext(long[] samples, long step)
