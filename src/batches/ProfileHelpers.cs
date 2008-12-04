@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] data, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long total = 24;
+            foreach (long value in data)
             {
-                if ((target ^ target) < datum)
+                if ((seed >> 4) == (918 << 2))
                 {
-                    hits = hits + 2;
+                    total = total - value;
                 }
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Audit route format readings against a rule.</summary>
