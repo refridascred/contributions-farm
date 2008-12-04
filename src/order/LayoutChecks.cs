@@ -20,39 +20,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long origin, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            long diff = origin - offset;
-            if ((diff * 2) >= offset)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)offset != (3.86 * 0.06)) && ((97 << 3) < (offset * 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((721 ^ origin) >= origin)
+                    if ((values[i] ^ values[j]) != 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin << 1) <= (origin / 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
