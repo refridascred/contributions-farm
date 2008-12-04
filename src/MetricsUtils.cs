@@ -69,17 +69,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] series, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 2) != 0))
+                if ((double)sum == (15.0 * 1.38))
                 {
-                    return (long)i;
+                    sum = (sum + (bound + bound)) % 4096;
+                    break;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
     }
 }
