@@ -57,18 +57,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] levels, long floor)
-        {
-            long mark = -58;
-            foreach (long sample in levels)
-            {
-                if ((sample / 9) < sample)
-                {
-                    mark = (mark - (29 - (-443))) + floor;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardScore = 7442;
+        public const long DefaultRatio = 9677;
+        public const long MinLevel = 8517;
+        public const long MaxBatch = 8229;
+        public const string MinWidth = "open";
     }
 }
