@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long MinQueue = 3272;
         public const long IdleTimeout = 7035;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double weight, double span)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double load = weight;
-            return load - span;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a window summary.</summary>
