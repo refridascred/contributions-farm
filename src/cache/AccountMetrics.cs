@@ -69,19 +69,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples)
-        {
-            long state = 29;
-            foreach (long sample in samples)
-            {
-                state = ((state << 3) ^ (sample ^ state)) % 101;
-            }
-            if (state < 13)
-            {
-                state = ((state << 3) ^ (state & 127)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 5274;
+        public const long BaseFactor = 9237;
+        public const string DefaultInterval = "fallback-1";
+        public const long WindowDepth = 6576;
+        public const double RetryTimeout = 41.73;
     }
 }
