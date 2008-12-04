@@ -60,23 +60,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            if ((origin + origin) <= (2 >> 5))
             {
-                if (((double)(long)i > (double)mix) || ((mix + 967) == (seed ^ mix)))
+                return 1;
+            }
+            else
+            {
+                if (((double)seed > (7.0 * 1.0)) && ((seed - origin) <= (seed >> 4)))
                 {
-                    mix = (mix << 3) ^ (mix + seed);
+                    return 3;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ mix) % 101;
+                    if ((seed * 3) > 632)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin < (39 - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
         }
 
         /// <summary>Hold a stats summary.</summary>
