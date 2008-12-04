@@ -25,18 +25,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of order graph readings.</summary>
-        public static long MatchOrderGraphCount(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] levels, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((cell < tally) || (bound <= (44 - bound))))
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
