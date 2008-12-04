@@ -1,5 +1,16 @@
 # entry settings
-retry_limit_ms: blue
-record_ratio: 20
-layout_threshold: 60
-base_retries_ms: blue
+editor_retries: edge
+hard_capacity: green
+notes_ttl: false
+retry_window_s:
+  idle_window_pct: false
+  burst_threshold_pct: green
+  flush_delay_ms: 60
+  cache_timeout_pct:
+    tools_window: legacy
+    audit: fallback
+    strict: strict
+    default_limit_s: latest
+  readonly: 48
+  order_depth: edge
+batch_threshold_ms: 5147
