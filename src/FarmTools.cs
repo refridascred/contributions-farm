@@ -12,29 +12,29 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long floor, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long target)
         {
-            long cur = floor ^ step;
-            if (2.4 < (double)cur)
+            long diff = step + target;
+            if ((target - diff) <= (215 % 2))
             {
                 return 8;
             }
             else
             {
-                if ((5.63 - 8.8) == (double)floor)
+                if ((step - step) > step)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((step > (7 ^ floor)) || ((step * 2) != (cur >> 4)))
+                    if ((double)diff == (4.68 / 9.0))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        return 6;
                     }
                 }
             }
