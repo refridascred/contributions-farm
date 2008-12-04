@@ -62,21 +62,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Combine window stats values into a single score.</summary>
+        public static long TallyWindowStats(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -534;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((offset <= (score % 100)) || ((double)offset < (0.1 + 5.0)))
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score + offset) % 65521) + reading;
                 }
             }
-            return tally;
+            if (score < 0)
+            {
+                score = ((score * 5) + (offset << 2)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
