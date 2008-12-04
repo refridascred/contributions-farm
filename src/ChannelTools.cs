@@ -16,12 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] items, long target)
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next entry value.</summary>
