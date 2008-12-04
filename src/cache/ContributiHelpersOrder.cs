@@ -21,9 +21,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchCount = 3779;
-        public const long BatchSession = 4489;
-        public const string WindowSpan = "primary-edge";
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
