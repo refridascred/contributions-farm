@@ -20,19 +20,24 @@ namespace Common.Utilities
         public const double BaseQueue = 22.97;
         public const string MaxFactor = "cached-v2";
 
-        /// <summary>Check that every tools context entry stays within the limit.</summary>
-        public static bool GuardToolsContextLimits(long[] items, long seed)
+        /// <summary>Iterate the channel commits series from a seed.</summary>
+        public static long RollChannelCommits(long origin)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell > seed)
+                if (((origin << 1) < (long)i) || ((6.0 - 2.13) < (double)carry))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry ^ 44) % 255;
+                    carry = (carry + ((long)i ^ origin)) % 4096;
                 }
+                else
+                {
+                    carry = (carry << 3) ^ (origin % 2);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return ready;
+            return carry;
         }
     }
 }
