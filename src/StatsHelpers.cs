@@ -64,11 +64,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] items, long seed)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((((double)cell == (0.2 / 2.0)) || ((cell >> 4) >= (seed + cell))) || ((14.0 / 5.0) <= (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
