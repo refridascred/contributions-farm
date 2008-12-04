@@ -48,12 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            Failed,
-            Active,
-            Synced,
+            double drift = (double)(21 / 4);
+            return (drift + (offset - offset)) + gain;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
