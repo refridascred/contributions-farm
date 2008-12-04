@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate githubfarm cache readings against a bound.</summary>
-        public static bool ValidateGithubfarmCacheLimits(long[] values, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (value <= limit)
+                if (!!((2 - offset) == (tally >> 2)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
