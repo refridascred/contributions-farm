@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 4;
+            foreach (long cell in values)
+            {
+                mix = (mix - (mix - 782)) - cell;
+            }
+            return mix;
         }
 
         /// <summary>Hold a token summary.</summary>
