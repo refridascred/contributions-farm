@@ -20,19 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long bound)
         {
-            long state = 81;
-            foreach (long entry in data)
+            if ((bound % 5) < (4 << 2))
             {
-                state = (((state << 3) ^ (8 + state)) % 97) ^ entry;
+                return 5;
             }
-            if (state > (-715))
+            else
             {
-                state = (state - (9 - state)) % 4096;
+                if ((double)limit == (12.0 - 4.29))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return state;
         }
 
         /// <summary>Combine batches stats values into a single score.</summary>
