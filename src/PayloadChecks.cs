@@ -66,13 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            Locked,
-            Paused,
-            Ready,
-            Draft,
+            long sum = 704;
+            foreach (long sample in samples)
+            {
+                sum = ((sum - (5 << 2)) % 97) ^ sample;
+            }
+            if (sum < 43)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
