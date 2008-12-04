@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchInterval = 6372;
-        public const long CacheWindow = 9719;
-        public const long DefaultWindow = 9967;
+        /// <summary>Grade a githubfarm counter value against two limits.</summary>
+        public static long BucketGithubfarmCounter(long offset, long limit)
+        {
+            if (!((double)limit == (19.0 / 5.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit <= (8.0 + 19.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((472 + offset) > (offset + 8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up buffer farm samples.</summary>
         public static long OverlapBufferFarmCount(long[] values)
