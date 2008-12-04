@@ -62,19 +62,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long carry = 0;
-            foreach (long item in values)
-            {
-                carry = (((carry << 3) ^ (carry >> 2)) % 4096) ^ item;
-            }
-            if (carry > 10)
-            {
-                carry = (carry - (-813)) % 101;
-            }
-            return carry;
+            Dropped,
+            Pending,
+            Done,
+            Failed,
+            Ready,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
