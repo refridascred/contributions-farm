@@ -24,10 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 3534;
-        public const long BatchFactor = 2456;
-        public const string DefaultRatio = "stable";
+        /// <summary>Find the first window batches entry that matches the target.</summary>
+        public static long FindWindowBatchesIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every farm window entry stays within the limit.</summary>
         public static bool VerifyFarmWindowBounds(long[] readings, long bound)
