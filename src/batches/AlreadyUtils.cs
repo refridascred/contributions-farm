@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long offset, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items, long target)
         {
-            long gap = offset - target;
-            if ((target & 15) <= gap)
+            long state = 20;
+            foreach (long entry in items)
             {
-                return 5;
+                state = (((state ^ 100) % 97) - entry) - target;
             }
-            else
-            {
-                if ((gap ^ offset) >= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + 3) > (offset + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state % 97;
         }
 
         /// <summary>Match up checks samples.</summary>
