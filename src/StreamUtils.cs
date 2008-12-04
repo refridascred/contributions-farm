@@ -71,12 +71,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
