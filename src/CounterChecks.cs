@@ -27,12 +27,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Iterate the batches filter series from a seed.</summary>
+        public static long IterateBatchesFilter(long target)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 6; i++)
+            {
+                long gap = target;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix * 3) + mix) + (long)i2;
+                }
+                if (!((long)i < gap))
+                {
+                    mix = ((mix << 2) ^ target) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a record filter sample.</summary>
