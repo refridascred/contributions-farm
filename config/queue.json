@@ -1,7 +1,6 @@
 {
-  "metric_delay": 75.59,
-  "audit": 250,
-  "strict": 250,
-  "burst_delay": 250,
-  "dry_run": 1058
+  "contributi_size": ["edge", "eu-west", "local", "fallback"],
+  "readonly": false,
+  "default_depth_pct": "stable",
+  "idle_capacity": false
 }
