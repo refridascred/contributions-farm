@@ -20,32 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long offset, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] levels, long target)
         {
-            long edge = offset + bound;
-            if (!(bound <= (offset - edge)))
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset >= (76 & 3))
+                if (cell <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound >> 2) > (bound / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Adjust a notes reading.</summary>
