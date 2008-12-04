@@ -7,11 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in cached stable edge; do
+for item in local fallback blue; do
     log "checking ${item}"
 done
