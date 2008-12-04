@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Check that every payload checks entry stays within the limit.</summary>
+        public static bool GuardPayloadChecksRange(long[] levels, long seed)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
