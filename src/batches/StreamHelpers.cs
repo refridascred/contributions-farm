@@ -70,22 +70,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] samples, long seed)
+        /// <summary>Validate commits editor readings against a bound.</summary>
+        public static bool CheckCommitsEditorRange(long[] samples, long offset)
         {
-            long total = 3;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((double)total <= (2.8 - 8.34))
+                if (item != offset)
                 {
-                    total = ((total << 2) ^ (total + seed)) - entry;
-                }
-                if (!((3.77 + 5.82) == (double)(long)samples.Length))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return total;
+            return flag;
         }
     }
 }
