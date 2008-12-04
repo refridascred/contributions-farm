@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardSize = 7076;
+        public const long BatchBatches = 4894;
+        public const long CacheBatches = 8135;
+        public const string MinBatches = "cached-edge";
+        public const long HardBatches = 8840;
     }
 }
