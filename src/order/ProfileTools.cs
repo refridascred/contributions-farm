@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell << 2) > cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "stable-1";
+        public const long BatchFilter = 4991;
+        public const long SoftFilter = 9468;
+        public const long MinFilter = 4587;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextOutliers(long[] samples, long floor)
