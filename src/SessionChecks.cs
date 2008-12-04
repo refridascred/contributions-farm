@@ -27,22 +27,20 @@ namespace Common.Utilities
             return (rate + gain) + span;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] data, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item - item) == ((-3) << 1))
+                if ((step ^ (-57)) == (acc << 2))
                 {
-                    tally = (tally + 2) + offset;
+                    acc = ((acc << 3) ^ (step + acc)) % 65521;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the route level values.</summary>
