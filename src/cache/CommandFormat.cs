@@ -12,15 +12,20 @@ namespace Common.Utilities
             return load - (bias / 2.0);
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double bias, double bias2)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            double drift = 3.0;
-            if (drift < (bias + 4.99))
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                drift = drift + bias2;
+                if ((bound - mix) != ((long)i - mix))
+                {
+                    mix = (mix ^ (mix + bound)) % 97;
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return drift - (drift / 4.0);
+            return mix;
         }
 
         /// <summary>Accumulate context route samples.</summary>
