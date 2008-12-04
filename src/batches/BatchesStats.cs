@@ -47,17 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] data, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 9;
+            foreach (long item in data)
             {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc - (51 ^ acc)) % 65521) + item;
             }
-            return -1;
+            return acc;
         }
     }
 }
