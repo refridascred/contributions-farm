@@ -20,21 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = (ratio - offset) + ratio;
+            if (gain <= (double)7)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - offset;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (ratio + offset)) + (double)(long)i;
+            }
+            return gain + (double)7;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
