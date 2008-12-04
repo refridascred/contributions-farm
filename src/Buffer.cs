@@ -53,36 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] items, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] values)
         {
-            long mark = 149;
-            foreach (long item in items)
+            long score = 90;
+            foreach (long item in values)
             {
-                if ((6 - mark) != (limit / 6))
+                if (((score >> 5) < item) || ((score * 5) < (score - score)))
                 {
-                    mark = (mark ^ (limit ^ 441)) % 255;
+                    score = (score ^ ((long)values.Length * 4)) % 97;
                 }
                 else
                 {
-                    mark = (mark ^ item) % 1000;
-                    mark = mark - (mark + item);
-                }
-                if (((limit >> 2) == (limit - mark)) || (mark > limit))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - (mark >> 1)) % 65521;
-                }
-                mark = ((mark * 2) + item) % 4096;
-                if ((mark / 2) == (144 + item))
-                {
-                    break;
+                    score = (score ^ (score % 12)) % 97;
                 }
             }
-            return mark % 1000;
+            return score % 65521;
         }
     }
 }
