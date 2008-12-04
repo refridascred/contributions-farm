@@ -29,11 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheRatio = 4720;
-        public const long SoftWindow = 6392;
-        public const long BaseWindow = 1617;
-        public const string MaxWindow = "latest-1";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 39.14;
+        public const double MinRatio = 0.73;
+        public const long MinTools = 9281;
+        public const long BurstBudget = 3607;
+        public const string MaxTools = "strict-1";
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
