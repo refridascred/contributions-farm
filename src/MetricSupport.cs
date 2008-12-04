@@ -21,11 +21,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleScore = "open-1";
-        public const double BaseBudget = 41.98;
-        public const string CachePayload = "standard-edge";
-        public const long DefaultDepth = 5798;
-        public const long DefaultSpan = 585;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] values)
+        {
+            long carry = 9;
+            foreach (long item in values)
+            {
+                carry = (carry - carry) - item;
+            }
+            return carry;
+        }
     }
 }
