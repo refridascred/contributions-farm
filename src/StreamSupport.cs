@@ -56,11 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardSize = 7076;
-        public const long BatchBatches = 4894;
-        public const long CacheBatches = 8135;
-        public const string MinBatches = "cached-edge";
-        public const long HardBatches = 8840;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Done,
+            New,
+            Locked,
+        }
     }
 }
