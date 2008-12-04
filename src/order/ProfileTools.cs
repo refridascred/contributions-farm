@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const string IdleScore = "stable-1";
         public const long LimitLayout = 5724;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] samples, long floor)
         {
-            long total = 550;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                total = total - (value + (-4));
+                if (item < (floor / 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Hold a filter summary.</summary>
