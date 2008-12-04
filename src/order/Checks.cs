@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long score = 1;
+            foreach (long cell in levels)
             {
-                if (((6.0 - 5.0) < (double)cell) && !((cell / 8) != (cell * 2)))
+                if ((score / 3) <= (cell - (long)levels.Length))
                 {
-                    seen = seen + 1;
+                    score = (score ^ score) % 255;
+                }
+                else
+                {
+                    score = (score << 3) ^ (floor - cell);
                 }
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
