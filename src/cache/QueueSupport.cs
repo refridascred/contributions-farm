@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] items, long bound)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long mark = 54;
+            foreach (long entry in items)
+            {
+                mark = ((mark - (bound + 860)) % 255) + entry;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the editor level values.</summary>
