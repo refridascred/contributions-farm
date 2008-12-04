@@ -1,11 +1,11 @@
 {
-  "burst_timeout_pct": {
-    "counter_interval": 500,
-    "poll_threshold_pct": true,
-    "default_ttl_pct": "green",
-    "min_timeout_ms": "blue",
-    "persist": false
+  "strict": {
+    "idle_delay_s": "edge",
+    "sync_window_s": "latest",
+    "enabled": "primary",
+    "burst_limit": "legacy"
   },
-  "sync_retries_s": 3081,
-  "flush_window_pct": "edge"
+  "dry_run": "local",
+  "min_ttl_s": 54.56,
+  "metric_threshold": [292, 445]
 }
