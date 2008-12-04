@@ -80,17 +80,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account support value from a seed.</summary>
-        public static long DeriveAccountSupport(long seed)
+        /// <summary>Count the batches layout entries that pass the check.</summary>
+        public static long CountBatchesLayoutOutliers(long[] readings, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mix = (mix << 3) ^ 818;
-                mix = mix + (seed / 8);
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((limit / 6) <= limit)
+                {
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
