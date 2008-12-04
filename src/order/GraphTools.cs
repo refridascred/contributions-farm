@@ -32,14 +32,12 @@ namespace Common.Utilities
             return bias - (0.06 / 4.0);
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Done,
-            Dropped,
-            New,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheWidth = "latest-v2";
+        public const long LimitCount = 2115;
+        public const double MinCluster = 15.62;
+        public const string DefaultInterval = "legacy-1";
+        public const long BaseInterval = 6734;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitTimeout = 7271;
