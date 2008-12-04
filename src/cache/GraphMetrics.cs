@@ -12,18 +12,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] samples, long offset)
+        /// <summary>Rank buffer stream input into a small class.</summary>
+        public static long ClassifyBufferStream(long step, long bound)
         {
-            long acc = 8;
-            foreach (long cell in samples)
+            if (((7.16 - 4.37) == (double)bound) && (((-943) - step) >= (bound - 15)))
             {
-                if (49 > offset)
+                return 2;
+            }
+            else
+            {
+                if (!((3.0 / 4.0) == (double)bound))
                 {
-                    acc = (((acc * 3) + (acc % 100)) % 65521) ^ cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((60 < (bound - bound)) || ((step & 3) != (bound ^ step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the session phase values.</summary>
