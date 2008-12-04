@@ -44,18 +44,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] readings, long limit)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally > 7.1)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 1) ^ value) + limit;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a counter info.</summary>
