@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            if ((1.8 + 9.6) <= (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((18.0 + 2.9) <= (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed <= (1.3 / 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double mean = floor;
+            return (mean + floor) + weight;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
