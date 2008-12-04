@@ -35,11 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Find the first account farm entry that matches the target.</summary>
+        public static long SeekAccountFarmIndex(long[] data, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
