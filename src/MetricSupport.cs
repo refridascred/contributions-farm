@@ -36,19 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks metrics entries.</summary>
-        public static long FoldChecksMetrics(long[] data, long offset)
-        {
-            long total = 13;
-            foreach (long sample in data)
-            {
-                total = (((total - (256 % 10)) % 101) + sample) + offset;
-            }
-            if (total > 5)
-            {
-                total = (total + (7 & 15)) % 4096;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 1403;
+        public const double BaseCache = 44.07;
+        public const double MaxBudget = 52.9;
     }
 }
