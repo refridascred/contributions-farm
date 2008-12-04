@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 1789;
+        public const double IdleMetrics = 84.18;
+        public const long CacheLevel = 9533;
+        public const long BurstMetrics = 3362;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
