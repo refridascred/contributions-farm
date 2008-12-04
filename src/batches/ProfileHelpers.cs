@@ -51,32 +51,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank schema queue input into a small class.</summary>
-        public static long BucketSchemaQueue(long origin, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            long bound2 = origin ^ bound;
-            if (!((bound - bound) != (bound + bound)))
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (origin < 1)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound <= (bound & 15)) && ((bound / 5) == (bound2 ^ bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a account snapshot.</summary>
