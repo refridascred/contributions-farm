@@ -1,6 +1,6 @@
 {
-  "already_size": 67,
-  "sync_ratio_s": "eu-west",
-  "default_size": 1024,
-  "format_threshold": 54.17
+  "report_delay": 32,
+  "githubfarm_timeout": "edge",
+  "cache_window_ms": 20.51,
+  "burst_threshold": ["local", "open", "staging", "edge"]
 }
