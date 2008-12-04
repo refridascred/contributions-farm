@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of farm entry readings.</summary>
-        public static long PairFarmEntryCount(long[] samples)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((20.0 * 1.9) > (double)(long)i)
                 {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc * 2) + offset;
                 }
+                else
+                {
+                    acc = (acc << 2) ^ (acc - acc);
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
