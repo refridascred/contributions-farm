@@ -69,26 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] series)
+        /// <summary>Count the stats stream entries that pass the check.</summary>
+        public static long TallyStatsStreamMatches(long[] readings)
         {
-            long anchor = 33;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((12.0 + 0.17) > (double)anchor)
+                if ((matches % 5) >= entry)
                 {
-                    anchor = anchor + (anchor ^ anchor);
-                }
-                else
-                {
-                    anchor = anchor ^ (datum >> 2);
+                    matches = matches + 1;
                 }
             }
-            if (anchor < 50)
-            {
-                anchor = (anchor * 5) + (86 ^ anchor);
-            }
-            return anchor % 1000;
+            return matches;
         }
     }
 }
