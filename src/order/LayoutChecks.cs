@@ -69,12 +69,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Grade a cluster stream value against two limits.</summary>
+        public static long RankClusterStream(long floor, long origin)
         {
-            Done,
-            Dropped,
-            Paused,
+            if (((double)origin == (7.0 / 8.0)) && ((double)floor < (12.0 - 0.64)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((802 ^ origin) < (80 & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor != (1.59 - 4.32))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin < floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
