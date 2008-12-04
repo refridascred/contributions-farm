@@ -1,15 +1,7 @@
 {
-  "poll_capacity": "strict",
-  "window_timeout": 32.46,
-  "enabled": 33.84,
-  "poll_capacity_ms": {
-    "sync_ttl_count": 12.44,
-    "dry_run": "standard",
-    "cache_size": "cached"
-  },
-  "checks_ttl": {
-    "session_window": true,
-    "batch_size": 44.47,
-    "cache_depth": 60
-  }
+  "cache_limit": 100,
+  "flush_ratio_pct": 81,
+  "already_ttl": 65.75,
+  "burst_capacity_ms": false,
+  "flush_size_s": ["strict", "blue", "legacy"]
 }
