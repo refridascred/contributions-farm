@@ -47,13 +47,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
