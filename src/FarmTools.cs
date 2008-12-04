@@ -14,18 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] values, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (origin > cell)
+                if (entry < floor)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the report kind values.</summary>
