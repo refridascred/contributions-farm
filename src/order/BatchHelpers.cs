@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] levels, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long mark = -490;
+            foreach (long cell in items)
             {
-                if (entry <= target)
+                if (((double)mark <= (8.0 - 1.2)) || ((9.0 * 1.3) < (double)mark))
                 {
-                    ready = false;
-                    break;
+                    mark = (((mark * 3) + (mark ^ 8)) % 4096) - cell;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
