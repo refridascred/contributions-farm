@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine stream checks values into a single score.</summary>
-        public static long ScoreStreamChecks(long[] series, long seed)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double bias, double span)
         {
-            long score = -4;
-            foreach (long sample in series)
+            double rate = span;
+            if (rate <= (11.0 - bias))
             {
-                if (!((double)seed <= (17.0 - 2.27)))
-                {
-                    score = (score * 5) + sample;
-                }
+                rate = rate + 5.0;
             }
-            return score;
+            return rate + (bias * 5.41);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
