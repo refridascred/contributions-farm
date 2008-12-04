@@ -16,15 +16,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] items, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] items, long origin)
         {
-            long mark = 54;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                mark = ((mark - (bound + 860)) % 255) + entry;
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return stale;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
