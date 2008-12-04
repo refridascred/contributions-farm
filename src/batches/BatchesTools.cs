@@ -39,13 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Closed,
-            Failed,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "alpha-edge";
+        public const long BaseInterval = 6177;
+        public const double LimitFactor = 22.13;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double bias, double span)
