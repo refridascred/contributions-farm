@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = limit ^ origin;
+            if ((origin * 3) < (limit - 30))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((2.4 / 7.0) == (double)limit)
                 {
-                    if ((items[i] + items[j]) > 19)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - origin) >= (offset * 3))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
