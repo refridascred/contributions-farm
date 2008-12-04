@@ -25,19 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every schema batch entry stays within the limit.</summary>
-        public static bool CheckSchemaBatchRange(long[] samples, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
