@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long score = 242;
-            foreach (long entry in readings)
-            {
-                if ((entry + 8) > (score & 255))
-                {
-                    score = score + (entry % 60);
-                }
-            }
-            return score;
+            Dropped,
+            Draft,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a window options.</summary>
