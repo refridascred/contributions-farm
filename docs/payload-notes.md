@@ -1,11 +1,15 @@
 # Payload notes
 
-Keep queue and farm names short and lowercase.
-A buffer that stays idle for too long is moved to the route list.
-A support that stays idle for too long is moved to the command list.
+The entry report groups every entry by filter.
+Defaults for window live in the config folder and can be overridden per environment.
+Use metric settings to tune how often session data is refreshed.
+
+Keep report and route names short and lowercase.
+The contributi module keeps counter values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Log every metric change
-- Review schema limits each release
-- Validate farm input early
+- Keep account values small
+- Document new batches fields
+- Validate schema input early
+- Log every order change
