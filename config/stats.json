@@ -1,17 +1,5 @@
 {
-  "cluster_size": {
-    "dry_run": {
-      "soft_capacity_pct": true,
-      "cache_ttl": 89.55,
-      "cache_interval_count": false
-    },
-    "flush_capacity": 1652,
-    "flush_threshold_ms": 271,
-    "burst_interval_s": ["cached", "stable"],
-    "checks_delay": ["staging", "edge"],
-    "idle_depth": 4324
-  },
-  "batch_threshold_ms": 500,
-  "persist": 68.53,
-  "warm_ttl": "blue"
+  "retry_limit": "standard",
+  "min_ratio": 34.46,
+  "audit": "green"
 }
