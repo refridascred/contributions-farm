@@ -47,18 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((9.9 + 0.2) > (double)hits)
+                if (sample <= limit)
                 {
-                    hits = (hits + 3) - reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
