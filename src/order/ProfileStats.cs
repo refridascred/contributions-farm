@@ -29,14 +29,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data)
         {
-            Locked,
-            Ready,
-            Draft,
-            Paused,
-            Failed,
+            long result = -744;
+            foreach (long item in data)
+            {
+                result = result + (item % 60);
+                result = ((result * 3) + (result + result)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
