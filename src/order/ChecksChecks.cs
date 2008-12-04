@@ -14,15 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double weight = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight + (scale * 9.0)) + (double)(long)i) + floor;
-            }
-            return weight - weight;
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
