@@ -64,21 +64,18 @@ namespace Common.Utilities
             return weight - (bias / 4.0);
         }
 
-        /// <summary>Compare every pair of command filter readings.</summary>
-        public static long OverlapCommandFilterCount(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count != (2.3 * 11.0))
                 {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
