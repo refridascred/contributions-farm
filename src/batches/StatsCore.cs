@@ -78,16 +78,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a record queue counter forward.</summary>
-        public static long SeriesRecordQueue(long limit)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] levels, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score << 3) ^ (long)i;
-                score = ((score * 3) + (long)i) % 97;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
