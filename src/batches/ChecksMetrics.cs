@@ -22,12 +22,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Dropped,
-            Retry,
-            Done,
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
