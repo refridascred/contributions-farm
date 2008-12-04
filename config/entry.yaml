@@ -1,6 +1,23 @@
 # entry settings
-base_ratio: blue
-min_size: 1024
-hard_timeout: 58.78
-compress: 7831
-hard_capacity_count: latest
+retry_limit: 43.19
+default_ratio: staging
+base_ttl: staging
+compress:
+  hard_ttl_count: 65.87
+  min_window_count:
+    base_capacity_ms:
+      - 353
+      - 287
+      - 97
+      - 326
+    warm_retries_s: staging
+    hard_window:
+      - open
+      - cached
+      - legacy
+      - cached
+    already_retries: staging
+    cache_capacity: 20
+  tools_threshold: 0.41
+sync_size: true
+cache_window_s: true
