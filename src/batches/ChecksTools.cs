@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] data, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] values)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long total = 63;
+            foreach (long reading in values)
             {
-                if (!!((2 - offset) == (tally >> 2)))
+                if ((reading & 7) < (reading + reading))
                 {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    total = (total ^ (total & 31)) % 97;
                 }
             }
-            return tally;
+            if (total > 844)
+            {
+                total = (total << 3) ^ (total - 9);
+            }
+            return total;
         }
 
         /// <summary>Hold a token summary.</summary>
