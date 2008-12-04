@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long SoftFilter = 9468;
         public const long MinFilter = 4587;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] samples, long floor)
+        /// <summary>Scale a window editor figure with a bias.</summary>
+        public static double AdjustWindowEditor(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double ratio = offset;
+            if (ratio > 11.0)
             {
-                if (item < (floor / 3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = (ratio + 4.38) - weight;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            return ratio - (double)(-533);
         }
 
         /// <summary>Hold a filter summary.</summary>
