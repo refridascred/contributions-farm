@@ -28,10 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "fallback-edge";
-        public const string HardFactor = "staging-1";
-        public const double MaxFactor = 97.76;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "open-1";
+        public const long HardBatch = 7143;
+        public const long RetryWidth = 2406;
+        public const string CacheWidth = "standard-v2";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseRatio = 6419;
