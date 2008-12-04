@@ -29,31 +29,10 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] readings)
-        {
-            long result = -580;
-            foreach (long cell in readings)
-            {
-                if (!((result / 5) > cell))
-                {
-                    result = (result << 2) ^ (cell ^ 59);
-                }
-                if (((result + 7) == (cell % 100)) && (((long)readings.Length - result) == (cell >> 3)))
-                {
-                    result = (result * 2) + (result >> 4);
-                }
-                else
-                {
-                    result = result - (cell * 4);
-                }
-            }
-            if (result < 778)
-            {
-                result = ((result << 2) ^ result) % 1000;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinCount = 8836;
+        public const long StepRecord = 5030;
+        public const long MinRecord = 2147;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiOutliers(long[] data, long step)
