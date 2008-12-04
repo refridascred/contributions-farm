@@ -20,13 +20,10 @@ namespace Common.Utilities
             return bias + (double)99;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 6754;
+        public const string IdleFactor = "standard";
+        public const long MinWidth = 8291;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] levels)
