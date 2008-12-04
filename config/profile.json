@@ -1,11 +1,6 @@
 {
-  "cluster_threshold": ["local", "stable", "local"],
-  "githubfarm_retries": {
-    "githubfarm_depth": "legacy",
-    "editor_size": "latest",
-    "burst_ratio": 30,
-    "compress": 10.87,
-    "audit": 56
-  },
-  "warm_ttl_count": "eu-west"
+  "retry_limit": "legacy",
+  "audit": 3597,
+  "hard_limit_pct": 38,
+  "base_delay_ms": 10
 }
