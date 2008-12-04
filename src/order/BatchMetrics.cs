@@ -51,19 +51,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double ratio, double floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] items, long offset)
         {
-            double ratio2 = 6.74;
-            if (ratio2 <= (ratio * 5.8))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                ratio2 = (ratio2 - (ratio * 2.8)) + floor;
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + (ratio * 19.0)) + (double)(long)i;
-            }
-            return ratio2 + (double)383;
+            return stale;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
