@@ -43,32 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long limit, long target)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long step = limit - target;
-            if (((limit % 24) <= (target + step)) || ((step << 2) <= (196 - 6)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit - 3) == (target * 4)) && (target <= (target + step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((574 > target) && ((96 / 3) > (target - limit)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
