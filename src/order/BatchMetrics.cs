@@ -37,19 +37,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate farm report samples.</summary>
-        public static long TotalFarmReport(long[] levels, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples, long seed)
         {
-            long score = -24;
-            foreach (long reading in levels)
+            long mix = 6;
+            foreach (long cell in samples)
             {
-                if ((limit / 4) >= (limit + limit))
+                if (seed <= (seed - 9))
                 {
-                    continue;
+                    mix = (((mix * 4) + (mix % 24)) % 1000) ^ cell;
                 }
-                score = (((score << 3) ^ (score % 97)) % 1000) - reading;
             }
-            return score % 65521;
+            if (mix < 3)
+            {
+                mix = ((mix << 2) ^ (mix * 4)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
