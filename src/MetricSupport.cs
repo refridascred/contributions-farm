@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long MinFormat = 7695;
         public const long MaxFormat = 2615;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Draft,
-            Locked,
-            New,
-            Failed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "cached";
+        public const long LimitCounter = 4933;
+        public const long RetryFactor = 6800;
+        public const double DefaultCounter = 62.53;
+        public const string RetryRatio = "latest";
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] values)
