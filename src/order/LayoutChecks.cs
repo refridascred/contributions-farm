@@ -60,14 +60,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            Synced,
-            Retry,
-            Queued,
-            Closed,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches + matches) > datum)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of already counter entries.</summary>
