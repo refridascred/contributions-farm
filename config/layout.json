@@ -1,6 +1,6 @@
 {
-  "base_retries_count": "staging",
-  "warm_depth_s": 48,
-  "default_size": "blue",
-  "stream_capacity": [430, 15, 301, 50]
+  "verbose": 500,
+  "poll_delay": 93.72,
+  "farm_window": ["cached", "primary", "green", "green"],
+  "min_limit": [212, 33]
 }
