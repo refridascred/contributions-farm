@@ -20,17 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long step)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
