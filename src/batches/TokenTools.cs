@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryDepth = 4545;
-        public const string BaseTimeout = "stable-edge";
-        public const double CacheBudget = 11.46;
-        public const long SoftAlready = 4154;
-        public const string CacheAlready = "legacy-1";
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long GradeBuffer(long step, long bound)
