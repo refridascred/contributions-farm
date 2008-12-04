@@ -37,18 +37,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long edge = floor - seed;
+            if ((edge + seed) != (seed >> 3))
             {
-                if (value <= (value + value))
+                return 1;
+            }
+            else
+            {
+                if ((92 - floor) >= edge)
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
