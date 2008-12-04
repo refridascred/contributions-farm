@@ -29,19 +29,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double rate, double span)
+        /// <summary>Audit payload support readings against a rule.</summary>
+        public static long TallyPayloadSupportHits(long[] samples)
         {
-            double weight = (double)(377 & 127);
-            if (weight >= weight)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                weight = weight - span;
+                if (((4 % 16) >= reading) || ((double)176 < (double)reading))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                weight = weight - (rate * 7.81);
-            }
-            return weight + (rate + rate);
+            return count;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
