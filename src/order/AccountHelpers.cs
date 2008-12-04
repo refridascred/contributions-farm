@@ -12,10 +12,15 @@ namespace Common.Utilities
         public const long BaseScore = 9753;
         public const long BaseFactor = 8384;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 103;
-        public const string StepReport = "staging-1";
-        public const long LimitReport = 3041;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Closed,
+            Dropped,
+            New,
+            Active,
+            Ready,
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] levels, long limit)
