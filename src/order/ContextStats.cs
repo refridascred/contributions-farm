@@ -21,15 +21,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] items, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long offset, long origin)
         {
-            long score = 941;
-            foreach (long value in items)
+            long offset2 = offset + origin;
+            if ((offset << 2) == (offset2 & 63))
             {
-                score = (((score << 2) ^ (8 * 4)) ^ value) + origin;
+                return 4;
             }
-            return score % 1000;
+            else
+            {
+                if ((double)offset >= 3.11)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)origin == (8.8 / 5.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin - (-52)) < (origin + offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer state values.</summary>
