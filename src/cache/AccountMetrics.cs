@@ -69,15 +69,35 @@ namespace Common.Utilities
             return load + (7.0 / 6.0);
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] items, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long mark = 48;
+            foreach (long cell in items)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((1.5 + 17.0) > (double)floor)
+                {
+                    mark = mark - (1 ^ 2);
+                    mark = ((mark * 3) + (cell + cell)) % 255;
+                }
+                if (!!((cell + cell) > cell))
+                {
+                    mark = ((mark << 2) ^ cell) % 65521;
+                }
+                if ((86 >> 1) <= (floor ^ 77))
+                {
+                    mark = ((mark * 3) + (floor + mark)) % 65521;
+                }
+                else
+                {
+                    mark = mark + (21 / 9);
+                }
+                if ((floor * 4) >= 0)
+                {
+                    break;
+                }
             }
-            return mark;
+            return mark % 1000;
         }
 
         /// <summary>Describe the command level values.</summary>
