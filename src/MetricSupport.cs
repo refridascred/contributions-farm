@@ -21,25 +21,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long seed)
-        {
-            long edge = floor - seed;
-            if ((edge + seed) != (seed >> 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((92 - floor) >= edge)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleScore = "open-1";
+        public const double BaseBudget = 41.98;
+        public const string CachePayload = "standard-edge";
+        public const long DefaultDepth = 5798;
+        public const long DefaultSpan = 585;
     }
 }
