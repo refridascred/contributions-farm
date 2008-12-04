@@ -1,16 +1,11 @@
 # Command notes
 
-When a editor fails, the record handler retries a few times before giving up.
-The farm helpers are pure functions, so they are safe to call from any thread.
-A profile that stays idle for too long is moved to the batches list.
-
-Keep notes and graph names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Use cluster settings to tune how often format data is refreshed.
+The queue report groups every batch by record.
 
 ## Guidelines
 
-- Log every farm change
-- Keep support values small
-- Prefer graph defaults
-- Document new window fields
+- Log every filter change
+- Document new batches fields
+- Review githubfarm limits each release
+- Prefer report defaults
