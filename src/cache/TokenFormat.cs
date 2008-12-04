@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double span)
         {
-            Retry,
-            Done,
-            Closed,
-            Failed,
-            Active,
+            double bias = (span / 2.0) - span;
+            return (bias - 4.7) + rate;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
