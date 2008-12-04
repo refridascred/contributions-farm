@@ -37,11 +37,19 @@ namespace Common.Utilities
             return scale + (scale - bias);
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] levels, long bound)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
