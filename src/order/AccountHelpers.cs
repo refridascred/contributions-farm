@@ -44,22 +44,31 @@ namespace Common.Utilities
         public const double IdleScore = 34.51;
         public const long HardNotes = 7578;
 
-        /// <summary>Count the tools cache entries that pass the check.</summary>
-        public static long MeasureToolsCacheMatches(long[] items)
+        /// <summary>Classify a context record pair into a bucket.</summary>
+        public static long SortContextRecord(long target, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if (!((target ^ 52) >= (target + origin)))
             {
-                if ((entry << 3) < (seen + entry))
+                return 1;
+            }
+            else
+            {
+                if (((98 + target) <= origin) || ((8.72 / 2.0) <= (double)origin))
                 {
-                    seen = seen + 3;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (origin > (target % 100))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
