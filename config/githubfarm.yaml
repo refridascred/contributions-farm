@@ -1,10 +1,6 @@
 # githubfarm settings
-githubfarm_capacity:
-  - primary
-  - blue
-min_limit_ms:
-  - 476
-  - 334
-  - 12
-max_interval: legacy
-notes_capacity: 250
+strict: false
+cache_interval: true
+default_timeout_count: true
+entry_window: 4741
+already_interval: 94.44
