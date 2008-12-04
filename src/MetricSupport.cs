@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] items, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
