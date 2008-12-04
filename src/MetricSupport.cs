@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long MinFormat = 7695;
         public const long MaxFormat = 2615;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "cached";
-        public const long LimitCounter = 4933;
-        public const long RetryFactor = 6800;
-        public const double DefaultCounter = 62.53;
-        public const string RetryRatio = "latest";
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] values)
