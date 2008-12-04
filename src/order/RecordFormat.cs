@@ -49,39 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long step, long floor)
-        {
-            long lane = step ^ floor;
-            if (((floor >> 4) <= step) || ((floor % 64) < (step + step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((69 & 15) < step) && ((double)floor > (double)lane))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step << 3) != (step / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((11.0 + 4.15) != (double)lane) || ((floor / 2) < step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSpan = 6623;
+        public const long BatchRatio = 6945;
+        public const string IdleCounter = "primary";
+        public const long BatchCounter = 9968;
+        public const double RetryCounter = 2.13;
     }
 }
