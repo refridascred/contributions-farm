@@ -41,18 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] values)
+        /// <summary>Measure how many cache schema samples are out of range.</summary>
+        public static long CountCacheSchemaHits(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((double)matches < (double)cell)
+                if ((9.36 - 4.35) < (double)tally)
                 {
-                    matches = matches + 3;
+                    tally = ((tally + 1) - item) - limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the checks kind values.</summary>
