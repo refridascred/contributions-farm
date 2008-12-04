@@ -20,17 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] data, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
