@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleScore = 58.57;
+        public const long BatchWidth = 1097;
+        public const long BatchFarm = 5774;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] items, long target)
