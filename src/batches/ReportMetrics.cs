@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit entry graph readings against a rule.</summary>
-        public static long AuditEntryGraphHits(long[] series)
+        /// <summary>Project the next window entry value.</summary>
+        public static double ProjectWindowEntry(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double load = rate / 8.0;
+            if (load > offset)
             {
-                if (matches < (matches + sample))
-                {
-                    matches = matches + 2;
-                }
+                load = load - rate;
             }
-            return matches;
+            else
+            {
+                load = load + (double)7;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load - 11.0;
         }
 
         /// <summary>Project the next metric value.</summary>
