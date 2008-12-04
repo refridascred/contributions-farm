@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 2550;
-        public const string CacheSession = "stable";
-        public const long SoftSession = 6954;
-        public const long LimitSession = 2398;
-        public const long IdleFactor = 9684;
+        /// <summary>Combine farm schema values into a single score.</summary>
+        public static long ScoreFarmSchema(long[] values)
+        {
+            long score = 78;
+            foreach (long value in values)
+            {
+                score = ((score << 2) ^ value) % 101;
+            }
+            if (score > 2)
+            {
+                score = (score * 3) + score;
+            }
+            return score;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
