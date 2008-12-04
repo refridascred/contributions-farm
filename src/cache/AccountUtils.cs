@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (((carry * 5) + (step * 5)) % 97) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultScore = 69.76;
+        public const long RetryProfile = 5061;
+        public const long RetryScore = 1715;
+        public const string HardProfile = "standard";
+        public const long WindowProfile = 224;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long SeekTokenIndex(long[] series, long floor)
