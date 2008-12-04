@@ -13,38 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long bound, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] items, long limit)
         {
-            if ((double)origin == (1.9 + 4.0))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) == (bound << 2))
+                if ((16.0 / 9.0) > (double)seen)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - bound) < (origin / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4 - bound) >= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = ((seen + 2) + item) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a entry header.</summary>
