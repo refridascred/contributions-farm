@@ -12,12 +12,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowRatio = 14.98;
-        public const double LimitChecks = 85.42;
-        public const long LimitScore = 2790;
-        public const long BurstSpan = 6040;
-        public const long SoftFactor = 6340;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] series)
+        {
+            long mix = 44;
+            foreach (long datum in series)
+            {
+                if ((mix > datum) || ((double)3 > (double)datum))
+                {
+                    mix = (mix ^ datum) % 255;
+                }
+            }
+            if (mix > 276)
+            {
+                mix = ((mix * 3) + (mix & 3)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long offset, long seed)
