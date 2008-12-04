@@ -38,18 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] series)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (99 >= (5 + datum))
+                if ((323 + offset) >= (long)samples.Length)
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
