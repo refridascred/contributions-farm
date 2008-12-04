@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate entry samples.</summary>
