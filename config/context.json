@@ -1,11 +1,7 @@
 {
-  "batch_capacity_ms": false,
-  "poll_interval_pct": 8.51,
-  "min_size_count": {
-    "command_interval": false,
-    "flush_ttl": "strict",
-    "flush_size_count": 6859,
-    "stats_ratio": 51.92
-  },
-  "cache_delay_s": [456, 27, 360, 465]
+  "retry_delay": 81,
+  "audit": ["stable", "standard", "fallback", "green"],
+  "record_size": 60,
+  "burst_ratio_pct": 68.08,
+  "cache_limit_ms": 89
 }
