@@ -56,12 +56,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Active,
-            Ready,
             Synced,
+            Pending,
+            Closed,
+            Locked,
+            Done,
         }
     }
 }
