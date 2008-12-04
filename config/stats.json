@@ -1,5 +1,9 @@
 {
-  "verbose": 8449,
-  "min_capacity_count": 3,
-  "poll_size_ms": 52.18
+  "route_capacity": {
+    "soft_depth": 90,
+    "batch_delay": "latest",
+    "account_delay": "fallback"
+  },
+  "strict": "primary",
+  "enabled": 100
 }
