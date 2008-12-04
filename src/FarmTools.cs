@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] data, long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] data, long floor)
         {
-            long mark = 43;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound > (mark & 63)) && ((bound & 3) <= item))
+                if (data[i] <= floor)
                 {
-                    mark = mark - (mark + 82);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the cache phase values.</summary>
