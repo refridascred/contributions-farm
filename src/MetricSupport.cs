@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const double LimitFactor = 15.79;
         public const double BaseDepth = 53.19;
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double bias)
-        {
-            double drift = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + 1.9) + (double)(long)i;
-            }
-            return drift - (bias / 3.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 7025;
+        public const long DefaultPayload = 4279;
+        public const double BasePayload = 42.37;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long SortAccount(long floor, long seed)
