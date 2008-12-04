@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] series)
         {
-            Draft,
-            Failed,
-            New,
-            Locked,
+            long anchor = 38;
+            foreach (long datum in series)
+            {
+                if (7.55 <= (double)datum)
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 8)) % 65521;
+                }
+                if ((datum % 8) == (datum + datum))
+                {
+                    anchor = (anchor ^ (datum / 9)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
