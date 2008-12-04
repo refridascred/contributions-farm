@@ -19,11 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 95.36;
-        public const long StepBatch = 1462;
-        public const string WindowSpan = "stable-edge";
-        public const long WindowWidth = 2385;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileMatches(long[] values)
