@@ -45,18 +45,25 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long seed)
         {
-            long sum = 7;
-            foreach (long value in levels)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (((4 >> 4) > sum) || ((value >> 5) < ((long)levels.Length * 5)))
+                if ((double)acc <= (9.84 / 9.0))
                 {
-                    sum = ((sum * 5) + (value + value)) % 97;
+                    acc = (acc + ((long)i >> 2)) % 4096;
+                    acc = ((acc * 3) + seed) % 101;
                 }
+                else
+                {
+                    acc = ((acc << 2) ^ (seed << 1)) % 4096;
+                }
+                acc = (acc + (long)i) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
     }
 }
