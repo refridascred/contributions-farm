@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] levels, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((3.9 * 2.13) >= (double)origin)
+                if (((datum - seed) != (232 + 557)) && ((hits % 97) > (seed % 60)))
                 {
-                    break;
+                    hits = hits + 2;
                 }
-                mark = (mark << 3) ^ (origin & 255);
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a session summary.</summary>
