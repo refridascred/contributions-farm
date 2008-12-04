@@ -36,22 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema format entries that pass the check.</summary>
-        public static long TallySchemaFormatGaps(long[] items)
+        /// <summary>Digest a series of checks metrics entries.</summary>
+        public static long FoldChecksMetrics(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = 13;
+            foreach (long sample in data)
             {
-                if (97 > (item + count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = (((total - (256 % 10)) % 101) + sample) + offset;
             }
-            return count;
+            if (total > 5)
+            {
+                total = (total + (7 & 15)) % 4096;
+            }
+            return total % 65521;
         }
     }
 }
