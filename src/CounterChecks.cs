@@ -79,13 +79,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
