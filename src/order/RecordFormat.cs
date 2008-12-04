@@ -41,38 +41,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long offset, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long floor)
         {
-            if ((8.0 - 6.76) == (double)offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset & 7) < 541) && (offset < (4 - offset)))
+                if (data[i] <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - offset) < offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset > (origin / 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
