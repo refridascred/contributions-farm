@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "local-1";
+        public const long MaxRatio = 8684;
+        public const string MaxInterval = "latest-edge";
+        public const long RetryLevel = 3380;
+        public const double IdleAccount = 55.83;
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double scale, double bias)
