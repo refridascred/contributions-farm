@@ -1,6 +1,9 @@
 # githubfarm settings
-strict: false
-cache_interval: true
-default_timeout_count: true
-entry_window: 4741
-already_interval: 94.44
+hard_timeout_ms: 14
+batches_size: fallback
+flush_depth:
+  - 1
+  - 27
+retry_retries: 92.23
+counter_threshold: strict
+soft_size: 80.39
