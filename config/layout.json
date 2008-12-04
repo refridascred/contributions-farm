@@ -1,12 +1,6 @@
 {
-  "retry_capacity_ms": ["edge", "open", "edge", "primary"],
-  "soft_threshold_count": "fallback",
-  "compress": false,
-  "strict": 91,
-  "account_capacity": {
-    "retry_size_count": 81,
-    "queue_ratio": 86,
-    "enabled": 31,
-    "soft_threshold_pct": 7270
-  }
+  "sync_depth": false,
+  "hard_depth_count": "primary",
+  "stats_size": "primary",
+  "report_ratio": "staging"
 }
