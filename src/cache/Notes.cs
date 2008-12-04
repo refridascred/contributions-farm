@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchInterval = 9824;
-        public const long StepFactor = 1497;
-        public const long BaseStream = 777;
-        public const long SoftStream = 920;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Locked,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long IterateFarm(long origin)
