@@ -1,5 +1,7 @@
 {
-  "buffer_ratio": false,
-  "checks_ratio": "legacy",
-  "sync_size_ms": "blue"
+  "verbose": 18,
+  "max_size_s": 1024,
+  "editor_size": 5,
+  "default_depth_s": [258, 112, 203],
+  "audit": 43.16
 }
