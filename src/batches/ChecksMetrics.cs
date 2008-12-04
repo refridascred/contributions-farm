@@ -31,31 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long seed, long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if (8.7 < (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (16.0 + 4.27))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor ^ 5) < (seed - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
