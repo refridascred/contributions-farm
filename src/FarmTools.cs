@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] values, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mix = 240;
+            foreach (long sample in items)
             {
-                if (!(((long)values.Length >> 4) >= (value + (-789))))
-                {
-                    count = (count + 1) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix << 3) ^ sample) % 65521;
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
