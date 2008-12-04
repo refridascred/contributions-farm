@@ -37,15 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] items, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((double)reading == (8.4 * 17.0))
+                {
+                    matches = (matches + 1) - floor;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
