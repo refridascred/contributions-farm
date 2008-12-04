@@ -16,39 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long seed, long offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long gap = seed + offset;
-            if ((6.47 * 5.6) >= (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3 ^ offset) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7 >> 2) == (gap + (-445)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + 7) > seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
