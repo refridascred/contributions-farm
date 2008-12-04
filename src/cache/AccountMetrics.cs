@@ -37,19 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double ratio, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] values)
         {
-            double load = span - (double)9;
-            if (load < span)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                load = (load + (load + span)) + ratio;
+                if ((double)matches < (double)cell)
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)(-6)) + (double)(long)i;
-            }
-            return load + (7.0 / 6.0);
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
