@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] values, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = 78;
+            foreach (long entry in items)
             {
-                if (((long)values.Length != (403 + 60)) && (10.0 >= (double)origin))
+                if ((double)sum == (1.5 - 9.0))
                 {
-                    matches = (matches + 2) + reading;
+                    sum = ((sum + seed) % 65521) + entry;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (sum & 127);
                 }
             }
-            return matches;
+            if (sum > 43)
+            {
+                sum = (sum ^ (seed + sum)) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Roll a already counter forward.</summary>
