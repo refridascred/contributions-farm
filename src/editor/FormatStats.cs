@@ -37,12 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] values)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((7.54 * 5.7) <= (double)hits) && ((hits * 4) == (hits - (-923))))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
