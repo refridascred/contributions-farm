@@ -1,10 +1,9 @@
 # githubfarm settings
-flush_ttl: false
-verbose: false
-command_threshold: local
-min_capacity_ms:
-  - 206
-  - 141
-  - 224
-queue_depth: edge
-burst_size: 30
+buffer_threshold: 7176
+tools_delay: 552
+default_ttl: false
+profile_ratio: false
+poll_retries:
+  - legacy
+  - local
+hard_capacity_s: 500
