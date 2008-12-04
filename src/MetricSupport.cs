@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] items, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state ^ (state << 2);
-                state = ((state * 5) + (long)i) % 1000;
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
