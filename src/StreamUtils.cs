@@ -34,13 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            Draft,
+            Paused,
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Digest a series of route entries.</summary>
