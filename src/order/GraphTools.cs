@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double offset)
+        /// <summary>Combine stream checks values into a single score.</summary>
+        public static long ScoreStreamChecks(long[] series, long seed)
         {
-            double mean = (2.65 - gain) / 4.0;
-            if (mean <= (double)67)
+            long score = -4;
+            foreach (long sample in series)
             {
-                mean = mean - 5.34;
+                if (!((double)seed <= (17.0 - 2.27)))
+                {
+                    score = (score * 5) + sample;
+                }
             }
-            else
-            {
-                mean = mean - (gain - mean);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (7.03 - gain)) + (double)(long)i;
-            }
-            return mean - offset;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
