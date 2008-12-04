@@ -71,20 +71,38 @@ namespace Common.Utilities
         public const long BatchSchema = 2056;
         public const long MaxRatio = 8941;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long bound, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            if (((step + (-9)) != (step >> 3)) || ((step / 9) < (step + step)))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    long hits = (total / 4) / 5;
-                    total = ((total + (hits * 5)) % 65521) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((bound + 1) >= (step >> 3)) && (bound >= (step >> 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((bound + bound) <= (bound - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound > (11.0 - 20.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
