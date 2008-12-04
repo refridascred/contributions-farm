@@ -27,21 +27,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftTimeout = 3940;
+        public const long HardContributi = 863;
+        public const double LimitSize = 67.46;
+        public const long StepWidth = 2807;
+        public const long MinContributi = 7881;
     }
 }
