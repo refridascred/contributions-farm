@@ -34,19 +34,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] levels, long bound)
         {
-            long sum = 404;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 2; i++)
+                if ((2.31 * 20.0) <= (double)value)
                 {
-                    sum = ((sum << 3) ^ (item << 1)) + (long)i;
+                    count = (count + 3) + bound;
                 }
-                sum = ((sum << 3) ^ sum) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
