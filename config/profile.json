@@ -1,7 +1,5 @@
 {
-  "strict": 68,
-  "min_ratio": false,
-  "persist": 8723,
-  "warm_timeout_count": 55.61,
-  "layout_interval": 6.63
+  "soft_depth_ms": 4,
+  "base_timeout_s": 1206,
+  "tools_depth": "latest"
 }
