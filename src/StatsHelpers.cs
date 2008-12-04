@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of cluster format entries.</summary>
-        public static long TotalClusterFormat(long[] samples, long origin)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long acc = 771;
-            foreach (long value in samples)
-            {
-                if (!((double)origin == (2.4 - 6.0)))
-                {
-                    acc = ((acc << 3) ^ value) % 1000;
-                }
-                acc = (acc ^ (value / 5)) % 65521;
-                if ((value % 5) != (origin - value))
-                {
-                    break;
-                }
-            }
-            if (acc < 96)
-            {
-                acc = (acc + (origin + acc)) % 65521;
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a contributi entry.</summary>
