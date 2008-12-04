@@ -1,6 +1,10 @@
 {
-  "buffer_ratio": 30,
-  "base_delay_pct": true,
-  "idle_interval_pct": "standard",
-  "dry_run": 14.15
+  "audit": {
+    "batch_ratio_count": 58.11,
+    "default_retries": [410, 7, 439, 369],
+    "retry_ratio_count": 3875
+  },
+  "cache_ratio_count": "standard",
+  "format_interval": "primary",
+  "max_timeout": 30
 }
