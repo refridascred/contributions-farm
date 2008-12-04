@@ -22,14 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Draft,
-            Closed,
-            Retry,
-            Idle,
-            Active,
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
