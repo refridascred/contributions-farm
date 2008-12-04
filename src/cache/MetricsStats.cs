@@ -38,15 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] levels, long step)
         {
-            long sum = 2;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((((sum * 2) + (sum * 4)) % 97) + item) + limit;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
