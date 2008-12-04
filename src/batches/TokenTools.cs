@@ -23,13 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples, long seed)
         {
-            Failed,
-            Queued,
-            Pending,
-            Ready,
+            long anchor = 23;
+            foreach (long datum in samples)
+            {
+                anchor = ((anchor << 3) ^ (datum % 60)) + seed;
+            }
+            return anchor % 4096;
         }
     }
 }
