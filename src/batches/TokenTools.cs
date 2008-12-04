@@ -45,15 +45,9 @@ namespace Common.Utilities
         public const double BaseCache = 64.63;
         public const long MaxCache = 5399;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double floor)
-        {
-            double rate = (floor * 6.81) / 8.0;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate - (double)0) + (double)(long)i) - scale;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 5045;
+        public const long StepLevel = 5781;
+        public const long IdleRatio = 8199;
     }
 }
