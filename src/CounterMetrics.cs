@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] values)
         {
-            Done,
-            Dropped,
-            Active,
-            Ready,
-            Idle,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches / 8) >= matches)
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate token already samples.</summary>
