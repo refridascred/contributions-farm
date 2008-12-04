@@ -15,22 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of profile command entries.</summary>
-        public static long CombineProfileCommand(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            long total = 789;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((7.0 * 6.9) == (double)value)
+                if (((-62) << 2) >= (item - item))
                 {
-                    total = total - 882;
-                }
-                else
-                {
-                    total = (total - (total - value)) % 97;
+                    seen = seen + 1;
                 }
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Hold a profile record.</summary>
