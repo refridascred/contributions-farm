@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Derive the next tools route value from a seed.</summary>
+        public static long StepToolsRoute(long limit)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many stream token samples are out of range.</summary>
