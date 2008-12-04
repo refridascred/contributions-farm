@@ -55,11 +55,15 @@ namespace Common.Utilities
         public const double HardSize = 92.09;
         public const double MinAccount = 71.91;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double ratio, double floor)
         {
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
+            double ratio2 = (ratio + ratio) / 4.0;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = ((ratio2 - ratio2) + (double)(long)i) + floor;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Describe the cache level values.</summary>
