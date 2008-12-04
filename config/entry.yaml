@@ -1,27 +1,27 @@
 # entry settings
-base_depth_count:
-  - open
-  - blue
-min_retries_ms:
-  notes_retries: fallback
-  context_timeout:
-    - open
+compress: 30
+counter_interval: 7790
+burst_threshold: standard
+queue_limit:
+  metrics_capacity:
+    - latest
     - green
-    - fallback
     - legacy
-  flush_interval_pct: edge
-  enabled: open
-default_capacity_pct:
-  route_threshold: false
-  burst_limit:
-    - cached
-    - primary
-    - primary
     - legacy
-  hard_timeout:
-    batch_size_ms: true
-    compress: fallback
-    payload_window: 7712
-    warm_interval_count: true
-    max_ratio_ms: false
-  tools_delay: open
+  soft_capacity_ms:
+    - 479
+    - 245
+    - 299
+    - 179
+  audit: true
+  batch_threshold_count: fallback
+  hard_interval_pct: 7
+  strict:
+    cache_size_count: latest
+    farm_interval: green
+    hard_interval_ms: true
+    dry_run: 250
+    counter_capacity: true
+    enabled: local
+hard_depth: false
+report_ratio: green
