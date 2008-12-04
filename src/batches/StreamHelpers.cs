@@ -66,26 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] levels, long step)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long mark = 3;
-            foreach (long entry in levels)
-            {
-                if ((mark ^ (-5)) > (entry >> 1))
-                {
-                    mark = ((mark * 3) + 1) % 101;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (entry * 2);
-                }
-                if ((step & 3) > mark)
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
