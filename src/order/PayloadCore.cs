@@ -36,15 +36,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] data, long step)
         {
-            double bias = offset;
-            if (bias >= (offset - bias))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                bias = (bias - (double)5) - scale;
+                if ((step < ((long)data.Length + hits)) && ((hits * 2) >= (step ^ sample)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return bias - 2.1;
+            return hits;
         }
     }
 }
