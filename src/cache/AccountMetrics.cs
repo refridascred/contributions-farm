@@ -69,11 +69,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 5274;
-        public const long BaseFactor = 9237;
-        public const string DefaultInterval = "fallback-1";
-        public const long WindowDepth = 6576;
-        public const double RetryTimeout = 41.73;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Active,
+            Failed,
+            Ready,
+        }
     }
 }
