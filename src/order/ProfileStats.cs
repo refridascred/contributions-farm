@@ -41,32 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long offset, long bound)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] values, long step)
         {
-            long gap = offset + bound;
-            if ((gap ^ offset) != (bound ^ offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((gap ^ offset) != (offset - 8)) && ((offset - gap) <= 682))
+                if (values[i] > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)57 == (double)gap)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next queue value.</summary>
