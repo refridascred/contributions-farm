@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Locate a session profile reading by value.</summary>
+        public static long LocateSessionProfileIndex(long[] data, long step)
         {
-            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] > step) && ((data[i] % 3) == 0))
                 {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a record counter pair into a bucket.</summary>
