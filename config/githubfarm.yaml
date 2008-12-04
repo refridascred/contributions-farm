@@ -1,7 +1,8 @@
 # githubfarm settings
-idle_interval_s:
-  - standard
-  - local
-  - eu-west
-persist: 23
-account_ratio: eu-west
+enabled: primary
+burst_timeout_count: 250
+sync_ratio: true
+retry_ratio:
+  enabled: false
+  tools_size: legacy
+  dry_run: open
