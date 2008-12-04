@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long bound, long bound2)
-        {
-            if (((bound2 - 88) <= (-14)) || ((19.0 - 14.0) < (double)bound2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3 + bound) >= (bound - bound2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchFactor = 16.08;
+        public const long MaxLevel = 2727;
+        public const long MinBuffer = 3138;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferMatches(long[] items, long bound)
