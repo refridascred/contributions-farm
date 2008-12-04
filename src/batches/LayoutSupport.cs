@@ -25,19 +25,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate format metrics readings against a bound.</summary>
-        public static bool ValidateFormatMetricsLimits(long[] values, long target)
+        /// <summary>Compare every pair of order graph readings.</summary>
+        public static long MatchOrderGraphCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a format summary.</summary>
