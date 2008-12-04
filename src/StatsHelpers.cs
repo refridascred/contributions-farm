@@ -56,17 +56,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 8515;
+        public const long CacheInterval = 9212;
+        public const long BaseReport = 8575;
+        public const double WindowReport = 52.62;
+        public const long LimitReport = 3218;
     }
 }
