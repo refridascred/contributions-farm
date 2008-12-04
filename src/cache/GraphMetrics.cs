@@ -41,19 +41,24 @@ namespace Common.Utilities
         public const long MaxDepth = 5846;
         public const string IdleFactor = "alpha-1";
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long target)
         {
-            double rate = (double)(52 + 79);
-            if (rate < rate)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                rate = ((rate + 1.0) + scale) + floor;
+                long span = (long)i;
+                if (!(target >= result))
+                {
+                    result = (result * 3) + (target + span);
+                }
+                if (!((6 - target) <= (long)i))
+                {
+                    result = (result * 3) + (result / 7);
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (double)53) + (double)(long)i;
-            }
-            return rate - (2.0 * 6.5);
+            return result;
         }
     }
 }
