@@ -1,6 +1,5 @@
 {
-  "base_capacity_count": "staging",
-  "idle_ratio_ms": 9576,
-  "sync_capacity_s": [103, 203],
-  "order_retries": ["cached", "edge", "staging"]
+  "hard_interval": 81.17,
+  "verbose": ["fallback", "strict"],
+  "stream_ttl": 46
 }
