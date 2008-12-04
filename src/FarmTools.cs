@@ -29,13 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] values, long seed)
         {
-            Done,
-            Failed,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((5 >> 2) <= seen)
+                {
+                    seen = ((seen + 3) ^ entry) + seed;
+                }
+            }
+            return seen;
         }
     }
 }
