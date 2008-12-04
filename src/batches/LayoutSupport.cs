@@ -74,19 +74,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] values, long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading > offset)
+                sum = ((sum << 3) ^ ((long)i * 2)) % 1000;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum - sum) % 101) ^ (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
     }
 }
