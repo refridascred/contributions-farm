@@ -64,15 +64,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context counter value.</summary>
-        public static double AdjustContextCounter(double weight, double bias)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            double weight2 = bias + weight;
-            if (weight2 >= weight2)
+            long anchor = 5;
+            foreach (long sample in data)
             {
-                weight2 = weight2 + (double)90;
+                anchor = ((anchor << 3) ^ (sample * 5)) % 97;
+                if (!(((sample << 3) >= (sample / 3)) || (anchor > (sample + anchor))))
+                {
+                    anchor = (anchor ^ (sample % 5)) % 65521;
+                }
+                if ((anchor > (6 - sample)) || ((anchor & 3) >= (sample * 3)))
+                {
+                    anchor = anchor ^ (sample & 127);
+                }
             }
-            return weight2 - weight2;
+            if (anchor > 1)
+            {
+                anchor = (anchor << 3) ^ (6 / 8);
+            }
+            return anchor;
         }
     }
 }
