@@ -1,25 +1,4 @@
 # support settings
-strict:
-  - 316
-  - 70
-order_retries: 1268
-enabled:
-  dry_run: 70
-  poll_ratio_s:
-    dry_run:
-      - legacy
-      - edge
-    idle_limit:
-      - 312
-      - 129
-      - 254
-      - 188
-    commits_threshold:
-      - strict
-      - edge
-      - latest
-  poll_size_count: edge
-  soft_ttl_s: true
-session_window: 7
-retry_window_count: 32
-verbose: stable
+base_interval_ms: local
+hard_threshold_count: standard
+persist: eu-west
