@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long limit)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 915;
+        public const long LimitFactor = 7560;
+        public const double BatchWidth = 91.35;
+        public const long BaseMetrics = 9586;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TotalContext(long[] samples, long step)
