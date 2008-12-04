@@ -24,13 +24,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long offset, long offset2)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            long span = offset + offset2;
+            if (((-28) ^ offset) > (984 - 71))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - span) < span)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset > offset2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
