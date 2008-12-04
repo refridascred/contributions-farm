@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] values, long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= bound)
+                if ((values[i] <= bound) && ((values[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
