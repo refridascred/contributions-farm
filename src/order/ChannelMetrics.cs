@@ -35,10 +35,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleRatio = 4371;
-        public const string MinTimeout = "stable-edge";
-        public const long HardFormat = 2978;
-        public const long BatchFormat = 2165;
+        /// <summary>Fold a list of checks farm readings.</summary>
+        public static long DigestChecksFarm(long[] samples, long floor)
+        {
+            long mix = 88;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = (((mix << 3) ^ (floor - (-489))) ^ (long)i) + sample;
+                }
+                if ((3.4 - 5.9) > (double)floor)
+                {
+                    mix = (mix - floor) % 101;
+                }
+                else
+                {
+                    mix = (mix - (mix % 7)) % 1000;
+                }
+            }
+            if (mix < (-7))
+            {
+                mix = ((mix * 3) + (mix - mix)) % 255;
+            }
+            return mix % 65521;
+        }
     }
 }
