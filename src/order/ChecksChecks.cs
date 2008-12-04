@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] levels, long seed)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum - seed) != (232 + 557)) && ((hits % 97) > (seed % 60)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
