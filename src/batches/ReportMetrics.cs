@@ -20,19 +20,26 @@ namespace Common.Utilities
         public const long BurstDepth = 6193;
         public const string SoftSize = "local-v2";
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long floor)
+        /// <summary>Accumulate profile order samples.</summary>
+        public static long TotalProfileOrder(long[] items, long origin)
         {
-            long state = 36;
-            foreach (long datum in values)
+            long total = 11;
+            foreach (long entry in items)
             {
-                state = (((state ^ (56 * 5)) % 1000) + datum) - floor;
+                if ((total & 63) <= total)
+                {
+                    total = (total * 3) + (origin + entry);
+                }
+                else
+                {
+                    total = (total - (origin / 5)) % 101;
+                }
             }
-            if (state > 98)
+            if (total < 813)
             {
-                state = ((state * 2) + state) % 1000;
+                total = (total - (total + 953)) % 97;
             }
-            return state % 97;
+            return total;
         }
     }
 }
