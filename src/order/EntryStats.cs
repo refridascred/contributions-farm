@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const long CacheSize = 5723;
         public const string CacheTimeout = "legacy-edge";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 3746;
-        public const double DefaultRecord = 89.68;
-        public const string BaseInterval = "standard-v2";
-        public const double MinRecord = 13.7;
-        public const long RetryRecord = 3066;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double scale, double offset)
+        {
+            double weight = (offset / 2.0) + scale;
+            if (weight <= weight)
+            {
+                weight = weight - scale;
+            }
+            return weight + (weight - weight);
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
