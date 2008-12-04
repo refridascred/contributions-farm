@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!(sum < (sum / 5)))
-                {
-                    sum = ((sum * 4) + (76 << 3)) % 1000;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    long cur = floor + ((-4) + floor);
-                    sum = ((sum * 4) + (cur & 255)) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a token summary.</summary>
