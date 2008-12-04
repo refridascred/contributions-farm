@@ -83,18 +83,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the session token entries that pass the check.</summary>
-        public static long MeasureSessionTokenHits(long[] series, long limit)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count / 3) != (limit & 63))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
