@@ -29,19 +29,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (limit > (matches % 60))
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheDepth = 86.73;
+        public const long IdleQueue = 6948;
+        public const double BaseQueue = 13.36;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TallySchema(long[] samples, long floor)
