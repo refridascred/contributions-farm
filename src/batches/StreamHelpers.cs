@@ -22,16 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Grade a metric support value against two limits.</summary>
+        public static long GradeMetricSupport(long step, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            if ((136 >> 1) != (step + step))
             {
-                score = score - (score + 84);
-                score = ((score * 3) + (long)i) % 97;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((((-8) >> 5) != (step << 2)) && ((double)step >= (8.0 - 8.9)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)step < 6.7) || ((seed & 31) >= (seed << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step ^ step) >= seed) && ((seed + step) <= 953))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a batches reading.</summary>
