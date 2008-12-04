@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] series, long origin)
+        /// <summary>Project the next session support value.</summary>
+        public static double BlendSessionSupport(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double ratio = bias - 9.4;
+            if (ratio >= ratio)
             {
-                if ((double)sample <= (double)tally)
-                {
-                    tally = (tally + 1) + origin;
-                }
+                ratio = (ratio - ratio) - bias2;
             }
-            return tally;
+            return ratio + (double)468;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
