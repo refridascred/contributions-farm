@@ -67,22 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm tools samples.</summary>
-        public static long DigestFarmTools(long[] values, long step)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long state = 2;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) > (datum + step))
-                {
-                    state = state ^ (674 >> 3);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (9 & 15)) % 97;
-                }
-            }
-            return state;
+            public double Token { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
