@@ -102,11 +102,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Done,
+            Retry,
         }
     }
 }
