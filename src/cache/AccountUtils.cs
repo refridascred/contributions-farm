@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] items, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long limit)
         {
-            bool found = true;
-            foreach (long value in items)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (value >= origin)
+                sum = (sum + ((long)i - sum)) % 101;
+                sum = (sum - (sum + limit)) % 65521;
+                if (!(((long)i * 5) >= (limit + limit)))
                 {
-                    found = false;
                     break;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Locate a session metric reading by value.</summary>
