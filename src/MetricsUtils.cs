@@ -58,18 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] levels)
+        /// <summary>Locate a payload command reading by value.</summary>
+        public static long LocatePayloadCommandIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((double)sample != (6.1 + 1.93)) || ((hits * 5) < hits)) && ((hits / 3) > hits))
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
