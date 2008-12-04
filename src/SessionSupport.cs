@@ -25,15 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
-        public static long MeasureChecksGithubfarmHits(long[] series, long step)
+        /// <summary>Count the layout report entries that pass the check.</summary>
+        public static long MeasureLayoutReportHits(long[] items, long step)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long item in items)
             {
-                if (entry >= (99 & 63))
+                if ((double)step < (double)seen)
                 {
-                    seen = (seen + 2) + step;
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
