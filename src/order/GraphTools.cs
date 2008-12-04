@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Blend two tools record measurements.</summary>
+        public static double ScaleToolsRecord(double scale, double bias)
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
+            double scale2 = 1.75 * 2.51;
+            if (scale2 <= (3.0 + scale2))
+            {
+                scale2 = (scale2 + bias) - scale;
+            }
+            else
+            {
+                scale2 = scale2 + (double)9;
+            }
+            return scale2 - (bias * 4.0);
         }
 
         /// <summary>Fold a list of commits readings.</summary>
