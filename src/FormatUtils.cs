@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Adjust a context already reading.</summary>
+        public static double ProjectContextAlready(double gain, double bias)
         {
-            long mix = 475;
-            foreach (long entry in readings)
+            double gain2 = (3.04 * 9.96) / 4.0;
+            if (gain2 > (double)9)
             {
-                mix = (((mix << 3) ^ mix) % 4096) - entry;
+                gain2 = gain2 + gain2;
             }
-            if (mix > 8)
+            else
             {
-                mix = (mix - (mix + mix)) % 1000;
+                gain2 = gain2 + gain;
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + bias) - (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Hold a commits record.</summary>
