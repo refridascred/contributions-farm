@@ -1,7 +1,5 @@
 # support settings
-retry_timeout: true
-channel_timeout: false
-base_depth: stable
-queue_ttl: 8028
-dry_run: strict
-verbose: 4912
+poll_capacity: false
+strict: 500
+window_ttl: strict
+soft_ttl: local
