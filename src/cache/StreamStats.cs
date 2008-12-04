@@ -42,13 +42,22 @@ namespace Common.Utilities
             return rate + 20.0;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series, long origin)
         {
-            Dropped,
-            Queued,
-            Done,
-            Retry,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((6.07 / 3.0) != (double)value)
+                {
+                    seen = (seen + 2) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
