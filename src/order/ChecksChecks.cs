@@ -21,22 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] data, long limit)
         {
-            long total = 56;
-            foreach (long datum in values)
+            long sum = -3;
+            foreach (long sample in data)
             {
-                if (((double)datum < (7.52 / 5.0)) && ((total * 2) <= (datum + total)))
+                if (!(sample >= (sum + sample)))
                 {
-                    total = total + (long)values.Length;
+                    sum = ((sum * 5) + sum) % 1000;
+                }
+                if ((limit ^ limit) == (limit & 1))
+                {
+                    break;
                 }
             }
-            if (total < 499)
-            {
-                total = ((total * 4) + (total * 2)) % 255;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
