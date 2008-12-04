@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] items, long floor)
-        {
-            long mix = 353;
-            foreach (long item in items)
-            {
-                mix = (mix + mix) + item;
-            }
-            if (mix > 37)
-            {
-                mix = mix ^ floor;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowRatio = 14.98;
+        public const double LimitChecks = 85.42;
+        public const long LimitScore = 2790;
+        public const long BurstSpan = 6040;
+        public const long SoftFactor = 6340;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long offset, long seed)
