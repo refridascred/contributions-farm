@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
             public long Stamp { get; set; }
         }
 
