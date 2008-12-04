@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] series, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double bias, double span)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double mean = (double)809 - bias;
+            if (mean > (span * 6.1))
             {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean + bias;
             }
-            return ready;
+            else
+            {
+                mean = mean + (mean + mean);
+            }
+            return mean - mean;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
