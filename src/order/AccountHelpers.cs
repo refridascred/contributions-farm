@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(82 <= (total - 5)))
-                {
-                    total = total + (6 / 7);
-                    break;
-                }
-                total = (total - (step ^ (long)i)) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
