@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Stale,
-            Locked,
-            Closed,
-            Queued,
-            New,
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
