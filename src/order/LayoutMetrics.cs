@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] values, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long step, long origin)
         {
-            bool found = true;
-            foreach (long cell in values)
+            if ((double)step > (5.7 * 1.5))
             {
-                if (cell < step)
+                return 2;
+            }
+            else
+            {
+                if (2.0 < (double)step)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin > (26 ^ origin)) && (step >= 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + origin) > 1)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
