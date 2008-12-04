@@ -1,8 +1,11 @@
 {
-  "batch_capacity": "primary",
-  "burst_interval_ms": 94.25,
-  "enabled": ["local", "local"],
-  "cache_delay_s": "staging",
-  "flush_depth": 71,
-  "idle_limit_ms": 51
+  "cluster_threshold": ["local", "stable", "local"],
+  "githubfarm_retries": {
+    "githubfarm_depth": "legacy",
+    "editor_size": "latest",
+    "burst_ratio": 30,
+    "compress": 10.87,
+    "audit": 56
+  },
+  "warm_ttl_count": "eu-west"
 }
