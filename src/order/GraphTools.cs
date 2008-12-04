@@ -36,13 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] samples, long bound)
         {
-            public double Owner { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)bound > (3.4 / 9.0))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
