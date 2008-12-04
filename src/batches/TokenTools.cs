@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double BaseScore = 29.54;
         public const long BatchChecks = 4414;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] series)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((double)seen != (double)datum) || (seen > datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a batches header.</summary>
