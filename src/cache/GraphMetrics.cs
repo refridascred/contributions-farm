@@ -47,24 +47,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double weight, double floor)
-        {
-            double ratio = (floor - weight) + floor;
-            if (ratio > weight)
-            {
-                ratio = ratio + floor;
-            }
-            else
-            {
-                ratio = ratio + 1.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (7.0 - floor)) + (double)(long)i;
-            }
-            return ratio + floor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSpan = 6819;
+        public const long BatchBuffer = 4183;
+        public const long MinBuffer = 2008;
+        public const string CacheBuffer = "legacy-1";
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LocateFarmIndex(long[] readings, long floor)
