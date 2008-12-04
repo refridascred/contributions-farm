@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items, long seed)
-        {
-            long state = 0;
-            foreach (long sample in items)
-            {
-                if ((3 <= seed) || ((sample + state) >= seed))
-                {
-                    state = ((state * 3) + (seed - sample)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultScore = 79.28;
+        public const double HardGithubfarm = 60.76;
+        public const long WindowGithubfarm = 3858;
+        public const long BaseScore = 9753;
+        public const long BaseFactor = 8384;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long CacheReport = 103;
