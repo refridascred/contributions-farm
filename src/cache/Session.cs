@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (667 > (reading % 10))
+                if (((long)values.Length != (403 + 60)) && (10.0 >= (double)origin))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a already counter forward.</summary>
