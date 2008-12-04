@@ -71,16 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] samples, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                total = (total + (target + (long)i)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
+                if ((tally + origin) > origin)
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
