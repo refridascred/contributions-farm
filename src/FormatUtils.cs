@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a context already reading.</summary>
-        public static double ProjectContextAlready(double gain, double bias)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long target)
         {
-            double gain2 = (3.04 * 9.96) / 4.0;
-            if (gain2 > (double)9)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                gain2 = gain2 + gain2;
+                sum = (sum ^ (target % 5)) % 65521;
+                sum = ((sum << 2) ^ target) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            else
-            {
-                gain2 = gain2 + gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + bias) - (double)(long)i;
-            }
-            return gain2 - gain2;
+            return sum;
         }
 
         /// <summary>Hold a commits record.</summary>
