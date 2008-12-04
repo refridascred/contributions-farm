@@ -1,6 +1,5 @@
 {
-  "audit": false,
-  "entry_interval": 60,
-  "batch_delay_s": [141, 422],
-  "already_interval": "green"
+  "max_size_ms": 76,
+  "farm_ttl": 78,
+  "cache_interval_s": ["legacy", "legacy"]
 }
