@@ -20,21 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
