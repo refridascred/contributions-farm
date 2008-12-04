@@ -1,6 +1,7 @@
 # githubfarm settings
-persist: 42.66
-soft_ratio: 67
-default_ttl_count: 6902
-burst_delay_ms: 250
-counter_capacity: latest
+idle_interval_s:
+  - standard
+  - local
+  - eu-west
+persist: 23
+account_ratio: eu-west
