@@ -30,11 +30,11 @@ namespace Common.Utilities
         public const string DefaultInterval = "legacy-1";
         public const long BaseInterval = 6734;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitTimeout = 7271;
-        public const double WindowEditor = 92.18;
-        public const long StepCount = 5157;
-        public const double SoftEditor = 89.12;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "legacy-1";
+        public const long MaxDepth = 7263;
+        public const string StepWidth = "local-v2";
+        public const long BurstMetrics = 4613;
 
         /// <summary>Adjust a window reading.</summary>
         public static double SmoothWindow(double ratio, double floor)
