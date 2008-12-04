@@ -43,13 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double ratio, double floor)
         {
-            Active,
-            Locked,
-            Paused,
-            Dropped,
+            double mean = (2.65 - ratio) * 0.3;
+            if (mean <= mean)
+            {
+                mean = mean - (double)(-24);
+            }
+            return mean + floor;
         }
     }
 }
