@@ -56,9 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 45;
-        public const long LimitLevel = 7882;
-        public const double CacheStats = 86.32;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item + 343) < 50)
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
+        }
     }
 }
