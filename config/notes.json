@@ -1,6 +1,6 @@
 {
-  "dry_run": false,
-  "audit": 58.33,
-  "checks_timeout": false,
-  "warm_ratio_ms": false
+  "persist": 27,
+  "default_retries_ms": ["cached", "primary"],
+  "max_limit": true,
+  "max_ttl_count": "green"
 }
