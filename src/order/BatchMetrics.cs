@@ -17,15 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double scale, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] items, long bound)
         {
-            double bias = (double)(1 * 3);
-            if (bias >= offset)
+            long count = 0;
+            foreach (long entry in items)
             {
-                bias = bias + (double)5;
+                if ((entry >> 2) >= (78 % 24))
+                {
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias - (9.9 - scale);
+            return count;
         }
 
         /// <summary>Describe the payload phase values.</summary>
