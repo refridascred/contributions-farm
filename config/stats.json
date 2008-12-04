@@ -1,9 +1,11 @@
 {
-  "route_capacity": {
-    "soft_depth": 90,
-    "batch_delay": "latest",
-    "account_delay": "fallback"
+  "burst_timeout_pct": {
+    "counter_interval": 500,
+    "poll_threshold_pct": true,
+    "default_ttl_pct": "green",
+    "min_timeout_ms": "blue",
+    "persist": false
   },
-  "strict": "primary",
-  "enabled": 100
+  "sync_retries_s": 3081,
+  "flush_window_pct": "edge"
 }
