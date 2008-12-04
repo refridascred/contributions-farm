@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue payload samples are out of range.</summary>
-        public static long AuditQueuePayloadGaps(long[] series, long origin)
+        /// <summary>Validate buffer tools readings against a bound.</summary>
+        public static bool CheckBufferToolsRange(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (origin <= (value >> 3))
+                if (cell > step)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
