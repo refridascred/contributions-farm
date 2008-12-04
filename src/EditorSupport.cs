@@ -62,17 +62,41 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long floor)
+        /// <summary>Digest a series of tools stream entries.</summary>
+        public static long TallyToolsStream(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 301;
+            foreach (long item in values)
             {
-                if (values[i] > floor)
+                if (!(((-7) - 627) <= (mark & 7)))
                 {
-                    return (long)i;
+                    mark = (mark ^ origin) % 255;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark + (item - origin)) % 97;
+                    mark = (mark - (origin - mark)) % 255;
+                }
+                if (((mark % 16) != (item + mark)) || ((3.0 - 3.0) >= (double)item))
+                {
+                    mark = mark ^ (mark + origin);
+                }
+                else
+                {
+                    mark = (mark - (item + mark)) % 1000;
+                    mark = mark + item;
+                }
+                if ((mark + 454) > mark)
+                {
+                    mark = (mark + (mark / 3)) % 65521;
                 }
             }
-            return -1;
+            if (mark < 430)
+            {
+                mark = ((mark * 5) + (origin << 1)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a notes info.</summary>
