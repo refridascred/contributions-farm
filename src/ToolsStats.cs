@@ -41,21 +41,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((offset + step) >= offset)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)step != (9.63 / 3.0))
                 {
-                    if ((values[i] + values[j]) < 4)
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 1) <= step)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
