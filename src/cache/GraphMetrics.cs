@@ -12,23 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double bias)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double weight = bias / 7.0;
-            if (weight < (double)499)
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (bias - ratio)) + (double)(long)i;
-            }
-            return weight - bias;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the session phase values.</summary>
