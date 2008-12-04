@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BurstCluster = 9259;
         public const long SoftCluster = 1802;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double ratio, double offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] values)
         {
-            double ratio2 = (double)(250 - 11);
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                ratio2 = ((ratio2 - (ratio2 - 9.5)) - (double)(long)i) - offset;
+                if ((double)reading == (double)matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return ratio2 + ratio;
+            return matches;
         }
 
         /// <summary>Validate metrics schema readings against a bound.</summary>
