@@ -14,11 +14,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] samples, long bound)
         {
-            double bias = floor;
-            return (bias - (bias * 4.0)) + gain;
+            long total = 1;
+            foreach (long value in samples)
+            {
+                total = ((total - (53 - bound)) % 65521) ^ value;
+                total = ((total << 2) ^ (total / 5)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the entry mode values.</summary>
