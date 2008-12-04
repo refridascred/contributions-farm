@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] items, long floor)
+        /// <summary>Compare every pair of farm entry readings.</summary>
+        public static long PairFarmEntryCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
