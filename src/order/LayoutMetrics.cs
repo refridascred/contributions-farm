@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultFactor = "alpha-1";
+        public const long LimitToken = 9281;
+        public const long CacheTimeout = 3815;
+        public const long HardToken = 2529;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
