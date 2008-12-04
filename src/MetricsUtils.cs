@@ -37,22 +37,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long limit, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long target, long limit)
         {
-            if ((double)limit != (2.07 + 9.67))
+            long gap = target + limit;
+            if ((double)gap != (double)(-14))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((-7) >= (target & 7))
+                if ((double)3 < (double)limit)
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    if ((limit + 695) < (limit & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
