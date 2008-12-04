@@ -1,4 +1,9 @@
 # entry settings
-base_ratio_s: eu-west
-soft_interval_ms: edge
-command_threshold: 1024
+poll_retries_count:
+  - eu-west
+  - standard
+poll_timeout_count: local
+burst_depth: standard
+retry_ratio_count: 86.1
+warm_window: false
+batch_delay: 5074
