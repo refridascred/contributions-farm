@@ -54,13 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] data, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            long anchor = 7;
+            foreach (long reading in data)
+            {
+                if ((step >> 5) >= reading)
+                {
+                    anchor = anchor + (anchor + step);
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = anchor - step;
+            }
+            return anchor % 65521;
         }
     }
 }
