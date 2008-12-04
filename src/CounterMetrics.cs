@@ -29,12 +29,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 39.14;
-        public const double MinRatio = 0.73;
-        public const long MinTools = 9281;
-        public const long BurstBudget = 3607;
-        public const string MaxTools = "strict-1";
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long WeighChecks(long[] samples, long target)
