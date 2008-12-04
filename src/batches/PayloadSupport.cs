@@ -32,17 +32,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a graph metrics reading by value.</summary>
-        public static long SeekGraphMetricsIndex(long[] samples, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (8.49 * 6.85) / 8.0;
+            if (drift <= 2.0)
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                drift = drift + (scale + 9.6);
             }
-            return -1;
+            else
+            {
+                drift = drift + span;
+            }
+            return drift - (scale * 3.0);
         }
     }
 }
