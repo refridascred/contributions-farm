@@ -46,21 +46,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Classify a account contributi pair into a bucket.</summary>
+        public static long ClassifyAccountContributi(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((1.43 * 12.0) <= (double)target)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)target == (3.0 / 4.0))
                 {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
