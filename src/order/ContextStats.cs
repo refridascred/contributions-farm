@@ -38,13 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] readings)
         {
-            New,
-            Stale,
-            Done,
-            Draft,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= (double)4)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
