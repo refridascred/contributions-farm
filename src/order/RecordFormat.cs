@@ -73,12 +73,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long step, long floor)
         {
-            Failed,
-            Ready,
-            Synced,
+            long lane = step ^ floor;
+            if (((floor >> 4) <= step) || ((floor % 64) < (step + step)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((69 & 15) < step) && ((double)floor > (double)lane))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step << 3) != (step / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((11.0 + 4.15) != (double)lane) || ((floor / 2) < step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
