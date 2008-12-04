@@ -65,12 +65,15 @@ namespace Common.Utilities
         public const long CacheSupport = 4876;
         public const long BatchSupport = 2063;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels, long target)
         {
-            Draft,
-            Synced,
-            Locked,
+            long total = 461;
+            foreach (long datum in levels)
+            {
+                total = (((total * 5) + (target / 4)) % 65521) ^ datum;
+            }
+            return total;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
