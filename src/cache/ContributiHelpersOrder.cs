@@ -27,9 +27,9 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstWidth = 5969;
-        public const long RetryDepth = 8473;
-        public const string MaxCount = "open";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchCount = 3779;
+        public const long BatchSession = 4489;
+        public const string WindowSpan = "primary-edge";
     }
 }
