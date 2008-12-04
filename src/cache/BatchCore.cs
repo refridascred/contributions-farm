@@ -33,17 +33,32 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] levels, long floor)
+        /// <summary>Classify a metric commits pair into a bucket.</summary>
+        public static long BucketMetricCommits(long seed, long seed2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = seed ^ seed2;
+            if (!((double)seed != (double)5))
             {
-                if (levels[i] > floor)
+                return 8;
+            }
+            else
+            {
+                if ((20.0 / 6.0) == (double)bound)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - 42) <= (seed2 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
