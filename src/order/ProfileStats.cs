@@ -46,18 +46,12 @@ namespace Common.Utilities
             return mean + (mean / 8.0);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] readings, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum < (double)hits)
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Ready,
         }
     }
 }
