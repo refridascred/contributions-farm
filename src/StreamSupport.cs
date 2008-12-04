@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster metrics readings against a rule.</summary>
-        public static long MeasureClusterMetricsMatches(long[] data, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((reading + target) >= (seen + seen))
+                if ((((tally / 2) <= (target << 3)) && ((5.93 / 2.0) > (double)target)) && (tally < (cell << 1)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
