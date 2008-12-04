@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 96.96;
+        public const long DefaultSupport = 9359;
+        public const long LimitDepth = 2140;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long CombineEditor(long[] values, long floor)
