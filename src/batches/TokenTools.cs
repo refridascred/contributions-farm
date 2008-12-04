@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const double BaseScore = 29.54;
         public const long BatchChecks = 4414;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long step, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] series)
         {
-            long step2 = step ^ bound;
-            if ((double)bound < (3.0 + 17.0))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 + step2) < (step >> 2))
+                if (((double)seen != (double)datum) || (seen > datum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((30 + bound) <= (0 & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a batches header.</summary>
