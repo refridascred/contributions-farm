@@ -43,19 +43,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every session commits entry stays within the limit.</summary>
-        public static bool GuardSessionCommitsLimits(long[] data, long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < step)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    ok = false;
-                    break;
+                    total = (((total * 5) + (bound - 35)) % 65521) - (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
     }
 }
