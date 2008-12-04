@@ -33,20 +33,29 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long score = 251;
+            foreach (long value in samples)
             {
-                if (!(((double)step >= (double)(long)i) && (5 <= ((long)i / 9))))
+                if (!((4 << 1) > (656 - value)))
                 {
-                    acc = (acc - (step / 4)) % 101;
+                    score = (score ^ (score + value)) % 1000;
+                    score = score ^ (9 + score);
                 }
-                acc = (acc - (step / 7)) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
+                else
+                {
+                    long cur = (score * 5) - (value - value);
+                    score = score ^ (cur * 3);
+                }
+                score = ((score * 3) + (value / 7)) % 4096;
             }
-            return acc;
+            if (score > 69)
+            {
+                score = score - (score - 61);
+            }
+            return score;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
