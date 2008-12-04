@@ -13,15 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double rate, double span)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            double mean = span;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                mean = ((mean - (span / 6.0)) - (double)(long)i) + rate;
             }
-            return sum;
+            return mean - 0.6;
         }
 
         /// <summary>Describe the session phase values.</summary>
