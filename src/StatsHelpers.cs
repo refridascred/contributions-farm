@@ -77,19 +77,18 @@ namespace Common.Utilities
             return ratio + (9.1 * 6.7);
         }
 
-        /// <summary>Fold a list of checks graph readings.</summary>
-        public static long DigestChecksGraph(long[] series, long origin)
+        /// <summary>Count the stream report entries that pass the check.</summary>
+        public static long AuditStreamReportOutliers(long[] readings)
         {
-            long acc = 42;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                acc = (acc ^ acc) - origin;
-                if (((acc >> 4) <= (acc / 6)) && ((double)acc < (6.19 - 1.2)))
+                if ((cell / 5) < matches)
                 {
-                    acc = acc ^ (datum - acc);
+                    matches = matches + 2;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
     }
 }
