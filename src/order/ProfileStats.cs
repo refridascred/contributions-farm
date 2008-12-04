@@ -54,17 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long step)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(802 + 53);
+            if (load >= (load / 5.0))
             {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
+                load = (load + span) + bias;
             }
-            return -1;
+            return load + span;
         }
     }
 }
