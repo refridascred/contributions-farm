@@ -47,19 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((8.98 + 8.0) > (double)count)
-                {
-                    count = ((count + 1) ^ sample) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 79.89;
+        public const double DefaultTimeout = 58.3;
+        public const double StepToken = 36.03;
+        public const long RetryCount = 782;
+        public const long BaseToken = 9658;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long SortOrder(long step, long origin)
