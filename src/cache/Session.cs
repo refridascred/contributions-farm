@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleDepth = 9287;
-        public const string IdleSize = "stable-v2";
-        public const long IdleFarm = 6466;
+        /// <summary>Compare every pair of githubfarm route readings.</summary>
+        public static long PairGithubfarmRouteCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next account batches value.</summary>
         public static double SmoothAccountBatches(double weight, double offset)
