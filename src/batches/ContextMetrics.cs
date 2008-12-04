@@ -33,21 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 4;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry <= carry) && ((carry << 1) < carry))
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry + entry) % 65521;
+                    continue;
+                }
+                if (((double)seed < (double)entry) || ((entry * 3) > (entry >> 3)))
+                {
+                    carry = (carry ^ (carry - 627)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (entry & 31);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
