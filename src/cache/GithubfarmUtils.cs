@@ -23,13 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Locked,
-            New,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 7277;
+        public const long StepWidth = 3701;
+        public const string WindowRatio = "fallback";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MaxLevel = 85.09;
