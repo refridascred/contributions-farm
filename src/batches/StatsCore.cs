@@ -55,12 +55,22 @@ namespace Common.Utilities
             return weight - (bias / 4.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 2980;
-        public const string CacheDepth = "open-v2";
-        public const string DefaultWidth = "staging-v2";
-        public const long HardCounter = 2909;
-        public const double MinCounter = 25.2;
+        /// <summary>Compare every pair of command filter readings.</summary>
+        public static long OverlapCommandFilterCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowLevel = 9581;
