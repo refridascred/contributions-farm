@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            Failed,
-            New,
-            Paused,
-            Active,
-            Idle,
+            long mix = 259;
+            foreach (long entry in data)
+            {
+                if (((0.55 + 18.0) == (double)mix) || ((91 / 8) > (mix << 2)))
+                {
+                    mix = ((mix * 2) + entry) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (entry << 3)) % 97;
+                }
+            }
+            if (mix < 989)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
