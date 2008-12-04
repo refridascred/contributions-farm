@@ -31,21 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits << 3) >= (hits - cell))
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
