@@ -16,18 +16,17 @@ namespace Common.Utilities
             return rate + (bias * 5.41);
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] readings)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((item & 7) < (count + 286)) && (1.36 > (double)count))
+                if (readings[i] < bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine filter token values into a single score.</summary>
