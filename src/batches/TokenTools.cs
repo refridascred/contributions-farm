@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "alpha";
-        public const long BatchCount = 9734;
-        public const long BatchFactor = 114;
+        /// <summary>Audit order cache readings against a rule.</summary>
+        public static long CountOrderCacheGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((-657) + (-45)) > matches)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank session already input into a small class.</summary>
         public static long RankSessionAlready(long origin, long floor)
