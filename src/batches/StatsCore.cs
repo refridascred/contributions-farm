@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] readings, long origin)
+        /// <summary>Validate layout contributi readings against a bound.</summary>
+        public static bool CheckLayoutContributiLimits(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (datum != origin)
+                if (entry < floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
