@@ -47,11 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
