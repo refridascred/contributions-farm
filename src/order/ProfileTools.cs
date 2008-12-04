@@ -26,21 +26,22 @@ namespace Common.Utilities
         public const long BurstCount = 7615;
         public const double DefaultCount = 50.87;
 
-        /// <summary>Count already schema pairs that satisfy a relation.</summary>
-        public static long CompareAlreadySchemaCount(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)values.Length / 9) > 3)
                 {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
