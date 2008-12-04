@@ -15,16 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            long score = 2;
+            foreach (long entry in series)
             {
-                carry = (carry ^ target) % 1000;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((score + entry) > (entry >> 2))
+                {
+                    score = (score << 3) ^ (2 & 1);
+                }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
