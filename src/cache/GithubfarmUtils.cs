@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 8322;
-        public const long LimitFactor = 3474;
-        public const string BatchDepth = "fallback";
-        public const string StepFilter = "open-v2";
-        public const long HardBudget = 3659;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches < target) && ((58 % 12) <= value))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit account window readings against a rule.</summary>
         public static long MeasureAccountWindowOutliers(long[] items)
