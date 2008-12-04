@@ -49,13 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count the schema notes entries that pass the check.</summary>
+        public static long TallySchemaNotesGaps(long[] levels, long limit)
         {
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!((double)datum > 6.4))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
