@@ -24,15 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double gain, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            double mean = 4.07 - (floor - gain);
-            if (mean < (double)454)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mean = mean + gain;
+                if (count > (datum % 7))
+                {
+                    count = count + 1;
+                }
             }
-            return mean + 2.82;
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
