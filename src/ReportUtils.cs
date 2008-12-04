@@ -53,18 +53,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] items, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long carry = 817;
+            foreach (long datum in series)
             {
-                if (value < (-43))
-                {
-                    seen = (seen + 3) - offset;
-                }
+                carry = ((carry << 2) ^ (datum << 2)) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Blend two profile measurements.</summary>
