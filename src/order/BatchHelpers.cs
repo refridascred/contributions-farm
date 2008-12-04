@@ -16,12 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Compare every pair of notes queue readings.</summary>
+        public static long PairNotesQueueCount(long[] series)
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
