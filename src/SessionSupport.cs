@@ -43,19 +43,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] series, long limit)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long sum = 3;
-            foreach (long value in series)
-            {
-                sum = (sum * 4) + (sum + value);
-                if ((sum + limit) < limit)
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
