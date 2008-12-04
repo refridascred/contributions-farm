@@ -1,5 +1,5 @@
 {
-  "retry_threshold_s": 56,
-  "soft_depth": 54.86,
-  "checks_timeout": 100
+  "flush_delay": 1024,
+  "hard_capacity_pct": "primary",
+  "cache_ratio": "strict"
 }
