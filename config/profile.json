@@ -1,6 +1,24 @@
 {
-  "default_limit_s": [110, 1, 166, 13],
-  "account_threshold": [36, 379, 219, 406],
-  "dry_run": 627,
-  "warm_interval_count": 29.02
+  "cache_capacity_pct": {
+    "default_ttl": "local",
+    "verbose": false,
+    "base_limit_pct": "local",
+    "warm_window_s": 53,
+    "context_capacity": true
+  },
+  "record_size": "eu-west",
+  "tools_depth": true,
+  "base_depth": {
+    "burst_window_ms": 30,
+    "batches_interval": "primary",
+    "readonly": ["legacy", "fallback", "open", "standard"],
+    "session_ttl": false,
+    "queue_delay": 94
+  },
+  "flush_threshold_count": {
+    "default_capacity": [94, 428],
+    "audit": 70.38,
+    "warm_limit_s": "latest"
+  },
+  "sync_capacity_count": false
 }
