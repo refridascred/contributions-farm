@@ -40,32 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics context value against two limits.</summary>
-        public static long ClassifyMetricsContext(long origin, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] readings, long bound)
         {
-            long cur = origin - step;
-            if ((origin >= (origin / 7)) || ((double)cur > (8.5 - 1.0)))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((cur + cur) < (7 / 9)) || ((step - 8) < (23 - origin)))
+                if ((bound / 7) > (-938))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >= step) && ((double)cur == (5.0 * 7.25)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 3) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
