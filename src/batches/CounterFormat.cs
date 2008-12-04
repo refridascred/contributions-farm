@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long DefaultCount = 7547;
         public const long CacheFactor = 1153;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long step)
         {
-            long state = 766;
-            foreach (long entry in levels)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (state >= (long)levels.Length)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    state = (((state * 5) + (entry * 5)) % 97) + floor;
+                    mark = (((mark * 5) + (mark * 5)) % 1000) + (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return state % 97;
+            return mark;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
