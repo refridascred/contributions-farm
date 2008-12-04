@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] data, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Match up queue samples.</summary>
