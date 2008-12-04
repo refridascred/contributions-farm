@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinWidth = 6091;
-        public const long WindowRatio = 5512;
-        public const string LimitFactor = "primary";
-        public const long LimitGithubfarm = 2109;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportMatches(long[] data, long target)
