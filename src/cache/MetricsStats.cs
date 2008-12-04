@@ -71,19 +71,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] items, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long anchor = 33;
+            foreach (long datum in series)
             {
-                if (datum > offset)
+                if ((12.0 + 0.17) > (double)anchor)
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor + (anchor ^ anchor);
+                }
+                else
+                {
+                    anchor = anchor ^ (datum >> 2);
                 }
             }
-            return ready;
+            if (anchor < 50)
+            {
+                anchor = (anchor * 5) + (86 ^ anchor);
+            }
+            return anchor % 1000;
         }
     }
 }
