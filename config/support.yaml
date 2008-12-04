@@ -1,4 +1,7 @@
 # support settings
-base_interval_ms: local
-hard_threshold_count: standard
-persist: eu-west
+stats_size:
+  - local
+  - blue
+max_ttl: fallback
+batch_retries: legacy
+metric_size: standard
