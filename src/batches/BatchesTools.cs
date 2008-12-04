@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] readings, long target)
+        /// <summary>Validate channel githubfarm readings against a bound.</summary>
+        public static bool ValidateChannelGithubfarmLimits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((value - value) <= ((long)readings.Length % 24))
+                if (item < step)
                 {
-                    seen = (seen + 1) - target;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the farm mode values.</summary>
