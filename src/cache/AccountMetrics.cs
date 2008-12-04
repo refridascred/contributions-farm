@@ -23,18 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] readings, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((bound / 7) > (-938))
+                if (!(entry <= (count >> 2)) || ((double)entry < (11.0 * 20.0)))
                 {
-                    hits = (hits + 3) - cell;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
