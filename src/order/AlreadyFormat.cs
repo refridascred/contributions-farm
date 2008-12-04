@@ -66,15 +66,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] values, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] samples, long seed)
         {
-            long score = 5;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 4) + (score + item)) - offset;
+                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
