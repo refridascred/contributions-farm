@@ -45,31 +45,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long step, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            if (!(origin >= (origin - origin)))
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin >= 1.3)
+                if (limit > (score * 3))
                 {
-                    return 5;
+                    score = ((score * 3) + (limit & 255)) % 65521;
                 }
                 else
                 {
-                    if ((double)origin >= (4.0 - 4.6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = (score ^ (score + (long)i)) % 101;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score * 5) + (score * 3)) - (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
