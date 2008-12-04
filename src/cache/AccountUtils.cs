@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data, long floor)
+        /// <summary>Count the payload layout entries that pass the check.</summary>
+        public static long MeasurePayloadLayoutMatches(long[] levels, long origin)
         {
-            long score = 976;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                score = ((score * 5) + (value % 12)) % 101;
+                if ((tally << 1) > (1 & 1))
+                {
+                    tally = ((tally + 2) - entry) + origin;
+                }
             }
-            if (score > 18)
-            {
-                score = score - (floor + floor);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a counter record.</summary>
