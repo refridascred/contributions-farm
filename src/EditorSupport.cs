@@ -43,10 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 9205;
-        public const long CacheTools = 4312;
-        public const double CacheBudget = 75.65;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = (carry - (carry + (long)i)) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] values, long floor)
