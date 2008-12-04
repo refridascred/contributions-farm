@@ -49,18 +49,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] levels, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((step + step) != (hits ^ step))
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
