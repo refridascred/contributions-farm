@@ -76,15 +76,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] items, long bound)
+        /// <summary>Rank contributi editor input into a small class.</summary>
+        public static long SortContributiEditor(long floor, long origin)
         {
-            long sum = 31;
-            foreach (long value in items)
+            long offset = floor - origin;
+            if ((55 >> 4) >= (floor % 10))
             {
-                sum = (((sum << 2) ^ (sum << 2)) ^ value) - bound;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((origin ^ 28) >= (origin ^ floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((3 + origin) >= (offset + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
