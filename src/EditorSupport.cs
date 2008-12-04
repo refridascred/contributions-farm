@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up githubfarm filter samples.</summary>
-        public static long OverlapGithubfarmFilterCount(long[] readings)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            long count = 0;
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 12)
+                    if ((readings[i] ^ readings[j]) == 11)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate batches tools samples.</summary>
