@@ -48,12 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Blend two account notes measurements.</summary>
+        public static double ProjectAccountNotes(double rate, double offset)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            double ratio = (double)(-59) - (rate / 4.0);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + (double)76) - (double)(long)i) - offset;
+            }
+            return ratio - (double)37;
         }
     }
 }
