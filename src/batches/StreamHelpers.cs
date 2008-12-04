@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] samples, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long sum = 196;
+            foreach (long value in values)
             {
-                if ((56 ^ count) >= 640)
+                if (value > (value % 16))
                 {
-                    count = ((count + 2) + reading) - offset;
+                    sum = (sum * 2) + (offset - (long)values.Length);
                 }
             }
-            return count;
+            if (sum < 20)
+            {
+                sum = (sum - (32 - offset)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Rank profile editor input into a small class.</summary>
