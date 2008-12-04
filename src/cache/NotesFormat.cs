@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleWidth = 5302;
-        public const long IdleNotes = 8459;
-        public const long LimitTimeout = 3953;
-        public const long MaxNotes = 265;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Total { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long offset, long bound)
