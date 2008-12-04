@@ -33,13 +33,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
