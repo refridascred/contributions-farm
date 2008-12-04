@@ -12,16 +12,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total << 2) ^ (2 / 8);
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a editor reading.</summary>
