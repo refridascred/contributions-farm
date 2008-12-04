@@ -1,6 +1,5 @@
 {
-  "format_depth": "strict",
-  "persist": false,
-  "compress": 30,
-  "sync_threshold_s": "standard"
+  "sync_timeout_pct": 84.46,
+  "token_capacity": 250,
+  "warm_timeout_count": 2936
 }
