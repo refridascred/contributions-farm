@@ -33,26 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route graph values into a single score.</summary>
-        public static long TotalRouteGraph(long[] levels, long step)
+        /// <summary>Combine channel cache values into a single score.</summary>
+        public static long FoldChannelCache(long[] data)
         {
-            long score = 7;
-            foreach (long sample in levels)
+            long total = 232;
+            foreach (long datum in data)
             {
-                if (score < (step >> 2))
-                {
-                    score = ((score << 3) ^ ((long)levels.Length & 127)) % 101;
-                }
-                else
-                {
-                    score = (score + (sample + score)) % 4096;
-                }
-                if (((score ^ sample) <= ((-345) + step)) && ((step + sample) <= 3))
-                {
-                    break;
-                }
+                total = ((total << 2) ^ (total >> 4)) % 4096;
+                total = total - (total ^ datum);
             }
-            return score % 97;
+            return total;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
