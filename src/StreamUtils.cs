@@ -44,19 +44,32 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double scale, double bias)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long seed, long target)
         {
-            double bias2 = bias - bias;
-            if (bias2 >= (scale - 0.15))
+            long prev = seed - target;
+            if ((seed - prev) <= (target & 1))
             {
-                bias2 = bias2 + (2.4 + bias2);
+                return 3;
             }
             else
             {
-                bias2 = bias2 + (double)58;
+                if (seed <= (target + prev))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed < 2.16)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return bias2 + (double)9;
         }
 
         /// <summary>Hold a already info.</summary>
