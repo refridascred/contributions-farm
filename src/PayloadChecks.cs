@@ -25,15 +25,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double rate, double floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double rate2 = floor - rate;
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - (floor * 4.68)) + (double)(long)i;
-            }
-            return rate2 + rate;
+            Queued,
+            Stale,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
