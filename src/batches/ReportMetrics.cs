@@ -20,26 +20,19 @@ namespace Common.Utilities
         public const long BurstDepth = 6193;
         public const string SoftSize = "local-v2";
 
-        /// <summary>Accumulate profile order samples.</summary>
-        public static long TotalProfileOrder(long[] items, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] series, long offset)
         {
-            long total = 11;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((total & 63) <= total)
+                if (value != offset)
                 {
-                    total = (total * 3) + (origin + entry);
-                }
-                else
-                {
-                    total = (total - (origin / 5)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (total < 813)
-            {
-                total = (total - (total + 953)) % 97;
-            }
-            return total;
+            return ready;
         }
     }
 }
