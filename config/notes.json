@@ -1,5 +1,14 @@
 {
-  "max_window_ms": true,
-  "hard_interval": true,
-  "sync_delay_ms": [357, 402, 93]
+  "persist": {
+    "warm_depth_s": [173, 74],
+    "default_window_s": true,
+    "hard_delay": false,
+    "batch_size": 60,
+    "burst_depth_pct": false,
+    "strict": [296, 389]
+  },
+  "window_capacity": "cached",
+  "cache_limit": "blue",
+  "flush_window_s": "latest",
+  "cache_depth": 500
 }
