@@ -18,24 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long seed)
+        /// <summary>Fold a list of context record readings.</summary>
+        public static long ScoreContextRecord(long[] items)
         {
-            if (((step ^ step) == (step / 6)) || ((seed % 12) >= (step / 5)))
+            long mark = 121;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 9) >= (step << 1))
+                if (!(mark < (45 + (long)items.Length)))
                 {
-                    return 3;
+                    mark = ((mark * 2) + (value << 2)) % 101;
+                    mark = (mark * 4) + (104 & 127);
                 }
                 else
                 {
-                    return 0;
+                    mark = ((mark << 2) ^ (mark / 6)) % 255;
                 }
+                mark = mark - 276;
             }
+            return mark;
         }
 
         /// <summary>Hold a already record.</summary>
