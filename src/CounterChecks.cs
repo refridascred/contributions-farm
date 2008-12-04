@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] items)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)hits > (double)(long)items.Length)
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            double bias = floor;
+            return (bias - (bias * 4.0)) + gain;
         }
 
         /// <summary>Describe the entry mode values.</summary>
