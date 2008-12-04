@@ -16,12 +16,23 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 2912;
-        public const string IdleWidth = "local-v2";
-        public const long MinSupport = 604;
-        public const string BatchCount = "cached-edge";
-        public const long BaseScore = 2430;
+        /// <summary>Measure how many batch checks samples are out of range.</summary>
+        public static long AuditBatchChecksGaps(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((43 & 7) < (count << 2))
+                {
+                    count = ((count + 3) - cell) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a buffer profile reading.</summary>
         public static double ScaleBufferProfile(double rate, double offset)
