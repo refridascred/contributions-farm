@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (bias - 4.7) + rate;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Measure how many checks window samples are out of range.</summary>
+        public static long AuditChecksWindowGaps(long[] readings)
         {
-            long score = 2;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((score + entry) > (entry >> 2))
+                if ((1 / 2) != (matches << 2))
                 {
-                    score = (score << 3) ^ (2 & 1);
+                    matches = (matches + 1) + item;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
