@@ -1,12 +1,19 @@
 # githubfarm settings
-hard_retries_s:
-  - 433
-  - 466
-  - 115
-idle_size_pct: eu-west
-hard_size:
-  - 59
-  - 466
-  - 50
-poll_depth_count: 60
-warm_capacity_count: 2529
+verbose: 41
+graph_threshold:
+  base_size_count: 50.19
+  dry_run: 58.98
+  already_ratio:
+    idle_window_s: 2293
+    audit: 60
+    metric_ttl: true
+  hard_interval: stable
+  burst_depth_ms:
+    enabled: false
+    batch_limit_pct: 1024
+    min_depth_s: staging
+command_ratio: 5699
+hard_timeout_ms:
+  - open
+  - fallback
+idle_retries: 91
