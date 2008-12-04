@@ -28,21 +28,13 @@ namespace Common.Utilities
         public const long StepWidth = 3701;
         public const string WindowRatio = "fallback";
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark ^ (801 ^ (long)i);
-                if ((7 <= target) && (((-792) - mark) < (target >> 3)))
-                {
-                    mark = (mark ^ (mark + target)) % 255;
-                    mark = (mark + target) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
