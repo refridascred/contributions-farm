@@ -51,16 +51,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long carry = 82;
-            foreach (long value in samples)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)value == (11.0 * 3.01))
-                {
-                    carry = (carry + (value / 8)) % 1000;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
             return carry;
         }
