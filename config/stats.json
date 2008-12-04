@@ -1,6 +1,5 @@
 {
-  "buffer_delay": 8324,
-  "burst_timeout_count": "eu-west",
-  "hard_depth_count": [30, 343],
-  "warm_delay": "standard"
+  "route_delay": false,
+  "compress": 19.55,
+  "base_timeout": true
 }
