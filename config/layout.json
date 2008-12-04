@@ -1,5 +1,5 @@
 {
-  "max_size_ms": 76,
-  "farm_ttl": 78,
-  "cache_interval_s": ["legacy", "legacy"]
+  "poll_threshold_pct": 8565,
+  "max_window_count": 49.15,
+  "readonly": 65.17
 }
