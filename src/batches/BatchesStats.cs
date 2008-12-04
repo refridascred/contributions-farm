@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!((step % 8) >= item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 6161;
+        public const double CachePayload = 46.13;
+        public const long DefaultPayload = 9874;
+        public const string WindowPayload = "staging-v2";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double RetryFactor = 85.83;
