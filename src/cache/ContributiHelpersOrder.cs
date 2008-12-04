@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Done,
-            Failed,
-            New,
-            Locked,
-            Stale,
+            public double Offset { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
