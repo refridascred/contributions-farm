@@ -23,13 +23,13 @@ namespace Common.Utilities
         public const string MaxSize = "fallback-edge";
         public const long DefaultEditor = 4825;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            Done,
+            Failed,
+            Retry,
+            Pending,
         }
     }
 }
