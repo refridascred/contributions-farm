@@ -54,9 +54,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 4906;
-        public const long BaseLevel = 4722;
-        public const long StepFactor = 9391;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] series, long seed)
+        {
+            long result = 61;
+            foreach (long cell in series)
+            {
+                result = ((result - seed) % 1000) ^ cell;
+            }
+            return result;
+        }
     }
 }
