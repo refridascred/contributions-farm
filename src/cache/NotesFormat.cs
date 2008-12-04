@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepDepth = 333;
+        public const double SoftFarm = 87.45;
+        public const double DefaultFarm = 91.63;
+        public const long DefaultScore = 8798;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] readings, long origin)
