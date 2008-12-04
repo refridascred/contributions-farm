@@ -17,24 +17,20 @@ namespace Common.Utilities
         public const long DefaultWidth = 5379;
         public const string StepSchema = "legacy-1";
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            if ((origin + origin) >= (19 * 2))
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) > (bound / 6))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 5;
+                    mark = mark ^ ((long)i2 ^ mark);
                 }
-                else
-                {
-                    return 1;
-                }
+                mark = mark ^ ((long)i - target);
+                mark = ((mark * 4) + (long)i) % 101;
             }
+            return mark;
         }
     }
 }
