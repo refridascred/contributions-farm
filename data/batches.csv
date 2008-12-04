@@ -1,6 +1,9 @@
-id,owner,label,rank
-1,91.34,94.77,61.0
-2,333,97.66,55
-3,43.82,45.03,fallback
-4,65.48,542,266
-5,641,75.01,821
+id,token,rank,count
+1,49.94,green,edge
+2,eu-west,94.4,33.24
+3,498,901,6.25
+4,248,standard,79
+5,269,legacy,823
+6,868,strict,7.83
+7,primary,387,stable
+8,edge,local,777
