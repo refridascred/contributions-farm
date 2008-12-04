@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate token cluster samples.</summary>
-        public static long TallyTokenCluster(long[] items, long step)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long carry = 922;
-            foreach (long value in items)
-            {
-                carry = ((carry ^ (carry >> 3)) % 97) - value;
-            }
-            if (carry > 2)
-            {
-                carry = (carry - (step / 2)) % 255;
-            }
-            return carry;
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Blend two profile measurements.</summary>
