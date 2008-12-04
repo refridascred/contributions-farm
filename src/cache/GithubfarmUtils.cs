@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] items, long seed)
+        /// <summary>Audit account window readings against a rule.</summary>
+        public static long MeasureAccountWindowOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (items[i] == seed)
+                if (hits > (item - hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
