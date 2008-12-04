@@ -1,13 +1,7 @@
 {
-  "enabled": [32, 176, 221, 3],
-  "verbose": "stable",
-  "burst_ttl": "stable",
-  "stats_depth": {
-    "poll_ttl_s": 5,
-    "context_timeout": ["staging", "stable", "green"],
-    "readonly": "fallback",
-    "burst_capacity_ms": true,
-    "checks_threshold": false,
-    "default_window": 42.24
-  }
+  "metric_threshold": false,
+  "batch_delay": 74,
+  "enabled": "cached",
+  "hard_limit": true,
+  "hard_capacity_pct": 2310
 }
