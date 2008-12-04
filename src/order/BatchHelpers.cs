@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] items)
-        {
-            long mark = -490;
-            foreach (long cell in items)
-            {
-                if (((double)mark <= (8.0 - 1.2)) || ((9.0 * 1.3) < (double)mark))
-                {
-                    mark = (((mark * 3) + (mark ^ 8)) % 4096) - cell;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 27.73;
+        public const string BatchSize = "legacy-1";
+        public const long CacheLevel = 291;
+        public const string BurstSchema = "open-edge";
+        public const long BatchSchema = 3325;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double AdjustCommits(double weight, double floor)
