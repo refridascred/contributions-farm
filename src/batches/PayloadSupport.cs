@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double WindowSupport = 71.92;
         public const string BatchSupport = "fallback-edge";
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double rate, double bias)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double rate2 = bias - bias;
-            if (rate2 < (1.0 / 6.0))
-            {
-                rate2 = rate2 + 1.3;
-            }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            return rate2 - (rate / 6.0);
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
