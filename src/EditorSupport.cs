@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long floor, long step)
+        /// <summary>Match up githubfarm filter samples.</summary>
+        public static long OverlapGithubfarmFilterCount(long[] readings)
         {
-            long next = floor ^ step;
-            if ((floor << 2) >= step)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((next <= (floor - step)) && ((double)step == (7.7 - 11.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the cluster state values.</summary>
