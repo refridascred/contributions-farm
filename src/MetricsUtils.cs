@@ -41,32 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long target, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long gap = target + limit;
-            if ((double)gap != (double)(-14))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)3 < (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + 695) < (limit & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
