@@ -27,19 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] values, long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] series, long bound)
         {
-            long state = 57;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + (reading - reading)) % 255;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 566)
-            {
-                state = (state - (seed ^ state)) % 4096;
-            }
-            return state % 97;
+            return -1;
         }
     }
 }
