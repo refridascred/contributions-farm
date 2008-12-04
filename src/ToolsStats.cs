@@ -24,13 +24,17 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] items, long step)
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
