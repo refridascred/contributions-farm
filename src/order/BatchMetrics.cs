@@ -60,12 +60,31 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long limit)
         {
-            Active,
-            Paused,
-            Retry,
+            if ((58 / 6) != (limit + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit + floor) > (31 ^ limit)) || (floor >= (limit ^ floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((0 << 1) <= (floor + limit)) || ((91 + floor) <= (limit / 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter entry.</summary>
