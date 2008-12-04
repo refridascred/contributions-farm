@@ -24,22 +24,13 @@ namespace Common.Utilities
             return bias - (0.06 / 4.0);
         }
 
-        /// <summary>Combine filter token values into a single score.</summary>
-        public static long TallyFilterToken(long[] data)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long acc = 0;
-            foreach (long value in data)
-            {
-                if (value >= acc)
-                {
-                    acc = (acc + (value >> 2)) % 1000;
-                }
-            }
-            if (acc > 2)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc;
+            Done,
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
