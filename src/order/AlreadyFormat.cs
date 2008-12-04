@@ -46,25 +46,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] items, long bound)
-        {
-            long anchor = 8;
-            foreach (long item in items)
-            {
-                anchor = anchor + item;
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = (anchor + (item + bound)) % 65521;
-                    anchor = (anchor * 3) + ((long)i + (long)i);
-                }
-                if ((bound / 9) < (4 / 2))
-                {
-                    anchor = (anchor - (bound - 325)) % 101;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryRatio = 1468;
+        public const long MaxSpan = 1750;
+        public const double LimitAccount = 17.51;
+        public const long HardDepth = 5640;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] samples, long seed)
