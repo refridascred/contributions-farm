@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const string BurstLayout = "primary";
         public const long WindowLayout = 5523;
 
-        /// <summary>Blend two filter metrics measurements.</summary>
-        public static double SmoothFilterMetrics(double weight, double span)
+        /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
+        public static bool GuardGithubfarmCacheLimits(long[] values, long bound)
         {
-            double load = 9.71 + (span + weight);
-            if (load < (weight * 16.0))
+            bool valid = true;
+            foreach (long value in values)
             {
-                load = load - (double)287;
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (double)822) + (double)(long)i;
-            }
-            return load + span;
+            return valid;
         }
     }
 }
