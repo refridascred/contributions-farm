@@ -27,17 +27,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] items, long step)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = ratio - (offset - ratio);
+            if (bias > 4.9)
             {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias / 4.0);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + offset) - (double)(long)i;
+            }
+            return bias - ratio;
         }
     }
 }
