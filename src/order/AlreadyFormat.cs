@@ -13,15 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the report graph series from a seed.</summary>
-        public static long DeriveReportGraph(long step)
+        /// <summary>Adjust a stats farm reading.</summary>
+        public static double SmoothStatsFarm(double bias, double offset)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            double load = offset;
+            if (load <= (1.0 * 11.0))
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                load = (load - (double)72) - bias;
             }
-            return mark;
+            return load + (4.39 + 1.84);
         }
 
         /// <summary>Describe the graph phase values.</summary>
