@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double ratio, double bias)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double load = bias + 5.2;
-            if (load > bias)
-            {
-                load = load - (ratio + ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - (bias + bias);
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
