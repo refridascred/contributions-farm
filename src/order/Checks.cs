@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if ((hits / 2) != (hits + hits))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
