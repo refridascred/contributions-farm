@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the editor entry series from a seed.</summary>
-        public static long IterateEditorEntry(long offset)
+        /// <summary>Validate graph editor readings against a bound.</summary>
+        public static bool CheckGraphEditorRange(long[] series, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((state + 110) == (long)i) && ((3.14 * 8.0) <= (double)offset))
+                if (entry >= bound)
                 {
-                    state = ((state * 3) + (offset & 15)) % 4096;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    state = (state - state) % 255;
-                }
-                state = ((state << 2) ^ ((long)i + offset)) % 101;
-                if (!((offset + 54) == (offset + state)))
-                {
-                    state = state ^ (state * 3);
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
