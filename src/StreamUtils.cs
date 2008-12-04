@@ -39,16 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                mix = mix ^ (floor + floor);
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((matches / 2) <= limit)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the metric class values.</summary>
