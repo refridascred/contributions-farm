@@ -60,16 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter support entries.</summary>
-        public static long CombineCounterSupport(long[] items, long target)
-        {
-            long mark = 366;
-            foreach (long reading in items)
-            {
-                mark = ((mark ^ reading) % 4096) - target;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchRatio = 7950;
+        public const string DefaultCount = "latest-edge";
+        public const long BatchTools = 4776;
+        public const long StepTools = 2089;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] data)
