@@ -1,8 +1,4 @@
 # entry settings
-persist:
-  - primary
-  - legacy
-  - legacy
-  - standard
-channel_depth: staging
-flush_delay_ms: 8746
+default_retries_s: 79.68
+max_ttl_pct: 100
+metric_size: false
