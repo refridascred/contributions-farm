@@ -1,6 +1,24 @@
 {
-  "base_depth_s": "staging",
-  "readonly": 54,
-  "cache_interval_s": 30,
-  "strict": 10.65
+  "cache_retries": "latest",
+  "format_limit": {
+    "cache_depth": 250,
+    "flush_timeout_pct": {
+      "idle_ratio": "standard",
+      "batch_ttl_ms": true,
+      "readonly": 5009,
+      "base_size_count": false,
+      "idle_retries_count": 81.99,
+      "payload_interval": 29.6
+    },
+    "retry_window_pct": false,
+    "metrics_window": {
+      "batch_window": 100,
+      "support_ratio": ["open", "stable"],
+      "strict": "strict",
+      "verbose": 36,
+      "enabled": "stable",
+      "order_depth": ["fallback", "latest"]
+    }
+  },
+  "persist": 250
 }
