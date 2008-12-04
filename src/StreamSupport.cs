@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long total = 97;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total + total) < (total >> 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (((total << 3) ^ (long)series.Length) % 255) - reading;
-                }
-                else
-                {
-                    total = total - total;
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit cluster metrics readings against a rule.</summary>
