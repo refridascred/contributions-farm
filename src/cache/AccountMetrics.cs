@@ -90,18 +90,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long state = 29;
+            foreach (long sample in samples)
             {
-                if (5.01 < (double)hits)
-                {
-                    hits = (hits + 3) + cell;
-                }
+                state = ((state << 3) ^ (sample ^ state)) % 101;
             }
-            return hits;
+            if (state < 13)
+            {
+                state = ((state << 3) ^ (state & 127)) % 255;
+            }
+            return state;
         }
     }
 }
