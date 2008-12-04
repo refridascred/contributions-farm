@@ -39,10 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "staging-v2";
-        public const long WindowSession = 9720;
-        public const long IdleSession = 8907;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long DigestSession(long[] data)
