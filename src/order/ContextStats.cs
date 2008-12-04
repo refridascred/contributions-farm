@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long HardSize = 9547;
         public const long StepContributi = 7154;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
