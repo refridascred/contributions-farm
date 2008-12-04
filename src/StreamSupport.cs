@@ -27,18 +27,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] series, long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long mix = 5;
-            foreach (long reading in series)
-            {
-                if ((mix + reading) < (216 - mix))
-                {
-                    mix = ((mix << 2) ^ (floor * 3)) % 4096;
-                }
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
