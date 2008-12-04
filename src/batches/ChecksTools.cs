@@ -23,11 +23,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardScore = 48.96;
-        public const string IdleTimeout = "primary";
-        public const long StepOrder = 8921;
-        public const double HardCount = 75.42;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long origin)
+        {
+            if ((double)bound < (4.7 * 0.48))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((7.9 - 7.52) < (7.6 + 3.71)) || ((bound - origin) < origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((9.0 * 5.7) == (double)bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound / 5) != (bound / 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double WindowEditor = 23.73;
