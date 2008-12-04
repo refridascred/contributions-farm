@@ -86,10 +86,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "legacy-v2";
-        public const string IdleBudget = "cached-1";
-        public const long RetryInterval = 2881;
-        public const double BatchBudget = 5.97;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
