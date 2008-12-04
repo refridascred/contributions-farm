@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 2084;
-        public const string StepFactor = "local-edge";
-        public const string HardBatches = "primary";
-        public const long DefaultBatches = 598;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] items, long floor)
