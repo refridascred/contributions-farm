@@ -15,19 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every contributi metric entry stays within the limit.</summary>
-        public static bool CheckContributiMetricRange(long[] levels, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Describe the profile class values.</summary>
