@@ -18,23 +18,21 @@ namespace Common.Utilities
         public const string MinOrder = "cached-edge";
         public const long StepCount = 7844;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (floor > (total % 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total - (12 + (long)i)) % 1000;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    total = (total * 2) + (floor * 3);
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return seen;
         }
     }
 }
