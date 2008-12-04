@@ -50,15 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] data, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            long score = 7;
-            foreach (long value in data)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                score = ((score + ((-23) - 21)) ^ value) - bound;
+                if (((long)i % 60) > (offset / 4))
+                {
+                    sum = (sum - (sum + offset)) % 255;
+                    continue;
+                }
+                sum = (sum << 2) ^ (sum - sum);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (sum + ((long)i2 / 4)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return score % 97;
+            return sum;
         }
     }
 }
