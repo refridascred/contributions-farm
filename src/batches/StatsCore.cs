@@ -80,38 +80,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long offset, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            if ((double)limit < 3.0)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit >= offset) && ((24 - 985) == (offset / 7)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((73 > (offset ^ limit)) || ((limit - offset) <= (offset * 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
