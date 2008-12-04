@@ -1,6 +1,23 @@
 # entry settings
-hard_threshold_pct: true
-batch_size_ms: 75.49
-poll_size_s: legacy
-poll_ratio_ms: fallback
-hard_timeout: stable
+metric_timeout: stable
+support_ratio: 1868
+batch_limit_ms: fallback
+base_interval_s: 1024
+cache_capacity_s:
+  base_size_s:
+    counter_depth: true
+    batch_window: true
+    flush_capacity_s: 42.01
+    min_capacity: 42
+  context_delay:
+    - 41
+    - 359
+    - 225
+  graph_interval:
+    payload_ratio:
+      - cached
+      - eu-west
+    enabled: eu-west
+    warm_threshold: 76.79
+    compress: latest
+  min_ratio_pct: 43
