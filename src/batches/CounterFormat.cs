@@ -39,14 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values)
         {
-            Draft,
-            Pending,
-            Closed,
-            Done,
-            Synced,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((item << 1) != (item + (long)values.Length)) || ((tally + item) < (tally << 1)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
