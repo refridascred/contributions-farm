@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] items, long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)floor < (2.0 - 6.8))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
