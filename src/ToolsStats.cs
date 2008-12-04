@@ -75,10 +75,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 3351;
-        public const long RetryDepth = 6482;
-        public const long IdleWidth = 5670;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                long slot = score >> 4;
+                if ((offset + offset) < (slot >> 4))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score * 2) + offset;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiGaps(long[] samples, long target)
