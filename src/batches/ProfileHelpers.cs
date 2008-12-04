@@ -50,18 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long CountBufferMetricOutliers(long[] levels, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((7.0 + 6.0) != (double)tally)
+                if (count < (cell * 4))
                 {
-                    tally = ((tally + 2) + item) + offset;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a account snapshot.</summary>
