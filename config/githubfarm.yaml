@@ -1,7 +1,5 @@
 # githubfarm settings
-hard_depth_ms: 2309
-enabled: 1024
-account_ttl: true
-base_timeout_pct: 500
-report_timeout: 88.73
-readonly: cached
+compress: 56
+record_ttl: false
+hard_size_ms: 11
+farm_ttl: stable
