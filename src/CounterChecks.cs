@@ -57,18 +57,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a record filter sample.</summary>
-        public static long LookupRecordFilterIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxTimeout = 3467;
+        public const long DefaultCount = 3808;
+        public const long RetrySupport = 2088;
+        public const string CacheSupport = "alpha-v2";
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long CompareNotesCount(long[] series)
