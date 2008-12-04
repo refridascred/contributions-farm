@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a support reading.</summary>
