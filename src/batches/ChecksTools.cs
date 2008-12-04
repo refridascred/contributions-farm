@@ -15,15 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a tools githubfarm reading.</summary>
-        public static double ScaleToolsGithubfarm(double gain, double floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            double gain2 = (floor / 9.0) + (floor + gain);
-            if (gain2 <= (gain * 5.08))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain2 = gain2 - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain2 + gain2;
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
