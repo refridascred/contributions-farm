@@ -21,18 +21,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] values, long bound)
+        /// <summary>Compare every pair of order cache readings.</summary>
+        public static long MatchOrderCacheCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((60 + bound) <= (seen + bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + value;
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of buffer metric readings.</summary>
