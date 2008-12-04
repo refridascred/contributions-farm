@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a queue report value against two limits.</summary>
-        public static long SortQueueReport(long target, long limit)
+        /// <summary>Measure how many support record samples are out of range.</summary>
+        public static long TallySupportRecordHits(long[] readings, long offset)
         {
-            long step = target + limit;
-            if ((target % 16) >= (target >> 2))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((step + target) <= (limit * 2)))
+                if ((6.0 * 8.6) >= (double)seen)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    seen = ((seen + 3) - cell) + offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
