@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-green}"
 case "${mode}" in
-    cached)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west open cached standard; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=431
+log "limit is ${BUFFER_LIMIT}"
