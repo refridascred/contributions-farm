@@ -41,9 +41,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinLevel = "fallback-edge";
-        public const long StepWindow = 5214;
-        public const string LimitWindow = "legacy-v2";
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] levels)
+        {
+            long sum = 7;
+            foreach (long value in levels)
+            {
+                if (((4 >> 4) > sum) || ((value >> 5) < ((long)levels.Length * 5)))
+                {
+                    sum = ((sum * 5) + (value + value)) % 97;
+                }
+            }
+            return sum;
+        }
     }
 }
