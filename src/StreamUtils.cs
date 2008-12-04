@@ -45,39 +45,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long limit, long origin)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double scale, double bias)
         {
-            long step = limit ^ origin;
-            if ((double)limit <= (2.0 * 0.5))
+            double bias2 = bias - bias;
+            if (bias2 >= (scale - 0.15))
             {
-                return 5;
+                bias2 = bias2 + (2.4 + bias2);
             }
             else
             {
-                if (((step + origin) >= (origin + step)) && ((limit ^ (-372)) < (limit + step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.93 + 9.66) <= (3.0 * 14.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin < (step + 138))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                bias2 = bias2 + (double)58;
             }
+            return bias2 + (double)9;
         }
 
         /// <summary>Accumulate entry editor samples.</summary>
