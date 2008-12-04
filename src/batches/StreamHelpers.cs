@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] levels)
         {
-            double mean = floor;
-            return (mean + floor) + weight;
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits % 16) >= hits)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
