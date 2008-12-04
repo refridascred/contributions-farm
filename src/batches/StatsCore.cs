@@ -62,22 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Validate payload profile readings against a bound.</summary>
+        public static bool GuardPayloadProfileLimits(long[] values, long limit)
         {
-            long result = 168;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (((5.0 / 8.0) <= (double)result) || ((result + cell) <= result))
+                if (value > limit)
                 {
-                    result = ((result * 4) + (result + result)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (result < (-84))
-            {
-                result = result ^ (result & 3);
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Hold a stats options.</summary>
