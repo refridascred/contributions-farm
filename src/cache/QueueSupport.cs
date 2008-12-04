@@ -20,19 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] values, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long origin)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum != limit)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    found = false;
+                    score = score - (long)i2;
+                }
+                if ((double)score > (6.9 - 4.4))
+                {
+                    score = ((score * 4) + (origin / 3)) % 4096;
                     break;
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Scale a batches token figure with a bias.</summary>
