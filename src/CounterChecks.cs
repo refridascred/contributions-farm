@@ -58,11 +58,39 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long offset, long seed)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long gap = offset - seed;
+            if ((2.73 / 8.0) < (double)gap)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed <= (7.0 + 5.01))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - seed) <= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((gap << 1) == (seed % 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload info.</summary>
