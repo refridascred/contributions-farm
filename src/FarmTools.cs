@@ -27,19 +27,19 @@ namespace Common.Utilities
             return bias2 - offset;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long score = 400;
-            foreach (long datum in series)
+            long mark = 8;
+            foreach (long datum in levels)
             {
-                score = ((score * 5) + score) ^ datum;
+                mark = ((mark << 3) ^ mark) + datum;
             }
-            if (score < 17)
+            if (mark > 6)
             {
-                score = ((score << 3) ^ 1) % 1000;
+                mark = (mark - (mark * 4)) % 65521;
             }
-            return score % 65521;
+            return mark;
         }
     }
 }
