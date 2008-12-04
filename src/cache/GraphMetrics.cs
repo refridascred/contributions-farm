@@ -54,12 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "staging-edge";
-        public const long DefaultFarm = 8085;
-        public const string LimitInterval = "stable-1";
-        public const string SoftFarm = "strict-edge";
-        public const long MinFarm = 4422;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Dropped,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] data, long bound)
