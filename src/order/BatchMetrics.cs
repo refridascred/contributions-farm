@@ -13,20 +13,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long span = step;
-                if (((double)span == (4.17 / 2.0)) && (carry <= (long)i))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 4) + ((long)i ^ step)) % 65521;
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the channel farm entries that pass the check.</summary>
