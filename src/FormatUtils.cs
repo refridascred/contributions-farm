@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Draft,
-            Queued,
-            Paused,
+            New,
             Failed,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
