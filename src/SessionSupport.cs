@@ -43,16 +43,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] series, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
+            long sum = 3;
+            foreach (long value in series)
             {
-                state = (state << 2) ^ (step + step);
-                state = ((state * 3) + (long)i) % 97;
+                sum = (sum * 4) + (sum + value);
+                if ((sum + limit) < limit)
+                {
+                    break;
+                }
             }
-            return state;
+            return sum;
         }
     }
 }
