@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Failed,
-            Done,
-            Closed,
-            Locked,
-            Queued,
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the farm level values.</summary>
