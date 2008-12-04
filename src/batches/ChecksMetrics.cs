@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] items)
         {
             long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (0.6 > (double)item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
