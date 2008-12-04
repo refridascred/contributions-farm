@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] levels)
         {
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((long)levels.Length % 60) > (cell * 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
