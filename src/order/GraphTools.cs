@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double bias, double span)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] series, long origin)
         {
-            double rate = span;
-            if (rate <= (11.0 - bias))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                rate = rate + 5.0;
+                if ((double)sample <= (double)tally)
+                {
+                    tally = (tally + 1) + origin;
+                }
             }
-            return rate + (bias * 5.41);
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
