@@ -51,15 +51,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
     }
 }
