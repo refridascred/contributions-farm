@@ -1,17 +1,18 @@
 # already settings
-booking_limit: green
-hard_ratio_pct:
-  sync_threshold: 29.7
-  already_depth:
-    dry_run: true
-    batch_size_s:
+stream_capacity: open
+default_limit_s:
+  command_delay: 56.38
+  sync_limit: 7778
+  retry_depth:
+    already_retries:
       - staging
-      - local
-      - strict
-      - stable
-    metrics_interval: false
-    warm_limit_pct: false
-  batch_limit: false
-  audit: 60
-support_size: legacy
-sync_limit_s: 5863
+      - green
+      - blue
+    base_window_pct: 91
+    burst_timeout_pct: 28.65
+    poll_threshold: false
+    idle_retries: 7657
+    soft_timeout_s: 3.28
+  dry_run: latest
+  retry_retries_pct: eu-west
+stream_size: open
