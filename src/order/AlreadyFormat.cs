@@ -43,11 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxBudget = 1.4;
-        public const long SoftEntry = 1381;
-        public const long LimitInterval = 9512;
-        public const string HardEntry = "fallback-edge";
-        public const long IdleEntry = 5057;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] samples)
+        {
+            long carry = 82;
+            foreach (long value in samples)
+            {
+                if ((double)value == (11.0 * 3.01))
+                {
+                    carry = (carry + (value / 8)) % 1000;
+                }
+            }
+            return carry;
+        }
     }
 }
