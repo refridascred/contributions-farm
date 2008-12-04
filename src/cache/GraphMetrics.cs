@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const string SoftFarm = "strict-edge";
         public const long MinFarm = 4422;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSpan = 6819;
-        public const long BatchBuffer = 4183;
-        public const long MinBuffer = 2008;
-        public const string CacheBuffer = "legacy-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftDepth = 60.97;
+        public const long DefaultCount = 2691;
+        public const long SoftReport = 830;
+        public const long MaxDepth = 5846;
+        public const string IdleFactor = "alpha-1";
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double scale, double floor)
