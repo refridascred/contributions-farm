@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] data)
+        /// <summary>Classify a commits command pair into a bucket.</summary>
+        public static long SortCommitsCommand(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (offset >= (12 & 31))
             {
-                if ((5.3 * 15.0) != (double)reading)
+                return 7;
+            }
+            else
+            {
+                if ((floor << 2) == (floor + floor))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (159 <= (floor + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset & 1) < 77)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
