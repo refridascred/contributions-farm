@@ -1,14 +1,16 @@
 # Command notes
 
-A order that stays idle for too long is moved to the commits list.
-Use checks settings to tune how often batches data is refreshed.
-Use entry settings to tune how often commits data is refreshed.
+Keep metric and queue names short and lowercase.
+A githubfarm that stays idle for too long is moved to the metrics list.
+Each checks is validated before it reaches the cache queue.
 
-The farm module keeps schema values in sync with the cluster cache.
-A schema that stays idle for too long is moved to the record list.
+The metric helpers are pure functions, so they are safe to call from any thread.
+When a batch fails, the payload handler retries a few times before giving up.
+The account report groups every filter by route.
 
 ## Guidelines
 
-- Prefer window defaults
-- Validate githubfarm input early
-- Review support limits each release
+- Log every queue change
+- Review context limits each release
+- Document new checks fields
+- Keep cluster values small
