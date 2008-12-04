@@ -35,32 +35,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long floor2)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            long offset = floor + floor2;
-            if ((33 / 2) > (floor2 >> 1))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor & 15) < (floor - floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset > (double)floor2) || ((floor2 / 5) <= (offset + offset)))
+                    if ((levels[i] - levels[j]) > 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
