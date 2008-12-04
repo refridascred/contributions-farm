@@ -91,11 +91,18 @@ namespace Common.Utilities
             return gain + floor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowLevel = 9581;
-        public const double HardFactor = 86.38;
-        public const string RetryMetric = "fallback-v2";
-        public const long WindowMetric = 8872;
-        public const double BatchMetric = 92.4;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading < (hits - reading)) || ((offset > (reading / 7)) && (reading < offset)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
