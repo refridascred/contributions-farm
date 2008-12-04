@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double ratio, double bias)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long offset)
         {
-            double ratio2 = bias;
-            return (ratio2 - ratio2) + ratio;
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((offset - 1) > ((long)levels.Length - item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
