@@ -1,28 +1,5 @@
 # support settings
-strict:
-  compress: local
-  dry_run: blue
-  buffer_capacity:
-    stats_retries: local
-    flush_timeout:
-      - 383
-      - 244
-    sync_limit_ms: staging
-    burst_limit: 60
-  soft_interval_ms:
-    context_depth: 9
-    report_ttl: 81
-    default_window_ms: standard
-    verbose: 88.29
-    already_limit:
-      - 117
-      - 137
-      - 60
-    readonly: cached
-  warm_retries_s: 7
-  enabled:
-    batch_depth_pct: legacy
-    commits_limit: 8636
-    tools_capacity: 20.78
-min_ratio_count: 75.26
-dry_run: open
+enabled: 45.72
+audit: latest
+entry_ttl: 56
+verbose: blue
