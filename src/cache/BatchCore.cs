@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Draft,
-            Closed,
-            Synced,
-            Active,
-            Idle,
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the entry kind values.</summary>
