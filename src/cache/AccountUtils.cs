@@ -36,9 +36,17 @@ namespace Common.Utilities
         public const double DefaultBatches = 54.57;
         public const long MaxCount = 8840;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1666;
-        public const long BurstSize = 4954;
-        public const double WindowTools = 8.38;
+        /// <summary>Find the first tools batches entry that matches the target.</summary>
+        public static long FindToolsBatchesIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
