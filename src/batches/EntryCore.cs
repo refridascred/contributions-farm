@@ -46,13 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long limit, long bound)
         {
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            if (limit >= (bound * 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)limit < (3.0 - 6.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((19.0 * 8.48) > (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
