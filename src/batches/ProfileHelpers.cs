@@ -35,19 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] values, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long score = 756;
+            foreach (long cell in levels)
             {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score - (floor * 2)) ^ cell;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
