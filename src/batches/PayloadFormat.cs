@@ -20,11 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowTimeout = 3088;
-        public const long HardScore = 8130;
-        public const long BatchTimeout = 1281;
-        public const string CacheBatches = "primary-1";
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double rate, double floor)
+        {
+            double rate2 = (double)(8 ^ 10);
+            if (rate2 <= rate)
+            {
+                rate2 = rate2 + (floor / 7.0);
+            }
+            return rate2 - (rate2 / 4.0);
+        }
 
         /// <summary>Project the next farm checks value.</summary>
         public static double ProjectFarmChecks(double rate, double bias)
