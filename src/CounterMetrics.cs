@@ -33,20 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi notes series from a seed.</summary>
-        public static long RollContributiNotes(long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long seed, long seed2)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            if ((seed + seed) > seed2)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (mix ^ mix) + (long)i2;
-                }
-                mix = (mix + (77 >> 4)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (((seed % 7) < seed2) || ((seed * 5) == (seed2 * 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a cache summary.</summary>
