@@ -1,5 +1,8 @@
 {
-  "channel_depth": "strict",
-  "queue_depth": true,
-  "cache_window_count": true
+  "warm_limit_pct": 39,
+  "poll_ttl_s": 5769,
+  "warm_size_s": 60,
+  "default_limit": "standard",
+  "tools_ratio": true,
+  "hard_delay_ms": true
 }
