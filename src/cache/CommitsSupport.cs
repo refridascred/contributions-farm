@@ -37,16 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double bias, double floor)
-        {
-            double bias2 = (floor + floor) + (double)(-348);
-            if (bias2 <= (floor * 3.81))
-            {
-                bias2 = (bias2 + (floor / 7.0)) + bias;
-            }
-            return bias2 + 3.7;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "fallback-edge";
+        public const string HardFactor = "staging-1";
+        public const double MaxFactor = 97.76;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseRatio = 6419;
