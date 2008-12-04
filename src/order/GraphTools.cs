@@ -22,22 +22,13 @@ namespace Common.Utilities
         public const long MaxRatio = 3756;
         public const double HardSize = 7.16;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits << 1) < (hits - entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define context limits and defaults.</summary>
