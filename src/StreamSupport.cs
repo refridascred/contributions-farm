@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi counter entries that pass the check.</summary>
-        public static long MeasureContributiCounterHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((seen & 3) < (329 >> 1)) && ((0.26 * 5.4) == (double)seen))
-                {
-                    seen = ((seen + 3) - value) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 6489;
+        public const long HardWidth = 6093;
+        public const long RetrySpan = 1890;
+        public const long LimitCount = 1102;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] levels, long seed)
