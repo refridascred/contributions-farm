@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats farm reading.</summary>
-        public static double SmoothStatsFarm(double bias, double offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double load = offset;
-            if (load <= (1.0 * 11.0))
-            {
-                load = (load - (double)72) - bias;
-            }
-            return load + (4.39 + 1.84);
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
