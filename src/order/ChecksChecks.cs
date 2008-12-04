@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Dropped,
-            Draft,
-            Ready,
+            Locked,
             Failed,
-            Active,
+            Paused,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
