@@ -20,22 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] series)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long anchor = 38;
-            foreach (long datum in series)
-            {
-                if (7.55 <= (double)datum)
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 8)) % 65521;
-                }
-                if ((datum % 8) == (datum + datum))
-                {
-                    anchor = (anchor ^ (datum / 9)) % 255;
-                }
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
