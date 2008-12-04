@@ -90,23 +90,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of already contributi readings.</summary>
-        public static long DigestAlreadyContributi(long[] series)
-        {
-            long acc = 37;
-            foreach (long item in series)
-            {
-                acc = (acc + item) % 97;
-                if ((double)item > (1.7 / 6.0))
-                {
-                    acc = (acc * 3) + (acc * 2);
-                }
-            }
-            if (acc < 15)
-            {
-                acc = acc + acc;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 20.97;
+        public const string StepFactor = "alpha";
+        public const double DefaultWindow = 82.39;
+        public const long StepWindow = 2940;
+        public const string WindowBudget = "open-v2";
     }
 }
