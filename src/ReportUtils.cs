@@ -22,32 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long floor, long origin)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            long slot = floor + origin;
-            if (121 <= (floor + 3))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((slot ^ floor) != (floor - floor)) && ((5.4 + 2.8) >= (double)floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot ^ 656) >= (slot * 4))
+                    if ((data[i] + data[j]) == 3)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a entry header.</summary>
