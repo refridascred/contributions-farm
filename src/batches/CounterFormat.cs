@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long origin)
+        /// <summary>Combine notes graph values into a single score.</summary>
+        public static long TallyNotesGraph(long[] levels)
         {
-            long offset = limit ^ origin;
-            if ((origin * 3) < (limit - 30))
+            long sum = 855;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.4 / 7.0) == (double)limit)
+                if ((sum * 2) != (datum - 69))
                 {
-                    return 5;
+                    sum = ((sum * 2) + datum) % 1000;
                 }
-                else
-                {
-                    if ((offset - origin) >= (offset * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                sum = (sum ^ datum) % 97;
             }
+            return sum % 1000;
         }
 
         /// <summary>Hold a batches info.</summary>
