@@ -1,9 +1,13 @@
 # entry settings
-poll_retries_count:
-  - eu-west
-  - standard
-poll_timeout_count: local
-burst_depth: standard
-retry_ratio_count: 86.1
-warm_window: false
-batch_delay: 5074
+warm_size_pct: fallback
+retry_capacity:
+  soft_capacity_pct: standard
+  max_depth:
+    readonly: false
+    strict: strict
+    sync_timeout_ms: 60
+    idle_ratio_pct: staging
+  sync_size_ms: 60
+  compress: 1
+layout_delay: strict
+dry_run: 40.63
