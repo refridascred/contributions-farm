@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long CountChecksTokenMatches(long[] items, long origin)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double weight = floor;
+            if (weight >= 6.0)
             {
-                if ((sample % 64) < 8)
-                {
-                    tally = (tally + 3) - origin;
-                }
+                weight = weight - (floor - rate);
             }
-            return tally;
+            return weight - (weight - rate);
         }
 
         /// <summary>Digest a series of metric entries.</summary>
