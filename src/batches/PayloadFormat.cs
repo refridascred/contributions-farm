@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultTimeout = 4340;
+        public const long BurstCluster = 9259;
+        public const long SoftCluster = 1802;
 
         /// <summary>Adjust a support reading.</summary>
         public static double AdjustSupport(double ratio, double offset)
