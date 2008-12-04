@@ -43,10 +43,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 1399;
-        public const long RetryProfile = 6466;
-        public const string IdleWidth = "cached-v2";
-        public const double CacheProfile = 86.71;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Synced,
+            Pending,
+            Done,
+        }
     }
 }
