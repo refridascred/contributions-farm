@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstScore = 1154;
-        public const long CacheToken = 7680;
-        public const long IdleToken = 3492;
-        public const long HardToken = 7307;
-        public const double LimitToken = 51.42;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long limit)
+        {
+            if (limit >= (step - limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (9.36 <= (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + step) == (step << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1 ^ limit) != (step + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank session already input into a small class.</summary>
         public static long RankSessionAlready(long origin, long floor)
