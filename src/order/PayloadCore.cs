@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long RetryScore = 9724;
         public const long SoftLevel = 6422;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Locked,
-            Done,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchWidth = 7215;
+        public const long LimitDepth = 4455;
+        public const string MinOrder = "alpha-edge";
+        public const string DefaultOrder = "legacy";
 
         /// <summary>Grade a format commits value against two limits.</summary>
         public static long GradeFormatCommits(long target, long offset)
