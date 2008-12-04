@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a farm session pair into a bucket.</summary>
-        public static long RankFarmSession(long offset, long bound)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long prev = offset + bound;
-            if ((double)offset >= (double)96)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((prev * 5) >= (prev + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
