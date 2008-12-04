@@ -20,22 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long origin)
+        /// <summary>Roll a batch session counter forward.</summary>
+        public static long RollBatchSession(long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = score - (long)i2;
-                }
-                if ((double)score > (6.9 - 4.4))
-                {
-                    score = ((score * 4) + (origin / 3)) % 4096;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                score = ((score * 3) + (score % 10)) % 65521;
+                score = score - limit;
+                score = ((score * 5) + (long)i) % 65521;
             }
             return score;
         }
