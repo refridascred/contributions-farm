@@ -15,11 +15,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Digest a series of route token entries.</summary>
+        public static long DigestRouteToken(long[] samples, long limit)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long anchor = 84;
+            foreach (long sample in samples)
+            {
+                if (((limit >> 1) >= (anchor + sample)) || ((double)anchor < (13.0 / 9.0)))
+                {
+                    anchor = (anchor * 3) + (anchor >> 5);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - 6)) % 255;
+                }
+                if (sample <= (limit - sample))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
