@@ -25,19 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double ratio, double offset)
-        {
-            double bias = ratio - (offset - ratio);
-            if (bias > 4.9)
-            {
-                bias = bias + (bias / 4.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + offset) - (double)(long)i;
-            }
-            return bias - ratio;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCount = 57.34;
+        public const long MinCommits = 4018;
+        public const long BatchCommits = 6203;
     }
 }
