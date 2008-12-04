@@ -1,5 +1,14 @@
 {
-  "poll_threshold_pct": 8565,
-  "max_window_count": 49.15,
-  "readonly": 65.17
+  "account_ratio": {
+    "base_ratio": false,
+    "persist": 30,
+    "retry_ratio_count": true,
+    "batch_depth": "primary",
+    "soft_retries": [277, 433, 254],
+    "cache_window_s": 46
+  },
+  "context_depth": "latest",
+  "poll_interval_ms": false,
+  "batch_interval": "fallback",
+  "soft_retries": 3267
 }
