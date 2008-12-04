@@ -19,10 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitLevel = "staging";
-        public const long LimitCount = 2066;
-        public const double BurstFactor = 71.17;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
