@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 91.16;
-        public const long WindowLayout = 9788;
-        public const long BurstSize = 1886;
-        public const long StepScore = 3506;
-        public const string HardWidth = "fallback-v2";
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] items, long target)
