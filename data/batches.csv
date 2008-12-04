@@ -1,9 +1,8 @@
-id,token,rank,count
-1,49.94,green,edge
-2,eu-west,94.4,33.24
-3,498,901,6.25
-4,248,standard,79
-5,269,legacy,823
-6,868,strict,7.83
-7,primary,387,stable
-8,edge,local,777
+id,region,owner
+1,17.05,429
+2,586,strict
+3,907,199
+4,open,strict
+5,721,stable
+6,786,845
+7,latest,18.58
