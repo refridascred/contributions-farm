@@ -28,19 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] values, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (reading <= limit)
+                if (cell < target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
