@@ -71,15 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] items, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
     }
 }
