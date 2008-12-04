@@ -1,24 +1,6 @@
 {
-  "batch_retries_count": {
-    "editor_retries": {
-      "default_limit_count": 250,
-      "cache_depth": false,
-      "sync_size": 7659,
-      "idle_timeout_ms": "open",
-      "batch_size_ms": 29.27
-    },
-    "profile_threshold": "blue",
-    "editor_limit": 13.56
-  },
-  "burst_interval_count": 30,
-  "token_timeout": false,
-  "base_retries_count": 6235,
-  "flush_capacity": {
-    "burst_interval_ms": true,
-    "idle_timeout": "standard",
-    "batch_depth": 18.68,
-    "route_capacity": "cached",
-    "context_delay": "latest"
-  },
-  "verbose": 32.89
+  "audit": false,
+  "entry_interval": 60,
+  "batch_delay_s": [141, 422],
+  "already_interval": "green"
 }
