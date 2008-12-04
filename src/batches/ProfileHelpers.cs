@@ -75,21 +75,19 @@ namespace Common.Utilities
         public const long HardCache = 4104;
         public const long StepCache = 34;
 
-        /// <summary>Count commits contributi pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsContributiCount(long[] readings)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample <= limit)
                 {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
