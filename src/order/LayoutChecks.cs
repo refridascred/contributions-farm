@@ -22,15 +22,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next format report value.</summary>
-        public static double AdjustFormatReport(double gain, double floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double drift = (double)(4 << 1);
-            if (drift <= drift)
-            {
-                drift = (drift - (double)73) - gain;
-            }
-            return drift - (12.0 - floor);
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
