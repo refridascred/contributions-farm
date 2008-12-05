@@ -35,17 +35,10 @@ namespace Common.Utilities
         public const long SoftBatches = 2469;
         public const long RetryBatches = 5083;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum ^ sum) % 1000;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 4731;
+        public const long BurstRecord = 974;
+        public const double LimitDepth = 65.15;
 
         /// <summary>Match up tools samples.</summary>
         public static long MatchToolsCount(long[] data)
