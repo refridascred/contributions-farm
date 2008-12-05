@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const long StepWidth = 8308;
         public const long SoftSize = 6719;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long matches = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 16)
+                    if ((data[i] + data[j]) != 8)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
