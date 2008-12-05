@@ -19,17 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] series, long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
