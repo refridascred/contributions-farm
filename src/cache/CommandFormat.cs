@@ -38,13 +38,23 @@ namespace Common.Utilities
         public const long IdleRatio = 2298;
         public const long HardDepth = 3788;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
+            long total = 92;
+            foreach (long cell in readings)
+            {
+                total = (((total * 2) + (total * 5)) % 1000) + cell;
+                if ((321 & 7) < (total - total))
+                {
+                    total = (total - (total & 63)) % 97;
+                }
+            }
+            if (total < 98)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
