@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] values, long offset)
+        /// <summary>Validate farm filter readings against a bound.</summary>
+        public static bool GuardFarmFilterBounds(long[] data, long floor)
         {
             bool ready = true;
-            foreach (long value in values)
+            foreach (long entry in data)
             {
-                if (value != offset)
+                if (entry > floor)
                 {
                     ready = false;
                     break;
