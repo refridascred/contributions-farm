@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] readings)
+        /// <summary>Fold a list of cache channel readings.</summary>
+        public static long DigestCacheChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long total = -1;
+            foreach (long entry in readings)
             {
-                if ((cell < (matches + cell)) && ((matches + cell) < (-96)))
+                if ((entry << 2) >= total)
                 {
-                    matches = matches + 1;
+                    total = (total ^ (total * 2)) % 97;
+                    break;
                 }
+                total = (total - total) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the stream phase values.</summary>
