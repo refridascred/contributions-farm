@@ -107,15 +107,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double gain, double span)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double rate = (double)(214 * 3);
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate + (gain * 2.0)) + (double)(long)i) - span;
-            }
-            return rate + (5.05 - 5.8);
+            Done,
+            Failed,
+            New,
+            Locked,
         }
     }
 }
