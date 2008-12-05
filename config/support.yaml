@@ -1,14 +1,7 @@
 # support settings
-default_threshold_s: 44
-warm_retries_ms: 19.51
-queue_threshold:
-  max_timeout_count: false
-  base_timeout_ms: 36.69
-  farm_ratio: 6483
-  cluster_retries: true
-enabled:
-  soft_ratio: 1768
-  queue_capacity: 72.33
-  default_interval: 58
-idle_threshold: 66
-cache_capacity: true
+schema_timeout: 10
+persist: 44
+idle_interval_pct: standard
+queue_size: legacy
+poll_window_count: false
+contributi_delay: edge
