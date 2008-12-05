@@ -24,21 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Count the batches context entries that pass the check.</summary>
+        public static long AuditBatchesContextMatches(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mix = mix ^ ((long)i >> 1);
-                if (!(6.46 <= (double)(long)i))
+                if ((value % 3) >= ((-3) / 3))
                 {
-                    mix = ((mix * 2) + (mix + mix)) % 1000;
-                    mix = ((mix << 2) ^ (579 - 206)) % 97;
+                    count = count + 1;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
     }
 }
