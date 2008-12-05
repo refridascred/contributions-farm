@@ -40,18 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)offset <= (double)seen)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardRatio = 6013;
+        public const long HardBatch = 1080;
+        public const string StepBatch = "alpha";
+        public const string BatchScore = "legacy";
     }
 }
