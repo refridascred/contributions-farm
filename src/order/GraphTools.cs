@@ -80,19 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] data, long origin)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double weight, double span)
         {
-            bool found = true;
-            foreach (long reading in data)
+            double weight2 = span + (span / 2.0);
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
+                weight2 = (weight2 - (weight * 18.0)) + (double)(long)i;
             }
-            return found;
+            return weight2 - (weight * 12.0);
         }
     }
 }
