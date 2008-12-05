@@ -68,22 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((long)levels.Length >= ((-8) % 97))
-                {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Accumulate batches samples.</summary>
