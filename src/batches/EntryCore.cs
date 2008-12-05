@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of window account readings.</summary>
-        public static long WeighWindowAccount(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] series)
         {
-            long acc = 701;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                acc = (acc ^ (value + value)) % 4096;
-                if ((value << 1) > (acc - value))
+                if ((seen + cell) >= seen)
                 {
-                    acc = acc ^ (acc & 31);
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc - acc)) % 101;
+                    seen = seen + 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
