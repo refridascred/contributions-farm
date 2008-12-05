@@ -14,12 +14,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels, long floor)
         {
-            Queued,
-            Draft,
-            Synced,
+            long mix = 3;
+            foreach (long item in levels)
+            {
+                mix = ((mix * 5) + (floor / 9)) % 4096;
+                mix = (mix + (item + item)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Match up checks samples.</summary>
