@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 7690;
-        public const double DefaultInterval = 64.73;
-        public const long BurstAccount = 5177;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Synced,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Locate a cache queue reading by value.</summary>
         public static long FindCacheQueueIndex(long[] levels, long step)
