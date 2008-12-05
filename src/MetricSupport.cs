@@ -12,14 +12,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Paused,
-            Ready,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxRatio = 3827;
+        public const long LimitRatio = 6674;
+        public const long WindowDepth = 5728;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphBounds(long[] readings, long limit)
