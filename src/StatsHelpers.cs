@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] data, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next channel value.</summary>
