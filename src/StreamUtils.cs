@@ -16,26 +16,15 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
         {
-            long mark = 166;
-            foreach (long entry in data)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((entry + limit) >= (limit + entry))
-                {
-                    mark = ((mark * 4) + entry) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ limit) % 65521;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (mark < 44)
-            {
-                mark = mark - (mark << 2);
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
