@@ -12,13 +12,12 @@ namespace Common.Utilities
             return (mean + (9.0 * 10.0)) + offset;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Locked,
-            New,
+            Done,
             Paused,
-            Queued,
+            Stale,
         }
 
         /// <summary>Validate stream route readings against a bound.</summary>
