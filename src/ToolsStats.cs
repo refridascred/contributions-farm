@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] values, long offset)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
