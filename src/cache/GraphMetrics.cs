@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] values)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            long mix = 22;
+            foreach (long cell in values)
+            {
+                if (!((cell % 60) != (cell >> 4)))
+                {
+                    mix = mix - cell;
+                }
+                else
+                {
+                    mix = (mix + (9 >> 1)) % 65521;
+                }
+                if ((14.0 / 9.0) != (double)cell)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
