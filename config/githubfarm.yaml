@@ -1,14 +1,7 @@
 # githubfarm settings
-persist: staging
-account_threshold: 30
-default_capacity: 46.7
-enabled:
-  - eu-west
-  - green
-  - local
+base_window_ms:
+  - strict
+  - cached
   - primary
-readonly:
-  dry_run: 16
-  window_capacity: 90
-  min_threshold_pct: 4.81
-  tools_delay: 6988
+burst_delay_ms: 1024
+max_ratio: edge
