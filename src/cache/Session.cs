@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] readings, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (tally >= (tally << 2))
+                if ((6 % 8) >= acc)
                 {
-                    tally = ((tally + 2) + item) + target;
+                    acc = acc + (acc + limit);
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
