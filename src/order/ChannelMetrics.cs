@@ -51,18 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] items, long step)
+        /// <summary>Find the first counter support entry that matches the target.</summary>
+        public static long SeekCounterSupportIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item << 3) < (step << 2))
+                if ((values[i] == step) && ((values[i] % 2) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
