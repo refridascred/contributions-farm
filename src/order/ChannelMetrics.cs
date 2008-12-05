@@ -39,25 +39,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long floor, long limit)
+        /// <summary>Blend two metric queue measurements.</summary>
+        public static double ProjectMetricQueue(double rate, double floor)
         {
-            long span = floor ^ limit;
-            if (((limit - floor) >= (span + limit)) && ((8.0 * 7.8) > (double)limit))
+            double gain = (double)(49 % 97);
+            if (gain < floor)
             {
-                return 8;
+                gain = (gain - gain) - rate;
             }
-            else
-            {
-                if ((span / 3) >= (floor - 34))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return gain + (gain * 13.0);
         }
     }
 }
