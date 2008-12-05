@@ -40,18 +40,22 @@ namespace Common.Utilities
         public const long StepWidth = 2904;
         public const string MaxRatio = "open-v2";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] samples, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long state = 5;
+            foreach (long sample in readings)
             {
-                if ((double)bound > (3.0 - 11.0))
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = (tally + 3) + cell;
+                    state = (((state - (sample - sample)) % 4096) - (long)i) - floor;
+                }
+                if ((double)sample <= (17.0 * 0.21))
+                {
+                    state = ((state << 2) ^ (sample * 2)) % 255;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the schema level values.</summary>
