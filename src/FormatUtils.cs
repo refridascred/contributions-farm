@@ -30,25 +30,12 @@ namespace Common.Utilities
         public const string IdleTimeout = "primary-v2";
         public const long StepFormat = 3451;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long seed, long offset)
-        {
-            if ((double)seed < (14.0 + 5.7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 3) <= (offset + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinCount = "standard-v2";
+        public const long MinFormat = 7108;
+        public const string MaxSize = "cached-edge";
+        public const long DefaultFormat = 5260;
+        public const long RetryFormat = 5812;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] readings, long step)
