@@ -53,10 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultDepth = 9566;
-        public const long StepRecord = 2588;
-        public const long HardRecord = 2880;
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseScore = 6004;
