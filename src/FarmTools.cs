@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] levels, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 29;
+            foreach (long value in samples)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
+                if ((value + value) >= (value / 4))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (value / 4)) % 255;
                 }
             }
-            return -1;
+            if (state > 3)
+            {
+                state = ((state << 2) ^ ((-5) % 97)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
