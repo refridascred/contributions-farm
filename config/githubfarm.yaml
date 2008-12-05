@@ -1,5 +1,8 @@
 # githubfarm settings
-dry_run: 3688
-batch_limit_ms: false
-sync_delay: 8034
-stats_retries: 1237
+metrics_timeout: false
+base_size: 52.19
+retry_timeout_ms:
+  - 296
+  - 51
+  - 410
+  - 338
