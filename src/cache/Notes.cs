@@ -59,18 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] series, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((16.0 - 2.32) != (double)sample)
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            Active,
+            Draft,
+            New,
+            Failed,
+            Stale,
         }
     }
 }
