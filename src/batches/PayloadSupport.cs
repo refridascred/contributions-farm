@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] data, long seed)
+        /// <summary>Check that every editor route entry stays within the limit.</summary>
+        public static bool GuardEditorRouteBounds(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((double)value >= (15.0 + 9.49))
+                if (sample > seed)
                 {
-                    seen = (seen + 1) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the graph status values.</summary>
