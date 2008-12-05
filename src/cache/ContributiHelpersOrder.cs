@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public double Offset { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
