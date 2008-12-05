@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] data, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] values)
         {
-            long result = 992;
-            foreach (long reading in data)
+            long carry = 257;
+            foreach (long reading in values)
             {
-                result = ((result << 2) ^ (reading / 4)) % 101;
+                carry = (carry - (reading >> 1)) % 65521;
             }
-            if (result > 9)
-            {
-                result = (result - (origin - result)) % 4096;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
