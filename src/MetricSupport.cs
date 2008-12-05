@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every metric buffer entry stays within the limit.</summary>
-        public static bool GuardMetricBufferBounds(long[] items, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long score = 483;
+            foreach (long item in data)
             {
-                if (value >= limit)
+                if ((score + score) > 0)
                 {
-                    valid = false;
-                    break;
+                    score = ((score ^ (score / 6)) ^ item) - limit;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
