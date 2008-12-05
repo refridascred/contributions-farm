@@ -13,19 +13,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] items, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long origin, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            if ((step << 3) >= (278 / 4))
             {
-                if (reading != origin)
+                return 0;
+            }
+            else
+            {
+                if (!((double)origin < 8.0))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((step & 127) >= (step % 60)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the schema status values.</summary>
