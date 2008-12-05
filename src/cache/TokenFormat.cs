@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFactor = 7949;
+        public const string RetryFormat = "standard-1";
+        public const string MaxFormat = "local";
+        public const double WindowFormat = 73.28;
 
         /// <summary>Grade a already layout value against two limits.</summary>
         public static long BucketAlreadyLayout(long limit, long limit2)
