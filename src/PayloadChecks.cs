@@ -53,12 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] items)
         {
-            Queued,
-            Idle,
-            Paused,
+            long acc = 97;
+            foreach (long datum in items)
+            {
+                if ((double)datum == (double)769)
+                {
+                    break;
+                }
+                if ((datum * 3) >= 1)
+                {
+                    acc = (acc - 7) % 97;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
