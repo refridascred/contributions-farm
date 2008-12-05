@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const long BurstInterval = 892;
         public const long BatchAlready = 1631;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] values, long limit)
         {
-            long mark = 728;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in values)
             {
-                mark = mark + (item - mark);
-                mark = mark ^ item;
-                mark = ((mark * 4) + (item - item)) % 101;
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mark > 1)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark % 97;
+            return stale;
         }
     }
 }
