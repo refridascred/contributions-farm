@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)value == (double)count)
                 {
-                    if ((readings[i] ^ readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
