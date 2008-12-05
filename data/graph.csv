@@ -1,9 +1,8 @@
-id,token,region
-1,158,261
-2,legacy,20.99
-3,standard,184
-4,31.7,13.88
-5,211,5.56
-6,224,34.72
-7,green,16.87
-8,edge,eu-west
+id,ratio,active,region
+1,legacy,54.69,740
+2,336,269,603
+3,190,blue,268
+4,blue,97.33,standard
+5,strict,877,189
+6,open,576,955
+7,455,79.87,16.87
