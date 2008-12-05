@@ -33,39 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema command value against two limits.</summary>
-        public static long GradeSchemaCommand(long target, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] samples)
         {
-            long edge = target + floor;
-            if ((target * 2) == (floor & 7))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((edge + edge) >= (edge + floor))
+                if (item >= (38 + item))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if (((edge ^ floor) > 353) && ((target - target) <= (floor << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.25 + 6.72) <= (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
