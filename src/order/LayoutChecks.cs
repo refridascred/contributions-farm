@@ -77,9 +77,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 1142;
-        public const long LimitWidth = 3720;
-        public const long CacheAlready = 7334;
+        /// <summary>Locate a layout filter reading by value.</summary>
+        public static long FindLayoutFilterIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
