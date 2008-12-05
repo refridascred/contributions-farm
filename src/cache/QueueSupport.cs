@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Count the window profile entries that pass the check.</summary>
+        public static long AuditWindowProfileGaps(long[] data, long step)
         {
-            Closed,
-            Pending,
-            Queued,
-            Dropped,
-            New,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count << 1) == (value + 71))
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order kind values.</summary>
