@@ -13,22 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Combine commits schema values into a single score.</summary>
+        public static long CombineCommitsSchema(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long carry = 3;
+            foreach (long value in levels)
             {
-                carry = ((carry * 5) + ((long)i + offset)) % 4096;
-                carry = carry ^ carry;
-                if ((double)offset >= (9.0 * 6.3))
+                if ((double)value < 12.0)
                 {
-                    carry = (carry ^ (carry - (long)i)) % 4096;
-                    carry = carry + ((long)i + offset);
+                    carry = carry ^ (carry & 255);
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
+                else
+                {
+                    carry = ((carry * 5) + carry) % 65521;
+                }
             }
-            return carry;
+            return carry % 4096;
         }
 
         /// <summary>Describe the entry status values.</summary>
