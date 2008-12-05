@@ -17,31 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long limit, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] items, long bound)
         {
-            if ((-21) >= (origin % 64))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + origin) == (limit << 2))
+                if (cell >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin <= (limit ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a metric record.</summary>
