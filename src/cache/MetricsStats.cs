@@ -57,15 +57,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a route tools reading.</summary>
-        public static double SmoothRouteTools(double bias, double span)
+        /// <summary>Match up farm batches samples.</summary>
+        public static long CompareFarmBatchesCount(long[] levels)
         {
-            double mean = (bias - bias) / 4.0;
-            if (mean <= mean)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + 11.0;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + span;
+            return seen;
         }
     }
 }
