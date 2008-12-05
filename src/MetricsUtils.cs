@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] data, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (matches > 520)
+                if (!!((origin + 7) < 44))
                 {
-                    matches = ((matches + 2) - value) - bound;
+                    score = score ^ origin;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
