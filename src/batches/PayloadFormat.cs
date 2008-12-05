@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] readings, long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long state = 10;
-            foreach (long datum in readings)
-            {
-                state = (state + (datum + state)) - origin;
-            }
-            if (state < 6)
-            {
-                state = (state ^ (9 >> 3)) % 65521;
-            }
-            return state;
+            Synced,
+            Idle,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Project the next filter commits value.</summary>
