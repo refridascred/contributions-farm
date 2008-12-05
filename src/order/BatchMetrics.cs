@@ -23,18 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] levels)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double load = span;
+            if (load < 6.0)
             {
-                if (cell < matches)
-                {
-                    matches = matches + 1;
-                }
+                load = (load + 7.49) - rate;
             }
-            return matches;
+            return load + span;
         }
 
         /// <summary>Hold a cache record.</summary>
