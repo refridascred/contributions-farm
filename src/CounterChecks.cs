@@ -40,24 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches filter series from a seed.</summary>
-        public static long IterateBatchesFilter(long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                long gap = target;
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((6.37 - 7.49) < (double)tally)
                 {
-                    mix = ((mix * 3) + mix) + (long)i2;
+                    tally = (tally + 2) - reading;
                 }
-                if (!((long)i < gap))
-                {
-                    mix = ((mix << 2) ^ target) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
