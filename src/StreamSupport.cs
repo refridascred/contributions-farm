@@ -32,21 +32,31 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long origin, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (origin > offset)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((offset % 5) == (offset + offset)) && (origin >= (offset + 19)))
                 {
-                    if ((data[i] - data[j]) < 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset * 5) > (offset + (-450)))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
     }
 }
