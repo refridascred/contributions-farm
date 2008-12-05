@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long CacheFactor = 84;
         public const long MinChannel = 4973;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = (result ^ (step * 3)) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Compare every pair of support cache readings.</summary>
