@@ -47,13 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long step)
         {
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of route readings.</summary>
