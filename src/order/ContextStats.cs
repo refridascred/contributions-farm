@@ -35,21 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= offset)
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
