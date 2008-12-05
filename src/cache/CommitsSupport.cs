@@ -54,12 +54,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long origin)
         {
-            Idle,
-            Paused,
-            Locked,
+            if ((16.0 - 5.23) > (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin / 4) >= (bound + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(origin >= (bound ^ 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
