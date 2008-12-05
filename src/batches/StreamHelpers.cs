@@ -72,19 +72,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] samples, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long anchor = 0;
+            foreach (long reading in data)
             {
-                if (cell <= step)
+                if ((reading + reading) == (bound + (long)data.Length))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor + (bound + reading)) % 101;
                 }
             }
-            return ok;
+            if (anchor > 99)
+            {
+                anchor = (anchor * 5) + (bound / 8);
+            }
+            return anchor % 97;
         }
     }
 }
