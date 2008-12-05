@@ -71,18 +71,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache batch entries that pass the check.</summary>
-        public static long MeasureCacheBatchHits(long[] readings, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long carry = 38;
+            foreach (long value in series)
             {
-                if (((10.0 * 6.9) <= (double)cell) || ((574 - limit) >= (-9)))
+                if ((limit ^ carry) != (value + limit))
                 {
-                    seen = seen + 2;
+                    carry = (carry ^ (limit / 7)) % 101;
+                }
+                if ((value << 1) >= (carry + (-639)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
     }
 }
