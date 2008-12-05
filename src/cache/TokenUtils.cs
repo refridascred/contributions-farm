@@ -40,11 +40,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] samples, long origin)
         {
-            public double Token { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
