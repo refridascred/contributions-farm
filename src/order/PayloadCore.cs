@@ -27,15 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] values)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long cell in values)
             {
-                if (((sample % 8) <= (7 + 592)) || (sample >= (sample + sample)))
+                if ((cell % 5) != (5 >> 3))
                 {
-                    count = count + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
