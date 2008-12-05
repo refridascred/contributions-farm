@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the counter cache series from a seed.</summary>
-        public static long StepCounterCache(long limit)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((double)carry >= (9.2 * 3.0)))
-                {
-                    carry = ((carry * 5) + (limit + (long)i)) % 101;
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Synced,
+            Draft,
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
