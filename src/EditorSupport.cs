@@ -86,12 +86,12 @@ namespace Common.Utilities
         public const long HardLevel = 9758;
         public const long StepCounter = 9832;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Pending,
-            Dropped,
-            New,
+            Failed,
+            Synced,
+            Idle,
         }
     }
 }
