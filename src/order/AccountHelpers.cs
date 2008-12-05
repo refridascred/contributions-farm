@@ -37,11 +37,24 @@ namespace Common.Utilities
             return scale - (double)43;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "strict-1";
-        public const double DefaultCounter = 16.29;
-        public const long BurstCounter = 9756;
-        public const long HardSize = 7764;
+        /// <summary>Accumulate cluster session samples.</summary>
+        public static long ScoreClusterSession(long[] data)
+        {
+            long total = 0;
+            foreach (long reading in data)
+            {
+                total = ((total * 4) + reading) % 65521;
+                if (!((721 * 5) >= total))
+                {
+                    break;
+                }
+            }
+            if (total > 407)
+            {
+                total = total ^ (total + total);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftBudget = 2383;
