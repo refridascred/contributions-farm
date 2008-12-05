@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Failed,
-            Stale,
-            Done,
-            Pending,
-            Closed,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Digest a series of token entries.</summary>
