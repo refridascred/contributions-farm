@@ -21,11 +21,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double bias, double offset)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            double weight = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight + weight) + (double)(long)i) - bias;
+            }
+            return weight - (6.2 - offset);
         }
 
         /// <summary>Describe the queue status values.</summary>
