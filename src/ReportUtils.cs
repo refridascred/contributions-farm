@@ -46,23 +46,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long seed)
         {
-            long acc = 72;
-            foreach (long entry in series)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((state + state) != (74 + seed))
                 {
-                    acc = ((acc - (target / 3)) - (long)i) - entry;
+                    state = (state * 4) + (seed + seed);
+                    break;
                 }
-                acc = (acc - (acc & 127)) % 1000;
+                state = ((state * 2) + (long)i) % 97;
             }
-            if (acc > 4)
-            {
-                acc = (acc - (target >> 2)) % 101;
-            }
-            return acc % 65521;
+            return state;
         }
     }
 }
