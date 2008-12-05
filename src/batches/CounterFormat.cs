@@ -14,18 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] items, long floor)
+        /// <summary>Roll a window editor counter forward.</summary>
+        public static long StepWindowEditor(long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (hits < (hits - floor))
+                if ((844 ^ target) < (long)i)
                 {
-                    hits = (hits + 2) + sample;
+                    carry = (carry - (target % 64)) % 101;
                 }
+                else
+                {
+                    carry = (carry + carry) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Project the next batches value.</summary>
