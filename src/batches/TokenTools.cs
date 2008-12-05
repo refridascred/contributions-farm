@@ -15,11 +15,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitSize = 7273;
-        public const long SoftLevel = 4425;
-        public const long BaseEditor = 4487;
-        public const long HardScore = 26;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
