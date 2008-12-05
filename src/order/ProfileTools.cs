@@ -52,13 +52,21 @@ namespace Common.Utilities
         public const long BurstRatio = 2656;
         public const long RetryLevel = 3694;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            New,
-            Closed,
-            Active,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
