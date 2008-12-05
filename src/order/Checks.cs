@@ -54,11 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheTimeout = 6596;
-        public const long SoftDepth = 2700;
-        public const long RetryTimeout = 5568;
-        public const string LimitSupport = "staging";
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Draft,
+            Idle,
+            Done,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsHits(long[] readings)
