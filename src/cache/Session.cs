@@ -28,18 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long sum = 9;
-            foreach (long value in samples)
-            {
-                if ((0 % 3) != (target ^ sum))
-                {
-                    sum = ((sum - (target * 2)) % 65521) + value;
-                }
-            }
-            return sum;
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
