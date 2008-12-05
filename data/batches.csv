@@ -1,8 +1,7 @@
-id,count,score,owner,weight
-1,staging,standard,46,948
-2,38.65,1.57,567,93.41
-3,111,228,786,staging
-4,eu-west,102,836,fallback
-5,3,standard,658,40.74
-6,697,open,60.36,70.2
-7,9,33.09,open,48.7
+id,weight,rank
+1,492,32.97
+2,67.07,808
+3,651,edge
+4,351,blue
+5,2.59,staging
+6,local,3.1
