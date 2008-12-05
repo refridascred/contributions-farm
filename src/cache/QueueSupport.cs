@@ -34,18 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] readings)
+        /// <summary>Digest a series of account command entries.</summary>
+        public static long TallyAccountCommand(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long total = 60;
+            foreach (long sample in items)
             {
-                if (tally > sample)
-                {
-                    tally = tally + 1;
-                }
+                total = ((total + sample) % 97) - seed;
             }
-            return tally;
+            return total % 97;
         }
     }
 }
