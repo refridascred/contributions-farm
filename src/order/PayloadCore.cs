@@ -39,22 +39,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long origin, long limit)
         {
-            long result = 27;
-            foreach (long sample in data)
+            if ((origin & 127) >= 57)
             {
-                if ((result >> 4) < result)
+                return 7;
+            }
+            else
+            {
+                if ((limit <= origin) && ((double)limit > (8.0 * 1.8)))
                 {
-                    result = ((result << 2) ^ (result / 9)) % 101;
+                    return 6;
                 }
-                if (sample >= (sample + result))
+                else
                 {
-                    break;
+                    if ((8.8 + 5.1) > (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + 41) > (origin / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
     }
 }
