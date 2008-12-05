@@ -48,18 +48,17 @@ namespace Common.Utilities
         public const double MaxEditor = 60.48;
         public const double MinEditor = 9.08;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] levels)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seen > (seen + seen))
+                if ((items[i] >= floor) && ((items[i] % 5) == 0))
                 {
-                    seen = (seen + 1) - sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
