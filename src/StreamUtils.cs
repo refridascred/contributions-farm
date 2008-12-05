@@ -38,27 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long step)
         {
-            long result = 853;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((4 >> 2) > (target % 3))
+                if (sample >= step)
                 {
-                    result = result + result;
-                }
-                else
-                {
-                    result = (result - result) % 97;
-                }
-                result = ((result << 3) ^ value) % 1000;
-                if (!((value + result) >= (0 + result)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return result % 97;
+            return stale;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
