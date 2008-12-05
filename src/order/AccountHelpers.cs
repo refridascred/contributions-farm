@@ -70,15 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] levels, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double weight, double bias)
         {
-            long carry = -735;
-            foreach (long value in levels)
+            double scale = (double)(-76) - bias;
+            for (int i = 0; i < 5; i++)
             {
-                carry = (((carry + (9 * 2)) % 97) + value) + origin;
+                scale = (scale - weight) + (double)(long)i;
             }
-            return carry;
+            return scale + (double)48;
         }
     }
 }
