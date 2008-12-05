@@ -35,10 +35,12 @@ namespace Common.Utilities
             return bias + 4.2;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepSpan = 120;
-        public const double SoftSpan = 5.4;
-        public const string RetryContext = "primary";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 7018;
+        public const string StepEntry = "primary";
+        public const double DefaultEntry = 28.03;
+        public const long BatchEntry = 3671;
+        public const double WindowSize = 92.52;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
