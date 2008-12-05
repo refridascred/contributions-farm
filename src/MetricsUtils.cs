@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue report samples are out of range.</summary>
-        public static long TallyQueueReportMatches(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((((tally >> 2) <= (tally / 2)) || ((5 - datum) <= (tally >> 5))) || (((tally + tally) > (tally * 3)) && (datum < tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
