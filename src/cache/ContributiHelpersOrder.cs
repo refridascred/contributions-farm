@@ -21,18 +21,11 @@ namespace Common.Utilities
         public const long BatchNotes = 9266;
         public const double BaseNotes = 97.84;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] series, long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((seed % 97) <= 612)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
