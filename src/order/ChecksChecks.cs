@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long sum = 7;
-            foreach (long cell in series)
-            {
-                if ((96 + sum) < sum)
-                {
-                    sum = ((sum << 3) ^ (cell / 4)) % 101;
-                }
-                else
-                {
-                    sum = (sum - (cell - sum)) % 255;
-                }
-            }
-            return sum % 4096;
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
