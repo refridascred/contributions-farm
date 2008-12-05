@@ -32,12 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long seed2)
         {
-            Dropped,
-            Stale,
-            Locked,
+            if ((double)9 < (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)seed >= 3.9) && ((seed2 ^ seed2) > (seed2 * 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2 + seed2) >= (seed2 - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed & 127) == (seed2 + seed2)) || ((seed >> 3) < seed2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next stats value.</summary>
