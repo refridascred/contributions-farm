@@ -30,22 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((double)seen < (2.5 / 5.0)) || (((12.0 * 8.99) < (double)value) || (426 < value)))
-                {
-                    seen = (seen + 2) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseSpan = 88.79;
+        public const long StepGraph = 3168;
+        public const long BatchGraph = 6059;
+        public const long CacheTimeout = 779;
     }
 }
