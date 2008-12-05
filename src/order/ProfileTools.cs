@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const string IdleMetric = "strict-v2";
         public const double BatchLevel = 72.13;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 4159;
+        public const double DefaultSupport = 53.68;
+        public const double LimitScore = 58.46;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
