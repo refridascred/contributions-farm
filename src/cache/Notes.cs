@@ -24,13 +24,11 @@ namespace Common.Utilities
             return scale - (double)18;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "primary-1";
+        public const long RetryContributi = 2899;
+        public const long MaxContributi = 7211;
+        public const double BatchInterval = 73.11;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] readings)
