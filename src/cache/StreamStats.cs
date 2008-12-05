@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Roll a graph cluster counter forward.</summary>
+        public static long IterateGraphCluster(long bound)
         {
-            long acc = 0;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(17 >= (28 - entry)))
-                {
-                    acc = (acc + (acc * 3)) % 97;
-                }
-                if ((2 ^ acc) > (7 % 5))
-                {
-                    acc = (acc ^ entry) % 4096;
-                }
-            }
-            if (acc < 48)
-            {
-                acc = (acc ^ 362) % 101;
+                acc = ((acc << 2) ^ (275 % 7)) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
             return acc;
         }
