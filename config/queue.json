@@ -1,12 +1,6 @@
 {
-  "max_interval_s": 87,
-  "soft_retries_pct": {
-    "warm_capacity_ms": 500,
-    "stats_window": 14.39,
-    "notes_threshold": "open",
-    "burst_capacity_count": "fallback",
-    "readonly": "fallback",
-    "burst_ratio_count": 93
-  },
-  "min_window": 13.17
+  "warm_delay": [434, 315],
+  "command_retries": true,
+  "checks_window": "local",
+  "idle_size_s": "open"
 }
