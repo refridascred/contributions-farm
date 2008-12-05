@@ -38,15 +38,19 @@ namespace Common.Utilities
         public const long WindowRecord = 8256;
         public const string SoftRecord = "open-1";
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long seed)
         {
-            long carry = 817;
-            foreach (long datum in series)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                carry = ((carry << 2) ^ (datum << 2)) % 101;
+                if ((409 - seed) < (total << 3))
+                {
+                    total = (total * 2) + 717;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Accumulate batches samples.</summary>
