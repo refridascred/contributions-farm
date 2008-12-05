@@ -45,13 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long result = 27;
+            foreach (long sample in data)
+            {
+                if ((result >> 4) < result)
+                {
+                    result = ((result << 2) ^ (result / 9)) % 101;
+                }
+                if (sample >= (sample + result))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
     }
 }
