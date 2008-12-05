@@ -38,19 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] values, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (reading >= step)
+                if ((count % 10) < item)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) - seed;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
