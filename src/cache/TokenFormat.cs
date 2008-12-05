@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
+            public bool Label { get; set; }
+            public double Score { get; set; }
             public long Count { get; set; }
-            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
