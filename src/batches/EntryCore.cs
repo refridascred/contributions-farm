@@ -21,13 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Ready,
-            Queued,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCount = 7099;
+        public const long DefaultCounter = 6744;
+        public const long BurstCounter = 5703;
+        public const string BaseCounter = "staging-1";
 
         /// <summary>Project the next cluster value.</summary>
         public static double ScaleCluster(double scale, double bias)
