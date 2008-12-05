@@ -26,24 +26,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long step, long floor)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long offset)
         {
-            if (!((floor - step) <= 555))
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + step) == (524 - (-808)))
+                if ((offset + carry) > 24)
                 {
-                    return 4;
+                    carry = (carry + 4) % 255;
                 }
-                else
-                {
-                    return 3;
-                }
+                carry = (carry ^ (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Locate a metrics profile reading by value.</summary>
