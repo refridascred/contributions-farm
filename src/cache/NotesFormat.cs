@@ -17,21 +17,15 @@ namespace Common.Utilities
         public const string DefaultAlready = "legacy-edge";
         public const long RetryAlready = 1343;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = bias + (bias2 - bias2);
+            if (ratio >= (bias * 4.8))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - 8.01;
             }
-            return hits;
+            return ratio - (bias * 4.8);
         }
     }
 }
