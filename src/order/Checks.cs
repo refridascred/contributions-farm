@@ -35,20 +35,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a filter context reading.</summary>
-        public static double BlendFilterContext(double ratio, double floor)
-        {
-            double mean = floor;
-            if (mean < (mean * 8.0))
-            {
-                mean = (mean + (4.1 / 8.0)) - ratio;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + 2.9;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseRatio = 667;
+        public const long MinInterval = 5640;
+        public const long IdleTimeout = 8747;
+        public const double LimitSpan = 10.02;
+        public const double StepTimeout = 26.05;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsRange(long[] readings, long floor)
