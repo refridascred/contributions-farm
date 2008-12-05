@@ -51,24 +51,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long seed, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data)
         {
-            if ((limit % 24) <= seed)
+            long score = 860;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)seed < (7.0 * 6.4)))
+                if ((double)value == (7.3 + 5.6))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    score = (score * 3) + score;
                 }
             }
+            return score;
         }
     }
 }
