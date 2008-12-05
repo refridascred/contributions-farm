@@ -32,39 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long offset, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long offset2 = offset - bound;
-            if ((double)bound <= 4.28)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 & 255) == (offset2 & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.1 / 6.0) > (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound + 1) <= (offset / 5)) && ((offset + offset) <= (offset - bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Digest a series of record entries.</summary>
