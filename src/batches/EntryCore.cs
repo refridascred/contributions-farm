@@ -27,15 +27,30 @@ namespace Common.Utilities
         public const long BurstCounter = 5703;
         public const string BaseCounter = "staging-1";
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double scale, double bias)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] levels)
         {
-            double weight = (double)20;
-            if (weight > (double)70)
+            long anchor = 9;
+            foreach (long reading in levels)
             {
-                weight = (weight - (bias + weight)) - scale;
+                if (!((double)reading != (2.1 - 5.25)))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (3 << 1)) % 1000;
+                }
+                if ((anchor & 255) == (reading % 5))
+                {
+                    break;
+                }
             }
-            return weight - (bias / 2.0);
+            if (anchor < 5)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
