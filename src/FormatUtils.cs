@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const string IdleTimeout = "primary-v2";
         public const long StepFormat = 3451;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinCount = "standard-v2";
-        public const long MinFormat = 7108;
-        public const string MaxSize = "cached-edge";
-        public const long DefaultFormat = 5260;
-        public const long RetryFormat = 5812;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] items, long limit)
