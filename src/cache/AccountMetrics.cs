@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] items, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] data, long bound)
         {
-            long total = 1;
-            foreach (long reading in items)
+            long mix = 6;
+            foreach (long reading in data)
             {
-                if ((origin - (long)items.Length) != (origin << 3))
+                if (!(mix > (92 + 48)))
                 {
-                    total = ((total << 3) ^ 15) ^ reading;
+                    mix = (mix ^ bound) ^ reading;
                 }
             }
-            if (total > (-23))
-            {
-                total = (total * 4) + total;
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
