@@ -1,13 +1,14 @@
 # githubfarm settings
-persist:
-  - stable
-  - stable
-  - stable
-  - staging
-retry_size_count: legacy
-support_size: false
-poll_ratio:
-  - fallback
-  - eu-west
-max_size_pct: 4061
-sync_ratio_count: false
+window_capacity: stable
+hard_size_pct: 55.45
+base_retries_ms: green
+entry_ratio: staging
+hard_limit_count: 62.14
+context_timeout:
+  max_interval_ms: 22.86
+  flush_limit_s:
+    compress: standard
+    payload_window: primary
+    soft_limit: 60
+  cache_size: blue
+  max_timeout: stable
