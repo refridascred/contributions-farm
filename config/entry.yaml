@@ -1,5 +1,6 @@
 # entry settings
-retry_capacity_s: legacy
-idle_interval_s: true
-command_interval: green
-idle_ttl: 895
+strict: staging
+batch_limit: 77
+retry_delay: false
+hard_interval_count: eu-west
+soft_ttl_pct: true
