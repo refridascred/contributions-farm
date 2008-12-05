@@ -77,19 +77,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] readings, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (cell > origin)
+                if (!((seen % 3) <= cell))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
