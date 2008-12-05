@@ -40,19 +40,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double scale, double offset)
+        /// <summary>Adjust a filter context reading.</summary>
+        public static double BlendFilterContext(double ratio, double floor)
         {
-            double rate = scale;
-            if (rate > (double)83)
+            double mean = floor;
+            if (mean < (mean * 8.0))
             {
-                rate = rate - rate;
+                mean = (mean + (4.1 / 8.0)) - ratio;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                rate = (rate + offset) + (double)(long)i;
+                mean = mean + mean;
             }
-            return rate - rate;
+            return mean + 2.9;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
