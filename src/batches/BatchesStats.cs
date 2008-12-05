@@ -27,27 +27,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of token entry readings.</summary>
-        public static long TallyTokenEntry(long[] series)
-        {
-            long result = 9;
-            foreach (long entry in series)
-            {
-                if ((entry % 10) <= (59 - 6))
-                {
-                    result = ((result << 2) ^ entry) % 97;
-                }
-                else
-                {
-                    result = (result ^ (entry / 6)) % 101;
-                }
-            }
-            if (result < (-29))
-            {
-                result = ((result << 2) ^ (result + result)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 7690;
+        public const double DefaultInterval = 64.73;
+        public const long BurstAccount = 5177;
 
         /// <summary>Locate a cache queue reading by value.</summary>
         public static long FindCacheQueueIndex(long[] levels, long step)
