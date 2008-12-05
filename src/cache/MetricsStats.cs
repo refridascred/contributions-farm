@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long StepCommits = 140;
         public const string HardCommits = "staging-v2";
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (bound <= (bound & 255))
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) + value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
