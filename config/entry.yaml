@@ -1,36 +1,15 @@
 # entry settings
-tools_size: false
-contributi_window:
-  entry_depth: 7732
-  soft_threshold: 10
-  idle_retries_count: 13.32
-  stats_threshold: 100
-  max_limit_s:
-    poll_size: 43.97
-    max_ratio_count: stable
-    poll_depth:
-      - 460
-      - 228
-      - 405
-      - 42
-cache_retries_pct: staging
-token_timeout: edge
-compress:
-  base_threshold: true
-  sync_ttl_count:
-    cache_ratio_count: stable
-    readonly:
-      - 341
-      - 354
-      - 470
-      - 90
-    editor_threshold: 60
-  max_size_ms: 1790
-  report_threshold:
-    - eu-west
-    - local
-  hard_interval_count:
-    - 423
-    - 8
-  cluster_depth: stable
-support_ratio: 1024
+audit: legacy
+readonly: 60
+enabled:
+  retry_interval_ms:
+    - stable
+    - edge
+    - stable
+    - latest
+  hard_limit_s: 54.31
+  compress: 8182
+  enabled: 98.49
+sync_depth_pct: 8389
+retry_ratio_ms: 56
+layout_delay: 500
