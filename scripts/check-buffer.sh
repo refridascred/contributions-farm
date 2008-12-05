@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in staging fallback eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-legacy}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=183
-log "limit is ${BUFFER_LIMIT}"
