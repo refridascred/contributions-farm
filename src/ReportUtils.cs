@@ -42,39 +42,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long bound, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series, long target)
         {
-            long gap = bound + offset;
-            if ((bound >> 4) > (bound + 35))
+            long acc = 72;
+            foreach (long entry in series)
             {
-                return 3;
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = ((acc - (target / 3)) - (long)i) - entry;
+                }
+                acc = (acc - (acc & 127)) % 1000;
             }
-            else
+            if (acc > 4)
             {
-                if (((9 / 8) == (offset + bound)) || (0.1 >= (double)gap))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + offset) != (gap << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset % 2) == (offset & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                acc = (acc - (target >> 2)) % 101;
             }
+            return acc % 65521;
         }
     }
 }
