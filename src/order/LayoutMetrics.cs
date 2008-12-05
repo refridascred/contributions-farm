@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const string CacheMetrics = "staging-1";
         public const string MinRatio = "latest-edge";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] levels)
         {
-            New,
-            Retry,
-            Queued,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading <= (reading * 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
