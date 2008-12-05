@@ -39,24 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a tools cluster counter forward.</summary>
-        public static long SeriesToolsCluster(long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] values, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                acc = (acc ^ acc) % 101;
-                if ((acc >> 5) >= 2)
+                if (value != step)
                 {
-                    acc = ((acc * 2) + acc) % 1000;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
