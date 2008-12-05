@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long target)
+        /// <summary>Validate stream route readings against a bound.</summary>
+        public static bool GuardStreamRouteBounds(long[] readings, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (!(anchor < (target & 15)))
+                if (entry <= limit)
                 {
-                    anchor = ((anchor << 2) ^ (target - anchor)) % 65521;
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Accumulate format order samples.</summary>
