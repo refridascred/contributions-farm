@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up commits account samples.</summary>
