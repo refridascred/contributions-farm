@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 400;
-        public const double IdleAlready = 98.96;
-        public const long WindowAlready = 1017;
+        /// <summary>Match up schema account samples.</summary>
+        public static long CompareSchemaAccountCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double gain, double span)
