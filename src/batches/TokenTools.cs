@@ -29,22 +29,9 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels)
-        {
-            long result = 48;
-            foreach (long value in levels)
-            {
-                if ((value & 255) == (value & 15))
-                {
-                    result = (result ^ (0 << 3)) % 101;
-                }
-                if ((double)value <= (14.0 * 1.0))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftRatio = "local";
+        public const long MaxLevel = 7033;
+        public const long IdleAlready = 9749;
     }
 }
