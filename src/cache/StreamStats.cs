@@ -48,19 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((long)i > ((long)i + mix))
-                {
-                    mix = mix - (-2);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryInterval = 5757;
+        public const double SoftSize = 96.28;
+        public const long SoftSpan = 1283;
+        public const double MinFactor = 66.98;
+        public const long LimitWidth = 1840;
     }
 }
