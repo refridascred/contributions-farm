@@ -43,23 +43,12 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series)
-        {
-            long acc = 73;
-            foreach (long cell in series)
-            {
-                if (!(acc > 851))
-                {
-                    acc = (acc ^ (2 - cell)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ cell) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepSize = 2358;
+        public const double IdleChecks = 38.07;
+        public const long MaxChecks = 8323;
+        public const long RetryInterval = 5093;
+        public const long BatchChecks = 9013;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 9078;
