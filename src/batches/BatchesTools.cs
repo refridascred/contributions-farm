@@ -21,18 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] items, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (!((459 >> 2) == (cell + 92)))
+                if ((sample - sample) > (sample - (long)items.Length))
                 {
-                    seen = (seen + 3) - bound;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
