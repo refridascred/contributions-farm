@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double ratio, double bias)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] series, long bound)
         {
-            double mean = 6.0;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                mean = (((mean - 8.23) + (double)(long)i) - ratio) - bias;
+                if ((bound & 31) < (value + value))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mean + (2.4 * 0.63);
+            return hits;
         }
 
         /// <summary>Roll a token counter forward.</summary>
