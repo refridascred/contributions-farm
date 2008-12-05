@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] data, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (2.0 > (double)hits)
+                if ((tally > (89 * 2)) && (1 > (tally - tally)))
                 {
-                    hits = ((hits + 2) + datum) - seed;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a command summary.</summary>
