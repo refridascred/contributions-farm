@@ -41,18 +41,31 @@ namespace Common.Utilities
         public const double RetryTimeout = 6.66;
         public const long BurstCount = 4813;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] readings, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long step, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if (limit <= step)
             {
-                if (hits < (hits + hits))
+                return 4;
+            }
+            else
+            {
+                if (!(((-9) - step) >= (step - step)))
                 {
-                    hits = ((hits + 2) ^ cell) - floor;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit <= step) || ((step + 90) == (limit - 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
