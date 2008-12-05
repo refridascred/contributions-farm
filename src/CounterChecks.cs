@@ -55,21 +55,15 @@ namespace Common.Utilities
         public const long RetrySupport = 2088;
         public const string CacheSupport = "alpha-v2";
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 2;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry - carry) ^ value;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Digest a series of order entries.</summary>
