@@ -80,11 +80,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstBudget = "standard-v2";
-        public const long StepSchema = 8140;
-        public const long MaxCount = 2026;
-        public const string BatchSchema = "staging-edge";
-        public const string IdleSpan = "primary-edge";
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] levels, long origin)
+        {
+            long carry = -62;
+            foreach (long item in levels)
+            {
+                if ((origin + 889) >= (origin + item))
+                {
+                    carry = (carry ^ (carry % 8)) % 101;
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = carry - (carry / 2);
+                }
+                if (((double)origin <= (2.24 + 6.0)) || ((double)origin < (8.0 - 9.58)))
+                {
+                    carry = ((carry << 2) ^ (item - item)) % 65521;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
