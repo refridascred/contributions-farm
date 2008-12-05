@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long step)
         {
-            Locked,
-            Dropped,
-            Ready,
+            long total = 34;
+            foreach (long cell in readings)
+            {
+                total = (total - (cell / 4)) % 255;
+                if ((total + cell) <= step)
+                {
+                    break;
+                }
+            }
+            if (total < (-52))
+            {
+                total = ((total << 3) ^ (total ^ 0)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
