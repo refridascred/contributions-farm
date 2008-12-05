@@ -20,14 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Grade a entry commits value against two limits.</summary>
+        public static long ClassifyEntryCommits(long seed, long step)
         {
-            Dropped,
-            Locked,
-            Failed,
-            Ready,
-            Done,
+            if ((step - seed) > (step & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((7.0 + 20.0) < (double)step) && (seed >= (step - 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (5.57 / 6.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((step >> 4) >= step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
