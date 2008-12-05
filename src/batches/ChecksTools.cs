@@ -12,38 +12,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            if ((double)bound < (4.7 * 0.48))
+            long mix = 804;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((7.9 - 7.52) < (7.6 + 3.71)) || ((bound - origin) < origin))
+                if ((item << 1) > item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((9.0 * 5.7) == (double)bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound / 5) != (bound / 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = (mix ^ 1) % 97;
                 }
             }
+            if (mix > (-55))
+            {
+                mix = ((mix << 3) ^ (mix ^ mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
