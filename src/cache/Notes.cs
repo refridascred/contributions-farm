@@ -30,21 +30,31 @@ namespace Common.Utilities
         public const long BaseTools = 1872;
         public const long BatchSize = 9494;
 
-        /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
-        public static long OverlapContributiProfileCount(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long offset, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((8.95 + 1.53) != (double)offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (offset < (57 - offset))
                 {
-                    if ((samples[i] - samples[j]) < 11)
+                    return 8;
+                }
+                else
+                {
+                    if (601 >= (offset ^ 50))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate account samples.</summary>
