@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard staging legacy strict; do
+for item in standard eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
