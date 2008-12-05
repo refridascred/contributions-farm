@@ -1,6 +1,12 @@
 {
-  "max_interval_count": 82,
-  "verbose": "stable",
-  "batch_timeout": 1785,
-  "hard_retries": [105, 384, 108, 134]
+  "soft_ratio_pct": {
+    "hard_limit": true,
+    "cache_interval_ms": "stable",
+    "verbose": 17
+  },
+  "warm_limit": "latest",
+  "cache_retries_s": 4726,
+  "default_limit": "legacy",
+  "idle_retries": true,
+  "profile_retries": [371, 138, 204, 328]
 }
