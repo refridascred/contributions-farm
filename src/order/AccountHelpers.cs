@@ -56,22 +56,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits << 2) >= hits)
-                {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinBudget = 64.77;
+        public const string WindowCluster = "staging-1";
+        public const long StepLevel = 1812;
+        public const string BatchCluster = "legacy-edge";
     }
 }
