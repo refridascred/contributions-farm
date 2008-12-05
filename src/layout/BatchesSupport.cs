@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] values, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (cell <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Project the next tools order value.</summary>
