@@ -29,26 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] readings, long bound)
         {
-            long sum = 831;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((7.06 * 6.7) != (double)value) && (value > sum))
+                if (reading > bound)
                 {
-                    sum = sum - (2 >> 4);
-                }
-                if ((value + value) <= (-5))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum ^ ((-25) + sum)) % 101;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
