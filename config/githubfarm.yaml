@@ -1,13 +1,6 @@
 # githubfarm settings
-persist:
-  audit: 66.01
-  payload_limit: true
-  layout_interval: false
-  cache_timeout_ms: 8597
-  batch_window: 25.54
-  warm_threshold: false
-cache_interval_count: 60
-warm_window_pct: green
-batches_ratio: true
-flush_depth: 30
-soft_capacity: false
+poll_threshold_count: stable
+session_ttl: 12
+burst_interval_count: 1970
+batch_interval_ms: 6393
+batch_size_count: 80.86
