@@ -31,24 +31,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long floor, long floor2)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series)
         {
-            if (!((floor2 - floor2) > (floor2 + floor)))
+            long anchor = 346;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (42 > (22 + floor2))
+                if (sample < (anchor & 31))
                 {
-                    return 1;
+                    anchor = anchor ^ (sample >> 4);
                 }
-                else
+                if (!((double)anchor < (13.0 + 1.2)))
                 {
-                    return 8;
+                    break;
                 }
             }
+            if (anchor > (-39))
+            {
+                anchor = anchor + (anchor + 54);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
