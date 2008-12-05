@@ -61,15 +61,18 @@ namespace Common.Utilities
         public const long MinReport = 5861;
         public const string BatchFactor = "strict-v2";
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double weight, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] readings, long target)
         {
-            double scale = (double)(-76) - bias;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                scale = (scale - weight) + (double)(long)i;
+                if (target < (tally + reading))
+                {
+                    tally = tally + 2;
+                }
             }
-            return scale + (double)48;
+            return tally;
         }
     }
 }
