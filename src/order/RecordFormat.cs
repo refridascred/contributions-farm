@@ -46,19 +46,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cluster metric readings against a bound.</summary>
-        public static bool ValidateClusterMetricLimits(long[] items, long bound)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
