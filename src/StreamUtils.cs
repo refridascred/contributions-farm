@@ -67,14 +67,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many profile layout samples are out of range.</summary>
+        public static long CountProfileLayoutHits(long[] readings)
         {
-            Active,
-            Pending,
-            Idle,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample - sample) > sample) && (((2.2 * 16.0) <= (double)sample) && ((count + sample) != (sample + 331))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
