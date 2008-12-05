@@ -72,23 +72,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double ratio, double offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long limit)
         {
-            double gain = (double)8 + offset;
-            if (gain > offset)
+            if (((limit % 7) < (-904)) || (15 <= (limit + limit)))
             {
-                gain = gain - 6.41;
+                return 8;
             }
             else
             {
-                gain = gain + (ratio + offset);
+                if ((4.1 * 3.76) >= (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (ratio + offset)) + (double)(long)i;
-            }
-            return gain + (gain + gain);
         }
     }
 }
