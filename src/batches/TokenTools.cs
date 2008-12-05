@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const double BaseScore = 29.54;
         public const long BatchChecks = 4414;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit layout batch readings against a rule.</summary>
