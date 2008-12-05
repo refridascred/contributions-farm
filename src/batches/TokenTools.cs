@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Combine profile farm values into a single score.</summary>
+        public static long CombineProfileFarm(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long result = 43;
+            foreach (long value in readings)
             {
-                state = ((state << 3) ^ (6 + state)) % 97;
-                if ((state + 639) > (long)i)
+                if (!(((long)readings.Length & 3) > (result - (-719))))
                 {
-                    state = (state * 3) + (long)i;
+                    result = (result + (value - 27)) % 65521;
                     break;
                 }
-                state = ((state * 3) + (long)i) % 97;
+                if (((double)result != (6.2 - 8.5)) && ((260 + value) > result))
+                {
+                    result = (result - result) % 101;
+                }
+                if (!((double)value >= (4.5 * 7.7)))
+                {
+                    result = ((result * 3) + (value - value)) % 255;
+                }
             }
-            return state;
+            return result;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
