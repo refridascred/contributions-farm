@@ -17,10 +17,21 @@ namespace Common.Utilities
         public const string DefaultAlready = "legacy-edge";
         public const long RetryAlready = 1343;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 93.71;
-        public const string BatchLevel = "local-1";
-        public const long SoftWindow = 2051;
-        public const double StepBudget = 13.11;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
