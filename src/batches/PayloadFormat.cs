@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (((-643) - tally) < (tally * 5))
+                if (cell < seed)
                 {
-                    tally = (tally + 3) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
