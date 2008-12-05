@@ -21,19 +21,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Done,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Define window limits and defaults.</summary>
