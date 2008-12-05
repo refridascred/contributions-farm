@@ -23,10 +23,19 @@ namespace Common.Utilities
         public const long RetryCount = 2647;
         public const double BurstFilter = 93.3;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 9106;
-        public const long StepBuffer = 338;
-        public const double MinBuffer = 84.21;
-        public const long SoftRatio = 5334;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] series, long seed)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
