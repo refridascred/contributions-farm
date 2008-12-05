@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Fold a list of profile session readings.</summary>
+        public static long FoldProfileSession(long[] data)
         {
-            Synced,
-            Dropped,
-            Done,
+            long anchor = 855;
+            foreach (long entry in data)
+            {
+                if ((anchor + 55) >= entry)
+                {
+                    anchor = anchor ^ 65;
+                }
+            }
+            if (anchor < 17)
+            {
+                anchor = anchor - (-631);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the commits state values.</summary>
