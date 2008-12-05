@@ -1,6 +1,8 @@
 {
-  "min_retries_s": "staging",
-  "min_size": "local",
-  "readonly": 6844,
-  "cache_timeout_s": 100
+  "stream_size": 8733,
+  "base_threshold_ms": false,
+  "poll_interval": "staging",
+  "report_size": ["blue", "strict", "local"],
+  "enabled": "legacy",
+  "hard_depth_ms": "legacy"
 }
