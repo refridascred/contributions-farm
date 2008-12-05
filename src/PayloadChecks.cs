@@ -30,21 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double rate = (double)(443 / 2);
+            return ((rate - (double)33) + gain) + span;
         }
 
         /// <summary>Describe the support mode values.</summary>
