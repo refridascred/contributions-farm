@@ -47,21 +47,17 @@ namespace Common.Utilities
         public const long DefaultFormat = 5260;
         public const long RetryFormat = 5812;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] <= limit)
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the session stats series from a seed.</summary>
