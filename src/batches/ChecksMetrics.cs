@@ -29,18 +29,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc + 859;
-                long gap = acc;
-                acc = ((acc * 4) + (gap - target)) % 65521;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a token options.</summary>
