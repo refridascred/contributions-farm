@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            long sum = 697;
-            foreach (long entry in levels)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum + (target + (long)levels.Length)) % 101) - entry;
+                if ((anchor ^ (long)i) > offset)
+                {
+                    anchor = (anchor - (anchor - offset)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ 705;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (sum < 5)
-            {
-                sum = ((sum * 3) + target) % 1000;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Accumulate record route samples.</summary>
