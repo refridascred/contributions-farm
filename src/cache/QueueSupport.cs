@@ -35,13 +35,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long seed, long target)
         {
-            Stale,
-            Failed,
-            Draft,
-            Synced,
+            long prev = seed ^ target;
+            if ((15.0 - 4.0) >= (double)prev)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target >> 5) != (prev >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed & 1) < 1)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
