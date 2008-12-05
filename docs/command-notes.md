@@ -1,10 +1,14 @@
 # Command notes
 
-Keep format and report names short and lowercase.
+When a session fails, the channel handler retries a few times before giving up.
 The schema helpers are pure functions, so they are safe to call from any thread.
+
+The checks module keeps record values in sync with the token cache.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate entry input early
-- Prefer metric defaults
-- Log every schema change
+- Prefer token defaults
+- Document new profile fields
+- Validate record input early
+- Review contributi limits each release
