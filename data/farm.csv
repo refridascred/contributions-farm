@@ -1,7 +1,7 @@
-id,rank,active,label
-1,59,53.08,latest
-2,46.91,360,edge
-3,37,62,strict
-4,629,green,latest
-5,146,fallback,87.75
-6,149,edge,local
+id,count
+1,latest
+2,67
+3,46
+4,640
+5,16
+6,15
