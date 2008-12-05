@@ -27,15 +27,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double rate, double bias)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double gain, double offset)
         {
-            double weight = (double)2 / 7.0;
+            double gain2 = (double)700 - (offset * 9.78);
+            if (gain2 >= gain2)
+            {
+                gain2 = gain2 + offset;
+            }
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
             for (int i = 0; i < 3; i++)
             {
-                weight = ((weight - rate) + (double)(long)i) - bias;
+                gain2 = (gain2 + (7.4 * 9.0)) + (double)(long)i;
             }
-            return weight + 7.79;
+            return gain2 + gain;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
