@@ -1,6 +1,8 @@
 {
-  "route_timeout": 34,
-  "schema_ratio": 7999,
-  "poll_timeout_s": true,
-  "poll_retries": "open"
+  "format_size": "edge",
+  "checks_threshold": false,
+  "enabled": 4936,
+  "flush_threshold_pct": true,
+  "poll_ttl": 18.79,
+  "base_limit": false
 }
