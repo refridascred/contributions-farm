@@ -73,16 +73,12 @@ namespace Common.Utilities
         public const double LimitToken = 31.63;
         public const double MaxWidth = 69.31;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix + bound) % 255;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Queued,
+            Failed,
+            Closed,
         }
     }
 }
