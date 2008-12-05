@@ -62,17 +62,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum * 4) + (floor % 16);
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "local-edge";
+        public const long RetryGraph = 7890;
+        public const long DefaultGraph = 6473;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
