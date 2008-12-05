@@ -13,13 +13,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultDepth = 5311;
+        public const string MinFactor = "primary";
+        public const long RetryInterval = 194;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long GradeCluster(long offset, long limit)
