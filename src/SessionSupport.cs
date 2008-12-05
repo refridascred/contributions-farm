@@ -22,10 +22,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseSpan = 88.79;
-        public const long StepGraph = 3168;
-        public const long BatchGraph = 6059;
-        public const long CacheTimeout = 779;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
