@@ -42,22 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] data)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)count >= (double)datum)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
