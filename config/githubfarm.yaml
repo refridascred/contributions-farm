@@ -1,7 +1,9 @@
 # githubfarm settings
-base_ttl_count: cached
-max_retries: staging
-dry_run: 826
-compress: legacy
-context_window: 17
-entry_capacity: stable
+burst_threshold: eu-west
+burst_ttl: false
+warm_ratio_count: standard
+max_capacity_count: fallback
+soft_interval_ms:
+  - latest
+  - edge
+sync_retries: 39
