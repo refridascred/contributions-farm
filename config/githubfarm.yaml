@@ -1,8 +1,15 @@
 # githubfarm settings
-order_ttl:
-  - 205
-  - 427
-  - 209
-enabled: 250
-verbose: 92.19
-poll_capacity: staging
+strict:
+  enabled:
+    - stable
+    - eu-west
+    - latest
+  base_depth_pct: 3612
+  max_size: 9
+  cache_ratio: open
+enabled: strict
+soft_retries:
+  - 207
+  - 307
+  - 218
+  - 281
