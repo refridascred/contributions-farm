@@ -37,15 +37,21 @@ namespace Common.Utilities
         public const long DefaultFormat = 5260;
         public const long RetryFormat = 5812;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double bias, double bias2)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            double bias3 = (4.2 / 6.0) + bias2;
-            if (bias3 < bias3)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias3 = (bias3 - (double)1) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias3 + (double)66;
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
