@@ -23,17 +23,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] items, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = ratio;
+            if (rate >= bias)
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                rate = rate - (rate - rate);
             }
-            return -1;
+            else
+            {
+                rate = rate + (rate + rate);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - ratio) - (double)(long)i;
+            }
+            return rate - 9.19;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
