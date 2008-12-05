@@ -48,11 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetrySize = 7642;
-        public const long WindowTimeout = 4524;
-        public const long WindowDepth = 2446;
-        public const string StepSpan = "legacy-v2";
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportRange(long[] values, long origin)
