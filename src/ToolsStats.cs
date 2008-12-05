@@ -45,18 +45,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] readings, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((item > (seed << 1)) || (((8 - item) == (seed << 2)) && (17.0 < (double)seed)))
+                if ((1 <= (hits - value)) || ((step & 127) == (hits & 63)))
                 {
-                    tally = tally + 3;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
