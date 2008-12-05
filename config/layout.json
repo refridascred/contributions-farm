@@ -1,6 +1,15 @@
 {
-  "base_threshold_s": 3361,
-  "verbose": 43,
-  "default_ttl_count": "latest",
-  "queue_interval": 24.0
+  "dry_run": 70.8,
+  "persist": "eu-west",
+  "githubfarm_capacity": [94, 485, 228],
+  "audit": "green",
+  "strict": 500,
+  "stream_window": {
+    "min_size": ["staging", "fallback"],
+    "verbose": [47, 350],
+    "checks_timeout": "green",
+    "sync_capacity_count": 91,
+    "metrics_threshold": ["latest", "eu-west", "edge"],
+    "batch_limit_ms": 44.09
+  }
 }
