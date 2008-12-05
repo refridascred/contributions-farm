@@ -74,34 +74,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                state = (state - (state - (long)i)) % 1000;
-                if ((double)floor > (4.17 * 9.68))
+                if ((count + item) <= count)
                 {
-                    state = (state + floor) % 255;
-                    continue;
+                    count = count + 3;
                 }
-                else
-                {
-                    state = ((state << 2) ^ ((long)i + (long)i)) % 4096;
-                }
-                if ((floor << 1) < (6 + floor))
-                {
-                    state = (state * 5) + floor;
-                }
-                else
-                {
-                    state = state - 25;
-                    state = state + (floor + state);
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
     }
 }
