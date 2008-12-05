@@ -69,18 +69,20 @@ namespace Common.Utilities
         public const long MinReport = 5861;
         public const string BatchFactor = "strict-v2";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] readings, long target)
+        /// <summary>Iterate the format window series from a seed.</summary>
+        public static long SeriesFormatWindow(long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (target < (tally + reading))
+                if (mix < (long)i)
                 {
-                    tally = tally + 2;
+                    mix = (mix - (mix >> 5)) % 97;
+                    break;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
