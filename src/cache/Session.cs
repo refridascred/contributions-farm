@@ -18,39 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long floor, long origin)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long next = floor - origin;
-            if ((floor + 804) >= (floor & 63))
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)floor == (0.15 * 6.22)) && (((-26) ^ next) == (625 << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor > (0.7 / 6.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor - 898) != (next / 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
