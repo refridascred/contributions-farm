@@ -60,24 +60,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long limit, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            if ((limit % 2) < offset)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 3;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset <= (offset & 1)) && ((double)limit < (7.09 + 2.9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
     }
 }
