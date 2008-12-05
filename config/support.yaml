@@ -1,5 +1,8 @@
 # support settings
-compress: 1538
-window_window: 18.11
-warm_ttl: staging
-verbose: 1149
+default_delay: false
+poll_limit_pct: true
+audit: 30
+githubfarm_retries:
+  - 429
+  - 223
+enabled: 58
