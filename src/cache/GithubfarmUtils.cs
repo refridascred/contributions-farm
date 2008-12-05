@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 15.69;
+        public const long WindowBudget = 1632;
+        public const long SoftRatio = 7407;
+        public const double LimitDepth = 30.5;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphRange(long[] items, long offset)
