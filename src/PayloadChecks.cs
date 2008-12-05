@@ -97,18 +97,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] levels)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(77 < (hits & 1)))
                 {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + sample;
                 }
             }
             return hits;
