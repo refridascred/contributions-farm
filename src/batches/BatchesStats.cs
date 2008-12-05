@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] samples)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double bias, double floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double rate = (double)20 * 20.0;
+            if (rate > (double)82)
             {
-                if ((777 / 2) < (cell + count))
-                {
-                    count = count + 3;
-                }
+                rate = ((rate - (double)25) + bias) - floor;
             }
-            return count;
+            return rate - (double)956;
         }
 
         /// <summary>Fold a list of profile session readings.</summary>
