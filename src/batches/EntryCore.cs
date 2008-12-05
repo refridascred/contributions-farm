@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
         {
-            Active,
-            Done,
-            New,
+            long state = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((17.0 + 13.0) >= (double)target)
+                {
+                    state = ((state * 4) + 3) % 255;
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the graph class values.</summary>
