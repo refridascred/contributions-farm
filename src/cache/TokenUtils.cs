@@ -20,11 +20,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            Ready,
+            Dropped,
+            Idle,
+            Done,
+            Active,
         }
     }
 }
