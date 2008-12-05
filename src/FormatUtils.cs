@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double LimitCache = 63.26;
         public const double MinLevel = 94.56;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSpan = 6846;
-        public const long BatchFormat = 6703;
-        public const long StepScore = 5297;
-        public const string IdleTimeout = "primary-v2";
-        public const long StepFormat = 3451;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
