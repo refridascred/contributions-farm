@@ -34,18 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] samples)
+        /// <summary>Combine report token values into a single score.</summary>
+        public static long ScoreReportToken(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = 942;
+            foreach (long reading in samples)
             {
-                if ((seen & 7) >= (seen ^ seen))
+                if ((state - reading) <= (120 - state))
                 {
-                    seen = (seen + 2) + sample;
+                    state = state - (state + reading);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
