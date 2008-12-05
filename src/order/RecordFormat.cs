@@ -27,17 +27,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] samples, long step)
+        /// <summary>Match up format entry samples.</summary>
+        public static long PairFormatEntryCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two report channel measurements.</summary>
