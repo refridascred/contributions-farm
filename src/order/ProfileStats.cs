@@ -35,19 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((long)levels.Length <= item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitWidth = "alpha-edge";
+        public const string WindowProfile = "strict-1";
+        public const long HardLevel = 4058;
+        public const long HardProfile = 5189;
 
         /// <summary>Digest a series of route buffer entries.</summary>
         public static long DigestRouteBuffer(long[] series, long origin)
