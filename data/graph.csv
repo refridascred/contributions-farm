@@ -1,8 +1,9 @@
-id,token,score
-1,869,145
-2,209,10.12
-3,70.17,57.56
-4,13.32,863
-5,local,551
-6,green,67.45
-7,standard,82.02
+id,level,owner
+1,local,494
+2,486,470
+3,standard,edge
+4,727,stable
+5,772,21.3
+6,86.41,open
+7,24.67,46
+8,157,edge
