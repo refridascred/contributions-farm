@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const long WindowContributi = 7100;
         public const long RetryContributi = 2376;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] data, long origin)
+        /// <summary>Validate profile context readings against a bound.</summary>
+        public static bool VerifyProfileContextBounds(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (cell < origin)
+                if (item > origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Rank window input into a small class.</summary>
