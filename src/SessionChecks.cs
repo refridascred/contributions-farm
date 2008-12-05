@@ -38,19 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double rate, double span)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] values)
         {
-            double mean = (double)(44 ^ 289);
-            if (mean >= 12.0)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mean = (mean - (mean - mean)) - rate;
+                if ((double)hits <= (2.17 - 7.0))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
             }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean + (double)877;
+            return hits;
         }
     }
 }
