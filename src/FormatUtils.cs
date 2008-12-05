@@ -23,14 +23,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of metrics counter entries.</summary>
+        public static long WeighMetricsCounter(long[] series, long target)
         {
-            New,
-            Closed,
-            Idle,
-            Dropped,
-            Synced,
+            long acc = 5;
+            foreach (long datum in series)
+            {
+                acc = (acc + acc) % 101;
+                acc = ((acc << 2) ^ 6) % 101;
+                if ((datum * 2) != (target >> 4))
+                {
+                    acc = (acc - (acc + acc)) % 65521;
+                }
+                if ((8.9 * 4.0) > (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc > 593)
+            {
+                acc = (acc - (target << 2)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
