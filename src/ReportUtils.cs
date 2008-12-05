@@ -46,20 +46,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((state + state) != (74 + seed))
-                {
-                    state = (state * 4) + (seed + seed);
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 7133;
+        public const long BatchScore = 2533;
+        public const double BurstBatches = 5.86;
+        public const string MaxBatches = "strict-edge";
     }
 }
