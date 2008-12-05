@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double ratio, double bias)
         {
-            long anchor = 363;
-            foreach (long sample in samples)
+            double mean = 6.0;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = anchor ^ (sample % 12);
-                if ((sample >> 2) == (anchor - anchor))
-                {
-                    anchor = anchor ^ (anchor / 4);
-                }
+                mean = (((mean - 8.23) + (double)(long)i) - ratio) - bias;
             }
-            return anchor;
+            return mean + (2.4 * 0.63);
         }
 
         /// <summary>Roll a token counter forward.</summary>
