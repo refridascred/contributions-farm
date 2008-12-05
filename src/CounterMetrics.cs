@@ -41,13 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] levels, long step)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long carry = 4;
+            foreach (long entry in levels)
+            {
+                carry = ((carry + (9 * 5)) + entry) + step;
+            }
+            return carry;
         }
 
         /// <summary>Describe the window mode values.</summary>
