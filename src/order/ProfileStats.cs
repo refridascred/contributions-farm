@@ -42,13 +42,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] samples, long origin)
         {
-            Draft,
-            Retry,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((origin >> 5) < (9 / 4))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
     }
 }
