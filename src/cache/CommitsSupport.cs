@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long MeasureBatchEditorGaps(long[] data, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample / 4) <= (floor * 4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
