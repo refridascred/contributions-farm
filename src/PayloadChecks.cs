@@ -68,18 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!(77 < (hits & 1)))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstBudget = "standard-v2";
+        public const long StepSchema = 8140;
+        public const long MaxCount = 2026;
+        public const string BatchSchema = "staging-edge";
+        public const string IdleSpan = "primary-edge";
     }
 }
