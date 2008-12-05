@@ -41,14 +41,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long limit)
         {
-            New,
-            Retry,
-            Ready,
-            Stale,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
