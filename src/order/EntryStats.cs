@@ -52,10 +52,12 @@ namespace Common.Utilities
         public const long BatchScore = 9899;
         public const long HardStats = 9657;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchWidth = 4201;
-        public const long CacheChannel = 9683;
-        public const long RetryChannel = 4985;
-        public const long LimitScore = 1986;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Done,
+            Active,
+            Locked,
+        }
     }
 }
