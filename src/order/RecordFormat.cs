@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate editor cluster samples.</summary>
-        public static long TotalEditorCluster(long[] items)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            long mix = 77;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    long seen = mix;
-                    mix = (mix + (seen + value)) ^ (long)i;
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix + mix) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of route entries.</summary>
