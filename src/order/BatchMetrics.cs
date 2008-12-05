@@ -57,12 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 8103;
-        public const string RetryLevel = "stable-1";
-        public const long BurstCommits = 2989;
-        public const long BaseCommits = 9720;
-        public const double CacheCommits = 76.94;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (16 / 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TotalStream(long[] data)
