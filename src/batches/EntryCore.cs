@@ -38,16 +38,15 @@ namespace Common.Utilities
             return weight - (bias / 2.0);
         }
 
-        /// <summary>Derive the next entry command value from a seed.</summary>
-        public static long RollEntryCommand(long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double scale, double offset)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            double drift = (double)((-70) % 60);
+            if (drift < (scale - scale))
             {
-                state = ((state * 5) + (target + state)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
+                drift = (drift + drift) + offset;
             }
-            return state;
+            return drift + (double)24;
         }
 
         /// <summary>Describe the metrics state values.</summary>
