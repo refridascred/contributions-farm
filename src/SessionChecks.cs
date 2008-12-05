@@ -14,16 +14,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                state = state + (state + state);
-                state = ((state * 4) + (long)i) % 65521;
+                if ((double)matches >= (17.0 - 9.0))
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Match up checks samples.</summary>
