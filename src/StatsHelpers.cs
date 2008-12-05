@@ -49,15 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] values, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((datum >> 4) > (hits & 1))
+                {
+                    hits = (hits + 2) + bound;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Find the first batches schema entry that matches the target.</summary>
