@@ -1,6 +1,29 @@
 {
-  "cache_threshold_ms": 1024,
-  "soft_ratio_pct": 92.52,
-  "metric_threshold": false,
-  "hard_window": "cached"
+  "readonly": {
+    "format_retries": {
+      "base_capacity": 60,
+      "dry_run": 250,
+      "session_timeout": 22
+    },
+    "retry_window_ms": "fallback",
+    "window_timeout": 96,
+    "stream_ratio": 60
+  },
+  "batch_limit": "green",
+  "editor_depth": 1024,
+  "entry_ttl": {
+    "enabled": {
+      "strict": true,
+      "burst_threshold_ms": ["edge", "stable", "open", "green"],
+      "buffer_threshold": 6658,
+      "persist": [378, 159],
+      "stats_timeout": [373, 34],
+      "batch_ttl": 45.47
+    },
+    "compress": 9.5,
+    "checks_delay": [96, 14, 230],
+    "max_limit_s": "edge",
+    "verbose": "stable"
+  },
+  "graph_capacity": true
 }
