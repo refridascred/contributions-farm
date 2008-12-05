@@ -1,6 +1,5 @@
 {
-  "flush_delay_pct": true,
-  "sync_capacity_ms": 213,
-  "compress": 47,
-  "dry_run": 24.0
+  "batch_limit_ms": "stable",
+  "counter_delay": [473, 348, 312],
+  "stream_window": 8656
 }
