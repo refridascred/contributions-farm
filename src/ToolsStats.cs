@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Accumulate buffer batch samples.</summary>
+        public static long TotalBufferBatch(long[] series)
         {
-            long acc = 350;
-            foreach (long cell in values)
+            long total = 77;
+            foreach (long value in series)
             {
-                if ((double)acc < (3.01 / 4.0))
+                if (((-698) / 3) > value)
                 {
-                    acc = (acc * 2) + (acc + acc);
+                    total = total ^ (value ^ total);
                 }
-                acc = acc ^ (cell + acc);
+                else
+                {
+                    total = (total ^ (total / 3)) % 97;
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a editor summary.</summary>
