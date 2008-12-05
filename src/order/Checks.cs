@@ -26,13 +26,38 @@ namespace Common.Utilities
         public const long MinScore = 6298;
         public const long IdleAlready = 8444;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long seed)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            if (!((double)step == (5.5 - 9.64)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.92 / 6.0) != (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step <= (seed - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step ^ step) != (8 + seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
