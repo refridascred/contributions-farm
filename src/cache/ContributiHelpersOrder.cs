@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 823;
-        public const long SoftFarm = 2420;
-        public const string BaseTimeout = "staging";
-        public const long BatchFarm = 3314;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long step)
+        {
+            long gap = limit ^ step;
+            if ((gap & 1) > (limit & 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((12.0 - 9.6) >= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (gap >= (gap - 406))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] data)
