@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] readings)
+        /// <summary>Count command report pairs that satisfy a relation.</summary>
+        public static long OverlapCommandReportCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((14 << 3) > (cell + cell)) || ((tally & 1) < (cell - tally)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next route value.</summary>
