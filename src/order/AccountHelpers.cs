@@ -56,10 +56,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinBudget = 64.77;
-        public const string WindowCluster = "staging-1";
-        public const long StepLevel = 1812;
-        public const string BatchCluster = "legacy-edge";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings)
+        {
+            long acc = 2;
+            foreach (long entry in readings)
+            {
+                if ((-76) >= (acc << 2))
+                {
+                    acc = ((acc * 3) + (acc / 3)) + entry;
+                }
+            }
+            if (acc < 81)
+            {
+                acc = (acc * 4) + (acc - acc);
+            }
+            return acc;
+        }
     }
 }
