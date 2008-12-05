@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] items, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
-            long carry = 54;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((-36) <= (carry - origin))
+                if ((double)hits >= (double)152)
                 {
-                    carry = (carry - (65 << 1)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (entry & 127)) % 255;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
