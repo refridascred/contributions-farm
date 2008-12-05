@@ -54,12 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 3816;
-        public const long DefaultBudget = 7251;
-        public const long HardBudget = 8872;
-        public const long RetryRoute = 7323;
-        public const long IdleRoute = 6597;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Done,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long WeighCommand(long[] values)
