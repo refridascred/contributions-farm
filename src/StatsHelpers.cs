@@ -39,39 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long limit, long limit2)
+        /// <summary>Count counter support pairs that satisfy a relation.</summary>
+        public static long PairCounterSupportCount(long[] samples)
         {
-            long bound = limit ^ limit2;
-            if ((bound >= (limit2 >> 4)) && ((1 - bound) >= (limit2 - 2)))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit2 >= (double)bound) && ((double)limit <= (1.0 * 4.5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit2 >> 1) == (bound + limit2))
+                    if ((samples[i] + samples[j]) > 7)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound != (1.0 - 17.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first batches schema entry that matches the target.</summary>
