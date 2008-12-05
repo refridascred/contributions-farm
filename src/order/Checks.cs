@@ -75,22 +75,16 @@ namespace Common.Utilities
             return rate2 + (double)1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] values)
+        /// <summary>Derive the next metric notes value from a seed.</summary>
+        public static long RollMetricNotes(long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)entry > (double)seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc + (acc * 5)) % 97;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
