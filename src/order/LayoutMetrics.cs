@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] data, long origin)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (count <= (origin + count))
+                if ((items[i] < floor) && ((items[i] % 2) == 0))
                 {
-                    count = (count + 3) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a notes batches counter forward.</summary>
