@@ -1,5 +1,7 @@
 {
-  "burst_threshold_count": "primary",
-  "profile_limit": 77,
-  "max_ttl_s": "edge"
+  "filter_threshold": [296, 488],
+  "batch_depth": "legacy",
+  "cache_capacity": "edge",
+  "cache_timeout_count": 2532,
+  "burst_retries_s": "local"
 }
