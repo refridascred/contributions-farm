@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long carry = -63;
-            foreach (long datum in items)
-            {
-                carry = (((carry * 3) + (carry / 6)) % 65521) + datum;
-                if (0 <= carry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
