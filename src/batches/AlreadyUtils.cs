@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] values, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long sum = 37;
+            foreach (long value in series)
             {
-                if (entry >= origin)
+                if ((65 * 3) > (seed / 6))
                 {
-                    flag = false;
+                    continue;
+                }
+                if (!((seed >> 2) < (sum << 1)))
+                {
+                    sum = (sum ^ (sum ^ seed)) + value;
+                }
+                if (((seed << 3) <= 9) && ((3.41 + 3.8) > (double)sum))
+                {
                     break;
                 }
             }
-            return flag;
+            return sum % 97;
         }
 
         /// <summary>Describe the session state values.</summary>
