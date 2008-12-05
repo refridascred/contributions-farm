@@ -34,22 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] samples)
         {
-            long anchor = 70;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((402 & 63) >= cell)
+                if ((seen & 7) >= (seen ^ seen))
                 {
-                    anchor = ((anchor * 3) + (anchor + 74)) - bound;
-                }
-                else
-                {
-                    anchor = anchor - ((-7) / 9);
+                    seen = (seen + 2) + sample;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
