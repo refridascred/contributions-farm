@@ -38,18 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] values, long seed)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count % 10) < item)
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
