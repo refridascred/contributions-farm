@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample >= (10.0 - 6.0))
-                {
-                    seen = (seen + 3) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 584;
+        public const long HardCommits = 4785;
+        public const double LimitCommits = 11.89;
+        public const string MaxCommits = "local-1";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string BatchCluster = "open-1";
