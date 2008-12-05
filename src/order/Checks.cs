@@ -74,13 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Validate schema tools readings against a bound.</summary>
+        public static bool CheckSchemaToolsRange(long[] readings, long step)
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a report record.</summary>
