@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series, long limit)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long step, long limit)
         {
-            long mark = 0;
-            foreach (long cell in series)
+            long edge = step ^ limit;
+            if ((step - (-42)) != (limit ^ edge))
             {
-                if ((1.95 / 5.0) < (double)limit)
+                return 5;
+            }
+            else
+            {
+                if (!(edge > limit))
                 {
-                    mark = ((mark ^ (limit / 8)) % 101) + cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)edge != (2.9 / 7.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
