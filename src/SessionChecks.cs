@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long step = floor ^ offset;
-            if (3.8 < (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((20 ^ step) == (floor & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + floor) != (floor + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            New,
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
