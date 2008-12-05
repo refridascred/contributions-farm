@@ -1,24 +1,9 @@
 # support settings
-editor_depth: 12.22
-verbose: 250
-min_depth_ms:
-  - 262
-  - 107
-  - 452
-profile_interval: 379
-hard_size_count: false
-readonly:
-  flush_timeout_pct: fallback
-  base_depth_s: staging
-  min_delay_pct:
-    metrics_delay: 30
-    soft_capacity_pct: 5127
-    dry_run: 73
-    burst_limit_s: true
-    enabled: true
-    min_retries_s: true
-  metric_capacity:
-    account_window: 45.36
-    sync_timeout_count: standard
-    min_interval_ms: 33.32
-  min_depth_s: open
+counter_size: latest
+min_capacity_pct: 89
+min_ratio_s:
+  - 246
+  - 393
+soft_interval: fallback
+record_limit: 5
+enabled: 26.67
