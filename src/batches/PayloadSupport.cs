@@ -28,15 +28,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] series, long floor)
-        {
-            long mark = 410;
-            foreach (long value in series)
-            {
-                mark = (((mark + (33 % 24)) % 1000) + value) - floor;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 62.25;
+        public const long BurstScore = 7198;
+        public const string BatchToken = "strict-v2";
+        public const long BatchRatio = 4546;
+        public const string MinInterval = "stable-edge";
     }
 }
