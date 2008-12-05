@@ -21,24 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long limit, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long bound)
         {
-            if ((bound - limit) == (bound + bound))
+            bool ok = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + limit) < (683 << 3))
+                if (cell < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the profile state values.</summary>
