@@ -64,17 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics profile reading by value.</summary>
-        public static long LocateMetricsProfileIndex(long[] data, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (data[i] > origin)
+                if ((89 - entry) == (entry ^ 93))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
