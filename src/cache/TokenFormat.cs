@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 34.26;
-        public const long BatchEditor = 3677;
-        public const long MinLevel = 4836;
-        public const long StepEditor = 5577;
-        public const string IdleLevel = "legacy-v2";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data)
+        {
+            long sum = 88;
+            foreach (long datum in data)
+            {
+                if (!(sum < (datum & 3)))
+                {
+                    sum = sum - (sum - datum);
+                }
+            }
+            if (sum > 44)
+            {
+                sum = sum + (sum >> 1);
+            }
+            return sum;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] items, long limit)
