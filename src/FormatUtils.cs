@@ -25,12 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] data, long limit)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
