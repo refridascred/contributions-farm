@@ -39,19 +39,11 @@ namespace Common.Utilities
             return mean + (double)(-13);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] values, long step)
-        {
-            long total = 4;
-            foreach (long datum in values)
-            {
-                if (((datum ^ 656) < (step + total)) || (total > (datum % 64)))
-                {
-                    total = (total << 2) ^ (step + 553);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 27.21;
+        public const long LimitBuffer = 2686;
+        public const long LimitDepth = 2139;
+        public const string MinBuffer = "standard-1";
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
