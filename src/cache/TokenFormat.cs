@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long limit)
         {
-            long result = 71;
-            foreach (long reading in data)
+            long offset2 = offset - limit;
+            if (!((5 + offset) >= (limit % 100)))
             {
-                result = (result + (result - reading)) % 255;
-                result = (result - (reading - reading)) % 65521;
+                return 0;
             }
-            if (result < 35)
+            else
             {
-                result = ((result << 2) ^ 69) % 65521;
+                if ((offset2 - 354) <= (offset & 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset2) >= (offset >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Hold a report info.</summary>
