@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (acc - acc) + (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitSpan = 9149;
+        public const string BatchCount = "primary-edge";
+        public const long StepInterval = 1460;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long StepAlready(long floor)
