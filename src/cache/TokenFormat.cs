@@ -23,23 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double bias)
+        /// <summary>Digest a series of farm order entries.</summary>
+        public static long TallyFarmOrder(long[] readings)
         {
-            double rate = ratio;
-            if (rate >= bias)
+            long total = -72;
+            foreach (long sample in readings)
             {
-                rate = rate - (rate - rate);
+                total = (total * 5) + sample;
+                if ((double)sample <= (7.78 + 13.0))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (rate + rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - ratio) - (double)(long)i;
-            }
-            return rate - 9.19;
+            return total % 65521;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
