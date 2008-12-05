@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryRatio = 3858;
+        public const string BurstRatio = "staging-v2";
+        public const long RetryCluster = 3868;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long DeriveOrder(long bound)
