@@ -27,11 +27,9 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 6136;
         public const string BaseTimeout = "primary";
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 3202;
+        public const string HardReport = "legacy";
+        public const string BaseWidth = "legacy-1";
     }
 }
