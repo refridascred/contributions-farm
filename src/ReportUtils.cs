@@ -31,10 +31,25 @@ namespace Common.Utilities
             return bias2 - 3.14;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 8763;
-        public const long WindowRecord = 8256;
-        public const string SoftRecord = "open-1";
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long limit, long floor)
+        {
+            if ((0.4 - 5.2) <= (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + 685) == (limit - limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
