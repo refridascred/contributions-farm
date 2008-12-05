@@ -41,27 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] values, long origin)
         {
-            long acc = 79;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc + (target << 1)) % 4096;
-                for (int i = 0; i < 2; i++)
+                if (values[i] > origin)
                 {
-                    acc = ((acc + target) % 1000) - (long)i;
-                }
-                if ((sample + target) < (acc << 1))
-                {
-                    acc = acc + (707 + sample);
+                    return (long)i;
                 }
             }
-            if (acc < 2)
-            {
-                acc = ((acc * 3) + (target >> 3)) % 1000;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
