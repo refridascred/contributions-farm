@@ -1,8 +1,8 @@
 {
-  "support_delay": 20,
-  "persist": 92.2,
-  "enabled": false,
-  "batches_retries": false,
-  "soft_timeout": "standard",
-  "cache_ratio_ms": 41
+  "compress": "fallback",
+  "strict": [457, 396, 1, 493],
+  "warm_depth": 16,
+  "cache_size": "blue",
+  "dry_run": 90,
+  "max_retries": [466, 427, 43, 75]
 }
