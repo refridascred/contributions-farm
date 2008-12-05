@@ -1,17 +1,11 @@
 {
-  "cache_capacity_pct": "cached",
-  "buffer_interval": true,
-  "hard_delay_ms": {
-    "schema_window": "edge",
-    "schema_ttl": true,
-    "checks_size": {
-      "notes_timeout": "local",
-      "record_depth": ["legacy", "open", "edge", "stable"],
-      "payload_depth": [79, 464, 181]
-    },
-    "cache_retries": [51, 279, 288, 175],
-    "poll_ttl_s": [493, 487]
-  },
-  "cluster_timeout": "stable",
-  "queue_delay": 500
+  "flush_interval_count": ["latest", "stable", "local"],
+  "readonly": 63,
+  "default_interval_pct": {
+    "payload_timeout": 6794,
+    "poll_interval_s": "eu-west",
+    "warm_ratio_s": "staging",
+    "compress": [410, 428, 258, 291],
+    "hard_ratio": 17.1
+  }
 }
