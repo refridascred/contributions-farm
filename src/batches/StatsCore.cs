@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 5768;
-        public const long MinInterval = 1142;
-        public const string DefaultCommits = "fallback-1";
-        public const long BaseCommits = 6661;
-        public const long BatchLevel = 945;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((16.0 - 9.3) < (5.0 + 8.9))
+                {
+                    count = ((count + 1) + sample) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit stream counter readings against a rule.</summary>
         public static long MeasureStreamCounterOutliers(long[] values, long target)
