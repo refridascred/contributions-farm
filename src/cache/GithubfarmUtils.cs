@@ -37,15 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] items)
-        {
-            long mix = 76;
-            foreach (long sample in items)
-            {
-                mix = (mix + (mix & 1)) - sample;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepLevel = 73.85;
+        public const long DefaultRatio = 2241;
+        public const long BatchCommits = 2951;
+        public const double RetryCommits = 85.3;
+        public const string DefaultBudget = "latest";
     }
 }
