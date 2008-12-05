@@ -14,18 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long mark = 677;
-            foreach (long entry in items)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((floor >> 1) >= (mark & 3))
-                {
-                    mark = (mark + (long)items.Length) + entry;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return mark % 65521;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
