@@ -13,19 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series, long offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] items, long origin)
         {
-            long mix = 26;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                mix = (((mix << 2) ^ (offset & 15)) % 65521) ^ cell;
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mix < (-4))
-            {
-                mix = (mix << 3) ^ (17 / 6);
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the schema status values.</summary>
