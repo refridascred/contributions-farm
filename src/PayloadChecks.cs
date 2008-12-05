@@ -37,33 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long offset, long limit)
-        {
-            long next = offset + limit;
-            if (limit < (next + 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (double)next)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset > (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "latest-1";
+        public const long SoftTimeout = 9205;
+        public const string RetryFarm = "legacy";
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] items)
