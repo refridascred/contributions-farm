@@ -36,15 +36,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] data, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings, long seed)
         {
-            long state = 5;
-            foreach (long cell in data)
+            long score = 73;
+            foreach (long item in readings)
             {
-                state = (((state ^ state) % 255) + cell) + floor;
+                score = ((score * 4) + (item + score)) + seed;
+                score = ((score * 3) + 0) % 97;
             }
-            return state;
+            if (score > 3)
+            {
+                score = (score + (score + score)) % 1000;
+            }
+            return score;
         }
     }
 }
