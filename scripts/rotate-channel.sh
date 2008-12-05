@@ -6,7 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-staging}"
 case "${mode}" in
     fallback)
         log "fast path"
@@ -16,6 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge eu-west local latest; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
