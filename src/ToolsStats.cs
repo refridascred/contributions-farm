@@ -59,12 +59,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
+            double gain = (double)(40 << 1);
+            if (gain < 7.95)
+            {
+                gain = (gain + (4.0 + floor)) - weight;
+            }
+            else
+            {
+                gain = gain - 18.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + (floor * 8.48);
         }
 
         /// <summary>Roll a editor counter forward.</summary>
