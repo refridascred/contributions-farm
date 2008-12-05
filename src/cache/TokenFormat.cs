@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] data, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
