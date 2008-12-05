@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a githubfarm tools reading.</summary>
-        public static double SmoothGithubfarmTools(double rate, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] levels)
         {
-            double mean = offset * 10.0;
-            if (mean <= 2.3)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mean = (mean + offset) - rate;
+                if (entry >= (entry - 509))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mean + mean;
+            return tally;
         }
 
         /// <summary>Hold a contributi summary.</summary>
