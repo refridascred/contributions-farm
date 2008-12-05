@@ -46,18 +46,31 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long step, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if (!((seed - seed) < (seed + seed)))
             {
-                if (sample < count)
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) >= (step - step))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (seed < (seed / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
