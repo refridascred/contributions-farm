@@ -29,21 +29,13 @@ namespace Common.Utilities
             return bias + (double)9;
         }
 
-        /// <summary>Compare every pair of githubfarm editor readings.</summary>
-        public static long OverlapGithubfarmEditorCount(long[] series)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Failed,
+            Draft,
+            Synced,
         }
     }
 }
