@@ -68,21 +68,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Grade a token schema value against two limits.</summary>
+        public static long BucketTokenSchema(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = target + limit;
+            if (!((target - limit) > (4 + edge)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((edge + limit) <= (target / 7))
                 {
-                    if ((values[i] - values[j]) > 17)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target >= (0.09 - 1.28))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + 3) < (limit + edge))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
