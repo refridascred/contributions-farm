@@ -64,17 +64,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor << 3) ^ anchor;
-                anchor = ((anchor * 4) + anchor) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
