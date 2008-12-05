@@ -1,6 +1,4 @@
 # entry settings
-warm_timeout: 35.43
-githubfarm_threshold:
-  - 452
-  - 427
-enabled: true
+cache_interval_pct: 91.51
+soft_capacity_count: legacy
+persist: blue
