@@ -45,11 +45,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinRatio = 9135;
-        public const long IdleLevel = 5918;
-        public const long BurstRatio = 2656;
-        public const long RetryLevel = 3694;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) < cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long OverlapWindowCount(long[] values)
