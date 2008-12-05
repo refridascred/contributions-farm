@@ -47,13 +47,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Validate editor record readings against a bound.</summary>
+        public static bool GuardEditorRecordLimits(long[] readings, long floor)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
