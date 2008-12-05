@@ -41,23 +41,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the counter metric entries that pass the check.</summary>
-        public static long MeasureCounterMetricOutliers(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (!(((hits << 2) < (bound / 9)) || (hits > ((-912) & 7))))
-                {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchCount = 4698;
+        public const long RetryEditor = 7037;
+        public const double MaxEditor = 60.48;
+        public const double MinEditor = 9.08;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] data, long step)
