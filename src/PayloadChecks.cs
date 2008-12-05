@@ -47,19 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if (origin <= (long)i)
-                {
-                    score = (score * 4) + origin;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Queued,
+            Idle,
+            Paused,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
