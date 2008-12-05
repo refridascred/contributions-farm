@@ -30,11 +30,21 @@ namespace Common.Utilities
         public const long BaseTools = 1872;
         public const long BatchSize = 9494;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
+        public static long OverlapContributiProfileCount(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate account samples.</summary>
