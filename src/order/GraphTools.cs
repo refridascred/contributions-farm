@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double LimitContext = 38.22;
         public const long CacheLevel = 1517;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] values)
         {
-            Done,
-            Ready,
-            Queued,
+            long total = 899;
+            foreach (long item in values)
+            {
+                if ((long)values.Length <= 801)
+                {
+                    total = ((total * 4) + (2 / 4)) - item;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
