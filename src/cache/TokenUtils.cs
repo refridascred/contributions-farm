@@ -13,21 +13,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count support commits pairs that satisfy a relation.</summary>
-        public static long PairSupportCommitsCount(long[] levels)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up record filter samples.</summary>
