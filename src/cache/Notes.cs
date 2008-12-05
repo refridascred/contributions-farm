@@ -25,12 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheBudget = 53.01;
-        public const double WindowLevel = 56.19;
-        public const long StepNotes = 8275;
-        public const double MaxSpan = 85.37;
-        public const long DefaultFactor = 9869;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] series, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double AdjustStats(double gain, double bias)
