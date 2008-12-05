@@ -38,19 +38,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] levels, long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
