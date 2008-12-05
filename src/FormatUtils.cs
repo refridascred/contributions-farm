@@ -64,19 +64,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate entry graph readings against a bound.</summary>
-        public static bool GuardEntryGraphLimits(long[] samples, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            double ratio = 6.7;
+            if (ratio <= 8.74)
             {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ((ratio + 1.74) + weight) - floor;
             }
-            return flag;
+            return ratio + (double)683;
         }
     }
 }
