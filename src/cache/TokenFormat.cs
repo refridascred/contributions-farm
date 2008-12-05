@@ -12,20 +12,22 @@ namespace Common.Utilities
         public const long SoftFilter = 4649;
         public const long IdleFilter = 9319;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] samples)
         {
-            long acc = 4;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 4) + (acc - acc)) % 1000;
-                acc = acc - (acc * 5);
-                if (((value % 3) < (value + 70)) || (acc > (value + acc)))
+                if ((count - reading) != (count * 2))
                 {
-                    acc = ((acc * 4) + (acc * 4)) % 1000;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
