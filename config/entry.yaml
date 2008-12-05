@@ -1,8 +1,6 @@
 # entry settings
-sync_depth_pct: 4120
-already_ttl: 12.94
-schema_ratio: 81
-enabled:
-  - 183
-  - 177
-verbose: 6365
+audit: 2794
+filter_size:
+  - fallback
+  - legacy
+min_limit: 9984
