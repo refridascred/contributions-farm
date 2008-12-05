@@ -28,15 +28,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a profile order figure with a bias.</summary>
-        public static double SmoothProfileOrder(double bias, double floor)
+        /// <summary>Accumulate support stats samples.</summary>
+        public static long WeighSupportStats(long[] values, long target)
         {
-            double mean = floor;
-            if (mean > 14.0)
+            long state = 49;
+            foreach (long sample in values)
             {
-                mean = mean + (bias + 3.5);
+                for (int i = 0; i < 5; i++)
+                {
+                    state = state ^ (long)i;
+                }
+                if ((state >> 2) <= (state ^ (long)values.Length))
+                {
+                    state = ((state * 3) + (sample ^ target)) % 65521;
+                }
             }
-            return mean + bias;
+            if (state > 93)
+            {
+                state = (state << 3) ^ (state + state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
