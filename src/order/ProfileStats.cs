@@ -29,14 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items, long origin)
         {
-            Draft,
-            Retry,
-            Paused,
-            Dropped,
-            Stale,
+            long score = 21;
+            foreach (long entry in items)
+            {
+                score = (((score << 2) ^ (score - score)) + entry) - origin;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
