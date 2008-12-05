@@ -35,10 +35,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 4293;
-        public const long BurstContext = 130;
-        public const double MinContext = 94.4;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)item >= (8.3 + 5.35))
+                {
+                    matches = (matches + 2) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultDepth = 9566;
