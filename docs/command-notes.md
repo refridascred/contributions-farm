@@ -1,11 +1,11 @@
 # Command notes
 
-When a editor fails, the editor handler retries a few times before giving up.
-Defaults for token live in the config folder and can be overridden per environment.
-A batch that stays idle for too long is moved to the buffer list.
+Use metric settings to tune how often order data is refreshed.
+Use window settings to tune how often batches data is refreshed.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer filter defaults
-- Log every queue change
+- Log every channel change
+- Review counter limits each release
+- Validate cluster input early
