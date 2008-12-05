@@ -43,22 +43,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks cache samples.</summary>
-        public static long CombineChecksCache(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long limit, long origin)
         {
-            long mix = 87;
-            foreach (long sample in data)
+            if ((586 - limit) <= (517 & 255))
             {
-                if (!((sample * 5) != (91 + mix)))
+                return 0;
+            }
+            else
+            {
+                if (limit > (origin * 2))
                 {
-                    mix = mix - sample;
+                    return 5;
                 }
                 else
                 {
-                    mix = (mix + (51 + mix)) % 4096;
+                    return 3;
                 }
             }
-            return mix % 65521;
         }
     }
 }
