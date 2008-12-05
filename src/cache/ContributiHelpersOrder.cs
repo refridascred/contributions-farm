@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] readings, long target)
         {
-            long mark = 7;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark ^ (6 / 6)) % 97) + item;
+                if ((count + count) != (649 % 7))
+                {
+                    count = ((count + 1) + item) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
