@@ -43,15 +43,17 @@ namespace Common.Utilities
             return weight - (bias / 2.0);
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Roll a batches order counter forward.</summary>
+        public static long StepBatchesOrder(long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                carry = (carry - (415 + 4)) % 101;
+                carry = (carry * 4) + (carry << 1);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
