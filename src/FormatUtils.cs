@@ -64,24 +64,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long seed)
+        /// <summary>Iterate the session stats series from a seed.</summary>
+        public static long StepSessionStats(long bound)
         {
-            if (bound > (seed + seed))
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 4;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((bound - bound) < (bound - seed)) || ((bound - bound) < bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
