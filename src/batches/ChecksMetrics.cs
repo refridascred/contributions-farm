@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long BurstEditor = 6263;
         public const long MinBudget = 1550;
 
-        /// <summary>Locate a command route reading by value.</summary>
-        public static long LookupCommandRouteIndex(long[] items, long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Ready,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a session stats.</summary>
