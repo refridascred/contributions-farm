@@ -70,17 +70,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] values, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                if ((double)seen < (double)value)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the payload state values.</summary>
