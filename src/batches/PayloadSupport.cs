@@ -28,11 +28,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 62.25;
-        public const long BurstScore = 7198;
-        public const string BatchToken = "strict-v2";
-        public const long BatchRatio = 4546;
-        public const string MinInterval = "stable-edge";
+        /// <summary>Scale a support metrics figure with a bias.</summary>
+        public static double SmoothSupportMetrics(double weight, double floor)
+        {
+            double scale = weight + 0.7;
+            if (scale >= (double)379)
+            {
+                scale = scale - (double)52;
+            }
+            else
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale + weight;
+        }
     }
 }
