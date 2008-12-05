@@ -77,22 +77,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already counter entries.</summary>
-        public static long ScoreAlreadyCounter(long[] readings, long seed)
-        {
-            long mark = 580;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) != (mark >> 1))
-                {
-                    mark = (mark - seed) % 97;
-                }
-            }
-            if (mark > 5)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 1142;
+        public const long LimitWidth = 3720;
+        public const long CacheAlready = 7334;
     }
 }
