@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseDepth = 603;
-        public const long StepBatch = 5634;
-        public const string StepFactor = "alpha-edge";
-        public const long SoftBatch = 658;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 22.23;
+        public const long DefaultEntry = 4510;
+        public const double SoftWidth = 35.82;
+        public const long BaseWidth = 1493;
+        public const long MaxEntry = 1870;
 
         /// <summary>Accumulate queue metrics samples.</summary>
         public static long ScoreQueueMetrics(long[] series, long limit)
