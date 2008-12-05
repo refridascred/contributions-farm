@@ -37,21 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
