@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine cluster stream values into a single score.</summary>
-        public static long TallyClusterStream(long[] levels)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] readings, long limit)
         {
-            long total = 813;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)total >= (4.0 - 19.0)) && ((double)reading < (double)total))
+                if (readings[i] == limit)
                 {
-                    total = ((total * 5) + reading) % 101;
-                }
-                else
-                {
-                    total = (total * 5) + (reading * 3);
+                    return (long)i;
                 }
             }
-            if (total < 5)
-            {
-                total = total - (total % 2);
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
