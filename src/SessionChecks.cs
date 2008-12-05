@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            New,
-            Idle,
-            Active,
-            Paused,
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
