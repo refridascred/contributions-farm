@@ -57,11 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 6063;
-        public const string StepTimeout = "cached";
-        public const string HardStream = "open-1";
-        public const long IdleSize = 5475;
-        public const string MinRatio = "strict-1";
+        /// <summary>Scale a metric layout figure with a bias.</summary>
+        public static double BlendMetricLayout(double gain, double offset)
+        {
+            double weight = (gain + 1.69) / 4.0;
+            if (weight <= (gain * 0.7))
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - offset) - (double)(long)i;
+            }
+            return weight + offset;
+        }
     }
 }
