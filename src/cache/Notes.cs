@@ -30,18 +30,16 @@ namespace Common.Utilities
         public const long MaxContributi = 7211;
         public const double BatchInterval = 73.11;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long result = 161;
-            foreach (long sample in readings)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (result >= (sample ^ sample))
-                {
-                    result = (result ^ (result >> 3)) % 4096;
-                }
+                state = (state - ((long)i + (long)i)) % 101;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Hold a farm summary.</summary>
