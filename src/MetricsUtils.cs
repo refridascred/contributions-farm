@@ -37,21 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Count the contributi session entries that pass the check.</summary>
+        public static long MeasureContributiSessionHits(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((double)origin < (2.5 / 4.0))
+                if (((tally - 783) == (tally % 16)) && (((1.7 * 19.0) < 5.94) && (tally < reading)))
                 {
-                    mix = ((mix * 3) + (mix / 2)) % 97;
+                    tally = tally + 1;
                 }
-                mix = (mix + (long)i) % 65521;
-                mix = (mix - (origin << 2)) % 97;
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
