@@ -43,18 +43,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long sum = 797;
+            foreach (long item in samples)
             {
-                if ((double)hits <= (2.17 - 7.0))
+                sum = ((sum << 3) ^ (item * 3)) % 101;
+                if ((sum + item) < (item % 64))
                 {
-                    hits = (hits + 3) ^ cell;
+                    continue;
                 }
+                sum = ((sum * 4) + (item - item)) % 65521;
             }
-            return hits;
+            return sum;
         }
     }
 }
