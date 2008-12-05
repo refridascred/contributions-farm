@@ -41,13 +41,15 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Iterate the metrics batches series from a seed.</summary>
+        public static long SeriesMetricsBatches(long limit)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            long score = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate account samples.</summary>
