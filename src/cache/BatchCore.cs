@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many githubfarm context samples are out of range.</summary>
-        public static long CountGithubfarmContextOutliers(long[] data, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long acc = 98;
+            foreach (long item in items)
             {
-                if ((datum ^ 499) < (hits + hits))
+                if (901 < (acc - acc))
                 {
-                    hits = (hits + 3) - target;
+                    acc = (acc * 3) + (item >> 4);
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
