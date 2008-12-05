@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] readings, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((16.0 - 9.3) < (5.0 + 8.9))
+                if (entry < step)
                 {
-                    count = ((count + 1) + sample) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
