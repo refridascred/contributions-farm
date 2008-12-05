@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Idle,
-            Pending,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 4342;
+        public const long WindowContributi = 3573;
+        public const long BaseContributi = 5250;
+        public const double StepContributi = 44.66;
+        public const long StepSpan = 5590;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
