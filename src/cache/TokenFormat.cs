@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long StepEditor = 5577;
         public const string IdleLevel = "legacy-v2";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRatio = "fallback";
-        public const long WindowRatio = 9966;
-        public const double DefaultRoute = 7.88;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] values, long step)
