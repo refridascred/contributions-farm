@@ -19,23 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next filter commits value.</summary>
-        public static double ProjectFilterCommits(double gain, double offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            double mean = offset;
-            if (mean < (11.0 + gain))
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean + offset;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score ^ (seed - score)) % 101) ^ (long)i2;
+                }
+                score = ((score << 3) ^ (seed ^ seed)) % 4096;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - (double)(-13);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (gain / 2.0)) + (double)(long)i;
-            }
-            return mean + (double)(-13);
+            return score;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
