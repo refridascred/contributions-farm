@@ -39,17 +39,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long origin)
+        /// <summary>Roll a tools cluster counter forward.</summary>
+        public static long SeriesToolsCluster(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] <= origin)
+                acc = (acc ^ acc) % 101;
+                if ((acc >> 5) >= 2)
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + acc) % 1000;
                 }
+                else
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
