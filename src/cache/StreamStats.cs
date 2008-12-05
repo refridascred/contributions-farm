@@ -59,20 +59,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!(result >= origin))
-                {
-                    result = (result * 2) + (result * 3);
-                }
-                result = ((result << 3) ^ ((-1) / 7)) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchBudget = "legacy-edge";
+        public const long BatchInterval = 2219;
+        public const double MinDepth = 27.26;
+        public const double CacheScore = 68.36;
     }
 }
