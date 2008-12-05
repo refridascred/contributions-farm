@@ -23,24 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 5) + (floor - floor)) % 101;
-                if (acc > (long)i)
-                {
-                    acc = (acc + (acc + (long)i)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (floor + floor)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Audit already context readings against a rule.</summary>
