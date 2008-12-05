@@ -17,19 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] series, long bound)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
