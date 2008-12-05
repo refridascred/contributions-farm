@@ -30,17 +30,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] readings, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long mark = 1;
-            foreach (long cell in readings)
-            {
-                mark = ((mark * 3) + floor) % 65521;
-                mark = (mark * 5) + (cell << 2);
-                mark = ((mark * 2) + (cell - mark)) % 65521;
-            }
-            return mark;
+            Paused,
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
