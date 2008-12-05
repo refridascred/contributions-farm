@@ -59,12 +59,12 @@ namespace Common.Utilities
         public const double MaxEditor = 60.48;
         public const double MinEditor = 9.08;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] data, long origin)
+        /// <summary>Find the first batches schema entry that matches the target.</summary>
+        public static long FindBatchesSchemaIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] == origin)
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
