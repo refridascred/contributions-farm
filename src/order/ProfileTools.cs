@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] series)
         {
-            long state = 11;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (!(item > (state ^ item)))
+                if ((double)item >= (14.0 * 5.3))
                 {
-                    state = (state * 3) + (item + item);
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
