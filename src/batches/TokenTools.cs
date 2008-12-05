@@ -46,15 +46,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double scale, double bias)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double load = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + 7.1) - (double)(long)i;
-            }
-            return load + bias;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
