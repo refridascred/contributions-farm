@@ -60,12 +60,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseRatio = 667;
-        public const long MinInterval = 5640;
-        public const long IdleTimeout = 8747;
-        public const double LimitSpan = 10.02;
-        public const double StepTimeout = 26.05;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double rate, double offset)
+        {
+            double rate2 = (rate / 9.0) * 19.0;
+            if (rate2 <= (rate2 / 6.0))
+            {
+                rate2 = (rate2 - (rate2 - rate2)) - offset;
+            }
+            else
+            {
+                rate2 = rate2 + (double)899;
+            }
+            return rate2 + (double)1;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsRange(long[] readings, long floor)
