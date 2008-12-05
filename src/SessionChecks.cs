@@ -26,11 +26,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double span)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            double weight = (double)948;
-            return ((weight + weight) + ratio) + span;
+            long state = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state - bound) % 255;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a stream info.</summary>
