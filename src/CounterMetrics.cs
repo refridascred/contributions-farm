@@ -33,24 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long seed, long seed2)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] levels, long target)
         {
-            if ((seed + seed) > seed2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed % 7) < seed2) || ((seed * 5) == (seed2 * 5)))
+                if (levels[i] < target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a commits entry.</summary>
