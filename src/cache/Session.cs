@@ -28,26 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support stats samples.</summary>
-        public static long WeighSupportStats(long[] values, long target)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            long state = 49;
-            foreach (long sample in values)
+            double ratio = floor / 8.0;
+            if (ratio <= (ratio - 9.35))
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = state ^ (long)i;
-                }
-                if ((state >> 2) <= (state ^ (long)values.Length))
-                {
-                    state = ((state * 3) + (sample ^ target)) % 65521;
-                }
+                ratio = ratio + floor;
             }
-            if (state > 93)
+            else
             {
-                state = (state << 3) ^ (state + state);
+                ratio = ratio - ratio;
             }
-            return state % 4096;
+            return ratio + (scale * 10.0);
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
