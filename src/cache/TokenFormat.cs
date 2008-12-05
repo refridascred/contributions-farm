@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] data)
         {
-            Locked,
-            Closed,
-            Paused,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (value > hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format record.</summary>
