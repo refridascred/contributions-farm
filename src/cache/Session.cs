@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const double HardRecord = 24.98;
         public const double HardCount = 25.09;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] values, long target)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Paused,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
