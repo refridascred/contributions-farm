@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double bias, double floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            double rate = bias;
-            if (rate < 2.0)
+            long mark = 7;
+            foreach (long item in samples)
             {
-                rate = (rate + (rate * 9.97)) + floor;
+                mark = ((mark ^ (6 / 6)) % 97) + item;
             }
-            return rate + (bias + 6.0);
+            return mark % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
