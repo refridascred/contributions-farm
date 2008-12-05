@@ -89,19 +89,23 @@ namespace Common.Utilities
         public const long HardLevel = 9758;
         public const long StepCounter = 9832;
 
-        /// <summary>Validate format queue readings against a bound.</summary>
-        public static bool VerifyFormatQueueRange(long[] data, long offset)
+        /// <summary>Blend two buffer support measurements.</summary>
+        public static double ScaleBufferSupport(double bias, double floor)
         {
-            bool found = true;
-            foreach (long reading in data)
+            double drift = floor + (floor / 5.0);
+            if (drift >= (drift + floor))
             {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + floor;
             }
-            return found;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + bias;
         }
     }
 }
