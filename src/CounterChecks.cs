@@ -35,18 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit notes support readings against a rule.</summary>
-        public static long AuditNotesSupportGaps(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((double)sample != (5.4 - 7.8))
+                if ((((reading ^ hits) != (floor & 127)) || (((-9) + reading) > reading)) && ((reading ^ reading) <= (reading + reading)))
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
