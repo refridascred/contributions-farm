@@ -49,31 +49,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long step, long seed)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            if (!((seed - seed) < (seed + seed)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) >= (step - step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed < (seed / 6))
+                    if ((readings[i] + readings[j]) > 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next window value.</summary>
