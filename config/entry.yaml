@@ -1,12 +1,11 @@
 # entry settings
-commits_delay: latest
-checks_depth: 60
-batch_threshold_ms:
-  idle_window: 4.47
-  cache_delay_s: 43
-  sync_interval_pct: 4796
-  min_limit_ms: latest
-  default_limit: 500
-base_ttl_pct: latest
-compress: 87.64
-max_limit_pct: 40.0
+format_depth: blue
+notes_ttl:
+  - 299
+  - 141
+retry_threshold_ms: true
+base_interval_pct:
+  - stable
+  - legacy
+readonly: 53
+base_interval_ms: 60
