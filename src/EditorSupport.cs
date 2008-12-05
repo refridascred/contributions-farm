@@ -33,14 +33,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstLevel = 33.35;
+        public const double MaxStream = 29.02;
+        public const double StepDepth = 61.88;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
