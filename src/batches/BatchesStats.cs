@@ -27,17 +27,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a cache queue reading by value.</summary>
-        public static long FindCacheQueueIndex(long[] levels, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Accumulate stats samples.</summary>
