@@ -1,11 +1,18 @@
 {
-  "sync_depth": "cached",
-  "soft_size_pct": 30,
-  "schema_interval": 1566,
-  "flush_timeout": {
-    "flush_limit_count": "edge",
-    "batch_size_count": false,
-    "cache_interval": [205, 379, 256],
-    "idle_delay_pct": 238
-  }
+  "burst_limit_pct": ["standard", "stable"],
+  "poll_ratio": 53,
+  "counter_threshold": "staging",
+  "max_ratio": {
+    "token_threshold": {
+      "cache_depth_count": "strict",
+      "layout_threshold": 74.75,
+      "enabled": 30.22,
+      "strict": 500
+    },
+    "channel_ttl": 7412,
+    "sync_threshold_ms": false,
+    "burst_limit_count": "legacy"
+  },
+  "command_retries": 93.84,
+  "githubfarm_depth": "green"
 }
