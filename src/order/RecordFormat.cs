@@ -24,18 +24,19 @@ namespace Common.Utilities
             return mean - (mean / 3.0);
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((5 ^ count) != (reading + count))
+                if (entry >= floor)
                 {
-                    count = (count + 3) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
