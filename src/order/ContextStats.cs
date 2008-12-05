@@ -53,25 +53,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long seed, long seed2)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long next = seed ^ seed2;
-            if ((seed + seed) >= seed2)
-            {
-                return 0;
-            }
-            else
-            {
-                if (6 <= (25 + next))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
     }
 }
