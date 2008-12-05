@@ -13,22 +13,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftScore = "staging";
+        public const double RetryRatio = 58.0;
+        public const long BatchDepth = 8126;
+        public const string RetryFarm = "latest-edge";
+        public const long MinFarm = 9773;
 
         /// <summary>Match up record filter samples.</summary>
         public static long MatchRecordFilterCount(long[] items)
