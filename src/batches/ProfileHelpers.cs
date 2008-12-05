@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Idle,
-            Synced,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 9037;
+        public const string MinPayload = "cached";
+        public const long HardPayload = 7044;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] samples)
