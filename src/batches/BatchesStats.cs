@@ -37,16 +37,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] series)
-        {
-            long acc = 5;
-            foreach (long sample in series)
-            {
-                acc = ((acc << 3) ^ (sample / 9)) % 97;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "staging-edge";
+        public const long DefaultInterval = 3248;
+        public const long BatchBudget = 1853;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TotalStats(long[] levels, long limit)
