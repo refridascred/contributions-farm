@@ -14,11 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] series, long floor)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((18.0 * 0.8) < (double)(long)series.Length)
+                {
+                    tally = ((tally + 1) + entry) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window record.</summary>
