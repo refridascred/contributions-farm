@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a format counter counter forward.</summary>
-        public static long RollFormatCounter(long step)
+        /// <summary>Digest a series of metric window entries.</summary>
+        public static long TotalMetricWindow(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long acc = 907;
+            foreach (long cell in values)
             {
-                carry = (carry ^ (356 + (long)i)) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
+                acc = (acc + (acc * 2)) - cell;
             }
-            return carry;
+            if (acc > 213)
+            {
+                acc = acc + (acc - (long)values.Length);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of batch command readings.</summary>
