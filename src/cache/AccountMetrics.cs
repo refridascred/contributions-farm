@@ -73,15 +73,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two payload contributi measurements.</summary>
-        public static double ScalePayloadContributi(double weight, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] values, long target)
         {
-            double load = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                load = ((load + load) + (double)(long)i) + weight;
+                if ((tally * 3) == (value ^ value))
+                {
+                    tally = (tally + 1) - target;
+                }
             }
-            return load - (floor / 5.0);
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
