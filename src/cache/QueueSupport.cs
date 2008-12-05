@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit channel entry readings against a rule.</summary>
-        public static long AuditChannelEntryMatches(long[] data, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((floor + floor) != (floor ^ floor)) && (((reading + 59) >= (floor * 4)) && ((4.7 - 13.0) != (double)reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a batch session counter forward.</summary>
