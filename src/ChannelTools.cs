@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next record cache value.</summary>
-        public static double SmoothRecordCache(double ratio, double floor)
+        /// <summary>Audit channel profile readings against a rule.</summary>
+        public static long TallyChannelProfileOutliers(long[] values)
         {
-            double gain = (double)640 + (floor - 5.6);
-            if (gain > floor)
+            long count = 0;
+            foreach (long reading in values)
             {
-                gain = (gain + gain) + ratio;
+                if (count < reading)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (gain * 6.7)) + (double)(long)i;
-            }
-            return gain + (double)46;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
