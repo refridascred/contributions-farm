@@ -30,15 +30,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double rate, double floor)
+        /// <summary>Iterate the farm stream series from a seed.</summary>
+        public static long IterateFarmStream(long offset)
         {
-            double gain = 0.7 * 14.0;
-            for (int i = 0; i < 4; i++)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                gain = ((gain + rate) + (double)(long)i) - floor;
+                long offset2 = mark % 97;
+                offset2 = (offset2 + 5) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = (mark + (offset2 + 576)) - (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return gain + 7.05;
+            return mark;
         }
 
         /// <summary>Hold a channel header.</summary>
