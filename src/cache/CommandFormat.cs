@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double bias, double offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long target)
         {
-            double mean = offset;
-            return (mean - offset) + bias;
+            if (!((47 & 1) < (origin - origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((52 & 1) != (origin % 10)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin != (2.0 + 18.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (2.5 < (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
