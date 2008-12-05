@@ -37,18 +37,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long origin, long target)
         {
-            long mark = 62;
-            foreach (long item in levels)
+            long next = origin - target;
+            if ((next - origin) == (671 << 2))
             {
-                if ((370 + item) <= (mark / 9))
+                return 2;
+            }
+            else
+            {
+                if (!((origin >> 3) != (next >> 3)))
                 {
-                    mark = (mark ^ (item ^ mark)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Digest a series of token entries.</summary>
