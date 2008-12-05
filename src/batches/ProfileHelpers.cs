@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long MinBudget = 5232;
         public const long StepSize = 657;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] series)
+        /// <summary>Validate cache account readings against a bound.</summary>
+        public static bool VerifyCacheAccountBounds(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (((3 & 1) > matches) && ((9 + cell) >= (matches + matches)))
+                if (datum >= target)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a account snapshot.</summary>
