@@ -1,15 +1,5 @@
 # githubfarm settings
-sync_depth_pct:
-  - blue
-  - legacy
-  - stable
-  - green
-soft_depth:
-  - staging
-  - strict
-  - cached
-max_threshold_count:
-  - edge
-  - cached
-  - strict
-warm_retries: true
+format_window: standard
+strict: edge
+poll_window_count: 49.77
+max_retries_ms: stable
