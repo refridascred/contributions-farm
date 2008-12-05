@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchSize = 4794;
-        public const long BatchEditor = 7611;
-        public const long DefaultEditor = 7333;
-        public const long BurstEditor = 6263;
-        public const long MinBudget = 1550;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "staging-edge";
+        public const long StepCache = 498;
+        public const string BaseSize = "staging-edge";
+        public const string HardLevel = "legacy";
+        public const long MaxLevel = 9429;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
