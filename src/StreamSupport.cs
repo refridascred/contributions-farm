@@ -32,31 +32,13 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long origin, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if (origin > offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset % 5) == (offset + offset)) && (origin >= (offset + 19)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset * 5) > (offset + (-450)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
