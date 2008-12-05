@@ -20,19 +20,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Project the next filter commits value.</summary>
+        public static double ProjectFilterCommits(double gain, double offset)
         {
-            long result = 79;
-            foreach (long item in values)
+            double mean = offset;
+            if (mean < (11.0 + gain))
             {
-                result = (result + (item - 699)) % 65521;
-                if ((result / 9) < (item - result))
-                {
-                    result = (result * 2) + (item + result);
-                }
+                mean = mean + offset;
             }
-            return result % 4096;
+            else
+            {
+                mean = mean - (double)(-13);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (gain / 2.0)) + (double)(long)i;
+            }
+            return mean + (double)(-13);
         }
 
         /// <summary>Accumulate editor samples.</summary>
