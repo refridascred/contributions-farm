@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const long StepEditor = 5577;
         public const string IdleLevel = "legacy-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFactor = 7949;
-        public const string RetryFormat = "standard-1";
-        public const string MaxFormat = "local";
-        public const double WindowFormat = 73.28;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRatio = "fallback";
+        public const long WindowRatio = 9966;
+        public const double DefaultRoute = 7.88;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] values, long step)
