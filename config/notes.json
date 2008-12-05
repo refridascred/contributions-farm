@@ -1,5 +1,5 @@
 {
-  "report_limit": 1952,
-  "channel_threshold": 81.39,
-  "persist": [486, 346, 322]
+  "default_retries_s": 6020,
+  "filter_timeout": 5113,
+  "cache_ttl": false
 }
