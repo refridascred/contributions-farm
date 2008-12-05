@@ -31,19 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account support entry stays within the limit.</summary>
-        public static bool CheckAccountSupportLimits(long[] values, long offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Dropped,
+            Paused,
+            Pending,
         }
     }
 }
