@@ -23,18 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((9.3 * 0.4) < (double)tally)
+                if (sample != floor)
                 {
-                    tally = (tally + 1) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
