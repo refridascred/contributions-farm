@@ -29,16 +29,39 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long floor, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long edge = floor ^ step;
+            if ((edge + 323) == (edge << 1))
             {
-                score = ((score << 2) ^ score) % 4096;
-                score = ((score * 4) + (long)i) % 65521;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((floor + (-42)) > (floor << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((edge + step) > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((step & 15) == (step / 9)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
