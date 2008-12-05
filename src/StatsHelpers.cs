@@ -86,11 +86,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "cached-edge";
-        public const double RetryQueue = 86.78;
-        public const double SoftQueue = 46.4;
-        public const long WindowDepth = 3438;
-        public const long IdleQueue = 3212;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double ratio, double offset)
+        {
+            double gain = (double)8 + offset;
+            if (gain > offset)
+            {
+                gain = gain - 6.41;
+            }
+            else
+            {
+                gain = gain + (ratio + offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (ratio + offset)) + (double)(long)i;
+            }
+            return gain + (gain + gain);
+        }
     }
 }
