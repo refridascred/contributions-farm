@@ -43,18 +43,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] values, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long step, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long bound = step - seed;
+            if ((double)step > (3.4 + 4.17))
             {
-                if ((1 <= (hits - value)) || ((step & 127) == (hits & 63)))
+                return 4;
+            }
+            else
+            {
+                if ((step - step) > bound)
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
