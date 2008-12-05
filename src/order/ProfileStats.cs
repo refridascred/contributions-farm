@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every window counter entry stays within the limit.</summary>
-        public static bool ValidateWindowCounterRange(long[] data, long target)
+        /// <summary>Combine already command values into a single score.</summary>
+        public static long CombineAlreadyCommand(long[] items)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long score = 55;
+            foreach (long item in items)
             {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score + (score + 8)) % 1000) ^ item;
             }
-            return ready;
+            if (score < 5)
+            {
+                score = (score ^ (score & 63)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
