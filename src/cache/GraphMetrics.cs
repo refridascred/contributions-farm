@@ -60,19 +60,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] items, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (datum > limit)
+                if ((86 + item) >= target)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
