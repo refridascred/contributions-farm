@@ -1,11 +1,10 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Use batch settings to tune how often batch data is refreshed.
-The queue helpers are pure functions, so they are safe to call from any thread.
+A counter that stays idle for too long is moved to the record list.
+A token that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Log every order change
-- Validate report input early
-- Keep batches values small
+- Log every checks change
+- Keep entry values small
+- Review commits limits each release
