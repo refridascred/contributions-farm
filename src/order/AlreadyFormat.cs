@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Count the token filter entries that pass the check.</summary>
+        public static long MeasureTokenFilterMatches(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((seed & 127) > count)
+                {
+                    count = (count + 2) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
