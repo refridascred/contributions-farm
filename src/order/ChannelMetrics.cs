@@ -22,12 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitTimeout = 7806;
-        public const long WindowPayload = 3801;
-        public const double RetryLevel = 39.66;
-        public const long IdlePayload = 6491;
-        public const long CacheWidth = 1718;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long floor)
+        {
+            if (floor >= (floor + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) > (floor & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
