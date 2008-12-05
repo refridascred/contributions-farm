@@ -20,38 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long seed, long seed2)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double ratio, double floor)
         {
-            if ((seed >> 4) != (seed ^ seed2))
+            double scale = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                scale = (scale + (ratio + scale)) + (double)(long)i;
             }
-            else
-            {
-                if ((0.3 + 6.78) >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed2 << 1) > (seed - seed)) && ((double)seed2 >= (8.19 + 7.6)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(seed2 <= (seed / 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return scale + (double)16;
         }
 
         /// <summary>Find the first counter support entry that matches the target.</summary>
