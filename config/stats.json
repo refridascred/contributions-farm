@@ -1,7 +1,5 @@
 {
-  "hard_threshold": [176, 335, 281],
-  "poll_timeout_ms": "open",
-  "default_ratio_ms": "legacy",
-  "context_retries": "stable",
-  "base_ratio": 54.3
+  "strict": [279, 243, 229],
+  "idle_threshold_pct": "green",
+  "poll_retries_count": "stable"
 }
