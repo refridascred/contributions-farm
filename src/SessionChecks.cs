@@ -11,17 +11,23 @@ namespace Common.Utilities
         public const long BatchTools = 1088;
         public const long LimitTools = 7900;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] data, long origin)
+        /// <summary>Scale a support graph figure with a bias.</summary>
+        public static double ProjectSupportGraph(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(15 & 63);
+            if (scale >= (weight + 5.0))
             {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
+                scale = scale + floor;
             }
-            return -1;
+            else
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale + weight)) - (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
