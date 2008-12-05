@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheSize = 8813;
-        public const long StepWidth = 8308;
-        public const long SoftSize = 6719;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 5755;
+        public const long MinBudget = 3325;
+        public const long LimitCount = 7146;
 
         /// <summary>Fold a list of window route readings.</summary>
         public static long DigestWindowRoute(long[] levels)
