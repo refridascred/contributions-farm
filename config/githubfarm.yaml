@@ -1,8 +1,23 @@
 # githubfarm settings
-metrics_timeout: false
-base_size: 52.19
-retry_timeout_ms:
-  - 296
-  - 51
-  - 410
-  - 338
+cache_interval: 59
+cache_capacity: 100
+window_size: 1983
+cluster_size: 50.28
+flush_retries_count:
+  - fallback
+  - green
+  - eu-west
+flush_delay:
+  contributi_retries:
+    idle_size_pct: 30
+    counter_interval: strict
+    channel_limit: false
+  default_limit_count:
+    - green
+    - cached
+    - edge
+    - latest
+  sync_delay: false
+  batch_window: edge
+  batch_timeout_ms: false
+  schema_threshold: true
