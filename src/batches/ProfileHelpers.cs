@@ -66,17 +66,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] readings, long bound)
+        /// <summary>Validate metrics stream readings against a bound.</summary>
+        public static bool VerifyMetricsStreamRange(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (readings[i] >= bound)
+                if (sample <= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
