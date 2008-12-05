@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 6772;
-        public const long CacheLayout = 7491;
-        public const long BaseLayout = 4486;
-        public const long CacheSize = 5723;
-        public const string CacheTimeout = "legacy-edge";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell >= (2.94 * 4.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long SeriesAlready(long origin)
