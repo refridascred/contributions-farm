@@ -22,19 +22,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double weight, double offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double gain = (double)66 - offset;
-            if (gain < (7.85 - weight))
-            {
-                gain = gain - (4.11 / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (offset + gain)) + (double)(long)i;
-            }
-            return gain - (offset - gain);
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate cluster session samples.</summary>
