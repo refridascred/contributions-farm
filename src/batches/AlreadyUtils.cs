@@ -43,17 +43,14 @@ namespace Common.Utilities
             return load + (load * 17.0);
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] levels, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Pending,
+            Paused,
+            Stale,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
