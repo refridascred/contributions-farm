@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] readings, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!(seen > (entry & 127)))
+                if ((count * 5) <= (count ^ cell))
                 {
-                    seen = (seen + 1) - origin;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
