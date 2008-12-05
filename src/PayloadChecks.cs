@@ -57,13 +57,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Grade a commits window value against two limits.</summary>
+        public static long RankCommitsWindow(long offset, long bound)
         {
-            Ready,
-            New,
-            Stale,
-            Draft,
+            long delta = offset ^ bound;
+            if (((bound ^ delta) > bound) && ((delta % 16) > 6))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((delta - 2) != (bound >> 3)) && ((double)delta != (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((((-671) + 4) < offset) && ((offset / 3) <= (615 % 24)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
