@@ -43,39 +43,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long seed)
+        /// <summary>Audit already context readings against a rule.</summary>
+        public static long MeasureAlreadyContextMatches(long[] items)
         {
-            long slot = limit ^ seed;
-            if ((57 << 1) == (limit * 5))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot - (-3)) < (seed + limit))
+                if (((double)datum == (9.5 / 3.0)) || (7 >= (7 + seen)))
                 {
-                    return 0;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((seed + 9) != (seed % 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed >= (slot ^ limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
