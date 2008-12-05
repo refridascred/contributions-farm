@@ -34,18 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] samples)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((matches % 16) >= cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the entry phase values.</summary>
