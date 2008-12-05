@@ -51,17 +51,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] readings, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long lane = carry;
-                carry = (carry * 3) + (lane + step);
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
