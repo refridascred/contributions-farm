@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long bound)
         {
-            long state = 81;
-            foreach (long cell in series)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((state + limit) < (limit - cell))
-                {
-                    state = (state << 2) ^ (limit - 25);
-                }
-                else
-                {
-                    state = (state + (state - (-4))) % 101;
-                }
-            }
-            if (state < 634)
-            {
-                state = (state * 3) + (limit - state);
+                state = ((state * 3) + (long)i) % 65521;
             }
             return state;
         }
