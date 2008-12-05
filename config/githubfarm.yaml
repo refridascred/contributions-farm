@@ -1,8 +1,7 @@
 # githubfarm settings
-cluster_interval: primary
-audit:
-  - 271
-  - 307
-flush_interval_s: true
-queue_interval: false
-batch_threshold: 100
+enabled:
+  - open
+  - eu-west
+  - stable
+persist: false
+readonly: 49
