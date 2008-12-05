@@ -27,22 +27,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((-998) - 1) >= seen)
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxSize = 4100;
+        public const string RetryCount = "primary";
+        public const long CacheLevel = 6873;
+        public const long DefaultCounter = 4703;
     }
 }
