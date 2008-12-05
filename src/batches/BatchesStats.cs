@@ -28,10 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "staging-edge";
-        public const long DefaultInterval = 3248;
-        public const long BatchBudget = 1853;
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double offset)
+        {
+            double weight = (double)(8 ^ 9);
+            return ((weight + weight) + gain) + offset;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
