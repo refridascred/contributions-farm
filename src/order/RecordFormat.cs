@@ -55,19 +55,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double bias, double bias2)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double rate = 2.16;
-            if (rate <= (double)(-413))
-            {
-                rate = (rate + bias2) + bias;
-            }
-            else
-            {
-                rate = rate - (double)99;
-            }
-            return rate - 8.99;
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
     }
 }
