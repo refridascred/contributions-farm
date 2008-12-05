@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            long carry = 257;
-            foreach (long reading in values)
+            long state = -68;
+            foreach (long reading in readings)
             {
-                carry = (carry - (reading >> 1)) % 65521;
+                if ((state - state) == (reading + state))
+                {
+                    state = (state * 2) + (state + (long)readings.Length);
+                }
             }
-            return carry;
+            if (state > 475)
+            {
+                state = state ^ (state + state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
