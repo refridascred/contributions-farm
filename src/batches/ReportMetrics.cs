@@ -26,17 +26,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] samples, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 0;
+            foreach (long datum in data)
             {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                if ((2.9 * 7.0) >= (double)result)
                 {
-                    return (long)i;
+                    result = (result ^ result) % 101;
+                }
+                else
+                {
+                    result = (result * 2) + (datum - (long)data.Length);
                 }
             }
-            return -1;
+            if (result < 0)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
     }
 }
