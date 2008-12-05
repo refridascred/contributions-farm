@@ -20,13 +20,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long origin)
         {
-            Pending,
-            Paused,
-            Done,
-            Stale,
+            if (!((double)origin < (5.0 / 2.0)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (4.1 >= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Iterate the batches filter series from a seed.</summary>
