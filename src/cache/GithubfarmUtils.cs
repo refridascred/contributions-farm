@@ -37,13 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] readings, long origin)
         {
-            Paused,
-            Active,
-            Done,
-            New,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
