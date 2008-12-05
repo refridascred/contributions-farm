@@ -1,12 +1,11 @@
 # Command notes
 
-Each metric is validated before it reaches the entry queue.
-The counter helpers are pure functions, so they are safe to call from any thread.
-Keep account and cluster names short and lowercase.
+Keep order and payload names short and lowercase.
+Use notes settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Prefer account defaults
-- Validate record input early
-- Keep report values small
-- Review stats limits each release
+- Document new layout fields
+- Review queue limits each release
+- Keep notes values small
+- Prefer contributi defaults
