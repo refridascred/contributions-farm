@@ -55,19 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter channel readings.</summary>
-        public static long TallyFilterChannel(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items)
         {
-            long state = 942;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                state = state + (entry + (long)readings.Length);
-                if (((double)entry >= (8.0 / 2.0)) || ((entry + state) <= state))
+                if ((reading * 5) == (reading + matches))
                 {
-                    state = (state ^ (86 << 3)) % 255;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
