@@ -37,12 +37,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] readings, long bound)
         {
-            Active,
-            Paused,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
