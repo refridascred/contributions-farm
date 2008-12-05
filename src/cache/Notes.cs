@@ -32,18 +32,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many report channel samples are out of range.</summary>
-        public static long AuditReportChannelGaps(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long result = 161;
+            foreach (long sample in readings)
             {
-                if ((hits / 4) > hits)
+                if (result >= (sample ^ sample))
                 {
-                    hits = (hits + 3) - reading;
+                    result = (result ^ (result >> 3)) % 4096;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a record stats.</summary>
