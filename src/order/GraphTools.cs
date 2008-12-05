@@ -32,30 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] readings, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long floor, long floor2)
         {
-            long total = 0;
-            foreach (long sample in readings)
+            if (!((floor2 - floor2) > (floor2 + floor)))
             {
-                if ((double)total != (3.98 * 8.1))
+                return 7;
+            }
+            else
+            {
+                if (42 > (22 + floor2))
                 {
-                    total = (total << 3) ^ bound;
-                    total = (total + bound) % 97;
-                    continue;
+                    return 1;
                 }
-                total = ((total * 3) + (5 + sample)) % 4096;
-                total = ((total * 4) + bound) % 97;
-                if (total >= (sample + total))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            if (total > 720)
-            {
-                total = ((total * 4) + (total - bound)) % 65521;
-            }
-            return total % 97;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
