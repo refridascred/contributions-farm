@@ -1,10 +1,6 @@
-id,label,weight
-1,673,blue
-2,97.09,787
-3,70.45,blue
-4,85.5,strict
-5,678,85.4
-6,230,53.17
-7,75.25,strict
-8,31.88,standard
-9,open,137
+id,state,score,region
+1,970,412,97.67
+2,41.63,13,16
+3,655,eu-west,eu-west
+4,62.52,eu-west,2.73
+5,397,29.25,709
