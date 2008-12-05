@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double span)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] samples, long offset)
         {
-            double mean = 3.0 - weight;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - (span * 3.3)) + (double)(long)i;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean - weight;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
