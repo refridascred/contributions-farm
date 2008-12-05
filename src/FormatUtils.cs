@@ -37,16 +37,21 @@ namespace Common.Utilities
         public const long DefaultFormat = 5260;
         public const long RetryFormat = 5812;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long total = 603;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total ^ (reading ^ step);
-                total = (total * 4) + (reading ^ reading);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Accumulate queue notes samples.</summary>
