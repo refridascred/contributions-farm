@@ -85,11 +85,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "cached-edge";
+        public const double RetryQueue = 86.78;
+        public const double SoftQueue = 46.4;
+        public const long WindowDepth = 3438;
+        public const long IdleQueue = 3212;
     }
 }
