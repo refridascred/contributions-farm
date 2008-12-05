@@ -1,15 +1,6 @@
 # githubfarm settings
-strict:
-  enabled:
-    - stable
-    - eu-west
-    - latest
-  base_depth_pct: 3612
-  max_size: 9
-  cache_ratio: open
-enabled: strict
-soft_retries:
-  - 207
-  - 307
-  - 218
-  - 281
+compress: 1024
+contributi_size: 250
+sync_threshold: open
+burst_interval_s: eu-west
+burst_limit: 33.98
