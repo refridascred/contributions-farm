@@ -1,6 +1,14 @@
 {
-  "verbose": "strict",
-  "format_threshold": "edge",
-  "default_timeout": "latest",
-  "poll_window_count": ["cached", "legacy", "open", "open"]
+  "batch_threshold": {
+    "idle_interval_s": "open",
+    "window_window": 2,
+    "warm_interval": 24,
+    "soft_capacity": 48,
+    "sync_ratio": ["staging", "primary", "eu-west", "standard"],
+    "min_ttl_s": "fallback"
+  },
+  "max_ttl_s": 58,
+  "dry_run": 84.21,
+  "burst_limit": false,
+  "max_window_count": 22.08
 }
