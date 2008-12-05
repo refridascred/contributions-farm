@@ -14,12 +14,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardBudget = 2072;
-        public const long CacheFactor = 5795;
-        public const double SoftCount = 31.38;
-        public const long DefaultChannel = 1529;
-        public const string SoftSize = "legacy-v2";
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
+        {
+            long mix = 50;
+            foreach (long reading in readings)
+            {
+                mix = mix - reading;
+            }
+            return mix;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long target, long target2)
