@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 6401;
-        public const double MinFilter = 79.65;
-        public const double RetryFilter = 64.68;
-        public const string BaseFilter = "stable";
-        public const long LimitDepth = 2627;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetrySpan = 4602;
+        public const long StepContext = 8326;
+        public const long StepCount = 4907;
+        public const long BaseContext = 9361;
+        public const double BatchContext = 52.4;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long limit, long target)
