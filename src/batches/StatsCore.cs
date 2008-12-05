@@ -34,20 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 83.96;
+        public const long RetryOrder = 7438;
+        public const string LimitOrder = "cached";
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long CombineGithubfarm(long[] readings)
