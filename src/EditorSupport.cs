@@ -21,39 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank farm channel input into a small class.</summary>
-        public static long BucketFarmChannel(long floor, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] levels)
         {
-            long bound = floor - limit;
-            if ((limit ^ floor) <= (limit & 127))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((12.0 / 9.0) <= (double)floor)
+                if ((tally - item) >= (tally + tally))
                 {
-                    return 8;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (((14 / 3) <= (bound * 2)) && ((double)limit != (8.0 / 7.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((364 + bound) > (limit & 63))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a layout entry.</summary>
