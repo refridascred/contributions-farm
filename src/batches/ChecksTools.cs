@@ -44,38 +44,20 @@ namespace Common.Utilities
         public const long LimitLevel = 8170;
         public const long HardLevel = 9584;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long offset, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] values)
         {
-            if (limit > offset)
+            long sum = 52;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset >= (8.71 / 3.0))
+                for (int i = 0; i < 11; i++)
                 {
-                    return 7;
+                    sum = ((sum ^ entry) % 97) ^ (long)i;
                 }
-                else
-                {
-                    if ((offset - offset) < limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset != (5.0 + 4.41))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                sum = ((sum * 5) + (entry % 97)) % 101;
+                sum = (sum * 5) + entry;
             }
+            return sum;
         }
     }
 }
