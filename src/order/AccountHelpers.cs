@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 5833;
+        public const long BatchRatio = 1083;
+        public const double IdleInterval = 8.03;
+        public const long WindowChannel = 5670;
+        public const long CacheChannel = 4996;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
