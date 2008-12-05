@@ -68,19 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch metrics reading.</summary>
-        public static double ProjectBatchMetrics(double gain, double span)
+        /// <summary>Match up notes channel samples.</summary>
+        public static long PairNotesChannelCount(long[] samples)
         {
-            double gain2 = (double)99;
-            if (gain2 >= span)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = (gain2 + 19.0) - gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 + (6.0 + 7.6)) - (double)(long)i;
-            }
-            return gain2 - 8.59;
+            return hits;
         }
 
         /// <summary>Hold a metric entry.</summary>
