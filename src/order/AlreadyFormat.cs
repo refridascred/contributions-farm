@@ -52,13 +52,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Paused,
-            Dropped,
-            New,
-            Active,
+            Done,
+            Queued,
+            Stale,
         }
     }
 }
