@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long target)
         {
-            long score = 29;
-            foreach (long item in series)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                score = score - (score - item);
+                sum = ((sum << 2) ^ (target - target)) % 65521;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Fold a list of context readings.</summary>
