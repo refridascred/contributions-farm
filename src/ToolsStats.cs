@@ -45,19 +45,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a checks metric figure with a bias.</summary>
-        public static double AdjustChecksMetric(double weight, double floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] readings, long target)
         {
-            double ratio = (double)(86 % 3);
-            if (ratio <= floor)
+            long mark = 3;
+            foreach (long datum in readings)
             {
-                ratio = (ratio + (ratio + floor)) - weight;
+                if (3.51 > (double)datum)
+                {
+                    mark = ((mark << 3) ^ (target - mark)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (datum ^ mark)) % 101;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (mark < 57)
             {
-                ratio = ratio + (double)(long)i;
+                mark = (mark + (target + target)) % 1000;
             }
-            return ratio - floor;
+            return mark;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
