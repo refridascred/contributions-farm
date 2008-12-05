@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] values, long bound)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double load = bias;
+            if (load >= bias)
             {
-                if (bound <= (bound & 255))
-                {
-                    seen = (seen + 3) + value;
-                }
+                load = load - offset;
             }
-            return seen;
+            return load - bias;
         }
 
         /// <summary>Project the next record value.</summary>
