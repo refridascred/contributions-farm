@@ -1,7 +1,12 @@
 {
-  "retry_delay_ms": false,
-  "graph_ttl": "fallback",
-  "schema_retries": 42.67,
-  "retry_depth": "cached",
-  "idle_threshold_s": 60
+  "sync_timeout": {
+    "support_ratio": 5629,
+    "strict": false,
+    "cache_window": ["stable", "legacy"],
+    "compress": "strict",
+    "readonly": [3, 250, 233, 24]
+  },
+  "entry_capacity": "staging",
+  "min_ttl": "edge",
+  "poll_threshold_s": 29.8
 }
