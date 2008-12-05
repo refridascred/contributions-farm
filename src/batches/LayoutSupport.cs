@@ -12,10 +12,33 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 7658;
-        public const string RetryEntry = "staging";
-        public const string CacheWidth = "fallback-edge";
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long target, long bound)
+        {
+            long edge = target ^ bound;
+            if (((0 >> 1) > ((-76) + target)) || (bound >= edge))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(target < (bound % 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((target ^ target) != (edge * 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] levels, long target)
