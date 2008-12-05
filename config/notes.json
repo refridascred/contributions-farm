@@ -1,5 +1,5 @@
 {
-  "cache_window_s": "green",
-  "retry_retries_ms": "blue",
-  "min_limit": 100
+  "cache_depth_s": "eu-west",
+  "max_capacity_s": 51.2,
+  "batch_timeout_ms": 8149
 }
