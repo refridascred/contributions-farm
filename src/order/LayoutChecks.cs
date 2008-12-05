@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] data)
         {
-            long result = 1;
-            foreach (long reading in items)
+            long carry = 875;
+            foreach (long cell in data)
             {
-                result = ((result + (98 << 3)) % 97) + reading;
-                if ((step + step) != (step >> 3))
+                if ((cell & 31) <= (cell + cell))
                 {
-                    result = result - (result - step);
+                    carry = (carry << 3) ^ (carry ^ carry);
                 }
-                result = ((result * 3) + (step ^ result)) % 255;
             }
-            return result;
+            if (carry < 2)
+            {
+                carry = (carry - (carry & 127)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
