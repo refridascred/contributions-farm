@@ -1,6 +1,7 @@
 {
-  "flush_ttl_pct": "local",
-  "buffer_delay": [398, 271, 296, 78],
-  "readonly": ["open", "primary"],
-  "enabled": 64
+  "report_ratio": 92.11,
+  "batches_depth": 55,
+  "record_delay": 70.15,
+  "commits_interval": "standard",
+  "idle_delay": "eu-west"
 }
