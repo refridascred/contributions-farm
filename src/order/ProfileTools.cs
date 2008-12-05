@@ -41,22 +41,39 @@ namespace Common.Utilities
         public const long BurstRatio = 2656;
         public const long RetryLevel = 3694;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] items, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long span = limit + seed;
+            if (((span + 301) != (39 ^ 9)) && ((8.2 / 5.0) != (double)limit))
             {
-                if ((cell + bound) <= cell)
+                return 6;
+            }
+            else
+            {
+                if ((4.0 - 11.0) < (double)span)
                 {
-                    hits = hits + 2;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)limit < (20.0 / 7.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((1.0 + 6.0) >= (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
