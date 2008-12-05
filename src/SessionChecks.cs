@@ -40,18 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entry entries that pass the check.</summary>
-        public static long TallyPayloadEntryMatches(long[] values)
+        /// <summary>Locate a metrics profile reading by value.</summary>
+        public static long LocateMetricsProfileIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally + entry) != (2 / 3))
+                if (data[i] > origin)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
