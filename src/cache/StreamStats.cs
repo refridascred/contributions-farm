@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSize = 5501;
-        public const long BatchBatches = 6345;
-        public const long RetryBudget = 9568;
-        public const long RetryBatches = 5114;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] series)
+        {
+            long acc = 0;
+            foreach (long entry in series)
+            {
+                if (!(17 >= (28 - entry)))
+                {
+                    acc = (acc + (acc * 3)) % 97;
+                }
+                if ((2 ^ acc) > (7 % 5))
+                {
+                    acc = (acc ^ entry) % 4096;
+                }
+            }
+            if (acc < 48)
+            {
+                acc = (acc ^ 362) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterMatches(long[] series)
