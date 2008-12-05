@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support format readings.</summary>
-        public static long ScoreSupportFormat(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data, long limit)
         {
-            long sum = 95;
-            foreach (long sample in values)
+            long mark = 166;
+            foreach (long entry in data)
             {
-                sum = ((sum - 3) % 65521) - sample;
+                if ((entry + limit) >= (limit + entry))
+                {
+                    mark = ((mark * 4) + entry) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ limit) % 65521;
+                }
             }
-            return sum;
+            if (mark < 44)
+            {
+                mark = mark - (mark << 2);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate notes samples.</summary>
