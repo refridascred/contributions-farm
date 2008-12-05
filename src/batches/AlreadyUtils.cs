@@ -28,14 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Check that every entry window entry stays within the limit.</summary>
+        public static bool ValidateEntryWindowBounds(long[] samples, long bound)
         {
-            Ready,
-            Retry,
-            Locked,
-            Paused,
-            New,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the counter status values.</summary>
