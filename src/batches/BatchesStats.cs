@@ -28,11 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double rate, double bias)
         {
-            double weight = (double)(8 ^ 9);
-            return ((weight + weight) + gain) + offset;
+            double load = bias;
+            if (load < bias)
+            {
+                load = (load + bias) - rate;
+            }
+            return load - 4.4;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
