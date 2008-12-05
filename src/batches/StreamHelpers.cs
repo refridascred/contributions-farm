@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] data, long target)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (target <= (target + seen))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
