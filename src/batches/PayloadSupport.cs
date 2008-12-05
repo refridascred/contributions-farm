@@ -33,17 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] samples, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (samples[i] >= origin)
+                if (sample > step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Accumulate order samples.</summary>
