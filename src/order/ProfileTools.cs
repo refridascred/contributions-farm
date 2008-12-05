@@ -42,21 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)offset <= (double)seen)
                 {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
