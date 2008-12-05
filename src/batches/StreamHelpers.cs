@@ -31,25 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (((mix << 2) ^ (long)i) % 65521) - (long)i2;
-                }
-                if ((double)seed <= (double)mix)
-                {
-                    mix = (mix - (seed << 3)) % 101;
-                    continue;
-                }
-                mix = mix - (mix ^ mix);
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of order support readings.</summary>
