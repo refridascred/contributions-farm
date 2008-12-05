@@ -44,13 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long bound)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
