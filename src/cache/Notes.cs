@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data, long limit)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!(((sample + sample) <= (sample >> 3)) || (sample > hits)))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
