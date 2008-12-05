@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long StepDepth = 4494;
         public const long LimitRatio = 1753;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] samples, long offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double gain = 13.0;
+            return (gain + (weight - weight)) + offset;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
