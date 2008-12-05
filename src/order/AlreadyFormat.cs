@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            long acc = 54;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)acc < 8.75)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((((acc * 4) + (0 ^ 668)) % 1000) ^ sample) + limit;
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Hold a already summary.</summary>
