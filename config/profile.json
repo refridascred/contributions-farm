@@ -1,5 +1,20 @@
 {
-  "audit": [108, 422, 352],
-  "soft_delay_s": 7673,
-  "hard_capacity_pct": 16.55
+  "idle_timeout_ms": 92.82,
+  "hard_limit_s": 30,
+  "order_limit": false,
+  "default_depth_pct": {
+    "context_threshold": {
+      "stream_ttl": "fallback",
+      "verbose": "stable",
+      "compress": 96.66,
+      "editor_window": "blue",
+      "warm_ratio": ["green", "local", "strict", "standard"],
+      "readonly": 38.29
+    },
+    "report_ttl": false,
+    "metrics_interval": "stable",
+    "readonly": ["green", "primary", "legacy", "stable"],
+    "max_timeout_count": 500,
+    "batch_ttl_pct": 30
+  }
 }
