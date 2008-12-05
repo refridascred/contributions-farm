@@ -56,11 +56,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double rate, double floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double weight = 9.7;
-            return ((weight + (weight + 1.96)) + rate) + floor;
+            Closed,
+            New,
+            Idle,
         }
     }
 }
