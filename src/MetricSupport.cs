@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] items, long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((seed << 3) < matches)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
