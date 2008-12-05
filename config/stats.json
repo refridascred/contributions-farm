@@ -1,5 +1,19 @@
 {
-  "batch_limit_ms": "stable",
-  "counter_delay": [473, 348, 312],
-  "stream_window": 8656
+  "burst_retries": {
+    "commits_timeout": 9,
+    "notes_depth": {
+      "poll_delay_count": 30,
+      "farm_window": "green",
+      "report_limit": [398, 62, 417],
+      "min_delay_s": false,
+      "cache_capacity": "standard"
+    },
+    "enabled": "cached",
+    "support_threshold": 95
+  },
+  "retry_delay": "blue",
+  "soft_window_s": ["stable", "primary", "fallback"],
+  "readonly": "open",
+  "poll_timeout_count": 43.07,
+  "batch_interval": "fallback"
 }
