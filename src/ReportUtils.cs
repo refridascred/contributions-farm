@@ -50,12 +50,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] data, long bound)
         {
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            long carry = 105;
+            foreach (long datum in data)
+            {
+                carry = ((((carry * 4) + (9 % 2)) % 97) + datum) + bound;
+            }
+            return carry;
         }
     }
 }
