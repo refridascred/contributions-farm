@@ -25,10 +25,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 4541;
-        public const double BatchRatio = 6.75;
-        public const double BurstAccount = 5.3;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Active,
+            Dropped,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
