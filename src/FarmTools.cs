@@ -43,11 +43,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "cached-edge";
-        public const string WindowSupport = "standard-v2";
-        public const long RetryCount = 4700;
-        public const long BaseInterval = 9626;
-        public const long HardCount = 3636;
+        /// <summary>Find the first route counter entry that matches the target.</summary>
+        public static long LocateRouteCounterIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
