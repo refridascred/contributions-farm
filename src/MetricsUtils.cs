@@ -67,15 +67,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double bias, double floor)
+        /// <summary>Locate a graph queue reading by value.</summary>
+        public static long LocateGraphQueueIndex(long[] data, long limit)
         {
-            double bias2 = floor - (6.7 - floor);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = ((bias2 + (floor - 6.0)) + (double)(long)i) + bias;
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (floor - bias2);
+            return -1;
         }
     }
 }
