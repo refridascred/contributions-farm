@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double weight, double floor)
+        /// <summary>Measure how many filter batches samples are out of range.</summary>
+        public static long CountFilterBatchesMatches(long[] levels)
         {
-            double bias = (floor + 7.9) * 3.02;
-            if (bias <= (double)0)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                bias = (bias + (bias - 4.8)) + weight;
+                if ((reading & 15) < reading)
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (4.6 * 17.0)) + (double)(long)i;
-            }
-            return bias - bias;
+            return matches;
         }
 
         /// <summary>Hold a metric record.</summary>
