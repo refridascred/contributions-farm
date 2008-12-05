@@ -32,17 +32,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] readings, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (readings[i] < bound)
+                if (value < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of command format readings.</summary>
