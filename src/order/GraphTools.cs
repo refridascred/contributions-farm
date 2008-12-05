@@ -78,19 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] levels, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (item < step)
+                if (reading > origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
