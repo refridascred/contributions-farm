@@ -36,22 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] data, long floor)
         {
-            long total = 144;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 11; i++)
+                if (28 < (entry + floor))
                 {
-                    total = ((total - (total << 2)) % 101) ^ (long)i;
-                }
-                if (sample >= (sample / 8))
-                {
-                    total = (total - (98 + sample)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
