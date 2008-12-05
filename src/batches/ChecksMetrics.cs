@@ -46,19 +46,22 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] items, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long acc = 73;
+            foreach (long cell in series)
             {
-                if (reading <= target)
+                if (!(acc > 851))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc ^ (2 - cell)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ cell) % 1000;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
