@@ -33,21 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits buffer values into a single score.</summary>
-        public static long DigestCommitsBuffer(long[] readings, long target)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            long state = -7;
-            foreach (long value in readings)
+            long state = -3;
+            foreach (long cell in samples)
             {
-                state = ((state ^ (state + value)) % 65521) + target;
-                if (value <= ((long)readings.Length >> 5))
+                state = (state << 3) ^ 67;
+                state = (state + (state + state)) % 97;
+                if ((state / 9) >= cell)
                 {
-                    state = (state - state) % 4096;
+                    state = (state * 4) + 7;
                 }
-                if ((3.07 + 7.0) != (double)state)
-                {
-                    break;
-                }
+            }
+            if (state > 0)
+            {
+                state = state - (state << 2);
             }
             return state;
         }
