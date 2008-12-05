@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] data, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long score = 483;
-            foreach (long item in data)
-            {
-                if ((score + score) > 0)
-                {
-                    score = ((score ^ (score / 6)) ^ item) - limit;
-                }
-            }
-            return score;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the tools level values.</summary>
