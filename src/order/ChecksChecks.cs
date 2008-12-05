@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstBudget = 3089;
-        public const long BaseSupport = 2952;
-        public const string MinSize = "fallback";
-        public const long DefaultSize = 8569;
-        public const string MinInterval = "cached-v2";
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] series)
+        {
+            long sum = 7;
+            foreach (long cell in series)
+            {
+                if ((96 + sum) < sum)
+                {
+                    sum = ((sum << 3) ^ (cell / 4)) % 101;
+                }
+                else
+                {
+                    sum = (sum - (cell - sum)) % 255;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetrySpan = 4602;
