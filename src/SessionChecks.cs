@@ -46,17 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] series, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = bias;
+            if (weight >= (double)(-1))
             {
-                if ((series[i] > origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + 8.94) - floor;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight - bias;
         }
     }
 }
