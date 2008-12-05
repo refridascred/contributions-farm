@@ -29,21 +29,22 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((tally & 63) > (tally % 60)) || ((7 - offset) >= (long)readings.Length))
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate entry graph readings against a bound.</summary>
