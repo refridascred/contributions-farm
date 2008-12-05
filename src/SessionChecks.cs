@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route account sample.</summary>
-        public static long LocateRouteAccountIndex(long[] items, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                if (seen > (seen - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
