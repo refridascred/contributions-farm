@@ -1,5 +1,5 @@
 {
-  "batch_window_s": false,
-  "soft_retries_pct": "staging",
-  "flush_window_pct": "fallback"
+  "burst_capacity": ["latest", "local"],
+  "base_limit_s": "fallback",
+  "flush_capacity": "eu-west"
 }
