@@ -14,18 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] series, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((18.0 * 0.8) < (double)(long)series.Length)
-                {
-                    tally = ((tally + 1) + entry) - floor;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
