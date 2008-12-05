@@ -1,15 +1,8 @@
 {
-  "poll_ratio": {
-    "soft_delay_s": "legacy",
-    "audit": false,
-    "min_delay_count": 79.74
-  },
-  "verbose": 77.35,
-  "min_interval_pct": {
-    "cluster_size": 55.74,
-    "record_ttl": true,
-    "default_ttl_pct": [293, 217, 277, 274],
-    "poll_threshold": "stable",
-    "sync_timeout": 8040
-  }
+  "burst_capacity_s": "edge",
+  "idle_size_ms": ["stable", "strict"],
+  "buffer_delay": 85.2,
+  "strict": "edge",
+  "account_ratio": "fallback",
+  "cache_retries_ms": false
 }
