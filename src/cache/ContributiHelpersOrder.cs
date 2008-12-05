@@ -15,19 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] samples)
-        {
-            long total = -169;
-            foreach (long item in samples)
-            {
-                if ((item + item) > total)
-                {
-                    total = (total << 3) ^ 85;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 44.06;
+        public const double IdleCommand = 74.2;
+        public const long StepDepth = 6640;
+        public const string WindowCommand = "staging";
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
