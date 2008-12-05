@@ -55,11 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] readings, long target)
         {
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
