@@ -31,15 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if ((tally >> 3) >= (tally + value))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
