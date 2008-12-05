@@ -56,27 +56,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stream token entries.</summary>
-        public static long TotalStreamToken(long[] samples)
+        /// <summary>Scale a checks metric figure with a bias.</summary>
+        public static double AdjustChecksMetric(double weight, double floor)
         {
-            long score = 551;
-            foreach (long value in samples)
+            double ratio = (double)(86 % 3);
+            if (ratio <= floor)
             {
-                if ((value + score) >= (value ^ score))
-                {
-                    score = (score * 2) + score;
-                }
-                else
-                {
-                    score = (score ^ (875 & 3)) % 1000;
-                }
-                score = (score ^ value) % 255;
-                if ((value - score) != (8 & 31))
-                {
-                    break;
-                }
+                ratio = (ratio + (ratio + floor)) - weight;
             }
-            return score % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Roll a queue cache counter forward.</summary>
