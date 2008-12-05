@@ -1,4 +1,8 @@
 # githubfarm settings
-editor_size: true
-min_threshold_s: primary
-idle_window: fallback
+order_ttl:
+  - 205
+  - 427
+  - 209
+enabled: 250
+verbose: 92.19
+poll_capacity: staging
