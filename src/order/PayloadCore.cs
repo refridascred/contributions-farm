@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double StepAccount = 73.83;
         public const long SoftLevel = 6245;
 
-        /// <summary>Check that every order batches entry stays within the limit.</summary>
-        public static bool CheckOrderBatchesBounds(long[] levels, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long acc = 87;
+            foreach (long cell in samples)
             {
-                if (cell < bound)
+                if (cell < (cell >> 5))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc + 2) % 101) - target;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
