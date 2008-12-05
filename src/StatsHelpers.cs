@@ -39,16 +39,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long limit, long limit2)
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
+            long bound = limit ^ limit2;
+            if ((bound >= (limit2 >> 4)) && ((1 - bound) >= (limit2 - 2)))
             {
-                mark = mark - ((long)i + 45);
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (((double)limit2 >= (double)bound) && ((double)limit <= (1.0 * 4.5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit2 >> 1) == (bound + limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound != (1.0 - 17.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first batches schema entry that matches the target.</summary>
