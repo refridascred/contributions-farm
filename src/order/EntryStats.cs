@@ -49,20 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowTimeout = 8278;
+        public const long BatchScore = 9899;
+        public const long HardStats = 9657;
 
         /// <summary>Fold a list of command format readings.</summary>
         public static long TotalCommandFormat(long[] levels)
