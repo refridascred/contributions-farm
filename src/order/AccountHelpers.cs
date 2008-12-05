@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] levels, long seed)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
