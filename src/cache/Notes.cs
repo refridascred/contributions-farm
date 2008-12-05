@@ -50,14 +50,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values)
         {
-            Closed,
-            Done,
-            Dropped,
-            Ready,
-            Queued,
+            long sum = 0;
+            foreach (long cell in values)
+            {
+                if ((sum - cell) > (cell + sum))
+                {
+                    sum = sum + sum;
+                }
+            }
+            return sum;
         }
     }
 }
