@@ -1,12 +1,7 @@
 {
-  "sync_ratio_s": 100,
-  "default_timeout_ms": {
-    "strict": 500,
-    "max_interval_ms": "strict",
-    "min_timeout": 4785,
-    "dry_run": ["latest", "latest", "stable"],
-    "format_ttl": [488, 226],
-    "stream_depth": "staging"
-  },
-  "base_depth": 7.07
+  "hard_threshold": [176, 335, 281],
+  "poll_timeout_ms": "open",
+  "default_ratio_ms": "legacy",
+  "context_retries": "stable",
+  "base_ratio": 54.3
 }
