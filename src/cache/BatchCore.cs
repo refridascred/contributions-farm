@@ -61,18 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (matches >= datum)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Dropped,
+            Ready,
+            Draft,
         }
     }
 }
