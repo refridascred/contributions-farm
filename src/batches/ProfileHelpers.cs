@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] samples)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long sum = 2;
-            foreach (long cell in samples)
-            {
-                if (2 >= (cell / 3))
-                {
-                    sum = sum - (cell << 3);
-                }
-            }
-            return sum;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the metrics profile series from a seed.</summary>
