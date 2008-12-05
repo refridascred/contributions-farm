@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a profile cluster figure with a bias.</summary>
-        public static double AdjustProfileCluster(double bias, double offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            double bias2 = (bias + offset) * 6.71;
-            if (bias2 < (double)1)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                bias2 = bias2 - (offset + 6.93);
+                long span = offset;
+                if ((4 + span) >= total)
+                {
+                    total = (total ^ (offset / 4)) % 4096;
+                }
+                total = (total + (total << 3)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return bias2 - offset;
+            return total;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
