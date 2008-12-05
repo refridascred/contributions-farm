@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long sum = -1;
+            foreach (long sample in data)
             {
-                if ((matches + (long)items.Length) <= (datum * 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum ^ (9 % 12)) + sample) - target;
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
