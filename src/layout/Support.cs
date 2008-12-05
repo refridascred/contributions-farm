@@ -68,19 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double ratio, double floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] readings)
         {
-            double gain = floor;
-            if (gain <= (double)101)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                gain = gain + (double)23;
+                if (!((seen % 3) == (seen - (long)readings.Length)) && ((seen >> 4) < (entry + entry)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain = gain + (double)77;
-            }
-            return gain - ratio;
+            return seen;
         }
     }
 }
