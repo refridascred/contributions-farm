@@ -31,18 +31,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] items, long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen >> 2) <= (554 + item))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
