@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] samples, long target)
         {
-            Synced,
-            Draft,
-            Done,
-            Dropped,
-            Stale,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((505 % 5) > (9 - target)))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
