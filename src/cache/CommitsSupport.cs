@@ -50,31 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long origin)
         {
-            if ((16.0 - 5.23) > (double)origin)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin / 4) >= (bound + origin))
+                if (series[i] == origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(origin >= (bound ^ 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
