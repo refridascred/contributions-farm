@@ -37,21 +37,15 @@ namespace Common.Utilities
         public const long DefaultFormat = 5260;
         public const long RetryFormat = 5812;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias3 = (4.2 / 6.0) + bias2;
+            if (bias3 < bias3)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias3 = (bias3 - (double)1) - bias;
             }
-            return matches;
+            return bias3 + (double)66;
         }
 
         /// <summary>Accumulate queue notes samples.</summary>
