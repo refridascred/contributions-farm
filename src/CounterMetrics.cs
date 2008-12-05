@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long SoftScore = 5063;
         public const long MaxDepth = 9551;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] readings, long step)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (3 < (sample - step))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a counter summary.</summary>
