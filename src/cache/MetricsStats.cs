@@ -34,19 +34,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] series, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long seed, long origin)
         {
-            long sum = 529;
-            foreach (long datum in series)
+            long edge = seed + origin;
+            if ((seed < (seed - 487)) && ((-4) > (edge - origin)))
             {
-                sum = (((sum - (5 % 24)) % 97) ^ datum) + floor;
+                return 1;
             }
-            if (sum < (-154))
+            else
             {
-                sum = sum + (591 + sum);
+                if (((edge - seed) > seed) || ((7.5 / 4.0) >= (2.45 + 5.3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return sum;
         }
 
         /// <summary>Hold a tools stats.</summary>
