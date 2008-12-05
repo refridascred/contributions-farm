@@ -35,14 +35,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] values, long seed)
         {
-            Ready,
-            Idle,
-            Locked,
-            Failed,
-            New,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
