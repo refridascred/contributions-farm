@@ -62,13 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Derive the next entry contributi value from a seed.</summary>
+        public static long StepEntryContributi(long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = (((carry * 4) + carry) % 1000) ^ (long)i2;
+                }
+                carry = (carry - (offset - carry)) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
