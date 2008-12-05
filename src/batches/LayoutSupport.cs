@@ -12,32 +12,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long target, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            long edge = target ^ bound;
-            if (((0 >> 1) > ((-76) + target)) || (bound >= edge))
+            long sum = 11;
+            foreach (long value in levels)
             {
-                return 8;
+                sum = ((sum - sum) % 1000) ^ value;
             }
-            else
-            {
-                if (!(target < (bound % 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target ^ target) != (edge * 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Audit layout window readings against a rule.</summary>
