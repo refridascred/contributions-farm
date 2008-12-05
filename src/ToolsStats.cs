@@ -20,25 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] items, long target)
         {
-            long offset2 = limit + offset;
-            if (((offset - limit) > ((-47) % 5)) && ((offset + limit) > 377))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 - limit) >= offset2)
+                if ((count & 31) != (datum - datum))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 2) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of payload record readings.</summary>
