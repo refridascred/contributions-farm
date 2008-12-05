@@ -75,22 +75,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long carry = 62;
-            foreach (long entry in data)
+            long total = 945;
+            foreach (long item in items)
             {
-                if ((entry - carry) <= (entry >> 1))
+                if ((double)total < (4.31 + 4.6))
                 {
-                    carry = ((carry << 2) ^ 949) % 97;
+                    total = (total - (0 + total)) % 255;
+                }
+                else
+                {
+                    total = total + item;
                 }
             }
-            if (carry > 924)
-            {
-                carry = ((carry * 5) + (carry - carry)) % 65521;
-            }
-            return carry;
+            return total;
         }
     }
 }
