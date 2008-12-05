@@ -25,15 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Stale,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
