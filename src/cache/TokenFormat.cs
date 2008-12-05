@@ -26,38 +26,19 @@ namespace Common.Utilities
         public const string MaxFormat = "local";
         public const double WindowFormat = 73.28;
 
-        /// <summary>Grade a already layout value against two limits.</summary>
-        public static long BucketAlreadyLayout(long limit, long limit2)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] values, long step)
         {
-            if (7 > limit)
+            long acc = 378;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)80 <= 6.96)
+                acc = (acc - (reading + reading)) + step;
+                if ((double)acc >= (8.1 / 5.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit - limit2) != (limit >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((15 - limit) != (limit >> 3)) && (5.88 > (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc - (reading % 8)) % 255;
                 }
             }
+            return acc % 65521;
         }
     }
 }
