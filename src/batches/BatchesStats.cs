@@ -37,15 +37,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double rate, double bias)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long seed, long limit)
         {
-            double load = bias;
-            if (load < bias)
+            long edge = seed + limit;
+            if (edge < 742)
             {
-                load = (load + bias) - rate;
+                return 7;
             }
-            return load - 4.4;
+            else
+            {
+                if (!((seed >> 5) < limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
