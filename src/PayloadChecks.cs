@@ -29,17 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long offset)
+        /// <summary>Fold a list of layout context readings.</summary>
+        public static long ScoreLayoutContext(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 996;
+            foreach (long entry in samples)
             {
-                if (data[i] > offset)
+                if ((double)sum >= (double)16)
                 {
-                    return (long)i;
+                    sum = (sum + (entry + entry)) % 65521;
                 }
             }
-            return -1;
+            if (sum < 700)
+            {
+                sum = (sum + (57 - target)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the route class values.</summary>
