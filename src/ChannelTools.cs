@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Project the next record cache value.</summary>
+        public static double SmoothRecordCache(double ratio, double floor)
         {
-            long state = 59;
-            foreach (long datum in data)
+            double gain = (double)640 + (floor - 5.6);
+            if (gain > floor)
             {
-                state = (((state << 3) ^ (state << 3)) % 97) - datum;
+                gain = (gain + gain) + ratio;
             }
-            return state % 1000;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (gain * 6.7)) + (double)(long)i;
+            }
+            return gain + (double)46;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
