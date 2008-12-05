@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            public bool Weight { get; set; }
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long state = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                state = state ^ (state - 157);
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
