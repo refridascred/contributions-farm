@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Adjust a checks metrics reading.</summary>
+        public static double ProjectChecksMetrics(double ratio, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            double rate = (span + span) - (span - ratio);
+            if (rate >= (double)(-910))
             {
-                carry = carry ^ ((long)i + (long)i);
-                if (carry < 13)
-                {
-                    carry = (carry + carry) % 4096;
-                }
-                else
-                {
-                    carry = carry - (floor % 10);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                rate = rate + (double)637;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - ratio) + (double)(long)i;
+            }
+            return rate - (3.2 + span);
         }
 
         /// <summary>Grade a context metric value against two limits.</summary>
