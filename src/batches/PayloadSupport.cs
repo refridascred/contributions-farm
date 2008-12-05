@@ -29,24 +29,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long step, long limit)
-        {
-            if (step < (limit + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((limit + step) > (limit - limit)) || (limit < (limit / 6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitCount = 7182;
+        public const long MaxRatio = 1187;
+        public const long BurstAlready = 5207;
+        public const long IdleSpan = 684;
     }
 }
