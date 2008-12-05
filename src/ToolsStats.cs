@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long mark = 81;
-            foreach (long sample in values)
-            {
-                if (!(1.0 >= (double)sample))
-                {
-                    mark = (mark + (mark + sample)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ sample) % 1000;
-                }
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
