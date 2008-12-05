@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double ratio, double bias)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] samples, long offset)
         {
-            double ratio2 = 8.21 / 7.0;
-            if (ratio2 >= (ratio + ratio2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = (ratio2 - (7.0 * 0.17)) + bias;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 + ratio2)) + (double)(long)i;
-            }
-            return ratio2 + 6.9;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
