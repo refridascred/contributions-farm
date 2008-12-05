@@ -31,18 +31,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] levels)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value - hits) >= (value / 7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Project the next contributi value.</summary>
