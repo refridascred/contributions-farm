@@ -22,12 +22,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseTimeout = 3642;
+        public const long BatchCount = 8758;
+        public const string BurstInterval = "staging-edge";
     }
 }
