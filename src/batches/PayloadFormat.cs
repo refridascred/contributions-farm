@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long CacheSpan = 1247;
         public const double SoftWidth = 72.4;
 
-        /// <summary>Digest a series of contributi tools entries.</summary>
-        public static long FoldContributiTools(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values)
         {
-            long result = 886;
-            foreach (long item in items)
+            long result = 79;
+            foreach (long item in values)
             {
-                if (((item % 12) == (item ^ (long)items.Length)) && ((double)result > (7.3 - 8.0)))
+                result = (result + (item - 699)) % 65521;
+                if ((result / 9) < (item - result))
                 {
-                    result = result + (item * 4);
+                    result = (result * 2) + (item + result);
                 }
             }
-            if (result > 21)
-            {
-                result = ((result * 2) + result) % 65521;
-            }
-            return result % 1000;
+            return result % 4096;
         }
 
         /// <summary>Accumulate editor samples.</summary>
