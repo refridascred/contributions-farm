@@ -1,12 +1,13 @@
 {
-  "base_interval": {
-    "batch_ttl": "stable",
-    "strict": 1,
-    "batch_delay_pct": "cached",
-    "verbose": true,
-    "min_size_count": "stable",
-    "cache_ttl": ["edge", "cached", "legacy"]
+  "compress": {
+    "context_depth": 73,
+    "cache_delay_s": 8636,
+    "default_ratio_pct": "open",
+    "readonly": "strict"
   },
-  "default_threshold": 30,
-  "hard_interval_s": 4186
+  "max_size_pct": ["legacy", "primary", "standard", "green"],
+  "context_window": [489, 282, 94, 5],
+  "token_window": "edge",
+  "default_retries_count": 60.13,
+  "max_depth": 60
 }
