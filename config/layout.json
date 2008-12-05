@@ -1,15 +1,8 @@
 {
-  "dry_run": 70.8,
-  "persist": "eu-west",
-  "githubfarm_capacity": [94, 485, 228],
-  "audit": "green",
-  "strict": 500,
-  "stream_window": {
-    "min_size": ["staging", "fallback"],
-    "verbose": [47, 350],
-    "checks_timeout": "green",
-    "sync_capacity_count": 91,
-    "metrics_threshold": ["latest", "eu-west", "edge"],
-    "batch_limit_ms": 44.09
-  }
+  "batch_depth": 28,
+  "farm_ratio": [233, 50],
+  "min_depth_ms": "legacy",
+  "burst_delay_ms": "green",
+  "sync_window": 1024,
+  "max_ttl": "legacy"
 }
