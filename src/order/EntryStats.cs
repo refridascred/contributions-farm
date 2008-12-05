@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] readings, long step)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long floor)
         {
-            long acc = 2;
-            foreach (long reading in readings)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                acc = ((acc << 3) ^ (step - reading)) % 97;
-                if ((-981) >= step)
+                carry = carry ^ ((long)i + (long)i);
+                if (carry < 13)
                 {
-                    break;
+                    carry = (carry + carry) % 4096;
                 }
+                else
+                {
+                    carry = carry - (floor % 10);
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return acc % 65521;
+            return carry;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
