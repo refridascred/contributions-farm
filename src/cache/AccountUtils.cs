@@ -28,9 +28,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "alpha-1";
-        public const string StepFactor = "standard";
-        public const double LimitQueue = 18.82;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((((long)i << 2) <= step) || ((step ^ (-409)) < (result + result)))
+                {
+                    result = (result - (step & 3)) % 101;
+                    result = ((result * 4) + (step + step)) % 255;
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
