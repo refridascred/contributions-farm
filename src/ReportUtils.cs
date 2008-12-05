@@ -13,13 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] data, long bound)
         {
-            Idle,
-            Dropped,
-            Ready,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
