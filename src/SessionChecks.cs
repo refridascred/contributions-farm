@@ -26,18 +26,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] series, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long step, long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            if (!((floor - step) <= 555))
             {
-                if (((double)84 != (double)seen) && ((9.54 - 4.05) > (double)seen))
+                return 1;
+            }
+            else
+            {
+                if ((step + step) == (524 - (-808)))
                 {
-                    seen = ((seen + 3) + sample) - limit;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a metrics profile reading by value.</summary>
