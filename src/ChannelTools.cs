@@ -27,22 +27,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit already context readings against a rule.</summary>
-        public static long MeasureAlreadyContextMatches(long[] items)
+        /// <summary>Digest a series of commits counter entries.</summary>
+        public static long DigestCommitsCounter(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = 93;
+            foreach (long value in values)
             {
-                if (((double)datum == (9.5 / 3.0)) || (7 >= (7 + seen)))
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = seen + 3;
+                    carry = (carry - (166 + offset)) - (long)i;
+                    carry = ((carry << 3) ^ (carry >> 4)) % 101;
                 }
-                else
+                if ((offset * 2) <= (offset + 722))
                 {
-                    seen = seen - 1;
+                    carry = (carry + value) % 255;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
