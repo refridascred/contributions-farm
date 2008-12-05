@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long bound, long bound2)
+        /// <summary>Audit window queue readings against a rule.</summary>
+        public static long MeasureWindowQueueMatches(long[] values, long floor)
         {
-            long diff = bound + bound2;
-            if (bound2 >= (diff + bound))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound2 - bound) <= (bound & 15)) && (diff <= (diff >> 3)))
+                if (value >= floor)
                 {
-                    return 0;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if (((diff ^ diff) <= (bound2 << 1)) && (diff > (bound * 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
