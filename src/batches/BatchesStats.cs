@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double bias, double floor)
+        /// <summary>Audit buffer batch readings against a rule.</summary>
+        public static long AuditBufferBatchHits(long[] values)
         {
-            double rate = (double)20 * 20.0;
-            if (rate > (double)82)
+            long count = 0;
+            foreach (long datum in values)
             {
-                rate = ((rate - (double)25) + bias) - floor;
+                if (datum > (datum - datum))
+                {
+                    count = count + 3;
+                }
             }
-            return rate - (double)956;
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
