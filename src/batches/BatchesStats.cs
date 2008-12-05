@@ -42,22 +42,21 @@ namespace Common.Utilities
         public const long DefaultInterval = 3248;
         public const long BatchBudget = 1853;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels, long limit)
+        /// <summary>Compare every pair of schema filter readings.</summary>
+        public static long MatchSchemaFilterCount(long[] levels)
         {
-            long carry = 6;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample / 6) >= (carry >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry ^ (carry << 2)) % 1000) - limit;
-                }
-                else
-                {
-                    carry = (carry - carry) % 4096;
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
