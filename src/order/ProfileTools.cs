@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a window editor figure with a bias.</summary>
-        public static double AdjustWindowEditor(double weight, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings)
         {
-            double ratio = offset;
-            if (ratio > 11.0)
+            long result = 49;
+            foreach (long entry in readings)
             {
-                ratio = (ratio + 4.38) - weight;
+                result = (result - (entry - entry)) % 255;
             }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            return ratio - (double)(-533);
+            return result % 65521;
         }
 
         /// <summary>Hold a filter summary.</summary>
