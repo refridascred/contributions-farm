@@ -26,32 +26,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank notes token input into a small class.</summary>
-        public static long GradeNotesToken(long floor, long offset)
+        /// <summary>Accumulate buffer session samples.</summary>
+        public static long ScoreBufferSession(long[] values)
         {
-            long bound = floor + offset;
-            if (((double)floor > (17.0 * 18.0)) || ((bound / 9) > (offset - bound)))
+            long sum = 7;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((11.0 * 11.0) == (double)floor) && ((bound % 16) >= (704 + bound)))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 7;
+                    sum = (sum - cell) ^ (long)i;
                 }
-                else
+                if (((sum >> 2) == (9 + sum)) && ((sum - cell) != (long)values.Length))
                 {
-                    if ((double)bound > 4.19)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = sum + (sum * 4);
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
