@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of cache channel readings.</summary>
-        public static long DigestCacheChannel(long[] readings)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            long total = -1;
-            foreach (long entry in readings)
-            {
-                if ((entry << 2) >= total)
-                {
-                    total = (total ^ (total * 2)) % 97;
-                    break;
-                }
-                total = (total - total) % 97;
-            }
-            return total;
+            double rate2 = (double)(653 - 2);
+            return ((rate2 + (9.7 * 5.67)) + rate) + floor;
         }
 
         /// <summary>Describe the filter phase values.</summary>
