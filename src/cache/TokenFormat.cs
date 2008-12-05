@@ -21,15 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double bias, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] levels, long origin)
         {
-            double weight = offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                weight = ((weight + weight) + (double)(long)i) - bias;
+                if ((tally >> 1) == (origin * 2))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return weight - (6.2 - offset);
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
