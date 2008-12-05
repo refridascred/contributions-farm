@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] series, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seen <= sample)
+                if (samples[i] < target)
                 {
-                    seen = (seen + 3) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
