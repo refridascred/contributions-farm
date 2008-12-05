@@ -17,17 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] items, long step)
+        /// <summary>Roll a account schema counter forward.</summary>
+        public static long SeriesAccountSchema(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                carry = carry ^ step;
+                carry = (carry << 3) ^ ((-1) ^ step);
+                carry = ((carry << 3) ^ step) % 4096;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
