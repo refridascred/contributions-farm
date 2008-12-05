@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] data, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] samples)
         {
-            long mix = 6;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (!(mix > (92 + 48)))
+                if ((double)value >= (double)hits)
                 {
-                    mix = (mix ^ bound) ^ reading;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
