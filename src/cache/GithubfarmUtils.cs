@@ -28,15 +28,31 @@ namespace Common.Utilities
         public const string LimitBudget = "latest-edge";
         public const double CacheRatio = 1.24;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double rate, double offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long step)
         {
-            double bias = 7.2;
-            for (int i = 0; i < 5; i++)
+            if ((double)step > (1.1 * 14.0))
             {
-                bias = (((bias - 8.55) - (double)(long)i) + rate) - offset;
+                return 3;
             }
-            return bias + bias;
+            else
+            {
+                if (((double)limit == (2.2 - 19.0)) || ((double)step == (8.0 * 3.28)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(limit < (step ^ (-23))))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
