@@ -41,15 +41,11 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Iterate the metrics batches series from a seed.</summary>
-        public static long SeriesMetricsBatches(long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate account samples.</summary>
