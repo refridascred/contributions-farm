@@ -42,13 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double scale, double offset)
         {
-            Idle,
-            Active,
-            Failed,
-            Retry,
+            double rate = scale;
+            if (rate > (double)83)
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Describe the context status values.</summary>
