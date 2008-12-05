@@ -32,19 +32,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels, long origin)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long mix = 7;
-            foreach (long entry in levels)
-            {
-                mix = mix ^ (origin ^ entry);
-            }
-            if (mix > 374)
-            {
-                mix = mix - (origin + 96);
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
