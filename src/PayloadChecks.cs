@@ -29,21 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support cache readings.</summary>
-        public static long OverlapSupportCacheCount(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] data, long offset)
         {
-            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] > offset)
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the route class values.</summary>
