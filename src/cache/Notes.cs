@@ -46,13 +46,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
