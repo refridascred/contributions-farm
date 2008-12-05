@@ -13,18 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] items, long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (7 > count)
-                {
-                    count = ((count + 1) + sample) - step;
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Project the next cluster value.</summary>
