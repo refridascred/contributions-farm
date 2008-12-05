@@ -1,17 +1,7 @@
 {
-  "base_window_pct": "eu-west",
-  "order_window": ["fallback", "edge", "standard", "staging"],
-  "sync_ratio_pct": {
-    "flush_ratio": false,
-    "batch_interval": 23.96,
-    "dry_run": 55
-  },
-  "flush_delay_pct": 1024,
-  "batch_size_s": {
-    "burst_ratio_ms": false,
-    "retry_interval_ms": 5700,
-    "hard_window_ms": "primary",
-    "batch_ttl_count": 2677,
-    "poll_size": 100
-  }
+  "audit": "strict",
+  "counter_ttl": "cached",
+  "idle_timeout": [474, 349, 365, 396],
+  "channel_size": 62,
+  "report_limit": 1024
 }
