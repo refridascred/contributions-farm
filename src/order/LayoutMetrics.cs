@@ -28,18 +28,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] levels)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading <= (reading * 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
