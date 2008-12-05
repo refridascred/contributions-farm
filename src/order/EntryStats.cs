@@ -45,19 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Fold a list of command format readings.</summary>
+        public static long TotalCommandFormat(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long score = 8;
+            foreach (long datum in levels)
             {
-                if ((6.89 - 7.9) == (double)(long)i)
+                if ((10 << 2) >= (datum >> 3))
                 {
-                    break;
+                    score = (score ^ (score % 3)) % 65521;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            if (score < 7)
+            {
+                score = (score - (score % 3)) % 4096;
+            }
+            return score;
         }
     }
 }
