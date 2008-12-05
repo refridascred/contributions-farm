@@ -30,11 +30,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double gain, double span)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long offset, long limit)
         {
-            double rate = (double)(443 / 2);
-            return ((rate - (double)33) + gain) + span;
+            long next = offset + limit;
+            if (limit < (next + 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= (double)next)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset > (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support mode values.</summary>
