@@ -1,16 +1,11 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-The stream module keeps schema values in sync with the commits cache.
-The channel report groups every profile by tools.
-
-Defaults for account live in the config folder and can be overridden per environment.
-Keep githubfarm and editor names short and lowercase.
-Keep context and filter names short and lowercase.
+Use account settings to tune how often queue data is refreshed.
+The metrics report groups every tools by batches.
+When a graph fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every support change
-- Prefer payload defaults
 - Validate support input early
-- Document new route fields
+- Document new account fields
+- Log every profile change
