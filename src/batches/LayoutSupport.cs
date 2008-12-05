@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const string RetryEntry = "staging";
         public const string CacheWidth = "fallback-edge";
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] levels, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = span;
+            if (bias2 > (9.9 * 13.0))
             {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (7.34 - bias);
             }
-            return -1;
+            return bias2 + (bias * 13.0);
         }
 
         /// <summary>Hold a cluster record.</summary>
