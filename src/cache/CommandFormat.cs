@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 1.45;
+        public const double IdleOrder = 17.46;
+        public const long IdleRatio = 2298;
+        public const long HardDepth = 3788;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
