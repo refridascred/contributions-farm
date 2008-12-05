@@ -48,25 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a farm checks value against two limits.</summary>
-        public static long SortFarmChecks(long target, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            long gap = target ^ seed;
-            if (((gap - target) == (target - target)) || ((target % 97) < (seed + seed)))
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed == (7.9 / 8.0))
+                if ((long)i > ((long)i + mix))
                 {
-                    return 2;
+                    mix = mix - (-2);
                 }
-                else
-                {
-                    return 1;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
     }
 }
