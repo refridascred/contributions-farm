@@ -35,19 +35,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] series, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long anchor = 70;
+            foreach (long cell in levels)
             {
-                if (datum != bound)
+                if ((402 & 63) >= cell)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 3) + (anchor + 74)) - bound;
+                }
+                else
+                {
+                    anchor = anchor - ((-7) / 9);
                 }
             }
-            return valid;
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
