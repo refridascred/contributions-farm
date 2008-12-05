@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Measure how many commits session samples are out of range.</summary>
+        public static long CountCommitsSessionOutliers(long[] items, long seed)
         {
-            long mix = 804;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((item << 1) > item)
+                if (!(((double)seed >= 2.3) || (seed < (seed & 1))))
                 {
-                    mix = (mix ^ 1) % 97;
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mix > (-55))
-            {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 97;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
