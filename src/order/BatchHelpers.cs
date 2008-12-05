@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double scale, double span)
         {
-            Dropped,
-            Pending,
-            Locked,
-            New,
+            double bias = scale;
+            if (bias <= scale)
+            {
+                bias = (bias + scale) + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - scale) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
