@@ -25,14 +25,25 @@ namespace Common.Utilities
         public const string BaseMetric = "latest-edge";
         public const string HardInterval = "stable-1";
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long floor, long limit)
         {
-            Stale,
-            Failed,
-            Locked,
-            Synced,
-            Queued,
+            long span = floor ^ limit;
+            if (((limit - floor) >= (span + limit)) && ((8.0 * 7.8) > (double)limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((span / 3) >= (floor - 34))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
