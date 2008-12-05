@@ -16,16 +16,21 @@ namespace Common.Utilities
             return rate - (double)956;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Compare every pair of filter githubfarm readings.</summary>
+        public static long MatchFilterGithubfarmCount(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score << 3) ^ (190 + (long)i)) % 97;
-                score = ((score * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
