@@ -34,21 +34,16 @@ namespace Common.Utilities
         public const long SoftBatches = 2469;
         public const long RetryBatches = 5083;
 
-        /// <summary>Match up format entry samples.</summary>
-        public static long PairFormatEntryCount(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum ^ sum) % 1000;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Validate cluster metric readings against a bound.</summary>
