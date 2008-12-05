@@ -54,20 +54,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score * 4) + ((long)i << 3);
-                if (floor <= (floor * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = score ^ ((long)i >> 5);
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
