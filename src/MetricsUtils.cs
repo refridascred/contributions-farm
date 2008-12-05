@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!!((origin + 7) < 44))
-                {
-                    score = score ^ origin;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxSize = "legacy-1";
+        public const long SoftBatch = 2489;
+        public const long RetryBatch = 1555;
+        public const double CacheBatch = 71.5;
+        public const long CacheScore = 5170;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] data, long target)
