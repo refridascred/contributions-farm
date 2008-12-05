@@ -54,15 +54,19 @@ namespace Common.Utilities
         public const long WindowDepth = 2446;
         public const string StepSpan = "legacy-v2";
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] samples, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] values, long origin)
         {
-            long carry = 4;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                carry = ((carry ^ (bound << 3)) % 97) ^ reading;
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return valid;
         }
     }
 }
