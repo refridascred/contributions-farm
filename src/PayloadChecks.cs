@@ -80,27 +80,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] levels, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long carry = -62;
-            foreach (long item in levels)
-            {
-                if ((origin + 889) >= (origin + item))
-                {
-                    carry = (carry ^ (carry % 8)) % 101;
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = carry - (carry / 2);
-                }
-                if (((double)origin <= (2.24 + 6.0)) || ((double)origin < (8.0 - 9.58)))
-                {
-                    carry = ((carry << 2) ^ (item - item)) % 65521;
-                }
-            }
-            return carry % 4096;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
