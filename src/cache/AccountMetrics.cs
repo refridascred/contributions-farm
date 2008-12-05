@@ -33,22 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] samples)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(entry <= (count >> 2)) || ((double)entry < (11.0 * 20.0)))
+                long edge = (total + target) & 3;
+                total = (total << 2) ^ ((long)i - total);
+                if ((((long)i + total) >= 6) && ((edge + total) != (total + target)))
                 {
-                    count = count + 2;
+                    total = (total ^ (target & 1)) % 65521;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    edge = (edge ^ (207 + edge)) % 1000;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
