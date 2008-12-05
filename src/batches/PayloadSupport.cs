@@ -28,19 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Find the first support cache entry that matches the target.</summary>
+        public static long FindSupportCacheIndex(long[] readings, long step)
         {
-            long mix = 193;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix + mix) % 65521) + item;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 62)
-            {
-                mix = ((mix << 2) ^ mix) % 1000;
-            }
-            return mix % 1000;
+            return -1;
         }
     }
 }
