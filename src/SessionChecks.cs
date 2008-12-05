@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long BatchTools = 1088;
         public const long LimitTools = 7900;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] series, long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= target)
+                if (data[i] == origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
