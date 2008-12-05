@@ -49,10 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 7276;
-        public const long MaxScore = 2054;
-        public const long BurstChecks = 3516;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = mark - ((long)i + 45);
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first batches schema entry that matches the target.</summary>
         public static long FindBatchesSchemaIndex(long[] readings, long bound)
