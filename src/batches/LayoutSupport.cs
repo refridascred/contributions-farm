@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] data, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] levels)
         {
-            long sum = 81;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((cell / 5) != (693 << 2))
+                if (!(seen < value))
                 {
-                    sum = ((sum * 4) + (offset + offset)) % 97;
-                }
-                else
-                {
-                    sum = (sum + (sum - offset)) % 255;
+                    seen = seen + 2;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a format summary.</summary>
