@@ -14,21 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = gain;
+            if (rate < (bias + bias))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + 7.8;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (rate - bias)) + (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Blend two profile measurements.</summary>
