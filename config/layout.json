@@ -1,7 +1,5 @@
 {
-  "audit": [57, 141],
-  "base_size": "blue",
-  "contributi_capacity": 63.72,
-  "soft_window_s": 88.85,
-  "counter_capacity": 63.37
+  "warm_size_count": 47,
+  "default_timeout_pct": ["latest", "primary", "eu-west", "strict"],
+  "flush_interval_count": 6.53
 }
