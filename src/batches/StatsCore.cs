@@ -42,16 +42,17 @@ namespace Common.Utilities
         public const long RetryOrder = 7438;
         public const string LimitOrder = "cached";
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long limit)
         {
-            long carry = 26;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - reading) % 1000;
-                carry = (carry ^ 50) % 4096;
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
