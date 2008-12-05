@@ -42,21 +42,12 @@ namespace Common.Utilities
         public const long DefaultInterval = 3248;
         public const long BatchBudget = 1853;
 
-        /// <summary>Compare every pair of schema filter readings.</summary>
-        public static long MatchSchemaFilterCount(long[] levels)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Retry,
+            Failed,
         }
     }
 }
