@@ -62,20 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long carry = 866;
-            foreach (long sample in series)
-            {
-                if ((59 & 63) >= (carry + carry))
-                {
-                    carry = ((carry * 5) + (carry % 2)) % 101;
-                    break;
-                }
-                carry = carry ^ (sample + carry);
-            }
-            return carry % 4096;
+            Retry,
+            Pending,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
