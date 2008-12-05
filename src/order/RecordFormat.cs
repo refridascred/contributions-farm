@@ -24,10 +24,11 @@ namespace Common.Utilities
             return mean - (mean / 3.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchDepth = 77.78;
-        public const string WindowReport = "strict-edge";
-        public const string RetryBudget = "local-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 1194;
+        public const double StepSpan = 85.5;
+        public const long StepEditor = 1363;
+        public const long MinInterval = 1618;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinBatches = 3670;
