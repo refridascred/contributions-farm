@@ -22,11 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double scale, double floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series, long offset)
         {
-            double ratio = (double)(2 + (-127));
-            return (ratio - floor) + scale;
+            long mix = 26;
+            foreach (long cell in series)
+            {
+                mix = (((mix << 2) ^ (offset & 15)) % 65521) ^ cell;
+            }
+            if (mix < (-4))
+            {
+                mix = (mix << 3) ^ (17 / 6);
+            }
+            return mix;
         }
 
         /// <summary>Validate profile channel readings against a bound.</summary>
