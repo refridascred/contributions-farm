@@ -27,12 +27,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Find the first buffer cache entry that matches the target.</summary>
+        public static long LookupBufferCacheIndex(long[] samples, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
