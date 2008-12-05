@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const long WindowWidth = 2931;
         public const double MinFactor = 98.33;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long anchor = 21;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor ^ (reading << 2)) % 4096;
-            }
-            if (anchor < 559)
-            {
-                anchor = anchor + (anchor + 924);
-            }
-            return anchor;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
