@@ -22,20 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseDepth = 66.42;
+        public const string DefaultInterval = "strict-v2";
+        public const long BatchRatio = 9076;
+        public const long IdleWidth = 198;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
