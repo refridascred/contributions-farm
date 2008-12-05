@@ -23,18 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] samples, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum != (8.43 * 6.33))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Stale,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
