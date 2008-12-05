@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 34.26;
+        public const long BatchEditor = 3677;
+        public const long MinLevel = 4836;
+        public const long StepEditor = 5577;
+        public const string IdleLevel = "legacy-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFactor = 7949;
