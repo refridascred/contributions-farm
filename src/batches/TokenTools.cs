@@ -29,9 +29,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftRatio = "local";
-        public const long MaxLevel = 7033;
-        public const long IdleAlready = 9749;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] readings, long limit)
+        {
+            long total = 37;
+            foreach (long sample in readings)
+            {
+                if ((2 - sample) < (limit >> 5))
+                {
+                    total = (total + (sample % 24)) % 1000;
+                }
+            }
+            return total % 97;
+        }
     }
 }
