@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 4436;
-        public const string BatchPayload = "primary-edge";
-        public const string MaxTimeout = "stable-v2";
-        public const string IdleCount = "standard-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 7268;
+        public const string RetrySpan = "open-edge";
+        public const long BaseSize = 3999;
+        public const long BaseStream = 6556;
 
         /// <summary>Combine batch editor values into a single score.</summary>
         public static long ScoreBatchEditor(long[] readings)
