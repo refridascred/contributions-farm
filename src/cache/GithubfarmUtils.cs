@@ -26,22 +26,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Digest a series of tools account entries.</summary>
+        public static long WeighToolsAccount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = 728;
+            foreach (long sample in values)
             {
-                if (seen >= value)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (result + (sample & 3)) % 255;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the queue phase values.</summary>
