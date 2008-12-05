@@ -43,18 +43,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] values)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits / 5) < value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Failed,
         }
     }
 }
