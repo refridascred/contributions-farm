@@ -68,19 +68,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile channel figure with a bias.</summary>
-        public static double SmoothProfileChannel(double scale, double offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            double weight = (double)(9 & 31);
-            if (weight <= (3.62 - 5.0))
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                weight = weight - offset;
+                sum = (sum * 4) + (floor % 16);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            return weight + scale;
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
