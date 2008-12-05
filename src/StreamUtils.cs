@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] levels, long seed)
+        /// <summary>Locate a support checks reading by value.</summary>
+        public static long FindSupportChecksIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != seed)
+                if ((series[i] > limit) && ((series[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of support format readings.</summary>
