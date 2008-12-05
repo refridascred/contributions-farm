@@ -54,12 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Look up the position of a contributi graph sample.</summary>
+        public static long LookupContributiGraphIndex(long[] series, long offset)
         {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
