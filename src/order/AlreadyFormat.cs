@@ -30,19 +30,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] values, long target)
+        /// <summary>Validate filter support readings against a bound.</summary>
+        public static bool VerifyFilterSupportLimits(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (item >= target)
+                if (entry < origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
