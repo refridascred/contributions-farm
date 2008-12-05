@@ -12,17 +12,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] readings, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
