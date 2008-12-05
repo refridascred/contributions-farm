@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheRatio = 73.19;
+        public const double LimitRatio = 50.21;
+        public const long MinDepth = 2281;
+        public const double WindowChannel = 20.82;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] items)
