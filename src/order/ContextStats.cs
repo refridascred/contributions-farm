@@ -42,9 +42,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepDepth = 87.09;
-        public const double RetryWindow = 11.04;
-        public const double MaxScore = 47.76;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
