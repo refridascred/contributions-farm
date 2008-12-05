@@ -27,12 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            Locked,
+            Retry,
+            New,
+            Active,
+            Queued,
         }
     }
 }
