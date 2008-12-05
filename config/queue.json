@@ -1,9 +1,12 @@
 {
-  "batch_depth_s": 4573,
-  "hard_ttl_pct": 73,
-  "retry_capacity_pct": {
-    "warm_size_count": true,
-    "notes_window": false,
-    "burst_capacity_pct": 38.02
-  }
+  "max_interval_s": 87,
+  "soft_retries_pct": {
+    "warm_capacity_ms": 500,
+    "stats_window": 14.39,
+    "notes_threshold": "open",
+    "burst_capacity_count": "fallback",
+    "readonly": "fallback",
+    "burst_ratio_count": 93
+  },
+  "min_window": 13.17
 }
