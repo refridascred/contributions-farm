@@ -1,9 +1,11 @@
 # support settings
-persist:
-  - 119
-  - 120
-  - 185
-  - 43
-strict: 35.9
-soft_limit_count: false
-idle_size: 95.85
+queue_ttl: 60
+cache_timeout:
+  audit: false
+  min_size_ms: eu-west
+  burst_capacity_ms: 68.11
+batch_threshold_count: 100
+metric_limit:
+  strict: 500
+  context_ttl: 62.91
+  retry_threshold_count: 4280
