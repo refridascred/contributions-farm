@@ -1,31 +1,18 @@
 # support settings
-min_limit_pct:
-  warm_threshold_count: 22
-  batch_ttl: 24.75
-  soft_ttl_s: green
-persist: 5080
-cache_ttl_pct:
-  warm_delay:
-    cache_delay_ms: 7.2
-    poll_ttl_count: local
-    report_threshold: green
-    default_size_s: 7562
-    compress: 5.03
-    min_depth_count: 61.71
-  verbose:
-    - blue
-    - blue
-    - latest
-  schema_threshold: 100
-  dry_run: 1575
-dry_run:
-  poll_capacity_pct: 5058
-  flush_timeout:
-    - 184
-    - 424
-    - 170
-    - 194
-  format_window: 6471
-  route_window: 500
-  verbose: cached
-  window_depth: 2736
+sync_threshold_count:
+  - 228
+  - 479
+  - 132
+  - 98
+batch_retries:
+  soft_limit_pct: 250
+  idle_depth_s: 36
+  persist: 100
+  soft_limit_ms: standard
+  format_timeout:
+    - 490
+    - 157
+    - 109
+  soft_size_s: 10.3
+poll_limit_pct: 42.97
+session_depth: staging
