@@ -33,33 +33,11 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Classify a metric commits pair into a bucket.</summary>
-        public static long BucketMetricCommits(long seed, long seed2)
-        {
-            long bound = seed ^ seed2;
-            if (!((double)seed != (double)5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((20.0 / 6.0) == (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - 42) <= (seed2 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepFactor = 290;
+        public const long SoftCluster = 6845;
+        public const double DefaultCluster = 17.37;
+        public const long MinRatio = 5714;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
