@@ -45,24 +45,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long step, long limit)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            if (limit > (limit - limit))
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
+                mark = ((mark << 2) ^ (limit - limit)) % 101;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (81 >= (step << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mark;
         }
     }
 }
