@@ -16,17 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] readings, long limit)
+        /// <summary>Check that every route farm entry stays within the limit.</summary>
+        public static bool GuardRouteFarmLimits(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (readings[i] >= limit)
+                if (entry <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Accumulate editor record samples.</summary>
