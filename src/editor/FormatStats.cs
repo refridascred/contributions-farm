@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] levels, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (tally >= (tally & 7))
-                {
-                    tally = ((tally + 3) + cell) - offset;
-                }
+                acc = acc ^ (offset * 2);
+                acc = (acc * 3) + offset;
+                acc = (acc << 3) ^ (67 - acc);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
