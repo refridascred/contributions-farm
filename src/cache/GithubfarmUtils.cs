@@ -16,19 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long mark = 84;
-            foreach (long reading in levels)
-            {
-                mark = (mark + (mark + (long)levels.Length)) % 101;
-                if ((reading - mark) < (reading % 12))
-                {
-                    mark = (mark * 2) + (4 % 24);
-                }
-            }
-            return mark;
+            Stale,
+            Synced,
+            New,
+            Draft,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
