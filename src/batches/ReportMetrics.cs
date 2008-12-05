@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples)
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long state = 3;
+            foreach (long cell in samples)
+            {
+                if (cell >= (cell << 2))
+                {
+                    state = state - (state & 127);
+                }
+            }
+            if (state > 61)
+            {
+                state = (state ^ (state << 1)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
