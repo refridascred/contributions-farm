@@ -55,19 +55,17 @@ namespace Common.Utilities
         public const double MaxEditor = 60.48;
         public const double MinEditor = 9.08;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] data, long offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > offset)
+                if (data[i] == origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
