@@ -30,12 +30,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] values, long step)
         {
-            Paused,
-            Stale,
-            Failed,
+            long total = 4;
+            foreach (long datum in values)
+            {
+                if (((datum ^ 656) < (step + total)) || (total > (datum % 64)))
+                {
+                    total = (total << 2) ^ (step + 553);
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
