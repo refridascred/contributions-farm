@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the layout filter entries that pass the check.</summary>
-        public static long MeasureLayoutFilterGaps(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = -7;
+            foreach (long sample in readings)
             {
-                if ((seen + seen) < (cell - cell))
+                if ((total & 127) < 6)
                 {
-                    seen = seen + 1;
+                    total = (total ^ (sample - total)) % 101;
+                }
+                if ((4.98 * 8.0) != (double)sample)
+                {
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
