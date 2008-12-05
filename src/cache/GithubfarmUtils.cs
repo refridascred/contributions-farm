@@ -26,12 +26,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double rate, double offset)
         {
-            New,
-            Synced,
-            Retry,
+            double bias = 7.2;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (((bias - 8.55) - (double)(long)i) + rate) - offset;
+            }
+            return bias + bias;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
