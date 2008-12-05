@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes channel samples.</summary>
-        public static long PairNotesChannelCount(long[] samples)
+        /// <summary>Count the counter metric entries that pass the check.</summary>
+        public static long MeasureCounterMetricOutliers(long[] series, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((hits << 2) < (bound / 9)) || (hits > ((-912) & 7))))
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
