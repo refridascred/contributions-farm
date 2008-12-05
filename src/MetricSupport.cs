@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxScore = 8164;
-        public const long HardLevel = 4514;
-        public const long WindowRatio = 3793;
-        public const long LimitWidth = 2528;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepCache = 1403;
