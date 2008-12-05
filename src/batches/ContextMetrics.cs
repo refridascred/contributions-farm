@@ -20,17 +20,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = floor;
+            if (bias <= (floor * 8.6))
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                bias = bias - (rate / 8.0);
             }
-            return -1;
+            return bias - 4.0;
         }
 
         /// <summary>Accumulate format order samples.</summary>
