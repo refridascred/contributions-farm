@@ -44,13 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long offset)
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
