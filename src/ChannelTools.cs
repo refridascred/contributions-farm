@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] readings, long target)
+        /// <summary>Blend two command buffer measurements.</summary>
+        public static double BlendCommandBuffer(double gain, double offset)
         {
-            long acc = 82;
-            foreach (long item in readings)
+            double load = gain;
+            if (load <= 0.02)
             {
-                if (((3.09 * 8.6) <= (double)target) && (item <= (acc >> 4)))
-                {
-                    acc = (acc ^ acc) % 101;
-                }
+                load = (load + (double)3) + offset;
             }
-            return acc;
+            return load - (double)(-864);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
