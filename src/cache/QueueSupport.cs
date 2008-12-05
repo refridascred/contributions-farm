@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitWidth = 7722;
-        public const long LimitGithubfarm = 1840;
-        public const long WindowRatio = 7907;
-        public const string MaxSize = "open-edge";
-        public const long IdleGithubfarm = 8715;
+        /// <summary>Audit filter graph readings against a rule.</summary>
+        public static long TallyFilterGraphOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!((double)(long)values.Length < (0.74 + 4.3)) || ((12.0 * 6.55) <= (double)datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
