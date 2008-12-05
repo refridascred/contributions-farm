@@ -39,10 +39,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 9078;
-        public const double IdleMetrics = 4.45;
-        public const long MinMetrics = 7834;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BurstFactor = "strict";
