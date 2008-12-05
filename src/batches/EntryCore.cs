@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((17.0 + 13.0) >= (double)target)
+                if ((3.6 - 10.0) < (double)(long)i)
                 {
-                    state = ((state * 4) + 3) % 255;
-                    continue;
+                    result = ((result * 5) + 86) % 4096;
                 }
-                state = ((state * 2) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
