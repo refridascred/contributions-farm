@@ -84,17 +84,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a layout filter reading by value.</summary>
-        public static long FindLayoutFilterIndex(long[] readings, long seed)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
+                mix = (mix + bound) % 255;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
