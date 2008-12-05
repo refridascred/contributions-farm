@@ -32,19 +32,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate profile context readings against a bound.</summary>
-        public static bool VerifyProfileContextBounds(long[] series, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long floor, long step)
         {
-            bool stale = true;
-            foreach (long item in series)
+            if ((floor <= (floor + step)) || ((floor + 0) != (step + step)))
             {
-                if (item > origin)
+                return 8;
+            }
+            else
+            {
+                if ((step ^ floor) > (796 + step))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (step ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Rank window input into a small class.</summary>
