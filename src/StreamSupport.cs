@@ -37,14 +37,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Locked,
-            Retry,
-            New,
-            Active,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryFactor = 50.03;
+        public const string CacheStream = "latest-1";
+        public const double StepStream = 45.87;
+        public const string RetrySize = "primary";
     }
 }
