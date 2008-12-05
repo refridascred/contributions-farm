@@ -44,10 +44,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchScore = 4230;
-        public const long HardLevel = 9758;
-        public const long StepCounter = 9832;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public bool Score { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double SoftLayout = 28.57;
