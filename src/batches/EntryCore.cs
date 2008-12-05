@@ -34,30 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] items, long step)
         {
-            long anchor = 9;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)reading != (2.1 - 5.25)))
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
                 {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (3 << 1)) % 1000;
-                }
-                if ((anchor & 255) == (reading % 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
