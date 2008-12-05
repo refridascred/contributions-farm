@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] readings)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double bias = (double)187 / 3.0;
+            if (bias > (floor * 6.7))
             {
-                if ((reading / 5) == (29 + seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = (bias - (floor * 3.6)) - scale;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (bias / 2.0);
         }
 
         /// <summary>Hold a window options.</summary>
