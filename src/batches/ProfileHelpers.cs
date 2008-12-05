@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long MinBudget = 5232;
         public const long StepSize = 657;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchTimeout = "stable";
-        public const double HardLevel = 88.93;
-        public const long CacheRatio = 4799;
-        public const long WindowInterval = 5300;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((3 & 1) > matches) && ((9 + cell) >= (matches + matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
