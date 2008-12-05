@@ -33,21 +33,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)origin < (2.5 / 4.0))
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix * 3) + (mix / 2)) % 97;
                 }
+                mix = (mix + (long)i) % 65521;
+                mix = (mix - (origin << 2)) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
