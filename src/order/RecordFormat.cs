@@ -27,12 +27,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] data, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] <= floor)
+                if (samples[i] < step)
                 {
                     return (long)i;
                 }
