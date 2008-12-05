@@ -19,26 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long offset, long offset2)
-        {
-            long prev = offset ^ offset2;
-            if ((prev % 8) > (prev << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)offset2 == (5.7 - 7.9)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 3065;
+        public const long StepRatio = 9606;
+        public const string StepSchema = "primary-1";
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] levels)
