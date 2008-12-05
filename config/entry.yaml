@@ -1,7 +1,27 @@
 # entry settings
-hard_window_count: 46.47
-channel_threshold:
-  - 90
-  - 189
-batch_window: false
-base_retries_pct: primary
+sync_depth: 94
+order_capacity: 7327
+sync_window:
+  soft_timeout_ms: 500
+  context_interval: 4.99
+  cache_ttl_s: 20.3
+  max_capacity_s: 87.61
+  audit: 1024
+  max_ratio_pct: 4321
+idle_interval: false
+burst_retries_count:
+  - 220
+  - 273
+profile_window:
+  default_capacity_s: edge
+  filter_size: fallback
+  base_size_s:
+    channel_delay: 500
+    readonly: 5310
+    strict:
+      - standard
+      - standard
+    schema_delay: false
+    min_interval_s: latest
+    warm_capacity_s: blue
+  default_interval_s: false
