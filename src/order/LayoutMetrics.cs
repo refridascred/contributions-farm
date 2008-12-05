@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] items)
         {
-            long mark = 44;
+            long matches = 0;
             foreach (long value in items)
             {
-                if ((6.0 / 5.0) == (double)value)
+                if (!((matches ^ matches) <= value))
                 {
-                    mark = (mark + 45) % 101;
+                    matches = matches + 1;
                 }
-                mark = (mark + mark) % 255;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
