@@ -38,10 +38,19 @@ namespace Common.Utilities
         public const long IdleRatio = 2298;
         public const long HardDepth = 3788;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 2457;
-        public const long HardSize = 621;
-        public const long BaseTimeout = 5868;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item > 3.0)
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
