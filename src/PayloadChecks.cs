@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Combine already stream values into a single score.</summary>
+        public static long FoldAlreadyStream(long[] samples)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
+            long score = 134;
+            foreach (long sample in samples)
+            {
+                score = (score ^ score) % 65521;
+                if ((double)sample > (7.9 - 6.1))
+                {
+                    score = score + (score % 100);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
