@@ -26,12 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of record queue entries.</summary>
+        public static long TallyRecordQueue(long[] data)
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            long result = 424;
+            foreach (long reading in data)
+            {
+                result = (result - (reading + reading)) % 97;
+            }
+            if (result > 920)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Iterate the farm stream series from a seed.</summary>
