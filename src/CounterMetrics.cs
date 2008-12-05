@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "latest-1";
-        public const string MinLevel = "standard-edge";
-        public const long DefaultScore = 7356;
-        public const string WindowTimeout = "standard-v2";
-        public const long SoftRatio = 6175;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] values)
+        {
+            long acc = 0;
+            foreach (long value in values)
+            {
+                if (((long)values.Length + acc) >= value)
+                {
+                    acc = (acc ^ (acc / 9)) % 255;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double weight, double span)
