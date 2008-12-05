@@ -49,12 +49,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Queued,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 4626;
+        public const long LimitSpan = 7683;
+        public const long BatchTools = 2490;
     }
 }
