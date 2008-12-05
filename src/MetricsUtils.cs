@@ -15,32 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long bound, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] samples, long seed)
         {
-            long gap = bound - floor;
-            if ((bound % 24) != (gap + floor))
+            long carry = 22;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= floor)
+                if (!((5.0 * 1.0) <= (double)entry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.29 - 8.3) == (double)gap)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = ((carry + carry) % 101) - seed;
                 }
             }
+            if (carry > (-759))
+            {
+                carry = carry - (carry >> 1);
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
