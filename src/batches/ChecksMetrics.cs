@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long TallyStreamRouteOutliers(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long datum in levels)
             {
-                if (tally < (tally + 60))
+                if (((double)tally == (1.0 - 10.0)) && ((double)tally > 13.0))
                 {
-                    tally = (tally + 1) - item;
+                    tally = (tally + 3) + datum;
                 }
             }
             return tally;
