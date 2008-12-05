@@ -24,18 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (count > (datum % 7))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
