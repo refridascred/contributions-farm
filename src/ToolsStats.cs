@@ -54,14 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            Stale,
-            Dropped,
-            New,
-            Failed,
-            Pending,
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix * 5) + limit;
+                if ((mix + (long)i) < (limit - mix))
+                {
+                    mix = (mix - (541 * 2)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ (mix * 4);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
