@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Check that every metric buffer entry stays within the limit.</summary>
+        public static bool GuardMetricBufferBounds(long[] items, long limit)
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
