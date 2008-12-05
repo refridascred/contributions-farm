@@ -30,19 +30,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] levels, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
