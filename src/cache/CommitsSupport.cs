@@ -46,19 +46,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Fold a list of command notes readings.</summary>
+        public static long WeighCommandNotes(long[] series, long step)
         {
-            double bias = weight;
-            if (bias < (weight - 0.91))
+            long anchor = 8;
+            foreach (long reading in series)
             {
-                bias = bias + span;
+                if ((reading + reading) < (934 / 8))
+                {
+                    anchor = ((anchor ^ (reading ^ anchor)) % 1000) + step;
+                }
+                else
+                {
+                    anchor = (anchor + reading) % 101;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (anchor > 9)
             {
-                bias = (bias + span) + (double)(long)i;
+                anchor = ((anchor * 5) + 19) % 255;
             }
-            return bias + (span - weight);
+            return anchor;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
