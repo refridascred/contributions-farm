@@ -47,24 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long step, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            if ((floor - step) < (floor % 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step >= (step ^ floor)) && ((double)floor > (1.86 * 3.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the metrics state values.</summary>
