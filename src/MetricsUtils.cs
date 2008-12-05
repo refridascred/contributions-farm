@@ -37,17 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] values, long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
