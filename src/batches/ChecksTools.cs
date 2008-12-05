@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate account command readings against a bound.</summary>
-        public static bool ValidateAccountCommandBounds(long[] data, long bound)
+        /// <summary>Compare every pair of session command readings.</summary>
+        public static long PairSessionCommandCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Adjust a account reading.</summary>
