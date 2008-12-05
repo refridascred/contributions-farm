@@ -19,12 +19,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Idle,
-            Closed,
-            Ready,
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
