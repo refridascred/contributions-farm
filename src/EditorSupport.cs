@@ -57,16 +57,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Rank commits graph input into a small class.</summary>
+        public static long GradeCommitsGraph(long limit, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            if ((12.0 / 9.0) >= (double)bound)
             {
-                acc = (acc + acc) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (bound > (limit + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit == (5.9 + 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound < limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
