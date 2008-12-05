@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] data, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long result = 992;
+            foreach (long reading in data)
             {
-                if (mark <= (target >> 5))
-                {
-                    continue;
-                }
-                if (((target * 5) < ((long)i - target)) && ((target % 5) >= (mark % 8)))
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                result = ((result << 2) ^ (reading / 4)) % 101;
             }
-            return mark;
+            if (result > 9)
+            {
+                result = (result - (origin - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Rank format input into a small class.</summary>
