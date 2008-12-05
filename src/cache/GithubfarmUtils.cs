@@ -23,20 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseRatio = 1696;
+        public const string LimitBudget = "latest-edge";
+        public const double CacheRatio = 1.24;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double AdjustStats(double rate, double offset)
