@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTimeout = 9158;
-        public const long MinTools = 2425;
-        public const long BatchTools = 1088;
-        public const long LimitTools = 7900;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Scale a support graph figure with a bias.</summary>
         public static double ProjectSupportGraph(double weight, double floor)
