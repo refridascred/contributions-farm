@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] series, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long state = 59;
+            foreach (long datum in data)
             {
-                if (!(((hits ^ hits) == (hits + step)) && (hits > (cell + cell))))
-                {
-                    hits = hits + 2;
-                }
+                state = (((state << 3) ^ (state << 3)) % 97) - datum;
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Blend two command buffer measurements.</summary>
