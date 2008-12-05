@@ -48,18 +48,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long offset)
         {
-            long score = 37;
-            foreach (long value in samples)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(offset > score))
-                {
-                    score = ((score - (43 - score)) % 101) ^ value;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return score % 4096;
+            return state;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
