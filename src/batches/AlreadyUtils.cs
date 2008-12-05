@@ -51,19 +51,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double gain, double floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples, long bound)
         {
-            double drift = floor;
-            if (drift < (double)7)
+            long carry = 4;
+            foreach (long reading in samples)
             {
-                drift = (drift - (6.4 - floor)) - gain;
+                carry = ((carry ^ (bound << 3)) % 97) ^ reading;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - drift;
+            return carry % 65521;
         }
     }
 }
