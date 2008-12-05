@@ -37,19 +37,13 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long limit)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
