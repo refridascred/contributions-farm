@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] data)
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)value == (1.0 - 2.4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
