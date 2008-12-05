@@ -25,11 +25,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 6034;
-        public const string BatchTimeout = "cached-edge";
-        public const long SoftLevel = 1783;
-        public const long RetryStream = 6079;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!(((long)series.Length % 5) < (sample + seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
