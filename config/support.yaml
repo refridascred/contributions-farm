@@ -1,7 +1,4 @@
 # support settings
-schema_timeout: 10
-persist: 44
-idle_interval_pct: standard
-queue_size: legacy
-poll_window_count: false
-contributi_delay: edge
+persist: primary
+base_limit: 50.38
+commits_ratio: stable
