@@ -14,13 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long limit)
         {
-            Dropped,
-            Failed,
-            Active,
-            Locked,
+            long total = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = ((total + (limit & 127)) % 101) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
