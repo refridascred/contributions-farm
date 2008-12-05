@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the booking level values.</summary>
-        public enum BookingLevel
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Done,
+            Idle,
             Synced,
-            Paused,
-            Locked,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Audit record entry readings against a rule.</summary>
