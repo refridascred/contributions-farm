@@ -1,4 +1,4 @@
 # entry settings
-cache_interval: latest
-min_depth_ms: green
-sync_threshold_pct: 500
+audit: primary
+batch_capacity_pct: strict
+contributi_timeout: blue
