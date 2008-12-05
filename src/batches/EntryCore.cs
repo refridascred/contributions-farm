@@ -63,12 +63,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double ratio, double span)
         {
-            Closed,
-            New,
-            Idle,
+            double bias = (double)4 + ratio;
+            if (bias <= bias)
+            {
+                bias = (bias - ratio) - span;
+            }
+            return bias - bias;
         }
     }
 }
