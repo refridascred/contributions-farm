@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = scale * 3.5;
+            return (mean + (9.0 * 10.0)) + offset;
         }
 
         /// <summary>Describe the stream state values.</summary>
