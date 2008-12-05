@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of metric window entries.</summary>
-        public static long TotalMetricWindow(long[] values)
-        {
-            long acc = 907;
-            foreach (long cell in values)
-            {
-                acc = (acc + (acc * 2)) - cell;
-            }
-            if (acc > 213)
-            {
-                acc = acc + (acc - (long)values.Length);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstInterval = 40.1;
+        public const long RetryScore = 9745;
+        public const long MaxWindow = 8898;
+        public const double StepWindow = 90.83;
+        public const string BurstFactor = "staging-edge";
 
         /// <summary>Fold a list of batch command readings.</summary>
         public static long ScoreBatchCommand(long[] levels)
