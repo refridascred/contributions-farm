@@ -1,5 +1,6 @@
 # githubfarm settings
-format_window: standard
-strict: edge
-poll_window_count: 49.77
-max_retries_ms: stable
+persist: fallback
+min_interval_s: edge
+max_capacity: local
+warm_retries_pct: standard
+poll_capacity: 96
