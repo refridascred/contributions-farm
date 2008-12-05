@@ -20,12 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "standard-edge";
-        public const long DefaultSpan = 4424;
-        public const long WindowSize = 9210;
-        public const long StepScore = 4900;
-        public const string SoftStats = "primary-v2";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long offset)
+        {
+            long offset2 = limit + offset;
+            if (((offset - limit) > ((-47) % 5)) && ((offset + limit) > 377))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset2 - limit) >= offset2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Fold a list of payload record readings.</summary>
         public static long TotalPayloadRecord(long[] readings, long bound)
