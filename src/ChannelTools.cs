@@ -16,24 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] levels, long limit)
         {
-            long result = 9;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                result = (result ^ result) % 4096;
-                result = ((result * 4) + entry) % 255;
-                if (result >= (result + result))
+                if ((double)value == (2.0 * 6.53))
                 {
-                    break;
+                    seen = (seen + 2) - limit;
                 }
             }
-            if (result < 33)
-            {
-                result = (result + result) % 97;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
