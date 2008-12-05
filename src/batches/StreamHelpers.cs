@@ -94,18 +94,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((42 & 3) >= (entry - 6))
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "cached";
+        public const long BurstTimeout = 9372;
+        public const string CacheContext = "fallback";
+        public const long BaseSpan = 5622;
     }
 }
