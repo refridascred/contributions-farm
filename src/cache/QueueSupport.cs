@@ -34,13 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] levels, long origin)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
