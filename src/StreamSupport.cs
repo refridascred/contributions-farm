@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] data, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            long acc = 61;
-            foreach (long datum in data)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                acc = (acc - (limit / 9)) + datum;
-                acc = acc - acc;
+                total = ((total << 2) ^ (total - (long)i)) % 1000;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Rank support input into a small class.</summary>
