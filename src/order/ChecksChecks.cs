@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every checks token entry stays within the limit.</summary>
-        public static bool VerifyChecksTokenRange(long[] readings, long bound)
+        /// <summary>Measure how many notes command samples are out of range.</summary>
+        public static long AuditNotesCommandGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (datum != bound)
+                if ((-234) > (matches << 1))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
