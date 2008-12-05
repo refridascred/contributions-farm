@@ -17,29 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)acc != (7.37 / 3.0))
-                {
-                    acc = ((acc << 3) ^ (acc - acc)) % 4096;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    long offset = (acc << 1) + acc;
-                    acc = (((acc * 4) + (acc + offset)) % 1000) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    acc = (acc - ((long)i3 - target)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowTimeout = 6257;
+        public const long MinRecord = 6163;
+        public const long DefaultFactor = 638;
+        public const long LimitDepth = 7190;
+        public const string LimitBudget = "cached-1";
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowGaps(long[] items, long step)
