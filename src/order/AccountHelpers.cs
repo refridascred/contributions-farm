@@ -37,10 +37,12 @@ namespace Common.Utilities
             return scale - (double)43;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitSpan = "latest-v2";
-        public const double RetryTimeout = 6.66;
-        public const long BurstCount = 4813;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Level { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long seed, long step)
