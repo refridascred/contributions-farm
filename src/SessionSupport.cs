@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next tools schema value from a seed.</summary>
-        public static long DeriveToolsSchema(long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long mix = 926;
+            foreach (long reading in levels)
             {
-                if (!((anchor << 2) == (752 * 2)))
-                {
-                    anchor = (anchor + (anchor & 255)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                mix = ((mix * 4) + (reading & 127)) % 4096;
             }
-            return anchor;
+            if (mix > (-29))
+            {
+                mix = ((mix << 3) ^ ((long)levels.Length / 7)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
