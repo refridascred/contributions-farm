@@ -45,21 +45,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 4;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((acc >> 1) <= acc)
                 {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (((acc * 5) + acc) % 255) ^ item;
                 }
+                acc = (acc + acc) % 101;
             }
-            return seen;
+            if (acc < 840)
+            {
+                acc = ((acc * 4) + (acc % 10)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema level values.</summary>
