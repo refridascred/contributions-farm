@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const long CacheSpan = 1247;
         public const double SoftWidth = 72.4;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of contributi tools entries.</summary>
+        public static long FoldContributiTools(long[] items)
         {
-            Dropped,
-            Synced,
-            Failed,
-            Queued,
-            Stale,
+            long result = 886;
+            foreach (long item in items)
+            {
+                if (((item % 12) == (item ^ (long)items.Length)) && ((double)result > (7.3 - 8.0)))
+                {
+                    result = result + (item * 4);
+                }
+            }
+            if (result > 21)
+            {
+                result = ((result * 2) + result) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the channel phase values.</summary>
