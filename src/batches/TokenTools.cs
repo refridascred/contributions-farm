@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum ^ sum) % 97;
-                if ((limit + (long)i) >= (limit >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum - (limit << 2)) % 255;
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
