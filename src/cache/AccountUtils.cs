@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long MinBudget = 1917;
         public const string MinInterval = "primary-edge";
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] values, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (values[i] >= limit)
+                if ((-119) >= (datum + datum))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every metric farm entry stays within the limit.</summary>
