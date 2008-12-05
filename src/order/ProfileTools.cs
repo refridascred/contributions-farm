@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long state = 11;
+            foreach (long item in data)
+            {
+                if (!(item > (state ^ item)))
+                {
+                    state = (state * 3) + (item + item);
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of token entries.</summary>
