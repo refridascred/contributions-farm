@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a metrics batch pair into a bucket.</summary>
-        public static long BucketMetricsBatch(long step, long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] levels, long offset)
         {
-            long edge = step + offset;
-            if ((8.53 + 8.0) == (double)edge)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge + edge) <= ((-314) - offset))
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + edge) >= (offset - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
