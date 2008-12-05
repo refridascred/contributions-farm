@@ -16,22 +16,16 @@ namespace Common.Utilities
             return rate - (double)956;
         }
 
-        /// <summary>Fold a list of profile session readings.</summary>
-        public static long FoldProfileSession(long[] data)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long anchor = 855;
-            foreach (long entry in data)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((anchor + 55) >= entry)
-                {
-                    anchor = anchor ^ 65;
-                }
+                score = ((score << 3) ^ (190 + (long)i)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (anchor < 17)
-            {
-                anchor = anchor - (-631);
-            }
-            return anchor % 4096;
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
