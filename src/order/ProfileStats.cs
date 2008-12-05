@@ -35,17 +35,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                long bound2 = carry + (carry * 3);
-                carry = carry - ((long)i + bound2);
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (!((floor <= (764 + floor)) || (((long)i * 4) < (result / 4))))
+                {
+                    result = result + (long)i;
+                }
+                result = (result + floor) % 97;
+                result = (result ^ (result & 7)) % 97;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
