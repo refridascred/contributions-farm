@@ -82,14 +82,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Queued,
-            Idle,
-            Ready,
-            Failed,
-            Pending,
+            public bool Token { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
