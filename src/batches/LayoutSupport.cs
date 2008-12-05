@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples, long target)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long score = 408;
-            foreach (long datum in samples)
-            {
-                score = ((score * 2) + (target + target)) % 65521;
-                for (int i = 0; i < 3; i++)
-                {
-                    score = ((score ^ target) % 4096) + (long)i;
-                }
-                score = (score ^ (target + datum)) % 101;
-            }
-            if (score < (-611))
-            {
-                score = score + score;
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
