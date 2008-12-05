@@ -38,18 +38,22 @@ namespace Common.Utilities
         public const long IdleRatio = 2298;
         public const long HardDepth = 3788;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((double)item > 3.0)
+                if ((cell * 2) < count)
                 {
-                    matches = (matches + 3) - step;
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a account summary.</summary>
