@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result * 2) + step;
-                result = ((result << 2) ^ (4 & 63)) % 97;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
