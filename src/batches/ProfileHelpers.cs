@@ -47,11 +47,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryCount = 1905;
-        public const long MinStats = 4769;
-        public const long IdleSize = 6658;
-        public const string StepStats = "open";
+        /// <summary>Classify a payload context pair into a bucket.</summary>
+        public static long ClassifyPayloadContext(long origin, long target)
+        {
+            if ((6 & 31) != (target - 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (target < (target & 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin <= (origin + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target >= (origin * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
