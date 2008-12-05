@@ -1,14 +1,11 @@
 # Layout notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-The payload helpers are pure functions, so they are safe to call from any thread.
-
-Keep stream and stats names short and lowercase.
-Use cluster settings to tune how often stats data is refreshed.
+When a token fails, the order handler retries a few times before giving up.
+Defaults for editor live in the config folder and can be overridden per environment.
+Use batches settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Log every metrics change
-- Review filter limits each release
-- Prefer batch defaults
-- Keep record values small
+- Validate booking input early
+- Review editor limits each release
+- Keep schema values small
