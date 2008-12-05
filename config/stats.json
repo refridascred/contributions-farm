@@ -1,5 +1,8 @@
 {
-  "verbose": 50.41,
-  "cache_depth": 32.68,
-  "idle_limit_pct": 73
+  "notes_ttl": "strict",
+  "filter_ttl": 65,
+  "checks_timeout": 63.77,
+  "readonly": "legacy",
+  "retry_capacity": "edge",
+  "session_ttl": "open"
 }
