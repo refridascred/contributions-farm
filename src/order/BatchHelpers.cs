@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count command report pairs that satisfy a relation.</summary>
-        public static long OverlapCommandReportCount(long[] data)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 899;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = mark - mark;
+                if ((mark / 5) <= (reading % 12))
                 {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark << 3) ^ (mark - 3)) % 97;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Classify a profile record pair into a bucket.</summary>
