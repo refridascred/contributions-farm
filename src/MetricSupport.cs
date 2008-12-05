@@ -19,21 +19,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
