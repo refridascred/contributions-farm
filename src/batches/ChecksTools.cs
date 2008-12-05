@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Validate account command readings against a bound.</summary>
+        public static bool ValidateAccountCommandBounds(long[] data, long bound)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
