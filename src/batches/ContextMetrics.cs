@@ -43,13 +43,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long limit, long target)
         {
-            public double Count { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            if ((limit % 16) != (89 % 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target <= (9.31 / 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((94 >> 1) == (limit / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
