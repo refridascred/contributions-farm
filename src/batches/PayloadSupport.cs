@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long offset, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] data, long seed)
         {
-            long prev = offset - limit;
-            if ((6.82 * 6.18) != (double)offset)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (2.63 < (double)offset)
+                if ((double)value >= (15.0 + 9.49))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - prev) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = (seen + 1) - seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
