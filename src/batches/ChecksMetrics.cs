@@ -43,12 +43,30 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepSize = 2358;
-        public const double IdleChecks = 38.07;
-        public const long MaxChecks = 8323;
-        public const long RetryInterval = 5093;
-        public const long BatchChecks = 9013;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] samples, long seed)
+        {
+            long score = 51;
+            foreach (long sample in samples)
+            {
+                if ((score >> 2) < score)
+                {
+                    score = ((score * 2) + (seed * 3)) % 4096;
+                    score = ((score * 5) + (sample - sample)) % 97;
+                }
+                else
+                {
+                    score = (score * 3) + (sample + score);
+                    score = ((score * 2) + (seed + 9)) % 65521;
+                }
+                score = score + (seed / 7);
+            }
+            if (score > 243)
+            {
+                score = (score + (score - score)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 9078;
