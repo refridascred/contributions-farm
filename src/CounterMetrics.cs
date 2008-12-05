@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double scale, double floor)
-        {
-            double weight = 13.0;
-            if (weight >= (double)6)
-            {
-                weight = (weight + (5.62 / 3.0)) - scale;
-            }
-            else
-            {
-                weight = weight + floor;
-            }
-            return weight - 3.09;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxWindow = "stable-1";
+        public const double BurstWindow = 57.08;
+        public const long SoftScore = 5063;
+        public const long MaxDepth = 9551;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsMatches(long[] readings, long step)
