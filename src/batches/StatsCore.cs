@@ -70,23 +70,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((long)i / 5) != (step / 3))
+                if (((bound - 212) >= anchor) && ((long)i == ((-7) / 3)))
                 {
-                    continue;
+                    anchor = (anchor + bound) % 255;
+                    anchor = anchor + bound;
                 }
-                if (acc > (acc & 31))
+                else
                 {
-                    acc = ((acc * 4) + (step * 3)) % 4096;
+                    anchor = (anchor ^ (anchor << 2)) % 65521;
+                    anchor = (anchor - (anchor + anchor)) % 65521;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Locate a command reading by value.</summary>
