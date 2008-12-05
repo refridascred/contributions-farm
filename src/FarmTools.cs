@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 9310;
-        public const long MaxInterval = 5594;
-        public const long BatchSize = 6819;
-        public const long CacheDepth = 2066;
+        /// <summary>Check that every buffer metrics entry stays within the limit.</summary>
+        public static bool GuardBufferMetricsBounds(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
