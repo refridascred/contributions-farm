@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const string StepRatio = "standard-v2";
         public const string MinCommits = "standard-v2";
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double scale, double span)
         {
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            double ratio = scale;
+            if (ratio < ratio)
+            {
+                ratio = (ratio - (ratio * 20.0)) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + 7.3) + (double)(long)i;
+            }
+            return ratio - (double)27;
         }
     }
 }
