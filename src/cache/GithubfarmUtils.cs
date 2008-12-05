@@ -42,12 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            Locked,
+            Pending,
+            Ready,
+            Dropped,
+            Retry,
         }
     }
 }
