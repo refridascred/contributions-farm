@@ -1,4 +1,7 @@
 # entry settings
-hard_timeout_ms: latest
-max_delay: 18
-dry_run: eu-west
+hard_window_count: 46.47
+channel_threshold:
+  - 90
+  - 189
+batch_window: false
+base_retries_pct: primary
