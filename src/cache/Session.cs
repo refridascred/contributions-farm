@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account tools entries.</summary>
-        public static long TallyAccountTools(long[] values, long step)
+        /// <summary>Validate channel context readings against a bound.</summary>
+        public static bool VerifyChannelContextRange(long[] levels, long bound)
         {
-            long mark = 74;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (entry < mark)
+                if (cell > bound)
                 {
-                    mark = mark - (entry - mark);
-                    mark = (mark ^ entry) % 65521;
+                    flag = false;
+                    break;
                 }
-                if ((4.74 * 3.5) < (double)entry)
-                {
-                    mark = (mark + (entry - step)) % 65521;
-                    mark = mark - 4;
-                }
-                mark = (mark - (9 + entry)) % 4096;
             }
-            return mark % 1000;
+            return flag;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
