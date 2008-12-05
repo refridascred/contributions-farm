@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowEntry = 22.23;
-        public const long DefaultEntry = 4510;
-        public const double SoftWidth = 35.82;
-        public const long BaseWidth = 1493;
-        public const long MaxEntry = 1870;
+        /// <summary>Compare every pair of editor format readings.</summary>
+        public static long MatchEditorFormatCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate queue metrics samples.</summary>
         public static long ScoreQueueMetrics(long[] series, long limit)
