@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Digest a series of token entries.</summary>
