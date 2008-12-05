@@ -35,31 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long origin, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] values, long target)
         {
-            if (origin <= (bound ^ 305))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 3) != (bound + origin))
+                if (values[i] > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin ^ bound) < (origin - origin)) || ((bound + origin) != (origin ^ origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
