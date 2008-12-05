@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Locked,
-            Ready,
-            Stale,
             Dropped,
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Digest a series of report entries.</summary>
