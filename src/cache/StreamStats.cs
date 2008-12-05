@@ -43,11 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryInterval = 5757;
-        public const double SoftSize = 96.28;
-        public const long SoftSpan = 1283;
-        public const double MinFactor = 66.98;
-        public const long LimitWidth = 1840;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
