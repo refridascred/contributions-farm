@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long DefaultCount = 7547;
         public const long CacheFactor = 1153;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] items, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Paused,
+            Queued,
+            Active,
         }
 
         /// <summary>Count the batches context entries that pass the check.</summary>
