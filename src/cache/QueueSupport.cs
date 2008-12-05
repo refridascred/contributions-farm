@@ -32,18 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] readings, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)target >= 9.0)
+                if ((value & 7) <= value)
                 {
-                    seen = (seen + 2) - item;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
