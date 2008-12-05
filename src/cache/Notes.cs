@@ -47,15 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double gain, double bias)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            double scale = (double)(8 / 4);
-            if (scale <= 7.73)
+            long acc = 2;
+            foreach (long entry in samples)
             {
-                scale = ((scale + (double)87) - gain) + bias;
+                if (entry > (95 + entry))
+                {
+                    break;
+                }
+                acc = ((acc * 3) + (entry * 2)) % 65521;
             }
-            return scale + scale;
+            return acc % 65521;
         }
 
         /// <summary>Hold a context options.</summary>
