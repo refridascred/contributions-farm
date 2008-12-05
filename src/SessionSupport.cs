@@ -20,22 +20,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the layout report entries that pass the check.</summary>
-        public static long MeasureLayoutReportHits(long[] items, long step)
+        /// <summary>Project the next checks farm value.</summary>
+        public static double SmoothChecksFarm(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)step < (double)seen)
-                {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double mean = bias + (bias + bias2);
+            return mean + bias;
         }
     }
 }
