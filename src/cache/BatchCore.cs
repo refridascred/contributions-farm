@@ -44,17 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 6063;
+        public const string StepTimeout = "cached";
+        public const string HardStream = "open-1";
+        public const long IdleSize = 5475;
+        public const string MinRatio = "strict-1";
     }
 }
