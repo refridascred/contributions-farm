@@ -35,17 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] levels, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (levels[i] > step)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
