@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit buffer batch readings against a rule.</summary>
-        public static long AuditBufferBatchHits(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (datum > (datum - datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardLevel = "staging-v2";
+        public const long DefaultEditor = 7768;
+        public const long BurstEditor = 5721;
+        public const long BurstTimeout = 9488;
+        public const double LimitEditor = 91.03;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
