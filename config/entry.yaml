@@ -1,6 +1,5 @@
 # entry settings
-strict: staging
-batch_limit: 77
-retry_delay: false
-hard_interval_count: eu-west
-soft_ttl_pct: true
+max_window: cached
+burst_ttl_s: local
+poll_threshold_ms: 7286
+hard_retries: staging
