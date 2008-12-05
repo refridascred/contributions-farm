@@ -50,20 +50,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the format window series from a seed.</summary>
-        public static long SeriesFormatWindow(long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (mix < (long)i)
+                if ((hits << 2) >= hits)
                 {
-                    mix = (mix - (mix >> 5)) % 97;
-                    break;
+                    hits = (hits + 1) + sample;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
