@@ -38,12 +38,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long floor, long target)
         {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            long next = floor + target;
+            if ((double)target == (7.45 * 5.2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((next << 2) < target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
