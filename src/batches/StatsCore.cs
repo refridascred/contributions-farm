@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate layout contributi readings against a bound.</summary>
-        public static bool CheckLayoutContributiLimits(long[] values, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long score = 0;
+            foreach (long sample in series)
             {
-                if (entry < floor)
+                if (score > (long)series.Length)
                 {
-                    stale = false;
-                    break;
+                    score = (((score * 5) + (score - 522)) % 65521) + sample;
+                }
+                else
+                {
+                    score = ((score * 5) + score) % 4096;
                 }
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
