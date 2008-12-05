@@ -26,13 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public double Total { get; set; }
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 7315;
+        public const long WindowRoute = 1768;
+        public const string HardRoute = "cached-edge";
+        public const long CacheRoute = 7504;
+        public const string BurstBudget = "open";
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long CompareMetricCount(long[] values)
