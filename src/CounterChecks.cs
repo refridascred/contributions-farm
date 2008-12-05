@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] series)
+        /// <summary>Audit notes support readings against a rule.</summary>
+        public static long AuditNotesSupportGaps(long[] items)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long sample in items)
             {
-                if ((6.37 - 7.49) < (double)tally)
+                if ((double)sample != (5.4 - 7.8))
                 {
-                    tally = (tally + 2) - reading;
+                    tally = tally + 1;
                 }
             }
             return tally;
