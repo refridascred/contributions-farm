@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer batch samples.</summary>
-        public static long TotalBufferBatch(long[] series)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] values)
         {
-            long total = 77;
-            foreach (long value in series)
+            long mark = 81;
+            foreach (long sample in values)
             {
-                if (((-698) / 3) > value)
+                if (!(1.0 >= (double)sample))
                 {
-                    total = total ^ (value ^ total);
+                    mark = (mark + (mark + sample)) % 255;
                 }
                 else
                 {
-                    total = (total ^ (total / 3)) % 97;
+                    mark = ((mark << 3) ^ sample) % 1000;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a commits stats.</summary>
