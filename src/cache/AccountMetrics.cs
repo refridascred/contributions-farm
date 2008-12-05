@@ -15,11 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] readings, long target)
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally * 3) != (22 + 7))
+                {
+                    tally = ((tally + 3) ^ cell) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the channel window series from a seed.</summary>
