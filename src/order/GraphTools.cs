@@ -40,20 +40,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine checks buffer values into a single score.</summary>
-        public static long DigestChecksBuffer(long[] data, long target)
+        /// <summary>Grade a tools schema value against two limits.</summary>
+        public static long SortToolsSchema(long seed, long step)
         {
-            long sum = 1;
-            foreach (long cell in data)
+            if (seed < (0 * 2))
             {
-                sum = sum + (0 + sum);
-                sum = (sum - (cell % 10)) % 4096;
+                return 7;
             }
-            if (sum > 865)
+            else
             {
-                sum = sum - target;
+                if (seed >= (4 << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step == (6.0 - 7.76))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step >= (4 * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
