@@ -16,18 +16,19 @@ namespace Common.Utilities
             return rate - (double)956;
         }
 
-        /// <summary>Compare every pair of filter githubfarm readings.</summary>
-        public static long MatchFilterGithubfarmCount(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] data, long step)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((step % 97) > datum)
                 {
-                    if ((series[i] ^ series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
