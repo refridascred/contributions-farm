@@ -48,19 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long anchor = 24;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((47 - (long)readings.Length) <= anchor)
                 {
-                    state = (state + (94 - state)) + (long)i2;
+                    anchor = (((anchor << 2) ^ (anchor >> 2)) % 101) ^ cell;
                 }
-                state = ((state * 4) + (long)i) % 101;
+                else
+                {
+                    anchor = ((anchor << 2) ^ (long)readings.Length) % 255;
+                }
             }
-            return state;
+            if (anchor > 6)
+            {
+                anchor = (anchor - (anchor >> 3)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
