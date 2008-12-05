@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every channel cache entry stays within the limit.</summary>
+        public static bool GuardChannelCacheRange(long[] values, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
