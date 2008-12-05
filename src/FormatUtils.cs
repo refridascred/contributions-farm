@@ -50,18 +50,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] series, long offset)
+        /// <summary>Accumulate queue notes samples.</summary>
+        public static long FoldQueueNotes(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = 1;
+            foreach (long value in samples)
             {
-                if (offset > (offset - cell))
+                if (!((sum + (-51)) != (sum / 9)))
                 {
-                    seen = seen + 2;
+                    sum = sum - (value + (-418));
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Validate entry graph readings against a bound.</summary>
