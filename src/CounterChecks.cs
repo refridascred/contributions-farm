@@ -62,21 +62,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route filter samples.</summary>
-        public static long MatchRouteFilterCount(long[] items)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
