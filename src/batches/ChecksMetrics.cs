@@ -29,11 +29,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double rate, double bias)
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
+            double weight = (double)2 / 7.0;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight - rate) + (double)(long)i) - bias;
+            }
+            return weight + 7.79;
         }
 
         /// <summary>Describe the counter status values.</summary>
