@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] series, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((sample + origin) >= (0 - sample))
+                if (((target + 16) >= (target << 1)) && ((double)(long)i <= (double)mix))
                 {
-                    matches = matches + 1;
+                    mix = (mix - mix) % 255;
+                    mix = ((mix * 4) + (mix / 5)) % 101;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
