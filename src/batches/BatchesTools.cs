@@ -19,12 +19,17 @@ namespace Common.Utilities
         public const long MaxCommits = 9643;
         public const long StepDepth = 526;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] samples, long limit)
         {
-            Locked,
-            Active,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
