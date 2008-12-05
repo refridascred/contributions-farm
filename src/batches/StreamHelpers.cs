@@ -25,28 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter token values into a single score.</summary>
-        public static long ScoreCounterToken(long[] values)
-        {
-            long result = -4;
-            foreach (long datum in values)
-            {
-                result = (result - (69 + datum)) % 101;
-                if ((result + result) > (datum + result))
-                {
-                    result = (result ^ (result >> 1)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ datum) % 101;
-                }
-            }
-            if (result < 4)
-            {
-                result = (result - result) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleDepth = 33.9;
+        public const double WindowEntry = 18.22;
+        public const long MaxSpan = 5173;
+        public const long MaxScore = 1045;
+        public const long BatchEntry = 9603;
 
         /// <summary>Compare every pair of order support readings.</summary>
         public static long OverlapOrderSupportCount(long[] levels)
