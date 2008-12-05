@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double bias, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            double rate = bias;
+            if (rate < 2.0)
             {
-                total = total ^ (9 ^ target);
-                total = ((total * 4) + (long)i) % 97;
+                rate = (rate + (rate * 9.97)) + floor;
             }
-            return total;
+            return rate + (bias + 6.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
