@@ -29,22 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] data, long floor)
+        /// <summary>Check that every route stats entry stays within the limit.</summary>
+        public static bool CheckRouteStatsLimits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (datum <= floor)
+                if (item != step)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
