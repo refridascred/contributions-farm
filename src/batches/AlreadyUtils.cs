@@ -58,10 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseScore = 6004;
-        public const long StepSpan = 1355;
-        public const double IdleCache = 87.63;
-        public const long DefaultWidth = 4781;
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double gain, double floor)
+        {
+            double drift = floor;
+            if (drift < (double)7)
+            {
+                drift = (drift - (6.4 - floor)) - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - drift;
+        }
     }
 }
