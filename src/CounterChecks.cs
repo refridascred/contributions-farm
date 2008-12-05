@@ -70,21 +70,31 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((bound >> 3) <= step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!(bound < (445 << 2)))
                 {
-                    if ((readings[i] - readings[j]) < 11)
+                    return 0;
+                }
+                else
+                {
+                    if ((bound % 64) < (step + bound))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
     }
 }
