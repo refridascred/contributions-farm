@@ -26,13 +26,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] samples)
         {
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)hits < (double)509)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
