@@ -31,18 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] series)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally >> 3) >= (tally + value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
