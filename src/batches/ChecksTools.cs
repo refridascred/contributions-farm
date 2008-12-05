@@ -44,20 +44,10 @@ namespace Common.Utilities
         public const long LimitLevel = 8170;
         public const long HardLevel = 9584;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values)
-        {
-            long sum = 52;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum ^ entry) % 97) ^ (long)i;
-                }
-                sum = ((sum * 5) + (entry % 97)) % 101;
-                sum = (sum * 5) + entry;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitInterval = 9657;
+        public const long MinSize = 6487;
+        public const long BaseBatch = 1716;
+        public const long MinBatch = 6555;
     }
 }
