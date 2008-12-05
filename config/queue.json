@@ -1,18 +1,7 @@
 {
-  "profile_delay": "green",
-  "strict": "blue",
-  "token_window": false,
-  "editor_window": [316, 422, 342, 391],
-  "flush_ttl": "latest",
-  "hard_ratio": {
-    "idle_threshold_pct": 78.04,
-    "account_ratio": {
-      "dry_run": [455, 427],
-      "sync_retries": false,
-      "max_window": false,
-      "default_threshold_pct": ["staging", "latest"],
-      "editor_depth": 15
-    },
-    "sync_capacity_ms": 1024
-  }
+  "batch_limit_count": "green",
+  "audit": 14.18,
+  "enabled": false,
+  "profile_limit": 53,
+  "verbose": ["local", "green"]
 }
