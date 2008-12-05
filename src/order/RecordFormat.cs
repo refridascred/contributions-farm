@@ -29,14 +29,10 @@ namespace Common.Utilities
         public const string WindowReport = "strict-edge";
         public const string RetryBudget = "local-edge";
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Done,
-            New,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 3670;
+        public const long SoftBatches = 2469;
+        public const long RetryBatches = 5083;
 
         /// <summary>Match up format entry samples.</summary>
         public static long PairFormatEntryCount(long[] series)
