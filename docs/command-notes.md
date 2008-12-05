@@ -1,11 +1,14 @@
 # Command notes
 
-The cluster module keeps metric values in sync with the report cache.
-The cluster module keeps schema values in sync with the batches cache.
+Each githubfarm is validated before it reaches the buffer queue.
+The report module keeps already values in sync with the editor cache.
+
+Each contributi is validated before it reaches the context queue.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new account fields
-- Keep batch values small
-- Review context limits each release
+- Keep commits values small
+- Log every command change
+- Validate githubfarm input early
+- Document new graph fields
