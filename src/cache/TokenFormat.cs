@@ -33,19 +33,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Grade a already layout value against two limits.</summary>
+        public static long BucketAlreadyLayout(long limit, long limit2)
         {
-            long acc = 88;
-            foreach (long entry in readings)
+            if (7 > limit)
             {
-                acc = acc - (acc & 7);
-                if ((double)entry < (2.0 * 8.03))
+                return 4;
+            }
+            else
+            {
+                if ((double)80 <= 6.96)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit - limit2) != (limit >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((15 - limit) != (limit >> 3)) && (5.88 > (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc % 1000;
         }
     }
 }
