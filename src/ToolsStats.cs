@@ -38,26 +38,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long sum = -71;
-            foreach (long datum in data)
-            {
-                if (datum >= (datum - (-11)))
-                {
-                    sum = ((sum << 2) ^ sum) % 101;
-                }
-                if ((sum - datum) <= 2)
-                {
-                    break;
-                }
-            }
-            if (sum < 20)
-            {
-                sum = (sum ^ (904 / 8)) % 255;
-            }
-            return sum;
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Scale a checks metric figure with a bias.</summary>
