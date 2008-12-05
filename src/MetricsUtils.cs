@@ -15,12 +15,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long bound, long floor)
         {
-            Pending,
-            Paused,
-            New,
+            long gap = bound - floor;
+            if ((bound % 24) != (gap + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound >= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6.29 - 8.3) == (double)gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
