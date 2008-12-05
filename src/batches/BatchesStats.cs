@@ -51,15 +51,31 @@ namespace Common.Utilities
         public const long RetryRecord = 2977;
         public const double IdleRecord = 62.4;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series, long step)
         {
-            long acc = 9;
-            foreach (long item in data)
+            long carry = 63;
+            foreach (long sample in series)
             {
-                acc = ((acc - (51 ^ acc)) % 65521) + item;
+                carry = ((carry * 4) + (step ^ 4)) % 1000;
+                if ((double)sample >= (12.0 + 4.33))
+                {
+                    carry = ((carry << 3) ^ (59 % 100)) % 101;
+                }
+                if ((double)carry == (5.0 - 2.53))
+                {
+                    carry = (carry * 3) + carry;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (48 >> 4)) % 65521;
+                }
             }
-            return acc;
+            if (carry > 9)
+            {
+                carry = (carry ^ (carry ^ carry)) % 1000;
+            }
+            return carry % 97;
         }
     }
 }
