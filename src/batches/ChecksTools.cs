@@ -44,11 +44,38 @@ namespace Common.Utilities
         public const long LimitLevel = 8170;
         public const long HardLevel = 9584;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstDepth = 3668;
-        public const long LimitDepth = 7618;
-        public const long HardMetrics = 3023;
-        public const double StepMetrics = 70.0;
-        public const long HardCount = 4949;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long offset, long limit)
+        {
+            if (limit > offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= (8.71 / 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) < limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset != (5.0 + 4.41))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
