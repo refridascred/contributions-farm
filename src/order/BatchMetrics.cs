@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double ratio, double bias)
         {
-            long acc = 17;
-            foreach (long reading in readings)
+            double rate = (double)((-3) - 4);
+            if (rate <= (bias + rate))
             {
-                acc = (acc + (9 - reading)) - bound;
-                if (702 <= (acc << 1))
-                {
-                    break;
-                }
+                rate = (rate + (double)1) + ratio;
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (rate + 4.1);
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
