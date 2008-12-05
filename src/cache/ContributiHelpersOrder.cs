@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            Active,
-            Locked,
-            Done,
-            Draft,
-            Queued,
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                total = total ^ (9 ^ target);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
