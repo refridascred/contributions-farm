@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema account samples.</summary>
-        public static long CompareSchemaAccountCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "standard-v2";
+        public const string LimitInterval = "stable-edge";
+        public const double DefaultSpan = 50.52;
+        public const long WindowGithubfarm = 2254;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double gain, double span)
