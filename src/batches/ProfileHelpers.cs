@@ -21,20 +21,10 @@ namespace Common.Utilities
         public const string IdleTools = "alpha-1";
         public const long LimitInterval = 2841;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 6046;
+        public const long MinBudget = 5232;
+        public const long StepSize = 657;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BatchTimeout = "stable";
