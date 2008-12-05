@@ -33,18 +33,12 @@ namespace Common.Utilities
             return ((weight + weight) + ratio) + span;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] values)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((89 - entry) == (entry ^ 93))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
