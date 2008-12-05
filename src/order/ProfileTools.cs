@@ -41,16 +41,22 @@ namespace Common.Utilities
         public const long BurstRatio = 2656;
         public const long RetryLevel = 3694;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] items, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                score = ((score << 3) ^ ((long)i + target)) % 1000;
-                score = ((score * 4) + (long)i) % 97;
+                if ((cell + bound) <= cell)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
