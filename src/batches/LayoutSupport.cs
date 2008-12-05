@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (9.05 + 6.25))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
