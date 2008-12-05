@@ -59,31 +59,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long origin, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            if ((7 - origin) >= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor <= (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + floor) <= 35)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
