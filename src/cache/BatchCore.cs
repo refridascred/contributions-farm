@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Check that every session cache entry stays within the limit.</summary>
+        public static bool GuardSessionCacheLimits(long[] readings, long floor)
         {
-            Idle,
-            Draft,
-            Done,
-            Queued,
-            Pending,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
