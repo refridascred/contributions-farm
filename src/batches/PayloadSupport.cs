@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long WindowProfile = 7570;
         public const string DefaultProfile = "latest-edge";
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Locate a token notes reading by value.</summary>
+        public static long FindTokenNotesIndex(long[] series, long limit)
         {
-            Stale,
-            Idle,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
