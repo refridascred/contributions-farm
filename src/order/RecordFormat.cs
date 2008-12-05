@@ -55,12 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine buffer tools values into a single score.</summary>
+        public static long DigestBufferTools(long[] data, long origin)
         {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            long mark = -18;
+            foreach (long item in data)
+            {
+                mark = ((mark - (mark + mark)) + item) - origin;
+                if ((long)data.Length == (mark % 60))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
     }
 }
