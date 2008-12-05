@@ -30,12 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
