@@ -49,11 +49,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next session order value.</summary>
-        public static double ScaleSessionOrder(double rate, double floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double drift = rate;
-            return (drift + (rate + 4.7)) + floor;
+            Draft,
+            New,
+            Ready,
         }
     }
 }
