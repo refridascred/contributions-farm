@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] series, long origin)
         {
-            long state = 29;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((value + value) >= (value / 4))
+                if ((sample + origin) >= (0 - sample))
                 {
-                    state = ((state << 2) ^ (value / 4)) % 255;
+                    matches = matches + 1;
                 }
             }
-            if (state > 3)
-            {
-                state = ((state << 2) ^ ((-5) % 97)) % 4096;
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
