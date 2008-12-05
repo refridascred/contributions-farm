@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] samples, long limit)
+        /// <summary>Combine metrics context values into a single score.</summary>
+        public static long WeighMetricsContext(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 27;
+            foreach (long datum in samples)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
+                if (datum > sum)
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + (3 + sum)) % 4096;
                 }
+                sum = sum ^ (datum * 2);
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
