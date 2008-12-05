@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstSpan = 68.14;
-        public const long MinScore = 3331;
-        public const double BatchScore = 4.44;
-        public const double LimitBatch = 31.26;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long StepFilter(long limit)
