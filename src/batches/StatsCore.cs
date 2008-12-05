@@ -49,26 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next window layout value from a seed.</summary>
-        public static long StepWindowLayout(long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor << 2) ^ ((long)i - anchor);
-                if ((9.84 + 0.4) >= (double)anchor)
+                if ((double)item >= (2.21 / 9.0))
                 {
-                    anchor = (anchor * 2) + ((long)i - anchor);
-                    anchor = (anchor * 3) + limit;
+                    hits = hits + 2;
                 }
-                if ((double)anchor >= 6.06)
-                {
-                    anchor = ((anchor << 3) ^ (limit * 2)) % 1000;
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
