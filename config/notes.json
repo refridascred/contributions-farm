@@ -1,17 +1,5 @@
 {
-  "cache_threshold_ms": {
-    "readonly": {
-      "flush_delay_pct": 73,
-      "retry_ratio_pct": "blue",
-      "batches_ttl": [175, 444]
-    },
-    "hard_threshold_s": "stable",
-    "base_size_s": 7281,
-    "dry_run": true
-  },
-  "max_timeout_pct": 2,
-  "burst_ratio_s": 59.39,
-  "poll_threshold": "legacy",
-  "retry_depth_ms": 445,
-  "base_retries": 1298
+  "already_timeout": "fallback",
+  "default_capacity_count": 1024,
+  "max_threshold": ["cached", "legacy", "green"]
 }
