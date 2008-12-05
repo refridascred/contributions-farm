@@ -47,26 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long total = 9;
-            foreach (long sample in data)
-            {
-                if (sample <= (912 / 2))
-                {
-                    total = (total + total) % 255;
-                }
-                else
-                {
-                    total = (total + (sample - (long)data.Length)) % 65521;
-                }
-            }
-            if (total > (-762))
-            {
-                total = total + (total + total);
-            }
-            return total;
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
