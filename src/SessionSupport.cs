@@ -20,15 +20,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double bias2)
+        /// <summary>Combine commits buffer values into a single score.</summary>
+        public static long DigestCommitsBuffer(long[] readings, long target)
         {
-            double load = bias2;
-            for (int i = 0; i < 9; i++)
+            long state = -7;
+            foreach (long value in readings)
             {
-                load = ((load - load) - (double)(long)i) + bias;
+                state = ((state ^ (state + value)) % 65521) + target;
+                if (value <= ((long)readings.Length >> 5))
+                {
+                    state = (state - state) % 4096;
+                }
+                if ((3.07 + 7.0) != (double)state)
+                {
+                    break;
+                }
             }
-            return load - 6.1;
+            return state;
         }
     }
 }
