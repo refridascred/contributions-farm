@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels, long target)
         {
-            Queued,
-            Dropped,
-            Active,
+            long sum = 697;
+            foreach (long entry in levels)
+            {
+                sum = ((sum + (target + (long)levels.Length)) % 101) - entry;
+            }
+            if (sum < 5)
+            {
+                sum = ((sum * 3) + target) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
