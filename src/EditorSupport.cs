@@ -69,18 +69,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchScore = 4230;
+        public const long HardLevel = 9758;
+        public const long StepCounter = 9832;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
