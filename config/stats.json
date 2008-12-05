@@ -1,8 +1,5 @@
 {
-  "idle_timeout": true,
-  "base_window": 922,
-  "dry_run": 1024,
-  "soft_size_count": ["cached", "cached", "blue"],
-  "entry_ratio": 500,
-  "support_interval": 9146
+  "verbose": 50.41,
+  "cache_depth": 32.68,
+  "idle_limit_pct": 73
 }
