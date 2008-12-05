@@ -61,31 +61,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long offset, long seed)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            if (!((offset / 5) < offset))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed < (offset >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset < (double)seed)
+                    if ((series[i] - series[j]) != 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
