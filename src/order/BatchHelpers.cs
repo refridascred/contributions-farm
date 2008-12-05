@@ -27,24 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long limit, long origin)
+        /// <summary>Adjust a schema commits reading.</summary>
+        public static double SmoothSchemaCommits(double ratio, double floor)
         {
-            if ((586 - limit) <= (517 & 255))
+            double mean = floor;
+            if (mean >= (mean + 18.0))
             {
-                return 0;
+                mean = (mean + (double)3) - ratio;
             }
-            else
-            {
-                if (limit > (origin * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mean - 16.0;
         }
     }
 }
