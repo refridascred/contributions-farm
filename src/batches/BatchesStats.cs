@@ -42,9 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 4626;
-        public const long LimitSpan = 7683;
-        public const long BatchTools = 2490;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Ready,
+            Pending,
+            Stale,
+        }
     }
 }
