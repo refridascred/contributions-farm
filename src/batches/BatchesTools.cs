@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] readings, long limit)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (item > limit)
+                if (!((47 >= carry) || (((long)i >> 2) > (long)i)))
                 {
-                    stale = false;
-                    break;
+                    carry = carry ^ (origin & 31);
                 }
+                long bound = (origin & 3) >> 2;
+                carry = (carry ^ (bound / 8)) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Adjust a format reading.</summary>
