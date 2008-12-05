@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long MinBudget = 1917;
         public const string MinInterval = "primary-edge";
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] values)
+        /// <summary>Digest a series of account githubfarm entries.</summary>
+        public static long DigestAccountGithubfarm(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = 25;
+            foreach (long sample in values)
             {
-                if ((-119) >= (datum + datum))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc + (0 + acc)) + sample;
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Check that every metric farm entry stays within the limit.</summary>
