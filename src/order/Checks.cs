@@ -74,19 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double rate, double offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double rate2 = (rate / 9.0) * 19.0;
-            if (rate2 <= (rate2 / 6.0))
-            {
-                rate2 = (rate2 - (rate2 - rate2)) - offset;
-            }
-            else
-            {
-                rate2 = rate2 + (double)899;
-            }
-            return rate2 + (double)1;
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Derive the next metric notes value from a seed.</summary>
