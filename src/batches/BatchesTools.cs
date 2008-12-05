@@ -35,10 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 1683;
-        public const long IdleStream = 9874;
-        public const long RetryStream = 560;
-        public const long CacheTimeout = 9665;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] data, long origin)
+        {
+            long anchor = 5;
+            foreach (long datum in data)
+            {
+                if (!((1.88 / 9.0) == (double)anchor))
+                {
+                    anchor = ((anchor + (anchor + datum)) % 4096) + origin;
+                }
+            }
+            return anchor;
+        }
     }
 }
