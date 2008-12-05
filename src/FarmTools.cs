@@ -43,20 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark - ((long)i - seed)) % 97;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = (mark ^ (long)i) + (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "cached-edge";
+        public const string WindowSupport = "standard-v2";
+        public const long RetryCount = 4700;
+        public const long BaseInterval = 9626;
+        public const long HardCount = 3636;
     }
 }
