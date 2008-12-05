@@ -23,19 +23,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every metric farm entry stays within the limit.</summary>
-        public static bool ValidateMetricFarmRange(long[] series, long bound)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long reading in series)
+            double mean = bias;
+            if (mean >= (mean + bias))
             {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean + bias;
             }
-            return found;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + ratio) + (double)(long)i;
+            }
+            return mean + ratio;
         }
     }
 }
