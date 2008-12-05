@@ -20,21 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(sum >= (origin % 97)))
                 {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 2) + (origin * 3)) % 101;
+                    sum = sum ^ origin;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
