@@ -26,22 +26,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] values)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell % 5) != (5 >> 3))
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
