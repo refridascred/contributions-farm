@@ -37,28 +37,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] readings)
-        {
-            long anchor = 3;
-            foreach (long cell in readings)
-            {
-                if ((double)cell <= (8.0 - 4.15))
-                {
-                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 97;
-                    break;
-                }
-                if (((989 * 4) <= (cell & 7)) || (((-51) % 24) >= (cell ^ anchor)))
-                {
-                    anchor = (anchor - (long)readings.Length) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + anchor)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 8763;
+        public const long WindowRecord = 8256;
+        public const string SoftRecord = "open-1";
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TallyFilter(long[] series)
