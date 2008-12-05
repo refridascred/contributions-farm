@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "primary-1";
-        public const long RetryContributi = 2899;
-        public const long MaxContributi = 7211;
-        public const double BatchInterval = 73.11;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long StepRatio = 239;
