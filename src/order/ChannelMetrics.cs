@@ -16,11 +16,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseScore = 46.73;
-        public const long MinBudget = 6325;
-        public const string BaseMetric = "latest-edge";
-        public const string HardInterval = "stable-1";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] levels, long target)
+        {
+            long sum = -7;
+            foreach (long sample in levels)
+            {
+                if ((double)target > 5.13)
+                {
+                    sum = sum + (target + sum);
+                }
+                else
+                {
+                    sum = sum + sample;
+                }
+            }
+            if (sum < (-1))
+            {
+                sum = (sum * 2) + (target % 16);
+            }
+            return sum % 97;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long SortMetric(long floor, long limit)
