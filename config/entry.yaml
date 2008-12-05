@@ -1,8 +1,11 @@
 # entry settings
-default_delay: eu-west
-flush_limit_s: 49
-persist:
-  compress: blue
-  default_depth: 38.57
-  batch_timeout_ms: 91
-  batch_ratio_count: fallback
+soft_ratio_count:
+  - 456
+  - 394
+hard_limit: staging
+warm_ratio_count: 58.02
+base_ratio:
+  - legacy
+  - legacy
+  - blue
+poll_threshold_ms: latest
