@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardBudget = 2014;
+        public const long BatchAlready = 2041;
+        public const long BaseAlready = 9777;
+        public const string DefaultAlready = "legacy-edge";
+        public const long RetryAlready = 1343;
 
         /// <summary>Check that every schema tools entry stays within the limit.</summary>
         public static bool ValidateSchemaToolsBounds(long[] samples, long origin)
