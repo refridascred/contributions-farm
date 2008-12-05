@@ -46,12 +46,14 @@ namespace Common.Utilities
         public const long MaxSpan = 2553;
         public const double WindowRatio = 16.03;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public string Rank { get; set; } = "";
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            Done,
+            Failed,
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Compare every pair of order layout readings.</summary>
