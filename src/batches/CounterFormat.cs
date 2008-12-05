@@ -23,18 +23,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context metrics entries that pass the check.</summary>
-        public static long TallyContextMetricsOutliers(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if (!(479 >= (offset ^ limit)))
             {
-                if (entry <= (seen % 16))
+                return 6;
+            }
+            else
+            {
+                if ((limit >> 2) >= (limit - limit))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (!(19.0 <= (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5.7 * 3.06) >= (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
