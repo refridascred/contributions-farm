@@ -33,26 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long state = 7;
-            foreach (long sample in readings)
-            {
-                if (6.55 > (double)state)
-                {
-                    state = ((state << 3) ^ (state << 2)) % 255;
-                }
-                else
-                {
-                    state = (state + sample) % 255;
-                }
-            }
-            if (state < 4)
-            {
-                state = ((state << 2) ^ state) % 4096;
-            }
-            return state % 97;
+            Done,
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Define window limits and defaults.</summary>
