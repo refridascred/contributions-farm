@@ -17,26 +17,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] levels, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long offset, long limit)
         {
-            long sum = -7;
-            foreach (long sample in levels)
+            if (((limit + offset) > (limit * 4)) && ((offset + limit) >= (limit << 3)))
             {
-                if ((double)target > 5.13)
+                return 1;
+            }
+            else
+            {
+                if ((offset & 7) <= (limit + limit))
                 {
-                    sum = sum + (target + sum);
+                    return 6;
                 }
                 else
                 {
-                    sum = sum + sample;
+                    return 0;
                 }
             }
-            if (sum < (-1))
-            {
-                sum = (sum * 2) + (target % 16);
-            }
-            return sum % 97;
         }
 
         /// <summary>Blend two metric queue measurements.</summary>
