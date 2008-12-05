@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] samples, long seed)
+        /// <summary>Classify a metrics batch pair into a bucket.</summary>
+        public static long BucketMetricsBatch(long step, long offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long edge = step + offset;
+            if ((8.53 + 8.0) == (double)edge)
             {
-                if (item >= seed)
+                return 4;
+            }
+            else
+            {
+                if ((edge + edge) <= ((-314) - offset))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + edge) >= (offset - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
