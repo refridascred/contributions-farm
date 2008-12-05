@@ -24,12 +24,24 @@ namespace Common.Utilities
         public const long CacheTimeout = 269;
         public const string MinDepth = "strict-edge";
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long offset, long floor)
         {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((double)offset <= 8.31)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 2) > (837 / 9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
