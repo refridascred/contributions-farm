@@ -50,12 +50,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] items, long offset)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!(((2.8 * 6.8) <= (3.0 / 5.0)) && ((5.5 / 7.0) >= (double)value)))
+                {
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a record counter forward.</summary>
