@@ -14,20 +14,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double scale, double offset)
-        {
-            double bias = (scale * 9.0) * 6.42;
-            if (bias >= scale)
-            {
-                bias = (bias + 7.4) - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (double)9;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "standard";
+        public const long IdlePayload = 877;
+        public const double DefaultWidth = 17.12;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
