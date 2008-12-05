@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long WindowProfile = 7570;
         public const string DefaultProfile = "latest-edge";
 
-        /// <summary>Locate a token notes reading by value.</summary>
-        public static long FindTokenNotesIndex(long[] series, long limit)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                if (samples[i] >= origin)
                 {
                     return (long)i;
                 }
