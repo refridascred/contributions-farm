@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftRatio = 9173;
+        public const long BaseEditor = 1964;
+        public const long DefaultEditor = 8858;
+        public const long CacheSpan = 1247;
+        public const double SoftWidth = 72.4;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
