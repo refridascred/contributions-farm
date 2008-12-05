@@ -48,17 +48,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
+            long sum = 17;
+            foreach (long reading in readings)
             {
-                mark = mark - ((long)i / 5);
-                mark = (mark * 5) + limit;
-                mark = ((mark * 3) + (long)i) % 97;
+                long tally = sum;
+                sum = (sum << 3) ^ (reading + tally);
+                if ((double)sum > 5.15)
+                {
+                    sum = sum - (sum + offset);
+                }
             }
-            return mark;
+            if (sum < 822)
+            {
+                sum = (sum + (sum ^ offset)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count the notes already entries that pass the check.</summary>
