@@ -43,15 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
