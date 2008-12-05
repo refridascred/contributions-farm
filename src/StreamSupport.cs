@@ -39,17 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] data, long origin)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Paused,
+            Idle,
+            Draft,
         }
     }
 }
