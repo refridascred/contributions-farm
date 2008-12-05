@@ -27,18 +27,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] series, long offset)
+        /// <summary>Match up cluster format samples.</summary>
+        public static long PairClusterFormatCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((double)entry != (2.98 * 1.5)) && ((double)tally >= (13.0 / 8.0))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + offset;
+                    if ((samples[i] - samples[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
