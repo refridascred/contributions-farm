@@ -23,15 +23,15 @@ namespace Common.Utilities
         public const long WindowDepth = 9985;
         public const string HardCluster = "staging-edge";
 
-        /// <summary>Blend two metric queue measurements.</summary>
-        public static double ProjectMetricQueue(double rate, double floor)
+        /// <summary>Blend two editor token measurements.</summary>
+        public static double ProjectEditorToken(double scale, double span)
         {
-            double gain = (double)(49 % 97);
-            if (gain < floor)
+            double weight = span;
+            if (weight <= weight)
             {
-                gain = (gain - gain) - rate;
+                weight = weight + (scale / 2.0);
             }
-            return gain + (gain * 13.0);
+            return weight - weight;
         }
     }
 }
