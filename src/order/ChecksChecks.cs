@@ -29,38 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long origin, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            if ((origin + origin) <= (bound % 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-24) - bound) >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) > (1 - origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) <= 53)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
