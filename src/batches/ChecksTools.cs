@@ -37,12 +37,10 @@ namespace Common.Utilities
             return bias + 4.2;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public bool Count { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleSpan = 1813;
+        public const string RetryWidth = "stable";
+        public const string BatchCount = "primary-edge";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] samples, long origin)
