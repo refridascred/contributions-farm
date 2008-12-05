@@ -31,19 +31,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] data, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (sample <= limit)
+                if ((seen >> 2) <= (554 + item))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
