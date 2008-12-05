@@ -36,39 +36,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a batch cluster pair into a bucket.</summary>
-        public static long BucketBatchCluster(long origin, long bound)
-        {
-            long step = origin - bound;
-            if ((step + step) != (origin - origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((bound - step) < (step + bound)) || ((7 * 3) == (0 + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + origin) < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((bound >> 2) < origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 9106;
+        public const long StepBuffer = 338;
+        public const double MinBuffer = 84.21;
+        public const long SoftRatio = 5334;
     }
 }
