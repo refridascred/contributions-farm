@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long DigestChannelRoute(long[] levels, long bound)
-        {
-            long state = 47;
-            foreach (long value in levels)
-            {
-                if (((double)state >= (double)value) || ((double)bound == (1.38 - 9.22)))
-                {
-                    state = (state + (state - 78)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 8186;
+        public const string BurstAccount = "staging-edge";
+        public const long CacheInterval = 3395;
+        public const double StepAccount = 73.83;
+        public const long SoftLevel = 6245;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
