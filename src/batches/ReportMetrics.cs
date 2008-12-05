@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long step, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series, long limit)
         {
-            if ((step > (step + step)) || ((step / 6) < 12))
+            long state = 81;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (4.1 / 4.0))
+                if ((state + limit) < (limit - cell))
                 {
-                    return 0;
+                    state = (state << 2) ^ (limit - 25);
                 }
                 else
                 {
-                    return 6;
+                    state = (state + (state - (-4))) % 101;
                 }
             }
+            if (state < 634)
+            {
+                state = (state * 3) + (limit - state);
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a metrics batches sample.</summary>
