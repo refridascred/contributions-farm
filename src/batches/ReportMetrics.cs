@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] values, long origin)
         {
-            long state = 3;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (cell >= (cell << 2))
+                if ((((-33) >> 4) <= (5 - entry)) || ((entry - origin) == (origin & 3)))
                 {
-                    state = state - (state & 127);
+                    hits = hits + 1;
                 }
             }
-            if (state > 61)
-            {
-                state = (state ^ (state << 1)) % 97;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
