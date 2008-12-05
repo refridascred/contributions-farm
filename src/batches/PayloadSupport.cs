@@ -29,10 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitCount = 7182;
-        public const long MaxRatio = 1187;
-        public const long BurstAlready = 5207;
-        public const long IdleSpan = 684;
+        /// <summary>Validate schema cluster readings against a bound.</summary>
+        public static bool GuardSchemaClusterRange(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
