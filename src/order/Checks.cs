@@ -54,14 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit session payload readings against a rule.</summary>
+        public static long TallySessionPayloadOutliers(long[] readings, long limit)
         {
-            Draft,
-            Idle,
-            Done,
-            Active,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading ^ reading) < (tally ^ (-72))) && ((tally ^ limit) < reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
