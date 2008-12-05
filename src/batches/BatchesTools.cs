@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] data, long step)
         {
-            double rate2 = (double)(653 - 2);
-            return ((rate2 + (9.7 * 5.67)) + rate) + floor;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
