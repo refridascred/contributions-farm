@@ -1,7 +1,14 @@
 {
-  "sync_size_ms": "local",
-  "warm_limit": 57,
-  "flush_interval_pct": ["legacy", "green"],
-  "stats_ratio": 63,
-  "min_timeout_ms": 500
+  "idle_ttl_pct": false,
+  "burst_threshold_ms": false,
+  "strict": [146, 479, 229, 246],
+  "idle_ttl": [380, 452, 72],
+  "max_threshold": 94,
+  "min_retries_s": {
+    "min_ratio_count": false,
+    "strict": 100,
+    "persist": 6806,
+    "flush_ratio_s": 34.87,
+    "default_timeout_s": 94.27
+  }
 }
