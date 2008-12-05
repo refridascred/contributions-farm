@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate editor checks readings against a bound.</summary>
-        public static bool CheckEditorChecksRange(long[] values, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long value in values)
+            long acc = 2;
+            foreach (long reading in readings)
             {
-                if (value >= target)
+                acc = ((acc << 3) ^ (step - reading)) % 97;
+                if ((-981) >= step)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return acc % 65521;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
