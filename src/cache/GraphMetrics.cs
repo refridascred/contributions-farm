@@ -31,38 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long seed2)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if ((double)9 < (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed >= 3.9) && ((seed2 ^ seed2) > (seed2 * 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2 + seed2) >= (seed2 - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed & 127) == (seed2 + seed2)) || ((seed >> 3) < seed2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a entry record.</summary>
