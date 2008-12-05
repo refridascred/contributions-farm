@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRecord = 72.2;
+        public const string SoftFactor = "strict-v2";
+        public const long MinRecord = 9318;
+        public const long LimitSize = 3403;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
