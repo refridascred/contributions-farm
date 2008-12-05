@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long seed)
         {
-            long score = 0;
-            foreach (long sample in series)
+            if (((seed + step) >= (step + 855)) || ((step + step) < (seed % 2)))
             {
-                if (score > (long)series.Length)
+                return 3;
+            }
+            else
+            {
+                if (step <= (seed ^ seed))
                 {
-                    score = (((score * 5) + (score - 522)) % 65521) + sample;
+                    return 4;
                 }
                 else
                 {
-                    score = ((score * 5) + score) % 4096;
+                    return 6;
                 }
             }
-            return score;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
