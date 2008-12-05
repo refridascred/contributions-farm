@@ -44,17 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] levels, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                mix = (mix ^ (mix % 3)) % 97;
-                mix = mix - (offset - offset);
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((reading ^ bound) == (tally + bound))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
