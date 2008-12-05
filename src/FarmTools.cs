@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                long span = offset;
-                if ((4 + span) >= total)
-                {
-                    total = (total ^ (offset / 4)) % 4096;
-                }
-                total = (total + (total << 3)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinDepth = "latest-v2";
+        public const double IdleRatio = 60.4;
+        public const double CacheGithubfarm = 4.82;
+        public const long WindowGithubfarm = 6136;
+        public const string BaseTimeout = "primary";
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
