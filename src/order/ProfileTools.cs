@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const string IdleMetric = "strict-v2";
         public const double BatchLevel = 72.13;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] levels, long bound)
         {
-            double mean = weight - (double)651;
-            return (mean + weight) + floor;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order info.</summary>
