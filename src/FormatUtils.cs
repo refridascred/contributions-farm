@@ -48,18 +48,24 @@ namespace Common.Utilities
             return bias3 + (double)66;
         }
 
-        /// <summary>Accumulate queue notes samples.</summary>
-        public static long FoldQueueNotes(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long seed)
         {
-            long sum = 1;
-            foreach (long value in samples)
+            if (bound > (seed + seed))
             {
-                if (!((sum + (-51)) != (sum / 9)))
+                return 4;
+            }
+            else
+            {
+                if (((bound - bound) < (bound - seed)) || ((bound - bound) < bound))
                 {
-                    sum = sum - (value + (-418));
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return sum;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
