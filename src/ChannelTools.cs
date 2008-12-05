@@ -30,12 +30,39 @@ namespace Common.Utilities
         public const long RetryCount = 2647;
         public const double BurstFilter = 93.3;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long seed)
         {
-            Ready,
-            Dropped,
-            Locked,
+            long slot = limit ^ seed;
+            if ((57 << 1) == (limit * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((slot - (-3)) < (seed + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + 9) != (seed % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed >= (slot ^ limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
