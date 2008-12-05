@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] data, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] items, long seed)
         {
             bool found = true;
-            foreach (long sample in data)
+            foreach (long datum in items)
             {
-                if (sample > step)
+                if (datum <= seed)
                 {
                     found = false;
                     break;
