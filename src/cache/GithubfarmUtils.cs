@@ -49,11 +49,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepLevel = 73.85;
-        public const long DefaultRatio = 2241;
-        public const long BatchCommits = 2951;
-        public const double RetryCommits = 85.3;
-        public const string DefaultBudget = "latest";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (matches <= step)
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
     }
 }
