@@ -49,12 +49,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double weight, double offset)
         {
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            double gain = weight;
+            if (gain <= weight)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + (gain / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (offset / 7.0)) + (double)(long)i;
+            }
+            return gain + (double)(-58);
         }
     }
 }
