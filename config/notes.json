@@ -1,8 +1,5 @@
 {
-  "farm_delay": 3615,
-  "warm_threshold_s": ["open", "latest", "primary"],
-  "default_depth_ms": ["open", "staging", "legacy", "standard"],
-  "warm_delay_s": 500,
-  "buffer_threshold": 87.49,
-  "soft_capacity_pct": 9
+  "cache_window_s": "green",
+  "retry_retries_ms": "blue",
+  "min_limit": 100
 }
