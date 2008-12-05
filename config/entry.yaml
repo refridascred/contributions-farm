@@ -1,24 +1,6 @@
 # entry settings
-default_depth_pct:
-  strict: 100
-  hard_depth_s: 39.4
-  base_size_s:
-    - stable
-    - local
-    - latest
-    - blue
-  filter_size:
-    - 415
-    - 257
-    - 138
-    - 139
-  window_window: 84
-contributi_window:
-  - 273
-  - 173
-  - 57
-retry_delay: primary
-batch_capacity:
-  - latest
-  - latest
-metrics_retries: local
+strict: primary
+compress: 93.88
+flush_retries: 3
+poll_ttl: eu-west
+base_depth_ms: 5328
