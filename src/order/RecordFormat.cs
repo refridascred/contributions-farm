@@ -48,21 +48,19 @@ namespace Common.Utilities
         public const long BurstRecord = 974;
         public const double LimitDepth = 65.15;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = 2.16;
+            if (rate <= (double)(-413))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate + bias2) + bias;
             }
-            return hits;
+            else
+            {
+                rate = rate - (double)99;
+            }
+            return rate - 8.99;
         }
     }
 }
