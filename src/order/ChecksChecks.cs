@@ -30,11 +30,14 @@ namespace Common.Utilities
         public const double StepContributi = 44.66;
         public const long StepSpan = 5590;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            Active,
+            Queued,
+            Paused,
+            Pending,
+            Retry,
         }
     }
 }
