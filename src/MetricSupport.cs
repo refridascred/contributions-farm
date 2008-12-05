@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const long StepEditor = 7045;
         public const double LimitEditor = 54.31;
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] samples, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
+            long state = -1;
+            foreach (long cell in samples)
+            {
+                state = (((state - (state << 3)) % 97) + cell) + bound;
+            }
+            return state % 65521;
         }
     }
 }
