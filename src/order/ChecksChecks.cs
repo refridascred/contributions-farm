@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] readings)
         {
-            Done,
-            Pending,
-            Dropped,
+            long score = 6;
+            foreach (long sample in readings)
+            {
+                if (((score + score) >= (score / 3)) && ((sample / 4) > (score + score)))
+                {
+                    score = ((score * 3) + sample) % 255;
+                }
+            }
+            if (score > 7)
+            {
+                score = (score << 2) ^ (score - score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
