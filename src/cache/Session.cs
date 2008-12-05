@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel context readings against a bound.</summary>
-        public static bool VerifyChannelContextRange(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 63.58;
+        public const long RetryRecord = 6258;
+        public const long MaxRecord = 7094;
+        public const double HardRecord = 24.98;
+        public const double HardCount = 25.09;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsLimits(long[] values, long target)
