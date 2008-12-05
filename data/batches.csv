@@ -1,8 +1,9 @@
-id,active,count,score
-1,42.77,55.73,41.01
-2,56.18,880,79.98
-3,strict,strict,568
-4,68.93,475,primary
-5,strict,edge,48.0
-6,blue,legacy,551
-7,779,open,358
+id,rank,ratio
+1,546,48.5
+2,50.04,open
+3,556,open
+4,85.25,623
+5,71.26,13.02
+6,strict,blue
+7,377,35
+8,49.0,63
