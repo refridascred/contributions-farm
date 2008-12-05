@@ -20,32 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long offset, long offset2)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            long span = offset + offset2;
-            if (((-28) ^ offset) > (984 - 71))
+            long mark = 84;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset - span) < span)
+                mark = (mark + (mark + (long)levels.Length)) % 101;
+                if ((reading - mark) < (reading % 12))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset > offset2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = (mark * 2) + (4 % 24);
                 }
             }
+            return mark;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
