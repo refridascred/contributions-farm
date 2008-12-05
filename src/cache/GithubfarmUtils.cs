@@ -29,18 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((1.63 < (double)datum) || (matches < (637 >> 1)))
+                if (seen >= value)
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the session class values.</summary>
