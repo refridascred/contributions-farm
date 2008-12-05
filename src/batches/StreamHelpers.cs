@@ -23,10 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchFactor = 3383;
-        public const string BurstScore = "fallback-v2";
-        public const string MaxFactor = "latest";
+        /// <summary>Look up the position of a session githubfarm sample.</summary>
+        public static long LookupSessionGithubfarmIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine counter token values into a single score.</summary>
         public static long ScoreCounterToken(long[] values)
