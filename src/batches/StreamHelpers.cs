@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitMetrics = "open-v2";
-        public const long HardInterval = 5971;
-        public const long BatchMetrics = 2019;
-        public const long CacheDepth = 1267;
-        public const string StepMetrics = "legacy-1";
+        /// <summary>Iterate the cache farm series from a seed.</summary>
+        public static long IterateCacheFarm(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every session format entry stays within the limit.</summary>
         public static bool GuardSessionFormatBounds(long[] items, long bound)
