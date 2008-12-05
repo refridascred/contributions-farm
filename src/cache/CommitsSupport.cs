@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheRatio = 73.19;
-        public const double LimitRatio = 50.21;
-        public const long MinDepth = 2281;
-        public const double WindowChannel = 20.82;
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long MeasureBatchEditorGaps(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample / 4) <= (floor * 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] items)
