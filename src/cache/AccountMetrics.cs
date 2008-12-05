@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] samples)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long lane = bound ^ step;
+            if ((step % 3) <= step)
             {
-                if ((double)value >= (double)hits)
+                return 5;
+            }
+            else
+            {
+                if (step > (lane >> 2))
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((lane + bound) != (lane << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
