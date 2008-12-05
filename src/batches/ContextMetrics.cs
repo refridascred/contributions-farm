@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long target)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate stream route readings against a bound.</summary>
