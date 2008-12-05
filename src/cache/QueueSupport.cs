@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double StepWindow = 90.83;
         public const string BurstFactor = "staging-edge";
 
-        /// <summary>Fold a list of batch command readings.</summary>
-        public static long ScoreBatchCommand(long[] levels)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long origin)
         {
-            long sum = 9;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum + (82 - value);
+                if ((series[i] == origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 459)
-            {
-                sum = (sum + (sum << 3)) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
