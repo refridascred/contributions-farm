@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch session value from a seed.</summary>
-        public static long IterateBatchSession(long bound)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor ^ bound) % 65521;
-                anchor = (anchor + (long)i) % 255;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Closed,
+            Dropped,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
