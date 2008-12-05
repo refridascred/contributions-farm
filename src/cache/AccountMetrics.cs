@@ -55,16 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account editor values into a single score.</summary>
-        public static long TallyAccountEditor(long[] values, long seed)
+        /// <summary>Digest a series of counter command entries.</summary>
+        public static long CombineCounterCommand(long[] data)
         {
-            long acc = 66;
-            foreach (long sample in values)
+            long mark = 7;
+            foreach (long sample in data)
             {
-                acc = ((acc << 2) ^ sample) % 97;
-                acc = (acc - seed) % 255;
+                mark = ((mark << 2) ^ (mark + mark)) - sample;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the command level values.</summary>
