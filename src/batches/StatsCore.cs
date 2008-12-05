@@ -54,18 +54,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] samples, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((49 - target) >= (hits - 26))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                total = (total + (816 * 3)) % 4096;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the notes kind values.</summary>
