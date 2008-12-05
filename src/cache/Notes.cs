@@ -55,14 +55,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Active,
-            Draft,
-            New,
-            Failed,
-            Stale,
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
