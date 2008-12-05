@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
