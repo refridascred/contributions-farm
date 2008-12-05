@@ -15,18 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] readings, long target)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally * 3) != (22 + 7))
-                {
-                    tally = ((tally + 3) ^ cell) + target;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the schema phase values.</summary>
