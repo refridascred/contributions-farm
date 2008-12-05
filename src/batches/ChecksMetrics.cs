@@ -36,12 +36,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Count { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftSize = 4355;
+        public const long IdleAlready = 2846;
+        public const string IdleTimeout = "standard";
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
