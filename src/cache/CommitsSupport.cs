@@ -73,19 +73,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double weight, double span)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double weight2 = (double)(1 - 147);
-            if (weight2 < span)
-            {
-                weight2 = weight2 - weight2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - (8.2 * 5.66)) + (double)(long)i;
-            }
-            return weight2 - (weight - weight2);
+            Paused,
+            Pending,
+            Active,
+            Failed,
+            Retry,
         }
     }
 }
