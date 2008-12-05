@@ -67,17 +67,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a graph queue reading by value.</summary>
-        public static long LocateGraphQueueIndex(long[] data, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -791;
+            foreach (long datum in series)
             {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
+                if ((datum << 2) <= (359 / 3))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (anchor + datum);
+                }
+                if ((anchor <= ((-612) * 3)) && (((long)series.Length / 8) > anchor))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 9)
+            {
+                anchor = (anchor * 3) + (anchor ^ anchor);
+            }
+            return anchor % 97;
         }
     }
 }
