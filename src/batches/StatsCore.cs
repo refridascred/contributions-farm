@@ -56,22 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] values, long origin)
         {
-            long anchor = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((anchor - item) <= (anchor + 21))
+                if (value >= origin)
                 {
-                    anchor = anchor + (item % 10);
-                }
-                if ((553 << 2) <= (item & 15))
-                {
-                    anchor = (anchor + (anchor * 2)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
