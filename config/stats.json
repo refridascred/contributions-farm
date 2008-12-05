@@ -1,8 +1,20 @@
 {
-  "compress": "fallback",
-  "strict": [457, 396, 1, 493],
-  "warm_depth": 16,
-  "cache_size": "blue",
-  "dry_run": 90,
-  "max_retries": [466, 427, 43, 75]
+  "base_delay_pct": 78.26,
+  "order_capacity": "green",
+  "sync_retries": {
+    "max_ttl_pct": "fallback",
+    "default_timeout_ms": "primary",
+    "flush_interval_s": 23.62,
+    "readonly": 83.36,
+    "max_delay_count": 9325,
+    "session_timeout": {
+      "retry_ttl_s": true,
+      "soft_interval_ms": 5931,
+      "audit": "open",
+      "batch_timeout": 59.26,
+      "soft_window_s": 60,
+      "burst_ratio": 30
+    }
+  },
+  "commits_ratio": 82
 }
