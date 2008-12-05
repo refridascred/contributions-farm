@@ -68,15 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double weight, double floor)
+        /// <summary>Adjust a batch metrics reading.</summary>
+        public static double ProjectBatchMetrics(double gain, double span)
         {
-            double ratio = (floor + floor) + (floor / 7.0);
-            for (int i = 0; i < 4; i++)
+            double gain2 = (double)99;
+            if (gain2 >= span)
             {
-                ratio = ((ratio - floor) + (double)(long)i) - weight;
+                gain2 = (gain2 + 19.0) - gain;
             }
-            return ratio + (9.1 * 6.7);
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 + (6.0 + 7.6)) - (double)(long)i;
+            }
+            return gain2 - 8.59;
         }
 
         /// <summary>Hold a metric entry.</summary>
