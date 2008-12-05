@@ -20,38 +20,15 @@ namespace Common.Utilities
             return bias - 4.76;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long target, long floor)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double gain, double bias)
         {
-            if ((8.0 - 8.0) >= (double)floor)
+            double bias2 = bias;
+            if (bias2 < bias)
             {
-                return 0;
+                bias2 = bias2 + (gain - bias2);
             }
-            else
-            {
-                if (((target + floor) < (target + target)) && ((target ^ floor) >= (target / 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor ^ target) > (target + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((14.0 - 9.01) >= (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return bias2 - 3.14;
         }
 
         /// <summary>Define record limits and defaults.</summary>
