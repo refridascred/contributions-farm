@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] readings, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > target)
+                if (samples[i] > floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
