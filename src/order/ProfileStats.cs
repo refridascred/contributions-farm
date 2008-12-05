@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate record stats samples.</summary>
-        public static long ScoreRecordStats(long[] levels, long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mark = 498;
-            foreach (long cell in levels)
-            {
-                mark = ((mark + (cell >> 2)) % 65521) - limit;
-            }
-            return mark % 1000;
+            Active,
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Locate a token reading by value.</summary>
