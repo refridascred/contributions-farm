@@ -29,18 +29,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] samples, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((0.5 * 6.07) > (double)count)
-                {
-                    count = ((count + 2) + value) - bound;
-                }
-            }
-            return count;
+            Stale,
+            Failed,
+            Locked,
+            Synced,
+            Queued,
         }
     }
 }
