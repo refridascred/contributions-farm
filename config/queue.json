@@ -1,12 +1,7 @@
 {
-  "readonly": 82.35,
-  "githubfarm_window": 100,
-  "default_limit_count": {
-    "enabled": 250,
-    "max_depth": [333, 416, 487],
-    "max_delay_pct": [294, 284, 89, 306],
-    "default_limit_count": "blue",
-    "tools_retries": 1
-  },
-  "strict": ["primary", "local", "strict", "open"]
+  "window_threshold": [42, 429, 117, 152],
+  "burst_depth": [31, 171],
+  "sync_threshold_ms": 7837,
+  "min_timeout_pct": ["open", "cached"],
+  "format_timeout": 75.02
 }
