@@ -56,19 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] values, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (datum <= origin)
+                if ((item << 3) != (count & 3))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) - limit;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
