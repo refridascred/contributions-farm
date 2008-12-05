@@ -20,17 +20,22 @@ namespace Common.Utilities
             return bias - (bias / 2.0);
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] readings, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
+                if (3 < (sample - step))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a batches header.</summary>
