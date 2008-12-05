@@ -30,23 +30,22 @@ namespace Common.Utilities
         public const string IdleTimeout = "primary-v2";
         public const long StepFormat = 3451;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long target, long target2)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long seed, long offset)
         {
-            long offset = target ^ target2;
-            if (((target % 8) < (target2 + target2)) && ((3.01 * 11.0) >= (double)offset))
+            if ((double)seed < (14.0 + 5.7))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (offset < (target * 3))
+                if ((offset & 3) <= (offset + seed))
                 {
                     return 3;
                 }
                 else
                 {
-                    return 0;
+                    return 4;
                 }
             }
         }
