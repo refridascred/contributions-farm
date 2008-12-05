@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 9687;
-        public const double IdleLayout = 68.58;
-        public const string CacheScore = "local-v2";
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
