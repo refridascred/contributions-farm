@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Fold a list of window account readings.</summary>
+        public static long WeighWindowAccount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long acc = 701;
+            foreach (long value in values)
             {
-                if ((3.6 - 10.0) < (double)(long)i)
+                acc = (acc ^ (value + value)) % 4096;
+                if ((value << 1) > (acc - value))
                 {
-                    result = ((result * 5) + 86) % 4096;
+                    acc = acc ^ (acc & 31);
                 }
-                result = ((result * 2) + (long)i) % 101;
+                else
+                {
+                    acc = ((acc * 4) + (acc - acc)) % 101;
+                }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
