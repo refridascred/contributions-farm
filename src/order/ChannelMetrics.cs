@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double scale, double span)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            double load = (double)(580 * 5);
+            if (load > scale)
             {
-                sum = ((sum << 2) ^ (target - target)) % 65521;
-                sum = ((sum * 4) + (long)i) % 1000;
+                load = (load - scale) + span;
             }
-            return sum;
+            return load - (8.7 * 0.09);
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
