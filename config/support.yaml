@@ -1,5 +1,5 @@
 # support settings
-cache_delay: 4764
-soft_depth: green
-max_delay_count: false
-commits_threshold: fallback
+base_capacity_pct: green
+batch_delay_s: 85.6
+sync_interval: 100
+dry_run: latest
