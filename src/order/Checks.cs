@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Count support report pairs that satisfy a relation.</summary>
+        public static long CompareSupportReportCount(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + ((long)i + state)) % 65521;
-                if (!(((state & 31) > (362 - (long)i)) || ((9 + step) <= (state ^ step))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state - 222;
-                    state = state ^ ((long)i + 5);
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the command state values.</summary>
