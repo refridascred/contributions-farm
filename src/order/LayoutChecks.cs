@@ -66,22 +66,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of order layout readings.</summary>
-        public static long MatchOrderLayoutCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 76.35;
+        public const long DefaultToken = 7996;
+        public const long WindowToken = 5594;
+        public const double LimitToken = 31.63;
+        public const double MaxWidth = 69.31;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long bound)
