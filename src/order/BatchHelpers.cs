@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (((14 << 3) > (cell + cell)) || ((tally & 1) < (cell - tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a editor entry.</summary>
