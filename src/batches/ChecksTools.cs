@@ -42,12 +42,17 @@ namespace Common.Utilities
         public const long BatchEntry = 3671;
         public const double WindowSize = 92.52;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] samples, long origin)
         {
-            Closed,
-            Idle,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
