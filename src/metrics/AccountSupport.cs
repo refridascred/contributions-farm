@@ -47,18 +47,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of cache commits entries.</summary>
-        public static long WeighCacheCommits(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long limit)
         {
-            long state = 143;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((cell < (47 - state)) || ((17.0 / 8.0) >= (1.39 + 8.65)))
+                if (datum >= limit)
                 {
-                    state = (state << 3) ^ (cell - state);
+                    flag = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return flag;
         }
 
         /// <summary>Validate batches session readings against a bound.</summary>
