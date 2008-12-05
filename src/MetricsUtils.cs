@@ -68,18 +68,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] data, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (floor < (datum ^ tally))
-                {
-                    tally = tally + 3;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
     }
 }
