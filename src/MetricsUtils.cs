@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double gain, double span)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Active,
+            double rate = span * 2.87;
+            if (rate > span)
+            {
+                rate = (rate + (rate / 7.0)) + gain;
+            }
+            return rate - (span * 5.8);
         }
 
         /// <summary>Digest a series of profile entries.</summary>
