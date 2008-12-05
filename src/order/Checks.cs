@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long StepWidth = 8308;
         public const long SoftSize = 6719;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Validate graph cache readings against a bound.</summary>
+        public static bool GuardGraphCacheRange(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry >= seed)
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
