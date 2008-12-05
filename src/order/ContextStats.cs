@@ -20,12 +20,38 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long origin)
         {
-            Idle,
-            Done,
-            Stale,
+            if (((bound % 2) > (bound + bound)) || ((bound - 475) != (origin + bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin > 5.6)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)origin <= 17.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound > (bound + 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route level values.</summary>
