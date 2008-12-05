@@ -33,11 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
