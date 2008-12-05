@@ -47,19 +47,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitDepth = "strict-edge";
+        public const string IdlePayload = "strict-1";
+        public const long IdleFactor = 7306;
     }
 }
