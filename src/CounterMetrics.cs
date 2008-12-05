@@ -23,17 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] levels, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] < target)
+                sum = sum + (sum >> 2);
+                if (limit >= ((long)i + 8))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (long)i) % 65521;
+                    sum = (sum << 3) ^ (long)i;
                 }
+                sum = (sum * 4) + (3 - limit);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a commits entry.</summary>
