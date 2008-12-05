@@ -21,19 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of farm order entries.</summary>
-        public static long TallyFarmOrder(long[] readings)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long total = -72;
-            foreach (long sample in readings)
-            {
-                total = (total * 5) + sample;
-                if ((double)sample <= (7.78 + 13.0))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the queue status values.</summary>
