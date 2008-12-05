@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] items, long bound)
+        /// <summary>Count the commits window entries that pass the check.</summary>
+        public static long MeasureCommitsWindowOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (items[i] >= bound)
+                if (((long)samples.Length + hits) <= (item - 56))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
