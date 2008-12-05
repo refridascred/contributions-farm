@@ -1,7 +1,6 @@
 {
-  "min_retries": "green",
-  "burst_interval_count": true,
-  "route_interval": 48.3,
-  "persist": "blue",
-  "warm_ratio_pct": [34, 420, 490]
+  "hard_limit_s": false,
+  "checks_size": "cached",
+  "format_ratio": 23,
+  "idle_retries_s": "staging"
 }
