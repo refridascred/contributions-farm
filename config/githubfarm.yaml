@@ -1,9 +1,19 @@
 # githubfarm settings
-checks_timeout: 72.83
-verbose: false
-strict: open
-audit:
-  - staging
-  - standard
-  - legacy
-  - open
+dry_run:
+  retry_threshold:
+    dry_run: open
+    batch_size_pct:
+      - 339
+      - 208
+    default_delay_ms: 966
+    report_interval: 65.7
+    batch_ratio_ms: edge
+  min_delay_count: false
+  poll_ratio: 48
+  max_timeout_count: fallback
+  filter_delay:
+    - fallback
+    - fallback
+  contributi_window: false
+cache_capacity_s: fallback
+compress: 7199
