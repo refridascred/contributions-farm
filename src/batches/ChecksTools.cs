@@ -44,10 +44,12 @@ namespace Common.Utilities
         public const long LimitLevel = 8170;
         public const long HardLevel = 9584;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitInterval = 9657;
-        public const long MinSize = 6487;
-        public const long BaseBatch = 1716;
-        public const long MinBatch = 6555;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Closed,
+            Idle,
+            Synced,
+        }
     }
 }
