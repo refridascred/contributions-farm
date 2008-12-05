@@ -1,8 +1,6 @@
 {
-  "stream_size": 8733,
-  "base_threshold_ms": false,
-  "poll_interval": "staging",
-  "report_size": ["blue", "strict", "local"],
-  "enabled": "legacy",
-  "hard_depth_ms": "legacy"
+  "sync_delay": "blue",
+  "tools_interval": "primary",
+  "warm_depth_pct": true,
+  "hard_timeout_s": false
 }
