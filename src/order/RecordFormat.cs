@@ -43,10 +43,17 @@ namespace Common.Utilities
         public const long SoftBatches = 2469;
         public const long RetryBatches = 5083;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 4731;
-        public const long BurstRecord = 974;
-        public const double LimitDepth = 65.15;
+        /// <summary>Iterate the queue batches series from a seed.</summary>
+        public static long SeriesQueueBatches(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum ^ bound) % 255;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double BlendFarm(double bias, double bias2)
