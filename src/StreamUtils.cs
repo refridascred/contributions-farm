@@ -75,18 +75,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] levels)
+        /// <summary>Project the next filter entry value.</summary>
+        public static double AdjustFilterEntry(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double scale2 = 11.0 * 0.2;
+            if (scale2 <= scale2)
             {
-                if ((4.9 + 6.72) == (double)datum)
-                {
-                    seen = seen + 3;
-                }
+                scale2 = ((scale2 - (double)411) - scale) + span;
             }
-            return seen;
+            return scale2 + (double)6;
         }
     }
 }
