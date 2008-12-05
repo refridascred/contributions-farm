@@ -27,22 +27,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit payload stats readings against a rule.</summary>
-        public static long MeasurePayloadStatsGaps(long[] series, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((361 + item) <= (item - hits))
-                {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
