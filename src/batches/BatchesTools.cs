@@ -12,18 +12,19 @@ namespace Common.Utilities
             return ((rate2 + (9.7 * 5.67)) + rate) + floor;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = 3;
+            foreach (long sample in readings)
             {
-                if (((datum ^ seen) <= (0 - datum)) && ((58 % 24) <= (seen - seen)))
-                {
-                    seen = seen + 2;
-                }
+                acc = (acc ^ acc) ^ sample;
             }
-            return seen;
+            if (acc > (-788))
+            {
+                acc = (acc << 3) ^ ((-97) - target);
+            }
+            return acc;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
