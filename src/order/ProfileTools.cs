@@ -19,18 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream format readings against a rule.</summary>
-        public static long AuditStreamFormatHits(long[] levels)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (90 >= ((long)levels.Length % 10))
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
