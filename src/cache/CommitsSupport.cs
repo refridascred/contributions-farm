@@ -35,21 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
-        public static long PairChecksCounterCount(long[] readings)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 144;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total - (total << 2)) % 101) ^ (long)i;
+                }
+                if (sample >= (sample / 8))
+                {
+                    total = (total - (98 + sample)) % 65521;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Adjust a checks reading.</summary>
