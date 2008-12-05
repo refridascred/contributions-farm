@@ -39,17 +39,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] levels, long floor)
+        /// <summary>Derive the next already payload value from a seed.</summary>
+        public static long IterateAlreadyPayload(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] < floor)
+                state = ((state * 4) + (long)i) % 101;
+                state = (state - state) % 97;
+                if (!((target & 31) >= (target & 127)))
                 {
-                    return (long)i;
+                    state = state - (0 + state);
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
