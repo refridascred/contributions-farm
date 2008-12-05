@@ -65,10 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 8562;
-        public const string MinCommits = "staging-edge";
-        public const long RetryCommits = 2889;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)matches != (3.5 + 9.3))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheCount = 7231;
