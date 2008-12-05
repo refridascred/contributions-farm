@@ -30,11 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] data, long floor)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (datum <= floor)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
