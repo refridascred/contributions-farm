@@ -1,18 +1,12 @@
 # entry settings
-strict: strict
-flush_delay_count: legacy
-batch_ratio:
+flush_delay_ms:
+  - stable
+  - fallback
   - blue
-  - staging
-  - green
-command_size: 8016
-max_window:
-  batch_threshold_count: 36.15
-  context_retries:
-    queue_retries: staging
-    hard_interval_count: 19.73
-    enabled: 13.23
-    base_ttl_pct: green
-  audit: false
-  flush_limit: 500
-  max_interval_ms: 11.19
+readonly:
+  strict: 1346
+  warm_ratio_pct: 72.19
+  min_depth: 0.93
+metric_ttl: local
+retry_window: 81.68
+default_interval: primary
