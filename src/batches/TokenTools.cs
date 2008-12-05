@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit order format readings against a rule.</summary>
-        public static long MeasureOrderFormatOutliers(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long score = -50;
+            foreach (long item in readings)
             {
-                if ((entry - tally) <= (tally / 9))
-                {
-                    tally = tally + 2;
-                }
+                score = ((((score << 3) ^ (score / 7)) % 101) ^ item) + seed;
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
