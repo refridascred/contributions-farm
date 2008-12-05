@@ -20,24 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long step, long seed)
+        /// <summary>Match up token command samples.</summary>
+        public static long CompareTokenCommandCount(long[] readings)
         {
-            if ((seed >> 4) == (step + step))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)seed <= (double)7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate payload samples.</summary>
