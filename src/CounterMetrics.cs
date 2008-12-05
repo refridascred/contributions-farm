@@ -23,22 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = sum + (sum >> 2);
-                if (limit >= ((long)i + 8))
-                {
-                    sum = ((sum << 2) ^ (long)i) % 65521;
-                    sum = (sum << 3) ^ (long)i;
-                }
-                sum = (sum * 4) + (3 - limit);
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
