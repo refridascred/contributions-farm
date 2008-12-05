@@ -21,18 +21,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - sample) > (sample - (long)items.Length))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
