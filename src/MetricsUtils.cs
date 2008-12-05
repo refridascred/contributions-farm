@@ -37,11 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            public double Total { get; set; }
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
