@@ -29,15 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] samples, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((0.5 * 6.07) > (double)count)
+                {
+                    count = ((count + 2) + value) - bound;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
