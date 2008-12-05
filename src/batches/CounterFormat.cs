@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long DefaultCount = 7547;
         public const long CacheFactor = 1153;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < floor)
+                if (items[i] < floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
