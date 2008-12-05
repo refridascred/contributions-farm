@@ -17,12 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] values, long offset)
         {
-            Paused,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (3.2 >= (double)reading)
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route mode values.</summary>
