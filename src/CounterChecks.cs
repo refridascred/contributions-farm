@@ -67,9 +67,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "cached-1";
-        public const long LimitCount = 8549;
-        public const string DefaultFactor = "standard-edge";
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((228 - entry) > (entry & 63))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
