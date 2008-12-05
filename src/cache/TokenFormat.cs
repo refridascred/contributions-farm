@@ -40,18 +40,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] series, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = 79;
+            foreach (long reading in items)
             {
-                if ((cell + limit) < (cell * 2))
+                if ((sum + sum) <= (sum / 7))
                 {
-                    seen = seen + 2;
+                    sum = (sum - (reading * 2)) % 1000;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
     }
 }
