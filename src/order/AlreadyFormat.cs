@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
+            New,
+            Pending,
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Validate filter support readings against a bound.</summary>
