@@ -33,10 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxRatio = 3827;
-        public const long LimitRatio = 6674;
-        public const long WindowDepth = 5728;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] values)
