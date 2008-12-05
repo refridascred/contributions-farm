@@ -14,11 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
+            long mark = 677;
+            foreach (long entry in items)
+            {
+                if ((floor >> 1) >= (mark & 3))
+                {
+                    mark = (mark + (long)items.Length) + entry;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
