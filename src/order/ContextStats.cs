@@ -17,22 +17,26 @@ namespace Common.Utilities
             return (gain + (weight - weight)) + offset;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 7;
+            foreach (long sample in readings)
             {
-                if (!((seen << 2) > seen) || ((double)seen > (7.0 / 6.0)))
+                if (6.55 > (double)state)
                 {
-                    seen = (seen + 3) + reading;
+                    state = ((state << 3) ^ (state << 2)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = (state + sample) % 255;
                 }
             }
-            return seen;
+            if (state < 4)
+            {
+                state = ((state << 2) ^ state) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
