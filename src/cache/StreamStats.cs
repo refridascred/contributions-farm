@@ -39,19 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] values, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (value != step)
+                if (reading >= step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
