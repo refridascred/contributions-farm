@@ -1,8 +1,12 @@
 {
-  "strict": "cached",
-  "min_size_s": "stable",
-  "base_ratio": true,
-  "readonly": "staging",
-  "metrics_delay": "latest",
-  "warm_ttl_pct": 51
+  "hard_limit_s": "local",
+  "readonly": 40.67,
+  "warm_delay": {
+    "schema_ttl": 65.08,
+    "batch_window": [494, 283, 108],
+    "cache_threshold": false
+  },
+  "audit": "staging",
+  "strict": "edge",
+  "persist": "fallback"
 }
