@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] == floor) && ((items[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
