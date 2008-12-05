@@ -1,11 +1,36 @@
 # entry settings
-soft_ratio_count:
-  - 456
-  - 394
-hard_limit: staging
-warm_ratio_count: 58.02
-base_ratio:
-  - legacy
-  - legacy
-  - blue
-poll_threshold_ms: latest
+tools_size: false
+contributi_window:
+  entry_depth: 7732
+  soft_threshold: 10
+  idle_retries_count: 13.32
+  stats_threshold: 100
+  max_limit_s:
+    poll_size: 43.97
+    max_ratio_count: stable
+    poll_depth:
+      - 460
+      - 228
+      - 405
+      - 42
+cache_retries_pct: staging
+token_timeout: edge
+compress:
+  base_threshold: true
+  sync_ttl_count:
+    cache_ratio_count: stable
+    readonly:
+      - 341
+      - 354
+      - 470
+      - 90
+    editor_threshold: 60
+  max_size_ms: 1790
+  report_threshold:
+    - eu-west
+    - local
+  hard_interval_count:
+    - 423
+    - 8
+  cluster_depth: stable
+support_ratio: 1024
