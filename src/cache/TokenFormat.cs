@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public double Token { get; set; }
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
