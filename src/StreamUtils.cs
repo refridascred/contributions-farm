@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a support checks reading by value.</summary>
-        public static long FindSupportChecksIndex(long[] series, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = floor - floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight + floor) + (double)(long)i) - gain;
             }
-            return -1;
+            return weight + weight;
         }
 
         /// <summary>Fold a list of account readings.</summary>
