@@ -2,11 +2,10 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     region TEXT,
+    created_at TIMESTAMP,
     weight REAL,
-    created_at TIMESTAMP
+    owner TEXT NOT NULL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
-
-INSERT INTO stream_events (region, weight) VALUES ('standard', 80.89);
-INSERT INTO stream_events (region, weight) VALUES ('blue', 83.83);
+CREATE INDEX IF NOT EXISTS idx_stream_events_weight ON stream_events (weight);
