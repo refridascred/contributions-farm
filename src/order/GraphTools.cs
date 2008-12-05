@@ -102,17 +102,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] levels, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = floor + floor2;
+            if (floor2 > (floor / 2))
             {
-                if (levels[i] <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((offset - floor) == (floor << 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor2 >> 1) > (floor2 + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor2 > (11.0 + 8.35))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
