@@ -1,6 +1,22 @@
 {
-  "warm_delay": [434, 315],
-  "command_retries": true,
-  "checks_window": "local",
-  "idle_size_s": "open"
+  "warm_limit_s": "blue",
+  "batch_size": "stable",
+  "strict": {
+    "audit": true,
+    "burst_retries_pct": {
+      "default_limit_s": ["open", "local", "open"],
+      "stats_ttl": 20,
+      "dry_run": ["strict", "blue"],
+      "layout_timeout": ["eu-west", "blue", "latest", "stable"]
+    },
+    "soft_size_count": "legacy"
+  },
+  "account_retries": {
+    "retry_window_ms": ["stable", "blue", "staging", "edge"],
+    "route_ttl": 83.89,
+    "context_ttl": "stable",
+    "soft_interval_s": [117, 485, 183, 110]
+  },
+  "batch_ttl_count": 1615,
+  "poll_retries_pct": false
 }
