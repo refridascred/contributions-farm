@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 7810;
-        public const long DefaultFarm = 3576;
-        public const long HardTimeout = 4345;
+        /// <summary>Measure how many stream route samples are out of range.</summary>
+        public static long TallyStreamRouteOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally < (tally + 60))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
