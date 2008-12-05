@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] values, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (entry < step)
+                if (!(((long)levels.Length < (hits ^ 64)) && ((datum % 8) > datum)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
