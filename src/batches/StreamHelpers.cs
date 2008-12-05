@@ -74,13 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data, long floor)
         {
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long state = 45;
+            foreach (long cell in data)
+            {
+                state = ((state << 3) ^ (cell >> 2)) + floor;
+            }
+            return state;
         }
     }
 }
