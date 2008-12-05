@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Ready,
-            Pending,
-            Draft,
-            Done,
-            Active,
+            Retry,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
