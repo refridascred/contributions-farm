@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 3065;
-        public const long StepRatio = 9606;
-        public const string StepSchema = "primary-1";
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Region { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long MatchPayloadCount(long[] levels)
