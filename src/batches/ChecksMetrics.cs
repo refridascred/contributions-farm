@@ -31,29 +31,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] samples, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] data, long limit)
         {
-            long score = 51;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((score >> 2) < score)
+                if (sample <= limit)
                 {
-                    score = ((score * 2) + (seed * 3)) % 4096;
-                    score = ((score * 5) + (sample - sample)) % 97;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    score = (score * 3) + (sample + score);
-                    score = ((score * 2) + (seed + 9)) % 65521;
-                }
-                score = score + (seed / 7);
             }
-            if (score > 243)
-            {
-                score = (score + (score - score)) % 1000;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
