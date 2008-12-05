@@ -81,10 +81,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryContext = "cached";
-        public const long BurstTimeout = 9372;
-        public const string CacheContext = "fallback";
-        public const long BaseSpan = 5622;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
