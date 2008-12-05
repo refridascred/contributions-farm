@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate buffer graph readings against a bound.</summary>
-        public static bool ValidateBufferGraphLimits(long[] series, long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
