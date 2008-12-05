@@ -1,8 +1,5 @@
 {
-  "warm_size_ms": [298, 300, 99],
-  "base_threshold": 250,
-  "persist": "legacy",
-  "batch_interval": [374, 136, 242, 183],
-  "burst_ratio_pct": false,
-  "batch_window": "open"
+  "batch_window_s": false,
+  "soft_retries_pct": "staging",
+  "flush_window_pct": "fallback"
 }
