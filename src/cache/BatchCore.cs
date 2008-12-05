@@ -46,10 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxLevel = 7360;
-        public const long MaxQueue = 4648;
-        public const string DefaultTimeout = "fallback";
-        public const double LimitQueue = 31.37;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
