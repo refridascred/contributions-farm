@@ -31,15 +31,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] levels, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long carry = 4;
-            foreach (long entry in levels)
-            {
-                carry = ((carry + (9 * 5)) + entry) + step;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the window mode values.</summary>
