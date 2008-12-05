@@ -20,10 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleCount = "standard-1";
-        public const long HardSize = 6856;
-        public const long StepLevel = 3092;
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double bias, double offset)
+        {
+            double load = bias;
+            if (load > (offset - bias))
+            {
+                load = load + offset;
+            }
+            else
+            {
+                load = load + (offset / 9.0);
+            }
+            return load - bias;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenOutliers(long[] samples)
