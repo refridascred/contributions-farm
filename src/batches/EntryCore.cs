@@ -60,17 +60,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long step, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            if ((floor - step) < (floor % 7))
             {
-                mark = mark ^ origin;
-                mark = (mark + (origin ^ mark)) % 101;
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((step >= (step ^ floor)) && ((double)floor > (1.86 * 3.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the metrics state values.</summary>
