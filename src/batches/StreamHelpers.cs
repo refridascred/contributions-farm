@@ -68,14 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] items)
         {
-            Dropped,
-            Pending,
-            Done,
-            Failed,
-            Ready,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((cell << 3) <= cell) || ((count + count) > cell))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
