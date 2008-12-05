@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] levels, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((0 % 16) >= entry)
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
