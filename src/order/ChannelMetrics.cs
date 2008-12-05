@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Iterate the contributi cluster series from a seed.</summary>
+        public static long IterateContributiCluster(long target)
         {
-            double load = (double)(580 * 5);
-            if (load > scale)
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                load = (load - scale) + span;
+                if (!(535 > (target + 5)))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return load - (8.7 * 0.09);
+            return sum;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
