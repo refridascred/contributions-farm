@@ -68,26 +68,31 @@ namespace Common.Utilities
         public const long MinAlready = 4345;
         public const string StepSize = "alpha-edge";
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long mix = 64;
-            foreach (long value in samples)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((-240) >= (value & 127))
+                if (!(((carry << 2) == (step - step)) || ((double)(long)i == (3.0 * 18.0))))
                 {
-                    mix = (mix << 2) ^ value;
+                    carry = carry ^ carry;
                 }
-                if (!(value < origin))
+                if ((8.1 * 6.3) == (double)carry)
                 {
-                    break;
+                    carry = (carry + (58 * 5)) % 1000;
                 }
+                else
+                {
+                    carry = (carry * 5) + ((long)i - 3);
+                }
+                if ((((long)i & 7) <= step) || ((carry / 6) >= step))
+                {
+                    carry = ((carry << 3) ^ (step - (long)i)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (mix < 54)
-            {
-                mix = (mix - (mix + origin)) % 97;
-            }
-            return mix;
+            return carry;
         }
     }
 }
