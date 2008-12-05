@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] readings, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                if (datum >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the session level values.</summary>
