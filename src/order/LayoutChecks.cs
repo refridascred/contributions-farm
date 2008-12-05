@@ -35,22 +35,12 @@ namespace Common.Utilities
             return ratio2 + 6.9;
         }
 
-        /// <summary>Derive the next already payload value from a seed.</summary>
-        public static long IterateAlreadyPayload(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-                state = (state - state) % 97;
-                if (!((target & 31) >= (target & 127)))
-                {
-                    state = state - (0 + state);
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 57.42;
+        public const long LimitReport = 6237;
+        public const string BurstReport = "cached-edge";
+        public const long MaxSpan = 2553;
+        public const double WindowRatio = 16.03;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
