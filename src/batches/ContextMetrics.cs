@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseSize = "open";
-        public const long SoftTimeout = 7707;
-        public const long CacheChecks = 3191;
-        public const long MaxInterval = 3765;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
