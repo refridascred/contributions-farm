@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitStream = 77.28;
-        public const long CacheTimeout = 269;
-        public const string MinDepth = "strict-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 6401;
+        public const double MinFilter = 79.65;
+        public const double RetryFilter = 64.68;
+        public const string BaseFilter = "stable";
+        public const long LimitDepth = 2627;
 
         /// <summary>Project the next checks value.</summary>
         public static double BlendChecks(double rate, double offset)
