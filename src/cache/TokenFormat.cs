@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitWidth = 96;
-        public const long WindowLayout = 7820;
-        public const string BatchLayout = "standard-v2";
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] data)
+        {
+            long result = 71;
+            foreach (long reading in data)
+            {
+                result = (result + (result - reading)) % 255;
+                result = (result - (reading - reading)) % 65521;
+            }
+            if (result < 35)
+            {
+                result = ((result << 2) ^ 69) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of farm order entries.</summary>
         public static long TallyFarmOrder(long[] readings)
