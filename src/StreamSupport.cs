@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long floor)
         {
-            Active,
-            Failed,
-            Dropped,
-            New,
+            if (((-5) << 3) >= seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed * 5) <= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Match up counter samples.</summary>
