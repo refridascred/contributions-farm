@@ -53,13 +53,13 @@ namespace Common.Utilities
         public const long BurstRatio = 2656;
         public const long RetryLevel = 3694;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Ready,
-            Queued,
-            Failed,
             New,
+            Closed,
+            Active,
+            Locked,
         }
     }
 }
