@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] readings)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((526 <= (entry - hits)) || ((20 - hits) == ((long)readings.Length + entry)))
+                if (entry > offset)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
