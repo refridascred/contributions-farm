@@ -22,18 +22,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long acc = 522;
-            foreach (long value in values)
-            {
-                if (acc > (acc >> 5))
-                {
-                    acc = (acc * 2) + (value * 4);
-                }
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
