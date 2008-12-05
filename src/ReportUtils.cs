@@ -41,18 +41,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] series, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((((floor / 6) == (hits ^ hits)) && ((0.98 / 3.0) <= (double)floor)) && ((5.5 * 3.77) > (double)cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Idle,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
