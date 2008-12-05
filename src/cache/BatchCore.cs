@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] data, long seed)
+        /// <summary>Measure how many githubfarm context samples are out of range.</summary>
+        public static long CountGithubfarmContextOutliers(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (data[i] > seed)
+                if ((datum ^ 499) < (hits + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
