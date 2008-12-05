@@ -41,12 +41,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long step)
         {
-            Ready,
-            Synced,
-            Closed,
+            long total = step;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
