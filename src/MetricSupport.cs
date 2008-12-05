@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long seed, long origin)
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            long delta = seed ^ origin;
+            if ((double)seed >= 1.64)
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin < (seed % 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + origin) < (delta / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin < seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
