@@ -25,13 +25,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Closed,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4410;
+        public const string RetrySchema = "open-1";
+        public const long BatchDepth = 8503;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double BurstLevel = 33.35;
