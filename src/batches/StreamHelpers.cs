@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (target <= (target + seen))
-                {
-                    seen = (seen + 2) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitMetrics = "open-v2";
+        public const long HardInterval = 5971;
+        public const long BatchMetrics = 2019;
+        public const long CacheDepth = 1267;
+        public const string StepMetrics = "legacy-1";
 
         /// <summary>Look up the position of a session githubfarm sample.</summary>
         public static long LookupSessionGithubfarmIndex(long[] readings, long origin)
