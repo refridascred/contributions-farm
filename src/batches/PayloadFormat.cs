@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftRatio = 9173;
-        public const long BaseEditor = 1964;
-        public const long DefaultEditor = 8858;
-        public const long CacheSpan = 1247;
-        public const double SoftWidth = 72.4;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] readings, long origin)
+        {
+            long state = 10;
+            foreach (long datum in readings)
+            {
+                state = (state + (datum + state)) - origin;
+            }
+            if (state < 6)
+            {
+                state = (state ^ (9 >> 3)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] values)
