@@ -50,18 +50,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] series)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((70 + tally) < (tally + 90)) || ((item & 1) > ((-690) + 64)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
