@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open legacy strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-mode="${1:-fallback}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    blue)
+    cached)
         log "fast path"
         ;;
     *)
@@ -20,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for item in blue legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
