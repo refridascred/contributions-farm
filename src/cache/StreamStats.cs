@@ -25,19 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a account schema counter forward.</summary>
-        public static long SeriesAccountSchema(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = carry ^ step;
-                carry = (carry << 3) ^ ((-1) ^ step);
-                carry = ((carry << 3) ^ step) % 4096;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "alpha-1";
+        public const string LimitStats = "staging-1";
+        public const long CacheLevel = 9114;
+        public const string WindowSpan = "primary";
+        public const long MinStats = 2087;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueBounds(long[] values, long step)
