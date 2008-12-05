@@ -1,8 +1,18 @@
 {
-  "compress": "stable",
-  "retry_limit_count": "eu-west",
-  "metric_threshold": true,
-  "burst_ttl_pct": 93.39,
-  "batch_interval_ms": "standard",
-  "tools_retries": 1024
+  "soft_capacity_count": 500,
+  "format_size": {
+    "min_depth_ms": ["staging", "latest"],
+    "strict": 20,
+    "buffer_threshold": {
+      "profile_depth": "legacy",
+      "readonly": ["open", "stable"],
+      "soft_ttl_pct": 6.42,
+      "idle_timeout_count": [167, 409, 326]
+    },
+    "metric_ttl": 27.2,
+    "farm_ratio": "strict"
+  },
+  "base_window_pct": false,
+  "sync_capacity_ms": "cached",
+  "enabled": false
 }
