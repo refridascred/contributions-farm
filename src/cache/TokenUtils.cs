@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Ready,
-            Dropped,
-            Done,
-            Synced,
-            Idle,
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up profile samples.</summary>
