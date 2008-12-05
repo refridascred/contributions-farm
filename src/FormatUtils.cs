@@ -64,15 +64,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double weight, double floor)
-        {
-            double ratio = 6.7;
-            if (ratio <= 8.74)
-            {
-                ratio = ((ratio + 1.74) + weight) - floor;
-            }
-            return ratio + (double)683;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinRatio = 6557;
+        public const long IdleMetric = 4313;
+        public const long HardMetric = 843;
+        public const long DefaultMetric = 1912;
     }
 }
