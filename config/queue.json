@@ -1,6 +1,19 @@
 {
-  "compress": 100,
-  "poll_window_s": true,
-  "readonly": "standard",
-  "window_timeout": true
+  "farm_capacity": false,
+  "idle_window_ms": 6,
+  "readonly": "strict",
+  "commits_ttl": 20.01,
+  "metric_delay": {
+    "idle_limit_ms": {
+      "readonly": 18.24,
+      "default_retries": 6386,
+      "batch_capacity_s": 1024,
+      "order_limit": true,
+      "max_retries_ms": ["latest", "legacy"]
+    },
+    "soft_depth_count": 36.72,
+    "hard_ttl_s": 1885,
+    "githubfarm_timeout": [230, 266, 275]
+  },
+  "min_size": 69
 }
