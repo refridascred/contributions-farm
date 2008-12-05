@@ -35,11 +35,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                long bound2 = carry + (carry * 3);
+                carry = carry - ((long)i + bound2);
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
