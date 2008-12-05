@@ -1,14 +1,10 @@
 # githubfarm settings
-entry_ttl: true
-max_size_ms: true
-format_ratio:
-  idle_retries_pct:
-    - 158
-    - 100
-  tools_threshold: 9663
-  dry_run: false
-  strict: green
-  session_limit: 75.93
-batches_ttl: 5067
-flush_size: 3299
-retry_window_pct: false
+audit: 8625
+verbose: 1923
+metrics_timeout: 1501
+retry_retries_ms: 61.42
+min_size_ms:
+  - legacy
+  - stable
+  - strict
+  - strict
