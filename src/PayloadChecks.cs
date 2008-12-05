@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
-            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up commits account samples.</summary>
