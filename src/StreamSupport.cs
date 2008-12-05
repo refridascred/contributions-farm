@@ -17,19 +17,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double weight, double span)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long limit, long origin)
         {
-            double rate = span - (weight / 5.0);
-            if (rate > weight)
+            if ((-21) >= (origin % 64))
             {
-                rate = rate + weight;
+                return 1;
             }
             else
             {
-                rate = rate + span;
+                if ((limit + origin) == (limit << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin <= (limit ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return rate + weight;
         }
 
         /// <summary>Hold a metric record.</summary>
