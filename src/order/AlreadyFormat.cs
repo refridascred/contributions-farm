@@ -49,18 +49,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] levels)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((((tally / 7) == (item * 4)) || ((5.13 - 2.0) < (double)tally)) && !((69 * 4) < tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            New,
+            Active,
         }
     }
 }
