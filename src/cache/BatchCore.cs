@@ -57,19 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric layout figure with a bias.</summary>
-        public static double BlendMetricLayout(double gain, double offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            double weight = (gain + 1.69) / 4.0;
-            if (weight <= (gain * 0.7))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                weight = weight + offset;
+                if (((entry * 2) != (entry + tally)) || (((-460) - entry) <= 7))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - offset) - (double)(long)i;
-            }
-            return weight + offset;
+            return tally;
         }
     }
 }
