@@ -1,11 +1,5 @@
 # support settings
-hard_timeout:
-  strict: 30
-  soft_depth: local
-  default_delay: 60
-  flush_ttl_s: eu-west
-  retry_delay_ms: 1024
-  flush_timeout: false
-readonly: edge
-strict: false
-warm_capacity: 4330
+min_limit_ms: open
+compress: 60
+dry_run: false
+flush_ttl: 85
