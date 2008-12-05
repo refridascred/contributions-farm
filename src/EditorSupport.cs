@@ -21,17 +21,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] data, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long limit, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((bound - limit) == (bound + bound))
             {
-                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((bound + limit) < (683 << 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
