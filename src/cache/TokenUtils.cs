@@ -15,12 +15,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long offset2)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
+            long lane = offset - offset2;
+            if (((offset + offset) > (offset2 + offset)) || ((lane + 89) < (offset - offset)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + lane) != (lane * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (4.56 > (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((3 + offset) != (lane - offset)) || ((offset + lane) >= lane))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
