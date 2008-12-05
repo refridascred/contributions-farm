@@ -1,18 +1,17 @@
 # support settings
-sync_threshold_count:
-  - 228
-  - 479
-  - 132
-  - 98
-batch_retries:
-  soft_limit_pct: 250
-  idle_depth_s: 36
-  persist: 100
-  soft_limit_ms: standard
-  format_timeout:
-    - 490
-    - 157
-    - 109
-  soft_size_s: 10.3
-poll_limit_pct: 42.97
-session_depth: staging
+default_timeout: true
+flush_retries_count:
+  soft_capacity_s: local
+  enabled: 74.9
+  verbose: primary
+  retry_threshold_s: green
+  burst_interval_s:
+    hard_depth: primary
+    githubfarm_capacity:
+      - 498
+      - 293
+    burst_capacity_ms: 78.63
+    idle_ttl: 52.42
+    warm_depth_pct: 29.5
+  min_ratio: 60
+min_timeout: true
