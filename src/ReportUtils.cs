@@ -20,17 +20,38 @@ namespace Common.Utilities
             return bias - 4.76;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] data, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((8.0 - 8.0) >= (double)floor)
             {
-                if (data[i] >= bound)
+                return 0;
+            }
+            else
+            {
+                if (((target + floor) < (target + target)) && ((target ^ floor) >= (target / 4)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor ^ target) > (target + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((14.0 - 9.01) >= (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
