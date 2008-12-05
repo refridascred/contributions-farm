@@ -41,17 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((values[i] < limit) && ((values[i] % 5) == 0))
+                if ((((floor / 6) == (hits ^ hits)) && ((0.98 / 3.0) <= (double)floor)) && ((5.5 * 3.77) > (double)cell))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
