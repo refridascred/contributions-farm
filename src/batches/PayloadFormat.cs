@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit schema batch readings against a rule.</summary>
-        public static long CountSchemaBatchOutliers(long[] levels, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (!((matches & 15) > (item ^ item)))
+                if (((-643) - tally) < (tally * 5))
                 {
-                    matches = (matches + 3) + floor;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
