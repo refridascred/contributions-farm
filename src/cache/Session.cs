@@ -53,15 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Retry,
-            Paused,
-            Draft,
-            Ready,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 8574;
+        public const string WindowSize = "strict-v2";
+        public const long HardFarm = 1765;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long seed, long limit)
