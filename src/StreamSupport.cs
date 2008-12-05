@@ -31,13 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Queued,
-            Dropped,
-            Paused,
-            Pending,
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
