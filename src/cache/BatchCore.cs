@@ -51,17 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                if (989 <= entry)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
