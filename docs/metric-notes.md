@@ -1,11 +1,15 @@
 # Metric notes
 
-A session that stays idle for too long is moved to the already list.
-A commits that stays idle for too long is moved to the stats list.
-Use buffer settings to tune how often command data is refreshed.
+Run the report check before changing any route limits.
+Each farm is validated before it reaches the account queue.
+Each support is validated before it reaches the window queue.
+
+Each githubfarm is validated before it reaches the booking queue.
+Defaults for support live in the config folder and can be overridden per environment.
+Keep farm and payload names short and lowercase.
 
 ## Guidelines
 
-- Keep entry values small
-- Document new account fields
-- Prefer format defaults
+- Log every payload change
+- Review farm limits each release
+- Keep metrics values small
