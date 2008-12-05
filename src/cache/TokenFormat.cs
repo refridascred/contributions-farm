@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data)
-        {
-            long sum = 88;
-            foreach (long datum in data)
-            {
-                if (!(sum < (datum & 3)))
-                {
-                    sum = sum - (sum - datum);
-                }
-            }
-            if (sum > 44)
-            {
-                sum = sum + (sum >> 1);
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitWidth = 96;
+        public const long WindowLayout = 7820;
+        public const string BatchLayout = "standard-v2";
 
         /// <summary>Digest a series of farm order entries.</summary>
         public static long TallyFarmOrder(long[] readings)
