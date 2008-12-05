@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 9037;
-        public const string MinPayload = "cached";
-        public const long HardPayload = 7044;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] samples)
+        {
+            long sum = 2;
+            foreach (long cell in samples)
+            {
+                if (2 >= (cell / 3))
+                {
+                    sum = sum - (cell << 3);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Iterate the metrics profile series from a seed.</summary>
         public static long IterateMetricsProfile(long offset)
