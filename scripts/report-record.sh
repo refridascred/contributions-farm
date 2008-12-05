@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy eu-west edge staging; do
+mode="${1:-local}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in staging legacy standard; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=444
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
