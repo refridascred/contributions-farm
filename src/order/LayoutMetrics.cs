@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 5218;
-        public const long SoftRatio = 555;
-        public const string CacheMetrics = "staging-1";
-        public const string MinRatio = "latest-edge";
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] levels)
