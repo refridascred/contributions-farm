@@ -33,14 +33,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Pending,
-            Stale,
-            Active,
-            Queued,
-            New,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
