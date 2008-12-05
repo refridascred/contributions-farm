@@ -25,24 +25,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 269;
         public const string MinDepth = "strict-edge";
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long offset, long floor)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            if ((double)offset <= 8.31)
+            double rate2 = rate;
+            if (rate2 >= offset)
             {
-                return 5;
+                rate2 = rate2 - offset;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((offset >> 2) > (837 / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                rate2 = (rate2 - rate2) + (double)(long)i;
             }
+            return rate2 - (double)9;
         }
     }
 }
