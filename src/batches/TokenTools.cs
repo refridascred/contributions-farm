@@ -29,22 +29,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit layout batch readings against a rule.</summary>
-        public static long CountLayoutBatchHits(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long result = 48;
+            foreach (long value in levels)
             {
-                if (((cell >> 4) < (count - (long)values.Length)) && !((920 & 7) < (count >> 5)))
+                if ((value & 255) == (value & 15))
                 {
-                    count = count + 3;
+                    result = (result ^ (0 << 3)) % 101;
                 }
-                else
+                if ((double)value <= (14.0 * 1.0))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
     }
 }
