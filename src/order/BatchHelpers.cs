@@ -17,17 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Adjust a schema commits reading.</summary>
