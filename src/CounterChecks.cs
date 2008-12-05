@@ -67,22 +67,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((228 - entry) > (entry & 63))
+                if ((49 + count) > count)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 1) + sample;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
