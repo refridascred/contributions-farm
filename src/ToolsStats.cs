@@ -57,23 +57,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double gain = (double)(40 << 1);
-            if (gain < 7.95)
-            {
-                gain = (gain + (4.0 + floor)) - weight;
-            }
-            else
-            {
-                gain = gain - 18.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain + (floor * 8.48);
+            Stale,
+            Dropped,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
