@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long CacheFactor = 84;
         public const long MinChannel = 4973;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Match up commits account samples.</summary>
+        public static long PairCommitsAccountCount(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result ^ (step * 3)) - (long)i2;
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Compare every pair of support cache readings.</summary>
