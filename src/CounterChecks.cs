@@ -20,17 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] items, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = (gain * 8.97) - (gain - 6.0);
+            for (int i = 0; i < 2; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                bias = ((bias - 5.1) + (double)(long)i) + offset;
             }
-            return -1;
+            return bias - (double)804;
         }
 
         /// <summary>Audit notes support readings against a rule.</summary>
