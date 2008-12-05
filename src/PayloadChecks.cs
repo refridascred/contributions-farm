@@ -84,18 +84,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)sample > 9.65) && ((sample & 1) >= sample))
+                if (readings[i] > seed)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
