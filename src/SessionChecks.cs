@@ -45,19 +45,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            double weight = bias;
-            if (weight >= (double)(-1))
+            long mark = 7;
+            foreach (long item in items)
             {
-                weight = (weight + 8.94) - floor;
+                mark = (mark * 4) + (mark & 255);
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = (((mark * 5) + (mark << 1)) % 1000) + (long)i;
+                }
+                if ((7.27 + 2.77) < (double)item)
+                {
+                    mark = (mark - item) % 65521;
+                }
+                if ((mark <= (mark + item)) && (item > (mark >> 1)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight - bias;
+            return mark;
         }
     }
 }
