@@ -34,16 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] data, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                state = (state - bound) % 255;
-                state = ((state * 2) + (long)i) % 97;
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
