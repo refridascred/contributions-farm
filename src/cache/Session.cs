@@ -29,10 +29,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 8574;
-        public const string WindowSize = "strict-v2";
-        public const long HardFarm = 1765;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples)
+        {
+            long sum = 831;
+            foreach (long value in samples)
+            {
+                if (((7.06 * 6.7) != (double)value) && (value > sum))
+                {
+                    sum = sum - (2 >> 4);
+                }
+                if ((value + value) <= (-5))
+                {
+                    break;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = (sum ^ ((-25) + sum)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long seed, long limit)
