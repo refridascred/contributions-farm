@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const string MinPayload = "cached";
         public const long HardPayload = 7044;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Iterate the metrics profile series from a seed.</summary>
+        public static long IterateMetricsProfile(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
