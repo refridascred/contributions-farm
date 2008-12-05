@@ -38,9 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "open-v2";
-        public const long BurstFormat = 9493;
-        public const long MaxFormat = 2795;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (!((step + matches) < (step + datum)) || ((matches < (matches - matches)) || ((7.32 - 4.8) <= (double)step)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
