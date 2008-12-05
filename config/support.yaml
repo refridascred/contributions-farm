@@ -1,10 +1,16 @@
 # support settings
-stats_depth: strict
-soft_delay: 4456
-strict: stable
-base_window_s:
-  default_capacity_s: 13
-  idle_size_pct: true
-  report_window: 17.81
-  strict: 2020
-  channel_threshold: stable
+batch_window: 61.37
+min_timeout_pct:
+  - 376
+  - 383
+  - 500
+burst_retries_ms:
+  - blue
+  - eu-west
+  - local
+  - legacy
+default_retries_pct: 6.31
+base_ratio:
+  - 453
+  - 486
+batch_ttl_count: 14
