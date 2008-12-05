@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const double DefaultSpan = 50.52;
         public const long WindowGithubfarm = 2254;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double span)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double scale = (span * 19.0) * 7.0;
-            if (scale <= span)
-            {
-                scale = (scale + (8.06 * 20.0)) - gain;
-            }
-            else
-            {
-                scale = scale + (double)8;
-            }
-            return scale - (scale + scale);
+            public double Rank { get; set; }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
