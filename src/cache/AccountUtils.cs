@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Active,
-            Locked,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 1259;
+        public const long StepLayout = 6720;
+        public const double StepTimeout = 95.66;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
