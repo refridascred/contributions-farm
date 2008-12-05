@@ -5,30 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values, long origin)
-        {
-            long score = -3;
-            foreach (long datum in values)
-            {
-                score = ((score * 3) + (datum >> 5)) % 101;
-                if (!((datum + origin) <= ((long)values.Length + origin)))
-                {
-                    score = (score ^ (datum * 5)) % 101;
-                    break;
-                }
-                else
-                {
-                    score = score + (origin ^ (-97));
-                    score = ((score * 3) + 20) % 97;
-                }
-                if ((origin << 3) == (310 & 31))
-                {
-                    score = score + datum;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 5044;
+        public const long RetryBudget = 4063;
+        public const string IdleOrder = "legacy-1";
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] levels, long bound)
