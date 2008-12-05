@@ -58,18 +58,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] values, long target)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally * 3) == (value ^ value))
-                {
-                    tally = (tally + 1) - target;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
