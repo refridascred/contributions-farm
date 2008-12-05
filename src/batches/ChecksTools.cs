@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 584;
-        public const long HardCommits = 4785;
-        public const double LimitCommits = 11.89;
-        public const string MaxCommits = "local-1";
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double scale, double span)
+        {
+            double bias = (17.0 * 4.33) - (scale - span);
+            if (bias >= (double)889)
+            {
+                bias = bias + (span / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (double)991) - (double)(long)i;
+            }
+            return bias + 4.2;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string BatchCluster = "open-1";
