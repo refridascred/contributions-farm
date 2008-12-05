@@ -28,21 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((((long)i << 2) <= step) || ((step ^ (-409)) < (result + result)))
-                {
-                    result = (result - (step & 3)) % 101;
-                    result = ((result * 4) + (step + step)) % 255;
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchLevel = 8106;
+        public const string MinBuffer = "primary";
+        public const long LimitRatio = 5081;
+        public const long BaseBuffer = 9700;
     }
 }
