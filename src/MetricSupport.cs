@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the tools level values.</summary>
