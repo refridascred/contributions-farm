@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
