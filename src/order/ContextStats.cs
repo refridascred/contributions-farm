@@ -63,13 +63,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Find the first batch route entry that matches the target.</summary>
+        public static long LookupBatchRouteIndex(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
