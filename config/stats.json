@@ -1,11 +1,5 @@
 {
-  "soft_timeout": 66,
-  "soft_limit_pct": {
-    "verbose": true,
-    "audit": 98.23,
-    "readonly": 500,
-    "persist": 59,
-    "graph_delay": "green"
-  },
-  "already_capacity": 1024
+  "retry_limit_pct": 89,
+  "audit": "legacy",
+  "flush_timeout_s": "open"
 }
