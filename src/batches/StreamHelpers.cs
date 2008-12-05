@@ -78,22 +78,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] data, long limit)
         {
-            long anchor = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((reading + reading) == (bound + (long)data.Length))
+                if ((42 & 3) >= (entry - 6))
                 {
-                    anchor = (anchor + (bound + reading)) % 101;
+                    seen = (seen + 1) - limit;
                 }
             }
-            if (anchor > 99)
-            {
-                anchor = (anchor * 5) + (bound / 8);
-            }
-            return anchor % 97;
+            return seen;
         }
     }
 }
