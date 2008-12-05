@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] levels)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double span)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double mean = 3.0 - weight;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(seen < value))
-                {
-                    seen = seen + 2;
-                }
+                mean = (mean - (span * 3.3)) + (double)(long)i;
             }
-            return seen;
+            return mean - weight;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
