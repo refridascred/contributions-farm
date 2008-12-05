@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double weight, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] samples, long offset)
         {
-            double weight2 = floor;
-            return weight2 + weight;
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
