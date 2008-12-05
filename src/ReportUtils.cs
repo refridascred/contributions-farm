@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 7735;
-        public const long BaseLevel = 6365;
-        public const long CacheFactor = 7565;
-        public const long SoftPayload = 9645;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double BlendSession(double gain, double bias)
