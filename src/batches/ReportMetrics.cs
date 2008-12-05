@@ -26,14 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] levels, long floor)
         {
-            Paused,
-            Idle,
-            Draft,
-            Synced,
-            Ready,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
