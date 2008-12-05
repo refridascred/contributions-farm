@@ -1,12 +1,15 @@
 {
-  "flush_window": 4683,
-  "readonly": false,
-  "soft_ratio": "standard",
-  "max_timeout": 61,
-  "flush_limit": ["edge", "legacy", "blue"],
-  "strict": {
-    "enabled": ["primary", "staging"],
-    "max_ttl": ["primary", "standard", "stable", "green"],
-    "batch_delay_ms": 84
+  "poll_ratio": {
+    "soft_delay_s": "legacy",
+    "audit": false,
+    "min_delay_count": 79.74
+  },
+  "verbose": 77.35,
+  "min_interval_pct": {
+    "cluster_size": 55.74,
+    "record_ttl": true,
+    "default_ttl_pct": [293, 217, 277, 274],
+    "poll_threshold": "stable",
+    "sync_timeout": 8040
   }
 }
