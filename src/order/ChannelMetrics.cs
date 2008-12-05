@@ -19,24 +19,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if (floor >= (floor + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) > (floor & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Draft,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
