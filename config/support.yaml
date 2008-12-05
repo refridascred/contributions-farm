@@ -1,5 +1,14 @@
 # support settings
-min_limit_ms: open
-compress: 60
-dry_run: false
-flush_ttl: 85
+default_threshold_s: 44
+warm_retries_ms: 19.51
+queue_threshold:
+  max_timeout_count: false
+  base_timeout_ms: 36.69
+  farm_ratio: 6483
+  cluster_retries: true
+enabled:
+  soft_ratio: 1768
+  queue_capacity: 72.33
+  default_interval: 58
+idle_threshold: 66
+cache_capacity: true
