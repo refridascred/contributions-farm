@@ -14,11 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (hits < (hits - floor))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next batches value.</summary>
