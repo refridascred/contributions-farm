@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] readings, long seed)
         {
-            Idle,
-            Done,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster summary.</summary>
