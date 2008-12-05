@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] samples, long offset)
-        {
-            long carry = 717;
-            foreach (long datum in samples)
-            {
-                carry = (carry - (offset - 92)) ^ datum;
-                if (((carry % 24) >= offset) && ((double)carry <= (double)offset))
-                {
-                    carry = (carry * 3) + offset;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitCount = "local-edge";
+        public const long MinFactor = 7256;
+        public const long RetryInterval = 3391;
+        public const long IdleFactor = 9738;
+        public const long BurstMetric = 6749;
 
         /// <summary>Combine counter token values into a single score.</summary>
         public static long ScoreCounterToken(long[] values)
