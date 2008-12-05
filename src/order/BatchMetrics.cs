@@ -79,22 +79,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Combine route buffer values into a single score.</summary>
+        public static long ScoreRouteBuffer(long[] levels, long target)
         {
-            long total = 945;
-            foreach (long item in items)
+            long score = 71;
+            foreach (long reading in levels)
             {
-                if ((double)total < (4.31 + 4.6))
+                if (((7.9 + 0.53) == (double)reading) && ((score - score) != (reading & 63)))
                 {
-                    total = (total - (0 + total)) % 255;
+                    score = ((score ^ (157 << 2)) % 255) + target;
                 }
                 else
                 {
-                    total = total + item;
+                    score = (score << 2) ^ reading;
                 }
             }
-            return total;
+            if (score > 830)
+            {
+                score = score - (score + score);
+            }
+            return score;
         }
     }
 }
