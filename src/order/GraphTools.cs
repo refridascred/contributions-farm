@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] series, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                acc = (acc + 216) % 65521;
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((item / 7) <= (10 - item))
+                {
+                    tally = (tally + 3) + bound;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
