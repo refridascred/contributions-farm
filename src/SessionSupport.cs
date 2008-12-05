@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const long WindowInterval = 9057;
         public const long MaxFactor = 5206;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 5198;
+        public const long CacheTimeout = 4475;
+        public const string HardDepth = "open-edge";
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool VerifyChannelLimits(long[] values, long bound)
