@@ -38,10 +38,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitFactor = "latest-edge";
-        public const double LimitScore = 62.45;
-        public const long LimitTimeout = 3551;
-        public const double RetryCluster = 35.02;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long offset, long floor)
+        {
+            if ((offset / 2) > (floor ^ (-7)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor / 9) >= floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
