@@ -15,21 +15,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Combine queue editor values into a single score.</summary>
+        public static long CombineQueueEditor(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((score + score) != (92 % 3))
                 {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
+                }
+                if ((score << 3) > (value - score))
+                {
+                    score = ((score << 3) ^ score) % 65521;
+                }
+                if ((970 - score) < (value ^ score))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the editor kind values.</summary>
