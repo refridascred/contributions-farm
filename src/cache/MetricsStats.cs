@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long bound, long floor)
-        {
-            if ((double)bound < (7.9 / 3.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor >= (bound - bound)) && ((floor + floor) > 229))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstScore = 7158;
+        public const long StepCommits = 140;
+        public const string HardCommits = "staging-v2";
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long SeriesBuffer(long seed)
