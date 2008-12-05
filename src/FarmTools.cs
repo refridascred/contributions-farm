@@ -33,12 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinDepth = "latest-v2";
-        public const double IdleRatio = 60.4;
-        public const double CacheGithubfarm = 4.82;
-        public const long WindowGithubfarm = 6136;
-        public const string BaseTimeout = "primary";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] series, long bound)
+        {
+            long mix = 243;
+            foreach (long item in series)
+            {
+                mix = (mix ^ (bound / 7)) % 1000;
+                if ((item << 3) == (item + item))
+                {
+                    mix = (mix << 2) ^ (6 / 4);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix + mix)) % 255;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] levels)
