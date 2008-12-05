@@ -27,13 +27,11 @@ namespace Common.Utilities
             return scale - (scale + weight);
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Adjust a context token reading.</summary>
+        public static double AdjustContextToken(double gain, double bias)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            double bias2 = (bias + 1.63) / 9.0;
+            return (bias2 - (2.0 - 7.9)) + gain;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
