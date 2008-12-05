@@ -20,19 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (((long)samples.Length ^ value) != (step ^ 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleCount = "standard-1";
+        public const long HardSize = 6856;
+        public const long StepLevel = 3092;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenOutliers(long[] samples)
