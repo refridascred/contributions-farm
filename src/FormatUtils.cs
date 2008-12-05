@@ -30,10 +30,18 @@ namespace Common.Utilities
         public const string IdleTimeout = "primary-v2";
         public const long StepFormat = 3451;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 1008;
-        public const long CacheSpan = 7348;
-        public const long BaseBatches = 6405;
+        /// <summary>Look up the position of a batch stats sample.</summary>
+        public static long SeekBatchStatsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextBounds(long[] values, long target)
