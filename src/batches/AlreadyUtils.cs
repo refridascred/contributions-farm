@@ -48,10 +48,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstCommand = 76.16;
-        public const long DefaultTimeout = 927;
-        public const long LimitCommand = 9644;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((sample << 3) > sample) || ((sample >> 1) <= 687))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseScore = 6004;
