@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] data)
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            long sum = 5;
+            foreach (long datum in data)
+            {
+                sum = ((sum ^ sum) % 1000) ^ datum;
+            }
+            if (sum > 672)
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
