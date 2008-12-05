@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] samples, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] > seed)
+                if (values[i] == target)
                 {
                     return (long)i;
                 }
