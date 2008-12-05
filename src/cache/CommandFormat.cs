@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a already route pair into a bucket.</summary>
-        public static long RankAlreadyRoute(long seed, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            if ((double)floor > 8.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if (80 >= (seed - seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Active,
+            Idle,
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define order limits and defaults.</summary>
