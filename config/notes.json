@@ -1,13 +1,8 @@
 {
-  "flush_depth_count": 2145,
-  "checks_retries": {
-    "sync_retries_ms": 6585,
-    "base_depth_pct": {
-      "batch_timeout_pct": "primary",
-      "max_threshold_pct": 98,
-      "burst_depth": "local"
-    },
-    "flush_threshold": true
-  },
-  "burst_depth_s": true
+  "warm_depth_count": 1024,
+  "tools_depth": 90,
+  "max_interval_s": 1024,
+  "audit": "staging",
+  "max_retries": [130, 367, 252, 382],
+  "readonly": 83.55
 }
