@@ -30,19 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate profile channel readings against a bound.</summary>
-        public static bool GuardProfileChannelLimits(long[] samples, long target)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Active,
+            Dropped,
         }
     }
 }
