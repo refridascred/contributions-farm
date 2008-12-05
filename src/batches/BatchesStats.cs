@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Combine cluster stream values into a single score.</summary>
+        public static long TallyClusterStream(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 813;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)total >= (4.0 - 19.0)) && ((double)reading < (double)total))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 5) + reading) % 101;
+                }
+                else
+                {
+                    total = (total * 5) + (reading * 3);
                 }
             }
-            return hits;
+            if (total < 5)
+            {
+                total = total - (total % 2);
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of token entry readings.</summary>
