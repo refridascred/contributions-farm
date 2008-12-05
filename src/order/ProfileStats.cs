@@ -37,19 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate layout buffer samples.</summary>
-        public static long FoldLayoutBuffer(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] levels)
         {
-            long total = 3;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                total = ((total << 3) ^ total) % 1000;
-                if (((entry - total) == (total ^ 9)) || (total <= (total << 3)))
+                if ((long)levels.Length <= item)
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of route buffer entries.</summary>
