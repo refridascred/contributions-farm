@@ -80,13 +80,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
