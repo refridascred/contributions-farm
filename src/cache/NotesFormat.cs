@@ -34,39 +34,19 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long floor, long step)
+        /// <summary>Check that every schema tools entry stays within the limit.</summary>
+        public static bool ValidateSchemaToolsBounds(long[] samples, long origin)
         {
-            long edge = floor ^ step;
-            if ((edge + 323) == (edge << 1))
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + (-42)) > (floor << 1))
+                if (item <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge + step) > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((step & 15) == (step / 9)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
