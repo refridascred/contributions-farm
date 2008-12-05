@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheSize = 8813;
+        public const long StepWidth = 8308;
+        public const long SoftSize = 6719;
 
         /// <summary>Grade a entry commits value against two limits.</summary>
         public static long ClassifyEntryCommits(long seed, long step)
