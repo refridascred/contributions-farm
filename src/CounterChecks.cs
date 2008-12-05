@@ -54,11 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxTimeout = 3467;
-        public const long DefaultCount = 3808;
-        public const long RetrySupport = 2088;
-        public const string CacheSupport = "alpha-v2";
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] items)
