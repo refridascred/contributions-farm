@@ -33,39 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a schema graph pair into a bucket.</summary>
-        public static long RankSchemaGraph(long floor, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
         {
-            long gap = floor + limit;
-            if ((gap + gap) <= (60 & 15))
+            long anchor = 6;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) >= gap)
+                if (anchor >= (86 >> 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit >= 9.2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((gap + limit) >= (gap ^ (-74)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = ((anchor - (758 - 6)) % 65521) + datum;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Count the counter metric entries that pass the check.</summary>
