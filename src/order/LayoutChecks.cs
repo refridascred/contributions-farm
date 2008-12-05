@@ -45,18 +45,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings)
+        /// <summary>Audit cache window readings against a rule.</summary>
+        public static long MeasureCacheWindowGaps(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((double)count > 6.0)
+                if ((15.0 + 7.52) >= (double)floor)
                 {
-                    count = (count + 2) + entry;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
