@@ -37,17 +37,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next queue batch value from a seed.</summary>
-        public static long SeriesQueueBatch(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                total = (total ^ (total % 12)) % 1000;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultCount = 4858;
+        public const long HardReport = 9196;
+        public const string CacheInterval = "staging";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double BlendChannel(double weight, double offset)
