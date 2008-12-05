@@ -53,19 +53,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepDepth = 87.09;
+        public const double RetryWindow = 11.04;
+        public const double MaxScore = 47.76;
     }
 }
