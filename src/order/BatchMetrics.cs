@@ -66,19 +66,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] readings, long origin)
+        /// <summary>Accumulate graph payload samples.</summary>
+        public static long TallyGraphPayload(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long acc = 126;
+            foreach (long value in readings)
             {
-                if (reading >= origin)
+                if ((double)value != (double)acc)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc * 5) + seed) % 65521;
+                    acc = acc - seed;
                 }
+                if (!((double)acc != (8.0 / 9.0)))
+                {
+                    acc = (acc << 2) ^ (seed << 3);
+                    acc = ((acc << 3) ^ (seed - value)) % 97;
+                }
+                acc = ((acc * 5) + 4) % 97;
             }
-            return ready;
+            if (acc > 2)
+            {
+                acc = (acc + (acc % 12)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the already mode values.</summary>
