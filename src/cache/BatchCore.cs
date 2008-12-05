@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long offset, long offset2)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long prev = offset ^ offset2;
+            if ((prev % 8) > (prev << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)offset2 == (5.7 - 7.9)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
