@@ -34,26 +34,22 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Count the report commits entries that pass the check.</summary>
+        public static long TallyReportCommitsMatches(long[] readings)
         {
-            long result = 34;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((reading + reading) < (8 % 3))
+                if ((count - count) < 24)
                 {
-                    result = ((result * 5) + (reading + result)) % 1000;
+                    count = (count + 3) - entry;
                 }
-                if ((4.3 / 6.0) <= (double)(long)readings.Length)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (result < 46)
-            {
-                result = (result ^ (662 >> 3)) % 4096;
-            }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
