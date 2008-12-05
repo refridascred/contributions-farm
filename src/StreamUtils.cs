@@ -48,24 +48,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings, long target)
         {
-            long sum = 17;
-            foreach (long reading in readings)
+            long mark = 5;
+            foreach (long sample in readings)
             {
-                long tally = sum;
-                sum = (sum << 3) ^ (reading + tally);
-                if ((double)sum > 5.15)
+                mark = mark + (sample + target);
+                if ((double)sample <= (20.0 - 18.0))
                 {
-                    sum = sum - (sum + offset);
+                    mark = mark + 98;
                 }
             }
-            if (sum < 822)
+            if (mark < 982)
             {
-                sum = (sum + (sum ^ offset)) % 255;
+                mark = ((mark * 2) + (long)readings.Length) % 65521;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Count the notes already entries that pass the check.</summary>
