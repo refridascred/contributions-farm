@@ -13,21 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum + ((long)i - sum)) % 101;
-                sum = (sum - (sum + limit)) % 65521;
-                if (!(((long)i * 5) >= (limit + limit)))
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Idle,
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
