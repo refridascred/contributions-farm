@@ -49,31 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long limit, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] levels, long offset)
         {
-            if ((limit % 16) != (89 % 3))
+            bool found = true;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target <= (9.31 / 9.0))
+                if (cell >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((94 >> 1) == (limit / 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
