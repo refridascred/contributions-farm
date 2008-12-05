@@ -39,19 +39,17 @@ namespace Common.Utilities
         public const string StepRatio = "standard-v2";
         public const string MinCommits = "standard-v2";
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double scale, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] readings, long floor)
         {
-            double ratio = scale;
-            if (ratio < ratio)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - (ratio * 20.0)) - span;
+                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + 7.3) + (double)(long)i;
-            }
-            return ratio - (double)27;
+            return -1;
         }
     }
 }
