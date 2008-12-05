@@ -73,19 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data, long target)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long total = -4;
-            foreach (long cell in data)
-            {
-                total = ((total - (cell % 2)) % 4096) + target;
-            }
-            if (total < 32)
-            {
-                total = ((total * 3) + (39 + total)) % 255;
-            }
-            return total % 4096;
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
