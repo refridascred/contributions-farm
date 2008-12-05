@@ -1,7 +1,9 @@
 # githubfarm settings
-base_delay_count: true
-record_retries: 9476
-cache_depth: true
-soft_retries_pct: 250
-enabled: 90.47
-metrics_limit: 320
+checks_timeout: 72.83
+verbose: false
+strict: open
+audit:
+  - staging
+  - standard
+  - legacy
+  - open
