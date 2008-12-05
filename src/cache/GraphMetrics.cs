@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels, long offset)
+        /// <summary>Validate notes already readings against a bound.</summary>
+        public static bool VerifyNotesAlreadyBounds(long[] readings, long step)
         {
-            long score = 20;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((score + offset) < (offset - 6))
+                if (item > step)
                 {
-                    score = ((score << 3) ^ (offset - 64)) + datum;
-                }
-                else
-                {
-                    score = (score ^ (offset + score)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Combine commits schema values into a single score.</summary>
