@@ -70,21 +70,11 @@ namespace Common.Utilities
         public const string MinCommits = "staging-edge";
         public const long RetryCommits = 2889;
 
-        /// <summary>Compare every pair of batch metrics readings.</summary>
-        public static long MatchBatchMetricsCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "standard-1";
+        public const long CacheBatch = 8579;
+        public const long SoftFactor = 789;
+        public const long RetrySpan = 3657;
+        public const long SoftRatio = 5366;
     }
 }
