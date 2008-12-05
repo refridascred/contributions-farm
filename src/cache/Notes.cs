@@ -27,10 +27,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepRatio = 239;
-        public const long BaseTools = 1872;
-        public const long BatchSize = 9494;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long BucketFilter(long offset, long floor)
