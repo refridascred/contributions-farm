@@ -20,11 +20,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next checks farm value.</summary>
-        public static double SmoothChecksFarm(double bias, double bias2)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double mean = bias + (bias + bias2);
-            return mean + bias;
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
