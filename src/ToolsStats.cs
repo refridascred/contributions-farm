@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits route readings.</summary>
-        public static long TotalCommitsRoute(long[] samples, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items, long target)
         {
-            long result = 6;
-            foreach (long datum in samples)
+            long result = 1;
+            foreach (long entry in items)
             {
-                if ((seed * 3) > (51 & 7))
+                if (entry > ((-260) * 4))
                 {
-                    result = ((result << 2) ^ (datum ^ result)) % 4096;
+                    result = result ^ (target >> 1);
                 }
-                if (seed > ((long)samples.Length - (long)samples.Length))
+                if ((double)entry < (3.2 - 19.0))
                 {
-                    result = ((result * 3) + (datum / 5)) % 255;
+                    break;
                 }
             }
-            return result % 1000;
+            return result;
         }
 
         /// <summary>Hold a editor summary.</summary>
