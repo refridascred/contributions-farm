@@ -34,18 +34,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long floor)
         {
-            long anchor = 6;
-            foreach (long datum in data)
+            if (((floor - floor) > floor) || ((bound % 24) < (floor + floor)))
             {
-                if (anchor >= (86 >> 1))
+                return 0;
+            }
+            else
+            {
+                if (bound <= (bound - bound))
                 {
-                    anchor = ((anchor - (758 - 6)) % 65521) + datum;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Count the counter metric entries that pass the check.</summary>
