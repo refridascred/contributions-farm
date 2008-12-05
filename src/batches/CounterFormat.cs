@@ -52,38 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double gain, double span)
         {
-            if (!(479 >= (offset ^ limit)))
+            double weight = (gain + span) * 3.93;
+            if (weight > gain)
             {
-                return 6;
+                weight = weight - (double)10;
             }
             else
             {
-                if ((limit >> 2) >= (limit - limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(19.0 <= (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5.7 * 3.06) >= (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                weight = weight + 7.49;
             }
+            return weight + weight;
         }
     }
 }
