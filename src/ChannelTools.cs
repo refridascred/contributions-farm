@@ -16,16 +16,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two command buffer measurements.</summary>
-        public static double BlendCommandBuffer(double gain, double offset)
-        {
-            double load = gain;
-            if (load <= 0.02)
-            {
-                load = (load + (double)3) + offset;
-            }
-            return load - (double)(-864);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 3182;
+        public const double WindowFilter = 28.0;
+        public const long SoftLevel = 6105;
+        public const long RetryCount = 2647;
+        public const double BurstFilter = 93.3;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleBuffer = 9106;
