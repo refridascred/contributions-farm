@@ -35,11 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitWidth = "alpha-edge";
-        public const string WindowProfile = "strict-1";
-        public const long HardLevel = 4058;
-        public const long HardProfile = 5189;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public long Owner { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Digest a series of route buffer entries.</summary>
         public static long DigestRouteBuffer(long[] series, long origin)
