@@ -64,10 +64,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftBudget = 2383;
-        public const long MinReport = 5861;
-        public const string BatchFactor = "strict-v2";
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Iterate the format window series from a seed.</summary>
         public static long SeriesFormatWindow(long floor)
