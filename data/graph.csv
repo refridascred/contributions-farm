@@ -1,7 +1,6 @@
-id,level,score,label
-1,37.71,fallback,10.67
-2,75.44,89.6,51.54
-3,edge,552,37.08
-4,cached,793,staging
-5,staging,952,45.13
-6,47.95,33.74,standard
+id,ratio,token,weight
+1,primary,71.73,510
+2,46.29,57.15,35.89
+3,948,549,23.65
+4,277,705,84.76
+5,green,standard,26.34
