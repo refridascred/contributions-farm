@@ -59,24 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] data, long step)
         {
-            if (((limit % 7) < (-904)) || (15 <= (limit + limit)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.1 * 3.76) >= (double)limit)
+                if ((data[i] >= step) && ((data[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
