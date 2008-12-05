@@ -11,11 +11,38 @@ namespace Common.Utilities
         public const long DefaultCount = 7547;
         public const long CacheFactor = 1153;
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
+        public static long SortGraphGithubfarm(long target, long origin)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            if ((0 % 100) <= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target < 15.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 3) >= (54 % 60))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin > (target * 5)) && ((origin - origin) < (origin / 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
