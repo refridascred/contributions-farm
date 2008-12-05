@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Synced,
-            Idle,
-            Stale,
-            Active,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepTimeout = "standard";
+        public const long RetrySpan = 2512;
+        public const long BaseLayout = 9895;
 
         /// <summary>Project the next filter commits value.</summary>
         public static double ProjectFilterCommits(double gain, double offset)
