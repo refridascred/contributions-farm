@@ -57,12 +57,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
