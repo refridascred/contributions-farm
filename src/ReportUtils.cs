@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double floor)
         {
-            Retry,
-            Dropped,
-            Draft,
+            double bias = (double)(57 % 10);
+            if (bias <= 4.6)
+            {
+                bias = (bias + (17.0 / 2.0)) + floor;
+            }
+            else
+            {
+                bias = bias - (bias + gain);
+            }
+            return bias - 4.76;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
