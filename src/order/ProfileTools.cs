@@ -32,14 +32,31 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Classify a checks farm pair into a bucket.</summary>
+        public static long RankChecksFarm(long step, long step2)
         {
-            Failed,
-            Synced,
-            Retry,
-            Draft,
-            Ready,
+            if (!((step2 - step2) <= (step2 / 7)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step2 & 255) != (step - step)) && ((step2 + step2) > (2 >> 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 >= 73) && ((double)step != (5.0 - 9.1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a window counter forward.</summary>
