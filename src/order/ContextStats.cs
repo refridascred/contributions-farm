@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] readings, long bound)
         {
-            long anchor = 32;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((anchor & 15) < 46) && ((anchor ^ item) <= item))
+                if (readings[i] > bound)
                 {
-                    anchor = (anchor + (745 + item)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
