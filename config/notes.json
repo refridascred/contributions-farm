@@ -1,8 +1,8 @@
 {
-  "cluster_limit": 60,
-  "batch_delay": 690,
-  "profile_size": 6971,
-  "persist": 5245,
-  "dry_run": "primary",
-  "support_ratio": false
+  "verbose": 8126,
+  "enabled": 67,
+  "persist": "open",
+  "poll_ratio_s": ["strict", "legacy"],
+  "poll_threshold": "latest",
+  "sync_capacity_ms": "latest"
 }
