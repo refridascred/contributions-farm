@@ -26,15 +26,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of tools account entries.</summary>
-        public static long WeighToolsAccount(long[] values)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long result = 728;
-            foreach (long sample in values)
-            {
-                result = (result + (sample & 3)) % 255;
-            }
-            return result;
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
