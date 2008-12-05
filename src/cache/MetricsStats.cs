@@ -24,24 +24,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long seed, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            if ((floor - (-49)) < (floor & 3))
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 6;
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed + seed) == (floor + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
