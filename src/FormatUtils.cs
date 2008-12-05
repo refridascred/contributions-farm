@@ -37,22 +37,18 @@ namespace Common.Utilities
             return load + bias2;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] readings, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (((tally & 63) > (tally % 60)) || ((7 - offset) >= (long)readings.Length))
+                if (offset > (offset - cell))
                 {
-                    tally = (tally + 3) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate entry graph readings against a bound.</summary>
