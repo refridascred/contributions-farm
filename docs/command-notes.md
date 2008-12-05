@@ -1,15 +1,13 @@
 # Command notes
 
-Use context settings to tune how often channel data is refreshed.
-Each window is validated before it reaches the session queue.
+Keep payload and batch names short and lowercase.
+Use support settings to tune how often profile data is refreshed.
 
-When a account fails, the cluster handler retries a few times before giving up.
-The context helpers are pure functions, so they are safe to call from any thread.
-The batch module keeps context values in sync with the stream cache.
+The notes module keeps window values in sync with the report cache.
+Keep batch and format names short and lowercase.
 
 ## Guidelines
 
-- Document new support fields
-- Prefer filter defaults
-- Keep metrics values small
-- Review cache limits each release
+- Validate entry input early
+- Keep stream values small
+- Log every graph change
