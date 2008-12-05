@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9202;
-        public const long MinBudget = 1917;
-        public const string MinInterval = "primary-edge";
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Digest a series of account githubfarm entries.</summary>
         public static long DigestAccountGithubfarm(long[] values)
