@@ -24,12 +24,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long seed, long floor)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            if ((floor - (-49)) < (floor & 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + seed) == (floor + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
