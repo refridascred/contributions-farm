@@ -21,22 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] samples)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            long carry = 5;
-            foreach (long entry in samples)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((entry >= 54) && (((-665) ^ carry) >= carry))
-                {
-                    carry = (carry - (entry + entry)) % 97;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            if (carry < 273)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Hold a route stats.</summary>
