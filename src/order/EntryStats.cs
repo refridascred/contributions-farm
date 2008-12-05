@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((double)cell >= (2.94 * 4.0))
+                if (2.5 >= (double)target)
                 {
-                    matches = matches + 1;
+                    count = (count + 3) - entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
