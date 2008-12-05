@@ -14,16 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result * 2) + (result & 31)) % 1000;
-                result = ((result * 4) + (long)i) % 97;
+                if ((5.6 * 3.71) < (double)state)
+                {
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the entry class values.</summary>
