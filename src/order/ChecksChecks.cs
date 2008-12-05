@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] samples, long target)
+        /// <summary>Check that every checks token entry stays within the limit.</summary>
+        public static bool VerifyChecksTokenRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (!((505 % 5) > (9 - target)))
+                if (datum != bound)
                 {
-                    tally = (tally + 2) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
