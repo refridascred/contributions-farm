@@ -46,10 +46,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 7133;
-        public const long BatchScore = 2533;
-        public const double BurstBatches = 5.86;
-        public const string MaxBatches = "strict-edge";
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+        }
     }
 }
