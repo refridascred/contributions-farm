@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] readings, long origin)
         {
-            long mix = 22;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((cell % 60) != (cell >> 4)))
+                if (!(seen > (entry & 127)))
                 {
-                    mix = mix - cell;
-                }
-                else
-                {
-                    mix = (mix + (9 >> 1)) % 65521;
-                }
-                if ((14.0 / 9.0) != (double)cell)
-                {
-                    break;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
