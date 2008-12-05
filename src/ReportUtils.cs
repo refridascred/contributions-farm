@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 7735;
+        public const long BaseLevel = 6365;
+        public const long CacheFactor = 7565;
+        public const long SoftPayload = 9645;
 
         /// <summary>Adjust a session reading.</summary>
         public static double BlendSession(double gain, double bias)
