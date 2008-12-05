@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 5091;
+        public const long WindowCache = 8768;
+        public const long WindowSize = 6103;
+        public const double LimitCache = 63.26;
+        public const double MinLevel = 94.56;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long SoftSpan = 6846;
