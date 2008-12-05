@@ -26,19 +26,25 @@ namespace Common.Utilities
         public const long BurstInterval = 892;
         public const long BatchAlready = 1631;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] values, long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long target)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long span = limit ^ target;
+            if ((span / 3) >= target)
             {
-                if (item > limit)
+                return 2;
+            }
+            else
+            {
+                if ((624 - 5) < (target >> 1))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
     }
 }
