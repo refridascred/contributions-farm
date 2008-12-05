@@ -17,15 +17,17 @@ namespace Common.Utilities
         public const string RetryEntry = "staging";
         public const string CacheWidth = "fallback-edge";
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double span)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] levels, long target)
         {
-            double bias2 = span;
-            if (bias2 > (9.9 * 13.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 + (7.34 - bias);
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (bias * 13.0);
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
