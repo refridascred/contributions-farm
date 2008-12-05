@@ -34,17 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] levels, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (levels[i] <= origin)
+                if (tally > sample)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
