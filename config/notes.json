@@ -1,12 +1,11 @@
 {
-  "soft_ratio_pct": {
-    "hard_limit": true,
-    "cache_interval_ms": "stable",
-    "verbose": 17
+  "command_ttl": {
+    "soft_timeout_s": "fallback",
+    "verbose": "stable",
+    "soft_delay_s": false
   },
-  "warm_limit": "latest",
-  "cache_retries_s": 4726,
-  "default_limit": "legacy",
-  "idle_retries": true,
-  "profile_retries": [371, 138, 204, 328]
+  "strict": 9856,
+  "idle_size_pct": 9318,
+  "profile_capacity": true,
+  "session_depth": 44
 }
