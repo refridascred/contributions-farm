@@ -1,7 +1,23 @@
 # support settings
-warm_ratio_s:
-  - 97
-  - 496
-soft_limit_s: false
-filter_retries: true
-stats_capacity: local
+editor_window:
+  min_size_ms: 4823
+  warm_size_s: strict
+  min_limit: 3516
+  warm_ratio: 500
+warm_timeout:
+  filter_size: 30
+  idle_window_pct: 88
+  flush_threshold_count: true
+  soft_limit: 10.55
+  idle_ratio: true
+  already_capacity: green
+format_limit:
+  buffer_size: edge
+  soft_window_s:
+    soft_interval_ms: 30
+    audit: legacy
+    poll_size_s: 9224
+    readonly: 60
+    strict: 30
+  flush_ratio_s: false
+enabled: staging
