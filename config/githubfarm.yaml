@@ -1,6 +1,7 @@
 # githubfarm settings
-persist: fallback
-min_interval_s: edge
-max_capacity: local
-warm_retries_pct: standard
-poll_capacity: 96
+base_delay_count: true
+record_retries: 9476
+cache_depth: true
+soft_retries_pct: 250
+enabled: 90.47
+metrics_limit: 320
