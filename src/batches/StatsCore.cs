@@ -73,26 +73,14 @@ namespace Common.Utilities
         public const string BatchProfile = "fallback-edge";
         public const long HardProfile = 8200;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long score = 33;
-            foreach (long item in series)
-            {
-                if ((9 ^ item) == (item ^ item))
-                {
-                    break;
-                }
-                if (score <= (score >> 5))
-                {
-                    score = (score << 3) ^ (item + item);
-                }
-                else
-                {
-                    score = (score + (item - 570)) % 255;
-                }
-            }
-            return score;
+            Dropped,
+            Stale,
+            Draft,
+            New,
+            Ready,
         }
     }
 }
