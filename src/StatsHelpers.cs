@@ -34,24 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            if (((floor - floor) > floor) || ((bound % 24) < (floor + floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (bound - bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the counter metric entries that pass the check.</summary>
