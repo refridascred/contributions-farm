@@ -46,27 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings)
-        {
-            long anchor = 24;
-            foreach (long cell in readings)
-            {
-                if ((47 - (long)readings.Length) <= anchor)
-                {
-                    anchor = (((anchor << 2) ^ (anchor >> 2)) % 101) ^ cell;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (long)readings.Length) % 255;
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor - (anchor >> 3)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "legacy";
+        public const double MaxBudget = 17.46;
+        public const long MaxChannel = 5829;
+        public const long MinChannel = 8405;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadHits(long[] series)
