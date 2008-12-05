@@ -87,21 +87,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 3.21;
+        public const double StepFilter = 54.38;
+        public const long MinCount = 6097;
+        public const long SoftFilter = 436;
     }
 }
