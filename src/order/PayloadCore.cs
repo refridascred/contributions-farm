@@ -28,17 +28,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 4) + (offset + offset)) % 4096;
-                carry = (carry + (carry / 2)) % 65521;
-                carry = ((carry * 2) + (long)i) % 101;
+                if (((sample % 8) <= (7 + 592)) || (sample >= (sample + sample)))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Match up tools samples.</summary>
