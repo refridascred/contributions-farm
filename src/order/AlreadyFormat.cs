@@ -48,15 +48,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double gain, double bias)
         {
-            long state = offset;
+            double drift = (double)((-78) - (-2));
+            if (drift > drift)
+            {
+                drift = (drift - (double)970) - gain;
+            }
             for (int i = 0; i < 7; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                drift = (drift + (bias + bias)) + (double)(long)i;
             }
-            return state;
+            return drift - drift;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
