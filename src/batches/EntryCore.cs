@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCount = 7099;
-        public const long DefaultCounter = 6744;
-        public const long BurstCounter = 5703;
-        public const string BaseCounter = "staging-1";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] levels)
