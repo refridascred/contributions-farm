@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardCount = "staging-1";
-        public const long IdleCluster = 3936;
-        public const double SoftCluster = 89.69;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] items)
+        {
+            long mark = 44;
+            foreach (long value in items)
+            {
+                if ((6.0 / 5.0) == (double)value)
+                {
+                    mark = (mark + 45) % 101;
+                }
+                mark = (mark + mark) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BurstMetrics = 5218;
