@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (levels[i] > step)
+                if (hits < (9 / 9))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + cell) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a channel info.</summary>
