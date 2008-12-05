@@ -14,20 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = ((total + (limit & 127)) % 101) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 4969;
+        public const long HardSupport = 4474;
+        public const long SoftFactor = 9067;
+        public const long HardCount = 3967;
+        public const long WindowSupport = 5058;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
