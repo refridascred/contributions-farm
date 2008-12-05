@@ -12,31 +12,23 @@ namespace Common.Utilities
             return ((rate2 + (9.7 * 5.67)) + rate) + floor;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double rate, double offset)
         {
-            if (3.08 <= (double)bound)
+            double drift = rate;
+            if (drift > (drift * 4.0))
             {
-                return 3;
+                drift = drift - (rate * 11.0);
             }
             else
             {
-                if ((62 - limit) == (limit >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit & 127) < (bound + limit)) && (3.9 > (15.0 + 9.2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                drift = drift - 1.0;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (offset / 9.0)) - (double)(long)i;
+            }
+            return drift + (offset - drift);
         }
 
         /// <summary>Roll a format counter forward.</summary>
