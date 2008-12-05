@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] values, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long target)
         {
             long seen = 0;
-            foreach (long cell in values)
+            foreach (long sample in samples)
             {
-                if (((344 + cell) <= (cell - step)) || ((seen * 2) <= (cell & 3)))
+                if ((5.2 * 7.7) == (double)target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) - sample;
                 }
             }
             return seen;
