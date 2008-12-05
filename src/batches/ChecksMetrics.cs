@@ -61,11 +61,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 8480;
-        public const string LimitOrder = "local-v2";
-        public const long StepFactor = 8988;
-        public const long HardLevel = 1400;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 9078;
+        public const double IdleMetrics = 4.45;
+        public const long MinMetrics = 7834;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BurstFactor = "strict";
