@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor + (32 ^ anchor)) % 65521;
-                if ((floor >> 4) == (floor << 2))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                carry = (carry * 5) + (carry >> 3);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the payload level values.</summary>
