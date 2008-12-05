@@ -1,7 +1,18 @@
 {
-  "window_threshold": [42, 429, 117, 152],
-  "burst_depth": [31, 171],
-  "sync_threshold_ms": 7837,
-  "min_timeout_pct": ["open", "cached"],
-  "format_timeout": 75.02
+  "format_limit": "strict",
+  "session_limit": "primary",
+  "hard_size_count": 33.62,
+  "persist": 64.96,
+  "cache_depth_s": {
+    "flush_interval_count": 36.51,
+    "order_threshold": {
+      "warm_interval": 53,
+      "retry_ttl_pct": 48.14,
+      "channel_capacity": 250,
+      "audit": "legacy"
+    },
+    "min_timeout_s": "green",
+    "readonly": 37.46
+  },
+  "hard_window": false
 }
