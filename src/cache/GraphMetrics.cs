@@ -20,17 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] >= offset)
+                carry = ((carry * 5) + ((long)i + offset)) % 4096;
+                carry = carry ^ carry;
+                if ((double)offset >= (9.0 * 6.3))
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry - (long)i)) % 4096;
+                    carry = carry + ((long)i + offset);
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
