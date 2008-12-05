@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] items, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)seed < (double)(-193))
+                if ((bound + acc) > (bound - (-2)))
                 {
-                    seen = (seen + 2) + cell;
+                    acc = (acc ^ 735) % 1000;
+                    continue;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
