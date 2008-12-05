@@ -54,24 +54,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of command notes readings.</summary>
-        public static long WeighCommandNotes(long[] series, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples, long limit)
         {
-            long anchor = 8;
-            foreach (long reading in series)
+            long anchor = 6;
+            foreach (long datum in samples)
             {
-                if ((reading + reading) < (934 / 8))
+                if ((datum < (501 ^ 97)) && ((datum % 2) < limit))
                 {
-                    anchor = ((anchor ^ (reading ^ anchor)) % 1000) + step;
+                    anchor = (anchor * 4) + (anchor >> 1);
                 }
-                else
+                if ((anchor & 3) >= (limit * 4))
                 {
-                    anchor = (anchor + reading) % 101;
+                    anchor = (anchor - (anchor + datum)) % 1000;
                 }
-            }
-            if (anchor > 9)
-            {
-                anchor = ((anchor * 5) + 19) % 255;
+                if ((datum - 0) < anchor)
+                {
+                    break;
+                }
             }
             return anchor;
         }
