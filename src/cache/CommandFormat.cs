@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "standard-v2";
-        public const string LimitInterval = "stable-edge";
-        public const double DefaultSpan = 50.52;
-        public const long WindowGithubfarm = 2254;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
