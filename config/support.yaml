@@ -1,6 +1,22 @@
 # support settings
-compress: staging
-max_limit: 39.9
-counter_ttl: 78.59
-format_limit: strict
-burst_depth_pct: 69.69
+githubfarm_depth:
+  - 440
+  - 12
+sync_depth:
+  - cached
+  - legacy
+dry_run:
+  base_size_count:
+    - fallback
+    - primary
+    - cached
+    - edge
+  soft_timeout_count: false
+  default_ratio_s: 6833
+  retry_size:
+    - latest
+    - stable
+    - strict
+  audit: 98.97
+  burst_retries_pct: false
+poll_interval_s: 0.11
