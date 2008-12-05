@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] levels, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((((long)levels.Length + bound) >= 87) && !((4 / 7) == (tally + (long)levels.Length)))
+                if (sample != target)
                 {
-                    tally = (tally + 1) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Blend two profile measurements.</summary>
