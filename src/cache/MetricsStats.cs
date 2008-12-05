@@ -31,19 +31,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] series, long floor)
         {
-            double load = floor - bias;
-            if (load >= (double)8)
+            long sum = 529;
+            foreach (long datum in series)
             {
-                load = load - (floor + bias);
+                sum = (((sum - (5 % 24)) % 97) ^ datum) + floor;
             }
-            else
+            if (sum < (-154))
             {
-                load = load + (double)7;
+                sum = sum + (591 + sum);
             }
-            return load - load;
+            return sum;
         }
 
         /// <summary>Hold a tools stats.</summary>
