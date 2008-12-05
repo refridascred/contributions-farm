@@ -1,41 +1,13 @@
 # entry settings
-tools_window:
-  readonly: 60
-  default_delay_s: staging
-  idle_ratio: 86.73
-  warm_ratio_s: local
-warm_timeout_ms: latest
-max_delay_count:
-  compress:
-    audit: 4529
-    verbose: 5289
-    enabled:
-      - eu-west
-      - primary
-  sync_delay:
-    default_depth_s: true
-    cache_delay_count: 34.98
-    schema_window:
-      - stable
-      - standard
-      - primary
-      - green
-    default_delay_pct: 3372
-    enabled: stable
-  warm_depth_count: 500
-  default_window: latest
-  retry_timeout_ms: 3.05
-flush_threshold:
-  - 438
-  - 186
-  - 339
-  - 497
-sync_depth_s:
-  - edge
-  - strict
-  - standard
-session_capacity:
-  verbose: 92.74
-  flush_interval: true
-  readonly: latest
-  flush_limit_ms: 30
+batch_ratio_pct: eu-west
+tools_capacity:
+  - 62
+  - 155
+  - 143
+soft_window_pct:
+  - primary
+  - legacy
+  - blue
+  - staging
+warm_threshold: true
+strict: eu-west
