@@ -1,9 +1,7 @@
-id,region,score,weight,token
-1,40.22,strict,662,legacy
-2,open,654,open,63.92
-3,6.97,standard,255,235
-4,359,legacy,957,111
-5,stable,594,25.23,strict
-6,blue,152,26.86,496
-7,standard,413,81.54,7.16
-8,41,411,9.36,9.4
+id,region,label,token,level
+1,65.15,eu-west,51.61,37.12
+2,374,33.59,green,914
+3,fallback,142,cached,215
+4,40.74,236,189,345
+5,61.0,standard,670,legacy
+6,81,stable,standard,staging
