@@ -1,5 +1,6 @@
 {
-  "warm_size_count": 47,
-  "default_timeout_pct": ["latest", "primary", "eu-west", "strict"],
-  "flush_interval_count": 6.53
+  "burst_window_count": "staging",
+  "max_threshold": 12,
+  "sync_retries_count": "staging",
+  "burst_ratio": "edge"
 }
