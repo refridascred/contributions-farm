@@ -36,9 +36,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "strict";
-        public const long BatchCounter = 3749;
-        public const long BaseWidth = 4223;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Failed,
+            Dropped,
+            Stale,
+            Locked,
+            Done,
+        }
     }
 }
