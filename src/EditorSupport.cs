@@ -17,14 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Draft,
+            Closed,
+            Retry,
             Done,
-            Active,
-            Paused,
-            New,
         }
 
         /// <summary>Describe the contributi level values.</summary>
