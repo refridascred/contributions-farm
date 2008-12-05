@@ -48,17 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a contributi graph sample.</summary>
-        public static long LookupContributiGraphIndex(long[] series, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] == offset)
+                if ((double)bound > (3.0 - 11.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
