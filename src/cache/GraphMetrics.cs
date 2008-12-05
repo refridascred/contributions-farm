@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] levels)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (2 > sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
