@@ -3,11 +3,11 @@ CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
     region TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
 
-INSERT INTO stats_logs (ratio, region, active) VALUES (40.46, 'fallback', 11);
-INSERT INTO stats_logs (ratio, region, active) VALUES (82.29, 'cached', 70);
-INSERT INTO stats_logs (ratio, region, active) VALUES (98.44, 'edge', 6);
+INSERT INTO stats_logs (ratio, region, state) VALUES (72.77, 'edge', 'stable');
+INSERT INTO stats_logs (ratio, region, state) VALUES (22.43, 'edge', 'strict');
+INSERT INTO stats_logs (ratio, region, state) VALUES (21.07, 'open', 'fallback');
