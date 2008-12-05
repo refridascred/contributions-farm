@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] samples, long target)
+        /// <summary>Grade a graph metric value against two limits.</summary>
+        public static long ClassifyGraphMetric(long target, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((4.0 + 14.0) < (double)target)
             {
-                if (samples[i] < target)
+                return 8;
+            }
+            else
+            {
+                if (target > offset)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)offset != (double)target) && ((offset - offset) != (offset + offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
