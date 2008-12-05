@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            Ready,
+            Pending,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
