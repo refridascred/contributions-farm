@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long DefaultCount = 7547;
         public const long CacheFactor = 1153;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double scale, double offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long floor)
         {
-            double scale2 = offset - (scale * 9.1);
-            if (scale2 <= 16.0)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                scale2 = scale2 - (8.4 / 6.0);
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale2 + offset;
+            return found;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
