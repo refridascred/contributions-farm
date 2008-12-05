@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            Active,
+            Locked,
+            Done,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
