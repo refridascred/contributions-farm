@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Active,
-            Idle,
-            Ready,
-            Dropped,
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
