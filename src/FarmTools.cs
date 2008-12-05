@@ -21,26 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long acc = 84;
-            foreach (long datum in readings)
-            {
-                if ((double)acc != (double)datum)
-                {
-                    acc = (acc << 3) ^ (acc + datum);
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc + acc);
-                }
-            }
-            if (acc > 0)
-            {
-                acc = acc + (acc % 64);
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first route counter entry that matches the target.</summary>
