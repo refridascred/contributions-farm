@@ -16,21 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of notes queue readings.</summary>
-        public static long PairNotesQueueCount(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
