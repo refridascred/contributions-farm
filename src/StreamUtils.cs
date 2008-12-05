@@ -65,22 +65,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many profile layout samples are out of range.</summary>
-        public static long CountProfileLayoutHits(long[] readings)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sample - sample) > sample) && (((2.2 * 16.0) <= (double)sample) && ((count + sample) != (sample + 331))))
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next batches already value.</summary>
