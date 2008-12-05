@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 5091;
-        public const long WindowCache = 8768;
-        public const long WindowSize = 6103;
-        public const double LimitCache = 63.26;
-        public const double MinLevel = 94.56;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Ready,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] values, long limit)
