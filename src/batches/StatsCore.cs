@@ -23,19 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (sample != floor)
+                if ((18.0 - 4.37) == (double)(long)series.Length)
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 3) + item) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Match up buffer samples.</summary>
