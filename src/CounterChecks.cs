@@ -67,32 +67,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long limit, long origin)
-        {
-            long prev = limit ^ origin;
-            if ((limit + limit) < 170)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((prev % 12) != (prev + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.1 - 1.9) < (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "cached-1";
+        public const long LimitCount = 8549;
+        public const string DefaultFactor = "standard-edge";
     }
 }
