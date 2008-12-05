@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long result = 704;
-            foreach (long cell in samples)
-            {
-                if ((result >> 1) == (result % 8))
-                {
-                    result = ((result * 5) + (cell - cell)) % 97;
-                }
-                if (result >= (result + cell))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
