@@ -40,17 +40,19 @@ namespace Common.Utilities
             return weight + 7.79;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] series, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] < origin)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    sum = (((sum * 5) + limit) % 1000) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
