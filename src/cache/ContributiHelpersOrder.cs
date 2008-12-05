@@ -15,26 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine queue editor values into a single score.</summary>
-        public static long CombineQueueEditor(long[] data)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long score = 0;
-            foreach (long value in data)
-            {
-                if ((score + score) != (92 % 3))
-                {
-                    continue;
-                }
-                if ((score << 3) > (value - score))
-                {
-                    score = ((score << 3) ^ score) % 65521;
-                }
-                if ((970 - score) < (value ^ score))
-                {
-                    break;
-                }
-            }
-            return score;
+            Locked,
+            Failed,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the editor kind values.</summary>
