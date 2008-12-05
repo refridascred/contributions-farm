@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double span)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double rate = (double)87 / 4.0;
-            if (rate < (span + rate))
-            {
-                rate = (rate - rate) + weight;
-            }
-            else
-            {
-                rate = rate - 8.9;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + rate;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the counter state values.</summary>
