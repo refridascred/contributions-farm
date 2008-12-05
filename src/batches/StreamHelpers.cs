@@ -23,12 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitCount = "local-edge";
-        public const long MinFactor = 7256;
-        public const long RetryInterval = 3391;
-        public const long IdleFactor = 9738;
-        public const long BurstMetric = 6749;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchFactor = 3383;
+        public const string BurstScore = "fallback-v2";
+        public const string MaxFactor = "latest";
 
         /// <summary>Combine counter token values into a single score.</summary>
         public static long ScoreCounterToken(long[] values)
