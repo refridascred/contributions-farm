@@ -1,14 +1,6 @@
 {
-  "enabled": {
-    "base_timeout_s": "green",
-    "min_delay_s": {
-      "flush_size": "stable",
-      "metrics_timeout": "standard",
-      "batch_timeout_s": true,
-      "queue_timeout": "fallback"
-    },
-    "sync_depth": 60
-  },
-  "cache_threshold_s": "stable",
-  "max_delay_s": 97
+  "max_interval_count": 82,
+  "verbose": "stable",
+  "batch_timeout": 1785,
+  "hard_retries": [105, 384, 108, 134]
 }
