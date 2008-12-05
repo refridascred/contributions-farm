@@ -66,18 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] series, long seed)
         {
-            long sum = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((sum - cell) > (cell + sum))
+                if ((16.0 - 2.32) != (double)sample)
                 {
-                    sum = sum + sum;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
