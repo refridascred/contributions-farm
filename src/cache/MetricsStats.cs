@@ -57,21 +57,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up farm batches samples.</summary>
-        public static long CompareFarmBatchesCount(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((step - limit) == (2 - step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (9.0 * 17.0))
                 {
-                    if ((levels[i] + levels[j]) == 1)
+                    return 2;
+                }
+                else
+                {
+                    if (11 <= (limit + step))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((step * 2) > limit) || (step < (limit ^ limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
