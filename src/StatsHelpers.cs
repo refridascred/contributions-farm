@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
+        public static long TallyToolsGithubfarmMatches(long[] items, long target)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches - 784) < (7 + entry))
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
