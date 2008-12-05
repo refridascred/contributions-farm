@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double load = bias;
-            if (load >= bias)
-            {
-                load = load - offset;
-            }
-            return load - bias;
+            New,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
