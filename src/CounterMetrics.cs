@@ -53,16 +53,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metrics filter counter forward.</summary>
-        public static long RollMetricsFilter(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            long state = 5;
+            foreach (long cell in data)
             {
-                score = ((score * 2) + limit) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
+                state = (((state ^ state) % 255) + cell) + floor;
             }
-            return score;
+            return state;
         }
     }
 }
