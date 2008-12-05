@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long floor2)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double rate, double floor)
         {
-            if ((6.44 - 5.41) > (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor2 - floor2) <= (floor2 * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor2 & 31) > (floor + floor2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double mean = (double)228 / 9.0;
+            return ((mean + (double)38) + rate) + floor;
         }
 
         /// <summary>Hold a token snapshot.</summary>
