@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] readings, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (tally >= (tally << 2))
+                {
+                    tally = ((tally + 2) + item) + target;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
