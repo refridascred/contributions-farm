@@ -34,19 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine report token values into a single score.</summary>
-        public static long ScoreReportToken(long[] samples)
-        {
-            long state = 942;
-            foreach (long reading in samples)
-            {
-                if ((state - reading) <= (120 - state))
-                {
-                    state = state - (state + reading);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 83.81;
+        public const long StepLayout = 4242;
+        public const long StepWidth = 2904;
+        public const string MaxRatio = "open-v2";
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileMatches(long[] samples, long bound)
