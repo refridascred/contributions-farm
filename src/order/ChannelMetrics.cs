@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long step, long limit)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long edge = step ^ limit;
-            if ((step - (-42)) != (limit ^ edge))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(edge > limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)edge != (2.9 / 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
