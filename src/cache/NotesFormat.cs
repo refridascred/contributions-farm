@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double weight, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long limit)
         {
-            double bias = floor;
-            if (bias > bias)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                bias = (bias - floor) - weight;
+                if (!((state >= (47 - 71)) && ((state >> 2) <= (long)i)))
+                {
+                    state = state + (62 & 7);
+                }
+                if (limit >= (2 + (long)i))
+                {
+                    state = (state + limit) % 4096;
+                    state = (state + (limit ^ limit)) % 97;
+                }
+                state = (state - ((long)i - state)) % 255;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (floor * 4.83);
+            return state;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
