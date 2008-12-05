@@ -20,17 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first account session entry that matches the target.</summary>
-        public static long LookupAccountSessionIndex(long[] levels, long limit)
+        /// <summary>Describe the booking kind values.</summary>
+        public enum BookingKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
