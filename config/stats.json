@@ -1,8 +1,17 @@
 {
-  "notes_ttl": "strict",
-  "filter_ttl": 65,
-  "checks_timeout": 63.77,
-  "readonly": "legacy",
-  "retry_capacity": "edge",
-  "session_ttl": "open"
+  "batch_ratio_ms": 2213,
+  "tools_depth": "cached",
+  "dry_run": {
+    "audit": {
+      "hard_depth_ms": 500,
+      "batch_retries": 33,
+      "soft_capacity_pct": ["open", "open", "fallback"],
+      "cluster_depth": "primary",
+      "verbose": false
+    },
+    "persist": "green",
+    "cache_limit_s": "open",
+    "burst_limit": 95.66
+  },
+  "idle_delay_pct": 4.53
 }
