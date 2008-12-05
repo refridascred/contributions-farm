@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mark = 339;
-            foreach (long datum in series)
-            {
-                if ((double)mark > (double)datum)
-                {
-                    mark = ((mark << 2) ^ 10) % 65521;
-                    continue;
-                }
-                if (6.03 < (double)origin)
-                {
-                    mark = (mark + ((-131) + datum)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (origin / 6)) % 97;
-                }
-            }
-            return mark % 4096;
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the schema class values.</summary>
