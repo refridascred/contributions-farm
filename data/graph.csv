@@ -1,8 +1,7 @@
-id,ratio,active,region
-1,legacy,54.69,740
-2,336,269,603
-3,190,blue,268
-4,blue,97.33,standard
-5,strict,877,189
-6,open,576,955
-7,455,79.87,16.87
+id,level,region,owner
+1,local,893,689
+2,strict,blue,63.04
+3,standard,blue,72.02
+4,57.38,12.23,74.53
+5,green,84.58,663
+6,blue,41.08,strict
