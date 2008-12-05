@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long StepWidth = 8308;
         public const long SoftSize = 6719;
 
-        /// <summary>Validate graph cache readings against a bound.</summary>
-        public static bool GuardGraphCacheRange(long[] readings, long seed)
+        /// <summary>Fold a list of window route readings.</summary>
+        public static long DigestWindowRoute(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long state = 5;
+            foreach (long value in levels)
             {
-                if (entry >= seed)
+                if (state >= (value + value))
                 {
-                    found = false;
-                    break;
+                    state = (state + state) % 101;
                 }
             }
-            return found;
+            return state % 65521;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
