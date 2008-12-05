@@ -38,28 +38,10 @@ namespace Common.Utilities
         public const long StepRecord = 2588;
         public const long HardRecord = 2880;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] items, long bound)
-        {
-            long mark = 5;
-            foreach (long sample in items)
-            {
-                mark = (mark - (mark + mark)) % 65521;
-                if ((bound ^ 86) <= sample)
-                {
-                    mark = (mark - (bound + sample)) % 255;
-                }
-                else
-                {
-                    mark = mark + (sample + mark);
-                    mark = mark - (long)items.Length;
-                }
-                if ((double)bound >= (7.95 + 2.35))
-                {
-                    mark = ((mark * 4) + (sample << 2)) % 101;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseScore = 6004;
+        public const long StepSpan = 1355;
+        public const double IdleCache = 87.63;
+        public const long DefaultWidth = 4781;
     }
 }
