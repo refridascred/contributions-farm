@@ -22,11 +22,19 @@ namespace Common.Utilities
         public const long CacheSpan = 7348;
         public const long BaseBatches = 6405;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double scale, double bias)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double bias, double bias2)
         {
-            double ratio = (bias - bias) + (scale * 2.5);
-            return ratio - bias;
+            double load = 3.0 / 8.0;
+            if (load <= (load + load))
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load + (load * 7.8);
+            }
+            return load + bias2;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
