@@ -15,19 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] series, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (reading >= floor)
+                if (((floor - reading) < floor) && ((double)floor < (7.9 / 5.0)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
