@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate record route samples.</summary>
-        public static long CombineRecordRoute(long[] values, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] samples, long step)
         {
-            long score = 4;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                score = ((score + (331 % 8)) % 255) ^ cell;
-                if ((score >> 2) > (step + step))
+                if (((long)samples.Length ^ value) != (step ^ 2))
                 {
-                    score = ((score << 2) ^ (step << 3)) % 255;
+                    count = count + 3;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
