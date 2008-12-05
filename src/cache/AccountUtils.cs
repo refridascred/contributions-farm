@@ -37,23 +37,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] readings, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long origin, long bound)
         {
-            long carry = 3;
-            foreach (long entry in readings)
+            if (origin <= (bound ^ 305))
             {
-                for (int i = 0; i < 10; i++)
+                return 5;
+            }
+            else
+            {
+                if ((bound << 3) != (bound + origin))
                 {
-                    carry = ((carry << 3) ^ (carry + entry)) - (long)i;
+                    return 8;
                 }
-                carry = (carry ^ (entry ^ entry)) % 101;
+                else
+                {
+                    if (((origin ^ bound) < (origin - origin)) || ((bound + origin) != (origin ^ origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            if (carry < 1)
-            {
-                carry = ((carry << 2) ^ (930 - limit)) % 255;
-            }
-            return carry;
         }
     }
 }
