@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] data)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (value > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Grade a already layout value against two limits.</summary>
