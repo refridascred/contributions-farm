@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit channel profile readings against a rule.</summary>
-        public static long TallyChannelProfileOutliers(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] levels)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long entry in levels)
             {
-                if (count < reading)
+                if ((double)entry < (8.03 + 16.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
