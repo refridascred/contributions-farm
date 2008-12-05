@@ -42,24 +42,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of route buffer entries.</summary>
-        public static long DigestRouteBuffer(long[] series, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long carry = 78;
-            foreach (long datum in series)
-            {
-                if ((carry >> 2) <= (carry & 15))
-                {
-                    carry = ((carry - (carry * 3)) % 65521) + datum;
-                }
-                carry = ((carry << 2) ^ origin) % 101;
-                carry = carry ^ (origin + 344);
-            }
-            if (carry < (-97))
-            {
-                carry = carry ^ 2;
-            }
-            return carry;
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
