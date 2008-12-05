@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate record stats samples.</summary>
+        public static long ScoreRecordStats(long[] levels, long limit)
         {
-            Active,
-            Pending,
-            Idle,
-            Draft,
-            Locked,
+            long mark = 498;
+            foreach (long cell in levels)
+            {
+                mark = ((mark + (cell >> 2)) % 65521) - limit;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Match up session counter samples.</summary>
