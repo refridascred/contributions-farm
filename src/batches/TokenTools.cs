@@ -46,18 +46,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] readings, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            long total = 37;
-            foreach (long sample in readings)
+            double load = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if ((2 - sample) < (limit >> 5))
-                {
-                    total = (total + (sample % 24)) % 1000;
-                }
+                load = (load + 7.1) - (double)(long)i;
             }
-            return total % 97;
+            return load + bias;
         }
     }
 }
