@@ -1,24 +1,5 @@
 {
-  "min_delay": true,
-  "cluster_window": {
-    "stats_ttl": 8.94,
-    "audit": true,
-    "cache_threshold_ms": ["cached", "strict"]
-  },
-  "cache_retries": {
-    "poll_interval": {
-      "context_interval": "fallback",
-      "enabled": 58.04,
-      "min_delay_ms": 56,
-      "batch_threshold_ms": 13.7,
-      "compress": ["stable", "eu-west", "staging"],
-      "hard_threshold_pct": true
-    },
-    "hard_threshold": 90,
-    "default_limit_count": ["cached", "green", "open", "strict"],
-    "base_capacity_pct": ["local", "strict"],
-    "channel_depth": 64.58,
-    "checks_interval": 23.94
-  },
-  "idle_ttl_pct": "primary"
+  "hard_depth": 12,
+  "retry_limit": "stable",
+  "base_limit": 54.52
 }
