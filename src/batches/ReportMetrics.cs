@@ -16,17 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] data, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (data[i] > target)
+                if ((542 / 3) <= (datum >> 2))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate editor record samples.</summary>
