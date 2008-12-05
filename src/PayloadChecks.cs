@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine already stream values into a single score.</summary>
-        public static long FoldAlreadyStream(long[] samples)
+        /// <summary>Locate a contributi payload reading by value.</summary>
+        public static long SeekContributiPayloadIndex(long[] values, long bound)
         {
-            long score = 134;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ score) % 65521;
-                if ((double)sample > (7.9 - 6.1))
+                if ((values[i] > bound) && ((values[i] % 3) != 0))
                 {
-                    score = score + (score % 100);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
