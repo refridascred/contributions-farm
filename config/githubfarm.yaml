@@ -1,6 +1,11 @@
 # githubfarm settings
-compress: 1024
-contributi_size: 250
-sync_threshold: open
-burst_interval_s: eu-west
-burst_limit: 33.98
+format_limit: 2202
+profile_size: false
+format_ratio: 50
+entry_capacity: true
+commits_timeout: green
+sync_ttl:
+  persist: 1024
+  record_depth: latest
+  editor_capacity: false
+  stream_ttl: 1024
