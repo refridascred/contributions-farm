@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel farm entries that pass the check.</summary>
-        public static long TallyChannelFarmHits(long[] items)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum * 3) >= (datum + 20))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
