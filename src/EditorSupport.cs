@@ -69,22 +69,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] items, long limit)
         {
-            long sum = -314;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-48) << 1) != (bound + item))
+                if (items[i] == limit)
                 {
-                    sum = (sum ^ (8 - item)) % 101;
-                }
-                if (item > (bound + item))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
