@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const string BurstRatio = "staging-v2";
         public const long RetryCluster = 3868;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = (((acc * 2) + (acc ^ (-995))) % 4096) - (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
