@@ -51,25 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long origin, long target)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] levels, long target)
         {
-            long next = origin - target;
-            if ((next - origin) == (671 << 2))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((origin >> 3) != (next >> 3)))
+                if (reading <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of cache record readings.</summary>
