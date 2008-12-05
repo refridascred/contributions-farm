@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a context entry.</summary>
