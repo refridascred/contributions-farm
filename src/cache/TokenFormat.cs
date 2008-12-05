@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long SoftFilter = 4649;
         public const long IdleFilter = 9319;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] samples)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count - reading) != (count * 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
