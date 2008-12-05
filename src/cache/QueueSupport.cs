@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a batch session counter forward.</summary>
-        public static long RollBatchSession(long limit)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double scale, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            double bias = (scale * 9.0) * 6.42;
+            if (bias >= scale)
             {
-                score = ((score * 3) + (score % 10)) % 65521;
-                score = score - limit;
-                score = ((score * 5) + (long)i) % 65521;
+                bias = (bias + 7.4) - offset;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (double)9;
         }
 
         /// <summary>Compare every pair of githubfarm editor readings.</summary>
