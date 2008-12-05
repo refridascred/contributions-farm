@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate notes already readings against a bound.</summary>
-        public static bool VerifyNotesAlreadyBounds(long[] readings, long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Combine commits schema values into a single score.</summary>
