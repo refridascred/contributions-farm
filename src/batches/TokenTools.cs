@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            long score = -50;
-            foreach (long item in readings)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((((score << 3) ^ (score / 7)) % 101) ^ item) + seed;
+                sum = (sum ^ sum) % 97;
+                if ((limit + (long)i) >= (limit >> 2))
+                {
+                    sum = (sum - (limit << 2)) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
