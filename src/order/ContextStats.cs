@@ -54,14 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Done,
-            Locked,
-            Active,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 3816;
+        public const long DefaultBudget = 7251;
+        public const long HardBudget = 8872;
+        public const long RetryRoute = 7323;
+        public const long IdleRoute = 6597;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountRange(long[] items, long seed)
