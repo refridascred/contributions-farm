@@ -22,13 +22,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            Draft,
-            Pending,
-            Paused,
-            Done,
+            long carry = 5;
+            foreach (long entry in samples)
+            {
+                if ((entry >= 54) && (((-665) ^ carry) >= carry))
+                {
+                    carry = (carry - (entry + entry)) % 97;
+                }
+            }
+            if (carry < 273)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate cache samples.</summary>
