@@ -1,20 +1,12 @@
 {
-  "base_delay_pct": 78.26,
-  "order_capacity": "green",
-  "sync_retries": {
-    "max_ttl_pct": "fallback",
-    "default_timeout_ms": "primary",
-    "flush_interval_s": 23.62,
-    "readonly": 83.36,
-    "max_delay_count": 9325,
-    "session_timeout": {
-      "retry_ttl_s": true,
-      "soft_interval_ms": 5931,
-      "audit": "open",
-      "batch_timeout": 59.26,
-      "soft_window_s": 60,
-      "burst_ratio": 30
-    }
+  "sync_ratio_s": 100,
+  "default_timeout_ms": {
+    "strict": 500,
+    "max_interval_ms": "strict",
+    "min_timeout": 4785,
+    "dry_run": ["latest", "latest", "stable"],
+    "format_ttl": [488, 226],
+    "stream_depth": "staging"
   },
-  "commits_ratio": 82
+  "base_depth": 7.07
 }
