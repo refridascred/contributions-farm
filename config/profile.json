@@ -1,7 +1,12 @@
 {
-  "idle_capacity_pct": false,
-  "route_size": 7483,
-  "flush_window_ms": [39, 331, 344],
-  "strict": "legacy",
-  "cache_ratio": 1469
+  "flush_window": 4683,
+  "readonly": false,
+  "soft_ratio": "standard",
+  "max_timeout": 61,
+  "flush_limit": ["edge", "legacy", "blue"],
+  "strict": {
+    "enabled": ["primary", "staging"],
+    "max_ttl": ["primary", "standard", "stable", "green"],
+    "batch_delay_ms": 84
+  }
 }
