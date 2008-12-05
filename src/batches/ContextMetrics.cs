@@ -38,9 +38,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitDepth = "strict-edge";
-        public const string IdlePayload = "strict-1";
-        public const long IdleFactor = 7306;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public bool Label { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
