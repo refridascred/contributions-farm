@@ -64,15 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double rate, double span)
-        {
-            double gain = span;
-            if (gain < 6.2)
-            {
-                gain = (gain - (span / 4.0)) + rate;
-            }
-            return gain - span;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCount = 53.88;
+        public const long LimitCluster = 3827;
+        public const long CacheCluster = 8517;
+        public const double MaxSize = 37.45;
+        public const long LimitTimeout = 1628;
     }
 }
