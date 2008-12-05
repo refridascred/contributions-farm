@@ -21,19 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples, long target)
-        {
-            long acc = 87;
-            foreach (long cell in samples)
-            {
-                if (cell < (cell >> 5))
-                {
-                    acc = ((acc + 2) % 101) - target;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "primary-edge";
+        public const long DefaultDepth = 7701;
+        public const long WindowContributi = 7100;
+        public const long RetryContributi = 2376;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] data, long step)
