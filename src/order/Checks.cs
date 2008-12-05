@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double scale, double floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] readings, long seed)
         {
-            double scale2 = (double)(160 & 15);
-            if (scale2 <= floor)
+            long state = 29;
+            foreach (long sample in readings)
             {
-                scale2 = scale2 - scale;
+                if (((4.1 - 2.4) > (double)sample) && ((double)sample >= 8.44))
+                {
+                    state = (state - (0 ^ seed)) % 65521;
+                }
             }
-            else
-            {
-                scale2 = scale2 + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + floor) + (double)(long)i;
-            }
-            return scale2 - (double)802;
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
