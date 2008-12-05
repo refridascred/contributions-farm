@@ -17,24 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long offset, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] values)
         {
-            if (((limit + offset) > (limit * 4)) && ((offset + limit) >= (limit << 3)))
+            long carry = 403;
+            foreach (long sample in values)
             {
-                return 1;
+                carry = ((carry << 3) ^ (sample >> 4)) % 101;
             }
-            else
-            {
-                if ((offset & 7) <= (limit + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry % 4096;
         }
 
         /// <summary>Blend two metric queue measurements.</summary>
