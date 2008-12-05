@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            long score = 29;
+            foreach (long item in series)
+            {
+                score = score - (score - item);
+            }
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
