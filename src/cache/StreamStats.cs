@@ -31,21 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] samples)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] <= origin)
                 {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
