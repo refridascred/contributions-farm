@@ -47,13 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a report graph counter forward.</summary>
+        public static long RollReportGraph(long bound)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Ready,
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if (32 < (acc & 7))
+                {
+                    acc = ((acc << 2) ^ (bound - acc)) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metrics state values.</summary>
