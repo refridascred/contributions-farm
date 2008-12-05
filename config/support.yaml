@@ -1,9 +1,6 @@
 # support settings
-verbose:
-  batch_interval_count: true
-  cache_window: cached
-  audit: true
-account_delay: 90
-notes_threshold: 49
-checks_depth: 7098
-cache_size_s: 4761
+compress: staging
+max_limit: 39.9
+counter_ttl: 78.59
+format_limit: strict
+burst_depth_pct: 69.69
