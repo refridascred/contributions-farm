@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            Active,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Match up filter samples.</summary>
