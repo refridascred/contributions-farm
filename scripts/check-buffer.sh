@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy fallback; do
+for item in blue open eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=394
+log "limit is ${BUFFER_LIMIT}"
