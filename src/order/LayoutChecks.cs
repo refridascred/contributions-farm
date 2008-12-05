@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Match up token notes samples.</summary>
+        public static long MatchTokenNotesCount(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)i == (604 >> 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total * 4) + 488;
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    total = total - (total + seed);
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
