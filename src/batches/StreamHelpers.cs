@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every session format entry stays within the limit.</summary>
-        public static bool GuardSessionFormatBounds(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 6099;
+        public const long MinCommand = 5825;
+        public const long CacheWidth = 7016;
+        public const long MinWidth = 3018;
+        public const long BurstCommand = 2866;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
