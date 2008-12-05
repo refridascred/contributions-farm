@@ -52,13 +52,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double rate, double floor)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            double rate2 = (double)(998 * 4);
+            if (rate2 < (floor - rate))
+            {
+                rate2 = rate2 - rate2;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
