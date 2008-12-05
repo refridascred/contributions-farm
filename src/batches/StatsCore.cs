@@ -49,18 +49,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long carry = 26;
+            foreach (long reading in readings)
             {
-                if ((double)item >= (2.21 / 9.0))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry - reading) % 1000;
+                carry = (carry ^ 50) % 4096;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
