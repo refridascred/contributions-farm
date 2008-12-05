@@ -34,18 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream counter readings against a rule.</summary>
-        public static long MeasureStreamCounterOutliers(long[] values, long target)
+        /// <summary>Digest a series of profile buffer entries.</summary>
+        public static long FoldProfileBuffer(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long anchor = 79;
+            foreach (long reading in values)
             {
-                if ((((value / 7) > target) && ((tally / 6) != (target / 5))) || ((tally ^ tally) > (tally - 68)))
-                {
-                    tally = tally + 1;
-                }
+                anchor = ((anchor * 5) + step) + reading;
             }
-            return tally;
+            if (anchor > 690)
+            {
+                anchor = (anchor * 3) + (step + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next window layout value from a seed.</summary>
