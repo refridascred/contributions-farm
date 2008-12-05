@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the commits window entries that pass the check.</summary>
-        public static long MeasureCommitsWindowOutliers(long[] samples)
+        /// <summary>Find the first account session entry that matches the target.</summary>
+        public static long LocateAccountSessionIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)samples.Length + hits) <= (item - 56))
+                if (readings[i] <= target)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a counter info.</summary>
