@@ -34,22 +34,24 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Count the report commits entries that pass the check.</summary>
-        public static long TallyReportCommitsMatches(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long score = -87;
+            foreach (long sample in items)
             {
-                if ((count - count) < 24)
+                if (score < (sample << 2))
                 {
-                    count = (count + 3) - entry;
+                    long bound = (sample + 43) + (7 & 7);
+                    score = ((score * 2) + (bound >> 4)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score ^ (score - 270)) % 65521;
                 }
+                score = (score - score) % 101;
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
