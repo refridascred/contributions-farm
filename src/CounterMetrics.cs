@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double scale, double floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double scale, double floor)
         {
-            double bias = (double)187 / 3.0;
-            if (bias > (floor * 6.7))
+            double weight = 13.0;
+            if (weight >= (double)6)
             {
-                bias = (bias - (floor * 3.6)) - scale;
+                weight = (weight + (5.62 / 3.0)) - scale;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias = bias - (double)(long)i;
+                weight = weight + floor;
             }
-            return bias - (bias / 2.0);
+            return weight - 3.09;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
