@@ -18,16 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mark = (mark ^ (mark * 2)) % 4096;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((matches + (long)items.Length) <= (datum * 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
