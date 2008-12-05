@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstLevel = 2187;
+        public const string SoftAlready = "primary";
+        public const long BurstAlready = 3826;
+        public const long BurstInterval = 892;
+        public const long BatchAlready = 1631;
 
         /// <summary>Accumulate order samples.</summary>
         public static long DigestOrder(long[] items)
