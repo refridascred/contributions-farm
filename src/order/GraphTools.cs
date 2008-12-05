@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] levels, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                acc = (acc + 216) % 65521;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
