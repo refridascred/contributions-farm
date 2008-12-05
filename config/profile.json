@@ -1,18 +1,9 @@
 {
-  "burst_limit_pct": ["standard", "stable"],
-  "poll_ratio": 53,
-  "counter_threshold": "staging",
-  "max_ratio": {
-    "token_threshold": {
-      "cache_depth_count": "strict",
-      "layout_threshold": 74.75,
-      "enabled": 30.22,
-      "strict": 500
-    },
-    "channel_ttl": 7412,
-    "sync_threshold_ms": false,
-    "burst_limit_count": "legacy"
+  "soft_limit_s": 492,
+  "persist": {
+    "sync_window": "standard",
+    "strict": 5,
+    "max_delay_s": 250
   },
-  "command_retries": 93.84,
-  "githubfarm_depth": "green"
+  "default_retries_pct": true
 }
