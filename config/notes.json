@@ -1,11 +1,7 @@
 {
-  "command_ttl": {
-    "soft_timeout_s": "fallback",
-    "verbose": "stable",
-    "soft_delay_s": false
-  },
-  "strict": 9856,
-  "idle_size_pct": 9318,
-  "profile_capacity": true,
-  "session_depth": 44
+  "min_retries": "green",
+  "burst_interval_count": true,
+  "route_interval": 48.3,
+  "persist": "blue",
+  "warm_ratio_pct": [34, 420, 490]
 }
