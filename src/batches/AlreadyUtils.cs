@@ -14,12 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 4969;
-        public const long HardSupport = 4474;
-        public const long SoftFactor = 9067;
-        public const long HardCount = 3967;
-        public const long WindowSupport = 5058;
+        /// <summary>Combine account report values into a single score.</summary>
+        public static long FoldAccountReport(long[] items, long origin)
+        {
+            long mark = 69;
+            foreach (long reading in items)
+            {
+                if ((70 + mark) > (-6))
+                {
+                    mark = (mark - reading) + origin;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
