@@ -33,13 +33,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Grade a schema command value against two limits.</summary>
+        public static long GradeSchemaCommand(long target, long floor)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long edge = target + floor;
+            if ((target * 2) == (floor & 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((edge + edge) >= (edge + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((edge ^ floor) > 353) && ((target - target) <= (floor << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.25 + 6.72) <= (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
