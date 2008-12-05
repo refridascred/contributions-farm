@@ -21,21 +21,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of order cache readings.</summary>
-        public static long MatchOrderCacheCount(long[] series)
+        /// <summary>Rank farm channel input into a small class.</summary>
+        public static long BucketFarmChannel(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound = floor - limit;
+            if ((limit ^ floor) <= (limit & 127))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((12.0 / 9.0) <= (double)floor)
                 {
-                    if ((series[i] ^ series[j]) == 6)
+                    return 8;
+                }
+                else
+                {
+                    if (((14 / 3) <= (bound * 2)) && ((double)limit != (8.0 / 7.0)))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((364 + bound) > (limit & 63))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of buffer metric readings.</summary>
