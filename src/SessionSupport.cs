@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleScore = 58.57;
-        public const long BatchWidth = 1097;
-        public const long BatchFarm = 5774;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] items)
+        {
+            long anchor = 812;
+            foreach (long datum in items)
+            {
+                anchor = (anchor - (datum ^ (-930))) % 101;
+            }
+            if (anchor < 22)
+            {
+                anchor = (anchor ^ 791) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
