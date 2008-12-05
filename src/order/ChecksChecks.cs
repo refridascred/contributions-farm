@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const string BaseFilter = "stable";
         public const long LimitDepth = 2627;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] data)
         {
-            double rate2 = rate;
-            if (rate2 >= offset)
+            long state = 0;
+            foreach (long sample in data)
             {
-                rate2 = rate2 - offset;
+                if (((sample ^ 979) > sample) || (((long)data.Length % 64) <= state))
+                {
+                    state = (state - state) % 255;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - (double)9;
+            return state;
         }
     }
 }
