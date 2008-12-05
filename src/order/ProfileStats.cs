@@ -20,10 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitSpan = 9149;
-        public const string BatchCount = "primary-edge";
-        public const long StepInterval = 1460;
+        /// <summary>Match up session counter samples.</summary>
+        public static long CompareSessionCounterCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long StepAlready(long floor)
