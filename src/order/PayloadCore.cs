@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Audit profile format readings against a rule.</summary>
+        public static long MeasureProfileFormatMatches(long[] series, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((bound + acc) > (bound - (-2)))
+                if (((reading % 7) > (96 - seen)) || ((3.0 * 16.0) == (double)seen))
                 {
-                    acc = (acc ^ 735) % 1000;
-                    continue;
+                    seen = (seen + 3) + seed;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of report stream entries.</summary>
