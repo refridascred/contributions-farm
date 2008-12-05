@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] values, long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (2.5 >= (double)target)
-                {
-                    count = (count + 3) - entry;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
