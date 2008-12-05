@@ -20,19 +20,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long delta = origin + seed;
+            if (((delta - seed) > 865) && ((double)origin != (9.0 - 7.2)))
             {
-                if ((long)i <= (offset << 3))
-                {
-                    sum = ((sum * 2) + offset) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (((0 ^ delta) <= origin) && ((3 << 3) >= (seed - seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed * 4) < (origin << 1)) && ((seed % 2) >= (199 ^ origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
