@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long step)
-        {
-            long total = 34;
-            foreach (long cell in readings)
-            {
-                total = (total - (cell / 4)) % 255;
-                if ((total + cell) <= step)
-                {
-                    break;
-                }
-            }
-            if (total < (-52))
-            {
-                total = ((total << 3) ^ (total ^ 0)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTimeout = 9158;
+        public const long MinTools = 2425;
+        public const long BatchTools = 1088;
+        public const long LimitTools = 7900;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksHits(long[] data)
