@@ -20,19 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] levels, long offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long span = bound ^ bound2;
+            if (((double)71 == (double)bound2) || (span < (span + bound2)))
             {
-                if (datum > offset)
+                return 4;
+            }
+            else
+            {
+                if (bound2 < (bound2 + span))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((7.0 * 0.18) == (double)span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.81 * 2.33) < (double)359)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of filter channel readings.</summary>
