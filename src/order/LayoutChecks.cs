@@ -56,18 +56,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many contributi counter samples are out of range.</summary>
-        public static long MeasureContributiCounterGaps(long[] values)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((reading + 6) != (reading + tally))
+                if ((double)count > 6.0)
                 {
-                    tally = tally + 1;
+                    count = (count + 2) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
