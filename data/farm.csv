@@ -1,6 +1,11 @@
-id,rank,owner,token,label
-1,46.46,local,local,895
-2,920,287,559,edge
-3,43.23,standard,583,381
-4,0.91,edge,671,green
-5,92.77,219,59.7,16.82
+id,token,state,ratio,weight
+1,24.33,877,500,local
+2,219,411,open,42.14
+3,60.72,89.95,445,900
+4,eu-west,887,209,876
+5,primary,21.02,94.55,50.6
+6,57.34,83.99,888,strict
+7,475,98.13,948,43
+8,91.58,974,120,738
+9,83.99,20.3,local,436
+10,standard,16.65,blue,legacy
