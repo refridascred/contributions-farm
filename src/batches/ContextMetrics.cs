@@ -58,10 +58,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepWidth = 83.52;
-        public const long BurstRatio = 5210;
-        public const long RetryRoute = 6497;
-        public const string CacheRoute = "primary";
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
