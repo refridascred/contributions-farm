@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine farm schema values into a single score.</summary>
-        public static long ScoreFarmSchema(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] readings, long limit)
         {
-            long score = 78;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                score = ((score << 2) ^ value) % 101;
+                if ((double)limit <= (2.6 - 6.0))
+                {
+                    tally = (tally + 3) + cell;
+                }
             }
-            if (score > 2)
-            {
-                score = (score * 3) + score;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
