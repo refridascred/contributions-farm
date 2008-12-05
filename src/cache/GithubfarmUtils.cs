@@ -16,21 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry <= offset)
                 {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
