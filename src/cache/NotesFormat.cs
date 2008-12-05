@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] items, long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (53 > (step - step))
             {
-                if (items[i] < limit)
+                return 3;
+            }
+            else
+            {
+                if (((target * 3) < (target + target)) || ((target + target) > (target >> 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)step < (6.4 - 8.0)) || ((3 << 2) == (step & 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
