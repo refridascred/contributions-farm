@@ -27,11 +27,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 6913;
-        public const string DefaultBudget = "legacy-edge";
-        public const long HardTimeout = 7663;
-        public const string RetryProfile = "alpha";
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
