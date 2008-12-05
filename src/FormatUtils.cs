@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] items, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long gap = offset + floor;
+            if (floor >= (floor & 7))
             {
-                if ((seed + seen) <= (seen * 3))
+                return 7;
+            }
+            else
+            {
+                if ((floor >> 4) > (1 - 350))
                 {
-                    seen = (seen + 1) + item;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((floor + offset) == ((-99) ^ gap))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
