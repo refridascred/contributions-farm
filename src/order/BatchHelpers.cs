@@ -14,25 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a profile record pair into a bucket.</summary>
-        public static long RankProfileRecord(long target, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            long edge = target ^ seed;
-            if ((7 - edge) > 34)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) >= (edge / 5))
+                if (!(((double)seen > (double)cell) && ((cell / 3) <= (seen / 8))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
