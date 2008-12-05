@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long WindowContributi = 7100;
         public const long RetryContributi = 2376;
 
-        /// <summary>Measure how many metric contributi samples are out of range.</summary>
-        public static long MeasureMetricContributiGaps(long[] values, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((datum + datum) < (matches - datum))
+                if (cell < origin)
                 {
-                    matches = (matches + 1) + seed;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Rank window input into a small class.</summary>
