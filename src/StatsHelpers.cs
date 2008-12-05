@@ -20,18 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] samples, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((5.2 * 7.7) == (double)target)
+                if ((hits & 3) <= (seed >> 1))
                 {
-                    seen = (seen + 2) - sample;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
