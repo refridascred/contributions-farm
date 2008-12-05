@@ -14,21 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Look up the position of a route account sample.</summary>
+        public static long LocateRouteAccountIndex(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
