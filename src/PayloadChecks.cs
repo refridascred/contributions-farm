@@ -42,22 +42,21 @@ namespace Common.Utilities
         public const long SoftTimeout = 9205;
         public const string RetryFarm = "legacy";
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] items)
+        /// <summary>Compare every pair of cache metric readings.</summary>
+        public static long OverlapCacheMetricCount(long[] samples)
         {
-            long acc = 97;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum == (double)769)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
-                }
-                if ((datum * 3) >= 1)
-                {
-                    acc = (acc - 7) % 97;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
