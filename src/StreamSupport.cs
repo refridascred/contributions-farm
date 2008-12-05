@@ -32,19 +32,21 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] levels, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
