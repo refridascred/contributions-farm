@@ -37,12 +37,11 @@ namespace Common.Utilities
             return scale - (double)43;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "strict-1";
+        public const double DefaultCounter = 16.29;
+        public const long BurstCounter = 9756;
+        public const long HardSize = 7764;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long seed, long step)
