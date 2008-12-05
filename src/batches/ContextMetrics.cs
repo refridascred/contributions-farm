@@ -20,19 +20,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stream route readings against a bound.</summary>
-        public static bool GuardStreamRouteBounds(long[] readings, long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate format order samples.</summary>
