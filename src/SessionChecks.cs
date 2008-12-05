@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long offset)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long step = floor ^ offset;
+            if (3.8 < (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((20 ^ step) == (floor & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step + floor) != (floor + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
