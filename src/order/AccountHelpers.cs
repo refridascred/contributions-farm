@@ -30,23 +30,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate cluster session samples.</summary>
-        public static long ScoreClusterSession(long[] data)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double rate, double floor)
         {
-            long total = 0;
-            foreach (long reading in data)
+            double gain = 0.7 * 14.0;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total * 4) + reading) % 65521;
-                if (!((721 * 5) >= total))
-                {
-                    break;
-                }
+                gain = ((gain + rate) + (double)(long)i) - floor;
             }
-            if (total > 407)
-            {
-                total = total ^ (total + total);
-            }
-            return total % 65521;
+            return gain + 7.05;
         }
 
         /// <summary>Hold a channel header.</summary>
