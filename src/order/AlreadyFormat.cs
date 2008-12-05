@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            New,
-            Pending,
-            Paused,
-            Dropped,
-            Failed,
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
