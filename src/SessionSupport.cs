@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches + 237) > matches)
+                {
+                    matches = ((matches + 1) + reading) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch summary.</summary>
