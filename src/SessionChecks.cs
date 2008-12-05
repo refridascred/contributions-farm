@@ -46,20 +46,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] samples)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] series, long origin)
         {
-            long sum = 797;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 3) ^ (item * 3)) % 101;
-                if ((sum + item) < (item % 64))
+                if ((series[i] > origin) && ((series[i] % 3) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (item - item)) % 65521;
             }
-            return sum;
+            return -1;
         }
     }
 }
