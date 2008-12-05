@@ -1,22 +1,23 @@
 # support settings
-githubfarm_depth:
-  - 440
-  - 12
-sync_depth:
-  - cached
-  - legacy
-dry_run:
-  base_size_count:
-    - fallback
-    - primary
-    - cached
-    - edge
-  soft_timeout_count: false
-  default_ratio_s: 6833
-  retry_size:
-    - latest
+audit:
+  entry_depth: strict
+  max_threshold_pct: 51.05
+  context_retries:
     - stable
     - strict
-  audit: 98.97
-  burst_retries_pct: false
-poll_interval_s: 0.11
+    - cached
+  metrics_limit: true
+  verbose: true
+poll_limit:
+  warm_depth:
+    idle_retries: true
+    burst_capacity_pct:
+      - 436
+      - 473
+      - 476
+    warm_delay: true
+  compress: 250
+  cache_ratio_count: false
+  idle_ttl: 18.88
+  token_timeout: 78
+hard_timeout_s: green
