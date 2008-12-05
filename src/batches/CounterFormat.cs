@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long DefaultCount = 7547;
         public const long CacheFactor = 1153;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples, long target)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long total = 904;
-            foreach (long cell in samples)
-            {
-                total = ((total + (0 * 4)) % 4096) + target;
-                total = total + (cell - cell);
-            }
-            return total;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
