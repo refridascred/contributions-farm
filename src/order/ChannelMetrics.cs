@@ -20,15 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double ratio, double floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double scale = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (ratio + scale)) + (double)(long)i;
-            }
-            return scale + (double)16;
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Find the first counter support entry that matches the target.</summary>
