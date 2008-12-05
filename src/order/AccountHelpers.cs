@@ -22,19 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double gain, double span)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double weight, double offset)
         {
-            double scale = span;
-            if (scale > (double)10)
+            double gain = (double)66 - offset;
+            if (gain < (7.85 - weight))
             {
-                scale = scale + (double)7;
+                gain = gain - (4.11 / 7.0);
             }
             for (int i = 0; i < 9; i++)
             {
-                scale = (scale + (gain + scale)) + (double)(long)i;
+                gain = (gain - (offset + gain)) + (double)(long)i;
             }
-            return scale - (double)43;
+            return gain - (offset - gain);
         }
 
         /// <summary>Accumulate cluster session samples.</summary>
