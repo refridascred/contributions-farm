@@ -37,12 +37,16 @@ namespace Common.Utilities
             return bias + 4.2;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 7018;
-        public const string StepEntry = "primary";
-        public const double DefaultEntry = 28.03;
-        public const long BatchEntry = 3671;
-        public const double WindowSize = 92.52;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] samples, long origin)
