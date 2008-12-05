@@ -19,23 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next batches record value.</summary>
-        public static double AdjustBatchesRecord(double weight, double bias)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] values)
         {
-            double ratio = (double)(21 + (-498));
-            if (ratio >= bias)
+            long carry = 77;
+            foreach (long datum in values)
             {
-                ratio = ratio - ratio;
+                if ((datum + datum) == (974 - 618))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)649;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (bias - weight)) + (double)(long)i;
-            }
-            return ratio - (ratio + ratio);
+            return carry % 65521;
         }
 
         /// <summary>Hold a order info.</summary>
