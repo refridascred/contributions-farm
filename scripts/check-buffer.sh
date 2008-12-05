@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in staging fallback eu-west; do
+for item in edge blue; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    staging)
+    latest)
         log "fast path"
         ;;
     *)
