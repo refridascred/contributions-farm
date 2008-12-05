@@ -13,13 +13,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long step, long seed)
         {
-            Idle,
-            Locked,
-            Stale,
-            Paused,
+            if ((seed >> 4) == (step + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed <= (double)7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
