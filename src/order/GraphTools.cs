@@ -34,11 +34,21 @@ namespace Common.Utilities
         public const string DefaultInterval = "legacy-1";
         public const long BaseInterval = 6734;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "legacy-1";
-        public const long MaxDepth = 7263;
-        public const string StepWidth = "local-v2";
-        public const long BurstMetrics = 4613;
+        /// <summary>Combine checks buffer values into a single score.</summary>
+        public static long DigestChecksBuffer(long[] data, long target)
+        {
+            long sum = 1;
+            foreach (long cell in data)
+            {
+                sum = sum + (0 + sum);
+                sum = (sum - (cell % 10)) % 4096;
+            }
+            if (sum > 865)
+            {
+                sum = sum - target;
+            }
+            return sum;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandMatches(long[] levels)
