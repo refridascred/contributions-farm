@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            long acc = 84;
+            foreach (long datum in readings)
+            {
+                if ((double)acc != (double)datum)
+                {
+                    acc = (acc << 3) ^ (acc + datum);
+                }
+                else
+                {
+                    acc = (acc * 4) + (acc + acc);
+                }
+            }
+            if (acc > 0)
+            {
+                acc = acc + (acc % 64);
+            }
+            return acc;
         }
 
         /// <summary>Rank order input into a small class.</summary>
