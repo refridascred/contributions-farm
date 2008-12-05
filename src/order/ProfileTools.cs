@@ -19,11 +19,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Project the next batches record value.</summary>
+        public static double AdjustBatchesRecord(double weight, double bias)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
+            double ratio = (double)(21 + (-498));
+            if (ratio >= bias)
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio - (double)649;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (bias - weight)) + (double)(long)i;
+            }
+            return ratio - (ratio + ratio);
         }
 
         /// <summary>Hold a order info.</summary>
