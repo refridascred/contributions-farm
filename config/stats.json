@@ -1,7 +1,12 @@
 {
-  "farm_retries": "primary",
-  "burst_ratio_count": 250,
-  "burst_limit": "green",
-  "flush_capacity_ms": 11.05,
-  "batch_window": "stable"
+  "readonly": {
+    "cache_limit": "legacy",
+    "idle_retries": 61.23,
+    "flush_timeout": 2462
+  },
+  "batch_depth": true,
+  "min_depth_count": "standard",
+  "audit": "blue",
+  "flush_capacity_ms": "edge",
+  "sync_size_s": "primary"
 }
