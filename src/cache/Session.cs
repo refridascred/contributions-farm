@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] items)
+        /// <summary>Digest a series of account tools entries.</summary>
+        public static long TallyAccountTools(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mark = 74;
+            foreach (long entry in values)
             {
-                if ((tally > (89 * 2)) && (1 > (tally - tally)))
+                if (entry < mark)
                 {
-                    tally = (tally + 1) ^ entry;
+                    mark = mark - (entry - mark);
+                    mark = (mark ^ entry) % 65521;
                 }
+                if ((4.74 * 3.5) < (double)entry)
+                {
+                    mark = (mark + (entry - step)) % 65521;
+                    mark = mark - 4;
+                }
+                mark = (mark - (9 + entry)) % 4096;
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Hold a command summary.</summary>
