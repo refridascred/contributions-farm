@@ -17,31 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a batch channel value against two limits.</summary>
-        public static long ClassifyBatchChannel(long offset, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] series, long bound)
         {
-            if ((offset - floor) <= (offset + offset))
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + floor) == (offset << 3))
+                if (reading <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor % 2) < (offset - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a farm options.</summary>
