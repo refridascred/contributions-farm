@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] data, long step)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((step % 97) > datum)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
