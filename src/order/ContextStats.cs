@@ -63,17 +63,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first batch route entry that matches the target.</summary>
-        public static long LookupBatchRouteIndex(long[] samples, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                if (item <= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
