@@ -34,12 +34,11 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "standard";
+        public const double BatchSpan = 21.7;
+        public const long BurstFactor = 5687;
+        public const long StepCount = 2116;
+        public const long SoftDepth = 5299;
     }
 }
