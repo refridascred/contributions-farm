@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] data, long floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((floor - reading) < floor) && ((double)floor < (7.9 / 5.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
