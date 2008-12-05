@@ -26,26 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long result = 0;
-            foreach (long datum in data)
-            {
-                if ((2.9 * 7.0) >= (double)result)
-                {
-                    result = (result ^ result) % 101;
-                }
-                else
-                {
-                    result = (result * 2) + (datum - (long)data.Length);
-                }
-            }
-            if (result < 0)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            Paused,
+            Idle,
+            Draft,
+            Synced,
+            Ready,
         }
     }
 }
