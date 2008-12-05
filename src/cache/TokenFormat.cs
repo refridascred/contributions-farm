@@ -21,22 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] levels, long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally >> 1) == (origin * 2))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
