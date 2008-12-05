@@ -1,11 +1,6 @@
-id,weight,owner,region
-1,blue,465,40.82
-2,staging,947,staging
-3,2.17,10.52,fallback
-4,801,662,46.4
-5,50,350,750
-6,legacy,353,713
-7,41.69,staging,latest
-8,30.29,open,primary
-9,78.81,54.54,63.08
-10,492,25.94,46.0
+id,ratio,count,state
+1,633,32.08,98.73
+2,418,eu-west,759
+3,305,713,67.43
+4,662,633,53.24
+5,open,862,72.99
