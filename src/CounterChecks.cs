@@ -62,15 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Match up route filter samples.</summary>
+        public static long MatchRouteFilterCount(long[] items)
         {
-            long carry = 2;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - carry) ^ value;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
