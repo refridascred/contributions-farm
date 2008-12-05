@@ -1,10 +1,7 @@
-id,active,count,token
-1,646,577,stable
-2,757,open,staging
-3,669,327,38
-4,standard,346,cached
-5,open,873,76.07
-6,40.17,strict,456
-7,56.62,fallback,626
-8,legacy,816,fallback
-9,open,70.0,eu-west
+id,level,score,label
+1,37.71,fallback,10.67
+2,75.44,89.6,51.54
+3,edge,552,37.08
+4,cached,793,staging
+5,staging,952,45.13
+6,47.95,33.74,standard
