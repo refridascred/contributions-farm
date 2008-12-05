@@ -29,17 +29,12 @@ namespace Common.Utilities
         public const string CacheMetrics = "staging-1";
         public const string MinRatio = "latest-edge";
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] series, long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Retry,
+            Queued,
         }
     }
 }
