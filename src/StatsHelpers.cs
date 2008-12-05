@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] levels, long seed)
+        /// <summary>Accumulate record route samples.</summary>
+        public static long CombineRecordRoute(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long score = 4;
+            foreach (long cell in values)
             {
-                if ((hits & 3) <= (seed >> 1))
+                score = ((score + (331 % 8)) % 255) ^ cell;
+                if ((score >> 2) > (step + step))
                 {
-                    hits = (hits + 2) - datum;
+                    score = ((score << 2) ^ (step << 3)) % 255;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a counter stats.</summary>
