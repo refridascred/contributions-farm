@@ -19,12 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum - (sum + (long)i)) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
