@@ -38,15 +38,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Locate a cluster contributi reading by value.</summary>
+        public static long LocateClusterContributiIndex(long[] data, long floor)
         {
-            long mix = 15;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 4) + (item + 0)) % 101;
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Adjust a stream reading.</summary>
