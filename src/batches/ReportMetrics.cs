@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((((-33) >> 4) <= (5 - entry)) || ((entry - origin) == (origin & 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "local-1";
+        public const long RetryFactor = 7353;
+        public const double MinBuffer = 20.0;
+        public const string BurstBuffer = "staging-edge";
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
