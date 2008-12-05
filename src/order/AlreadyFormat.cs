@@ -46,24 +46,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long origin, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            if ((double)floor != (0.81 * 8.0))
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (17.0 < (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
