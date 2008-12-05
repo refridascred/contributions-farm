@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const long CacheTimeout = 4475;
         public const string HardDepth = "open-edge";
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] values, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Failed,
+            Queued,
         }
     }
 }
