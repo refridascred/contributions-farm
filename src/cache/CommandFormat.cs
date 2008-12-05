@@ -36,32 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue metrics samples.</summary>
-        public static long ScoreQueueMetrics(long[] series, long limit)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double span)
         {
-            long mark = 368;
-            foreach (long sample in series)
+            double scale = (span * 19.0) * 7.0;
+            if (scale <= span)
             {
-                if ((double)limit == (double)sample)
-                {
-                    long next = (sample - (-33)) >> 3;
-                    mark = (mark ^ (512 + next)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (sample >> 1)) % 4096;
-                }
-                if ((mark << 3) > (sample / 4))
-                {
-                    mark = ((mark << 3) ^ (5 % 24)) % 4096;
-                }
-                mark = ((mark << 3) ^ (mark + limit)) % 65521;
+                scale = (scale + (8.06 * 20.0)) - gain;
             }
-            if (mark < 5)
+            else
             {
-                mark = (mark * 2) + (limit * 2);
+                scale = scale + (double)8;
             }
-            return mark;
+            return scale - (scale + scale);
         }
 
         /// <summary>Match up farm samples.</summary>
