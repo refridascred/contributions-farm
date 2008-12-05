@@ -22,21 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - acc) + (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Blend two route measurements.</summary>
