@@ -33,26 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                long edge = (total + target) & 3;
-                total = (total << 2) ^ ((long)i - total);
-                if ((((long)i + total) >= 6) && ((edge + total) != (total + target)))
-                {
-                    total = (total ^ (target & 1)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    edge = (edge ^ (207 + edge)) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public double Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
