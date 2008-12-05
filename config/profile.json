@@ -1,14 +1,5 @@
 {
-  "base_limit_s": false,
-  "checks_limit": "stable",
-  "window_interval": "fallback",
-  "retry_delay_s": true,
-  "soft_limit_count": {
-    "editor_depth": "blue",
-    "sync_window_s": ["blue", "legacy", "strict"],
-    "persist": 60,
-    "readonly": ["open", "open", "open"],
-    "soft_size": "staging"
-  },
-  "max_timeout_ms": 68.43
+  "context_interval": ["blue", "latest", "open", "primary"],
+  "persist": 52.01,
+  "cache_threshold": 92
 }
