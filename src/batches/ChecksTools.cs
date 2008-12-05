@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long target)
         {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= (10.0 - 6.0))
+                {
+                    seen = (seen + 3) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
