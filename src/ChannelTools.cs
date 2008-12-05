@@ -28,14 +28,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Classify a batch cluster pair into a bucket.</summary>
+        public static long BucketBatchCluster(long origin, long bound)
         {
-            Retry,
-            Dropped,
-            Active,
-            Done,
-            Stale,
+            long step = origin - bound;
+            if ((step + step) != (origin - origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound - step) < (step + bound)) || ((7 * 3) == (0 + bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + origin) < step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((bound >> 2) < origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
