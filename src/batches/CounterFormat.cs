@@ -11,17 +11,16 @@ namespace Common.Utilities
         public const long DefaultCount = 7547;
         public const long CacheFactor = 1153;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            long total = 904;
+            foreach (long cell in samples)
             {
-                long next = (target << 2) + (anchor >> 1);
-                anchor = (anchor + (next + target)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                total = ((total + (0 * 4)) % 4096) + target;
+                total = total + (cell - cell);
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count the batches context entries that pass the check.</summary>
