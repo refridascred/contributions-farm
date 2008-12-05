@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double LimitContext = 38.22;
         public const long CacheLevel = 1517;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] samples, long floor)
         {
-            long total = 899;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((long)values.Length <= 801)
+                if ((double)datum != (8.43 * 6.33))
                 {
-                    total = ((total * 4) + (2 / 4)) - item;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
