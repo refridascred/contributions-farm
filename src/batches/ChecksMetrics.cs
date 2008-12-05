@@ -24,11 +24,22 @@ namespace Common.Utilities
         public const long WindowWidth = 2931;
         public const double MinFactor = 98.33;
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count + count) < count)
+                {
+                    count = ((count + 1) ^ item) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route state values.</summary>
