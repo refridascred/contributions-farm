@@ -62,39 +62,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token schema value against two limits.</summary>
-        public static long BucketTokenSchema(long target, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long edge = target + limit;
-            if (!((target - limit) > (4 + edge)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge + limit) <= (target / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target >= (0.09 - 1.28))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + 3) < (limit + edge))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the context status values.</summary>
