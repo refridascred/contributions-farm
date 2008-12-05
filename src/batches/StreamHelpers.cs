@@ -51,21 +51,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Compare every pair of order support readings.</summary>
+        public static long OverlapOrderSupportCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 5)
+                    if ((levels[i] ^ levels[j]) == 15)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the session level values.</summary>
