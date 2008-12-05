@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = (floor + 7.9) * 3.02;
+            if (bias <= (double)0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + (bias - 4.8)) + weight;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (4.6 * 17.0)) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Hold a metric record.</summary>
