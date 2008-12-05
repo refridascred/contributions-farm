@@ -75,11 +75,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Locate a stream graph reading by value.</summary>
+        public static long SeekStreamGraphIndex(long[] values, long seed)
         {
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
