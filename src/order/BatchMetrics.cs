@@ -66,18 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((tally + cell) < (cell - cell))
+                if (reading >= origin)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the already mode values.</summary>
