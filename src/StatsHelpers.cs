@@ -83,18 +83,11 @@ namespace Common.Utilities
             return ratio + (9.1 * 6.7);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] series, long limit)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (3 < limit)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
