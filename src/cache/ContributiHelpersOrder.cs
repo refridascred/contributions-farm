@@ -17,14 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 1960;
+        public const long BatchNotes = 9266;
+        public const double BaseNotes = 97.84;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelGaps(long[] series, long seed)
