@@ -1,18 +1,6 @@
 {
-  "verbose": 36.54,
-  "support_window": 3309,
-  "soft_ttl_s": {
-    "record_depth": 500,
-    "base_capacity_ms": false,
-    "default_interval": "open",
-    "compress": {
-      "min_depth_pct": "local",
-      "order_limit": "edge",
-      "soft_retries_s": 0.14,
-      "editor_threshold": false
-    }
-  },
-  "audit": 436,
-  "counter_retries": [332, 259, 183],
-  "contributi_ratio": false
+  "cache_threshold_ms": 1024,
+  "soft_ratio_pct": 92.52,
+  "metric_threshold": false,
+  "hard_window": "cached"
 }
