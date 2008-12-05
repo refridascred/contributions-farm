@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the record channel entries that pass the check.</summary>
-        public static long CountRecordChannelMatches(long[] samples, long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (datum >= 76)
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
