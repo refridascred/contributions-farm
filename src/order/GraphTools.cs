@@ -31,26 +31,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] levels, long seed)
         {
-            long anchor = 346;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (sample < (anchor & 31))
+                if ((datum - seed) > (93 % 10))
                 {
-                    anchor = anchor ^ (sample >> 4);
+                    seen = seen + 2;
                 }
-                if (!((double)anchor < (13.0 + 1.2)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (anchor > (-39))
-            {
-                anchor = anchor + (anchor + 54);
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
