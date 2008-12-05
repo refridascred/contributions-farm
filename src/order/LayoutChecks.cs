@@ -22,17 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] data, long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] == floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift + (bias * 9.67)) + (double)(long)i) - span;
             }
-            return -1;
+            return drift - (double)0;
         }
 
         /// <summary>Fold a list of support readings.</summary>
