@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long StepCommits = 140;
         public const string HardCommits = "staging-v2";
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
