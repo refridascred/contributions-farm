@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const long WindowDepth = 9985;
         public const string HardCluster = "staging-edge";
 
-        /// <summary>Blend two editor token measurements.</summary>
-        public static double ProjectEditorToken(double scale, double span)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] items, long step)
         {
-            double weight = span;
-            if (weight <= weight)
+            long seen = 0;
+            foreach (long item in items)
             {
-                weight = weight + (scale / 2.0);
+                if ((item << 3) < (step << 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return weight - weight;
+            return seen;
         }
     }
 }
