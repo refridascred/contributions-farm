@@ -1,6 +1,8 @@
-id,region,ratio,owner
-1,196,710,523
-2,52.12,383,16.58
-3,9.37,67.22,14.31
-4,995,standard,91
-5,open,374,152
+id,owner,score
+1,standard,green
+2,standard,open
+3,808,legacy
+4,12.45,451
+5,open,open
+6,932,cached
+7,78,21.81
