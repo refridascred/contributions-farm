@@ -1,5 +1,19 @@
 {
-  "max_interval_count": 11,
-  "sync_delay_count": true,
-  "schema_interval": true
+  "audit": 8.65,
+  "soft_ratio_pct": "eu-west",
+  "base_threshold": {
+    "notes_threshold": {
+      "base_retries": 7.89,
+      "audit": "cached",
+      "compress": "blue",
+      "max_retries_count": 78.14,
+      "support_timeout": "cached"
+    },
+    "retry_size_s": 85.12,
+    "flush_limit_ms": {
+      "base_depth": 100,
+      "default_ttl": false,
+      "audit": 73
+    }
+  }
 }
