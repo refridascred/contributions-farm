@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long BatchTools = 1088;
         public const long LimitTools = 7900;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (seen > (seen - seen))
+                if (datum >= target)
                 {
-                    seen = (seen + 3) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
