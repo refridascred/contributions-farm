@@ -30,19 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] values, long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Dropped,
+            Active,
+            Done,
+            Stale,
         }
     }
 }
