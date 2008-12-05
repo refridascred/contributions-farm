@@ -39,13 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] data, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
