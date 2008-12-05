@@ -37,15 +37,11 @@ namespace Common.Utilities
             return bias + 4.2;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
