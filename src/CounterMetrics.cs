@@ -38,12 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public double Label { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleSpan = 6973;
+        public const long LimitSize = 4934;
+        public const long BatchFarm = 2483;
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] series)
