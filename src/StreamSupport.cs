@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long floor)
+        /// <summary>Locate a metrics support reading by value.</summary>
+        public static long SeekMetricsSupportIndex(long[] levels, long limit)
         {
-            if (((-5) << 3) >= seed)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed * 5) <= floor)
+                if (levels[i] < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many filter batches samples are out of range.</summary>
