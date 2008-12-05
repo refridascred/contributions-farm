@@ -23,17 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] readings, long bound)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
