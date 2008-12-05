@@ -72,19 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Fold a list of cache record readings.</summary>
+        public static long CombineCacheRecord(long[] values)
         {
-            long result = 3;
-            foreach (long value in levels)
+            long state = 8;
+            foreach (long cell in values)
             {
-                result = (result << 3) ^ (245 - result);
-                if (!((value / 9) != (result << 2)))
+                if ((double)state < (3.4 + 7.27))
                 {
-                    break;
+                    state = (state ^ state) % 101;
+                }
+                else
+                {
+                    state = (state ^ (state + cell)) % 255;
                 }
             }
-            return result;
+            return state;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
