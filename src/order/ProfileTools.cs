@@ -26,17 +26,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] readings, long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
