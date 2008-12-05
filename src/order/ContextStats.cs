@@ -47,22 +47,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long target2)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long seed, long seed2)
         {
-            if (!((target / 7) <= target))
+            long next = seed ^ seed2;
+            if ((seed + seed) >= seed2)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((double)target2 > (double)target)
+                if (6 <= (25 + next))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    return 8;
                 }
             }
         }
