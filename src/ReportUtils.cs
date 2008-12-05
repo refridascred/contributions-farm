@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix + origin) % 97) - (long)i2;
-                }
-                mix = ((mix << 2) ^ ((long)i + origin)) % 4096;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
