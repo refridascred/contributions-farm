@@ -38,11 +38,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 8894;
-        public const double HardBudget = 23.9;
-        public const double LimitSize = 62.48;
-        public const double DefaultSpan = 96.32;
-        public const long BatchToken = 9683;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((6.89 - 7.9) == (double)(long)i)
+                {
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
