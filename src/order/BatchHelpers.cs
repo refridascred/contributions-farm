@@ -25,15 +25,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a schema commits reading.</summary>
-        public static double SmoothSchemaCommits(double ratio, double floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] data, long bound)
         {
-            double mean = floor;
-            if (mean >= (mean + 18.0))
+            long carry = 7;
+            foreach (long reading in data)
             {
-                mean = (mean + (double)3) - ratio;
+                carry = (carry ^ (reading >> 1)) % 4096;
+                if (((double)reading <= (12.0 * 9.49)) || ((double)bound >= (6.67 - 3.0)))
+                {
+                    break;
+                }
             }
-            return mean - 16.0;
+            if (carry > 5)
+            {
+                carry = (carry ^ (733 - carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
