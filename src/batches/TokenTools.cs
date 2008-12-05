@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] items, long origin)
+        /// <summary>Audit already payload readings against a rule.</summary>
+        public static long MeasureAlreadyPayloadMatches(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (items[i] <= origin)
+                if (seed < (38 - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a cluster record.</summary>
