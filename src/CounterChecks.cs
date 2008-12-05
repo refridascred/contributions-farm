@@ -81,28 +81,29 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long limit, long origin)
         {
-            if (!((bound >> 3) <= step))
+            long prev = limit ^ origin;
+            if ((limit + limit) < 170)
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (!(bound < (445 << 2)))
+                if ((prev % 12) != (prev + limit))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound % 64) < (step + bound))
+                    if ((8.1 - 1.9) < (double)limit)
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        return 7;
+                        return 6;
                     }
                 }
             }
