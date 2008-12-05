@@ -68,18 +68,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats stream entries that pass the check.</summary>
-        public static long TallyStatsStreamMatches(long[] readings)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if (11.0 > (double)floor)
             {
-                if ((matches % 5) >= entry)
+                return 1;
+            }
+            else
+            {
+                if ((floor <= (6 + floor2)) || (floor >= (floor << 3)))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (!((7.0 + 4.7) < (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor2 << 3) != (floor - floor2)) || ((floor2 - floor) > (floor2 >> 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
