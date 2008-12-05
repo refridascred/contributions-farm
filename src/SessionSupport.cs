@@ -23,24 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] samples)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long state = -3;
-            foreach (long cell in samples)
-            {
-                state = (state << 3) ^ 67;
-                state = (state + (state + state)) % 97;
-                if ((state / 9) >= cell)
-                {
-                    state = (state * 4) + 7;
-                }
-            }
-            if (state > 0)
-            {
-                state = state - (state << 2);
-            }
-            return state;
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
