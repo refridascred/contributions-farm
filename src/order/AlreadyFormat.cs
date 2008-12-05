@@ -64,12 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            Done,
-            Queued,
-            Stale,
+            double gain = span;
+            if (gain < 6.2)
+            {
+                gain = (gain - (span / 4.0)) + rate;
+            }
+            return gain - span;
         }
     }
 }
