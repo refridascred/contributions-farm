@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long LimitCache = 808;
         public const long CacheLevel = 9625;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 87.73;
-        public const long SoftFactor = 4527;
-        public const double MaxLevel = 0.82;
-        public const long BaseCount = 1769;
-        public const long BurstCache = 8366;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
