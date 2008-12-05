@@ -47,10 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 13.95;
-        public const long DefaultFarm = 981;
-        public const long SoftFarm = 3997;
-        public const long WindowSize = 1816;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
