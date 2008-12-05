@@ -1,10 +1,12 @@
 # Command notes
 
-Use checks settings to tune how often record data is refreshed.
-Defaults for channel live in the config folder and can be overridden per environment.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Use token settings to tune how often stats data is refreshed.
+A checks that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Log every format change
-- Document new token fields
-- Review record limits each release
+- Validate farm input early
+- Log every channel change
+- Document new farm fields
+- Review editor limits each release
