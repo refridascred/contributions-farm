@@ -26,26 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor record samples.</summary>
-        public static long DigestEditorRecord(long[] series, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] series, long offset)
         {
-            long state = 271;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((8.2 * 8.5) >= (double)floor)
+                if (hits >= (hits - value))
                 {
-                    state = (state ^ state) % 255;
+                    hits = (hits + 3) + offset;
                 }
                 else
                 {
-                    state = ((state * 2) + (floor & 3)) % 1000;
-                }
-                if (entry <= (entry << 2))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
