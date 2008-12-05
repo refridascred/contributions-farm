@@ -33,21 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((floor <= (764 + floor)) || (((long)i * 4) < (result / 4))))
-                {
-                    result = result + (long)i;
-                }
-                result = (result + floor) % 97;
-                result = (result ^ (result & 7)) % 97;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Draft,
+            Retry,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
