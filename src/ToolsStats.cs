@@ -64,17 +64,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] readings, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if (readings[i] > floor)
+                if (reading != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
