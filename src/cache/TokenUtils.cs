@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double rate, double floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double mean = (double)228 / 9.0;
-            return ((mean + (double)38) + rate) + floor;
+            Ready,
+            Dropped,
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a token snapshot.</summary>
