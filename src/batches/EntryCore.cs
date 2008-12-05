@@ -54,9 +54,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryBudget = 9691;
-        public const string WindowInterval = "staging-1";
-        public const double DefaultScore = 69.26;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double rate, double floor)
+        {
+            double weight = 9.7;
+            return ((weight + (weight + 1.96)) + rate) + floor;
+        }
     }
 }
