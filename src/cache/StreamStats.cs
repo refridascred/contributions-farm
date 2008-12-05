@@ -17,22 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] series)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (525 <= reading)
+                if (value > limit)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the route mode values.</summary>
