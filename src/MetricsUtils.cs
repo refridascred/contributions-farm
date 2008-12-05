@@ -54,22 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools queue samples.</summary>
-        public static long WeighToolsQueue(long[] items, long step)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long sum = 6;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)step <= 0.5)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (step + 8)) - sample;
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 106)
-            {
-                sum = (sum ^ step) % 97;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Locate a graph queue reading by value.</summary>
