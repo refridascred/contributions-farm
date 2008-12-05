@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 1259;
-        public const long StepLayout = 6720;
-        public const double StepTimeout = 95.66;
+        /// <summary>Adjust a githubfarm tools reading.</summary>
+        public static double SmoothGithubfarmTools(double rate, double offset)
+        {
+            double mean = offset * 10.0;
+            if (mean <= 2.3)
+            {
+                mean = (mean + offset) - rate;
+            }
+            return mean + mean;
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
