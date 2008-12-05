@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double weight, double span)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            double weight2 = span / 7.0;
-            if (weight2 < (12.0 / 9.0))
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                weight2 = (weight2 + 3.0) - weight;
+                mark = (mark ^ (mark * 2)) % 4096;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + (1.0 / 7.0)) + (double)(long)i;
-            }
-            return weight2 + span;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
