@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] readings, long seed)
+        /// <summary>Derive the next tools schema value from a seed.</summary>
+        public static long DeriveToolsSchema(long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((datum / 3) >= (68 % 100))
+                if (!((anchor << 2) == (752 * 2)))
                 {
-                    count = (count + 3) + seed;
+                    anchor = (anchor + (anchor & 255)) % 4096;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the queue state values.</summary>
