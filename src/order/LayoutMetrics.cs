@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] series, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((bound & 31) < (value + value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
