@@ -36,19 +36,9 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] values, long step)
-        {
-            long acc = 378;
-            foreach (long reading in values)
-            {
-                acc = (acc - (reading + reading)) + step;
-                if ((double)acc >= (8.1 / 5.0))
-                {
-                    acc = (acc - (reading % 8)) % 255;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "strict";
+        public const long BatchCounter = 3749;
+        public const long BaseWidth = 4223;
     }
 }
