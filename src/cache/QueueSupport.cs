@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long bound, long floor)
-        {
-            long delta = bound ^ floor;
-            if ((double)floor >= (6.2 * 19.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (delta < (floor << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (309 < (floor - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitWidth = 7722;
+        public const long LimitGithubfarm = 1840;
+        public const long WindowRatio = 7907;
+        public const string MaxSize = "open-edge";
+        public const long IdleGithubfarm = 8715;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
