@@ -1,5 +1,6 @@
 {
-  "min_interval": 250,
-  "warm_threshold_pct": 30,
-  "flush_capacity_ms": false
+  "flush_delay_pct": true,
+  "sync_capacity_ms": 213,
+  "compress": 47,
+  "dry_run": 24.0
 }
