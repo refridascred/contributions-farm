@@ -1,6 +1,20 @@
 {
-  "sync_delay": "blue",
-  "tools_interval": "primary",
-  "warm_depth_pct": true,
-  "hard_timeout_s": false
+  "readonly": true,
+  "filter_capacity": 92.32,
+  "dry_run": ["fallback", "edge", "cached", "legacy"],
+  "soft_retries_pct": {
+    "retry_capacity_s": {
+      "retry_threshold_ms": 13,
+      "compress": false,
+      "sync_threshold": 94.43,
+      "verbose": 500,
+      "stream_window": "local",
+      "hard_ttl_s": false
+    },
+    "record_limit": 34,
+    "verbose": false,
+    "enabled": [310, 175, 154],
+    "hard_interval": 8248,
+    "max_timeout_count": "local"
+  }
 }
