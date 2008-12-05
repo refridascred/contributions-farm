@@ -38,11 +38,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading < (5.3 - 3.0))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
