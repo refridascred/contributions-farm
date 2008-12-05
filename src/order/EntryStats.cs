@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Validate editor checks readings against a bound.</summary>
+        public static bool CheckEditorChecksRange(long[] values, long target)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
