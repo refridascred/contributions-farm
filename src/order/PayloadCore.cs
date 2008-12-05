@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long WindowContributi = 7100;
         public const long RetryContributi = 2376;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long step)
+        /// <summary>Measure how many metric contributi samples are out of range.</summary>
+        public static long MeasureMetricContributiGaps(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((data[i] >= step) && ((data[i] % 5) == 0))
+                if ((datum + datum) < (matches - datum))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank window input into a small class.</summary>
