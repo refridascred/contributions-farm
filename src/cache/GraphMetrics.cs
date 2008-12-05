@@ -51,11 +51,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
+            Stale,
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
