@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result - (long)i;
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a editor summary.</summary>
