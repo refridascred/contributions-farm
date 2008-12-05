@@ -39,11 +39,10 @@ namespace Common.Utilities
             return mean + (double)(-13);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 27.21;
-        public const long LimitBuffer = 2686;
-        public const long LimitDepth = 2139;
-        public const string MinBuffer = "standard-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSize = 5992;
+        public const string StepRatio = "standard-v2";
+        public const string MinCommits = "standard-v2";
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
