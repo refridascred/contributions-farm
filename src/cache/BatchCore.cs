@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data, long target)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long sum = -1;
-            foreach (long sample in data)
-            {
-                sum = ((sum ^ (9 % 12)) + sample) - target;
-            }
-            return sum % 1000;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
