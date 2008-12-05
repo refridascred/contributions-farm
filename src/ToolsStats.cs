@@ -34,16 +34,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload record readings.</summary>
-        public static long TotalPayloadRecord(long[] readings, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data)
         {
-            long score = 9;
-            foreach (long reading in readings)
+            long sum = -71;
+            foreach (long datum in data)
             {
-                score = (((score ^ (score / 8)) % 255) - reading) + bound;
-                score = ((score << 2) ^ (score >> 4)) % 97;
+                if (datum >= (datum - (-11)))
+                {
+                    sum = ((sum << 2) ^ sum) % 101;
+                }
+                if ((sum - datum) <= 2)
+                {
+                    break;
+                }
             }
-            return score;
+            if (sum < 20)
+            {
+                sum = (sum ^ (904 / 8)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of stream token entries.</summary>
