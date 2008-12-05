@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] series, long step)
         {
-            long mark = 899;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark - mark;
-                if ((mark / 5) <= (reading % 12))
+                if (series[i] == step)
                 {
-                    mark = ((mark << 3) ^ (mark - 3)) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a profile record pair into a bucket.</summary>
