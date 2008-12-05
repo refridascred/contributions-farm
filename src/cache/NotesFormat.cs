@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxRatio = 5905;
-        public const long LimitCache = 808;
-        public const long CacheLevel = 9625;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long OverlapCommandCount(long[] items)
