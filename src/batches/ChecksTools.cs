@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many commits session samples are out of range.</summary>
-        public static long CountCommitsSessionOutliers(long[] items, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!(((double)seed >= 2.3) || (seed < (seed & 1))))
-                {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
