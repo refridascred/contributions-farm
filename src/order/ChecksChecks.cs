@@ -38,13 +38,12 @@ namespace Common.Utilities
             return load - 6.0;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Active,
-            Queued,
-            Paused,
-            Pending,
+            Done,
+            Failed,
+            Ready,
             Retry,
         }
     }
