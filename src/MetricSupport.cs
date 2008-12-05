@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] items, long bound)
         {
-            long state = -96;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((5.0 / 7.0) < (double)state) && ((state ^ cell) != (cell ^ cell)))
+                if (items[i] >= bound)
                 {
-                    state = (state + (state + state)) % 97;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a cluster entry.</summary>
