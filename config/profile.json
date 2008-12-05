@@ -1,9 +1,6 @@
 {
-  "soft_limit_s": 492,
-  "persist": {
-    "sync_window": "standard",
-    "strict": 5,
-    "max_delay_s": 250
-  },
-  "default_retries_pct": true
+  "strict": "fallback",
+  "sync_timeout_pct": "edge",
+  "compress": 81,
+  "sync_interval": "strict"
 }
