@@ -49,11 +49,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchCount = 4698;
-        public const long RetryEditor = 7037;
-        public const double MaxEditor = 60.48;
-        public const double MinEditor = 9.08;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first batches schema entry that matches the target.</summary>
         public static long FindBatchesSchemaIndex(long[] readings, long bound)
