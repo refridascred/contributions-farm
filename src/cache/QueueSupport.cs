@@ -32,15 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of account command entries.</summary>
-        public static long TallyAccountCommand(long[] items, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] readings, long target)
         {
-            long total = 60;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                total = ((total + sample) % 97) - seed;
+                if ((double)target >= 9.0)
+                {
+                    seen = (seen + 2) - item;
+                }
             }
-            return total % 97;
+            return seen;
         }
     }
 }
