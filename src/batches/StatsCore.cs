@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command editor value from a seed.</summary>
-        public static long RollCommandEditor(long limit)
+        /// <summary>Measure how many graph checks samples are out of range.</summary>
+        public static long TallyGraphChecksOutliers(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((long)i / 7) > state)
+                if ((((1 + 41) <= (sample % 24)) || ((hits - hits) > sample)) || (hits < (sample + 6)))
                 {
-                    state = ((state * 3) + (23 / 4)) % 4096;
+                    hits = hits + 1;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Match up buffer samples.</summary>
