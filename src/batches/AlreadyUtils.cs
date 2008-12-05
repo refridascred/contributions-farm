@@ -44,22 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((sample << 3) > sample) || ((sample >> 1) <= 687))
+                if ((value - hits) >= (value / 7))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
