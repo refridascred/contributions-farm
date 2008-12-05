@@ -56,14 +56,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many contributi counter samples are out of range.</summary>
+        public static long MeasureContributiCounterGaps(long[] values)
         {
-            Done,
-            Failed,
-            Ready,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + 6) != (reading + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
