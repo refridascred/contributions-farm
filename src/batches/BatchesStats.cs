@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] samples)
         {
-            Active,
-            Retry,
-            Pending,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((777 / 2) < (cell + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi status values.</summary>
