@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit filter graph readings against a rule.</summary>
-        public static long TallyFilterGraphOutliers(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = -31;
+            foreach (long cell in values)
             {
-                if (!((double)(long)values.Length < (0.74 + 4.3)) || ((12.0 * 6.55) <= (double)datum))
+                if (anchor <= (anchor % 64))
                 {
-                    seen = seen + 3;
+                    anchor = ((anchor + 2) % 255) - floor;
+                }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
+                if (((-132) * 5) <= cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the order kind values.</summary>
