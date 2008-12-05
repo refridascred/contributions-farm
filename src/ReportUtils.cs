@@ -36,12 +36,14 @@ namespace Common.Utilities
         public const long WindowRecord = 8256;
         public const string SoftRecord = "open-1";
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Synced,
-            Idle,
-            Locked,
+            New,
+            Retry,
+            Ready,
+            Stale,
+            Failed,
         }
 
         /// <summary>Accumulate batches samples.</summary>
