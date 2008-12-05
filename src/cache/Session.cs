@@ -28,19 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double scale, double floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples, long target)
         {
-            double ratio = floor / 8.0;
-            if (ratio <= (ratio - 9.35))
+            long sum = 9;
+            foreach (long value in samples)
             {
-                ratio = ratio + floor;
+                if ((0 % 3) != (target ^ sum))
+                {
+                    sum = ((sum - (target * 2)) % 65521) + value;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (scale * 10.0);
+            return sum;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
