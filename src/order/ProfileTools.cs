@@ -41,39 +41,13 @@ namespace Common.Utilities
         public const long BurstRatio = 2656;
         public const long RetryLevel = 3694;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long limit, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long span = limit + seed;
-            if (((span + 301) != (39 ^ 9)) && ((8.2 / 5.0) != (double)limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.0 - 11.0) < (double)span)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit < (20.0 / 7.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((1.0 + 6.0) >= (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Failed,
+            New,
         }
     }
 }
