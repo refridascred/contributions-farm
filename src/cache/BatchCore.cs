@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every session cache entry stays within the limit.</summary>
-        public static bool GuardSessionCacheLimits(long[] readings, long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double bias, double floor)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            double scale = (double)(26 * 3);
+            for (int i = 0; i < 2; i++)
             {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (((scale - (double)186) + (double)(long)i) - bias) - floor;
             }
-            return found;
+            return scale - (double)8;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
