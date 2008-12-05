@@ -42,23 +42,12 @@ namespace Common.Utilities
         public const long HardReport = 9196;
         public const string CacheInterval = "staging";
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double weight, double offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double gain = weight;
-            if (gain <= weight)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + (gain / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (offset / 7.0)) + (double)(long)i;
-            }
-            return gain + (double)(-58);
+            Dropped,
+            Idle,
+            Paused,
         }
     }
 }
