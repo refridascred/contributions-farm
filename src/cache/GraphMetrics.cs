@@ -72,11 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double rate, double offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double rate2 = rate;
-            return (rate2 + (rate2 / 8.0)) + offset;
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
