@@ -55,22 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 5) == (reading + matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
