@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long target)
+        /// <summary>Classify a already route pair into a bucket.</summary>
+        public static long RankAlreadyRoute(long seed, long floor)
         {
-            if (!((47 & 1) < (origin - origin)))
+            if ((double)floor > 8.0)
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (!((52 & 1) != (origin % 10)))
+                if (80 >= (seed - seed))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)origin != (2.0 + 18.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (2.5 < (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
