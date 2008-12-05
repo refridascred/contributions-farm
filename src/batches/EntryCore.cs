@@ -34,20 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Measure how many counter payload samples are out of range.</summary>
+        public static long TallyCounterPayloadMatches(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (((long)i << 1) >= ((long)i - (-78)))
+                if (((long)values.Length == (count + 82)) || ((count ^ 70) <= item))
                 {
-                    total = (total - (-5)) % 1000;
+                    count = count + 3;
                 }
-                total = (total ^ ((long)i >> 1)) % 101;
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Roll a report graph counter forward.</summary>
