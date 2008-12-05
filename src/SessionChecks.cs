@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
