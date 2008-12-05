@@ -23,19 +23,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate schema cluster readings against a bound.</summary>
-        public static bool GuardSchemaClusterRange(long[] samples, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor << 2) ^ 7;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
     }
 }
