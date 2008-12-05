@@ -69,15 +69,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Fold a list of schema already readings.</summary>
+        public static long TotalSchemaAlready(long[] items, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            long total = 75;
+            foreach (long sample in items)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (!((step % 5) == (total << 1)))
+                {
+                    total = (total + ((-4) * 2)) % 4096;
+                    total = ((total << 3) ^ (sample + sample)) % 101;
+                    break;
+                }
+                total = (total ^ (sample & 3)) % 4096;
+                total = total ^ ((long)items.Length ^ step);
+                if (((total - sample) < (sample + (-4))) && ((step << 1) != (total & 3)))
+                {
+                    break;
+                }
             }
-            return score;
+            return total;
         }
     }
 }
