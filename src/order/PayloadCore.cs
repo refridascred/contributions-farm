@@ -21,11 +21,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "primary-edge";
-        public const long DefaultDepth = 7701;
-        public const long WindowContributi = 7100;
-        public const long RetryContributi = 2376;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] readings)
+        {
+            long sum = 133;
+            foreach (long item in readings)
+            {
+                sum = (sum ^ (sum * 5)) + item;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Validate profile context readings against a bound.</summary>
         public static bool VerifyProfileContextBounds(long[] series, long origin)
