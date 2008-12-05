@@ -24,12 +24,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
