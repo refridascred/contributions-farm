@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit window queue readings against a rule.</summary>
-        public static long MeasureWindowQueueMatches(long[] values, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (value >= floor)
+                if (item > limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Adjust a format reading.</summary>
