@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many notes command samples are out of range.</summary>
-        public static long AuditNotesCommandGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((-234) > (matches << 1))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstBudget = 3089;
+        public const long BaseSupport = 2952;
+        public const string MinSize = "fallback";
+        public const long DefaultSize = 8569;
+        public const string MinInterval = "cached-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetrySpan = 4602;
