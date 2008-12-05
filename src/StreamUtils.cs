@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] data, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long anchor = -80;
-            foreach (long item in data)
-            {
-                if (((long)data.Length + offset) <= anchor)
-                {
-                    anchor = anchor - (item % 5);
-                }
-            }
-            return anchor % 97;
+            Ready,
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Roll a token counter forward.</summary>
