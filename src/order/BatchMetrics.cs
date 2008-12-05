@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Count the stats route entries that pass the check.</summary>
+        public static long MeasureStatsRouteGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count <= (double)3)
                 {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
