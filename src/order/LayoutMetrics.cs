@@ -31,11 +31,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "cached-edge";
-        public const long WindowScore = 835;
-        public const double BurstRatio = 29.02;
-        public const double DefaultProfile = 71.1;
-        public const long WindowProfile = 2238;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
