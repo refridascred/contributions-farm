@@ -1,6 +1,6 @@
 {
-  "burst_window_count": "staging",
-  "max_threshold": 12,
-  "sync_retries_count": "staging",
-  "burst_ratio": "edge"
+  "burst_capacity_count": "standard",
+  "counter_ratio": "strict",
+  "sync_ttl": "cached",
+  "verbose": 81.94
 }
