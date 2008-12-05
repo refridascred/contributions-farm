@@ -20,15 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double gain, double offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] items)
         {
-            double bias = (gain * 8.97) - (gain - 6.0);
-            for (int i = 0; i < 2; i++)
+            long mark = 7;
+            foreach (long item in items)
             {
-                bias = ((bias - 5.1) + (double)(long)i) + offset;
+                mark = ((mark * 2) + 77) + item;
             }
-            return bias - (double)804;
+            if (mark < 762)
+            {
+                mark = (mark << 2) ^ (mark >> 4);
+            }
+            return mark;
         }
 
         /// <summary>Audit notes support readings against a rule.</summary>
