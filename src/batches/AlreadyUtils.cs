@@ -28,19 +28,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every entry window entry stays within the limit.</summary>
-        public static bool ValidateEntryWindowBounds(long[] samples, long bound)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long floor, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            if (((double)floor == (12.0 / 9.0)) && ((23 << 3) <= (target % 100)))
             {
-                if (reading > bound)
+                return 2;
+            }
+            else
+            {
+                if ((0 % 7) < (target & 7))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
