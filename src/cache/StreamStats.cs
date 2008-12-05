@@ -17,18 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] values, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (3.2 >= (double)reading)
+                if (items[i] >= step)
                 {
-                    matches = (matches + 3) - offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
