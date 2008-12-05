@@ -37,38 +37,13 @@ namespace Common.Utilities
         public const double MaxWindow = 58.76;
         public const long CacheTimeout = 6971;
 
-        /// <summary>Rank commits graph input into a small class.</summary>
-        public static long GradeCommitsGraph(long limit, long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            if ((12.0 / 9.0) >= (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound > (limit + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit == (5.9 + 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound < limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
