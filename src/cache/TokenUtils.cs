@@ -23,14 +23,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long target)
         {
-            Ready,
-            Dropped,
-            Idle,
-            Done,
-            Active,
+            long total = target;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total << 3) ^ (target + (long)i)) % 255;
+                if ((long)i <= (total * 5))
+                {
+                    total = total - (total % 97);
+                    total = (total << 2) ^ target;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
