@@ -23,13 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] values, long bound)
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
