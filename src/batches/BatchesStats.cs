@@ -44,24 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels, long limit)
-        {
-            long mix = 85;
-            foreach (long value in levels)
-            {
-                mix = (((mix * 2) + (limit >> 3)) % 65521) - value;
-                if ((long)levels.Length < (2 << 3))
-                {
-                    mix = mix - 5;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = mix + (mix / 2);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheDepth = "strict-v2";
+        public const long LimitBudget = 729;
+        public const long MinRecord = 6952;
+        public const long RetryRecord = 2977;
+        public const double IdleRecord = 62.4;
 
         /// <summary>Accumulate window samples.</summary>
         public static long CombineWindow(long[] data)
