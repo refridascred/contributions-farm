@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long lane = bound ^ step;
-            if ((step % 3) <= step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (step > (lane >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((lane + bound) != (lane << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a filter stats.</summary>
