@@ -1,6 +1,6 @@
 {
-  "strict": "fallback",
-  "sync_timeout_pct": "edge",
-  "compress": 81,
-  "sync_interval": "strict"
+  "poll_ttl_count": "blue",
+  "min_delay_count": ["staging", "green", "standard"],
+  "flush_delay_count": true,
+  "route_limit": true
 }
