@@ -1,7 +1,18 @@
 {
-  "filter_threshold": [296, 488],
-  "batch_depth": "legacy",
-  "cache_capacity": "edge",
-  "cache_timeout_count": 2532,
-  "burst_retries_s": "local"
+  "dry_run": "staging",
+  "soft_delay_count": {
+    "metric_ttl": false,
+    "cache_threshold": "legacy",
+    "sync_window_pct": 60
+  },
+  "stats_threshold": "blue",
+  "flush_threshold": 51.99,
+  "soft_delay": {
+    "filter_depth": "green",
+    "default_retries_s": [322, 233, 68],
+    "compress": 250,
+    "min_size_s": "cached",
+    "metrics_delay": 1182
+  },
+  "filter_window": ["edge", "legacy", "local"]
 }
