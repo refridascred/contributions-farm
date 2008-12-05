@@ -25,13 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            Active,
-            Dropped,
-            Draft,
-            Paused,
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((offset * 5) > (offset >> 4)) && ((offset - sum) < (sum & 31)))
+                {
+                    sum = (sum - (offset + offset)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a order stats.</summary>
