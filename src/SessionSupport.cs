@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Synced,
-            Ready,
-            Queued,
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
