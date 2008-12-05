@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const string MaxLayout = "standard-v2";
         public const long LimitRatio = 1813;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            New,
+            Closed,
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
