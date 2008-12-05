@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double bias, double offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long offset)
         {
-            double gain = bias;
-            if (gain <= (gain * 9.3))
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + gain) - offset;
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Look up the position of a route account sample.</summary>
