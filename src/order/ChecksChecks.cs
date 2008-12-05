@@ -20,23 +20,12 @@ namespace Common.Utilities
         public const long CacheTimeout = 269;
         public const string MinDepth = "strict-edge";
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long score = -808;
-            foreach (long cell in items)
-            {
-                score = ((score << 2) ^ 234) % 65521;
-                if ((cell >> 4) == ((long)items.Length + cell))
-                {
-                    score = ((score * 2) + (cell - score)) % 4096;
-                }
-            }
-            if (score < 5)
-            {
-                score = (score + score) % 97;
-            }
-            return score;
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
