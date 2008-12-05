@@ -24,21 +24,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
     }
 }
