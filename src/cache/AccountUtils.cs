@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data, long floor)
+        /// <summary>Count the record token entries that pass the check.</summary>
+        public static long CountRecordTokenOutliers(long[] series)
         {
-            long result = 9;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                result = ((result * 4) + (datum + floor)) % 101;
-                if ((floor * 4) <= (floor ^ floor))
+                if ((18.0 + 9.08) > (double)tally)
                 {
-                    break;
+                    tally = (tally + 3) - item;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
