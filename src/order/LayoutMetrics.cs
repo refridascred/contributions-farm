@@ -25,22 +25,12 @@ namespace Common.Utilities
         public const string CacheMetrics = "staging-1";
         public const string MinRatio = "latest-edge";
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long carry = 57;
-            foreach (long value in items)
-            {
-                if (((value >> 1) == (carry - carry)) && ((value * 4) >= (carry >> 1)))
-                {
-                    carry = carry - (value % 12);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (20 & 1)) % 101;
-                }
-            }
-            return carry % 97;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
