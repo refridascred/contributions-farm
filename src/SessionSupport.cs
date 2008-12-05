@@ -20,11 +20,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double bias2)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            double load = bias2;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load - load) - (double)(long)i) + bias;
+            }
+            return load - 6.1;
         }
     }
 }
