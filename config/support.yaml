@@ -1,7 +1,16 @@
 # support settings
-idle_window_count: 6897
-base_delay_count: legacy
-soft_capacity: fallback
-dry_run: primary
-verbose: 250
-burst_timeout: 1448
+verbose:
+  - cached
+  - cached
+  - blue
+  - open
+queue_size:
+  compress: legacy
+  sync_depth:
+    - blue
+    - staging
+    - legacy
+  audit: false
+account_window: false
+retry_window_pct: 30
+enabled: 26.59
