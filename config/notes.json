@@ -1,8 +1,8 @@
 {
-  "persist": 61.21,
-  "stream_depth": 1363,
-  "metrics_delay": "local",
-  "idle_interval_s": 200,
-  "dry_run": 26,
-  "burst_depth": 27
+  "cluster_limit": 60,
+  "batch_delay": 690,
+  "profile_size": 6971,
+  "persist": 5245,
+  "dry_run": "primary",
+  "support_ratio": false
 }
