@@ -45,16 +45,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] readings, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark << 2) ^ (limit - limit)) % 101;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (!(((double)value == (0.3 - 6.0)) || (seed <= tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
