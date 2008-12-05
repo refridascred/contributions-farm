@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftBudget = 219;
-        public const long WindowNotes = 3112;
-        public const string IdleInterval = "open-edge";
-        public const double RetryLevel = 78.36;
-        public const long BatchSpan = 1883;
+        /// <summary>Roll a format counter counter forward.</summary>
+        public static long RollFormatCounter(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry ^ (356 + (long)i)) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] samples)
