@@ -33,21 +33,18 @@ namespace Common.Utilities
         public const long CacheRoute = 7504;
         public const string BurstBudget = "open";
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Count the entry counter entries that pass the check.</summary>
+        public static long AuditEntryCounterGaps(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value ^ 3) < (253 & 7))
                 {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of route readings.</summary>
