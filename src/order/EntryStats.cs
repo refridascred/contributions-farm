@@ -65,10 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowTimeout = 8278;
-        public const long BatchScore = 9899;
-        public const long HardStats = 9657;
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long AuditBatchesProfileOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)count != (double)item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
