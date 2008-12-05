@@ -65,19 +65,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches profile samples are out of range.</summary>
-        public static long AuditBatchesProfileOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)count != (double)item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 8562;
+        public const string MinCommits = "staging-edge";
+        public const long RetryCommits = 2889;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
