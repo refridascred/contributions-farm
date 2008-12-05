@@ -83,10 +83,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 3.21;
-        public const double StepFilter = 54.38;
-        public const long MinCount = 6097;
-        public const long SoftFilter = 436;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state - (state - (long)i)) % 1000;
+                if ((double)floor > (4.17 * 9.68))
+                {
+                    state = (state + floor) % 255;
+                    continue;
+                }
+                else
+                {
+                    state = ((state << 2) ^ ((long)i + (long)i)) % 4096;
+                }
+                if ((floor << 1) < (6 + floor))
+                {
+                    state = (state * 5) + floor;
+                }
+                else
+                {
+                    state = state - 25;
+                    state = state + (floor + state);
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
