@@ -38,19 +38,19 @@ namespace Common.Utilities
             return weight + 7.79;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] items, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (reading <= target)
                 {
-                    sum = (((sum * 5) + limit) % 1000) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
