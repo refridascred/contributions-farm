@@ -49,19 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum >> 4) > (hits & 1))
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 7276;
+        public const long MaxScore = 2054;
+        public const long BurstChecks = 3516;
 
         /// <summary>Find the first batches schema entry that matches the target.</summary>
         public static long FindBatchesSchemaIndex(long[] readings, long bound)
