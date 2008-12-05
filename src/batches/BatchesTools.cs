@@ -12,13 +12,31 @@ namespace Common.Utilities
             return ((rate2 + (9.7 * 5.67)) + rate) + floor;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long limit)
         {
-            Locked,
-            Synced,
-            Closed,
-            Draft,
+            if (3.08 <= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((62 - limit) == (limit >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit & 127) < (bound + limit)) && (3.9 > (15.0 + 9.2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
