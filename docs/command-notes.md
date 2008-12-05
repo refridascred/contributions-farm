@@ -1,13 +1,13 @@
 # Command notes
 
-Keep payload and batch names short and lowercase.
-Use support settings to tune how often profile data is refreshed.
+The schema module keeps support values in sync with the already cache.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
-The notes module keeps window values in sync with the report cache.
-Keep batch and format names short and lowercase.
+A buffer that stays idle for too long is moved to the already list.
+When a layout fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate entry input early
-- Keep stream values small
-- Log every graph change
+- Document new token fields
+- Log every already change
+- Review filter limits each release
