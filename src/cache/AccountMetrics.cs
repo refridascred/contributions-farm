@@ -37,18 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache schema samples are out of range.</summary>
-        public static long CountCacheSchemaHits(long[] data, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mark = 62;
+            foreach (long item in levels)
             {
-                if ((9.36 - 4.35) < (double)tally)
+                if ((370 + item) <= (mark / 9))
                 {
-                    tally = ((tally + 1) - item) - limit;
+                    mark = (mark ^ (item ^ mark)) % 101;
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Digest a series of token entries.</summary>
