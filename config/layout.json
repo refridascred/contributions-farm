@@ -1,27 +1,7 @@
 {
-  "compress": ["latest", "legacy"],
-  "strict": {
-    "record_delay": 78.63,
-    "audit": "standard",
-    "queue_interval": 7036,
-    "verbose": false,
-    "metrics_size": {
-      "stats_capacity": 250,
-      "strict": 27.93,
-      "audit": false,
-      "flush_retries_ms": 45.46
-    }
-  },
-  "stats_ttl": {
-    "warm_size": 6033,
-    "report_depth": "blue",
-    "readonly": false,
-    "sync_capacity_count": {
-      "max_interval_s": "blue",
-      "batch_threshold_s": ["latest", "local", "fallback", "fallback"],
-      "enabled": "primary"
-    },
-    "soft_ratio_count": 100
-  },
-  "metric_threshold": ["blue", "open"]
+  "audit": [57, 141],
+  "base_size": "blue",
+  "contributi_capacity": 63.72,
+  "soft_window_s": 88.85,
+  "counter_capacity": 63.37
 }
