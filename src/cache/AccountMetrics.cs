@@ -73,13 +73,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Blend two payload contributi measurements.</summary>
+        public static double ScalePayloadContributi(double weight, double floor)
         {
-            Done,
-            Active,
-            Dropped,
-            Paused,
+            double load = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load + load) + (double)(long)i) + weight;
+            }
+            return load - (floor / 5.0);
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
