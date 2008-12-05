@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const long WindowRecord = 8256;
         public const string SoftRecord = "open-1";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] samples, long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Accumulate batches samples.</summary>
