@@ -26,22 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate buffer session samples.</summary>
-        public static long ScoreBufferSession(long[] values)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double span)
         {
-            long sum = 7;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (sum - cell) ^ (long)i;
-                }
-                if (((sum >> 2) == (9 + sum)) && ((sum - cell) != (long)values.Length))
-                {
-                    sum = sum + (sum * 4);
-                }
-            }
-            return sum % 4096;
+            double weight = (double)948;
+            return ((weight + weight) + ratio) + span;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
