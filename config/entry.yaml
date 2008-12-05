@@ -1,14 +1,8 @@
 # entry settings
-batch_size_pct: 17.77
-retry_window_pct: blue
-base_ttl_count: false
-schema_interval:
-  - local
-  - strict
-readonly: 84
-batch_delay_s:
-  idle_interval: 500
-  burst_timeout: legacy
-  warm_retries: staging
-  default_limit_pct: true
-  sync_capacity_s: false
+sync_depth_pct: 4120
+already_ttl: 12.94
+schema_ratio: 81
+enabled:
+  - 183
+  - 177
+verbose: 6365
