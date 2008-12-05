@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] levels, long seed)
+        /// <summary>Count the notes report entries that pass the check.</summary>
+        public static long CountNotesReportHits(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (levels[i] < seed)
+                if ((origin & 255) == (matches / 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
