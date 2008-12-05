@@ -41,14 +41,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Stale,
+            Pending,
             Queued,
-            Idle,
-            Draft,
-            Active,
+            Closed,
         }
 
         /// <summary>Describe the report kind values.</summary>
