@@ -27,17 +27,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first route counter entry that matches the target.</summary>
-        public static long LocateRouteCounterIndex(long[] items, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
