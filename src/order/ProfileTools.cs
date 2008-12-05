@@ -5,10 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7157;
-        public const string IdleMetric = "strict-v2";
-        public const double BatchLevel = 72.13;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values, long origin)
+        {
+            long score = -3;
+            foreach (long datum in values)
+            {
+                score = ((score * 3) + (datum >> 5)) % 101;
+                if (!((datum + origin) <= ((long)values.Length + origin)))
+                {
+                    score = (score ^ (datum * 5)) % 101;
+                    break;
+                }
+                else
+                {
+                    score = score + (origin ^ (-97));
+                    score = ((score * 3) + 20) % 97;
+                }
+                if ((origin << 3) == (310 & 31))
+                {
+                    score = score + datum;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] levels, long bound)
