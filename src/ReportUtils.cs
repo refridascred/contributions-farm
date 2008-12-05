@@ -31,24 +31,14 @@ namespace Common.Utilities
             return bias2 - 3.14;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long limit, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if ((0.4 - 5.2) <= (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 685) == (limit - limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Queued,
+            Dropped,
+            New,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the graph state values.</summary>
