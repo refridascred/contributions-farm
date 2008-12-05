@@ -23,19 +23,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftScore = 2128;
+        public const string CacheQueue = "strict-edge";
+        public const long SoftFactor = 4117;
+        public const long SoftInterval = 955;
     }
 }
