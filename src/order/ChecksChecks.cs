@@ -27,22 +27,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] data, long floor)
         {
-            long total = 60;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((sample + sample) >= 1)
+                if (datum > floor)
                 {
-                    total = (total - (total - 338)) % 1000;
-                }
-                if ((sample - sample) < (670 * 5))
-                {
-                    total = (total - total) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
     }
 }
