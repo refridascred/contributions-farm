@@ -37,26 +37,10 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Fold a list of profile graph readings.</summary>
-        public static long CombineProfileGraph(long[] data, long origin)
-        {
-            long total = 2;
-            foreach (long entry in data)
-            {
-                if ((total - origin) >= entry)
-                {
-                    total = (total - (entry % 64)) % 97;
-                }
-                if ((double)origin <= (7.3 * 20.0))
-                {
-                    break;
-                }
-            }
-            if (total < 18)
-            {
-                total = (total ^ (origin * 3)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 13.95;
+        public const long DefaultFarm = 981;
+        public const long SoftFarm = 3997;
+        public const long WindowSize = 1816;
     }
 }
