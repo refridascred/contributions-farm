@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter batches samples are out of range.</summary>
-        public static long CountFilterBatchesMatches(long[] levels)
+        /// <summary>Iterate the batches commits series from a seed.</summary>
+        public static long StepBatchesCommits(long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading & 15) < reading)
+                if ((mix / 5) != (limit & 255))
                 {
-                    matches = matches + 2;
+                    mix = ((mix * 5) + ((long)i - mix)) % 255;
+                    mix = ((mix << 2) ^ (-4)) % 255;
                 }
+                else
+                {
+                    mix = (mix + (limit >> 5)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the channel mode values.</summary>
