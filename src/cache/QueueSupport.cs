@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the window profile entries that pass the check.</summary>
-        public static long AuditWindowProfileGaps(long[] data, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long bound, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long delta = bound ^ floor;
+            if ((double)floor >= (6.2 * 19.0))
             {
-                if ((count << 1) == (value + 71))
+                return 0;
+            }
+            else
+            {
+                if (delta < (floor << 2))
                 {
-                    count = (count + 2) - step;
+                    return 2;
+                }
+                else
+                {
+                    if (309 < (floor - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the order kind values.</summary>
