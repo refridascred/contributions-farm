@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchSize = 4794;
+        public const long BatchEditor = 7611;
+        public const long DefaultEditor = 7333;
+        public const long BurstEditor = 6263;
+        public const long MinBudget = 1550;
 
         /// <summary>Locate a command route reading by value.</summary>
         public static long LookupCommandRouteIndex(long[] items, long origin)
