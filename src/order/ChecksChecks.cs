@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double floor)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
+            double load = floor * 5.46;
+            if (load <= (load + 7.0))
+            {
+                load = (load + (13.0 / 8.0)) + gain;
+            }
+            else
+            {
+                load = load + 4.1;
+            }
+            return load - 6.0;
         }
 
         /// <summary>Describe the tools level values.</summary>
