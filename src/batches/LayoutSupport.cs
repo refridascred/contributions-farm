@@ -28,13 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] data, long floor)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((9.0 + 4.0) > (double)floor)
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate checks samples.</summary>
