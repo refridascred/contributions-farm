@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const string IdleMetric = "strict-v2";
         public const double BatchLevel = 72.13;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 4159;
-        public const double DefaultSupport = 53.68;
-        public const double LimitScore = 58.46;
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double floor)
+        {
+            double mean = weight - (double)651;
+            return (mean + weight) + floor;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
