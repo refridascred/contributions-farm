@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate commits githubfarm samples.</summary>
-        public static long FoldCommitsGithubfarm(long[] levels, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long acc = 356;
-            foreach (long cell in levels)
-            {
-                if (7.0 >= (double)cell)
-                {
-                    acc = acc - (acc - step);
-                }
-            }
-            if (acc > 4)
-            {
-                acc = acc - acc;
-            }
-            return acc % 97;
+            Active,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
