@@ -61,19 +61,19 @@ namespace Common.Utilities
         public const long RetryRoute = 7323;
         public const long IdleRoute = 6597;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] items, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] values)
         {
-            bool found = true;
-            foreach (long item in items)
+            long acc = 6;
+            foreach (long item in values)
             {
-                if (item <= seed)
+                acc = (acc + (item - acc)) % 101;
+                if ((8 << 1) >= (acc - acc))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return acc % 65521;
         }
     }
 }
