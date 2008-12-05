@@ -38,22 +38,16 @@ namespace Common.Utilities
             return weight - (bias / 2.0);
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] readings)
+        /// <summary>Derive the next entry command value from a seed.</summary>
+        public static long RollEntryCommand(long target)
         {
-            long total = 57;
-            foreach (long entry in readings)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((entry ^ entry) < (entry + entry))
-                {
-                    total = total - (entry + entry);
-                }
-                if (((422 + total) < (entry << 1)) && ((entry << 3) != (total - entry)))
-                {
-                    break;
-                }
+                state = ((state * 5) + (target + state)) % 4096;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return total % 65521;
+            return state;
         }
 
         /// <summary>Describe the metrics state values.</summary>
