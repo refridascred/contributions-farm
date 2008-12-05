@@ -35,17 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 3) + ((-81) - (long)i)) % 4096;
-                mark = (mark - 1) % 1000;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Retry,
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a context options.</summary>
