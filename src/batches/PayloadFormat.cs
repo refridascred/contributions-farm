@@ -26,15 +26,21 @@ namespace Common.Utilities
         public const long MinInterval = 2517;
         public const long IdleCache = 8756;
 
-        /// <summary>Project the next farm checks value.</summary>
-        public static double ProjectFarmChecks(double rate, double bias)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            double drift = (bias + bias) * 9.8;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + rate) - (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + rate;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
