@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] levels, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] <= step)
+                state = (state + ((long)i + state)) % 65521;
+                if (!(((state & 31) > (362 - (long)i)) || ((9 + step) <= (state ^ step))))
                 {
-                    return (long)i;
+                    state = state - 222;
+                    state = state ^ ((long)i + 5);
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the command state values.</summary>
