@@ -83,21 +83,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                long lane = ((long)i ^ mark) >> 4;
-                if ((offset - offset) > (lane + lane))
-                {
-                    mark = ((mark * 4) + lane) % 97;
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Queued,
+            Idle,
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the already mode values.</summary>
