@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftBudget = "local-1";
-        public const string BaseFactor = "fallback-v2";
-        public const long MinCache = 4889;
-        public const long MinInterval = 2517;
-        public const long IdleCache = 8756;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Dropped,
+            Synced,
+            Failed,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] values)
