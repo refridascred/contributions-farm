@@ -29,18 +29,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] levels, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((2.31 * 20.0) <= (double)value)
-                {
-                    count = (count + 3) + bound;
-                }
+                acc = acc + 859;
+                long gap = acc;
+                acc = ((acc * 4) + (gap - target)) % 65521;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a token options.</summary>
