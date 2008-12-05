@@ -15,39 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long offset2)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long lane = offset - offset2;
-            if (((offset + offset) > (offset2 + offset)) || ((lane + 89) < (offset - offset)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + lane) != (lane * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (4.56 > (double)offset)
+                    if ((readings[i] ^ readings[j]) < 3)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((3 + offset) != (lane - offset)) || ((offset + lane) >= lane))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
