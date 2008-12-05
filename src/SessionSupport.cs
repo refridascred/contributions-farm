@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 2242;
-        public const long WindowInterval = 9057;
-        public const long MaxFactor = 5206;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Synced,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long LimitReport = 5198;
