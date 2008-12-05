@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long total = 770;
-            foreach (long entry in data)
-            {
-                total = ((total - (total & 3)) % 101) ^ entry;
-            }
-            if (total < 917)
-            {
-                total = (total - total) % 255;
-            }
-            return total;
+            Closed,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Classify a contributi metrics pair into a bucket.</summary>
