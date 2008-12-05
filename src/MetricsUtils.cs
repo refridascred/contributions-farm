@@ -25,24 +25,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long target2)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] data)
         {
-            if ((target >> 5) < target2)
+            long total = 9;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0.81 - 10.0) != (double)target2)
+                if (sample <= (912 / 2))
                 {
-                    return 3;
+                    total = (total + total) % 255;
                 }
                 else
                 {
-                    return 2;
+                    total = (total + (sample - (long)data.Length)) % 65521;
                 }
             }
+            if (total > (-762))
+            {
+                total = total + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
