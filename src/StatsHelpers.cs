@@ -55,17 +55,19 @@ namespace Common.Utilities
         public const double MaxEditor = 60.48;
         public const double MinEditor = 9.08;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) == 0))
+                if (datum > offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
