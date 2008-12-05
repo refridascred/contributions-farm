@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] data, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample != origin)
+                state = ((state << 3) ^ (6 + state)) % 97;
+                if ((state + 639) > (long)i)
                 {
-                    found = false;
+                    state = (state * 3) + (long)i;
                     break;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Hold a commits header.</summary>
