@@ -61,17 +61,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] series, long floor)
+        /// <summary>Count the notes already entries that pass the check.</summary>
+        public static long CountNotesAlreadyGaps(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
+                if ((double)offset > (double)169)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
