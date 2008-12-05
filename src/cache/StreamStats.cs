@@ -17,19 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] items, long limit)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the route mode values.</summary>
