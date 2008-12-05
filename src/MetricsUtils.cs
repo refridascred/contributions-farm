@@ -43,13 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
