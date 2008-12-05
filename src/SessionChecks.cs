@@ -26,21 +26,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Rank notes token input into a small class.</summary>
+        public static long GradeNotesToken(long floor, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = floor + offset;
+            if (((double)floor > (17.0 * 18.0)) || ((bound / 9) > (offset - bound)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((11.0 * 11.0) == (double)floor) && ((bound % 16) >= (704 + bound)))
                 {
-                    if ((data[i] + data[j]) == 9)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound > 4.19)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
