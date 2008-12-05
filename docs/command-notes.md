@@ -1,11 +1,16 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-When a graph fails, the metrics handler retries a few times before giving up.
-Use route settings to tune how often queue data is refreshed.
+The cluster report groups every notes by buffer.
+The stats report groups every batches by stream.
+Each batches is validated before it reaches the report queue.
+
+The editor report groups every buffer by metric.
+The window module keeps metric values in sync with the contributi cache.
+The filter module keeps channel values in sync with the profile cache.
 
 ## Guidelines
 
-- Keep account values small
-- Prefer window defaults
-- Review tools limits each release
+- Log every filter change
+- Keep metrics values small
+- Review batches limits each release
+- Validate account input early
