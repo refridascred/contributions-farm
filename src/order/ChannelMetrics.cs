@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitTimeout = 7806;
+        public const long WindowPayload = 3801;
+        public const double RetryLevel = 39.66;
+        public const long IdlePayload = 6491;
+        public const long CacheWidth = 1718;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
