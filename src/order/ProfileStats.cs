@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftFactor = 76.81;
-        public const double MinCommand = 20.79;
-        public const long SoftWidth = 7339;
-        public const string RetryCommand = "fallback-v2";
+        /// <summary>Check that every window counter entry stays within the limit.</summary>
+        public static bool ValidateWindowCounterRange(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long StepFilter(long limit)
