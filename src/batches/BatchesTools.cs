@@ -21,14 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] items, long bound)
         {
-            Idle,
-            Locked,
-            Retry,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!((459 >> 2) == (cell + 92)))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
