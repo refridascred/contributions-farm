@@ -55,22 +55,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Combine account editor values into a single score.</summary>
+        public static long TallyAccountEditor(long[] values, long seed)
         {
-            long state = 36;
-            foreach (long reading in series)
+            long acc = 66;
+            foreach (long sample in values)
             {
-                if (((double)state <= (5.53 - 2.46)) && (8.0 > (double)state))
-                {
-                    state = (state * 4) + (reading % 12);
-                }
-                if ((state ^ state) >= reading)
-                {
-                    break;
-                }
+                acc = ((acc << 2) ^ sample) % 97;
+                acc = (acc - seed) % 255;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Describe the command level values.</summary>
