@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
