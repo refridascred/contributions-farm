@@ -38,10 +38,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleSpan = 6973;
-        public const long LimitSize = 4934;
-        public const long BatchFarm = 2483;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] series)
