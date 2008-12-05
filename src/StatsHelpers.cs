@@ -35,11 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((10.0 + 7.0) <= (double)item) && ((double)item == (double)50))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
