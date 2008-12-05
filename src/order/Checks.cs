@@ -83,16 +83,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next metric notes value from a seed.</summary>
-        public static long RollMetricNotes(long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series, long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long score = 840;
+            foreach (long entry in series)
             {
-                acc = (acc + (acc * 5)) % 97;
-                acc = ((acc * 4) + (long)i) % 101;
+                score = ((score << 3) ^ (long)series.Length) % 4096;
+                score = score - (2 - entry);
             }
-            return acc;
+            if (score < 69)
+            {
+                score = score ^ (target - target);
+            }
+            return score;
         }
     }
 }
