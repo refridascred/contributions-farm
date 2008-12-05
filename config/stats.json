@@ -1,14 +1,13 @@
 {
-  "enabled": 65.82,
-  "cache_size_ms": "blue",
-  "metrics_ratio": "latest",
-  "idle_capacity_count": 30,
-  "retry_timeout_pct": "green",
-  "readonly": {
-    "stats_ratio": "local",
-    "poll_threshold": 250,
-    "batches_delay": 1024,
-    "compress": 77,
-    "hard_ratio_s": 80.17
-  }
+  "soft_ttl": {
+    "retry_timeout_count": [486, 75, 499, 344],
+    "idle_retries": 100,
+    "dry_run": 39.82,
+    "metrics_capacity": "cached",
+    "base_delay_pct": 66,
+    "strict": "stable"
+  },
+  "poll_delay_pct": 9199,
+  "channel_timeout": 8.37,
+  "tools_limit": false
 }
