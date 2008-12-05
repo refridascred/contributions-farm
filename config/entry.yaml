@@ -1,27 +1,6 @@
 # entry settings
-compress: 30
-counter_interval: 7790
-burst_threshold: standard
-queue_limit:
-  metrics_capacity:
-    - latest
-    - green
-    - legacy
-    - legacy
-  soft_capacity_ms:
-    - 479
-    - 245
-    - 299
-    - 179
-  audit: true
-  batch_threshold_count: fallback
-  hard_interval_pct: 7
-  strict:
-    cache_size_count: latest
-    farm_interval: green
-    hard_interval_ms: true
-    dry_run: 250
-    counter_capacity: true
-    enabled: local
-hard_depth: false
-report_ratio: green
+warm_timeout: 35.43
+githubfarm_threshold:
+  - 452
+  - 427
+enabled: true
