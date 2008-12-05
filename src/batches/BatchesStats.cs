@@ -37,14 +37,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] series)
         {
-            Dropped,
-            Failed,
-            Stale,
-            Locked,
-            Paused,
+            long acc = 5;
+            foreach (long sample in series)
+            {
+                acc = ((acc << 3) ^ (sample / 9)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate stats samples.</summary>
