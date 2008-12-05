@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSize = 5501;
+        public const long BatchBatches = 6345;
+        public const long RetryBudget = 9568;
+        public const long RetryBatches = 5114;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterMatches(long[] series)
