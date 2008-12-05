@@ -40,18 +40,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] series)
+        /// <summary>Iterate the channel window series from a seed.</summary>
+        public static long DeriveChannelWindow(long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((entry << 2) < 9)
-                {
-                    count = count + 3;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Fold a list of cache record readings.</summary>
