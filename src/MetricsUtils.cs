@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Measure how many queue report samples are out of range.</summary>
+        public static long TallyQueueReportMatches(long[] readings)
         {
-            long mix = 50;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mix = mix - reading;
+                if ((((tally >> 2) <= (tally / 2)) || ((5 - datum) <= (tally >> 5))) || (((tally + tally) > (tally * 3)) && (datum < tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
