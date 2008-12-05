@@ -23,18 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batches context entries that pass the check.</summary>
-        public static long AuditBatchesContextMatches(long[] samples)
+        /// <summary>Count the context metrics entries that pass the check.</summary>
+        public static long TallyContextMetricsOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((value % 3) >= ((-3) / 3))
+                if (entry <= (seen % 16))
                 {
-                    count = count + 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
