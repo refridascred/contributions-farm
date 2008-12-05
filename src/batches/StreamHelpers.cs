@@ -25,12 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleDepth = 33.9;
-        public const double WindowEntry = 18.22;
-        public const long MaxSpan = 5173;
-        public const long MaxScore = 1045;
-        public const long BatchEntry = 9603;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (((mix << 2) ^ (long)i) % 65521) - (long)i2;
+                }
+                if ((double)seed <= (double)mix)
+                {
+                    mix = (mix - (seed << 3)) % 101;
+                    continue;
+                }
+                mix = mix - (mix ^ mix);
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of order support readings.</summary>
         public static long OverlapOrderSupportCount(long[] levels)
