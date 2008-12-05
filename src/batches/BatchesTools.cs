@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Closed,
-            Dropped,
+            Idle,
+            Locked,
+            Retry,
             Ready,
-            Draft,
+            Paused,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
