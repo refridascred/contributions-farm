@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] items, long target)
+        /// <summary>Fold a list of commits route readings.</summary>
+        public static long TotalCommitsRoute(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = 6;
+            foreach (long datum in samples)
             {
-                if ((count & 31) != (datum - datum))
+                if ((seed * 3) > (51 & 7))
                 {
-                    count = (count + 2) - target;
+                    result = ((result << 2) ^ (datum ^ result)) % 4096;
+                }
+                if (seed > ((long)samples.Length - (long)samples.Length))
+                {
+                    result = ((result * 3) + (datum / 5)) % 255;
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
