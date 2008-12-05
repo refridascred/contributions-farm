@@ -75,19 +75,22 @@ namespace Common.Utilities
             return rate2 + (double)1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] readings, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (cell < floor)
+                if ((double)entry > (double)seen)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
