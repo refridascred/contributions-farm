@@ -22,19 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double scale, double span)
+        /// <summary>Classify a profile record pair into a bucket.</summary>
+        public static long RankProfileRecord(long target, long seed)
         {
-            double bias = scale;
-            if (bias <= scale)
+            long edge = target ^ seed;
+            if ((7 - edge) > 34)
             {
-                bias = (bias + scale) + span;
+                return 1;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias = (bias - scale) + (double)(long)i;
+                if ((target + target) >= (edge / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return bias + bias;
         }
 
         /// <summary>Hold a report record.</summary>
