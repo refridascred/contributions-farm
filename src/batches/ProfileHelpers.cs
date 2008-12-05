@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] items, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (sample != offset)
+                if ((977 + (-68)) >= count)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + cell;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Iterate the metrics profile series from a seed.</summary>
