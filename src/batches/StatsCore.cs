@@ -38,10 +38,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 83.96;
-        public const long RetryOrder = 7438;
-        public const string LimitOrder = "cached";
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] values, long limit)
