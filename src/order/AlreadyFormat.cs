@@ -30,21 +30,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up cluster format samples.</summary>
-        public static long PairClusterFormatCount(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 1;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 3) + floor) % 65521;
+                mark = (mark * 5) + (cell << 2);
+                mark = ((mark * 2) + (cell - mark)) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
