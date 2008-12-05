@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long bound, long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long cur = bound ^ floor;
-            if ((double)cur <= (16.0 / 8.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur + cur) != (floor + 28))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor > (6.9 / 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            New,
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the session level values.</summary>
