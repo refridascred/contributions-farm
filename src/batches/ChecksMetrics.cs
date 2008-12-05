@@ -50,13 +50,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Locate a command metric reading by value.</summary>
+        public static long FindCommandMetricIndex(long[] items, long bound)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
