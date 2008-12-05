@@ -43,12 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            New,
-            Locked,
-            Pending,
+            public bool Label { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
