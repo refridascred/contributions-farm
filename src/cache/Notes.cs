@@ -30,16 +30,15 @@ namespace Common.Utilities
         public const long MaxContributi = 7211;
         public const double BatchInterval = 73.11;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double rate, double bias)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            double weight = (double)403 * 8.97;
+            if (weight >= weight)
             {
-                state = (state - ((long)i + (long)i)) % 101;
-                state = ((state * 2) + (long)i) % 4093;
+                weight = (weight - 3.3) + rate;
             }
-            return state;
+            return weight - bias;
         }
 
         /// <summary>Hold a farm summary.</summary>
