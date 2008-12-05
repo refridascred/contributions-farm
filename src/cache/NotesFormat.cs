@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long LimitCache = 808;
         public const long CacheLevel = 9625;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] data, long floor)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits & 255) > 382)
+                {
+                    hits = ((hits + 1) + entry) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cache phase values.</summary>
