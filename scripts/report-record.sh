@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
     green)
         log "fast path"
@@ -22,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=147
-log "limit is ${RECORD_LIMIT}"
+for item in open local edge; do
+    log "checking ${item}"
+done
