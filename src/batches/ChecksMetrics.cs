@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "staging-edge";
-        public const long StepCache = 498;
-        public const string BaseSize = "staging-edge";
-        public const string HardLevel = "legacy";
-        public const long MaxLevel = 9429;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 7810;
+        public const long DefaultFarm = 3576;
+        public const long HardTimeout = 4345;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
