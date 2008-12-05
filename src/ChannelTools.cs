@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (133 > (bound & 3))
+                if (!(((hits ^ hits) == (hits + step)) && (hits > (cell + cell))))
                 {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
