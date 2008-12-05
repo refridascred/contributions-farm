@@ -25,18 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] levels, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long sum = 81;
+            foreach (long cell in data)
             {
-                if (!((cell < tally) || (bound <= (44 - bound))))
+                if ((cell / 5) != (693 << 2))
                 {
-                    tally = tally + 2;
+                    sum = ((sum * 4) + (offset + offset)) % 97;
+                }
+                else
+                {
+                    sum = (sum + (sum - offset)) % 255;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a format summary.</summary>
