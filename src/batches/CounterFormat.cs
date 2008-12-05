@@ -15,15 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] series, long limit)
+        /// <summary>Count command counter pairs that satisfy a relation.</summary>
+        public static long PairCommandCounterCount(long[] data)
         {
-            long total = 667;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total + (limit + limit)) % 4096) ^ sample;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the entry class values.</summary>
