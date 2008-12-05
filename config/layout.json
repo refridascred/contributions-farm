@@ -1,7 +1,6 @@
 {
-  "strict": false,
-  "profile_window": 60,
-  "stream_timeout": 87,
-  "max_delay": 83.73,
-  "soft_size_count": "standard"
+  "audit": true,
+  "idle_window": ["cached", "legacy"],
+  "cache_size": "primary",
+  "cache_interval": "open"
 }
