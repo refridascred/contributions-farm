@@ -36,13 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
