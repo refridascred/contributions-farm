@@ -35,21 +35,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of queue commits readings.</summary>
-        public static long CompareQueueCommitsCount(long[] levels)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)2 == (double)bound)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed + 313) <= (bound / 4))
                 {
-                    if ((levels[i] ^ levels[j]) != 1)
+                    return 3;
+                }
+                else
+                {
+                    if (((bound - seed) == (bound + seed)) || (seed > (bound ^ bound)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((238 + bound) > (812 >> 2)) || ((seed >> 1) >= bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
