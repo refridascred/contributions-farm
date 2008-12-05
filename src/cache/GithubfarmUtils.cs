@@ -16,13 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            Stale,
-            Synced,
-            New,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
