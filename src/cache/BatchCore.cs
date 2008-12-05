@@ -44,16 +44,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the report window series from a seed.</summary>
-        public static long RollReportWindow(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSpan = 3554;
+        public const string BatchCommits = "primary";
+        public const long RetryInterval = 8777;
+        public const string SoftTimeout = "primary-1";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportGaps(long[] samples)
