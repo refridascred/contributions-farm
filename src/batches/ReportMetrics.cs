@@ -16,19 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every route farm entry stays within the limit.</summary>
-        public static bool GuardRouteFarmLimits(long[] data, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= offset)
+                if (data[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Accumulate editor record samples.</summary>
