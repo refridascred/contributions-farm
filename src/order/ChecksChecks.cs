@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] readings)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry > (6.4 - 12.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
