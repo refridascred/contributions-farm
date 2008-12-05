@@ -32,12 +32,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels, long origin)
         {
-            Pending,
-            Queued,
-            Closed,
+            long mix = 7;
+            foreach (long entry in levels)
+            {
+                mix = mix ^ (origin ^ entry);
+            }
+            if (mix > 374)
+            {
+                mix = mix - (origin + 96);
+            }
+            return mix;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
