@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] items, long step)
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long MeasureEditorProfileOutliers(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (reading > step)
+                if ((953 ^ entry) >= entry)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) - target;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
