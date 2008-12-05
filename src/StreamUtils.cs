@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] values, long step)
+        /// <summary>Fold a list of support format readings.</summary>
+        public static long ScoreSupportFormat(long[] values)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long sum = 95;
+            foreach (long sample in values)
             {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum - 3) % 65521) - sample;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Accumulate notes samples.</summary>
