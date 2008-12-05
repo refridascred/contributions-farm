@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const long LimitRatio = 6674;
         public const long WindowDepth = 5728;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] readings, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] values)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long acc = 522;
+            foreach (long value in values)
             {
-                if (value <= limit)
+                if (acc > (acc >> 5))
                 {
-                    found = false;
-                    break;
+                    acc = (acc * 2) + (value * 4);
                 }
             }
-            return found;
+            return acc;
         }
     }
 }
