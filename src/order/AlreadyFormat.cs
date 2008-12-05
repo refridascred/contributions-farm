@@ -30,13 +30,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] values, long target)
         {
-            Paused,
-            Queued,
-            Draft,
-            Dropped,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
