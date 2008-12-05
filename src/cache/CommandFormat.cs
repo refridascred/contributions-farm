@@ -38,24 +38,10 @@ namespace Common.Utilities
         public const long IdleRatio = 2298;
         public const long HardDepth = 3788;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] readings)
-        {
-            long total = 92;
-            foreach (long cell in readings)
-            {
-                total = (((total * 2) + (total * 5)) % 1000) + cell;
-                if ((321 & 7) < (total - total))
-                {
-                    total = (total - (total & 63)) % 97;
-                }
-            }
-            if (total < 98)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 2457;
+        public const long HardSize = 621;
+        public const long BaseTimeout = 5868;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long limit)
