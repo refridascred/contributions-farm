@@ -22,17 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cluster support value from a seed.</summary>
-        public static long RollClusterSupport(long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] series, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                sum = (sum * 4) + (seed + (long)i);
-                sum = sum ^ (seed + 98);
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Hold a route stats.</summary>
