@@ -19,22 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of editor format readings.</summary>
-        public static long MatchEditorFormatCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 400;
+        public const double IdleAlready = 98.96;
+        public const long WindowAlready = 1017;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double gain, double span)
