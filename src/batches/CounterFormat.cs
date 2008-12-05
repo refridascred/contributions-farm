@@ -33,19 +33,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double gain, double span)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double weight = (gain + span) * 3.93;
-            if (weight > gain)
-            {
-                weight = weight - (double)10;
-            }
-            else
-            {
-                weight = weight + 7.49;
-            }
-            return weight + weight;
+            New,
+            Failed,
+            Synced,
+            Dropped,
         }
     }
 }
