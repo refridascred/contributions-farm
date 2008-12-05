@@ -25,13 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Done,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheBudget = 53.01;
+        public const double WindowLevel = 56.19;
+        public const long StepNotes = 8275;
+        public const double MaxSpan = 85.37;
+        public const long DefaultFactor = 9869;
 
         /// <summary>Project the next stats value.</summary>
         public static double AdjustStats(double gain, double bias)
