@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] readings, long target)
         {
-            long gap = offset + floor;
-            if (floor >= (floor & 7))
+            bool found = true;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor >> 4) > (1 - 350))
+                if (datum > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + offset) == ((-99) ^ gap))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
