@@ -35,19 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of profile buffer entries.</summary>
-        public static long FoldProfileBuffer(long[] values, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long seed)
         {
-            long anchor = 79;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 5) + step) + reading;
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor > 690)
-            {
-                anchor = (anchor * 3) + (step + anchor);
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Derive the next window layout value from a seed.</summary>
