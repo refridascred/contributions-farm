@@ -81,12 +81,15 @@ namespace Common.Utilities
         public const long HardLevel = 9758;
         public const long StepCounter = 9832;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            Failed,
-            Synced,
-            Idle,
+            long state = 7;
+            foreach (long reading in readings)
+            {
+                state = ((state << 3) ^ (7 / 9)) ^ reading;
+            }
+            return state;
         }
     }
 }
