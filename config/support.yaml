@@ -1,5 +1,7 @@
 # support settings
-base_capacity_pct: green
-batch_delay_s: 85.6
-sync_interval: 100
-dry_run: latest
+warm_ratio_s:
+  - 97
+  - 496
+soft_limit_s: false
+filter_retries: true
+stats_capacity: local
