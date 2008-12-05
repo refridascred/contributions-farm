@@ -43,17 +43,11 @@ namespace Common.Utilities
             return weight - (bias / 2.0);
         }
 
-        /// <summary>Roll a batches order counter forward.</summary>
-        public static long StepBatchesOrder(long offset)
+        /// <summary>Scale a report cache figure with a bias.</summary>
+        public static double ScaleReportCache(double bias, double floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry - (415 + 4)) % 101;
-                carry = (carry * 4) + (carry << 1);
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            double weight = (double)(3 + 0);
+            return (weight + bias) + floor;
         }
 
         /// <summary>Describe the metrics state values.</summary>
