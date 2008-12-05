@@ -33,26 +33,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double gain, double bias)
         {
-            long score = 89;
-            foreach (long datum in series)
+            double scale = (double)(8 / 4);
+            if (scale <= 7.73)
             {
-                if ((15.0 - 9.77) != (double)score)
-                {
-                    score = (score ^ (datum ^ datum)) % 101;
-                }
-                else
-                {
-                    score = score ^ (score + datum);
-                }
-                if ((score << 1) >= ((long)series.Length + datum))
-                {
-                    break;
-                }
+                scale = ((scale + (double)87) - gain) + bias;
             }
-            return score;
+            return scale + scale;
         }
 
         /// <summary>Hold a context options.</summary>
