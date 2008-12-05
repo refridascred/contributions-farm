@@ -29,15 +29,16 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double rate, double bias)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long offset)
         {
-            double ratio = rate;
-            for (int i = 0; i < 7; i++)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio - (double)9) + (double)(long)i;
+                score = ((score << 2) ^ score) % 4096;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return ratio + bias;
+            return score;
         }
     }
 }
