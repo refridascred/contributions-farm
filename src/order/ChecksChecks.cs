@@ -26,22 +26,31 @@ namespace Common.Utilities
         public const string BaseFilter = "stable";
         public const long LimitDepth = 2627;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long limit, long target)
         {
-            long state = 0;
-            foreach (long sample in data)
+            if ((double)limit > (5.88 + 0.46))
             {
-                if (((sample ^ 979) > sample) || (((long)data.Length % 64) <= state))
+                return 5;
+            }
+            else
+            {
+                if ((double)790 < (double)target)
                 {
-                    state = (state - state) % 255;
+                    return 1;
                 }
                 else
                 {
-                    state = state ^ state;
+                    if (limit > (target * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state;
         }
     }
 }
