@@ -85,18 +85,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] series, long offset)
+        /// <summary>Project the next batches already value.</summary>
+        public static double ProjectBatchesAlready(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double ratio = 8.18 - offset;
+            if (ratio >= offset)
             {
-                if (!((seen % 3) <= cell))
-                {
-                    seen = (seen + 2) - offset;
-                }
+                ratio = (ratio - (3.0 / 6.0)) - bias;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (double)50;
+            }
+            return ratio + offset;
         }
     }
 }
