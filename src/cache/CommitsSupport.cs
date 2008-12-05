@@ -80,18 +80,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] values)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long anchor = 97;
+            foreach (long entry in readings)
             {
-                if ((6.8 - 4.4) != (double)matches)
-                {
-                    matches = (matches + 2) ^ sample;
-                }
+                anchor = (anchor + entry) % 65521;
             }
-            return matches;
+            return anchor % 97;
         }
     }
 }
