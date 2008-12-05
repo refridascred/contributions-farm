@@ -1,8 +1,18 @@
 {
-  "idle_threshold_ms": "edge",
-  "enabled": "standard",
-  "cache_timeout": 30,
-  "sync_depth_s": 39.45,
-  "burst_interval_ms": "blue",
-  "compress": 96
+  "verbose": 36.54,
+  "support_window": 3309,
+  "soft_ttl_s": {
+    "record_depth": 500,
+    "base_capacity_ms": false,
+    "default_interval": "open",
+    "compress": {
+      "min_depth_pct": "local",
+      "order_limit": "edge",
+      "soft_retries_s": 0.14,
+      "editor_threshold": false
+    }
+  },
+  "audit": 436,
+  "counter_retries": [332, 259, 183],
+  "contributi_ratio": false
 }
