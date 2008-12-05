@@ -1,5 +1,5 @@
 {
-  "context_interval": ["blue", "latest", "open", "primary"],
-  "persist": 52.01,
-  "cache_threshold": 92
+  "audit": [108, 422, 352],
+  "soft_delay_s": 7673,
+  "hard_capacity_pct": 16.55
 }
