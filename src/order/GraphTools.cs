@@ -68,18 +68,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample < count)
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
