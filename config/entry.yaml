@@ -1,4 +1,4 @@
 # entry settings
-batch_ttl: 7444
-buffer_size: 69
-buffer_timeout: 27.13
+hard_timeout_ms: latest
+max_delay: 18
+dry_run: eu-west
