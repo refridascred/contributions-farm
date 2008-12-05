@@ -20,14 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] levels, long target)
         {
-            Queued,
-            Ready,
-            Stale,
-            Paused,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine commits buffer values into a single score.</summary>
