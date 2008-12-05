@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const string CacheMetrics = "staging-1";
         public const string MinRatio = "latest-edge";
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 57;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((value >> 1) == (carry - carry)) && ((value * 4) >= (carry >> 1)))
                 {
-                    if ((levels[i] ^ levels[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry - (value % 12);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (20 & 1)) % 101;
                 }
             }
-            return hits;
+            return carry % 97;
         }
     }
 }
