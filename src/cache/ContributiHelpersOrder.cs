@@ -21,13 +21,11 @@ namespace Common.Utilities
         public const long StepDepth = 6640;
         public const string WindowCommand = "staging";
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Active,
-            New,
-            Paused,
-            Done,
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
