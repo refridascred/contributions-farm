@@ -66,15 +66,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Active,
-            Retry,
-            Failed,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 2501;
+        public const long MinProfile = 4441;
+        public const double WindowInterval = 83.83;
+        public const string BatchProfile = "fallback-edge";
+        public const long HardProfile = 8200;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] series)
