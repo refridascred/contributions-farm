@@ -1,21 +1,7 @@
 {
-  "retry_depth": 73.05,
-  "sync_ttl_count": {
-    "channel_threshold": {
-      "enabled": 7509,
-      "commits_threshold": false,
-      "profile_ttl": true,
-      "hard_window": "legacy"
-    },
-    "hard_depth_s": ["primary", "local"],
-    "persist": {
-      "max_retries_pct": false,
-      "audit": "latest",
-      "min_window_ms": 36,
-      "strict": 17
-    },
-    "soft_window_count": 5202
-  },
-  "batch_window_count": 48.9,
-  "layout_capacity": true
+  "idle_capacity_pct": false,
+  "route_size": 7483,
+  "flush_window_ms": [39, 331, 344],
+  "strict": "legacy",
+  "cache_ratio": 1469
 }
