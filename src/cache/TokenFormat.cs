@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] items, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((13.0 - 3.4) < (double)target)
+                if (entry != floor)
                 {
-                    hits = (hits + 2) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a entry info.</summary>
