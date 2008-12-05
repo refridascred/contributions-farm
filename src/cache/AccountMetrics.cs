@@ -82,17 +82,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a stream graph reading by value.</summary>
-        public static long SeekStreamGraphIndex(long[] values, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (values[i] == seed)
+                if ((2.22 * 10.0) <= (double)sample)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
