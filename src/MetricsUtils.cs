@@ -41,19 +41,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double scale, double offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels, long target)
         {
-            double bias = 8.0;
-            if (bias > (offset + 7.52))
+            long acc = 79;
+            foreach (long sample in levels)
             {
-                bias = bias - (scale / 3.0);
+                acc = (acc + (target << 1)) % 4096;
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = ((acc + target) % 1000) - (long)i;
+                }
+                if ((sample + target) < (acc << 1))
+                {
+                    acc = acc + (707 + sample);
+                }
             }
-            else
+            if (acc < 2)
             {
-                bias = bias - (offset * 2.97);
+                acc = ((acc * 3) + (target >> 3)) % 1000;
             }
-            return bias + scale;
+            return acc;
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
