@@ -29,21 +29,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Combine counter token values into a single score.</summary>
+        public static long ScoreCounterToken(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -4;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = (result - (69 + datum)) % 101;
+                if ((result + result) > (datum + result))
                 {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result ^ (result >> 1)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ datum) % 101;
                 }
             }
-            return matches;
+            if (result < 4)
+            {
+                result = (result - result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the route state values.</summary>
