@@ -1,11 +1,10 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep token and metric names short and lowercase.
+The batches module keeps farm values in sync with the metrics cache.
+Each account is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Validate token input early
-- Keep window values small
-- Log every notes change
-- Review githubfarm limits each release
+- Prefer counter defaults
+- Document new account fields
+- Review layout limits each release
