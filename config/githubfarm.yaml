@@ -1,14 +1,18 @@
 # githubfarm settings
-window_capacity: stable
-hard_size_pct: 55.45
-base_retries_ms: green
-entry_ratio: staging
-hard_limit_count: 62.14
-context_timeout:
-  max_interval_ms: 22.86
-  flush_limit_s:
-    compress: standard
-    payload_window: primary
-    soft_limit: 60
-  cache_size: blue
-  max_timeout: stable
+verbose: 91.16
+stream_limit:
+  sync_capacity_pct: blue
+  soft_timeout_ms: 30
+  warm_interval_ms: 4679
+  retry_ttl_ms:
+    poll_delay: 8671
+    default_delay_pct: 6549
+    githubfarm_depth: true
+    base_ratio_ms: cached
+    farm_depth:
+      - strict
+      - green
+channel_size:
+  - open
+  - standard
+  - eu-west
