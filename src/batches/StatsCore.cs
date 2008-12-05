@@ -91,17 +91,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] levels, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 64;
+            foreach (long value in samples)
             {
-                if (levels[i] > step)
+                if ((-240) >= (value & 127))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ value;
+                }
+                if (!(value < origin))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix < 54)
+            {
+                mix = (mix - (mix + origin)) % 97;
+            }
+            return mix;
         }
     }
 }
