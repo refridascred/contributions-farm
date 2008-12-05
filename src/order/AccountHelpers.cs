@@ -43,33 +43,10 @@ namespace Common.Utilities
         public const long BurstCounter = 9756;
         public const long HardSize = 7764;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long seed, long step)
-        {
-            long cur = seed ^ step;
-            if (!((double)cur > (1.8 * 5.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((cur + 690) > cur)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)seed <= (3.07 - 3.8)) || ((double)step > (double)1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftBudget = 2383;
+        public const long MinReport = 5861;
+        public const string BatchFactor = "strict-v2";
 
         /// <summary>Adjust a window reading.</summary>
         public static double ProjectWindow(double weight, double bias)
