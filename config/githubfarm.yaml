@@ -1,7 +1,8 @@
 # githubfarm settings
-base_window_ms:
-  - strict
-  - cached
-  - primary
-burst_delay_ms: 1024
-max_ratio: edge
+cluster_interval: primary
+audit:
+  - 271
+  - 307
+flush_interval_s: true
+queue_interval: false
+batch_threshold: 100
