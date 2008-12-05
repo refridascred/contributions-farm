@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Failed,
-            Done,
-            Retry,
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of commits counter entries.</summary>
