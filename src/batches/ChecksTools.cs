@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of session command readings.</summary>
-        public static long PairSessionCommandCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 4436;
+        public const string BatchPayload = "primary-edge";
+        public const string MaxTimeout = "stable-v2";
+        public const string IdleCount = "standard-1";
 
         /// <summary>Combine batch editor values into a single score.</summary>
         public static long ScoreBatchEditor(long[] readings)
