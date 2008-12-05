@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long LimitCache = 808;
         public const long CacheLevel = 9625;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits & 255) > 382)
-                {
-                    hits = ((hits + 1) + entry) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 87.73;
+        public const long SoftFactor = 4527;
+        public const double MaxLevel = 0.82;
+        public const long BaseCount = 1769;
+        public const long BurstCache = 8366;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
