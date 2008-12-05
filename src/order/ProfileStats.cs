@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftFactor = 76.81;
+        public const double MinCommand = 20.79;
+        public const long SoftWidth = 7339;
+        public const string RetryCommand = "fallback-v2";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long StepFilter(long limit)
