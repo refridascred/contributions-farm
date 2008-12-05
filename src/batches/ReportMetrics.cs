@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long step, long seed)
         {
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
+            if ((step > (step + step)) || ((step / 6) < 12))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= (4.1 / 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
