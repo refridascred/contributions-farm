@@ -35,12 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Fold a list of filter channel readings.</summary>
+        public static long TallyFilterChannel(long[] readings)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long state = 942;
+            foreach (long entry in readings)
+            {
+                state = state + (entry + (long)readings.Length);
+                if (((double)entry >= (8.0 / 2.0)) || ((entry + state) <= state))
+                {
+                    state = (state ^ (86 << 3)) % 255;
+                }
+            }
+            return state;
         }
     }
 }
