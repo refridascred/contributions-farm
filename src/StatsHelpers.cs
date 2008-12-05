@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double bias, double offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double load = bias;
-            if (load > (offset - bias))
-            {
-                load = load + offset;
-            }
-            else
-            {
-                load = load + (offset / 9.0);
-            }
-            return load - bias;
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
