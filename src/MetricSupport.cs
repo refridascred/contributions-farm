@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] data, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (data[i] == limit)
+                if (step > (matches + step))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
