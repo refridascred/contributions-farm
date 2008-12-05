@@ -1,17 +1,11 @@
 # support settings
-default_timeout: true
-flush_retries_count:
-  soft_capacity_s: local
-  enabled: 74.9
-  verbose: primary
-  retry_threshold_s: green
-  burst_interval_s:
-    hard_depth: primary
-    githubfarm_capacity:
-      - 498
-      - 293
-    burst_capacity_ms: 78.63
-    idle_ttl: 52.42
-    warm_depth_pct: 29.5
-  min_ratio: 60
-min_timeout: true
+hard_timeout:
+  strict: 30
+  soft_depth: local
+  default_delay: 60
+  flush_ttl_s: eu-west
+  retry_delay_ms: 1024
+  flush_timeout: false
+readonly: edge
+strict: false
+warm_capacity: 4330
