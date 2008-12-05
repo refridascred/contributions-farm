@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] readings, long limit)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry >= (1.9 - 2.0))
+                {
+                    hits = (hits + 3) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route entry.</summary>
