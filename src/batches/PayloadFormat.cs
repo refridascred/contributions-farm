@@ -46,17 +46,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] readings, long floor)
+        /// <summary>Check that every account entry entry stays within the limit.</summary>
+        public static bool CheckAccountEntryBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                if (datum < offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
