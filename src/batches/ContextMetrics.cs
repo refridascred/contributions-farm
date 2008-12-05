@@ -43,19 +43,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
