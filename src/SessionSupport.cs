@@ -32,17 +32,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (span * 3.31) + (span - gain);
+            if (scale < (span / 9.0))
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                scale = scale + (scale / 5.0);
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)0;
+            }
+            return scale + gain;
         }
     }
 }
