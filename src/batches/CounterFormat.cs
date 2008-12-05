@@ -14,23 +14,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a window editor counter forward.</summary>
-        public static long StepWindowEditor(long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((844 ^ target) < (long)i)
-                {
-                    carry = (carry - (target % 64)) % 101;
-                }
-                else
-                {
-                    carry = (carry + carry) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                result = ((result * 2) + (result & 31)) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the entry class values.</summary>
