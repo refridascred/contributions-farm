@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] readings, long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((long)readings.Length & 63) == (hits % 60))
-                {
-                    hits = ((hits + 1) + value) + limit;
-                }
-            }
-            return hits;
+            double ratio = (double)(2 + (-127));
+            return (ratio - floor) + scale;
         }
 
         /// <summary>Validate profile channel readings against a bound.</summary>
