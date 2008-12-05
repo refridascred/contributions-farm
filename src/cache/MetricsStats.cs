@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] levels)
         {
-            New,
-            Ready,
-            Synced,
-            Draft,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value >= (double)hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
