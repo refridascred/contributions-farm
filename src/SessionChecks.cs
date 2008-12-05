@@ -26,20 +26,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset + carry) > 24)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry + 4) % 255;
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = (carry ^ (long)i) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Locate a metrics profile reading by value.</summary>
