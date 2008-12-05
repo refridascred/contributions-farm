@@ -44,15 +44,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double rate, double offset)
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            double rate2 = rate;
+            return (rate2 + (rate2 / 8.0)) + offset;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
