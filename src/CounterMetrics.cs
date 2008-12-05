@@ -53,11 +53,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a metrics filter counter forward.</summary>
+        public static long RollMetricsFilter(long limit)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 2) + limit) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
