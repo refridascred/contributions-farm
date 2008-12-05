@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] series, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)bound == (5.9 / 3.0))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a batch entry.</summary>
