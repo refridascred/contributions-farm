@@ -33,21 +33,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (1.0 <= (double)mark)
                 {
-                    if ((levels[i] - levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    long step = mark;
+                    mark = ((mark << 2) ^ (step ^ (long)i)) % 4096;
                 }
+                mark = ((mark * 3) + mark) % 1000;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
     }
 }
