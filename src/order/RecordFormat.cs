@@ -56,19 +56,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate record account readings against a bound.</summary>
-        public static bool GuardRecordAccountLimits(long[] items, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (reading > target)
+                if (!((sample * 3) <= count))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
