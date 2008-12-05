@@ -16,21 +16,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up session counter samples.</summary>
-        public static long CompareSessionCounterCount(long[] data)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] > step)
                 {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the context class values.</summary>
