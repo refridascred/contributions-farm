@@ -19,11 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheSpan = 7991;
-        public const long BurstEditor = 9468;
-        public const long StepEditor = 7045;
-        public const double LimitEditor = 54.31;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] data, long limit)
+        {
+            long mark = 3;
+            foreach (long cell in data)
+            {
+                mark = ((mark * 5) + (mark & 7)) % 97;
+                if ((cell + cell) < mark)
+                {
+                    mark = (mark << 2) ^ (cell - mark);
+                }
+                else
+                {
+                    mark = (mark + (mark + limit)) % 255;
+                }
+                if ((double)cell > (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long CombineAccount(long[] samples, long bound)
