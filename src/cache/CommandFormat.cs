@@ -43,21 +43,12 @@ namespace Common.Utilities
         public const long HardSize = 621;
         public const long BaseTimeout = 5868;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (1.0 <= (double)mark)
-                {
-                    long step = mark;
-                    mark = ((mark << 2) ^ (step ^ (long)i)) % 4096;
-                }
-                mark = ((mark * 3) + mark) % 1000;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
