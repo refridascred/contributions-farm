@@ -1,19 +1,5 @@
 {
-  "token_window": 89.38,
-  "strict": "staging",
-  "payload_limit": 69,
-  "max_capacity_pct": {
-    "layout_depth": 1687,
-    "retry_capacity_s": 65,
-    "hard_threshold_s": 5769,
-    "notes_ratio": {
-      "soft_limit_ms": ["green", "latest", "edge"],
-      "burst_retries": "edge",
-      "idle_size_count": 7487,
-      "hard_depth_count": 31,
-      "burst_threshold_s": 59.44
-    }
-  },
-  "batches_window": ["edge", "cached"],
-  "max_depth_pct": 6442
+  "max_interval_count": 11,
+  "sync_delay_count": true,
+  "schema_interval": true
 }
