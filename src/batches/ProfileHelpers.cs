@@ -53,11 +53,12 @@ namespace Common.Utilities
         public const long IdleSize = 6658;
         public const string StepStats = "open";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetryWidth = "legacy-edge";
-        public const long BurstDepth = 8995;
-        public const string CacheSchema = "standard-1";
-        public const long HardSchema = 3804;
-        public const long DefaultSize = 993;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
     }
 }
