@@ -1,6 +1,6 @@
 {
-  "contributi_window": 48.96,
-  "idle_ttl": [464, 46],
-  "support_size": "strict",
-  "soft_ratio_pct": "legacy"
+  "compress": 100,
+  "poll_window_s": true,
+  "readonly": "standard",
+  "window_timeout": true
 }
