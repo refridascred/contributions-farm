@@ -19,20 +19,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values, long bound)
-        {
-            long score = 210;
-            foreach (long item in values)
-            {
-                score = (((score << 3) ^ score) % 65521) ^ item;
-            }
-            if (score > 307)
-            {
-                score = (score - (bound / 9)) % 97;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseScore = 46.73;
+        public const long MinBudget = 6325;
+        public const string BaseMetric = "latest-edge";
+        public const string HardInterval = "stable-1";
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
