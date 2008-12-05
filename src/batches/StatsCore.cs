@@ -68,31 +68,18 @@ namespace Common.Utilities
         public const long MinAlready = 4345;
         public const string StepSize = "alpha-edge";
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] items, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!(((carry << 2) == (step - step)) || ((double)(long)i == (3.0 * 18.0))))
+                if (((double)hits != (8.1 * 1.95)) && ((double)hits < (8.5 * 9.2)))
                 {
-                    carry = carry ^ carry;
+                    hits = ((hits + 2) - item) - step;
                 }
-                if ((8.1 * 6.3) == (double)carry)
-                {
-                    carry = (carry + (58 * 5)) % 1000;
-                }
-                else
-                {
-                    carry = (carry * 5) + ((long)i - 3);
-                }
-                if ((((long)i & 7) <= step) || ((carry / 6) >= step))
-                {
-                    carry = ((carry << 3) ^ (step - (long)i)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
     }
 }
