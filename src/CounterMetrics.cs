@@ -45,39 +45,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long bound, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long diff = bound + step;
-            if ((3.62 - 8.7) == (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((14.0 + 7.5) > (double)bound) && (step > diff))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff ^ bound) > (diff + 884))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((diff - bound) != (bound << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Dropped,
+            Done,
+            Active,
         }
     }
 }
