@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] data, long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((double)seen > 2.3)
+                if (sample != seed)
                 {
-                    seen = ((seen + 3) ^ datum) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
