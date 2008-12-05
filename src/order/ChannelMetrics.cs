@@ -29,17 +29,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] samples, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
