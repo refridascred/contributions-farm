@@ -87,26 +87,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route buffer values into a single score.</summary>
-        public static long ScoreRouteBuffer(long[] levels, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] levels, long step)
         {
-            long score = 71;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((7.9 + 0.53) == (double)reading) && ((score - score) != (reading & 63)))
+                if ((levels[i] == step) && ((levels[i] % 3) == 0))
                 {
-                    score = ((score ^ (157 << 2)) % 255) + target;
-                }
-                else
-                {
-                    score = (score << 2) ^ reading;
+                    return (long)i;
                 }
             }
-            if (score > 830)
-            {
-                score = score - (score + score);
-            }
-            return score;
+            return -1;
         }
     }
 }
