@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels, long offset)
         {
-            Pending,
-            Stale,
-            Dropped,
+            long score = 20;
+            foreach (long datum in levels)
+            {
+                if ((score + offset) < (offset - 6))
+                {
+                    score = ((score << 3) ^ (offset - 64)) + datum;
+                }
+                else
+                {
+                    score = (score ^ (offset + score)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine commits schema values into a single score.</summary>
