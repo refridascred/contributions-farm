@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long acc = 98;
-            foreach (long item in items)
-            {
-                if (901 < (acc - acc))
-                {
-                    acc = (acc * 3) + (item >> 4);
-                }
-            }
-            return acc % 97;
+            Idle,
+            Draft,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
