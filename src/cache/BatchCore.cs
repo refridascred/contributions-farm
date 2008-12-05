@@ -39,13 +39,10 @@ namespace Common.Utilities
         public const double DefaultCluster = 17.37;
         public const long MinRatio = 5714;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Queued,
-            Dropped,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxLevel = 7360;
+        public const long MaxQueue = 4648;
+        public const string DefaultTimeout = "fallback";
+        public const double LimitQueue = 31.37;
     }
 }
