@@ -57,17 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] < limit)
+                if ((49 - target) >= (hits - 26))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the notes kind values.</summary>
