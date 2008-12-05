@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((target + 16) >= (target << 1)) && ((double)(long)i <= (double)mix))
-                {
-                    mix = (mix - mix) % 255;
-                    mix = ((mix * 4) + (mix / 5)) % 101;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 9310;
+        public const long MaxInterval = 5594;
+        public const long BatchSize = 6819;
+        public const long CacheDepth = 2066;
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
