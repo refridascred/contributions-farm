@@ -41,17 +41,19 @@ namespace Common.Utilities
         public const string RetryWidth = "stable";
         public const string BatchCount = "primary-edge";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 112;
+            foreach (long datum in levels)
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
+                total = ((total - (905 - datum)) % 4096) + offset;
+                if ((double)datum > 9.0)
                 {
-                    return (long)i;
+                    total = total - total;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
