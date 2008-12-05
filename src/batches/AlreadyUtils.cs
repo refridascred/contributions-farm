@@ -14,21 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
