@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] data, long origin)
         {
-            long mark = 51;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (reading >= (reading / 2))
+                if ((double)seen > 2.3)
                 {
-                    mark = (mark + (mark % 24)) % 101;
+                    seen = ((seen + 3) ^ datum) + origin;
                 }
             }
-            if (mark > 34)
-            {
-                mark = (mark - (mark % 7)) % 4096;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
