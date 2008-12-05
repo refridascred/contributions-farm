@@ -29,15 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the channel window series from a seed.</summary>
-        public static long DeriveChannelWindow(long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Ready,
+            Retry,
+            Done,
         }
 
         /// <summary>Fold a list of cache record readings.</summary>
