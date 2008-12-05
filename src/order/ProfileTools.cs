@@ -26,18 +26,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] items)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - cell) < cell)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
