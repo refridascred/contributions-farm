@@ -30,23 +30,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double ratio, double bias)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double floor)
         {
-            double rate = (ratio + ratio) - bias;
-            if (rate <= rate)
+            double mean = (double)(697 ^ 4);
+            if (mean <= (double)(-3))
             {
-                rate = rate - rate;
+                mean = (mean - (7.36 + mean)) - rate;
             }
             else
             {
-                rate = rate + (ratio + ratio);
+                mean = mean + (3.17 - floor);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (bias + rate);
+            return mean - 4.63;
         }
     }
 }
