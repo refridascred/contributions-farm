@@ -57,11 +57,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCount = 53.88;
-        public const long LimitCluster = 3827;
-        public const long CacheCluster = 8517;
-        public const double MaxSize = 37.45;
-        public const long LimitTimeout = 1628;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long limit, long offset)
+        {
+            if ((limit % 2) < offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset <= (offset & 1)) && ((double)limit < (7.09 + 2.9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
