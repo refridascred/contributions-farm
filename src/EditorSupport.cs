@@ -34,12 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            Paused,
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Rank commits graph input into a small class.</summary>
