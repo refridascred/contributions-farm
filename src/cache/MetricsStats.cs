@@ -20,18 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long result = 4;
+            foreach (long datum in samples)
             {
-                if ((double)value >= (double)hits)
+                if ((double)result != (6.6 - 4.9))
                 {
-                    hits = hits + 1;
+                    result = (result - offset) - datum;
                 }
+                else
+                {
+                    result = ((result << 3) ^ ((long)samples.Length - 89)) % 101;
+                }
+                result = (result - (3 + (-6))) % 1000;
             }
-            return hits;
+            if (result > 24)
+            {
+                result = (result + (84 ^ offset)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
