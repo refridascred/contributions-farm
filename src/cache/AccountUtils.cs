@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up token command samples.</summary>
-        public static long CompareTokenCommandCount(long[] readings)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell < step)
                 {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
