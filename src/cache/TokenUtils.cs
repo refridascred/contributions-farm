@@ -13,18 +13,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many session queue samples are out of range.</summary>
-        public static long AuditSessionQueueGaps(long[] readings, long step)
+        /// <summary>Count support commits pairs that satisfy a relation.</summary>
+        public static long PairSupportCommitsCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.33 - 17.0) > (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) + sample) + step;
+                    if ((levels[i] ^ levels[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up record filter samples.</summary>
