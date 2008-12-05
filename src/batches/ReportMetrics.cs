@@ -40,18 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token profile entries that pass the check.</summary>
-        public static long CountTokenProfileOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!((93 + 1) > value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinSize = 4675;
+        public const long WindowReport = 1286;
+        public const long StepFactor = 2700;
+        public const long BatchCount = 9177;
     }
 }
