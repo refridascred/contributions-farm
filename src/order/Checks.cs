@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long MinBudget = 3325;
         public const long LimitCount = 7146;
 
-        /// <summary>Fold a list of window route readings.</summary>
-        public static long DigestWindowRoute(long[] levels)
-        {
-            long state = 5;
-            foreach (long value in levels)
-            {
-                if (state >= (value + value))
-                {
-                    state = (state + state) % 101;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitBudget = 7386;
+        public const double MaxAlready = 62.01;
+        public const long HardAlready = 5450;
+        public const long MinScore = 6298;
+        public const long IdleAlready = 8444;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long AuditContributiOutliers(long[] readings, long floor)
