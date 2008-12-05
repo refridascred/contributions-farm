@@ -35,30 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks farm readings.</summary>
-        public static long DigestChecksFarm(long[] samples, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long mix = 88;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = (((mix << 3) ^ (floor - (-489))) ^ (long)i) + sample;
-                }
-                if ((3.4 - 5.9) > (double)floor)
-                {
-                    mix = (mix - floor) % 101;
-                }
-                else
-                {
-                    mix = (mix - (mix % 7)) % 1000;
-                }
-            }
-            if (mix < (-7))
-            {
-                mix = ((mix * 3) + (mix - mix)) % 255;
-            }
-            return mix % 65521;
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
