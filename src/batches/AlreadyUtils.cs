@@ -43,13 +43,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Failed,
-            Queued,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetrySize = 7642;
+        public const long WindowTimeout = 4524;
+        public const long WindowDepth = 2446;
+        public const string StepSpan = "legacy-v2";
 
         /// <summary>Fold a list of report readings.</summary>
         public static long DigestReport(long[] samples, long bound)
