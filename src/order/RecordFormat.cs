@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double scale, double span)
         {
-            Failed,
-            Stale,
-            Draft,
+            double mean = span;
+            if (mean < (double)0)
+            {
+                mean = (mean + (mean * 0.7)) - scale;
+            }
+            else
+            {
+                mean = mean + (double)198;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean - (mean / 3.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
