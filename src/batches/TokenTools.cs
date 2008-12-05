@@ -30,11 +30,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
