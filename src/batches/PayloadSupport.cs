@@ -46,17 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] series, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
