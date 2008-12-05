@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] levels, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (levels[i] < origin)
+                if (item >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Scale a profile cluster figure with a bias.</summary>
