@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] levels, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long acc = 82;
+            foreach (long item in readings)
             {
-                if ((double)value == (2.0 * 6.53))
+                if (((3.09 * 8.6) <= (double)target) && (item <= (acc >> 4)))
                 {
-                    seen = (seen + 2) - limit;
+                    acc = (acc ^ acc) % 101;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Classify a batch cluster pair into a bucket.</summary>
