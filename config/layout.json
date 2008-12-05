@@ -1,12 +1,5 @@
 {
-  "base_size": true,
-  "default_timeout_pct": 84.47,
-  "hard_depth_pct": {
-    "window_window": "fallback",
-    "burst_depth_count": 40.34,
-    "contributi_retries": "green",
-    "metrics_size": 100,
-    "format_ttl": 18.54
-  },
-  "max_retries_s": "fallback"
+  "retry_limit_s": "green",
+  "min_timeout": false,
+  "warm_timeout": 65.37
 }
