@@ -55,22 +55,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] readings, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            if ((floor ^ offset) < 40)
             {
-                if ((double)step <= (6.43 - 7.1))
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 5) == (304 * 4))
                 {
-                    hits = (hits + 2) - sample;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the command level values.</summary>
