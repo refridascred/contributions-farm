@@ -63,26 +63,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((bound - 212) >= anchor) && ((long)i == ((-7) / 3)))
-                {
-                    anchor = (anchor + bound) % 255;
-                    anchor = anchor + bound;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor << 2)) % 65521;
-                    anchor = (anchor - (anchor + anchor)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitWidth = "local";
+        public const long MinAlready = 4345;
+        public const string StepSize = "alpha-edge";
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] samples, long origin)
