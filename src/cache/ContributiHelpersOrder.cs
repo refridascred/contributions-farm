@@ -17,12 +17,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepScore = 8191;
-        public const long BurstProfile = 7939;
-        public const long IdleProfile = 6670;
-        public const long BaseProfile = 911;
-        public const long LimitRatio = 5092;
+        /// <summary>Grade a batch channel value against two limits.</summary>
+        public static long ClassifyBatchChannel(long offset, long floor)
+        {
+            if ((offset - floor) <= (offset + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + floor) == (offset << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor % 2) < (offset - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
