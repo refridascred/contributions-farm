@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] readings, long step)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
