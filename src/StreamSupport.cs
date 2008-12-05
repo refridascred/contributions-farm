@@ -38,14 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Check that every account support entry stays within the limit.</summary>
+        public static bool CheckAccountSupportLimits(long[] values, long offset)
         {
-            Locked,
-            Synced,
-            Paused,
-            Idle,
-            Draft,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
