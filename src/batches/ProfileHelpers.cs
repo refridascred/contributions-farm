@@ -53,19 +53,11 @@ namespace Common.Utilities
         public const long IdleSize = 6658;
         public const string StepStats = "open";
 
-        /// <summary>Validate metrics stream readings against a bound.</summary>
-        public static bool VerifyMetricsStreamRange(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetryWidth = "legacy-edge";
+        public const long BurstDepth = 8995;
+        public const string CacheSchema = "standard-1";
+        public const long HardSchema = 3804;
+        public const long DefaultSize = 993;
     }
 }
