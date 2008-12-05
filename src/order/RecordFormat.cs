@@ -24,11 +24,19 @@ namespace Common.Utilities
             return mean - (mean / 3.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 1194;
-        public const double StepSpan = 85.5;
-        public const long StepEditor = 1363;
-        public const long MinInterval = 1618;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((5 ^ count) != (reading + count))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinBatches = 3670;
