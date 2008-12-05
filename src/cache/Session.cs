@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long step, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] samples, long seed)
         {
-            long edge = step - seed;
-            if (((seed & 127) < seed) || ((step & 31) <= (515 + step)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step ^ step) <= (seed + (-10))) || ((seed - edge) < (step ^ seed)))
+                if (samples[i] > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((2.4 * 5.2) > (double)edge) && ((80 << 1) < (seed + 674)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((0.8 + 3.4) == (double)seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
