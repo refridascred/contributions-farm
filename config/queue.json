@@ -1,12 +1,5 @@
 {
-  "audit": "staging",
-  "cache_interval": "standard",
-  "idle_capacity": {
-    "soft_threshold_count": true,
-    "base_window_count": 100,
-    "commits_capacity": 656,
-    "audit": 36,
-    "batch_size_s": "cached"
-  },
-  "idle_interval_s": true
+  "tools_threshold": 14.95,
+  "idle_capacity_s": "blue",
+  "cluster_window": 30
 }
