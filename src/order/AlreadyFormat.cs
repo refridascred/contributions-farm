@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((sample + sample) < (488 % 2)) && ((sample << 1) <= (82 * 5))) && (count >= (count - sample)))
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a already summary.</summary>
