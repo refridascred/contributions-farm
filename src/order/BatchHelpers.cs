@@ -34,11 +34,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "standard";
-        public const double BatchSpan = 21.7;
-        public const long BurstFactor = 5687;
-        public const long StepCount = 2116;
-        public const long SoftDepth = 5299;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] samples, long limit)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
