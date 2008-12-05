@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a graph metric value against two limits.</summary>
-        public static long ClassifyGraphMetric(long target, long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            if ((4.0 + 14.0) < (double)target)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (target > offset)
+                if (!(((long)i / 7) >= (seed ^ 10)))
                 {
-                    return 4;
+                    total = (total + 70) % 97;
+                    total = ((total << 3) ^ seed) % 101;
                 }
-                else
-                {
-                    if (((double)offset != (double)target) && ((offset - offset) != (offset + offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = (total ^ (total + 92)) % 4096;
+                total = ((total * 5) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
