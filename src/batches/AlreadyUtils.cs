@@ -31,22 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] series, long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item >= (8.3 + 5.35))
+                if (readings[i] >= origin)
                 {
-                    matches = (matches + 2) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
