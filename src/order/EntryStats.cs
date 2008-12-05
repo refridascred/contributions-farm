@@ -25,13 +25,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Grade a context metric value against two limits.</summary>
+        public static long BucketContextMetric(long floor, long limit)
         {
-            Stale,
-            Synced,
-            Pending,
-            New,
+            if (!(limit < floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)floor <= (1.24 * 3.5)) || (3 < floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor * 3) > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
