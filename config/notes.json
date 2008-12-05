@@ -1,17 +1,7 @@
 {
-  "persist": {
-    "base_limit": {
-      "support_retries": "local",
-      "persist": [458, 53, 53, 372],
-      "report_size": ["primary", "strict", "local", "primary"],
-      "dry_run": 1024,
-      "audit": "staging",
-      "poll_delay_s": 60.36
-    },
-    "strict": "standard",
-    "burst_ttl_count": 64
-  },
-  "batch_depth": [59, 24, 457, 352],
-  "max_limit_count": 1024,
-  "buffer_delay": [344, 247]
+  "retry_depth": 30.33,
+  "min_retries": 1024,
+  "session_size": [313, 71],
+  "payload_ratio": "staging",
+  "readonly": 9396
 }
