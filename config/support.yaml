@@ -1,7 +1,5 @@
 # support settings
-default_interval_ms: true
-strict: 53.7
-enabled: eu-west
-base_ratio_pct: primary
-stats_capacity: strict
-batches_retries: 53.82
+compress: 1538
+window_window: 18.11
+warm_ttl: staging
+verbose: 1149
