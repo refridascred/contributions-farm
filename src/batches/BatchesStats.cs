@@ -44,12 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheDepth = "strict-v2";
-        public const long LimitBudget = 729;
-        public const long MinRecord = 6952;
-        public const long RetryRecord = 2977;
-        public const double IdleRecord = 62.4;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 73;
+        public const long StepTimeout = 9858;
+        public const long RetryProfile = 4941;
+        public const double BurstProfile = 48.13;
+        public const long WindowProfile = 3040;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] series, long step)
