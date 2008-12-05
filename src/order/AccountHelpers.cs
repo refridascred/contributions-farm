@@ -42,28 +42,29 @@ namespace Common.Utilities
         public const double RetryTimeout = 6.66;
         public const long BurstCount = 4813;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long step, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long seed, long step)
         {
-            if (limit <= step)
+            long cur = seed ^ step;
+            if (!((double)cur > (1.8 * 5.0)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!(((-9) - step) >= (step - step)))
+                if ((cur + 690) > cur)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((limit <= step) || ((step + 90) == (limit - 8)))
+                    if (((double)seed <= (3.07 - 3.8)) || ((double)step > (double)1))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        return 8;
                     }
                 }
             }
