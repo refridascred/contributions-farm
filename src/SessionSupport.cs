@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] levels)
-        {
-            long mix = 926;
-            foreach (long reading in levels)
-            {
-                mix = ((mix * 4) + (reading & 127)) % 4096;
-            }
-            if (mix > (-29))
-            {
-                mix = ((mix << 3) ^ ((long)levels.Length / 7)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 2242;
+        public const long WindowInterval = 9057;
+        public const long MaxFactor = 5206;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] levels, long target)
