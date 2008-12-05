@@ -1,12 +1,8 @@
 {
-  "readonly": {
-    "cache_limit": "legacy",
-    "idle_retries": 61.23,
-    "flush_timeout": 2462
-  },
-  "batch_depth": true,
-  "min_depth_count": "standard",
-  "audit": "blue",
-  "flush_capacity_ms": "edge",
-  "sync_size_s": "primary"
+  "support_delay": 20,
+  "persist": 92.2,
+  "enabled": false,
+  "batches_retries": false,
+  "soft_timeout": "standard",
+  "cache_ratio_ms": 41
 }
