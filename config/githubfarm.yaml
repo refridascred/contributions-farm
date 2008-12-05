@@ -1,11 +1,5 @@
 # githubfarm settings
-format_limit: 2202
-profile_size: false
-format_ratio: 50
-entry_capacity: true
-commits_timeout: green
-sync_ttl:
-  persist: 1024
-  record_depth: latest
-  editor_capacity: false
-  stream_ttl: 1024
+dry_run: 3688
+batch_limit_ms: false
+sync_delay: 8034
+stats_retries: 1237
