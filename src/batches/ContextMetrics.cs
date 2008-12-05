@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double mean = scale * 3.5;
-            return (mean + (9.0 * 10.0)) + offset;
+            Done,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the cluster status values.</summary>
