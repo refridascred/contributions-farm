@@ -1,15 +1,15 @@
 # entry settings
-audit: legacy
-readonly: 60
-enabled:
-  retry_interval_ms:
-    - stable
-    - edge
-    - stable
-    - latest
-  hard_limit_s: 54.31
-  compress: 8182
-  enabled: 98.49
-sync_depth_pct: 8389
-retry_ratio_ms: 56
-layout_delay: 500
+batch_delay_count: 1035
+contributi_limit: 27
+notes_limit: 516
+base_delay_pct:
+  window_ratio: 53
+  flush_ttl: edge
+  flush_delay_s: true
+  min_interval_ms:
+    - 148
+    - 67
+    - 86
+    - 94
+batch_ratio_pct: legacy
+strict: open
