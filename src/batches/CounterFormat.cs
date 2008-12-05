@@ -14,38 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
-        public static long SortGraphGithubfarm(long target, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((0 % 100) <= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target < 15.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin / 3) >= (54 % 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin > (target * 5)) && ((origin - origin) < (origin / 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
