@@ -39,17 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mark = mark + 39;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
