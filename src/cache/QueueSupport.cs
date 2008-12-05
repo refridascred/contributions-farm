@@ -41,10 +41,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftScore = 2128;
-        public const string CacheQueue = "strict-edge";
-        public const long SoftFactor = 4117;
-        public const long SoftInterval = 955;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
