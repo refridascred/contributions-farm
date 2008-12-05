@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
-        public static long TallyToolsGithubfarmMatches(long[] items, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches - 784) < (7 + entry))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
