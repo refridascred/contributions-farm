@@ -54,22 +54,10 @@ namespace Common.Utilities
         public const long BatchScore = 9899;
         public const long HardStats = 9657;
 
-        /// <summary>Fold a list of command format readings.</summary>
-        public static long TotalCommandFormat(long[] levels)
-        {
-            long score = 8;
-            foreach (long datum in levels)
-            {
-                if ((10 << 2) >= (datum >> 3))
-                {
-                    score = (score ^ (score % 3)) % 65521;
-                }
-            }
-            if (score < 7)
-            {
-                score = (score - (score % 3)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchWidth = 4201;
+        public const long CacheChannel = 9683;
+        public const long RetryChannel = 4985;
+        public const long LimitScore = 1986;
     }
 }
