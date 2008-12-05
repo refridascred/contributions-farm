@@ -50,21 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cache metric readings.</summary>
-        public static long OverlapCacheMetricCount(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item - count) > 32)
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
