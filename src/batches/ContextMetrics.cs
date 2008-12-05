@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Done,
-            Synced,
-            Ready,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseSize = "open";
+        public const long SoftTimeout = 7707;
+        public const long CacheChecks = 3191;
+        public const long MaxInterval = 3765;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
