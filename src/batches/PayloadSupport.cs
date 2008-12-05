@@ -29,17 +29,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first support cache entry that matches the target.</summary>
-        public static long FindSupportCacheIndex(long[] readings, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long step, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (step < (limit + step))
             {
-                if (readings[i] <= step)
+                return 1;
+            }
+            else
+            {
+                if (((limit + step) > (limit - limit)) || (limit < (limit / 6)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
