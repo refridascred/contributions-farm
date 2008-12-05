@@ -48,13 +48,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a farm checks value against two limits.</summary>
+        public static long SortFarmChecks(long target, long seed)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            long gap = target ^ seed;
+            if (((gap - target) == (target - target)) || ((target % 97) < (seed + seed)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed == (7.9 / 8.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
