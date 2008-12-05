@@ -17,12 +17,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowTimeout = 6257;
-        public const long MinRecord = 6163;
-        public const long DefaultFactor = 638;
-        public const long LimitDepth = 7190;
-        public const string LimitBudget = "cached-1";
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long seed, long seed2)
+        {
+            if ((seed >> 4) != (seed ^ seed2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((0.3 + 6.78) >= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed2 << 1) > (seed - seed)) && ((double)seed2 >= (8.19 + 7.6)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(seed2 <= (seed / 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowGaps(long[] items, long step)
