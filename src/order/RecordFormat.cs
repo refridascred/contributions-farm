@@ -56,19 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine buffer tools values into a single score.</summary>
-        public static long DigestBufferTools(long[] data, long origin)
+        /// <summary>Validate record account readings against a bound.</summary>
+        public static bool GuardRecordAccountLimits(long[] items, long target)
         {
-            long mark = -18;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mark = ((mark - (mark + mark)) + item) - origin;
-                if ((long)data.Length == (mark % 60))
+                if (reading > target)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return mark % 97;
+            return ok;
         }
     }
 }
