@@ -1,8 +1,7 @@
 {
-  "burst_capacity_s": "edge",
-  "idle_size_ms": ["stable", "strict"],
-  "buffer_delay": 85.2,
-  "strict": "edge",
-  "account_ratio": "fallback",
-  "cache_retries_ms": false
+  "flush_window": 6848,
+  "soft_retries_count": "blue",
+  "batch_retries_count": ["staging", "latest", "edge"],
+  "idle_limit": [35, 371],
+  "queue_size": 64.77
 }
