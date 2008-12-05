@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long origin, long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long step = origin + seed;
-            if ((step << 3) == (origin ^ step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) >= (seed >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (5.7 >= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a schema summary.</summary>
