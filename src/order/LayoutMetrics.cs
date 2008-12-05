@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] items)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long target, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long edge = target + seed;
+            if (((target & 255) <= seed) && ((double)seed >= (2.23 / 9.0)))
             {
-                if (!((matches ^ matches) <= value))
+                return 5;
+            }
+            else
+            {
+                if (seed < edge)
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((7.5 - 8.0) <= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target <= (seed >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
