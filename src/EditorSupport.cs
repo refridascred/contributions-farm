@@ -56,23 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer metric readings.</summary>
-        public static long TotalBufferMetric(long[] series)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long sum = 77;
-            foreach (long sample in series)
-            {
-                sum = ((sum << 3) ^ (sum + 5)) % 4096;
-                if (((sample + sample) <= (sum + sample)) && ((872 - sample) == (8 / 6)))
-                {
-                    sum = (sum - sample) % 4096;
-                }
-            }
-            if (sum > 30)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank commits graph input into a small class.</summary>
