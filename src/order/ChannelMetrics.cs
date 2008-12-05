@@ -19,14 +19,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values, long bound)
         {
-            Dropped,
-            Draft,
-            Idle,
-            Active,
-            Pending,
+            long score = 210;
+            foreach (long item in values)
+            {
+                score = (((score << 3) ^ score) % 65521) ^ item;
+            }
+            if (score > 307)
+            {
+                score = (score - (bound / 9)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the metric class values.</summary>
