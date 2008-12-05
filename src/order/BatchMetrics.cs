@@ -50,21 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum << 3) ^ (sum + sum);
-                if (sum < 0)
-                {
-                    sum = ((sum * 2) + limit) % 4096;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
