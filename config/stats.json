@@ -1,5 +1,6 @@
 {
-  "retry_limit_pct": 89,
-  "audit": "legacy",
-  "flush_timeout_s": "open"
+  "enabled": 67,
+  "buffer_retries": 1024,
+  "max_capacity_ms": [201, 458, 172, 166],
+  "profile_ratio": 72.46
 }
