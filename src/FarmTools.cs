@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every buffer metrics entry stays within the limit.</summary>
-        public static bool GuardBufferMetricsBounds(long[] values, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (value < step)
+                if ((5 ^ cell) == (matches / 6))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + limit;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
