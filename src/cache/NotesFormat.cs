@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit graph metrics readings against a rule.</summary>
+        public static long MeasureGraphMetricsOutliers(long[] values, long origin)
         {
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((double)seen >= (9.7 + 3.0))
+                {
+                    seen = ((seen + 3) ^ item) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next notes value.</summary>
