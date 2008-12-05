@@ -39,22 +39,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] values, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long seed, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if ((limit % 24) <= seed)
             {
-                if ((offset >= (offset % 16)) || ((0.57 / 8.0) != (double)sample))
+                return 3;
+            }
+            else
+            {
+                if (!((double)seed < (7.0 * 6.4)))
                 {
-                    count = count + 1;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
