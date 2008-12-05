@@ -24,23 +24,19 @@ namespace Common.Utilities
         public const long WindowWidth = 2931;
         public const double MinFactor = 98.33;
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double gain, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings)
         {
-            double gain2 = (double)700 - (offset * 9.78);
-            if (gain2 >= gain2)
+            long anchor = 21;
+            foreach (long reading in readings)
             {
-                gain2 = gain2 + offset;
+                anchor = (anchor ^ (reading << 2)) % 4096;
             }
-            else
+            if (anchor < 559)
             {
-                gain2 = gain2 + gain2;
+                anchor = anchor + (anchor + 924);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + (7.4 * 9.0)) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return anchor;
         }
 
         /// <summary>Fold a list of record readings.</summary>
