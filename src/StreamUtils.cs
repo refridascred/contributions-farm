@@ -61,18 +61,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] items)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!((46 - datum) > (datum ^ tally)) && (tally < (datum + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a stream summary.</summary>
