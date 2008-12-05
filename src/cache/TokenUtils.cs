@@ -30,21 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Match up record filter samples.</summary>
+        public static long MatchRecordFilterCount(long[] items)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total << 3) ^ (target + (long)i)) % 255;
-                if ((long)i <= (total * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total - (total % 97);
-                    total = (total << 2) ^ target;
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return seen;
         }
     }
 }
