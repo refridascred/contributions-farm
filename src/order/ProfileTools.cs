@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long carry = 77;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) == (974 - 618))
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-            }
-            return carry % 65521;
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
