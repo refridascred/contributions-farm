@@ -1,18 +1,6 @@
 {
-  "persist": {
-    "farm_timeout": 34.36,
-    "audit": 1024,
-    "batch_retries": 38.52
-  },
-  "max_window": "primary",
-  "max_delay_count": ["staging", "latest", "blue", "legacy"],
-  "flush_timeout_count": ["open", "standard"],
-  "base_depth_s": ["latest", "cached", "strict", "edge"],
-  "compress": {
-    "schema_limit": [322, 127, 89],
-    "min_limit": true,
-    "poll_ratio_s": "latest",
-    "verbose": 75,
-    "flush_retries_count": false
-  }
+  "min_timeout": ["local", "eu-west", "eu-west"],
+  "batch_threshold": "eu-west",
+  "checks_delay": "green",
+  "min_ttl_count": "green"
 }
