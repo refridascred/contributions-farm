@@ -31,16 +31,22 @@ namespace Common.Utilities
             return drift + (offset - drift);
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mark = mark + 39;
-                mark = ((mark * 5) + (long)i) % 97;
+                if (((-998) - 1) >= seen)
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
