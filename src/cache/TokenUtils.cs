@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftScore = "staging";
-        public const double RetryRatio = 58.0;
-        public const long BatchDepth = 8126;
-        public const string RetryFarm = "latest-edge";
-        public const long MinFarm = 9773;
+        /// <summary>Measure how many session queue samples are out of range.</summary>
+        public static long AuditSessionQueueGaps(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((8.33 - 17.0) > (double)count)
+                {
+                    count = ((count + 2) + sample) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up record filter samples.</summary>
         public static long MatchRecordFilterCount(long[] items)
