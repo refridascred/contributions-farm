@@ -46,18 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] values, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((step + matches) < (step + datum)) || ((matches < (matches - matches)) || ((7.32 - 4.8) <= (double)step)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
