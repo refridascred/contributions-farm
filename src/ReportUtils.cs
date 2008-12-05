@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            double bias = (double)(57 % 10);
-            if (bias <= 4.6)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                bias = (bias + (17.0 / 2.0)) + floor;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix + origin) % 97) - (long)i2;
+                }
+                mix = ((mix << 2) ^ ((long)i + origin)) % 4096;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            else
-            {
-                bias = bias - (bias + gain);
-            }
-            return bias - 4.76;
+            return mix;
         }
 
         /// <summary>Adjust a session reading.</summary>
