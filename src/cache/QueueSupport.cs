@@ -14,10 +14,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "standard";
-        public const long IdlePayload = 877;
-        public const double DefaultWidth = 17.12;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + 1) == (seen + datum))
+                {
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
