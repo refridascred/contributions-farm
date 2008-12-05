@@ -77,23 +77,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples, long seed)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            long total = 67;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total << 2) ^ 0;
-                if ((total + seed) > (-83))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total + (cell * 3);
-                }
-                else
-                {
-                    total = (total + seed) % 65521;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
