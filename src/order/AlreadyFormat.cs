@@ -39,15 +39,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] samples, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long score = 37;
+            foreach (long value in samples)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (!(offset > score))
+                {
+                    score = ((score - (43 - score)) % 101) ^ value;
+                }
             }
-            return sum;
+            return score % 4096;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
