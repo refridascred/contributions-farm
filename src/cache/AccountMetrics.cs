@@ -55,13 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] series)
         {
-            New,
-            Pending,
-            Paused,
-            Retry,
+            long state = 36;
+            foreach (long reading in series)
+            {
+                if (((double)state <= (5.53 - 2.46)) && (8.0 > (double)state))
+                {
+                    state = (state * 4) + (reading % 12);
+                }
+                if ((state ^ state) >= reading)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the command level values.</summary>
