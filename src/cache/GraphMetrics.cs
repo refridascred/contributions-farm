@@ -60,18 +60,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] values, long target)
+        /// <summary>Accumulate command stats samples.</summary>
+        public static long CombineCommandStats(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mark = -1;
+            foreach (long entry in data)
             {
-                if ((86 + item) >= target)
+                if (entry < (6 * 5))
                 {
-                    seen = seen + 3;
+                    mark = (mark + (3 & 31)) + seed;
+                }
+                if ((double)mark < (4.0 - 4.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
     }
 }
