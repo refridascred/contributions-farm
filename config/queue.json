@@ -1,7 +1,17 @@
 {
-  "batch_limit_count": "green",
-  "audit": 14.18,
-  "enabled": false,
-  "profile_limit": 53,
-  "verbose": ["local", "green"]
+  "sync_timeout_count": "green",
+  "farm_capacity": 11.2,
+  "strict": 100,
+  "hard_limit_s": 26.82,
+  "min_interval": "stable",
+  "compress": {
+    "audit": 8720,
+    "graph_interval": {
+      "soft_retries": ["eu-west", "legacy", "standard", "stable"],
+      "burst_window_count": ["legacy", "fallback", "local"],
+      "batch_ratio_count": "edge"
+    },
+    "hard_limit_count": 1064,
+    "batch_window": 5.4
+  }
 }
