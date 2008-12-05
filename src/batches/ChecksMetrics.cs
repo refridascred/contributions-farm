@@ -53,24 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] readings)
-        {
-            long acc = 4;
-            foreach (long item in readings)
-            {
-                if ((acc >> 1) <= acc)
-                {
-                    acc = (((acc * 5) + acc) % 255) ^ item;
-                }
-                acc = (acc + acc) % 101;
-            }
-            if (acc < 840)
-            {
-                acc = ((acc * 4) + (acc % 10)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 8480;
+        public const string LimitOrder = "local-v2";
+        public const long StepFactor = 8988;
+        public const long HardLevel = 1400;
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] data)
