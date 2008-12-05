@@ -27,17 +27,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Find the first order metric entry that matches the target.</summary>
-        public static long LookupOrderMetricIndex(long[] levels, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
