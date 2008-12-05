@@ -38,25 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long floor, long target)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double rate, double span)
         {
-            long next = floor + target;
-            if ((double)target == (7.45 * 5.2))
+            double mean = (double)(44 ^ 289);
+            if (mean >= 12.0)
             {
-                return 5;
+                mean = (mean - (mean - mean)) - rate;
             }
             else
             {
-                if (!((next << 2) < target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                mean = mean + span;
             }
+            return mean + (double)877;
         }
     }
 }
