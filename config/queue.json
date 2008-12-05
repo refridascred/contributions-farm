@@ -1,10 +1,18 @@
 {
-  "stream_retries": true,
-  "warm_retries_s": 21,
-  "default_timeout_pct": {
-    "min_timeout": "eu-west",
-    "dry_run": 48.75,
-    "persist": true
+  "context_delay": 64.57,
+  "base_limit_s": {
+    "min_timeout": {
+      "default_delay_ms": 98,
+      "idle_ttl_ms": true,
+      "warm_retries": false,
+      "base_retries_s": "primary",
+      "hard_size_pct": 94.82,
+      "dry_run": 14.56
+    },
+    "max_size_s": 83.83,
+    "checks_depth": 250
   },
-  "hard_ratio_s": "edge"
+  "retry_capacity": "open",
+  "format_timeout": "legacy",
+  "poll_ttl_pct": true
 }
