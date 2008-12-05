@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=63
+RECORD_LIMIT=332
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-staging}"
+for item in open local; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    cached)
+    eu-west)
         log "fast path"
         ;;
     *)
