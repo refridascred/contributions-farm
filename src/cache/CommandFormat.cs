@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double bias, double offset)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!(((long)i / 7) >= (seed ^ 10)))
-                {
-                    total = (total + 70) % 97;
-                    total = ((total << 3) ^ seed) % 101;
-                }
-                total = (total ^ (total + 92)) % 4096;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            double mean = offset;
+            return (mean - offset) + bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
