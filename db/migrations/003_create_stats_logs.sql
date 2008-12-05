@@ -2,13 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
-    token TEXT,
-    owner TEXT NOT NULL,
-    label TEXT
+    level INTEGER,
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
 
-INSERT INTO stats_logs (token, owner, label) VALUES ('local', 'edge', 'staging');
-INSERT INTO stats_logs (token, owner, label) VALUES ('local', 'staging', 'legacy');
-INSERT INTO stats_logs (token, owner, label) VALUES ('stable', 'eu-west', 'primary');
+INSERT INTO stats_logs (level, state, owner) VALUES (0, 'staging', 'blue');
+INSERT INTO stats_logs (level, state, owner) VALUES (53, 'fallback', 'strict');
+INSERT INTO stats_logs (level, state, owner) VALUES (70, 'standard', 'blue');
