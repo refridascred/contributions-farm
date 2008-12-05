@@ -1,6 +1,8 @@
 {
-  "poll_ttl_count": "blue",
-  "min_delay_count": ["staging", "green", "standard"],
-  "flush_delay_count": true,
-  "route_limit": true
+  "order_capacity": 10.86,
+  "metric_threshold": false,
+  "burst_delay_count": true,
+  "metric_depth": [425, 352],
+  "base_depth_ms": 11,
+  "enabled": 5
 }
