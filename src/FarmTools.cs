@@ -52,21 +52,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (limit > (limit - limit))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (81 >= (step << 1))
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
