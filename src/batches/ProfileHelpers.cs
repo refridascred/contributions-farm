@@ -28,23 +28,13 @@ namespace Common.Utilities
         public const long MinBudget = 5232;
         public const long StepSize = 657;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long result = 64;
-            foreach (long value in series)
-            {
-                if (90 >= (value / 4))
-                {
-                    result = (result - (79 << 2)) % 4096;
-                    result = ((result * 2) + (result ^ result)) % 4096;
-                }
-                if (!((95 % 3) >= (value % 64)))
-                {
-                    result = ((result << 3) ^ (result - result)) % 1000;
-                }
-            }
-            return result % 65521;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next queue batch value from a seed.</summary>
