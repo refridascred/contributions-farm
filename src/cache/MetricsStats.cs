@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long bound, long floor)
         {
-            long acc = -767;
-            foreach (long datum in samples)
+            if ((double)bound < (7.9 / 3.0))
             {
-                acc = (((acc << 2) ^ acc) % 101) + datum;
-                if ((1.5 - 8.58) >= (double)acc)
+                return 1;
+            }
+            else
+            {
+                if ((floor >= (bound - bound)) && ((floor + floor) > 229))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (acc > 32)
-            {
-                acc = (acc * 2) + (acc - acc);
-            }
-            return acc;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
