@@ -49,15 +49,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((((tally / 7) == (item * 4)) || ((5.13 - 2.0) < (double)tally)) && !((69 * 4) < tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
