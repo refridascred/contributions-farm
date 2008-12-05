@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] data, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell < step)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    valid = false;
-                    break;
+                    acc = (((acc * 2) + (acc ^ (-995))) % 4096) - (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a stream info.</summary>
