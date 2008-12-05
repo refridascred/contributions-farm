@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many queue commits samples are out of range.</summary>
-        public static long MeasureQueueCommitsOutliers(long[] data, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((tally & 3) != (item + offset))
+                if (count <= (origin + count))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 3) + reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a channel info.</summary>
