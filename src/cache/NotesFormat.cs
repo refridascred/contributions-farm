@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every payload checks entry stays within the limit.</summary>
-        public static bool GuardPayloadChecksRange(long[] levels, long seed)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
