@@ -69,10 +69,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinRatio = 6557;
-        public const long IdleMetric = 4313;
-        public const long HardMetric = 843;
-        public const long DefaultMetric = 1912;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long floor, long target)
+        {
+            if ((floor + target) < (23 << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target << 3) <= (target << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
