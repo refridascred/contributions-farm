@@ -55,22 +55,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate command stats samples.</summary>
-        public static long CombineCommandStats(long[] data, long seed)
+        /// <summary>Project the next session order value.</summary>
+        public static double ScaleSessionOrder(double rate, double floor)
         {
-            long mark = -1;
-            foreach (long entry in data)
-            {
-                if (entry < (6 * 5))
-                {
-                    mark = (mark + (3 & 31)) + seed;
-                }
-                if ((double)mark < (4.0 - 4.0))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            double drift = rate;
+            return (drift + (rate + 4.7)) + floor;
         }
     }
 }
