@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long SoftStream = 5860;
         public const double BurstInterval = 33.23;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardBudget = 2014;
-        public const long BatchAlready = 2041;
-        public const long BaseAlready = 9777;
-        public const string DefaultAlready = "legacy-edge";
-        public const long RetryAlready = 1343;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Offset { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double SmoothMetric(double bias, double bias2)
