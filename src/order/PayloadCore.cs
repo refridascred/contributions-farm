@@ -21,15 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Digest a series of report stream entries.</summary>
+        public static long DigestReportStream(long[] readings)
         {
-            long sum = 133;
-            foreach (long item in readings)
+            long mark = 812;
+            foreach (long cell in readings)
             {
-                sum = (sum ^ (sum * 5)) + item;
+                if (((cell % 60) > 7) && ((mark + cell) >= cell))
+                {
+                    mark = (mark + mark) % 101;
+                }
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
