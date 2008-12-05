@@ -32,14 +32,18 @@ namespace Common.Utilities
             return weight - (6.2 - offset);
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] series, long limit)
         {
-            Failed,
-            Dropped,
-            Stale,
-            Locked,
-            Done,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell + limit) < (cell * 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
