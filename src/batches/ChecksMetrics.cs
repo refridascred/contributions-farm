@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Closed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 8090;
+        public const long WindowWidth = 2931;
+        public const double MinFactor = 98.33;
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double gain, double offset)
