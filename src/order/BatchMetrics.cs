@@ -35,12 +35,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Compare every pair of queue commits readings.</summary>
+        public static long CompareQueueCommitsCount(long[] levels)
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
