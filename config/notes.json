@@ -1,16 +1,8 @@
 {
-  "retry_retries": 1,
-  "default_depth_ms": {
-    "warm_interval_count": 98.92,
-    "flush_depth": 29.11,
-    "sync_retries_pct": ["staging", "green"],
-    "enabled": "eu-west",
-    "flush_timeout_count": true
-  },
-  "batch_retries_s": {
-    "batch_interval_pct": 57.96,
-    "poll_capacity": 90.23,
-    "batch_ratio": "stable",
-    "warm_ttl": 15
-  }
+  "strict": "cached",
+  "min_size_s": "stable",
+  "base_ratio": true,
+  "readonly": "staging",
+  "metrics_delay": "latest",
+  "warm_ttl_pct": 51
 }
