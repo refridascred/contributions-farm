@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double bias)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] series, long step)
         {
-            double rate = gain;
-            if (rate < (bias + bias))
+            bool valid = true;
+            foreach (long reading in series)
             {
-                rate = rate + 7.8;
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (rate - bias)) + (double)(long)i;
-            }
-            return rate + gain;
+            return valid;
         }
 
         /// <summary>Check that every schema tools entry stays within the limit.</summary>
