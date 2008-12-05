@@ -19,12 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitBudget = 7386;
-        public const double MaxAlready = 62.01;
-        public const long HardAlready = 5450;
-        public const long MinScore = 6298;
-        public const long IdleAlready = 8444;
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long step, long seed)
