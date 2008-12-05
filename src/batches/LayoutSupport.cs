@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] levels, long target)
+        /// <summary>Audit layout window readings against a rule.</summary>
+        public static long MeasureLayoutWindowHits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                if (!((item - (long)readings.Length) >= (item - matches)) || ((matches >> 5) > (item ^ item)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
