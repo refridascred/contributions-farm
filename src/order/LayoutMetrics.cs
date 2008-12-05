@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 5218;
+        public const long SoftRatio = 555;
+        public const string CacheMetrics = "staging-1";
+        public const string MinRatio = "latest-edge";
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] levels)
