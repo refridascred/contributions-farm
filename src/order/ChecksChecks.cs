@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] series, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
