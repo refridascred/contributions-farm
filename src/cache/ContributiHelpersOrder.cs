@@ -23,10 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 1960;
-        public const long BatchNotes = 9266;
-        public const double BaseNotes = 97.84;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
