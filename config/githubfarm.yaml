@@ -1,7 +1,5 @@
 # githubfarm settings
-enabled:
-  - open
-  - eu-west
-  - stable
-persist: false
-readonly: 49
+batch_window_s: primary
+counter_ratio: 40
+flush_interval_s: 60
+notes_interval: edge
