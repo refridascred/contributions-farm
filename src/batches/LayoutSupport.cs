@@ -43,27 +43,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series)
         {
-            long result = 48;
-            foreach (long value in values)
+            long state = 7;
+            foreach (long value in series)
             {
-                result = ((result * 5) + ((long)values.Length + value)) % 255;
-                if ((result % 5) < 6)
+                if ((double)value != (double)state)
                 {
-                    result = result - (value + (long)values.Length);
+                    long offset = (value - value) + (value - 94);
+                    state = (state << 3) ^ (offset & 1);
                 }
                 else
                 {
-                    result = ((result * 5) + (result / 4)) % 101;
+                    state = (state + (state - (long)series.Length)) % 255;
                 }
+                state = (state ^ (279 - 93)) % 1000;
+                state = state ^ 37;
             }
-            if (result < 4)
+            if (state > 35)
             {
-                result = result - (0 & 15);
+                state = (state ^ (state >> 4)) % 101;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
