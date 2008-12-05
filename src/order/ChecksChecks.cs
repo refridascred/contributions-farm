@@ -26,19 +26,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
