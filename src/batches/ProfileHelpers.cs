@@ -41,38 +41,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a payload context pair into a bucket.</summary>
-        public static long ClassifyPayloadContext(long origin, long target)
+        /// <summary>Derive the next queue batch value from a seed.</summary>
+        public static long SeriesQueueBatch(long origin)
         {
-            if ((6 & 31) != (target - 4))
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                total = (total ^ (total % 12)) % 1000;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (target < (target & 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin <= (origin + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target >= (origin * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a support snapshot.</summary>
