@@ -51,19 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double gain, double bias)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double drift = (double)((-78) - (-2));
-            if (drift > drift)
-            {
-                drift = (drift - (double)970) - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (bias + bias)) + (double)(long)i;
-            }
-            return drift - drift;
+            Active,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
