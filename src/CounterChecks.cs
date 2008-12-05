@@ -20,24 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] items, long seed)
         {
-            if (!((double)origin < (5.0 / 2.0)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (4.1 >= (double)origin)
+                if (items[i] >= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
