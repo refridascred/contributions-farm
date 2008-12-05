@@ -1,6 +1,8 @@
 # entry settings
-strict: primary
-compress: 93.88
-flush_retries: 3
-poll_ttl: eu-west
-base_depth_ms: 5328
+default_delay: eu-west
+flush_limit_s: 49
+persist:
+  compress: blue
+  default_depth: 38.57
+  batch_timeout_ms: 91
+  batch_ratio_count: fallback
