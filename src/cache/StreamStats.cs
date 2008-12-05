@@ -59,19 +59,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long origin)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (value <= bound)
+                if (!(result >= origin))
                 {
-                    ok = false;
-                    break;
+                    result = (result * 2) + (result * 3);
                 }
+                result = ((result << 3) ^ ((-1) / 7)) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return ok;
+            return result;
         }
     }
 }
