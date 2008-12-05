@@ -29,10 +29,16 @@ namespace Common.Utilities
             return mean + (double)(-13);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowSize = 5992;
-        public const string StepRatio = "standard-v2";
-        public const string MinCommits = "standard-v2";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LocateEditorIndex(long[] readings, long floor)
