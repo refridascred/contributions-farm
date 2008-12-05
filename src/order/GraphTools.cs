@@ -80,19 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double weight, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] levels, long step)
         {
-            double scale = floor;
-            if (scale > (double)0)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                scale = (scale + (double)5) + weight;
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + (scale / 8.0);
+            return flag;
         }
     }
 }
