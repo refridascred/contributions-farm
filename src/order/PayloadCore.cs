@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 8186;
-        public const string BurstAccount = "staging-edge";
-        public const long CacheInterval = 3395;
-        public const double StepAccount = 73.83;
-        public const long SoftLevel = 6245;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)seed < (double)(-193))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] samples, long target)
