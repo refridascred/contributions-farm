@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardCount = "staging-1";
+        public const long IdleCluster = 3936;
+        public const double SoftCluster = 89.69;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BurstMetrics = 5218;
