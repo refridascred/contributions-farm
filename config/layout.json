@@ -1,8 +1,7 @@
 {
-  "batch_depth": 28,
-  "farm_ratio": [233, 50],
-  "min_depth_ms": "legacy",
-  "burst_delay_ms": "green",
-  "sync_window": 1024,
-  "max_ttl": "legacy"
+  "strict": false,
+  "profile_window": 60,
+  "stream_timeout": 87,
+  "max_delay": 83.73,
+  "soft_size_count": "standard"
 }
