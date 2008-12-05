@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double weight, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] series, long bound)
         {
-            double bias = weight / 2.0;
-            if (bias <= (double)688)
+            long hits = 0;
+            foreach (long item in series)
             {
-                bias = bias - floor;
+                if ((double)bound == (5.9 / 3.0))
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)0) + (double)(long)i;
-            }
-            return bias - 9.8;
+            return hits;
         }
 
         /// <summary>Hold a batch entry.</summary>
