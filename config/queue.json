@@ -1,6 +1,6 @@
 {
-  "cache_capacity": "green",
-  "githubfarm_threshold": [352, 263],
-  "default_capacity": 1,
-  "readonly": [10, 366, 352]
+  "contributi_window": 48.96,
+  "idle_ttl": [464, 46],
+  "support_size": "strict",
+  "soft_ratio_pct": "legacy"
 }
