@@ -1,5 +1,8 @@
 {
-  "already_timeout": "fallback",
-  "default_capacity_count": 1024,
-  "max_threshold": ["cached", "legacy", "green"]
+  "persist": 61.21,
+  "stream_depth": 1363,
+  "metrics_delay": "local",
+  "idle_interval_s": 200,
+  "dry_run": 26,
+  "burst_depth": 27
 }
