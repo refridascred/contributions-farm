@@ -22,15 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Derive the next cluster support value from a seed.</summary>
+        public static long RollClusterSupport(long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                sum = (sum * 4) + (seed + (long)i);
+                sum = sum ^ (seed + 98);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Hold a route stats.</summary>
