@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const long RetryBudget = 4063;
         public const string IdleOrder = "legacy-1";
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] levels, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 90;
+            foreach (long sample in values)
             {
-                if (levels[i] == bound)
+                acc = (acc ^ (2 + acc)) % 1000;
+                acc = (acc ^ sample) % 255;
+                if ((1.0 + 6.48) >= 0.7)
                 {
-                    return (long)i;
+                    acc = acc - (sample - acc);
                 }
             }
-            return -1;
+            if (acc < 871)
+            {
+                acc = ((acc << 2) ^ (acc << 2)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a order info.</summary>
