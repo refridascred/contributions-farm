@@ -23,22 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] samples, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] data, long target)
         {
-            long carry = 22;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!((5.0 * 1.0) <= (double)entry))
+                if ((sample > (sample % 8)) && ((hits - (long)data.Length) == (36 ^ 4)))
                 {
-                    carry = ((carry + carry) % 101) - seed;
+                    hits = (hits + 3) - target;
                 }
             }
-            if (carry > (-759))
-            {
-                carry = carry - (carry >> 1);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
