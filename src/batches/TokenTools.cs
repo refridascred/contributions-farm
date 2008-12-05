@@ -18,11 +18,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit layout batch readings against a rule.</summary>
+        public static long CountLayoutBatchHits(long[] values)
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((cell >> 4) < (count - (long)values.Length)) && !((920 & 7) < (count >> 5)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
