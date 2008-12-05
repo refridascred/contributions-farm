@@ -51,24 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long floor, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long offset)
         {
-            if ((floor ^ offset) < 40)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 5) == (304 * 4))
+                if (data[i] < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
