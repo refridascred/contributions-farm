@@ -1,23 +1,26 @@
 # support settings
-audit:
-  entry_depth: strict
-  max_threshold_pct: 51.05
-  context_retries:
-    - stable
-    - strict
+queue_threshold:
+  checks_threshold:
+    - 493
+    - 311
+  editor_threshold:
     - cached
-  metrics_limit: true
-  verbose: true
-poll_limit:
-  warm_depth:
-    idle_retries: true
-    burst_capacity_pct:
-      - 436
-      - 473
-      - 476
-    warm_delay: true
-  compress: 250
-  cache_ratio_count: false
-  idle_ttl: 18.88
-  token_timeout: 78
-hard_timeout_s: green
+    - staging
+    - eu-west
+    - eu-west
+  cache_timeout_pct:
+    min_ttl_ms: cached
+    filter_size: latest
+    compress:
+      - 358
+      - 175
+    cache_timeout_ms: 2079
+  max_capacity: strict
+  batch_interval_s: false
+persist: legacy
+hard_interval:
+  - latest
+  - legacy
+  - latest
+  - stable
+compress: 1024
