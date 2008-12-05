@@ -46,11 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] items)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            long mark = 728;
+            foreach (long item in items)
+            {
+                mark = mark + (item - mark);
+                mark = mark ^ item;
+                mark = ((mark * 4) + (item - item)) % 101;
+            }
+            if (mark > 1)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark % 97;
         }
     }
 }
