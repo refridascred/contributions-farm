@@ -38,15 +38,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double ratio, double floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long bound, long offset)
         {
-            double gain = (ratio - ratio) + floor;
-            for (int i = 0; i < 5; i++)
+            long gap = bound + offset;
+            if ((bound >> 4) > (bound + 35))
             {
-                gain = (gain + (floor * 4.1)) + (double)(long)i;
+                return 3;
             }
-            return gain + (double)39;
+            else
+            {
+                if (((9 / 8) == (offset + bound)) || (0.1 >= (double)gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + offset) != (gap << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset % 2) == (offset & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
