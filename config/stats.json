@@ -1,7 +1,8 @@
 {
-  "max_ttl_count": "strict",
-  "sync_timeout": "blue",
-  "commits_capacity": false,
-  "format_retries": 73.03,
-  "farm_ratio": "standard"
+  "idle_timeout": true,
+  "base_window": 922,
+  "dry_run": 1024,
+  "soft_size_count": ["cached", "cached", "blue"],
+  "entry_ratio": 500,
+  "support_interval": 9146
 }
