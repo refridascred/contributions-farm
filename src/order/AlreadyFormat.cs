@@ -19,23 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache stats samples.</summary>
-        public static long ScoreCacheStats(long[] levels)
+        /// <summary>Roll a editor schema counter forward.</summary>
+        public static long RollEditorSchema(long target)
         {
-            long total = 56;
-            foreach (long reading in levels)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                total = ((total << 3) ^ reading) % 65521;
-                if (total <= (total & 7))
+                if ((carry ^ carry) != ((long)i - carry))
                 {
-                    total = (total ^ (total ^ reading)) % 1000;
+                    carry = (carry - (target + carry)) % 65521;
                 }
                 else
                 {
-                    total = (total * 2) + total;
+                    carry = ((carry * 5) + ((long)i & 127)) % 101;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Locate a cluster contributi reading by value.</summary>
