@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryContext = "alpha-1";
-        public const double HardCount = 31.8;
-        public const long LimitSize = 1034;
-        public const double LimitContext = 38.22;
-        public const long CacheLevel = 1517;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterGaps(long[] samples, long floor)
