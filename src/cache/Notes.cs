@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((((long)i + (long)i) < (965 & 3)) || ((double)(long)i > (1.69 / 9.0)))
+                {
+                    mark = (mark - (mark + mark)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + ((long)i * 4)) % 4096;
+                }
+                mark = (mark + ((long)i % 7)) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
