@@ -13,14 +13,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            Queued,
-            Active,
-            New,
-            Pending,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two profile measurements.</summary>
