@@ -1,8 +1,5 @@
 # support settings
-max_capacity:
-  - 465
-  - 149
-  - 367
-  - 232
-poll_threshold_ms: edge
-tools_retries: true
+cache_delay: 4764
+soft_depth: green
+max_delay_count: false
+commits_threshold: fallback
