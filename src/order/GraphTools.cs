@@ -20,19 +20,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double scale2 = scale;
-            if (scale2 > (scale2 / 4.0))
-            {
-                scale2 = (scale2 - scale) + floor;
-            }
-            else
-            {
-                scale2 = scale2 + scale;
-            }
-            return scale2 + (double)74;
+            Closed,
+            Draft,
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the route kind values.</summary>
