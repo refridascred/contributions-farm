@@ -50,13 +50,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] readings, long floor)
         {
-            Done,
-            Failed,
-            New,
-            Locked,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
