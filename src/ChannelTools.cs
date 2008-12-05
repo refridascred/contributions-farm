@@ -30,19 +30,12 @@ namespace Common.Utilities
         public const long RetryCount = 2647;
         public const double BurstFilter = 93.3;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] series, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Dropped,
+            Locked,
         }
     }
 }
