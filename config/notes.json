@@ -1,5 +1,19 @@
 {
-  "hard_depth": 12,
-  "retry_limit": "stable",
-  "base_limit": 54.52
+  "sync_capacity_count": 39,
+  "base_interval_ms": true,
+  "notes_window": "latest",
+  "retry_retries_s": {
+    "min_size_count": 8621,
+    "profile_ttl": "legacy",
+    "session_interval": 8533,
+    "route_depth": {
+      "dry_run": 38.14,
+      "flush_ratio_pct": "edge",
+      "flush_window": false,
+      "idle_depth_s": 40
+    },
+    "graph_limit": 87.21
+  },
+  "hard_ttl": 250,
+  "readonly": 612
 }
