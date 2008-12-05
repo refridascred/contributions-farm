@@ -28,11 +28,20 @@ namespace Common.Utilities
             return bias2 + (bias * 13.0);
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long floor)
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            long score = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score * 4) + ((long)i << 3);
+                if (floor <= (floor * 4))
+                {
+                    score = score ^ ((long)i >> 5);
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
