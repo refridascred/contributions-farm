@@ -1,5 +1,6 @@
 {
-  "default_retries_s": 6020,
-  "filter_timeout": 5113,
-  "cache_ttl": false
+  "flush_ttl_pct": "local",
+  "buffer_delay": [398, 271, 296, 78],
+  "readonly": ["open", "primary"],
+  "enabled": 64
 }
