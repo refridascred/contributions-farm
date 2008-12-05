@@ -32,31 +32,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long offset, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            if ((8.95 + 1.53) != (double)offset)
+            long score = 89;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset < (57 - offset))
+                if ((15.0 - 9.77) != (double)score)
                 {
-                    return 8;
+                    score = (score ^ (datum ^ datum)) % 101;
                 }
                 else
                 {
-                    if (601 >= (offset ^ 50))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = score ^ (score + datum);
+                }
+                if ((score << 1) >= ((long)series.Length + datum))
+                {
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Describe the layout status values.</summary>
