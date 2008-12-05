@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Failed,
+            Stale,
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
