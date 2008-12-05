@@ -40,18 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record token entries that pass the check.</summary>
-        public static long CountRecordTokenOutliers(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = 3;
+            foreach (long entry in readings)
             {
-                if ((18.0 + 9.08) > (double)tally)
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = (tally + 3) - item;
+                    carry = ((carry << 3) ^ (carry + entry)) - (long)i;
                 }
+                carry = (carry ^ (entry ^ entry)) % 101;
             }
-            return tally;
+            if (carry < 1)
+            {
+                carry = ((carry << 2) ^ (930 - limit)) % 255;
+            }
+            return carry;
         }
     }
 }
