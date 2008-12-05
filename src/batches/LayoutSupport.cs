@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every channel cache entry stays within the limit.</summary>
-        public static bool GuardChannelCacheRange(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 27.85;
+        public const double CacheFactor = 20.85;
+        public const string RetryFarm = "legacy-1";
+        public const double StepFarm = 96.64;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] values)
