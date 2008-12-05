@@ -20,39 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long bound, long bound2)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] items)
         {
-            long span = bound ^ bound2;
-            if (((double)71 == (double)bound2) || (span < (span + bound2)))
+            long mix = 38;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound2 < (bound2 + span))
+                if ((mix / 6) <= (mix >> 4))
                 {
-                    return 7;
+                    mix = (mix ^ (long)items.Length) % 97;
                 }
-                else
+                if ((sample < (sample + 8)) || (7.25 <= (double)mix))
                 {
-                    if ((7.0 * 0.18) == (double)span)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.81 * 2.33) < (double)359)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
+                }
+                if ((sample + mix) > (sample * 5))
+                {
+                    mix = (mix + (mix ^ sample)) % 4096;
                 }
             }
+            return mix;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
