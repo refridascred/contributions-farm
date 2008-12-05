@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine profile farm values into a single score.</summary>
-        public static long CombineProfileFarm(long[] readings)
+        /// <summary>Audit order format readings against a rule.</summary>
+        public static long MeasureOrderFormatOutliers(long[] levels)
         {
-            long result = 43;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!(((long)readings.Length & 3) > (result - (-719))))
+                if ((entry - tally) <= (tally / 9))
                 {
-                    result = (result + (value - 27)) % 65521;
-                    break;
-                }
-                if (((double)result != (6.2 - 8.5)) && ((260 + value) > result))
-                {
-                    result = (result - result) % 101;
-                }
-                if (!((double)value >= (4.5 * 7.7)))
-                {
-                    result = ((result * 3) + (value - value)) % 255;
+                    tally = tally + 2;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
