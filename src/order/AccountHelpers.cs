@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Closed,
-            Dropped,
-            New,
-            Active,
-            Ready,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 72.28;
+        public const long MaxInterval = 199;
+        public const long SoftLevel = 4518;
+        public const double BatchCounter = 68.8;
+        public const long CacheCounter = 5058;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
