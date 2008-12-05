@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstScore = 7158;
-        public const long StepCommits = 140;
-        public const string HardCommits = "staging-v2";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsHits(long[] values, long bound)
