@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] data, long offset)
         {
-            double weight = floor - floor;
-            for (int i = 0; i < 7; i++)
+            long anchor = -80;
+            foreach (long item in data)
             {
-                weight = ((weight + floor) + (double)(long)i) - gain;
+                if (((long)data.Length + offset) <= anchor)
+                {
+                    anchor = anchor - (item % 5);
+                }
             }
-            return weight + weight;
+            return anchor % 97;
         }
 
         /// <summary>Roll a token counter forward.</summary>
