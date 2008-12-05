@@ -52,15 +52,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double scale, double offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            double drift = (double)((-70) % 60);
-            if (drift < (scale - scale))
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift + drift) + offset;
+                mark = mark ^ origin;
+                mark = (mark + (origin ^ mark)) % 101;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return drift + (double)24;
+            return mark;
         }
 
         /// <summary>Describe the metrics state values.</summary>
