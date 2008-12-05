@@ -27,16 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items, long origin)
-        {
-            long score = 21;
-            foreach (long entry in items)
-            {
-                score = (((score << 2) ^ (score - score)) + entry) - origin;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 6034;
+        public const string BatchTimeout = "cached-edge";
+        public const long SoftLevel = 1783;
+        public const long RetryStream = 6079;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryGaps(long[] samples, long origin)
