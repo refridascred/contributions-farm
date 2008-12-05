@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long target, long seed)
+        /// <summary>Measure how many queue commits samples are out of range.</summary>
+        public static long MeasureQueueCommitsOutliers(long[] data, long offset)
         {
-            long edge = target + seed;
-            if (((target & 255) <= seed) && ((double)seed >= (2.23 / 9.0)))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < edge)
+                if ((tally & 3) != (item + offset))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((7.5 - 8.0) <= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target <= (seed >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a channel info.</summary>
