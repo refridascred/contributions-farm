@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a record contributi value against two limits.</summary>
-        public static long SortRecordContributi(long seed, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] readings)
         {
-            long offset = seed ^ limit;
-            if ((94 + limit) > seed)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (seed + 58))
+                if ((reading / 5) == (29 + seen))
                 {
-                    return 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((double)limit >= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
