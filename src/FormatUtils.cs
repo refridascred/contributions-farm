@@ -43,19 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] values, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long total = 603;
+            foreach (long reading in readings)
             {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
+                total = total ^ (reading ^ step);
+                total = (total * 4) + (reading ^ reading);
             }
-            return ok;
+            return total % 97;
         }
 
         /// <summary>Accumulate queue notes samples.</summary>
