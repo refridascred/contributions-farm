@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxWindow = "stable-1";
-        public const double BurstWindow = 57.08;
-        public const long SoftScore = 5063;
-        public const long MaxDepth = 9551;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "latest-1";
+        public const string MinLevel = "standard-edge";
+        public const long DefaultScore = 7356;
+        public const string WindowTimeout = "standard-v2";
+        public const long SoftRatio = 6175;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
