@@ -16,19 +16,17 @@ namespace Common.Utilities
         public const string CacheMetrics = "staging-1";
         public const string MinRatio = "latest-edge";
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items, long limit)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] series, long offset)
         {
-            long score = 603;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score << 2) ^ (score + sample);
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (score < (-75))
-            {
-                score = score + (limit + score);
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
