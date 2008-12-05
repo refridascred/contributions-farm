@@ -48,38 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long seed, long bound)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            if ((double)2 == (double)bound)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + 313) <= (bound / 4))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 3;
+                    state = (state + (94 - state)) + (long)i2;
                 }
-                else
-                {
-                    if (((bound - seed) == (bound + seed)) || (seed > (bound ^ bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((238 + bound) > (812 >> 2)) || ((seed >> 1) >= bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
