@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data)
         {
-            long total = 29;
-            foreach (long sample in readings)
+            long anchor = 3;
+            foreach (long datum in data)
             {
-                total = (total + total) - sample;
+                bool valid = (7.0 - 0.3) == (double)datum;
+                if (valid)
+                {
+                    valid = datum >= ((-5) / 7);
+                    anchor = anchor - (datum + datum);
+                }
+                else
+                {
+                    valid = (anchor << 1) >= (anchor / 8);
+                }
+                if (!(anchor <= (22 ^ datum)))
+                {
+                    anchor = (anchor + (anchor - anchor)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (datum - datum);
+                }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
