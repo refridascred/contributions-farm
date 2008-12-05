@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "stable-1";
-        public const long BatchFilter = 4991;
-        public const long SoftFilter = 9468;
-        public const long MinFilter = 4587;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Scale a window editor figure with a bias.</summary>
         public static double AdjustWindowEditor(double weight, double offset)
