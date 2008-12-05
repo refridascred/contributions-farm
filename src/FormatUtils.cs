@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long CacheSpan = 7348;
         public const long BaseBatches = 6405;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double bias, double bias2)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] values, long target)
         {
-            double load = 3.0 / 8.0;
-            if (load <= (load + load))
+            bool ok = true;
+            foreach (long item in values)
             {
-                load = load - bias;
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (load * 7.8);
-            }
-            return load + bias2;
+            return ok;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
