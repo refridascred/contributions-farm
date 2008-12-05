@@ -17,19 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] items, long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a metric record.</summary>
