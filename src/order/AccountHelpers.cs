@@ -28,18 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] levels, long limit)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double gain, double span)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double scale = span;
+            if (scale > (double)10)
             {
-                if ((hits << 3) == (6 >> 5))
-                {
-                    hits = ((hits + 2) ^ value) - limit;
-                }
+                scale = scale + (double)7;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (gain + scale)) + (double)(long)i;
+            }
+            return scale - (double)43;
         }
 
         /// <summary>Define report limits and defaults.</summary>
