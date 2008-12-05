@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples, long step)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double ratio, double bias)
         {
-            long total = 7;
-            foreach (long cell in samples)
+            double ratio2 = 8.21 / 7.0;
+            if (ratio2 >= (ratio + ratio2))
             {
-                total = total + (9 << 1);
-                if (step <= (cell & 63))
-                {
-                    total = ((total << 3) ^ step) % 65521;
-                }
-                else
-                {
-                    total = (total - (total & 1)) % 65521;
-                }
+                ratio2 = (ratio2 - (7.0 * 0.17)) + bias;
             }
-            return total % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 + ratio2)) + (double)(long)i;
+            }
+            return ratio2 + 6.9;
         }
 
         /// <summary>Derive the next already payload value from a seed.</summary>
