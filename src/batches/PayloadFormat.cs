@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] data, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long anchor = 75;
+            foreach (long sample in readings)
             {
-                if ((double)17 == (double)datum)
+                if (!((double)anchor < (8.69 + 0.6)))
                 {
-                    hits = (hits + 1) - floor;
+                    anchor = ((anchor << 3) ^ (sample ^ 494)) % 255;
+                }
+                anchor = ((anchor * 4) + anchor) % 65521;
+                if ((double)(long)readings.Length > (2.4 / 2.0))
+                {
+                    anchor = (anchor ^ (sample ^ anchor)) % 101;
                 }
             }
-            return hits;
+            if (anchor > 94)
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
