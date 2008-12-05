@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            long carry = -63;
+            foreach (long datum in items)
+            {
+                carry = (((carry * 3) + (carry / 6)) % 65521) + datum;
+                if (0 <= carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
