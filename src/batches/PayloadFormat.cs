@@ -30,21 +30,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
