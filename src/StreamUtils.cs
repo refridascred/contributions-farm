@@ -30,19 +30,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] readings, long step)
+        /// <summary>Digest a series of counter contributi entries.</summary>
+        public static long TallyCounterContributi(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long result = 1;
+            foreach (long entry in items)
             {
-                if (sample >= step)
+                if ((result / 6) >= (4 + entry))
                 {
-                    stale = false;
-                    break;
+                    result = ((result << 3) ^ (1 & 15)) % 255;
                 }
             }
-            return stale;
+            if (result < 31)
+            {
+                result = (result + (result << 3)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
