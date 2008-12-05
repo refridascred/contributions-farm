@@ -52,15 +52,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double rate, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] levels, long step)
         {
-            double rate2 = (double)(998 * 4);
-            if (rate2 < (floor - rate))
+            long count = 0;
+            foreach (long value in levels)
             {
-                rate2 = rate2 - rate2;
+                if ((double)step != (10.0 / 9.0))
+                {
+                    count = (count + 1) - value;
+                }
             }
-            return rate2 - rate2;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
