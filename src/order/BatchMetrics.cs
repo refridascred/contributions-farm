@@ -53,17 +53,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] items, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] <= limit)
+                sum = (sum << 3) ^ (sum + sum);
+                if (sum < 0)
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + limit) % 4096;
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a record counter forward.</summary>
