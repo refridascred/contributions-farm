@@ -23,19 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] series, long offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] data)
         {
             long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((18.0 - 4.37) == (double)(long)series.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 3) + item) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
