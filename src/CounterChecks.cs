@@ -65,11 +65,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
+            long carry = 866;
+            foreach (long sample in series)
+            {
+                if ((59 & 63) >= (carry + carry))
+                {
+                    carry = ((carry * 5) + (carry % 2)) % 101;
+                    break;
+                }
+                carry = carry ^ (sample + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
