@@ -60,18 +60,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] items)
+        /// <summary>Compare every pair of order layout readings.</summary>
+        public static long MatchOrderLayoutCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches + matches) > datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of already counter entries.</summary>
