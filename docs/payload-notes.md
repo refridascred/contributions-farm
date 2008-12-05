@@ -1,15 +1,14 @@
 # Payload notes
 
-The entry report groups every entry by filter.
-Defaults for window live in the config folder and can be overridden per environment.
-Use metric settings to tune how often session data is refreshed.
+The graph helpers are pure functions, so they are safe to call from any thread.
+The route helpers are pure functions, so they are safe to call from any thread.
 
-Keep report and route names short and lowercase.
-The contributi module keeps counter values in sync with the githubfarm cache.
+The githubfarm report groups every githubfarm by report.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep account values small
-- Document new batches fields
-- Validate schema input early
-- Log every order change
+- Document new already fields
+- Log every token change
+- Keep batch values small
+- Review stats limits each release
