@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string WindowTimeout = "standard-v2";
         public const long SoftRatio = 6175;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double weight, double span)
         {
-            Locked,
-            Ready,
-            Synced,
+            double scale = span;
+            if (scale > (weight + weight))
+            {
+                scale = scale + weight;
+            }
+            else
+            {
+                scale = scale + (double)29;
+            }
+            return scale - (scale + weight);
         }
 
         /// <summary>Hold a counter summary.</summary>
