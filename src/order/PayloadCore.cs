@@ -62,38 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long origin, long limit)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if ((origin & 127) >= 57)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit <= origin) && ((double)limit > (8.0 * 1.8)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.8 + 5.1) > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + 41) > (origin / 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
