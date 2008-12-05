@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] series, long bound)
+        /// <summary>Count the layout filter entries that pass the check.</summary>
+        public static long MeasureLayoutFilterGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((item / 7) <= (10 - item))
+                if ((seen + seen) < (cell - cell))
                 {
-                    tally = (tally + 3) + bound;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
