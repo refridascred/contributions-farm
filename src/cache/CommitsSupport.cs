@@ -80,18 +80,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] data, long origin)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double weight, double span)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double weight2 = (double)(1 - 147);
+            if (weight2 < span)
             {
-                if ((datum + origin) >= (956 - datum))
-                {
-                    hits = hits + 3;
-                }
+                weight2 = weight2 - weight2;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - (8.2 * 5.66)) + (double)(long)i;
+            }
+            return weight2 - (weight - weight2);
         }
     }
 }
