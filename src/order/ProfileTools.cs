@@ -19,15 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Audit stream format readings against a rule.</summary>
+        public static long AuditStreamFormatHits(long[] levels)
         {
-            long result = 49;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                result = (result - (entry - entry)) % 255;
+                if (90 >= ((long)levels.Length % 10))
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
