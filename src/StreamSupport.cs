@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches commits series from a seed.</summary>
-        public static long StepBatchesCommits(long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] readings, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix / 5) != (limit & 255))
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
                 {
-                    mix = ((mix * 5) + ((long)i - mix)) % 255;
-                    mix = ((mix << 2) ^ (-4)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix + (limit >> 5)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every account support entry stays within the limit.</summary>
