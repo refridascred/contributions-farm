@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftBudget = 219;
+        public const long WindowNotes = 3112;
+        public const string IdleInterval = "open-edge";
+        public const double RetryLevel = 78.36;
+        public const long BatchSpan = 1883;
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] samples)
