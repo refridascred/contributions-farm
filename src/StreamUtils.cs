@@ -69,13 +69,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 6407;
+        public const long CacheProfile = 3489;
+        public const long MinProfile = 2962;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatOutliers(long[] series, long offset)
