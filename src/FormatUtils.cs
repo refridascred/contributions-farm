@@ -47,15 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session stats series from a seed.</summary>
-        public static long StepSessionStats(long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
