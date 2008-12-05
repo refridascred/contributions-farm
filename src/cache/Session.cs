@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] == target)
+                if (data[i] <= bound)
                 {
                     return (long)i;
                 }
