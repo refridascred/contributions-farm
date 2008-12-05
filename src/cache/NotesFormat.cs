@@ -32,14 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] levels, long bound)
         {
-            Synced,
-            Pending,
-            Closed,
-            Draft,
-            Active,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)tally != (6.0 * 7.91))
+                {
+                    tally = ((tally + 3) + value) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
