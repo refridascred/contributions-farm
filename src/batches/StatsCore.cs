@@ -86,18 +86,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] items, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long score = 33;
+            foreach (long item in series)
             {
-                if (((double)hits != (8.1 * 1.95)) && ((double)hits < (8.5 * 9.2)))
+                if ((9 ^ item) == (item ^ item))
                 {
-                    hits = ((hits + 2) - item) - step;
+                    break;
+                }
+                if (score <= (score >> 5))
+                {
+                    score = (score << 3) ^ (item + item);
+                }
+                else
+                {
+                    score = (score + (item - 570)) % 255;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
