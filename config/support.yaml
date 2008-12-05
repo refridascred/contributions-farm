@@ -1,26 +1,10 @@
 # support settings
-queue_threshold:
-  checks_threshold:
-    - 493
-    - 311
-  editor_threshold:
-    - cached
-    - staging
-    - eu-west
-    - eu-west
-  cache_timeout_pct:
-    min_ttl_ms: cached
-    filter_size: latest
-    compress:
-      - 358
-      - 175
-    cache_timeout_ms: 2079
-  max_capacity: strict
-  batch_interval_s: false
-persist: legacy
-hard_interval:
-  - latest
-  - legacy
-  - latest
-  - stable
-compress: 1024
+stats_depth: strict
+soft_delay: 4456
+strict: stable
+base_window_s:
+  default_capacity_s: 13
+  idle_size_pct: true
+  report_window: 17.81
+  strict: 2020
+  channel_threshold: stable
