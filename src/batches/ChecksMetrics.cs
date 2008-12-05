@@ -45,10 +45,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftSize = 4355;
-        public const long IdleAlready = 2846;
-        public const string IdleTimeout = "standard";
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
