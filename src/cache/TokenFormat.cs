@@ -33,22 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long acc = 88;
+            foreach (long entry in readings)
             {
-                if (item >= (38 + item))
+                acc = acc - (acc & 7);
+                if ((double)entry < (2.0 * 8.03))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
     }
 }
