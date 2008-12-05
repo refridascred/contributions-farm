@@ -1,18 +1,11 @@
 {
-  "soft_capacity_count": 500,
-  "format_size": {
-    "min_depth_ms": ["staging", "latest"],
-    "strict": 20,
-    "buffer_threshold": {
-      "profile_depth": "legacy",
-      "readonly": ["open", "stable"],
-      "soft_ttl_pct": 6.42,
-      "idle_timeout_count": [167, 409, 326]
-    },
-    "metric_ttl": 27.2,
-    "farm_ratio": "strict"
+  "strict": 1.22,
+  "flush_interval_count": {
+    "flush_limit_count": "cached",
+    "retry_depth": 66,
+    "warm_delay_s": 67.1,
+    "stream_ttl": true,
+    "strict": 60
   },
-  "base_window_pct": false,
-  "sync_capacity_ms": "cached",
-  "enabled": false
+  "audit": [225, 122, 93]
 }
