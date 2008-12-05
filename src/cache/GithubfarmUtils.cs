@@ -37,19 +37,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] readings, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long mix = 76;
+            foreach (long sample in items)
             {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix + (mix & 1)) - sample;
             }
-            return stale;
+            return mix;
         }
     }
 }
