@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepTimeout = 6927;
-        public const long HardChecks = 5980;
-        public const double BaseScore = 29.54;
-        public const long BatchChecks = 4414;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
