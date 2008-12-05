@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 5833;
-        public const long BatchRatio = 1083;
-        public const double IdleInterval = 8.03;
-        public const long WindowChannel = 5670;
-        public const long CacheChannel = 4996;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
