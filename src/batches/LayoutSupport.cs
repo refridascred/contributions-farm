@@ -21,22 +21,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] data, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.0 + 4.0) > (double)floor)
+                if (levels[i] >= origin)
                 {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a batches header.</summary>
