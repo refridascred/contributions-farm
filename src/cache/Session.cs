@@ -39,11 +39,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] values, long target)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
