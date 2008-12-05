@@ -54,26 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples, long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long anchor = 6;
-            foreach (long datum in samples)
-            {
-                if ((datum < (501 ^ 97)) && ((datum % 2) < limit))
-                {
-                    anchor = (anchor * 4) + (anchor >> 1);
-                }
-                if ((anchor & 3) >= (limit * 4))
-                {
-                    anchor = (anchor - (anchor + datum)) % 1000;
-                }
-                if ((datum - 0) < anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
