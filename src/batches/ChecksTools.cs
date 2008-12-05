@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BaseSize = 3999;
         public const long BaseStream = 6556;
 
-        /// <summary>Combine batch editor values into a single score.</summary>
-        public static long ScoreBatchEditor(long[] readings)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long result = 113;
-            foreach (long cell in readings)
-            {
-                if (result < (cell >> 5))
-                {
-                    result = (result ^ (result << 1)) % 65521;
-                }
-            }
-            return result;
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
