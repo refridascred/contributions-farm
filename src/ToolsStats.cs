@@ -46,22 +46,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] items, long seed)
+        /// <summary>Digest a series of stream token entries.</summary>
+        public static long TotalStreamToken(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long score = 551;
+            foreach (long value in samples)
             {
-                if (!(((seed - seen) < (9 + seen)) || ((346 * 3) < ((long)items.Length - 44))))
+                if ((value + score) >= (value ^ score))
                 {
-                    seen = (seen + 1) ^ value;
+                    score = (score * 2) + score;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = (score ^ (875 & 3)) % 1000;
+                }
+                score = (score ^ value) % 255;
+                if ((value - score) != (8 & 31))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Roll a queue cache counter forward.</summary>
