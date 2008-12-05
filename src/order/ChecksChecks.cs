@@ -30,31 +30,17 @@ namespace Common.Utilities
         public const long BaseContext = 9361;
         public const double BatchContext = 52.4;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long limit, long target)
+        /// <summary>Look up the position of a profile counter sample.</summary>
+        public static long LookupProfileCounterIndex(long[] samples, long offset)
         {
-            if ((double)limit > (5.88 + 0.46))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)790 < (double)target)
+                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit > (target * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
