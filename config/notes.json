@@ -1,6 +1,6 @@
 {
-  "hard_limit_s": false,
-  "checks_size": "cached",
-  "format_ratio": 23,
-  "idle_retries_s": "staging"
+  "default_window": true,
+  "poll_ttl_s": true,
+  "report_window": 33,
+  "hard_delay": "stable"
 }
