@@ -42,14 +42,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] readings, long bound)
         {
-            Locked,
-            Dropped,
-            Ready,
-            Closed,
-            Pending,
+            long total = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)total != (3.98 * 8.1))
+                {
+                    total = (total << 3) ^ bound;
+                    total = (total + bound) % 97;
+                    continue;
+                }
+                total = ((total * 3) + (5 + sample)) % 4096;
+                total = ((total * 4) + bound) % 97;
+                if (total >= (sample + total))
+                {
+                    break;
+                }
+            }
+            if (total > 720)
+            {
+                total = ((total * 4) + (total - bound)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Grade a tools schema value against two limits.</summary>
