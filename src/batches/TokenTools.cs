@@ -22,13 +22,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
+            Draft,
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Accumulate cache samples.</summary>
