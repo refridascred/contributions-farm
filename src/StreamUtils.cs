@@ -71,19 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches already value.</summary>
-        public static double ProjectBatchesAlready(double bias, double offset)
+        /// <summary>Count the cache batch entries that pass the check.</summary>
+        public static long MeasureCacheBatchHits(long[] readings, long limit)
         {
-            double ratio = 8.18 - offset;
-            if (ratio >= offset)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                ratio = (ratio - (3.0 / 6.0)) - bias;
+                if (((10.0 * 6.9) <= (double)cell) || ((574 - limit) >= (-9)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)50;
-            }
-            return ratio + offset;
+            return seen;
         }
     }
 }
