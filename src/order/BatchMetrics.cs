@@ -18,32 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long offset)
         {
-            long delta = origin + seed;
-            if (((delta - seed) > 865) && ((double)origin != (9.0 - 7.2)))
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
+                carry = (carry ^ offset) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((0 ^ delta) <= origin) && ((3 << 3) >= (seed - seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed * 4) < (origin << 1)) && ((seed % 2) >= (199 ^ origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
