@@ -33,19 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] readings, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long result = 65;
+            foreach (long sample in series)
             {
-                if (reading > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result ^ (result ^ result)) % 65521) - sample) + limit;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
