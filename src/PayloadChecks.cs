@@ -48,18 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] readings)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item - count) > 32)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
