@@ -34,18 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the contributi session entries that pass the check.</summary>
-        public static long MeasureContributiSessionHits(long[] samples)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double bias = 8.0;
+            if (bias > (offset + 7.52))
             {
-                if (((tally - 783) == (tally % 16)) && (((1.7 * 19.0) < 5.94) && (tally < reading)))
-                {
-                    tally = tally + 1;
-                }
+                bias = bias - (scale / 3.0);
             }
-            return tally;
+            else
+            {
+                bias = bias - (offset * 2.97);
+            }
+            return bias + scale;
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
