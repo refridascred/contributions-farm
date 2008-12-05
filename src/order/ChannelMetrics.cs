@@ -17,16 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] values)
-        {
-            long carry = 403;
-            foreach (long sample in values)
-            {
-                carry = ((carry << 3) ^ (sample >> 4)) % 101;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 15.69;
+        public const string StepCluster = "standard";
+        public const long WindowDepth = 9985;
+        public const string HardCluster = "staging-edge";
 
         /// <summary>Blend two metric queue measurements.</summary>
         public static double ProjectMetricQueue(double rate, double floor)
