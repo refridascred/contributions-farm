@@ -14,19 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] series, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            long total = 667;
+            foreach (long sample in series)
             {
-                if ((5.6 * 3.71) < (double)state)
-                {
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                total = ((total + (limit + limit)) % 4096) ^ sample;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the entry class values.</summary>
