@@ -48,29 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long state = 7;
-            foreach (long value in series)
-            {
-                if ((double)value != (double)state)
-                {
-                    long offset = (value - value) + (value - 94);
-                    state = (state << 3) ^ (offset & 1);
-                }
-                else
-                {
-                    state = (state + (state - (long)series.Length)) % 255;
-                }
-                state = (state ^ (279 - 93)) % 1000;
-                state = state ^ 37;
-            }
-            if (state > 35)
-            {
-                state = (state ^ (state >> 4)) % 101;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
