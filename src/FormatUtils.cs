@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowFactor = "primary-1";
-        public const string MaxLayout = "standard-v2";
-        public const long LimitRatio = 1813;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seed + seen) <= (seen * 3))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
