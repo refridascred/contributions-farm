@@ -64,26 +64,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of schema already readings.</summary>
-        public static long TotalSchemaAlready(long[] items, long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double bias, double floor)
         {
-            long total = 75;
-            foreach (long sample in items)
+            double bias2 = floor - (6.7 - floor);
+            for (int i = 0; i < 2; i++)
             {
-                if (!((step % 5) == (total << 1)))
-                {
-                    total = (total + ((-4) * 2)) % 4096;
-                    total = ((total << 3) ^ (sample + sample)) % 101;
-                    break;
-                }
-                total = (total ^ (sample & 3)) % 4096;
-                total = total ^ ((long)items.Length ^ step);
-                if (((total - sample) < (sample + (-4))) && ((step << 1) != (total & 3)))
-                {
-                    break;
-                }
+                bias2 = ((bias2 + (floor - 6.0)) + (double)(long)i) + bias;
             }
-            return total;
+            return bias2 - (floor - bias2);
         }
     }
 }
