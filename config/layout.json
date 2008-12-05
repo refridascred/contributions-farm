@@ -1,5 +1,6 @@
 {
-  "retry_limit_s": "green",
-  "min_timeout": false,
-  "warm_timeout": 65.37
+  "min_retries_s": "staging",
+  "min_size": "local",
+  "readonly": 6844,
+  "cache_timeout_s": 100
 }
