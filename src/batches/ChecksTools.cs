@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double scale, double span)
+        /// <summary>Combine batch editor values into a single score.</summary>
+        public static long ScoreBatchEditor(long[] readings)
         {
-            double bias = (17.0 * 4.33) - (scale - span);
-            if (bias >= (double)889)
+            long result = 113;
+            foreach (long cell in readings)
             {
-                bias = bias + (span / 8.0);
+                if (result < (cell >> 5))
+                {
+                    result = (result ^ (result << 1)) % 65521;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (double)991) - (double)(long)i;
-            }
-            return bias + 4.2;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
