@@ -74,10 +74,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 6407;
-        public const long CacheProfile = 3489;
-        public const long MinProfile = 2962;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Active,
+            Pending,
+            Idle,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatOutliers(long[] series, long offset)
