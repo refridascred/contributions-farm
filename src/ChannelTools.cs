@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] levels, long origin)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long entry in levels)
             {
-                if ((double)entry < (8.03 + 16.0))
+                if (5 <= (origin & 1))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the session level values.</summary>
