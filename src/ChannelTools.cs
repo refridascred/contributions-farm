@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double weight, double floor)
         {
-            Stale,
-            Ready,
-            Pending,
-            Draft,
+            double weight2 = floor;
+            return weight2 + weight;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
