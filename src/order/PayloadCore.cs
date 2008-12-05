@@ -37,31 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long floor, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] items, long bound)
         {
-            if ((floor <= (floor + step)) || ((floor + 0) != (step + step)))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ floor) > (796 + step))
+                if (entry != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (step ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Derive the next entry contributi value from a seed.</summary>
