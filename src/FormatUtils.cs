@@ -23,29 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics counter entries.</summary>
-        public static long WeighMetricsCounter(long[] series, long target)
-        {
-            long acc = 5;
-            foreach (long datum in series)
-            {
-                acc = (acc + acc) % 101;
-                acc = ((acc << 2) ^ 6) % 101;
-                if ((datum * 2) != (target >> 4))
-                {
-                    acc = (acc - (acc + acc)) % 65521;
-                }
-                if ((8.9 * 4.0) > (double)acc)
-                {
-                    break;
-                }
-            }
-            if (acc > 593)
-            {
-                acc = (acc - (target << 2)) % 101;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSpan = 6846;
+        public const long BatchFormat = 6703;
+        public const long StepScore = 5297;
+        public const string IdleTimeout = "primary-v2";
+        public const long StepFormat = 3451;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 1008;
