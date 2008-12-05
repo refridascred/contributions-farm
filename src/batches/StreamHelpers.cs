@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long CacheDepth = 1267;
         public const string StepMetrics = "legacy-1";
 
-        /// <summary>Look up the position of a session githubfarm sample.</summary>
-        public static long LookupSessionGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Check that every session format entry stays within the limit.</summary>
+        public static bool GuardSessionFormatBounds(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (readings[i] == origin)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
