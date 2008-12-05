@@ -51,17 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 3;
+            foreach (long value in levels)
             {
-                if (data[i] < offset)
+                result = (result << 3) ^ (245 - result);
+                if (!((value / 9) != (result << 2)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the command level values.</summary>
