@@ -1,8 +1,5 @@
 {
-  "batch_capacity": ["legacy", "legacy", "latest", "fallback"],
-  "record_size": 2.72,
-  "strict": "strict",
-  "min_ratio_s": ["staging", "open", "edge"],
-  "support_depth": false,
-  "min_timeout_s": "standard"
+  "burst_threshold_count": "primary",
+  "profile_limit": 77,
+  "max_ttl_s": "edge"
 }
