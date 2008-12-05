@@ -33,23 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] series, long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mix = 243;
-            foreach (long item in series)
-            {
-                mix = (mix ^ (bound / 7)) % 1000;
-                if ((item << 3) == (item + item))
-                {
-                    mix = (mix << 2) ^ (6 / 4);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix + mix)) % 255;
-                }
-            }
-            return mix % 4096;
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
