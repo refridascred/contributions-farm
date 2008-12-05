@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryTimeout = 9471;
-        public const double StepFilter = 40.7;
-        public const string LimitFilter = "standard";
-        public const double MinFilter = 92.89;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Queued,
+            Active,
+            New,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double SmoothProfile(double rate, double bias)
