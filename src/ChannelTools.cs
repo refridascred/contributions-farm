@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] levels, long origin)
+        /// <summary>Rank support session input into a small class.</summary>
+        public static long GradeSupportSession(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if ((limit << 3) != (limit << 1))
             {
-                if (5 <= (origin & 1))
+                return 3;
+            }
+            else
+            {
+                if ((origin & 15) >= (origin & 63))
                 {
-                    tally = (tally + 3) + entry;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)limit <= 7.8) || (limit >= 893))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((2 % 24) == (origin / 4)) || ((double)origin >= (5.63 + 14.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the session level values.</summary>
