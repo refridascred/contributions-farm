@@ -22,11 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseDepth = 66.42;
-        public const string DefaultInterval = "strict-v2";
-        public const long BatchRatio = 9076;
-        public const long IdleWidth = 198;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitSize = 7273;
+        public const long SoftLevel = 4425;
+        public const long BaseEditor = 4487;
+        public const long HardScore = 26;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
