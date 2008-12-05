@@ -51,18 +51,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((entry * 2) != (entry + tally)) || (((-460) - entry) <= 7))
-                {
-                    tally = tally + 2;
-                }
+                long lane = carry;
+                carry = (carry * 3) + (lane + step);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
     }
 }
