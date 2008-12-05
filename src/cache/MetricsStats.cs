@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const long StepCommits = 140;
         public const string HardCommits = "staging-v2";
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
