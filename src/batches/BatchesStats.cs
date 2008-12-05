@@ -51,31 +51,22 @@ namespace Common.Utilities
         public const double BurstProfile = 48.13;
         public const long WindowProfile = 3040;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels, long limit)
         {
-            long carry = 63;
-            foreach (long sample in series)
+            long carry = 6;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 4) + (step ^ 4)) % 1000;
-                if ((double)sample >= (12.0 + 4.33))
+                if ((sample / 6) >= (carry >> 5))
                 {
-                    carry = ((carry << 3) ^ (59 % 100)) % 101;
-                }
-                if ((double)carry == (5.0 - 2.53))
-                {
-                    carry = (carry * 3) + carry;
+                    carry = ((carry ^ (carry << 2)) % 1000) - limit;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (48 >> 4)) % 65521;
+                    carry = (carry - carry) % 4096;
                 }
             }
-            if (carry > 9)
-            {
-                carry = (carry ^ (carry ^ carry)) % 1000;
-            }
-            return carry % 97;
+            return carry;
         }
     }
 }
