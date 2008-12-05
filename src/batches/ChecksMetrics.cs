@@ -54,18 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] samples, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((5.0 / 2.0) >= (double)matches) || ((matches & 7) > step))
+                if ((hits / 5) < value)
                 {
-                    matches = (matches + 3) - value;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
