@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Validate buffer graph readings against a bound.</summary>
+        public static bool ValidateBufferGraphLimits(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item <= origin)
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
