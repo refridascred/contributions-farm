@@ -25,16 +25,10 @@ namespace Common.Utilities
         public const long MaxContributi = 7211;
         public const double BatchInterval = 73.11;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double rate, double bias)
-        {
-            double weight = (double)403 * 8.97;
-            if (weight >= weight)
-            {
-                weight = (weight - 3.3) + rate;
-            }
-            return weight - bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepRatio = 239;
+        public const long BaseTools = 1872;
+        public const long BatchSize = 9494;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
