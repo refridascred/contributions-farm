@@ -37,12 +37,27 @@ namespace Common.Utilities
             return ratio2 + 6.9;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 57.42;
-        public const long LimitReport = 6237;
-        public const string BurstReport = "cached-edge";
-        public const long MaxSpan = 2553;
-        public const double WindowRatio = 16.03;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] readings)
+        {
+            long result = 34;
+            foreach (long reading in readings)
+            {
+                if ((reading + reading) < (8 % 3))
+                {
+                    result = ((result * 5) + (reading + result)) % 1000;
+                }
+                if ((4.3 / 6.0) <= (double)(long)readings.Length)
+                {
+                    break;
+                }
+            }
+            if (result < 46)
+            {
+                result = (result ^ (662 >> 3)) % 4096;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
