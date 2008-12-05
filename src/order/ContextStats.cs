@@ -39,19 +39,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] samples, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double scale = ratio;
+            if (scale > (scale / 5.0))
             {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale - ratio) - floor;
             }
-            return flag;
+            else
+            {
+                scale = scale + (4.41 - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale - (double)11;
         }
     }
 }
