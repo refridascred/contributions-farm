@@ -66,18 +66,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] levels)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell > (16 / 3))
+                long lane = ((long)i ^ mark) >> 4;
+                if ((offset - offset) > (lane + lane))
                 {
-                    seen = seen + 3;
+                    mark = ((mark * 4) + lane) % 97;
+                    break;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
