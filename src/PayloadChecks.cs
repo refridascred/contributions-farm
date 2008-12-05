@@ -47,21 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                carry = (carry << 3) ^ (11 + limit);
-                if (carry >= (carry * 2))
+                if (origin <= (long)i)
                 {
-                    carry = ((carry << 3) ^ (carry & 127)) % 101;
+                    score = (score * 4) + origin;
                 }
-                carry = (carry - (carry >> 3)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
