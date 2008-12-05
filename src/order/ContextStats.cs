@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double weight, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
         {
-            double gain = 13.0;
-            return (gain + (weight - weight)) + offset;
+            long anchor = 32;
+            foreach (long item in values)
+            {
+                if (((anchor & 15) < 46) && ((anchor ^ item) <= item))
+                {
+                    anchor = (anchor + (745 + item)) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate format samples.</summary>
