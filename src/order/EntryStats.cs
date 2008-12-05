@@ -25,11 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
