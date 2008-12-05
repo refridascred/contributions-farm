@@ -29,17 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((readings[i] < step) && ((readings[i] % 5) == 0))
+                if (value < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the notes phase values.</summary>
