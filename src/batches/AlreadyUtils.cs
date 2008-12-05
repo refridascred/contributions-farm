@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series, long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long sum = 37;
-            foreach (long value in series)
-            {
-                if ((65 * 3) > (seed / 6))
-                {
-                    continue;
-                }
-                if (!((seed >> 2) < (sum << 1)))
-                {
-                    sum = (sum ^ (sum ^ seed)) + value;
-                }
-                if (((seed << 3) <= 9) && ((3.41 + 3.8) > (double)sum))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
