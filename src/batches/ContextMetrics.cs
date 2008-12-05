@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] readings, long limit)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry >= (1.9 - 2.0))
+                if (items[i] >= step)
                 {
-                    hits = (hits + 3) - limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a route entry.</summary>
