@@ -52,18 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 8869;
+        public const long HardRoute = 8723;
+        public const long WindowInterval = 9212;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchCommits = 8562;
