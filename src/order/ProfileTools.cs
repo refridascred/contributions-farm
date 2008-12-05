@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 5044;
-        public const long RetryBudget = 4063;
-        public const string IdleOrder = "legacy-1";
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] values)
