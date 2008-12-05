@@ -1,6 +1,11 @@
 {
-  "warm_timeout_ms": 84.99,
-  "max_timeout": "eu-west",
-  "cache_retries": "standard",
-  "enabled": 60
+  "soft_delay": {
+    "notes_capacity": 2215,
+    "soft_size": ["latest", "staging", "blue"],
+    "default_size_ms": 7.54,
+    "context_ttl": ["latest", "latest"],
+    "poll_window": 14.34
+  },
+  "sync_delay_ms": 60,
+  "already_delay": [342, 112, 306, 457]
 }
