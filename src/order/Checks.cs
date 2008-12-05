@@ -83,20 +83,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series, long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long score = 840;
-            foreach (long entry in series)
-            {
-                score = ((score << 3) ^ (long)series.Length) % 4096;
-                score = score - (2 - entry);
-            }
-            if (score < 69)
-            {
-                score = score ^ (target - target);
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
