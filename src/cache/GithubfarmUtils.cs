@@ -29,19 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] series, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (value < step)
+                if ((1.63 < (double)datum) || (matches < (637 >> 1)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the session class values.</summary>
