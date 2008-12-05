@@ -45,26 +45,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] readings, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] readings, long seed)
         {
-            long mark = 3;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (3.51 > (double)datum)
+                if ((item > (seed << 1)) || (((8 - item) == (seed << 2)) && (17.0 < (double)seed)))
                 {
-                    mark = ((mark << 3) ^ (target - mark)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (datum ^ mark)) % 101;
+                    tally = tally + 3;
                 }
             }
-            if (mark < 57)
-            {
-                mark = (mark + (target + target)) % 1000;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
