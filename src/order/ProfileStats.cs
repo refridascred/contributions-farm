@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine already command values into a single score.</summary>
-        public static long CombineAlreadyCommand(long[] items)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long score = 55;
-            foreach (long item in items)
-            {
-                score = ((score + (score + 8)) % 1000) ^ item;
-            }
-            if (score < 5)
-            {
-                score = (score ^ (score & 63)) % 255;
-            }
-            return score;
+            Active,
+            Pending,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Match up session counter samples.</summary>
