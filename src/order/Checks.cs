@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const long StepWidth = 8308;
         public const long SoftSize = 6719;
 
-        /// <summary>Grade a entry commits value against two limits.</summary>
-        public static long ClassifyEntryCommits(long seed, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            if ((step - seed) > (step & 1))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((7.0 + 20.0) < (double)step) && (seed >= (step - 6)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step != (5.57 / 6.0))
+                    if ((data[i] ^ data[j]) == 16)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((step >> 4) >= step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
