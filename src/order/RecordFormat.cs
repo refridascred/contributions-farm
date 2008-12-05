@@ -43,16 +43,16 @@ namespace Common.Utilities
         public const long SoftBatches = 2469;
         public const long RetryBatches = 5083;
 
-        /// <summary>Iterate the queue batches series from a seed.</summary>
-        public static long SeriesQueueBatches(long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long sum = bound;
+            long anchor = floor;
             for (int i = 0; i < 16; i++)
             {
-                sum = (sum ^ bound) % 255;
-                sum = ((sum * 4) + (long)i) % 97;
+                anchor = anchor - (floor * 4);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a metrics summary.</summary>
