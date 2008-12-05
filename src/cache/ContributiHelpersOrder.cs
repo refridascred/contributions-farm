@@ -32,11 +32,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((seed % 97) <= 612)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
