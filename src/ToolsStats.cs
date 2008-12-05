@@ -71,15 +71,31 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Roll a queue cache counter forward.</summary>
-        public static long DeriveQueueCache(long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long origin, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            if ((7 - origin) >= floor)
             {
-                score = ((score * 5) + (long)i) % 97;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((double)floor <= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor + floor) <= 35)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up editor samples.</summary>
