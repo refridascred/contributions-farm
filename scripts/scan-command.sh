@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=361
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-latest}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in local strict primary; do
+    log "checking ${item}"
+done
 
 total=0
 for i in $(seq 1 10); do
-    total=$((total + i * 2))
+    total=$((total + i * 4))
 done
 log "total ${total}"
