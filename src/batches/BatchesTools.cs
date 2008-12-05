@@ -13,11 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepScore = "alpha-edge";
-        public const long MinScore = 646;
-        public const long MaxCommits = 9643;
-        public const long StepDepth = 526;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 2058;
+        public const long MinSession = 7974;
+        public const long SoftSpan = 7865;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] samples, long limit)
