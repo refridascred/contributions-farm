@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 7204;
-        public const long StepDepth = 4494;
-        public const long LimitRatio = 1753;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double weight, double offset)
