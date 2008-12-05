@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double gain = floor;
-            return (gain + (double)(-6)) + ratio;
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Match up contributi samples.</summary>
