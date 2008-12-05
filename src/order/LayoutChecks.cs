@@ -34,24 +34,15 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double weight, double offset)
         {
-            long score = -87;
-            foreach (long sample in items)
+            double ratio = weight * 6.0;
+            if (ratio > (weight - weight))
             {
-                if (score < (sample << 2))
-                {
-                    long bound = (sample + 43) + (7 & 7);
-                    score = ((score * 2) + (bound >> 4)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (score - 270)) % 65521;
-                }
-                score = (score - score) % 101;
+                ratio = ratio + (weight - offset);
             }
-            return score % 65521;
+            return ratio + ratio;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
