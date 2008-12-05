@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long result = 1;
-            foreach (long entry in items)
+            long acc = 350;
+            foreach (long cell in values)
             {
-                if (entry > ((-260) * 4))
+                if ((double)acc < (3.01 / 4.0))
                 {
-                    result = result ^ (target >> 1);
+                    acc = (acc * 2) + (acc + acc);
                 }
-                if ((double)entry < (3.2 - 19.0))
-                {
-                    break;
-                }
+                acc = acc ^ (cell + acc);
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Hold a editor summary.</summary>
