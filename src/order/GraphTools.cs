@@ -35,12 +35,15 @@ namespace Common.Utilities
             return scale2 + (double)74;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheWidth = "latest-v2";
-        public const long LimitCount = 2115;
-        public const double MinCluster = 15.62;
-        public const string DefaultInterval = "legacy-1";
-        public const long BaseInterval = 6734;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Locked,
+            Dropped,
+            Ready,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Combine checks buffer values into a single score.</summary>
         public static long DigestChecksBuffer(long[] data, long target)
