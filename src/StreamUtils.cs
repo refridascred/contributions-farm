@@ -81,15 +81,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter entry value.</summary>
-        public static double AdjustFilterEntry(double scale, double span)
-        {
-            double scale2 = 11.0 * 0.2;
-            if (scale2 <= scale2)
-            {
-                scale2 = ((scale2 - (double)411) - scale) + span;
-            }
-            return scale2 + (double)6;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryBudget = "local";
+        public const double HardContributi = 17.55;
+        public const double BatchContributi = 87.26;
+        public const long WindowLevel = 8260;
+        public const long MinContributi = 81;
     }
 }
