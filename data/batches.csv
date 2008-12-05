@@ -1,9 +1,8 @@
-id,score,ratio,weight
-1,274,35.37,primary
-2,604,standard,42.18
-3,blue,96.09,95.63
-4,cached,strict,edge
-5,82.06,414,latest
-6,91.47,eu-west,48
-7,848,715,50.39
-8,41.23,98.5,42.45
+id,active,count,score
+1,42.77,55.73,41.01
+2,56.18,880,79.98
+3,strict,strict,568
+4,68.93,475,primary
+5,strict,edge,48.0
+6,blue,legacy,551
+7,779,open,358
