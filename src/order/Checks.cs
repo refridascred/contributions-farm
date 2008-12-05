@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 5755;
-        public const long MinBudget = 3325;
-        public const long LimitCount = 7146;
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double scale, double floor)
+        {
+            double scale2 = (double)(160 & 15);
+            if (scale2 <= floor)
+            {
+                scale2 = scale2 - scale;
+            }
+            else
+            {
+                scale2 = scale2 + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + floor) + (double)(long)i;
+            }
+            return scale2 - (double)802;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long LimitBudget = 7386;
