@@ -23,21 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading != step)
                 {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Accumulate notes samples.</summary>
