@@ -30,13 +30,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] readings, long origin)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a checks farm pair into a bucket.</summary>
