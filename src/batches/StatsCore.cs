@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Derive the next command editor value from a seed.</summary>
+        public static long RollCommandEditor(long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (((value + hits) > (hits - hits)) || ((hits > (value << 3)) || ((hits ^ value) > (933 - 18))))
+                if (((long)i / 7) > state)
                 {
-                    hits = hits + 2;
+                    state = ((state * 3) + (23 / 4)) % 4096;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Match up buffer samples.</summary>
