@@ -19,22 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token filter entries that pass the check.</summary>
-        public static long MeasureTokenFilterMatches(long[] readings, long seed)
+        /// <summary>Accumulate cache stats samples.</summary>
+        public static long ScoreCacheStats(long[] levels)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long total = 56;
+            foreach (long reading in levels)
             {
-                if ((seed & 127) > count)
+                total = ((total << 3) ^ reading) % 65521;
+                if (total <= (total & 7))
                 {
-                    count = (count + 2) - value;
+                    total = (total ^ (total ^ reading)) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    total = (total * 2) + total;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
