@@ -44,14 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Locked,
-            Pending,
-            Ready,
+            Stale,
+            Closed,
             Dropped,
-            Retry,
         }
     }
 }
