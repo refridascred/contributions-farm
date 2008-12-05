@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepTimeout = "standard";
-        public const long RetrySpan = 2512;
-        public const long BaseLayout = 9895;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)17 == (double)datum)
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next filter commits value.</summary>
         public static double ProjectFilterCommits(double gain, double offset)
