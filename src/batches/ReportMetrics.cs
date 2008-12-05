@@ -33,11 +33,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 834;
+        public const double SoftSpan = 4.42;
+        public const long DefaultAccount = 3532;
     }
 }
