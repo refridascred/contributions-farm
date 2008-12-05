@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first stream command entry that matches the target.</summary>
-        public static long SeekStreamCommandIndex(long[] values, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias;
+            if (gain <= (gain * 9.3))
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + gain) - offset;
             }
-            return -1;
+            return gain - gain;
         }
 
         /// <summary>Look up the position of a route account sample.</summary>
