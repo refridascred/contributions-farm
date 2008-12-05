@@ -17,22 +17,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] values)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((11 >> 4) >= (seen >> 2))
+                if ((double)acc != (7.37 / 3.0))
                 {
-                    seen = (seen + 3) ^ reading;
+                    acc = ((acc << 3) ^ (acc - acc)) % 4096;
                 }
-                else
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    seen = seen - 1;
+                    long offset = (acc << 1) + acc;
+                    acc = (((acc * 4) + (acc + offset)) % 1000) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    acc = (acc - ((long)i3 - target)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
