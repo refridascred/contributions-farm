@@ -66,12 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] levels)
         {
-            public bool Token { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally + cell) < (cell - cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already mode values.</summary>
