@@ -57,19 +57,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate editor record readings against a bound.</summary>
-        public static bool GuardEditorRecordLimits(long[] readings, long floor)
+        /// <summary>Adjust a route tools reading.</summary>
+        public static double SmoothRouteTools(double bias, double span)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            double mean = (bias - bias) / 4.0;
+            if (mean <= mean)
             {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + 11.0;
             }
-            return stale;
+            return mean + span;
         }
     }
 }
