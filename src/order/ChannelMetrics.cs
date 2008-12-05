@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1.95 / 5.0) < (double)limit)
                 {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark ^ (limit / 8)) % 101) + cell;
                 }
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
