@@ -33,18 +33,39 @@ namespace Common.Utilities
         public const long SoftLevel = 1783;
         public const long RetryStream = 6079;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] samples, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long slot = offset - limit;
+            if (62 > offset)
             {
-                if ((origin >> 5) < (9 / 4))
+                return 4;
+            }
+            else
+            {
+                if ((((-3) % 12) == (slot ^ slot)) && ((double)slot < (double)offset))
                 {
-                    matches = (matches + 1) + sample;
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= (offset + slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((slot >> 3) < (7 & 127))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
