@@ -20,10 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultDepth = 5311;
-        public const string MinFactor = "primary";
-        public const long RetryInterval = 194;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long GradeCluster(long offset, long limit)
