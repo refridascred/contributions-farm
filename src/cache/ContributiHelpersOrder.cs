@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] readings, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double rate = (double)87 / 4.0;
+            if (rate < (span + rate))
             {
-                if ((count + count) != (649 % 7))
-                {
-                    count = ((count + 1) + item) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = (rate - rate) + weight;
             }
-            return count;
+            else
+            {
+                rate = rate - 8.9;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
