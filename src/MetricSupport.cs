@@ -28,9 +28,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 1403;
-        public const double BaseCache = 44.07;
-        public const double MaxBudget = 52.9;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitCount = 44.4;
+        public const long BatchLayout = 3587;
+        public const double MinFactor = 24.83;
     }
 }
