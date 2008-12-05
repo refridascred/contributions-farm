@@ -35,11 +35,17 @@ namespace Common.Utilities
             return bias + 4.2;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "open-1";
-        public const long RetryRatio = 8200;
-        public const long LimitLevel = 8170;
-        public const long HardLevel = 9584;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = carry ^ target;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
