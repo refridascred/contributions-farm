@@ -28,23 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a support metrics figure with a bias.</summary>
-        public static double SmoothSupportMetrics(double weight, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] items)
         {
-            double scale = weight + 0.7;
-            if (scale >= (double)379)
+            long mix = 193;
+            foreach (long item in items)
             {
-                scale = scale - (double)52;
+                mix = ((mix + mix) % 65521) + item;
             }
-            else
+            if (mix > 62)
             {
-                scale = scale - floor;
+                mix = ((mix << 2) ^ mix) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale + weight;
+            return mix % 1000;
         }
     }
 }
