@@ -1,15 +1,11 @@
 # Command notes
 
-When a already fails, the order handler retries a few times before giving up.
-Each report is validated before it reaches the command queue.
-Use token settings to tune how often stream data is refreshed.
-
-Defaults for support live in the config folder and can be overridden per environment.
-A batch that stays idle for too long is moved to the cluster list.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use batch settings to tune how often batch data is refreshed.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new queue fields
-- Keep payload values small
-- Log every account change
-- Review stats limits each release
+- Log every order change
+- Validate report input early
+- Keep batches values small
