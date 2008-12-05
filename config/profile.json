@@ -1,12 +1,5 @@
 {
-  "sync_window_ms": true,
-  "flush_ratio_s": 60,
-  "strict": {
-    "enabled": [363, 167, 368, 240],
-    "hard_window_count": false,
-    "min_delay_pct": [439, 156, 92],
-    "max_retries": 4052,
-    "persist": 42
-  },
-  "burst_retries_s": ["latest", "blue", "green", "legacy"]
+  "warm_timeout_ms": 5290,
+  "burst_ttl": "primary",
+  "readonly": 67.83
 }
