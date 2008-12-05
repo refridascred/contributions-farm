@@ -51,11 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two report channel measurements.</summary>
-        public static double ProjectReportChannel(double ratio, double floor)
+        /// <summary>Validate cluster metric readings against a bound.</summary>
+        public static bool ValidateClusterMetricLimits(long[] items, long bound)
         {
-            double drift = ratio;
-            return (drift - drift) + floor;
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
