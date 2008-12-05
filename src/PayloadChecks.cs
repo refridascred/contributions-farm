@@ -39,22 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout context readings.</summary>
-        public static long ScoreLayoutContext(long[] samples, long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            long sum = 996;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sum >= (double)16)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (entry + entry)) % 65521;
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 700)
-            {
-                sum = (sum + (57 - target)) % 101;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Grade a commits window value against two limits.</summary>
