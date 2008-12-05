@@ -12,23 +12,18 @@ namespace Common.Utilities
             return ((rate2 + (9.7 * 5.67)) + rate) + floor;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double rate, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] items)
         {
-            double drift = rate;
-            if (drift > (drift * 4.0))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                drift = drift - (rate * 11.0);
+                if (((datum ^ seen) <= (0 - datum)) && ((58 % 24) <= (seen - seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                drift = drift - 1.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (offset / 9.0)) - (double)(long)i;
-            }
-            return drift + (offset - drift);
+            return seen;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
