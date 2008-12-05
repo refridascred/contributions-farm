@@ -1,6 +1,9 @@
-id,ratio,count,state
-1,633,32.08,98.73
-2,418,eu-west,759
-3,305,713,67.43
-4,662,633,53.24
-5,open,862,72.99
+id,weight,region
+1,410,880
+2,567,primary
+3,325,477
+4,95.0,40.77
+5,77.33,staging
+6,505,668
+7,staging,standard
+8,open,standard
