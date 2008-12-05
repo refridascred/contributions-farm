@@ -1,12 +1,13 @@
 {
-  "soft_delay": 59.88,
-  "cache_threshold": {
-    "stats_threshold": "legacy",
-    "layout_capacity": 70.81,
-    "counter_limit": 10.99
+  "flush_depth_count": 2145,
+  "checks_retries": {
+    "sync_retries_ms": 6585,
+    "base_depth_pct": {
+      "batch_timeout_pct": "primary",
+      "max_threshold_pct": 98,
+      "burst_depth": "local"
+    },
+    "flush_threshold": true
   },
-  "retry_interval": 60,
-  "poll_interval_ms": "cached",
-  "min_retries": [117, 65, 139, 364],
-  "flush_retries_pct": true
+  "burst_depth_s": true
 }
