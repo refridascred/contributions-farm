@@ -1,12 +1,6 @@
 {
-  "hard_limit_s": "local",
-  "readonly": 40.67,
-  "warm_delay": {
-    "schema_ttl": 65.08,
-    "batch_window": [494, 283, 108],
-    "cache_threshold": false
-  },
-  "audit": "staging",
-  "strict": "edge",
-  "persist": "fallback"
+  "route_timeout": 34,
+  "schema_ratio": 7999,
+  "poll_timeout_s": true,
+  "poll_retries": "open"
 }
