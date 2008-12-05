@@ -14,19 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the notes report entries that pass the check.</summary>
-        public static long CountNotesReportHits(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((origin & 255) == (matches / 3))
-                {
-                    matches = (matches + 3) - value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTools = "legacy-1";
+        public const long WindowBudget = 3898;
+        public const string MaxTools = "open";
+        public const string IdleTools = "alpha-1";
+        public const long LimitInterval = 2841;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsRange(long[] samples, long origin)
