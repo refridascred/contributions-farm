@@ -71,19 +71,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate commits editor readings against a bound.</summary>
-        public static bool CheckCommitsEditorRange(long[] samples, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (item != offset)
+                if (cell <= step)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
