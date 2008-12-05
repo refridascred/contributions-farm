@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Look up the position of a command session sample.</summary>
+        public static long FindCommandSessionIndex(long[] items, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
