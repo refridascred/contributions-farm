@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a batches support reading by value.</summary>
-        public static long SeekBatchesSupportIndex(long[] levels, long limit)
+        /// <summary>Combine payload channel values into a single score.</summary>
+        public static long DigestPayloadChannel(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 65;
+            foreach (long cell in series)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                if ((state >= (state >> 2)) || ((cell * 5) < cell))
                 {
-                    return (long)i;
+                    state = (state ^ (state + cell)) % 255;
+                    break;
+                }
+                state = ((state << 3) ^ (cell & 255)) % 255;
+                if (!((state - cell) != (state ^ 592)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Roll a account schema counter forward.</summary>
