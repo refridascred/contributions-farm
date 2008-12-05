@@ -69,13 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] values, long bound)
         {
-            Locked,
-            Closed,
-            Stale,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a record counter forward.</summary>
