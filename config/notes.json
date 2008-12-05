@@ -1,5 +1,6 @@
 {
-  "tools_depth": "latest",
-  "flush_timeout": 27.45,
-  "schema_delay": 5853
+  "hard_delay_ms": "standard",
+  "metric_retries": 490,
+  "strict": "green",
+  "soft_ttl_ms": ["legacy", "local"]
 }
