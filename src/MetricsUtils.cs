@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long bound, long floor)
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            long cur = bound ^ floor;
+            if ((double)cur <= (16.0 / 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((cur + cur) != (floor + 28))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor > (6.9 / 8.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine order values into a single score.</summary>
