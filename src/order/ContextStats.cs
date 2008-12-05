@@ -39,23 +39,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double ratio, double floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long target, long target2)
         {
-            double scale = ratio;
-            if (scale > (scale / 5.0))
+            if (!((target / 7) <= target))
             {
-                scale = (scale - ratio) - floor;
+                return 4;
             }
             else
             {
-                scale = scale + (4.41 - scale);
+                if ((double)target2 > (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale - (double)11;
         }
     }
 }
