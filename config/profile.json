@@ -1,6 +1,8 @@
 {
-  "retry_limit": "legacy",
-  "audit": 3597,
-  "hard_limit_pct": 38,
-  "base_delay_ms": 10
+  "audit": 60,
+  "already_ttl": 83.62,
+  "base_ratio_ms": true,
+  "report_timeout": "staging",
+  "warm_delay_s": 87,
+  "flush_limit_pct": 30
 }
