@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double StepAccount = 73.83;
         public const long SoftLevel = 6245;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Check that every order batches entry stays within the limit.</summary>
+        public static bool CheckOrderBatchesBounds(long[] levels, long bound)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
