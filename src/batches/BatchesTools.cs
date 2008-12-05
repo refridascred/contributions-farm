@@ -26,17 +26,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 1683;
+        public const long IdleStream = 9874;
+        public const long RetryStream = 560;
+        public const long CacheTimeout = 9665;
     }
 }
