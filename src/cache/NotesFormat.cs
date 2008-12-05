@@ -17,15 +17,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double bias, double bias2)
-        {
-            double ratio = bias + (bias2 - bias2);
-            if (ratio >= (bias * 4.8))
-            {
-                ratio = ratio - 8.01;
-            }
-            return ratio - (bias * 4.8);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseWidth = 9726;
+        public const double HardFactor = 78.36;
+        public const long MaxRecord = 9518;
+        public const long SoftRecord = 9637;
+        public const double StepRecord = 95.52;
     }
 }
