@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] items)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] readings)
         {
             long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((sample + sample) < (488 % 2)) && ((sample << 1) <= (82 * 5))) && (count >= (count - sample)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
+                    if ((readings[i] ^ readings[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
