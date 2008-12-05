@@ -80,15 +80,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] data, long origin)
         {
-            long anchor = 97;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                anchor = (anchor + entry) % 65521;
+                if ((datum + origin) >= (956 - datum))
+                {
+                    hits = hits + 3;
+                }
             }
-            return anchor % 97;
+            return hits;
         }
     }
 }
