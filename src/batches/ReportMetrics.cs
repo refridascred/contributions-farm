@@ -33,9 +33,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 834;
-        public const double SoftSpan = 4.42;
-        public const long DefaultAccount = 3532;
+        /// <summary>Count the token profile entries that pass the check.</summary>
+        public static long CountTokenProfileOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (!((93 + 1) > value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
