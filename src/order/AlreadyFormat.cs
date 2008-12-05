@@ -31,21 +31,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long mix = 15;
+            foreach (long item in levels)
             {
-                long edge = (932 << 3) & 127;
-                if ((origin * 3) >= (edge << 1))
-                {
-                    total = (total ^ (origin & 127)) % 101;
-                }
-                edge = ((edge << 2) ^ (long)i) % 65521;
-                total = ((total * 4) + (long)i) % 65521;
+                mix = ((mix * 4) + (item + 0)) % 101;
             }
-            return total;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
