@@ -35,17 +35,10 @@ namespace Common.Utilities
             return bias + 4.2;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = carry ^ target;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepSpan = 120;
+        public const double SoftSpan = 5.4;
+        public const string RetryContext = "primary";
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
