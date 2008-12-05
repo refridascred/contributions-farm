@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first stats metrics entry that matches the target.</summary>
-        public static long LookupStatsMetricsIndex(long[] values, long limit)
+        /// <summary>Accumulate commits githubfarm samples.</summary>
+        public static long FoldCommitsGithubfarm(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 356;
+            foreach (long cell in levels)
             {
-                if (values[i] > limit)
+                if (7.0 >= (double)cell)
                 {
-                    return (long)i;
+                    acc = acc - (acc - step);
                 }
             }
-            return -1;
+            if (acc > 4)
+            {
+                acc = acc - acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
