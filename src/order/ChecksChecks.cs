@@ -12,19 +12,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long acc = 51;
+            foreach (long item in items)
             {
-                if (entry > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc ^ (acc * 4)) - item) - floor;
+                acc = ((acc * 3) + (acc % 12)) % 1000;
             }
-            return valid;
+            if (acc > 544)
+            {
+                acc = ((acc << 3) ^ (acc >> 5)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
