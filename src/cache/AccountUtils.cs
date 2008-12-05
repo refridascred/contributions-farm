@@ -26,17 +26,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first buffer cache entry that matches the target.</summary>
-        public static long LookupBufferCacheIndex(long[] samples, long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
