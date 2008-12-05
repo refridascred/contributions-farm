@@ -54,10 +54,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitWidth = "local";
-        public const long MinAlready = 4345;
-        public const string StepSize = "alpha-edge";
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((long)levels.Length >= ((-8) % 97))
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmOutliers(long[] items, long step)
