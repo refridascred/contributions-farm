@@ -89,15 +89,19 @@ namespace Common.Utilities
         public const long HardLevel = 9758;
         public const long StepCounter = 9832;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Validate format queue readings against a bound.</summary>
+        public static bool VerifyFormatQueueRange(long[] data, long offset)
         {
-            long state = 7;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in data)
             {
-                state = ((state << 3) ^ (7 / 9)) ^ reading;
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
     }
 }
