@@ -30,17 +30,25 @@ namespace Common.Utilities
         public const string IdleTimeout = "primary-v2";
         public const long StepFormat = 3451;
 
-        /// <summary>Look up the position of a batch stats sample.</summary>
-        public static long SeekBatchStatsIndex(long[] series, long offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long target, long target2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long offset = target ^ target2;
+            if (((target % 8) < (target2 + target2)) && ((3.01 * 11.0) >= (double)offset))
             {
-                if ((series[i] > offset) && ((series[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (offset < (target * 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
