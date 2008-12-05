@@ -26,25 +26,9 @@ namespace Common.Utilities
         public const long BurstInterval = 892;
         public const long BatchAlready = 1631;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long limit, long target)
-        {
-            long span = limit ^ target;
-            if ((span / 3) >= target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((624 - 5) < (target >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitCount = 4738;
+        public const string BurstGraph = "stable-1";
+        public const long SoftGraph = 859;
     }
 }
