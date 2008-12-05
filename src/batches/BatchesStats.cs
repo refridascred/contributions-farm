@@ -44,12 +44,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 73;
-        public const long StepTimeout = 9858;
-        public const long RetryProfile = 4941;
-        public const double BurstProfile = 48.13;
-        public const long WindowProfile = 3040;
+        /// <summary>Locate a cache queue reading by value.</summary>
+        public static long FindCacheQueueIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TotalStats(long[] levels, long limit)
