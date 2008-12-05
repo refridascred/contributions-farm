@@ -25,18 +25,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 4541;
+        public const double BatchRatio = 6.75;
+        public const double BurstAccount = 5.3;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
