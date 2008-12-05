@@ -64,19 +64,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] readings)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seen / 2) <= seen) && ((2 * 3) <= (seen * 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
