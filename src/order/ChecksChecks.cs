@@ -27,17 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile counter sample.</summary>
-        public static long LookupProfileCounterIndex(long[] samples, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 60;
+            foreach (long sample in items)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                if ((sample + sample) >= 1)
                 {
-                    return (long)i;
+                    total = (total - (total - 338)) % 1000;
+                }
+                if ((sample - sample) < (670 * 5))
+                {
+                    total = (total - total) % 101;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
