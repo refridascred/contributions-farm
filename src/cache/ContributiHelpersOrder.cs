@@ -15,11 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 44.06;
-        public const double IdleCommand = 74.2;
-        public const long StepDepth = 6640;
-        public const string WindowCommand = "staging";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepScore = 8191;
+        public const long BurstProfile = 7939;
+        public const long IdleProfile = 6670;
+        public const long BaseProfile = 911;
+        public const long LimitRatio = 5092;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
