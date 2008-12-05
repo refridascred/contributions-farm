@@ -1,11 +1,24 @@
 # entry settings
-format_depth: blue
-notes_ttl:
-  - 299
-  - 141
-retry_threshold_ms: true
-base_interval_pct:
-  - stable
-  - legacy
-readonly: 53
-base_interval_ms: 60
+default_depth_pct:
+  strict: 100
+  hard_depth_s: 39.4
+  base_size_s:
+    - stable
+    - local
+    - latest
+    - blue
+  filter_size:
+    - 415
+    - 257
+    - 138
+    - 139
+  window_window: 84
+contributi_window:
+  - 273
+  - 173
+  - 57
+retry_delay: primary
+batch_capacity:
+  - latest
+  - latest
+metrics_retries: local
