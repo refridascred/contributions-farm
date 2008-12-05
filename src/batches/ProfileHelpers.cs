@@ -51,14 +51,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryCount = 1905;
+        public const long MinStats = 4769;
+        public const long IdleSize = 6658;
+        public const string StepStats = "open";
 
         /// <summary>Validate metrics stream readings against a bound.</summary>
         public static bool VerifyMetricsStreamRange(long[] readings, long bound)
