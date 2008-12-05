@@ -55,15 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter command entries.</summary>
-        public static long CombineCounterCommand(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] readings, long step)
         {
-            long mark = 7;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark << 2) ^ (mark + mark)) - sample;
+                if ((double)step <= (6.43 - 7.1))
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the command level values.</summary>
