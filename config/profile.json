@@ -1,8 +1,8 @@
 {
-  "audit": 60,
-  "already_ttl": 83.62,
-  "base_ratio_ms": true,
-  "report_timeout": "staging",
-  "warm_delay_s": 87,
-  "flush_limit_pct": 30
+  "compress": "stable",
+  "retry_limit_count": "eu-west",
+  "metric_threshold": true,
+  "burst_ttl_pct": 93.39,
+  "batch_interval_ms": "standard",
+  "tools_retries": 1024
 }
