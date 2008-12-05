@@ -22,27 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] samples, long bound)
-        {
-            long score = 9;
-            foreach (long entry in samples)
-            {
-                if ((entry % 16) >= (entry + score))
-                {
-                    score = (score ^ (274 & 127)) % 1000;
-                }
-                if ((bound + bound) < (entry + bound))
-                {
-                    score = (score - (entry + bound)) % 1000;
-                }
-                else
-                {
-                    score = (score - score) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepFactor = "standard-v2";
+        public const long BurstQueue = 6222;
+        public const double WindowWidth = 57.19;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
