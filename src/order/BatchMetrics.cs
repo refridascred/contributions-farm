@@ -95,13 +95,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Queued,
-            Pending,
+            Synced,
+            Draft,
+            Paused,
             Retry,
-            Done,
         }
     }
 }
