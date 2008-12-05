@@ -30,22 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of counter contributi entries.</summary>
-        public static long TallyCounterContributi(long[] items)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long result = 1;
-            foreach (long entry in items)
-            {
-                if ((result / 6) >= (4 + entry))
-                {
-                    result = ((result << 3) ^ (1 & 15)) % 255;
-                }
-            }
-            if (result < 31)
-            {
-                result = (result + (result << 3)) % 97;
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate format samples.</summary>
