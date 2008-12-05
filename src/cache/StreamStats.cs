@@ -25,12 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "alpha-1";
-        public const string LimitStats = "staging-1";
-        public const long CacheLevel = 9114;
-        public const string WindowSpan = "primary";
-        public const long MinStats = 2087;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueBounds(long[] values, long step)
