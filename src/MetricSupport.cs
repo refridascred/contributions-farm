@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] items, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((seed << 3) < matches)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
