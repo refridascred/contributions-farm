@@ -1,8 +1,31 @@
 # support settings
-default_delay: false
-poll_limit_pct: true
-audit: 30
-githubfarm_retries:
-  - 429
-  - 223
-enabled: 58
+min_limit_pct:
+  warm_threshold_count: 22
+  batch_ttl: 24.75
+  soft_ttl_s: green
+persist: 5080
+cache_ttl_pct:
+  warm_delay:
+    cache_delay_ms: 7.2
+    poll_ttl_count: local
+    report_threshold: green
+    default_size_s: 7562
+    compress: 5.03
+    min_depth_count: 61.71
+  verbose:
+    - blue
+    - blue
+    - latest
+  schema_threshold: 100
+  dry_run: 1575
+dry_run:
+  poll_capacity_pct: 5058
+  flush_timeout:
+    - 184
+    - 424
+    - 170
+    - 194
+  format_window: 6471
+  route_window: 500
+  verbose: cached
+  window_depth: 2736
