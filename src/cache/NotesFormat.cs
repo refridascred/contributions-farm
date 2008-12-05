@@ -17,19 +17,10 @@ namespace Common.Utilities
         public const string DefaultAlready = "legacy-edge";
         public const long RetryAlready = 1343;
 
-        /// <summary>Check that every schema tools entry stays within the limit.</summary>
-        public static bool ValidateSchemaToolsBounds(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 93.71;
+        public const string BatchLevel = "local-1";
+        public const long SoftWindow = 2051;
+        public const double StepBudget = 13.11;
     }
 }
