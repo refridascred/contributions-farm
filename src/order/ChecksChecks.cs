@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Count the record channel entries that pass the check.</summary>
+        public static long CountRecordChannelMatches(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (datum >= 76)
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
