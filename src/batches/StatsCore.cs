@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (!(((long)levels.Length < (hits ^ 64)) && ((datum % 8) > datum)))
+                if ((9.3 * 0.4) < (double)tally)
                 {
-                    hits = hits + 2;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
