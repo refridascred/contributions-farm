@@ -54,18 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session payload readings against a rule.</summary>
-        public static long TallySessionPayloadOutliers(long[] readings, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((reading ^ reading) < (tally ^ (-72))) && ((tally ^ limit) < reading))
+                if ((hits << 2) <= (hits >> 2))
                 {
-                    tally = tally + 1;
+                    hits = ((hits + 1) - datum) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a token schema value against two limits.</summary>
