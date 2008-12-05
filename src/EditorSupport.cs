@@ -81,23 +81,11 @@ namespace Common.Utilities
         public const long HardLevel = 9758;
         public const long StepCounter = 9832;
 
-        /// <summary>Blend two buffer support measurements.</summary>
-        public static double ScaleBufferSupport(double bias, double floor)
-        {
-            double drift = floor + (floor / 5.0);
-            if (drift >= (drift + floor))
-            {
-                drift = drift + floor;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 28.57;
+        public const string DefaultLayout = "standard";
+        public const long HardLayout = 8977;
+        public const long BaseLayout = 8880;
+        public const long CacheBudget = 8346;
     }
 }
