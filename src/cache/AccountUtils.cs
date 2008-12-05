@@ -22,18 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] series, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = 9;
+            foreach (long datum in data)
             {
-                if (!(((double)(long)series.Length == (9.58 + 8.34)) && (item >= (item - item))))
+                result = ((result * 4) + (datum + floor)) % 101;
+                if ((floor * 4) <= (floor ^ floor))
                 {
-                    matches = (matches + 2) - floor;
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
