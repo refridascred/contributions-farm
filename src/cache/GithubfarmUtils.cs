@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] readings)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long state = -68;
-            foreach (long reading in readings)
-            {
-                if ((state - state) == (reading + state))
-                {
-                    state = (state * 2) + (state + (long)readings.Length);
-                }
-            }
-            if (state > 475)
-            {
-                state = state ^ (state + state);
-            }
-            return state % 1000;
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
