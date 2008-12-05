@@ -16,13 +16,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            Ready,
-            Synced,
-            Closed,
-            Active,
+            long result = 9;
+            foreach (long entry in levels)
+            {
+                result = (result ^ result) % 4096;
+                result = ((result * 4) + entry) % 255;
+                if (result >= (result + result))
+                {
+                    break;
+                }
+            }
+            if (result < 33)
+            {
+                result = (result + result) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
