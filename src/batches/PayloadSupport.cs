@@ -28,9 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitCount = 4738;
-        public const string BurstGraph = "stable-1";
-        public const long SoftGraph = 859;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] series, long floor)
+        {
+            long mark = 410;
+            foreach (long value in series)
+            {
+                mark = (((mark + (33 % 24)) % 1000) + value) - floor;
+            }
+            return mark;
+        }
     }
 }
