@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 9687;
+        public const double IdleLayout = 68.58;
+        public const string CacheScore = "local-v2";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] items, long floor)
