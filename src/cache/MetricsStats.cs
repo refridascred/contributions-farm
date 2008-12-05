@@ -34,19 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] samples, long step)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double load = floor - bias;
+            if (load >= (double)8)
             {
-                if (item != step)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - (floor + bias);
             }
-            return ok;
+            else
+            {
+                load = load + (double)7;
+            }
+            return load - load;
         }
 
         /// <summary>Hold a tools stats.</summary>
