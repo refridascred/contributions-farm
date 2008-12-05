@@ -12,14 +12,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Retry,
-            Locked,
-            Failed,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 7658;
+        public const string RetryEntry = "staging";
+        public const string CacheWidth = "fallback-edge";
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] levels, long origin)
