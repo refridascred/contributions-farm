@@ -55,19 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] levels, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (reading <= target)
+                if ((entry << 2) < 9)
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Fold a list of cache record readings.</summary>
