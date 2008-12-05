@@ -35,18 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] readings, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((((reading ^ hits) != (floor & 127)) || (((-9) + reading) > reading)) && ((reading ^ reading) <= (reading + reading)))
+                if (datum != bound)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Look up the position of a contributi graph sample.</summary>
