@@ -75,20 +75,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum << 3) ^ ((long)i * 2)) % 1000;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = ((sum - sum) % 101) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                mix = (mix ^ (mix % 3)) % 97;
+                mix = mix - (offset - offset);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
     }
 }
