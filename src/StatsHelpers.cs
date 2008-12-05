@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] data, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((anchor ^ (long)i) > offset)
+                if (entry < floor)
                 {
-                    anchor = (anchor - (anchor - offset)) % 255;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ 705;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Accumulate record route samples.</summary>
