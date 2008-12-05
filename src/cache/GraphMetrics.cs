@@ -40,13 +40,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (tally <= (tally % 100))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the editor kind values.</summary>
