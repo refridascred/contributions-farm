@@ -1,7 +1,5 @@
 {
-  "flush_window": 6848,
-  "soft_retries_count": "blue",
-  "batch_retries_count": ["staging", "latest", "edge"],
-  "idle_limit": [35, 371],
-  "queue_size": 64.77
+  "hard_limit_s": [222, 222, 90, 336],
+  "readonly": "edge",
+  "poll_ratio": 57
 }
