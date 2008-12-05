@@ -35,18 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] data, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long offset)
         {
-            long anchor = 5;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((1.88 / 9.0) == (double)anchor))
+                if (readings[i] <= offset)
                 {
-                    anchor = ((anchor + (anchor + datum)) % 4096) + origin;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
