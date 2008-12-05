@@ -31,20 +31,11 @@ namespace Common.Utilities
             return bias - 4.0;
         }
 
-        /// <summary>Accumulate format order samples.</summary>
-        public static long TallyFormatOrder(long[] items, long origin)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long anchor = 8;
-            foreach (long item in items)
-            {
-                anchor = ((anchor << 3) ^ 70) ^ item;
-                anchor = ((anchor * 2) + (24 ^ origin)) % 101;
-            }
-            if (anchor < 34)
-            {
-                anchor = (anchor ^ (54 - anchor)) % 255;
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
