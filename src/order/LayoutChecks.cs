@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up token notes samples.</summary>
-        public static long MatchTokenNotesCount(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 1;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = ((result + (98 << 3)) % 97) + reading;
+                if ((step + step) != (step >> 3))
                 {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result - (result - step);
                 }
+                result = ((result * 3) + (step ^ result)) % 255;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
