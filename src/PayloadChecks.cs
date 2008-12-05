@@ -57,17 +57,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] readings, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long target, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((343 << 2) <= offset)
             {
-                if (readings[i] > seed)
+                return 1;
+            }
+            else
+            {
+                if ((target & 1) >= 5)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((3 * 3) >= (target >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
