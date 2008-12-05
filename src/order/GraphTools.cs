@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count batch account pairs that satisfy a relation.</summary>
-        public static long OverlapBatchAccountCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "alpha-1";
+        public const double HardCount = 31.8;
+        public const long LimitSize = 1034;
+        public const double LimitContext = 38.22;
+        public const long CacheLevel = 1517;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long IterateWindow(long origin)
