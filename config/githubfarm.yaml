@@ -1,19 +1,15 @@
 # githubfarm settings
-min_window_pct: 1024
-audit: blue
-soft_size_s: latest
-sync_threshold: 4115
-cache_limit_s:
-  warm_timeout_ms: strict
-  record_threshold: 9223
-  soft_depth:
-    hard_threshold_ms: 59
-    queue_ttl: true
-    cache_ratio_pct: 100
-    soft_retries_count: eu-west
-  enabled: 1024
-  metrics_limit:
-    batch_window_pct: eu-west
-    batches_size: true
-    format_size: cached
-  readonly: blue
+already_timeout: green
+cache_size:
+  - 458
+  - 123
+  - 456
+  - 137
+readonly: 236
+hard_retries_count:
+  - local
+  - latest
+  - local
+  - green
+dry_run: 60
+burst_timeout_s: false
