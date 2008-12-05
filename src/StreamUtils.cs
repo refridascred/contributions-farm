@@ -74,22 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] series, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] levels)
         {
-            long carry = 38;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((limit ^ carry) != (value + limit))
+                if ((4.9 + 6.72) == (double)datum)
                 {
-                    carry = (carry ^ (limit / 7)) % 101;
-                }
-                if ((value << 1) >= (carry + (-639)))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
     }
 }
