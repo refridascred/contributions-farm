@@ -23,17 +23,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] readings, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Retry,
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
