@@ -27,12 +27,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Region { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
