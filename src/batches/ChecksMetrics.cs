@@ -36,13 +36,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            Locked,
+            Closed,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
