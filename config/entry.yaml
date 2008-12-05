@@ -1,15 +1,27 @@
 # entry settings
-batch_delay_count: 1035
-contributi_limit: 27
-notes_limit: 516
-base_delay_pct:
-  window_ratio: 53
-  flush_ttl: edge
-  flush_delay_s: true
-  min_interval_ms:
-    - 148
-    - 67
-    - 86
-    - 94
-batch_ratio_pct: legacy
-strict: open
+flush_window_s: 14
+sync_ratio_count: 86.92
+token_timeout: local
+enabled: cached
+token_ratio: 5498
+batch_depth_s:
+  schema_timeout:
+    soft_limit_count:
+      - 158
+      - 217
+    soft_ttl: open
+    sync_capacity:
+      - open
+      - standard
+      - strict
+      - staging
+    batch_retries_count: 500
+    compress: false
+    warm_threshold_s:
+      - 313
+      - 391
+  min_limit_ms: 8280
+  sync_interval_count: 41.72
+  persist: legacy
+  batch_ttl_pct: primary
+  default_depth_count: staging
