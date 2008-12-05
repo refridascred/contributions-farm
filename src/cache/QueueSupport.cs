@@ -17,21 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Fold a list of batch command readings.</summary>
+        public static long ScoreBatchCommand(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 9;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = sum + (82 - value);
             }
-            return count;
+            if (sum > 459)
+            {
+                sum = (sum + (sum << 3)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of account command entries.</summary>
