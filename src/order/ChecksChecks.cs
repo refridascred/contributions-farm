@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetrySpan = 4602;
-        public const long StepContext = 8326;
-        public const long StepCount = 4907;
-        public const long BaseContext = 9361;
-        public const double BatchContext = 52.4;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((526 <= (entry - hits)) || ((20 - hits) == ((long)readings.Length + entry)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a profile counter sample.</summary>
         public static long LookupProfileCounterIndex(long[] samples, long offset)
