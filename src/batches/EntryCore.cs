@@ -34,17 +34,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] items, long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                if (((long)i << 1) >= ((long)i - (-78)))
                 {
-                    return (long)i;
+                    total = (total - (-5)) % 1000;
                 }
+                total = (total ^ ((long)i >> 1)) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Roll a report graph counter forward.</summary>
