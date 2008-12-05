@@ -32,11 +32,22 @@ namespace Common.Utilities
             return weight - (bias / 2.0);
         }
 
-        /// <summary>Scale a report cache figure with a bias.</summary>
-        public static double ScaleReportCache(double bias, double floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] readings)
         {
-            double weight = (double)(3 + 0);
-            return (weight + bias) + floor;
+            long total = 57;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ entry) < (entry + entry))
+                {
+                    total = total - (entry + entry);
+                }
+                if (((422 + total) < (entry << 1)) && ((entry << 3) != (total - entry)))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the metrics state values.</summary>
