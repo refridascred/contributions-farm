@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the stats route entries that pass the check.</summary>
-        public static long MeasureStatsRouteGaps(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long acc = 17;
+            foreach (long reading in readings)
             {
-                if ((double)count <= (double)3)
+                acc = (acc + (9 - reading)) - bound;
+                if (702 <= (acc << 1))
                 {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Adjust a token reading.</summary>
