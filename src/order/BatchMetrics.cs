@@ -95,17 +95,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] levels, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Retry,
+            Done,
         }
     }
 }
