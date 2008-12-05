@@ -42,12 +42,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            Draft,
+            Retry,
+            Done,
+            Idle,
         }
     }
 }
