@@ -38,24 +38,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long offset, long floor)
-        {
-            if ((offset / 2) > (floor ^ (-7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 9) >= floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 8894;
+        public const double HardBudget = 23.9;
+        public const double LimitSize = 62.48;
+        public const double DefaultSpan = 96.32;
+        public const long BatchToken = 9683;
     }
 }
