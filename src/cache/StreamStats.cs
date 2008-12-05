@@ -44,15 +44,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] levels, long step)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = 3;
-            foreach (long sample in levels)
-            {
-                total = (total - sample) - step;
-            }
-            return total;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
