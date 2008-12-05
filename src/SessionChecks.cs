@@ -14,18 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] values)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((double)matches >= (17.0 - 9.0))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Match up checks samples.</summary>
