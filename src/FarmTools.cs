@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] levels, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a editor entry.</summary>
