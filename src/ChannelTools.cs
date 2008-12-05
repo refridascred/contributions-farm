@@ -23,12 +23,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 3182;
-        public const double WindowFilter = 28.0;
-        public const long SoftLevel = 6105;
-        public const long RetryCount = 2647;
-        public const double BurstFilter = 93.3;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 5) + (floor - floor)) % 101;
+                if (acc > (long)i)
+                {
+                    acc = (acc + (acc + (long)i)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (floor + floor)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long GradeSchema(long limit, long seed)
