@@ -22,14 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long origin)
         {
-            Closed,
-            Draft,
-            Dropped,
-            Failed,
-            New,
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((score >> 1) > (798 - (long)i))
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score * 2) + (316 - score);
+                }
+                score = score + (2 ^ score);
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the route kind values.</summary>
