@@ -36,14 +36,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Paused,
-            Queued,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 5939;
+        public const long BaseWindow = 4916;
+        public const double MaxWindow = 58.76;
+        public const long CacheTimeout = 6971;
 
         /// <summary>Rank commits graph input into a small class.</summary>
         public static long GradeCommitsGraph(long limit, long bound)
