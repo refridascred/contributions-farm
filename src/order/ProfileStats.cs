@@ -22,23 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long result = 933;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result + result;
-                if (result >= datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result ^ (datum >> 2)) % 101;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 1)
-            {
-                result = (result << 3) ^ (result << 1);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Blend two route measurements.</summary>
