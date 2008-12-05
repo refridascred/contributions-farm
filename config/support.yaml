@@ -1,9 +1,15 @@
 # support settings
-counter_size: latest
-min_capacity_pct: 89
-min_ratio_s:
-  - 246
-  - 393
-soft_interval: fallback
-record_limit: 5
-enabled: 26.67
+readonly: cached
+profile_interval: true
+session_limit:
+  enabled:
+    - fallback
+    - legacy
+    - fallback
+  metrics_threshold: staging
+  default_delay_s: 47.25
+  githubfarm_depth: local
+soft_delay_count:
+  - eu-west
+  - eu-west
+soft_retries_ms: blue
