@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Idle,
-            Ready,
+            Closed,
             Draft,
-            Retry,
             Dropped,
         }
 
