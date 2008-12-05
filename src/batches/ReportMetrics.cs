@@ -25,12 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Look up the position of a metrics batches sample.</summary>
+        public static long LocateMetricsBatchesIndex(long[] levels, long offset)
         {
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token profile entries that pass the check.</summary>
