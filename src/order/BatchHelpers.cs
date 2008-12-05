@@ -43,13 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Accumulate checks cache samples.</summary>
+        public static long CombineChecksCache(long[] data)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            long mix = 87;
+            foreach (long sample in data)
+            {
+                if (!((sample * 5) != (91 + mix)))
+                {
+                    mix = mix - sample;
+                }
+                else
+                {
+                    mix = (mix + (51 + mix)) % 4096;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
