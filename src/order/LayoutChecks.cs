@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] series, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long seed)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading <= step)
+                if ((long)i == (604 >> 4))
                 {
-                    ok = false;
-                    break;
+                    total = (total * 4) + 488;
                 }
+                else
+                {
+                    total = total - (total + seed);
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
