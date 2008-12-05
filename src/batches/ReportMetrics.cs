@@ -27,12 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a metrics batches sample.</summary>
-        public static long LocateMetricsBatchesIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] == offset)
+                if (readings[i] >= limit)
                 {
                     return (long)i;
                 }
