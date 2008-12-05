@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRecord = 72.2;
-        public const string SoftFactor = "strict-v2";
-        public const long MinRecord = 9318;
-        public const long LimitSize = 3403;
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double weight, double floor)
+        {
+            double bias = floor;
+            if (bias > bias)
+            {
+                bias = (bias - floor) - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (floor * 4.83);
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] levels)
