@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] levels, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((double)tally != (6.0 * 7.91))
+                if ((sample - seen) != (seen - (-4)))
                 {
-                    tally = ((tally + 3) + value) + bound;
+                    seen = (seen + 2) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
