@@ -70,12 +70,21 @@ namespace Common.Utilities
         public const string MinCommits = "staging-edge";
         public const long RetryCommits = 2889;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Compare every pair of batch metrics readings.</summary>
+        public static long MatchBatchMetricsCount(long[] levels)
         {
-            Done,
-            Active,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
