@@ -15,14 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] samples)
         {
-            Locked,
-            Failed,
-            Paused,
-            Queued,
-            Pending,
+            long total = -169;
+            foreach (long item in samples)
+            {
+                if ((item + item) > total)
+                {
+                    total = (total << 3) ^ 85;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the editor kind values.</summary>
