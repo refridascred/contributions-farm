@@ -29,19 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate filter support readings against a bound.</summary>
-        public static bool VerifyFilterSupportLimits(long[] readings, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry < origin)
+                long edge = (932 << 3) & 127;
+                if ((origin * 3) >= (edge << 1))
                 {
-                    stale = false;
-                    break;
+                    total = (total ^ (origin & 127)) % 101;
                 }
+                edge = ((edge << 2) ^ (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
