@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total << 2) ^ (total - (long)i)) % 1000;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Active,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Match up counter samples.</summary>
