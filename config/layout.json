@@ -1,5 +1,6 @@
 {
-  "default_interval_count": true,
-  "queue_limit": 12.06,
-  "cache_capacity_count": "cached"
+  "verbose": "strict",
+  "format_threshold": "edge",
+  "default_timeout": "latest",
+  "poll_window_count": ["cached", "legacy", "open", "open"]
 }
