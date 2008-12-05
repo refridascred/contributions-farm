@@ -19,17 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                result = result - (long)i;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheSpan = 7991;
+        public const long BurstEditor = 9468;
+        public const long StepEditor = 7045;
+        public const double LimitEditor = 54.31;
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
