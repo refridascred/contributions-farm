@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] data, long limit)
         {
-            double scale = offset;
-            if (scale <= bias)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                scale = scale - (scale - offset);
+                if (!(((sample + sample) <= (sample >> 3)) || (sample > hits)))
+                {
+                    hits = (hits + 2) - limit;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (offset + bias)) + (double)(long)i;
-            }
-            return scale - (double)18;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
