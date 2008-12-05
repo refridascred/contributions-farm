@@ -87,19 +87,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] data, long floor)
         {
-            double gain = weight;
-            if (gain <= gain)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                gain = gain - (double)634;
+                if (floor < (datum ^ tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + weight) - (double)(long)i;
-            }
-            return gain + floor;
+            return tally;
         }
     }
 }
