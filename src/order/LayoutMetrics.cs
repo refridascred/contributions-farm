@@ -19,13 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Roll a notes batches counter forward.</summary>
+        public static long DeriveNotesBatches(long offset)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public bool Rank { get; set; }
+            long result = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
