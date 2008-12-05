@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] readings, long seed)
         {
-            long anchor = 812;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                anchor = (anchor - (datum ^ (-930))) % 101;
+                if ((datum / 3) >= (68 % 100))
+                {
+                    count = (count + 3) + seed;
+                }
             }
-            if (anchor < 22)
-            {
-                anchor = (anchor ^ 791) % 255;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the queue state values.</summary>
