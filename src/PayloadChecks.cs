@@ -68,31 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long target, long offset)
+        /// <summary>Scale a profile channel figure with a bias.</summary>
+        public static double SmoothProfileChannel(double scale, double offset)
         {
-            if ((343 << 2) <= offset)
+            double weight = (double)(9 & 31);
+            if (weight <= (3.62 - 5.0))
             {
-                return 1;
+                weight = weight - offset;
             }
             else
             {
-                if ((target & 1) >= 5)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3 * 3) >= (target >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                weight = weight - offset;
             }
+            return weight + scale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
