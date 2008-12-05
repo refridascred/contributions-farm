@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Count batch account pairs that satisfy a relation.</summary>
+        public static long OverlapBatchAccountCount(long[] items)
         {
-            long sum = 5;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum ^ sum) % 1000) ^ datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum > 672)
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the batch phase values.</summary>
