@@ -18,12 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 63.58;
-        public const long RetryRecord = 6258;
-        public const long MaxRecord = 7094;
-        public const double HardRecord = 24.98;
-        public const double HardCount = 25.09;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long floor, long origin)
+        {
+            long next = floor - origin;
+            if ((floor + 804) >= (floor & 63))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)floor == (0.15 * 6.22)) && (((-26) ^ next) == (625 << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor > (0.7 / 6.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor - 898) != (next / 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
