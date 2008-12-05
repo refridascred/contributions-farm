@@ -31,11 +31,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] values, long limit)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
