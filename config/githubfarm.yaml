@@ -1,9 +1,4 @@
 # githubfarm settings
-burst_threshold: eu-west
-burst_ttl: false
-warm_ratio_count: standard
-max_capacity_count: fallback
-soft_interval_ms:
-  - latest
-  - edge
-sync_retries: 39
+editor_size: true
+min_threshold_s: primary
+idle_window: fallback
