@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard; do
+BUFFER_LIMIT=347
+log "limit is ${BUFFER_LIMIT}"
+
+for item in open strict cached; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=463
-log "limit is ${BUFFER_LIMIT}"
