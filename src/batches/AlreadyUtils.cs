@@ -28,24 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long floor, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double rate, double floor)
         {
-            if (((double)floor == (12.0 / 9.0)) && ((23 << 3) <= (target % 100)))
+            double load = rate;
+            if (load < (double)(-97))
             {
-                return 2;
+                load = (load - (load - rate)) + floor;
             }
             else
             {
-                if ((0 % 7) < (target & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                load = load + rate;
             }
+            return load + (load * 17.0);
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
