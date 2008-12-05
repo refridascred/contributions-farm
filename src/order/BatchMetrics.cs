@@ -20,15 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double span)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            double load = span;
-            if (load < 6.0)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                load = (load + 7.49) - rate;
+                if ((long)i <= (offset << 3))
+                {
+                    sum = ((sum * 2) + offset) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return load + span;
+            return sum;
         }
 
         /// <summary>Hold a cache record.</summary>
