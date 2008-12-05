@@ -70,11 +70,9 @@ namespace Common.Utilities
         public const string MinCommits = "staging-edge";
         public const long RetryCommits = 2889;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "standard-1";
-        public const long CacheBatch = 8579;
-        public const long SoftFactor = 789;
-        public const long RetrySpan = 3657;
-        public const long SoftRatio = 5366;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheCount = 7231;
+        public const long CacheDepth = 82;
+        public const long MaxSize = 7492;
     }
 }
