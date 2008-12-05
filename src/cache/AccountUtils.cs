@@ -21,22 +21,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] samples)
+        /// <summary>Check that every metric farm entry stays within the limit.</summary>
+        public static bool ValidateMetricFarmRange(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((sample + matches) > matches)
+                if (reading <= bound)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
