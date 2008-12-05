@@ -1,11 +1,12 @@
 {
-  "strict": 1.22,
-  "flush_interval_count": {
-    "flush_limit_count": "cached",
-    "retry_depth": 66,
-    "warm_delay_s": 67.1,
-    "stream_ttl": true,
-    "strict": 60
+  "sync_window_ms": true,
+  "flush_ratio_s": 60,
+  "strict": {
+    "enabled": [363, 167, 368, 240],
+    "hard_window_count": false,
+    "min_delay_pct": [439, 156, 92],
+    "max_retries": 4052,
+    "persist": 42
   },
-  "audit": [225, 122, 93]
+  "burst_retries_s": ["latest", "blue", "green", "legacy"]
 }
