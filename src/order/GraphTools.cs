@@ -78,39 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long floor, long floor2)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double weight, double floor)
         {
-            long offset = floor + floor2;
-            if (floor2 > (floor / 2))
+            double scale = floor;
+            if (scale > (double)0)
             {
-                return 6;
+                scale = (scale + (double)5) + weight;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((offset - floor) == (floor << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor2 >> 1) > (floor2 + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor2 > (11.0 + 8.35))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                scale = (scale + scale) + (double)(long)i;
             }
+            return scale + (scale / 8.0);
         }
     }
 }
