@@ -42,13 +42,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long origin, long floor)
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            if ((double)floor != (0.81 * 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (17.0 < (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the filter class values.</summary>
