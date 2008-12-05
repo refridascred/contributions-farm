@@ -93,21 +93,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] data)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((6.8 - 4.4) != (double)matches)
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
