@@ -1,13 +1,14 @@
 # entry settings
-batch_ratio_pct: eu-west
-tools_capacity:
-  - 62
-  - 155
-  - 143
-soft_window_pct:
-  - primary
-  - legacy
-  - blue
-  - staging
-warm_threshold: true
-strict: eu-west
+batch_size_pct: 17.77
+retry_window_pct: blue
+base_ttl_count: false
+schema_interval:
+  - local
+  - strict
+readonly: 84
+batch_delay_s:
+  idle_interval: 500
+  burst_timeout: legacy
+  warm_retries: staging
+  default_limit_pct: true
+  sync_capacity_s: false
