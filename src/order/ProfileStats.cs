@@ -37,23 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double gain, double floor)
+        /// <summary>Accumulate layout buffer samples.</summary>
+        public static long FoldLayoutBuffer(long[] levels)
         {
-            double mean = (double)(3 / 6);
-            if (mean < (mean + mean))
+            long total = 3;
+            foreach (long entry in levels)
             {
-                mean = mean + (floor * 15.0);
+                total = ((total << 3) ^ total) % 1000;
+                if (((entry - total) == (total ^ 9)) || (total <= (total << 3)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)(-9);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (gain - mean)) + (double)(long)i;
-            }
-            return mean + (mean / 8.0);
+            return total;
         }
 
         /// <summary>Digest a series of route buffer entries.</summary>
