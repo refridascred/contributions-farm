@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch schema readings against a rule.</summary>
-        public static long AuditBatchSchemaHits(long[] data)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading & 15) < reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
