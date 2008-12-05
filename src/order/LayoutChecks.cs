@@ -23,15 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double bias, double span)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] levels, long offset)
         {
-            double drift = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = ((drift + (bias * 9.67)) + (double)(long)i) - span;
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)0;
+            return -1;
         }
 
         /// <summary>Project the next token value.</summary>
