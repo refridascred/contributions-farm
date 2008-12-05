@@ -19,19 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] readings, long step)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
