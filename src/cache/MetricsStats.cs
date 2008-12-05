@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long StepCommits = 140;
         public const string HardCommits = "staging-v2";
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
