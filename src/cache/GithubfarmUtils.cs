@@ -48,15 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double ratio, double floor)
         {
-            long mix = 0;
-            foreach (long entry in items)
-            {
-                mix = mix ^ entry;
-            }
-            return mix % 4096;
+            double weight = (ratio - floor) - (floor * 1.7);
+            return weight - (double)1;
         }
     }
 }
