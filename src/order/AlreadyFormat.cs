@@ -20,12 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] levels)
         {
-            Done,
-            Retry,
-            Synced,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits - hits) < (hits / 4))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format kind values.</summary>
