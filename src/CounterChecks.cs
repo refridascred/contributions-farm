@@ -75,16 +75,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            long total = 165;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                total = (total + total) % 1000;
-                total = (total + (sample & 15)) % 97;
+                if (((tally - tally) <= tally) || !((datum - tally) > ((long)levels.Length << 1)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a cluster stats.</summary>
