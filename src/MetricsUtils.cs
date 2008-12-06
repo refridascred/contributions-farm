@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const double CacheBatch = 71.5;
         public const long CacheScore = 5170;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Roll a counter buffer counter forward.</summary>
+        public static long RollCounterBuffer(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((1.8 - 9.7) < (double)floor)
                 {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state - 4) % 97;
+                    break;
                 }
+                else
+                {
+                    state = (state + ((-530) + 42)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
