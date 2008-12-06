@@ -41,11 +41,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSpan = 3554;
-        public const string BatchCommits = "primary";
-        public const long RetryInterval = 8777;
-        public const string SoftTimeout = "primary-1";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((double)tally == (2.06 + 0.1)) && ((661 > (tally >> 1)) && ((tally + datum) > datum)))
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
