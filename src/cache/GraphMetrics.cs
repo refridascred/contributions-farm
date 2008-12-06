@@ -60,12 +60,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Pending,
-            Ready,
-            Retry,
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
+            public double Count { get; set; }
         }
     }
 }
