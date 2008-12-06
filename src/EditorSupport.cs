@@ -49,10 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 9515;
-        public const long MinOrder = 9339;
-        public const long BurstSize = 7824;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long floor, long target)
