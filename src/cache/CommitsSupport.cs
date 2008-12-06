@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] levels, long floor)
         {
-            Paused,
-            Closed,
-            Failed,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a window commits sample.</summary>
