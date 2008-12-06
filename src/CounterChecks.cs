@@ -87,15 +87,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
