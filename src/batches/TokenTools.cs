@@ -42,18 +42,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] samples)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if ((origin << 1) > (seed ^ origin))
             {
-                if ((double)hits < (double)509)
+                return 3;
+            }
+            else
+            {
+                if ((origin % 60) == (seed >> 4))
                 {
-                    hits = (hits + 1) + entry;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - 63) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin >= (75 & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
