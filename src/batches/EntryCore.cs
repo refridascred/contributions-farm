@@ -51,10 +51,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseInterval = 8204;
-        public const string WindowQueue = "strict-edge";
-        public const double BaseWidth = 52.16;
-        public const double LimitQueue = 1.83;
+        /// <summary>Count the payload report entries that pass the check.</summary>
+        public static long CountPayloadReportOutliers(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((1.0 * 1.0) == (double)target)
+                {
+                    count = (count + 3) - entry;
+                }
+            }
+            return count;
+        }
     }
 }
