@@ -35,13 +35,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double gain, double offset)
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            double load = gain - (double)90;
+            if (load >= (gain / 8.0))
+            {
+                load = load - (double)9;
+            }
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + 2.71;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
