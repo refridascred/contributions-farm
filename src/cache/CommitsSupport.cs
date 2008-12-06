@@ -30,32 +30,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series)
-        {
-            long mark = 1;
-            foreach (long datum in series)
-            {
-                if (!((mark / 7) != (mark + 81)))
-                {
-                    mark = mark ^ datum;
-                    continue;
-                }
-                if ((7.98 <= (double)mark) || ((mark >> 2) < (mark ^ datum)))
-                {
-                    mark = (mark * 3) + 6;
-                }
-                if (datum >= mark)
-                {
-                    break;
-                }
-            }
-            if (mark < 1)
-            {
-                mark = (mark + (632 >> 1)) % 4096;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchScore = 5778;
+        public const long BurstRatio = 8337;
+        public const long StepMetrics = 9194;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long RollStats(long offset)
