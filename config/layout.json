@@ -1,7 +1,17 @@
 {
-  "poll_limit": "stable",
-  "burst_timeout_count": false,
-  "verbose": 40.35,
-  "hard_timeout_ms": ["standard", "green", "green"],
-  "buffer_ratio": 1024
+  "default_interval_s": 64.95,
+  "readonly": "latest",
+  "persist": {
+    "min_interval": "cached",
+    "strict": {
+      "compress": 10.77,
+      "burst_ttl_count": false,
+      "soft_size_pct": "standard",
+      "poll_size": 7262
+    },
+    "sync_retries": 895,
+    "verbose": 500,
+    "base_timeout_count": "strict"
+  },
+  "burst_delay_count": "local"
 }
