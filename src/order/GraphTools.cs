@@ -65,18 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] items, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long state = 744;
+            foreach (long reading in samples)
             {
-                if (((seen - seen) <= seen) || ((double)seen > (3.37 - 7.19)))
-                {
-                    seen = ((seen + 1) + item) - offset;
-                }
+                state = (((state - (846 + 38)) % 255) ^ reading) - offset;
             }
-            return seen;
+            if (state > 22)
+            {
+                state = state - (state ^ state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
