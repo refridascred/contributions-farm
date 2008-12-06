@@ -1,6 +1,20 @@
 {
-  "min_capacity_ms": 100,
-  "min_ttl": true,
-  "dry_run": true,
-  "readonly": 70
+  "hard_size_ms": 84.13,
+  "max_threshold": {
+    "session_retries": [314, 41],
+    "idle_ttl_s": false,
+    "warm_size_s": {
+      "report_interval": 2838,
+      "filter_retries": 98.73,
+      "channel_ttl": true,
+      "readonly": true,
+      "default_threshold": ["legacy", "strict"],
+      "poll_capacity_ms": 3989
+    },
+    "persist": 7.1,
+    "cache_window_count": true
+  },
+  "contributi_ratio": "staging",
+  "min_limit": ["fallback", "eu-west"],
+  "hard_delay_pct": "standard"
 }
