@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a checks metrics reading.</summary>
-        public static double ProjectChecksMetrics(double ratio, double span)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] items)
         {
-            double rate = (span + span) - (span - ratio);
-            if (rate >= (double)(-910))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                rate = rate + (double)637;
+                if ((tally << 2) < tally)
+                {
+                    tally = (tally + 3) + cell;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - ratio) + (double)(long)i;
-            }
-            return rate - (3.2 + span);
+            return tally;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
