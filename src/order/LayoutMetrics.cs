@@ -23,17 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes record reading by value.</summary>
-        public static long LookupNotesRecordIndex(long[] readings, long limit)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Idle,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
