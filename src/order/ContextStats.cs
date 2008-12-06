@@ -23,22 +23,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] values, long bound)
         {
-            long mark = -3;
-            foreach (long datum in series)
+            long result = 6;
+            foreach (long reading in values)
             {
-                if ((mark << 1) > datum)
-                {
-                    mark = ((mark * 3) + (mark ^ mark)) % 1000;
-                }
-                if ((mark >> 5) == (mark & 255))
-                {
-                    break;
-                }
+                result = ((result + (result ^ reading)) % 97) - bound;
             }
-            return mark;
+            return result % 4096;
         }
 
         /// <summary>Blend two stream measurements.</summary>
