@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long origin, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long diff = origin ^ floor;
+            if ((floor % 7) == (origin + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)diff > 6.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((diff - floor) < 21))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate filter context readings against a bound.</summary>
