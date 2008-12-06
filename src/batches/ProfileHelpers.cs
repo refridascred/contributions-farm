@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Project the next graph batch value.</summary>
+        public static double SmoothGraphBatch(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            double load = ratio;
+            if (load <= load)
+            {
+                load = (load + (ratio + ratio)) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)672) - (double)(long)i;
+            }
+            return load - (double)978;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
