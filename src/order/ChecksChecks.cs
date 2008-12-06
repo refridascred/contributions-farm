@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen + seen) > value)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 7303;
+        public const string MaxContext = "stable-1";
+        public const string StepContext = "local-v2";
 
         /// <summary>Roll a report counter forward.</summary>
         public static long DeriveReport(long limit)
