@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate profile cache samples.</summary>
-        public static long TallyProfileCache(long[] data)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long carry = -569;
-            foreach (long value in data)
-            {
-                if (((double)carry < (1.1 - 2.7)) || ((long)data.Length > (value - carry)))
-                {
-                    carry = ((carry << 2) ^ (value >> 5)) % 4096;
-                }
-            }
-            return carry % 1000;
+            Ready,
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
