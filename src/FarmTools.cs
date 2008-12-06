@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
