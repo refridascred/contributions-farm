@@ -19,10 +19,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 36.1;
-        public const string RetryTimeout = "strict";
-        public const double HardProfile = 7.07;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Synced,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
