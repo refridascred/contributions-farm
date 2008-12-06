@@ -46,15 +46,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples, long offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] readings, long target)
         {
-            long mark = 55;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark ^ (726 + cell)) % 97) + offset;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
