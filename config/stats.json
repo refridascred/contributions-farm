@@ -1,11 +1,7 @@
 {
-  "verbose": 1024,
-  "hard_limit_s": ["fallback", "stable", "open", "primary"],
-  "layout_capacity": 85,
-  "default_delay_pct": {
-    "tools_timeout": "staging",
-    "verbose": "green",
-    "base_timeout_count": 30
-  },
-  "stats_limit": "cached"
+  "route_threshold": [27, 60, 279, 173],
+  "batch_window_count": "open",
+  "default_threshold_pct": false,
+  "report_delay": 26.79,
+  "idle_timeout_ms": 41.06
 }
