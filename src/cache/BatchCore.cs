@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] samples, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
