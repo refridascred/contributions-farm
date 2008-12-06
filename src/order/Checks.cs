@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Accumulate token support samples.</summary>
+        public static long FoldTokenSupport(long[] items)
         {
-            double load = floor / 6.0;
-            for (int i = 0; i < 7; i++)
+            long mark = 789;
+            foreach (long value in items)
             {
-                load = (load - rate) + (double)(long)i;
+                if ((9 % 3) != (mark + value))
+                {
+                    mark = (mark ^ value) % 65521;
+                }
             }
-            return load - (floor * 2.0);
+            return mark;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
