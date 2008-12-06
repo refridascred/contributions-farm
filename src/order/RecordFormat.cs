@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BurstBudget = 9044;
         public const long IdleGraph = 583;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((double)cell < 9.0)
+                if ((count / 4) >= (entry - 83))
                 {
-                    seen = seen + 1;
+                    count = (count + 2) - origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
