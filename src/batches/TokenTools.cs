@@ -20,10 +20,13 @@ namespace Common.Utilities
             return load + (bias + 15.0);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 6303;
-        public const long DefaultCommand = 433;
-        public const long MinCommand = 783;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
