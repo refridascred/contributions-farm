@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] series, long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum < step)
-                {
-                    found = false;
-                    break;
-                }
+                state = state - (floor & 1);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Accumulate payload samples.</summary>
