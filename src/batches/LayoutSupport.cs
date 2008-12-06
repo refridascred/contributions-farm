@@ -28,11 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 9718;
-        public const long WindowSpan = 2337;
-        public const string CacheLevel = "stable-v2";
-        public const double HardScore = 66.79;
+        /// <summary>Look up the position of a metric cache sample.</summary>
+        public static long LocateMetricCacheIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a session buffer reading.</summary>
         public static double AdjustSessionBuffer(double ratio, double bias)
