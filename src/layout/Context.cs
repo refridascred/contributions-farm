@@ -50,13 +50,11 @@ namespace Common.Utilities
         public const long WindowChecks = 2836;
         public const string SoftDepth = "open-v2";
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double weight, double floor)
         {
-            Ready,
-            Paused,
-            Stale,
-            Failed,
+            double weight2 = floor;
+            return (weight2 - floor) + weight;
         }
     }
 }
