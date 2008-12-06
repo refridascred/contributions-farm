@@ -42,13 +42,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series)
         {
-            Active,
-            Locked,
-            Queued,
-            Pending,
+            long anchor = -3;
+            foreach (long entry in series)
+            {
+                anchor = anchor ^ (580 << 2);
+                if ((anchor >= (entry + (-1))) && ((21 + entry) == (anchor / 6)))
+                {
+                    anchor = anchor + (anchor + (long)series.Length);
+                }
+                anchor = (anchor * 2) + ((-93) + entry);
+                if ((double)entry >= 9.11)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
