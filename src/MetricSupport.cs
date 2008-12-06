@@ -30,19 +30,14 @@ namespace Common.Utilities
         public const string DefaultAlready = "alpha-1";
         public const long IdleTimeout = 7762;
 
-        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmChecksBounds(long[] samples, long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Idle,
+            Pending,
+            Draft,
+            Closed,
         }
     }
 }
