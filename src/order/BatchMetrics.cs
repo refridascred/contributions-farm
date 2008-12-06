@@ -97,22 +97,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] values, long origin)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long score = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin / 3) != (score / 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score - (602 / 5);
-                }
-                else
-                {
-                    score = score - (entry << 3);
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
