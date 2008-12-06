@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long total = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((1.83 - 8.99) < (double)entry)
-                {
-                    tally = tally + 1;
-                }
+                total = ((total * 5) + floor) % 4096;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
