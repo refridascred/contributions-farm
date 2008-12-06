@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] values)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally << 2) > (tally + item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
