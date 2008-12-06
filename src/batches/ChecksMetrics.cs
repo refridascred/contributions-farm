@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] series, long limit)
         {
-            Failed,
-            Idle,
-            Locked,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((-94) >> 4) >= (sample - tally))
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
