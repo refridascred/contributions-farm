@@ -29,13 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Stale,
-            Idle,
-            Closed,
-            Done,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 9511;
+        public const double MinMetrics = 44.66;
+        public const long BurstMetrics = 4783;
+        public const long CacheFactor = 7509;
+        public const long SoftDepth = 8606;
     }
 }
