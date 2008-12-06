@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit queue already readings against a rule.</summary>
-        public static long AuditQueueAlreadyOutliers(long[] samples)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches % 24) <= (88 * 3))
+                if ((items[i] <= target) && ((items[i] % 3) == 0))
                 {
-                    matches = (matches + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
