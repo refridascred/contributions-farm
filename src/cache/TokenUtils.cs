@@ -22,17 +22,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result ^ 863) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
