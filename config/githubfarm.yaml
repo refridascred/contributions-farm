@@ -1,12 +1,14 @@
 # githubfarm settings
-poll_capacity_ms: 100
-default_depth:
-  - edge
-  - fallback
-  - staging
-  - staging
-min_window: true
-verbose:
-  - primary
-  - cached
-  - open
+strict:
+  - 108
+  - 443
+  - 16
+  - 379
+poll_delay_count:
+  verbose: 7.1
+  enabled: 71.6
+  burst_ttl_ms: true
+  batch_delay: blue
+command_retries: false
+persist: blue
+account_ratio: 4.41
