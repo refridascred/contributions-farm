@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const string DefaultAlready = "alpha-1";
         public const long IdleTimeout = 7762;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
