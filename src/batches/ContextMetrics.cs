@@ -39,12 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] levels, long step)
         {
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of schema tools readings.</summary>
