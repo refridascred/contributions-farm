@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools layout readings against a rule.</summary>
-        public static long TallyToolsLayoutOutliers(long[] samples, long floor)
+        /// <summary>Validate graph report readings against a bound.</summary>
+        public static bool GuardGraphReportRange(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((double)floor > (double)(-2))
+                if (value >= step)
                 {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
