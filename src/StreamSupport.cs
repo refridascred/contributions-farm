@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] levels, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] levels, long floor)
         {
             bool valid = true;
-            foreach (long datum in levels)
+            foreach (long sample in levels)
             {
-                if (datum >= offset)
+                if (sample <= floor)
                 {
                     valid = false;
                     break;
