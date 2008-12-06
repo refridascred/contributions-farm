@@ -42,11 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long score = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
