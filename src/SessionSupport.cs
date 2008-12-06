@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] values)
         {
-            long result = 4;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (((double)result == (4.38 / 6.0)) || ((sample + result) > result))
+                if ((sample & 15) > (9 >> 3))
                 {
-                    result = (result * 4) + (sample - result);
+                    seen = seen + 3;
                 }
                 else
                 {
-                    result = result ^ (result << 2);
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a tools stats.</summary>
