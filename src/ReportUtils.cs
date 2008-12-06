@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] levels, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((((double)entry < (double)target) || ((double)entry < (13.0 * 7.1))) || ((double)target > (6.0 + 16.0)))
+                if ((seen <= cell) && (((seen + cell) < bound) || (seen < cell)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Adjust a window reading.</summary>
