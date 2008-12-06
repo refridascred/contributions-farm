@@ -1,14 +1,12 @@
 {
-  "metrics_retries": {
-    "sync_ratio_count": 60,
-    "warm_capacity_count": "open",
-    "dry_run": true,
-    "verbose": 55.34,
-    "default_threshold_count": 15.88,
-    "sync_interval_ms": false
+  "cache_window": [222, 344, 495],
+  "batch_size": {
+    "audit": 3401,
+    "metric_size": "cached",
+    "warm_threshold_count": 30
   },
-  "base_interval_s": [177, 119],
-  "audit": 83,
-  "strict": 100,
-  "cluster_depth": "eu-west"
+  "default_timeout_pct": "eu-west",
+  "enabled": ["staging", "edge", "local", "fallback"],
+  "warm_retries_pct": 49,
+  "batch_delay_ms": true
 }
