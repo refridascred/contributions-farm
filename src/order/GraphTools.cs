@@ -90,21 +90,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = (mix + mix) % 97;
+                if ((mix + limit) > ((long)i >> 4))
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + (mix - mix);
+                    mix = (mix + (limit / 7)) % 101;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
     }
 }
