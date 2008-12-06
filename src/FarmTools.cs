@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] series, long limit)
+        /// <summary>Grade a checks token value against two limits.</summary>
+        public static long SortChecksToken(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((floor / 3) >= (91 << 3))
             {
-                if ((5 ^ cell) == (matches / 6))
+                return 4;
+            }
+            else
+            {
+                if ((8 >= (seed << 1)) && ((double)floor != (20.0 - 9.02)))
                 {
-                    matches = (matches + 1) + limit;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + floor) >= 2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
