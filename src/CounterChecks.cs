@@ -57,22 +57,26 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] values, long step)
         {
-            long state = 5;
-            foreach (long sample in readings)
+            long score = -5;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 11; i++)
+                if ((double)cell > (double)step)
                 {
-                    state = (((state - (sample - sample)) % 4096) - (long)i) - floor;
+                    score = (score ^ (score - step)) % 101;
                 }
-                if ((double)sample <= (17.0 * 0.21))
+                else
                 {
-                    state = ((state << 2) ^ (sample * 2)) % 255;
+                    score = ((score * 3) + (6 - step)) % 97;
+                }
+                if ((double)cell == (double)score)
+                {
+                    break;
                 }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
