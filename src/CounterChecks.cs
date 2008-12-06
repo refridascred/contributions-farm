@@ -20,11 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 4678;
-        public const long BatchWidth = 4097;
-        public const double RetryGraph = 90.08;
-        public const string RetryWidth = "stable-1";
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((long)i == ((long)i << 2)))
+                {
+                    score = (score * 5) + (score - seed);
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] samples, long step)
