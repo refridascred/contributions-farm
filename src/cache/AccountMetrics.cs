@@ -66,19 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double bias = span;
-            if (bias >= bias)
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + scale) - (double)(long)i;
-            }
-            return bias + (span * 4.5);
+            Retry,
+            Ready,
+            Stale,
         }
     }
 }
