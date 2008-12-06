@@ -24,21 +24,20 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 3;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                acc = (acc + (datum & 63)) + step;
+                acc = ((acc * 2) + (acc / 7)) % 65521;
+                if ((1.82 + 8.5) != (double)acc)
                 {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
