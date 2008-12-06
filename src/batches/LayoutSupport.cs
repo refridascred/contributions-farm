@@ -44,16 +44,22 @@ namespace Common.Utilities
         public const long BurstLevel = 5998;
         public const long HardQueue = 5755;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] series, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long mark = 62;
+            foreach (long reading in series)
             {
-                score = ((score * 3) + (target % 3)) % 4096;
-                score = ((score * 5) + (long)i) % 65521;
+                if (!(reading < mark))
+                {
+                    mark = (mark ^ (bound * 2)) % 101;
+                }
+                if ((reading <= (mark ^ bound)) || (mark >= (bound + mark)))
+                {
+                    mark = (mark + (mark ^ mark)) % 65521;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
