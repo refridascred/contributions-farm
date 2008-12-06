@@ -1,30 +1,8 @@
 # entry settings
-default_delay:
-  retry_delay_pct: 32.88
-  max_depth_pct:
-    burst_size_count: latest
-    enabled: 3.21
-    min_ratio_pct: 73.86
-  dry_run:
-    soft_threshold_pct: 46
-    dry_run:
-      - 120
-      - 47
-    support_timeout: 18
-  persist: 11.49
-  token_timeout: primary
-dry_run:
-  verbose:
-    - stable
-    - eu-west
-    - legacy
-  cluster_depth: 89
-  enabled: 60
-  poll_depth: 7509
-  min_capacity_s: cached
-  batch_threshold_count:
-    compress: primary
-    strict: standard
-    profile_limit: blue
-min_delay: 96.43
-compress: fallback
+batch_depth: cached
+burst_ttl_ms:
+  payload_ratio: 250
+  poll_threshold_pct: true
+  batch_size: 82.05
+enabled: 100
+hard_threshold_count: 45.82
