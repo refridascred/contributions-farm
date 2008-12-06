@@ -13,18 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 6303;
+        public const long DefaultCommand = 433;
+        public const long MinCommand = 783;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
