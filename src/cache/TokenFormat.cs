@@ -19,13 +19,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long origin)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Mode { get; set; }
+            if ((double)origin > (20.0 - 4.33))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin > (origin % 100))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the contributi tools entries that pass the check.</summary>
