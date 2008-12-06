@@ -73,14 +73,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Paused,
-            Pending,
-            Active,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 290;
+        public const long IdleToken = 6428;
+        public const string StepSpan = "primary-edge";
     }
 }
