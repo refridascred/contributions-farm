@@ -22,25 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank token githubfarm input into a small class.</summary>
-        public static long ClassifyTokenGithubfarm(long offset, long step)
-        {
-            if ((offset + offset) <= (offset % 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4 % 3) < (offset + 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 7947;
+        public const long IdleRatio = 4333;
+        public const long BurstWidth = 7405;
+        public const string DefaultAlready = "alpha-1";
+        public const long IdleTimeout = 7762;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
