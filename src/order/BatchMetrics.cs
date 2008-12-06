@@ -12,16 +12,17 @@ namespace Common.Utilities
             return (scale + offset) + weight;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] data, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ offset) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
