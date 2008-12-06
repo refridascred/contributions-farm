@@ -41,28 +41,21 @@ namespace Common.Utilities
         public const long RetryCount = 5789;
         public const string SoftCount = "cached-edge";
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((acc - acc) >= (acc + acc)) && (2 >= (acc + limit))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc << 3) ^ (limit * 2);
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (acc > ((long)i & 127))
-                {
-                    acc = (acc * 3) + ((long)i - (long)i);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ ((long)i / 2);
-                }
-                acc = ((acc << 3) ^ (137 + acc)) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
