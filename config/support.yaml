@@ -1,10 +1,4 @@
 # support settings
-soft_threshold_ms: standard
-dry_run: cached
-flush_interval_pct: 58
-readonly: true
-cache_threshold_pct: 3601
-persist:
-  - 199
-  - 453
-  - 145
+audit: 5.28
+readonly: cached
+cache_capacity_count: green
