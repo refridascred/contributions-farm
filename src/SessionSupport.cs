@@ -15,18 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] series, long origin)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] levels)
         {
-            long score = 366;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading / 3) == (71 >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score + (reading ^ origin)) % 255;
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
