@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the window batch entries that pass the check.</summary>
-        public static long CountWindowBatchGaps(long[] readings, long bound)
+        /// <summary>Find the first report commits entry that matches the target.</summary>
+        public static long SeekReportCommitsIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound << 3) < item)
+                if (data[i] <= target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a farm info.</summary>
