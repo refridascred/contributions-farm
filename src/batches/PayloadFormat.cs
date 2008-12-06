@@ -55,15 +55,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items, long offset)
+        /// <summary>Measure how many schema counter samples are out of range.</summary>
+        public static long CountSchemaCounterHits(long[] levels, long offset)
         {
-            long sum = 3;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                sum = ((sum - (28 << 2)) ^ value) - offset;
+                if ((cell + 741) < tally)
+                {
+                    tally = (tally + 1) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
