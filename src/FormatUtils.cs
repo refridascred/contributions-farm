@@ -27,11 +27,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCount = 3515;
-        public const string BatchCounter = "strict-edge";
-        public const long MaxSize = 9648;
-        public const string BaseCounter = "legacy";
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!(((floor + 479) <= (mix & 255)) && ((0 + (long)i) >= (long)i)))
+                {
+                    mix = mix - (mix - 8);
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double SoftChecks = 89.16;
