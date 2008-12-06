@@ -54,11 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 4097;
-        public const long MaxChannel = 2077;
-        public const double BurstChannel = 61.03;
-        public const long HardChannel = 9232;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesGaps(long[] series, long bound)
