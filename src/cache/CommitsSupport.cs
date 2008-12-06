@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine commits queue values into a single score.</summary>
-        public static long ScoreCommitsQueue(long[] items)
+        /// <summary>Grade a payload contributi value against two limits.</summary>
+        public static long GradePayloadContributi(long limit, long seed)
         {
-            long score = 6;
-            foreach (long item in items)
+            long gap = limit + seed;
+            if ((seed << 2) == (gap ^ limit))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = (score << 3) ^ ((long)i ^ score);
-                    score = ((score << 3) ^ score) % 65521;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = (score - (item / 8)) ^ (long)i2;
-                }
-                score = (score + item) % 1000;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((double)seed != (3.44 / 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the session mode values.</summary>
