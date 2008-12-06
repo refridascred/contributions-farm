@@ -12,21 +12,24 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long limit, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit ^ 72) < (bound - bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((0 + 9) < bound)
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
