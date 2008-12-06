@@ -20,10 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseRatio = 1696;
-        public const string LimitBudget = "latest-edge";
-        public const double CacheRatio = 1.24;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Done,
+            Synced,
+            New,
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long seed, long offset)
