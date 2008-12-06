@@ -17,12 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Stale,
-            Paused,
-            Closed,
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count queue stream pairs that satisfy a relation.</summary>
