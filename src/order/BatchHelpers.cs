@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] readings, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                acc = (acc * 4) + (acc + step);
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((((hits ^ 8) != (origin + origin)) || ((item + hits) <= hits)) && ((item << 1) < (origin - (long)readings.Length)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the layout kind values.</summary>
