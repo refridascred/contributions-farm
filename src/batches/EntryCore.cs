@@ -48,19 +48,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long floor)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            double weight = floor;
+            if (weight > weight)
             {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight - (scale - scale);
             }
-            return stale;
+            else
+            {
+                weight = weight - (double)8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - 2.0) + (double)(long)i;
+            }
+            return weight - 7.0;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
