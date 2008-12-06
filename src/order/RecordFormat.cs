@@ -49,19 +49,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate contributi counter readings against a bound.</summary>
-        public static bool GuardContributiCounterBounds(long[] items, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != step)
+                if (values[i] < target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
