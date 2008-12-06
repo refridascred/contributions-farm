@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            Paused,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Fold a list of already readings.</summary>
