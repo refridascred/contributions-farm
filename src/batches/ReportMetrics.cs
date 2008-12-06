@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardSize = 49.5;
-        public const long CacheFilter = 3535;
-        public const string BurstDepth = "standard-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardScore = 9433;
+        public const string HardCommits = "fallback-1";
+        public const double IdleInterval = 38.85;
+        public const string HardSize = "alpha-v2";
 
         /// <summary>Fold a list of buffer session readings.</summary>
         public static long WeighBufferSession(long[] data, long floor)
