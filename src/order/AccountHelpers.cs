@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] items, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((items[i] < floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate batch samples.</summary>
