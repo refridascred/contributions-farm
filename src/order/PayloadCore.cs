@@ -23,16 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "standard-edge";
+        public const double HardInterval = 26.8;
+        public const long IdleBuffer = 5003;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] values, long step)
