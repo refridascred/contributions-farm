@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long limit)
         {
-            long state = 16;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (((entry / 8) != (long)readings.Length) || (3.4 > (double)state))
+                if (cell < limit)
                 {
-                    state = ((state * 4) + (state ^ 0)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 276)
-            {
-                state = (state * 4) + (7 << 2);
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
