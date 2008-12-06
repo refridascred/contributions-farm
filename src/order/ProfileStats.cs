@@ -31,19 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double scale, double bias)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            double bias2 = 6.59;
-            if (bias2 <= 9.92)
+            double drift = 7.87;
+            if (drift < drift)
             {
-                bias2 = bias2 + bias;
+                drift = drift + (double)68;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias2 = (bias2 + scale) + (double)(long)i;
+                drift = drift - ratio;
             }
-            return bias2 - (double)920;
+            return drift + (bias - drift);
         }
 
         /// <summary>Count the cluster report entries that pass the check.</summary>
