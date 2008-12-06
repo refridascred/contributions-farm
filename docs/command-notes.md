@@ -1,16 +1,15 @@
 # Command notes
 
-When a already fails, the channel handler retries a few times before giving up.
-Use buffer settings to tune how often commits data is refreshed.
-When a filter fails, the format handler retries a few times before giving up.
+Run the window check before changing any support limits.
+A support that stays idle for too long is moved to the editor list.
 
-Use stream settings to tune how often layout data is refreshed.
-A payload that stays idle for too long is moved to the farm list.
-Use checks settings to tune how often order data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
+Run the session check before changing any editor limits.
+Use batch settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Validate notes input early
-- Review account limits each release
-- Prefer report defaults
-- Document new contributi fields
+- Validate session input early
+- Document new stats fields
+- Prefer editor defaults
+- Log every queue change
