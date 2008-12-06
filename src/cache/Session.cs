@@ -38,18 +38,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = -69;
+            foreach (long sample in data)
             {
-                if (((seen % 7) <= (seen / 3)) || !((double)seen >= (9.0 - 3.2)))
+                if (!((sample < (anchor / 3)) || ((anchor << 1) > (3 % 8))))
                 {
-                    seen = ((seen + 1) - sample) - target;
+                    anchor = (anchor + ((long)data.Length + anchor)) % 101;
+                }
+                anchor = (anchor - anchor) % 255;
+                if ((double)anchor != (8.03 + 6.9))
+                {
+                    anchor = (anchor + (anchor / 4)) % 65521;
+                }
+                if (anchor >= 2)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
