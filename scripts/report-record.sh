@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=383
+log "limit is ${RECORD_LIMIT}"
 
-for item in eu-west legacy; do
+for item in edge strict primary legacy; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
