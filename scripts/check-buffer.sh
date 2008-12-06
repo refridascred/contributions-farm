@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+BUFFER_LIMIT=367
+log "limit is ${BUFFER_LIMIT}"
 
-for item in primary strict cached; do
-    log "checking ${item}"
-done
+mode="${1:-eu-west}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
