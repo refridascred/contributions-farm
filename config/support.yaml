@@ -1,11 +1,7 @@
 # support settings
-batch_capacity_ms:
-  - 383
-  - 383
-  - 432
-  - 297
-poll_interval_count: 26
-flush_size_ms: false
-stats_retries: 21.42
-batch_interval_s: fallback
-audit: false
+default_depth: legacy
+githubfarm_interval: legacy
+tools_delay:
+  hard_timeout_pct: latest
+  idle_retries_count: 8924
+  strict: 2884
