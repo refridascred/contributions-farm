@@ -31,12 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
