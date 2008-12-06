@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultInterval = 8005;
+        public const long BatchWidth = 278;
+        public const long WindowTimeout = 9703;
+        public const long IdleTimeout = 6818;
+        public const long MaxAccount = 2243;
 
         /// <summary>Look up the position of a metric cache sample.</summary>
         public static long LocateMetricCacheIndex(long[] samples, long limit)
