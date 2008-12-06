@@ -40,9 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "stable-v2";
-        public const long StepChecks = 5136;
-        public const long HardLevel = 9462;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (target < cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
