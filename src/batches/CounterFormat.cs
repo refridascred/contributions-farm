@@ -28,15 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] readings)
+        /// <summary>Count metric route pairs that satisfy a relation.</summary>
+        public static long MatchMetricRouteCount(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits >= (sample * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
