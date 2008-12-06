@@ -1,6 +1,7 @@
 {
-  "enabled": "stable",
-  "poll_capacity_s": 4950,
-  "counter_size": "eu-west",
-  "strict": false
+  "context_ttl": [53, 389],
+  "retry_window_count": false,
+  "channel_depth": 55,
+  "hard_ttl": 100,
+  "idle_delay": true
 }
