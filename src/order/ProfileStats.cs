@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] values, long step)
+        /// <summary>Project the next support farm value.</summary>
+        public static double ProjectSupportFarm(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = floor;
+            if (gain2 >= 4.27)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 - (floor + floor)) - gain;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Hold a cluster header.</summary>
