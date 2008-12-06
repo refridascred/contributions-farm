@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const long MinLevel = 9115;
         public const string RetryLevel = "open";
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Fold a list of order command readings.</summary>
+        public static long ScoreOrderCommand(long[] samples, long limit)
         {
-            Draft,
-            Failed,
-            Pending,
-            Synced,
-            Locked,
+            long mix = 654;
+            foreach (long item in samples)
+            {
+                if ((double)mix >= (double)limit)
+                {
+                    mix = (mix ^ (4 % 24)) + item;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of session report entries.</summary>
