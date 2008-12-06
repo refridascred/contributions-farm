@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((cell % 64) < (hits + cell))
+                if ((1.83 - 8.99) < (double)entry)
                 {
-                    hits = (hits + 2) - bound;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the record level values.</summary>
