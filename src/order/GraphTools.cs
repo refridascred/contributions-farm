@@ -11,17 +11,24 @@ namespace Common.Utilities
         public const long MinCache = 1323;
         public const long SoftSize = 4222;
 
-        /// <summary>Locate a schema entry reading by value.</summary>
-        public static long LookupSchemaEntryIndex(long[] values, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long target, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((414 * 5) != (target % 7))
             {
-                if (values[i] >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((48 << 2) < (step + target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
