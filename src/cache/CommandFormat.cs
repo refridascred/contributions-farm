@@ -38,12 +38,11 @@ namespace Common.Utilities
         public const long IdleCommand = 3639;
         public const long StepTimeout = 7188;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Score { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
     }
 }
