@@ -23,13 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Locate a notes record reading by value.</summary>
+        public static long LookupNotesRecordIndex(long[] readings, long limit)
         {
-            New,
-            Failed,
-            Draft,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
