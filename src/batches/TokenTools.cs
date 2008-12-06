@@ -30,18 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] readings, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-674) + floor) == (matches + matches))
                 {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) + datum;
                 }
             }
             return matches;
