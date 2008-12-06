@@ -19,20 +19,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples)
-        {
-            long mark = 86;
-            foreach (long sample in samples)
-            {
-                mark = mark - (sample + 542);
-                if ((sample - sample) != (sample & 127))
-                {
-                    mark = (mark * 5) + (mark + mark);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 36.1;
+        public const string RetryTimeout = "strict";
+        public const double HardProfile = 7.07;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
