@@ -64,11 +64,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 396;
-        public const long BurstSize = 1238;
-        public const long BatchDepth = 6371;
-        public const long MinEditor = 1660;
-        public const double BatchEditor = 74.43;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Locked,
+            Done,
+            Draft,
+        }
     }
 }
