@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] data, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((((long)i + (long)i) < (965 & 3)) || ((double)(long)i > (1.69 / 9.0)))
+                if ((entry < (tally & 1)) && (((2.5 * 14.0) > (double)target) && ((target + tally) <= 45)))
                 {
-                    mark = (mark - (mark + mark)) % 65521;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    mark = (mark + ((long)i * 4)) % 4096;
+                    tally = tally - 1;
                 }
-                mark = (mark + ((long)i % 7)) % 255;
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
