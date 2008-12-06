@@ -1,15 +1,7 @@
 {
-  "hard_capacity_ms": {
-    "graph_delay": {
-      "burst_size_count": true,
-      "hard_timeout_count": 6973,
-      "sync_window": "legacy",
-      "editor_timeout": "blue"
-    },
-    "dry_run": ["standard", "green", "blue", "latest"],
-    "contributi_capacity": false
-  },
-  "order_depth": "eu-west",
-  "poll_retries": 30,
-  "warm_ttl": 38.34
+  "sync_size_s": "eu-west",
+  "poll_size": 57.92,
+  "verbose": ["legacy", "green", "blue", "standard"],
+  "max_limit": false,
+  "entry_depth": "cached"
 }
