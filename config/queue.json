@@ -1,8 +1,7 @@
 {
-  "queue_timeout": ["primary", "eu-west", "local"],
-  "layout_delay": 8.45,
-  "strict": "eu-west",
-  "default_ratio_s": [94, 324],
-  "burst_depth": [52, 156, 393, 425],
-  "cache_interval": "latest"
+  "record_capacity": 30.03,
+  "burst_ttl_count": [45, 242],
+  "batch_capacity": "legacy",
+  "queue_window": ["latest", "latest"],
+  "checks_ratio": 2479
 }
