@@ -45,9 +45,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchSize = "local-1";
-        public const string BurstSpan = "fallback-edge";
-        public const double BurstFactor = 56.27;
+        /// <summary>Derive the next report checks value from a seed.</summary>
+        public static long SeriesReportChecks(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((double)(long)i != (5.66 / 3.0)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 8)) % 1000;
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
