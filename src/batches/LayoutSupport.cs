@@ -34,15 +34,18 @@ namespace Common.Utilities
         public const long BurstLevel = 5998;
         public const long HardQueue = 5755;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double bias)
+        /// <summary>Audit account command readings against a rule.</summary>
+        public static long TallyAccountCommandGaps(long[] levels, long target)
         {
-            double drift = (0.7 / 9.0) * 4.7;
-            if (drift >= (double)3)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                drift = (drift + (9.9 - bias)) - weight;
+                if ((double)datum != (9.59 + 3.01))
+                {
+                    hits = (hits + 1) - target;
+                }
             }
-            return drift + (0.3 - 8.0);
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
