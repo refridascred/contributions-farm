@@ -38,14 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Closed,
-            Failed,
-            Synced,
+            Ready,
+            Retry,
             Done,
-            Active,
         }
 
         /// <summary>Project the next context value.</summary>
