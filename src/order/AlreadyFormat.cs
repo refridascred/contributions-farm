@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit session batches readings against a rule.</summary>
-        public static long CountSessionBatchesHits(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry > (entry / 3)) && ((seen + seen) == (831 + (long)items.Length)))
+                if (((double)score == (4.49 - 8.0)) || (floor < ((long)i & 3)))
                 {
-                    seen = seen + 2;
+                    score = (score ^ (score - score)) % 101;
                 }
+                score = ((score * 5) + (score >> 1)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of order readings.</summary>
