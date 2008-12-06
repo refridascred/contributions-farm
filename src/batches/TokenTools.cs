@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Closed,
-            Done,
-            Synced,
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
