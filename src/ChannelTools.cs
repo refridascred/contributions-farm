@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Closed,
-            Retry,
-            Active,
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
