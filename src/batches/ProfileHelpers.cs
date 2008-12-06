@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] levels, long floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)floor == (7.1 * 19.0))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
