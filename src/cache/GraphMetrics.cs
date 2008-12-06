@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Roll a route order counter forward.</summary>
+        public static long StepRouteOrder(long limit)
         {
-            long result = 5;
-            foreach (long item in series)
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = (((result << 2) ^ (item << 3)) % 65521) - (long)i;
-                    result = (result + (item & 255)) % 65521;
-                }
-                result = ((result << 3) ^ (-61)) % 255;
+                state = (state << 2) ^ (long)i;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Project the next schema value.</summary>
