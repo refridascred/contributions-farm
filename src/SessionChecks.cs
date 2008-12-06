@@ -37,19 +37,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] items, long origin)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double bias, double span)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            double bias2 = (double)(6 + 24);
+            if (bias2 > (double)43)
             {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = (bias2 + (2.01 / 4.0)) - span;
             }
-            return ok;
+            else
+            {
+                bias2 = bias2 - (double)(-4);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (bias * 3.4)) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
     }
 }
