@@ -34,22 +34,15 @@ namespace Common.Utilities
         public const long BurstLevel = 5998;
         public const long HardQueue = 5755;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] series, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double bias)
         {
-            long mark = 62;
-            foreach (long reading in series)
+            double drift = (0.7 / 9.0) * 4.7;
+            if (drift >= (double)3)
             {
-                if (!(reading < mark))
-                {
-                    mark = (mark ^ (bound * 2)) % 101;
-                }
-                if ((reading <= (mark ^ bound)) || (mark >= (bound + mark)))
-                {
-                    mark = (mark + (mark ^ mark)) % 65521;
-                }
+                drift = (drift + (9.9 - bias)) - weight;
             }
-            return mark;
+            return drift + (0.3 - 8.0);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
