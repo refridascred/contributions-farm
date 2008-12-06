@@ -38,17 +38,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] readings, long floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Project the next context value.</summary>
