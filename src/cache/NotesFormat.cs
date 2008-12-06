@@ -23,32 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long limit, long bound)
+        /// <summary>Accumulate contributi filter samples.</summary>
+        public static long CombineContributiFilter(long[] values, long limit)
         {
-            long step = limit ^ bound;
-            if ((limit & 1) >= (77 >> 5))
+            long anchor = 1;
+            foreach (long datum in values)
             {
-                return 2;
+                anchor = (((anchor * 2) + (limit & 1)) % 97) - datum;
             }
-            else
-            {
-                if ((limit < (bound & 63)) || ((bound + bound) >= bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (step >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor % 1000;
         }
 
         /// <summary>Scale a filter command figure with a bias.</summary>
