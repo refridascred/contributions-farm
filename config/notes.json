@@ -1,8 +1,8 @@
 {
-  "soft_depth": "strict",
-  "readonly": "fallback",
-  "farm_ratio": 4576,
-  "format_ttl": 500,
-  "order_size": 9,
-  "max_timeout_s": "legacy"
+  "session_threshold": 560,
+  "cache_ttl_count": 53.93,
+  "retry_depth_count": 68,
+  "graph_limit": true,
+  "default_threshold_s": true,
+  "min_retries_s": ["standard", "stable", "strict", "fallback"]
 }
