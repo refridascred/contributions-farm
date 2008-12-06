@@ -72,11 +72,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double scale, double span)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] values, long limit)
         {
-            double bias = scale;
-            return bias + (span / 8.0);
+            long mix = 255;
+            foreach (long item in values)
+            {
+                if ((mix << 1) > item)
+                {
+                    mix = (mix ^ (549 + mix)) % 65521;
+                }
+                if ((mix < (161 / 7)) && ((7 ^ mix) <= mix))
+                {
+                    break;
+                }
+            }
+            if (mix < 314)
+            {
+                mix = (mix + (mix ^ limit)) % 65521;
+            }
+            return mix % 4096;
         }
     }
 }
