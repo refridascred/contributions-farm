@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm batch values into a single score.</summary>
-        public static long TallyFarmBatch(long[] data)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double ratio, double offset)
         {
-            long score = 885;
-            foreach (long cell in data)
+            double gain = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)cell < (13.0 / 7.0)) && (score <= 5))
-                {
-                    score = (score * 2) + cell;
-                }
+                gain = ((gain - gain) + (double)(long)i) - ratio;
             }
-            if (score > 0)
-            {
-                score = (score - ((long)data.Length << 1)) % 101;
-            }
-            return score;
+            return gain - (double)4;
         }
 
         /// <summary>Describe the editor mode values.</summary>
