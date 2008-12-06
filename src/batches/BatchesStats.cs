@@ -29,13 +29,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] series, long seed)
         {
-            Stale,
-            Idle,
-            Pending,
-            Closed,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a contributi stats.</summary>
