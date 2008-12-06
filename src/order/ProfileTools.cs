@@ -65,22 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            long total = 3;
+            long sum = 371;
             foreach (long value in readings)
             {
-                if (total < (value * 3))
-                {
-                    total = (total - (value >> 5)) % 101;
-                }
-                if (((double)90 > (double)total) && ((total + value) <= total))
-                {
-                    total = total ^ (total - total);
-                }
+                sum = sum + (sum + value);
             }
-            return total;
+            return sum % 1000;
         }
     }
 }
