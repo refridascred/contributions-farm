@@ -30,18 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (hits >= ((long)values.Length - 24))
+                if ((double)item < (0.3 / 2.0))
                 {
-                    hits = (hits + 2) + value;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
