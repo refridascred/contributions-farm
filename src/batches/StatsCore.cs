@@ -13,18 +13,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] levels)
+        /// <summary>Iterate the counter record series from a seed.</summary>
+        public static long IterateCounterRecord(long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((60 + 4) > (datum - tally))
-                {
-                    tally = tally + 3;
-                }
+                state = ((state * 3) + (limit * 4)) % 101;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
