@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit order checks readings against a rule.</summary>
-        public static long MeasureOrderChecksHits(long[] data, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double gain = bias - bias2;
+            if (gain > (double)3)
             {
-                if ((0.78 - 1.0) >= (double)(long)data.Length)
-                {
-                    matches = ((matches + 1) + value) + limit;
-                }
+                gain = gain + bias;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + bias2) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Accumulate contributi filter samples.</summary>
