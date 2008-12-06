@@ -28,22 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long total = 1;
-            foreach (long value in readings)
-            {
-                if ((16.0 * 2.0) != (double)value)
-                {
-                    total = (total * 4) + total;
-                }
-            }
-            if (total > 481)
-            {
-                total = total ^ (45 << 1);
-            }
-            return total;
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
