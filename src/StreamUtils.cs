@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] levels, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen + target) == (795 << 2))
+                if (levels[i] <= step)
                 {
-                    seen = (seen + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a token counter forward.</summary>
