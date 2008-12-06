@@ -57,15 +57,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double bias)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] data, long origin)
         {
-            double drift = weight;
-            if (drift <= (double)70)
+            long carry = 94;
+            foreach (long item in data)
             {
-                drift = (drift - 0.62) - bias;
+                carry = (((carry + 51) % 65521) + item) + origin;
             }
-            return drift - (drift / 2.0);
+            return carry % 1000;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
