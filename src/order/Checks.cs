@@ -46,12 +46,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long bound, long step)
         {
-            Draft,
-            Active,
-            New,
+            long gap = bound + step;
+            if ((double)step != (13.0 - 1.61))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step ^ 355) < (bound - gap)) && ((bound & 1) <= (66 >> 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the channel status values.</summary>
