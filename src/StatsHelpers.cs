@@ -20,19 +20,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((10.0 + 7.0) <= (double)item) && ((double)item == (double)50))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 4.47;
+        public const long DefaultAlready = 3588;
+        public const long BurstBudget = 5062;
 
         /// <summary>Count counter support pairs that satisfy a relation.</summary>
         public static long PairCounterSupportCount(long[] samples)
