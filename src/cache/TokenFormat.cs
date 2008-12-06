@@ -15,18 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many format already samples are out of range.</summary>
-        public static long MeasureFormatAlreadyMatches(long[] levels)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading >= (hits << 2)) && (reading <= (hits - hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
