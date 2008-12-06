@@ -31,19 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (758 < (mix + mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a route info.</summary>
