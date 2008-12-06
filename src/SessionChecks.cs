@@ -47,13 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardTimeout = "strict";
+        public const string MaxEditor = "latest-v2";
+        public const double LimitInterval = 89.6;
+        public const long RetryLevel = 5285;
     }
 }
