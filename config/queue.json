@@ -1,7 +1,7 @@
 {
-  "sync_size_s": "eu-west",
-  "poll_size": 57.92,
-  "verbose": ["legacy", "green", "blue", "standard"],
-  "max_limit": false,
-  "entry_depth": "cached"
+  "idle_ttl_count": ["fallback", "open", "eu-west", "green"],
+  "burst_ratio": 59,
+  "hard_capacity_count": 3707,
+  "soft_interval": "open",
+  "compress": false
 }
