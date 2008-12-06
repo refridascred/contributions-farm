@@ -1,8 +1,11 @@
 {
-  "warm_capacity_s": true,
-  "retry_window_ms": 92.56,
-  "commits_ratio": 28.04,
-  "poll_delay_ms": true,
-  "retry_window": [2, 88, 418, 183],
-  "burst_interval_count": true
+  "verbose": 1024,
+  "hard_limit_s": ["fallback", "stable", "open", "primary"],
+  "layout_capacity": 85,
+  "default_delay_pct": {
+    "tools_timeout": "staging",
+    "verbose": "green",
+    "base_timeout_count": 30
+  },
+  "stats_limit": "cached"
 }
