@@ -17,13 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
+            Closed,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
