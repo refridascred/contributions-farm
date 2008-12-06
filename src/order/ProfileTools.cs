@@ -60,16 +60,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry + (carry << 3)) % 4096;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
