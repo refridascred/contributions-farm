@@ -10,38 +10,15 @@ namespace Common.Utilities
         public const long DefaultCommand = 415;
         public const long LimitCount = 8843;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long step, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] levels, long floor)
         {
-            if (!((limit << 3) <= step))
+            long anchor = 7;
+            foreach (long reading in levels)
             {
-                return 0;
+                anchor = ((anchor - (floor & 127)) % 97) - reading;
             }
-            else
-            {
-                if ((limit - step) == (step ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((729 >> 5) <= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)step < (3.74 + 4.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
