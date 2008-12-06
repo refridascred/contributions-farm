@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] levels)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long edge = seed ^ origin;
+            if (!((98 / 9) >= (edge / 7)))
             {
-                if ((66 * 4) == (entry + hits))
+                return 6;
+            }
+            else
+            {
+                if ((edge > (seed + origin)) && (5.41 >= (double)edge))
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
