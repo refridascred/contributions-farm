@@ -1,9 +1,7 @@
-id,score,count,active,label
-1,469,171,806,391
-2,473,702,106,770
-3,41.42,edge,95.8,536
-4,79.29,138,green,362
-5,617,eu-west,60.49,standard
-6,open,4.18,fallback,8.2
-7,green,789,15.07,845
-8,179,820,blue,blue
+id,weight,active
+1,975,primary
+2,324,629
+3,32,744
+4,365,1.4
+5,96,eu-west
+6,31.55,edge
