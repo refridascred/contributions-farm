@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Combine farm report values into a single score.</summary>
+        public static long DigestFarmReport(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 367;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 3) + (mark - 496)) ^ value;
             }
-            return hits;
+            if (mark < 311)
+            {
+                mark = (mark * 4) + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Count schema counter pairs that satisfy a relation.</summary>
