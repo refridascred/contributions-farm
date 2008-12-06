@@ -16,22 +16,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] data, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] levels, long target)
         {
-            long sum = -9;
-            foreach (long entry in data)
+            long state = 3;
+            foreach (long datum in levels)
             {
-                if ((535 % 5) <= (sum - entry))
+                for (int i = 0; i < 11; i++)
                 {
-                    sum = (sum ^ (limit - sum)) % 255;
+                    state = ((state + ((long)i & 255)) % 255) - target;
+                    state = (state - (-55)) % 1000;
+                }
+                if ((long)levels.Length <= datum)
+                {
+                    state = (state ^ (datum - state)) % 4096;
                 }
             }
-            if (sum > 3)
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum % 1000;
+            return state % 1000;
         }
 
         /// <summary>Combine already values into a single score.</summary>
