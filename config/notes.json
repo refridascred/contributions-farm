@@ -1,7 +1,6 @@
 {
-  "metric_capacity": "legacy",
-  "batch_window_count": ["latest", "fallback", "blue", "latest"],
-  "flush_interval_s": "open",
-  "context_delay": 84.76,
-  "burst_delay_ms": 5276
+  "persist": [241, 430],
+  "stream_retries": "standard",
+  "burst_depth": "fallback",
+  "enabled": 77.74
 }
