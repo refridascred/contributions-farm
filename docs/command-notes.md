@@ -1,14 +1,14 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-A window that stays idle for too long is moved to the graph list.
-Keep format and filter names short and lowercase.
+Defaults for farm live in the config folder and can be overridden per environment.
+Use graph settings to tune how often farm data is refreshed.
 
-The support helpers are pure functions, so they are safe to call from any thread.
-Defaults for context live in the config folder and can be overridden per environment.
+Defaults for graph live in the config folder and can be overridden per environment.
+Use account settings to tune how often payload data is refreshed.
+The account module keeps editor values in sync with the record cache.
 
 ## Guidelines
 
-- Keep channel values small
-- Document new editor fields
-- Log every token change
+- Document new payload fields
+- Review metrics limits each release
+- Validate graph input early
