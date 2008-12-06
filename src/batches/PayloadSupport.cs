@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            Dropped,
-            Ready,
-            Locked,
-            New,
+            long score = 1;
+            foreach (long entry in samples)
+            {
+                score = (((score << 2) ^ (score / 5)) % 65521) + entry;
+                if (5.54 <= (double)score)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
