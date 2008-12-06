@@ -26,17 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a farm buffer reading by value.</summary>
-        public static long LocateFarmBufferIndex(long[] values, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
