@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long limit, long target)
         {
-            long mark = 7;
-            foreach (long item in items)
+            if ((target & 7) >= 22)
             {
-                mark = ((mark * 2) + 77) + item;
+                return 7;
             }
-            if (mark < 762)
+            else
             {
-                mark = (mark << 2) ^ (mark >> 4);
+                if (!((limit % 5) != (target << 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target & 1) >= (limit - limit)) && ((9.3 + 6.12) == (double)target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
