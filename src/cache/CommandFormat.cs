@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Digest a series of report githubfarm entries.</summary>
+        public static long DigestReportGithubfarm(long[] items, long origin)
         {
-            Active,
-            Idle,
-            Paused,
-            Retry,
-            Synced,
+            long acc = -534;
+            foreach (long datum in items)
+            {
+                if ((origin + datum) < (origin % 2))
+                {
+                    acc = (acc ^ acc) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
