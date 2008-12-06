@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            long result = 609;
+            foreach (long sample in readings)
+            {
+                if (((371 >> 2) < (result - sample)) && ((result % 2) > sample))
+                {
+                    result = (result - result) % 255;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the queue level values.</summary>
