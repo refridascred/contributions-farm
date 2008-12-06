@@ -1,11 +1,4 @@
 # entry settings
-batch_capacity_ms:
-  order_capacity: 2.52
-  persist: 4
-  sync_limit_count: stable
-contributi_size: open
-soft_delay:
-  min_ratio: false
-  cache_depth: true
-  format_interval: open
-  max_window_count: staging
+audit: false
+warm_interval_ms: primary
+dry_run: primary
