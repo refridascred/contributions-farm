@@ -23,19 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long anchor = 1;
+            foreach (long cell in values)
             {
-                if (datum >= offset)
+                if ((64 ^ cell) > anchor)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor * 3) + (cell + anchor);
+                }
+                anchor = (anchor + (cell % 16)) % 101;
+                if ((12 - anchor) <= (6 << 1))
+                {
+                    anchor = (anchor ^ (cell - anchor)) % 4096;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
