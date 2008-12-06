@@ -29,19 +29,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] samples, long origin)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of metrics commits readings.</summary>
