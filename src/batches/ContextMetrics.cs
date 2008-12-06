@@ -48,18 +48,12 @@ namespace Common.Utilities
             return bias - 4.0;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] levels)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((((-91) + count) > count) && ((reading * 5) <= (count & 255)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
