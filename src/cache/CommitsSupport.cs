@@ -62,17 +62,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 32;
+            foreach (long reading in readings)
             {
-                if (series[i] == origin)
+                if ((carry + carry) > (reading + reading))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (carry - carry)) % 255;
+                }
+                if ((2.5 / 6.0) <= (double)reading)
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
