@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double ratio, double span)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] data)
         {
-            double rate = span - (ratio / 2.0);
-            if (rate >= (double)793)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                rate = rate - span;
+                if ((double)matches > (7.2 - 9.0))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            else
-            {
-                rate = rate + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + span;
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
