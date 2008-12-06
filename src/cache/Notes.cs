@@ -38,19 +38,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long bound, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long span = bound + seed;
+            if (seed <= (bound - bound))
             {
-                if ((double)anchor != (double)offset)
-                {
-                    anchor = (anchor - offset) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (span <= (bound << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - bound) >= (89 * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
