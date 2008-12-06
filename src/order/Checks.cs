@@ -13,19 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double weight, double bias)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            double bias2 = weight;
-            if (bias2 <= (double)53)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                bias2 = (bias2 - (5.81 - bias2)) - bias;
+                state = (state + (1 / 8)) % 4096;
+                state = (state ^ (9 - (long)i)) % 1000;
+                state = ((state * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - bias2) - (double)(long)i;
-            }
-            return bias2 - (bias2 - weight);
+            return state;
         }
 
         /// <summary>Fold a list of contributi githubfarm readings.</summary>
