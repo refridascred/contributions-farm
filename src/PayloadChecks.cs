@@ -48,21 +48,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Combine channel report values into a single score.</summary>
+        public static long TotalChannelReport(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 645;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)result == (7.6 + 0.7))
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result - (result + result);
+                }
+                if (((datum * 4) != ((long)values.Length << 2)) || ((20.0 - 9.32) >= (double)datum))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result > 3)
+            {
+                result = (result << 2) ^ (result - result);
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
