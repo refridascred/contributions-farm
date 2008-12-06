@@ -50,31 +50,27 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long seed, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] data)
         {
-            if ((bound * 5) <= (bound + seed))
+            long anchor = 257;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((35 + seed) >= (seed << 2))
+                if ((value + anchor) < (anchor << 3))
                 {
-                    return 7;
+                    anchor = ((anchor << 3) ^ (anchor & 15)) % 101;
+                    continue;
                 }
                 else
                 {
-                    if ((12 << 1) < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = ((anchor * 2) + (anchor * 5)) % 65521;
+                }
+                if ((anchor & 31) > (value + anchor))
+                {
+                    anchor = (anchor ^ value) % 4096;
                 }
             }
+            return anchor % 1000;
         }
     }
 }
