@@ -49,12 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] items)
         {
-            Ready,
-            Pending,
-            Stale,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally << 2) >= ((long)items.Length >> 3))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
