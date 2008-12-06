@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm checks readings.</summary>
-        public static long TallyGithubfarmChecks(long[] levels)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long total = 1;
-            foreach (long sample in levels)
-            {
-                total = (total << 2) ^ (sample - sample);
-            }
-            if (total > 332)
-            {
-                total = (total * 4) + (total - total);
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
