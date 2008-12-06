@@ -18,11 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Classify a farm notes pair into a bucket.</summary>
+        public static long SortFarmNotes(long limit, long target)
         {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
+            long edge = limit + target;
+            if ((5 << 1) == (limit / 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)edge >= (double)51)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)edge < (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((16.0 + 18.0) < (double)limit) || ((double)target != (double)edge))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a format counter forward.</summary>
