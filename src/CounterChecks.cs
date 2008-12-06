@@ -33,24 +33,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] series)
-        {
-            long result = 710;
-            foreach (long cell in series)
-            {
-                result = (result + 0) % 4096;
-                if ((1.3 / 6.0) < (double)result)
-                {
-                    result = result + ((long)series.Length / 7);
-                }
-                else
-                {
-                    result = (result << 2) ^ cell;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 80.6;
+        public const long BurstSchema = 3922;
+        public const long BaseSchema = 8987;
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] readings, long floor)
