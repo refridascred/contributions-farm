@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long bound)
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            long state = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state << 2) ^ (bound % 16)) % 1000;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state - bound) % 97) + (long)i2;
+                    state = (state - (state + state)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
