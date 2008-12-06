@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] series, long bound)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long seed)
         {
-            long state = 403;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state % 8) != (state % 2))
+                if (data[i] == seed)
                 {
-                    state = ((state ^ (bound * 4)) % 97) + reading;
+                    return (long)i;
                 }
-                state = (state ^ state) % 97;
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Hold a cache info.</summary>
