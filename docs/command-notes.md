@@ -1,11 +1,11 @@
 # Command notes
 
-When a notes fails, the record handler retries a few times before giving up.
-The stream report groups every stream by session.
+Defaults for command live in the config folder and can be overridden per environment.
+When a stream fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
 - Prefer graph defaults
-- Validate batch input early
-- Document new support fields
-- Review route limits each release
+- Review profile limits each release
+- Log every batch change
+- Document new cache fields
