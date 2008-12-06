@@ -31,10 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 6046;
-        public const long MinBudget = 5232;
-        public const long StepSize = 657;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (758 < (mix + mix))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
