@@ -65,18 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally + tally) >= sample)
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 4915;
+        public const long SoftCache = 3122;
+        public const long IdleBudget = 2920;
+        public const double BurstCount = 23.8;
+        public const long MaxCache = 1934;
     }
 }
