@@ -36,24 +36,19 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] levels, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (!((15.0 - 16.0) != (double)target))
+                if (entry <= offset)
                 {
-                    acc = (acc - (target % 7)) % 4096;
-                    continue;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc ^ (10 * 3)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
