@@ -11,25 +11,10 @@ namespace Common.Utilities
         public const long MinCache = 1323;
         public const long SoftSize = 4222;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long target, long step)
-        {
-            if ((414 * 5) != (target % 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((48 << 2) < (step + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 9779;
+        public const double IdleInterval = 31.6;
+        public const double BatchInterval = 29.07;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 163;
