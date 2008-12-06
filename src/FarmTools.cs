@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinChecks = 69.27;
-        public const string BatchBudget = "stable-edge";
-        public const long HardChecks = 1943;
-        public const long DefaultChecks = 4964;
-        public const string RetryChecks = "cached-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepRatio = 11.98;
+        public const long MaxLevel = 4203;
+        public const long WindowFarm = 3692;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
