@@ -44,18 +44,11 @@ namespace Common.Utilities
         public const long BurstLevel = 5998;
         public const long HardQueue = 5755;
 
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long TallyAccountCommandGaps(long[] levels, long target)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum != (9.59 + 3.01))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
