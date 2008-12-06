@@ -23,11 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next batches checks value from a seed.</summary>
+        public static long DeriveBatchesChecks(long bound)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
