@@ -92,9 +92,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFactor = "strict";
-        public const string BatchSize = "primary";
-        public const long BurstDepth = 1279;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double scale, double floor)
+        {
+            double weight = floor;
+            return weight - scale;
+        }
     }
 }
