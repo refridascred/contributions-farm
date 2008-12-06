@@ -17,15 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] levels, long floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long anchor = 7;
-            foreach (long reading in levels)
-            {
-                anchor = ((anchor - (floor & 127)) % 97) - reading;
-            }
-            return anchor;
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first entry notes entry that matches the target.</summary>
