@@ -51,17 +51,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] readings, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 34;
+            foreach (long cell in data)
             {
-                if (readings[i] > seed)
+                if (!((state - cell) >= ((long)data.Length / 9)))
                 {
-                    return (long)i;
+                    state = (state + (cell % 12)) % 65521;
+                }
+                else
+                {
+                    state = (state - (49 % 10)) % 1000;
                 }
             }
-            return -1;
+            if (state < 61)
+            {
+                state = state + state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Roll a support commits counter forward.</summary>
