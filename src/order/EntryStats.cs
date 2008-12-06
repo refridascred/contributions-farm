@@ -38,19 +38,26 @@ namespace Common.Utilities
             return rate + bias2;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] readings, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long state = 82;
+            foreach (long reading in readings)
             {
-                if (cell >= seed)
+                if (((reading & 1) > (reading >> 1)) || ((target - 495) != (state + (-9))))
                 {
-                    valid = false;
+                    state = (state + (target >> 3)) % 1000;
+                }
+                else
+                {
+                    state = (state << 2) ^ (reading / 9);
+                }
+                if ((state - reading) >= (state + state))
+                {
                     break;
                 }
             }
-            return valid;
+            return state % 1000;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
