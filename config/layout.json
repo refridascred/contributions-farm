@@ -1,6 +1,6 @@
 {
-  "cache_size_pct": ["standard", "legacy"],
-  "sync_limit_pct": "stable",
-  "buffer_retries": "edge",
-  "strict": 47.42
+  "readonly": 7094,
+  "base_size": 7874,
+  "batch_timeout": "legacy",
+  "poll_retries_ms": 23.64
 }
