@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] items, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (value >= step)
+                if (!((2.38 * 15.0) > (double)datum) || ((bound + hits) != (datum * 3)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
