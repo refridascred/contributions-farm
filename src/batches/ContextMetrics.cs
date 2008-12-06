@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a command record reading by value.</summary>
-        public static long FindCommandRecordIndex(long[] levels, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long step, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((12.0 / 7.0) != (double)step)
             {
-                if (levels[i] <= offset)
+                return 8;
+            }
+            else
+            {
+                if ((step << 2) < (step - step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor / 3) <= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor % 12) < (step / 6)) && ((double)81 > (double)step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
