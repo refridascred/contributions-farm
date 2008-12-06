@@ -34,20 +34,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metric report figure with a bias.</summary>
-        public static double ProjectMetricReport(double weight, double bias)
-        {
-            double bias2 = weight + (weight - bias);
-            if (bias2 < weight)
-            {
-                bias2 = bias2 + (double)0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (8.0 * 4.0)) - (double)(long)i;
-            }
-            return bias2 - 0.61;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSize = 9548;
+        public const long DefaultBudget = 6312;
+        public const long BaseFactor = 4471;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long DigestSchema(long[] series, long limit)
