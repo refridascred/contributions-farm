@@ -22,12 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count queue stream pairs that satisfy a relation.</summary>
