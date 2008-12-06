@@ -39,26 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Count schema counter pairs that satisfy a relation.</summary>
+        public static long PairSchemaCounterCount(long[] samples)
         {
-            long anchor = 1;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + sample) > (sample << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ sample) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ 30) % 1000;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 735)
-            {
-                anchor = (anchor ^ (56 + anchor)) % 65521;
-            }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
