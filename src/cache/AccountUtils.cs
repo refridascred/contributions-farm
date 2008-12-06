@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double scale, double bias)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            double load = (double)124 - bias;
-            if (load < load)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                load = (load - load) + scale;
+                mix = (mix + mix) % 101;
+                if ((4.1 / 5.0) == (double)mix)
+                {
+                    break;
+                }
+                mix = (mix - (floor % 24)) % 255;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return load - (double)29;
+            return mix;
         }
 
         /// <summary>Digest a series of already entries.</summary>
