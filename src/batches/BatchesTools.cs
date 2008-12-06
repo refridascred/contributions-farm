@@ -33,10 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxSize = 4100;
-        public const string RetryCount = "primary";
-        public const long CacheLevel = 6873;
-        public const long DefaultCounter = 4703;
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double bias)
+        {
+            double weight2 = bias;
+            if (weight2 <= weight)
+            {
+                weight2 = weight2 - 8.5;
+            }
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            return weight2 - bias;
+        }
     }
 }
