@@ -23,15 +23,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double ratio, double floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double bias = (floor + ratio) + ratio;
-            if (bias >= floor)
-            {
-                bias = bias - (bias * 2.54);
-            }
-            return bias - (double)657;
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the metrics status values.</summary>
