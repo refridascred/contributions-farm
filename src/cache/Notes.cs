@@ -20,14 +20,12 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Idle,
-            Active,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 2.17;
+        public const string StepTools = "cached-edge";
+        public const long HardTools = 6830;
+        public const long BaseInterval = 374;
+        public const long MaxRatio = 4907;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextOutliers(long[] levels)
