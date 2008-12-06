@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Idle,
-            Pending,
+            Paused,
+            Locked,
             Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a batch header.</summary>
