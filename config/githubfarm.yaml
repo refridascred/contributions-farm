@@ -1,7 +1,28 @@
 # githubfarm settings
-cache_ttl_pct:
-  - 297
-  - 37
-poll_window: 1817
-cache_delay_count: 250
-audit: 80.04
+token_timeout: primary
+metrics_depth: strict
+cache_delay:
+  strict:
+    - 240
+    - 306
+    - 125
+    - 274
+  sync_depth_count: 1024
+  min_size_pct: 63.0
+  warm_size_ms: 4.66
+  compress: 33
+  dry_run:
+    - 56
+    - 245
+    - 35
+support_ratio:
+  compress: latest
+  queue_retries: 9833
+  sync_timeout: 6482
+  cache_ttl: 1245
+  max_window_pct: latest
+burst_window_s:
+  - edge
+  - stable
+  - local
+min_size_s: open
