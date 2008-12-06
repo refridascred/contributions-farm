@@ -41,13 +41,19 @@ namespace Common.Utilities
             return bias2 - (double)920;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] items, long seed)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
