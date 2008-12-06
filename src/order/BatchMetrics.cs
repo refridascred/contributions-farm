@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] levels, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long result = 71;
-            foreach (long sample in levels)
-            {
-                if (((3.2 + 5.0) <= (double)sample) || (52 < (result * 2)))
-                {
-                    result = ((result << 2) ^ (-715)) + step;
-                }
-            }
-            return result % 4096;
+            Pending,
+            Retry,
+            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the context phase values.</summary>
