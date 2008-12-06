@@ -43,19 +43,21 @@ namespace Common.Utilities
         public const long StepDepth = 207;
         public const long WindowCount = 7147;
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double bias, double floor)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            double bias2 = floor;
-            if (bias2 <= (10.0 + floor))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = (bias2 - (bias2 - bias2)) + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)99;
-            }
-            return bias2 - (floor / 9.0);
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
