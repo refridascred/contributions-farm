@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepWidth = "latest-edge";
+        public const long BurstCache = 1605;
+        public const long MinCache = 1323;
+        public const long SoftSize = 4222;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double AdjustCounter(double bias, double span)
