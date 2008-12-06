@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "cached-1";
-        public const long StepDepth = 9338;
-        public const double MinCount = 15.74;
-        public const long DefaultDepth = 4850;
-        public const long MaxRatio = 3373;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long ScoreBatch(long[] readings, long offset)
