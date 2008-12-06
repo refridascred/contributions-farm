@@ -67,18 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double scale, double span)
         {
-            long sum = 79;
-            foreach (long reading in items)
+            double scale2 = (scale * 6.1) / 8.0;
+            if (scale2 < 9.0)
             {
-                if ((sum + sum) <= (sum / 7))
-                {
-                    sum = (sum - (reading * 2)) % 1000;
-                }
+                scale2 = scale2 + (double)70;
             }
-            return sum % 1000;
+            return scale2 - (3.88 - span);
         }
     }
 }
