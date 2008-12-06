@@ -47,9 +47,13 @@ namespace Common.Utilities
         public const string MaxDepth = "cached-1";
         public const string BatchDepth = "fallback-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinWidth = 55.41;
-        public const long RetryQueue = 2859;
-        public const long RetryFactor = 6630;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Closed,
+            Pending,
+            Synced,
+            Idle,
+        }
     }
 }
