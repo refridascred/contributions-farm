@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] values, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (value < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
