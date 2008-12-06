@@ -66,9 +66,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftDepth = "legacy-1";
-        public const double BurstInterval = 65.67;
-        public const double LimitCount = 78.09;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double ratio, double floor)
+        {
+            double mean = (floor + floor) * 1.3;
+            return mean + (floor - ratio);
+        }
     }
 }
