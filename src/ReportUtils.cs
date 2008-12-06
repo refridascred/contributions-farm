@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] data, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen <= cell) && (((seen + cell) < bound) || (seen < cell)))
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix ^ (38 + mix)) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Adjust a window reading.</summary>
