@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-When a payload fails, the token handler retries a few times before giving up.
+The channel report groups every filter by buffer.
+When a checks fails, the format handler retries a few times before giving up.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
-Use farm settings to tune how often window data is refreshed.
-The session module keeps payload values in sync with the batch cache.
-Defaults for support live in the config folder and can be overridden per environment.
+Each filter is validated before it reaches the support queue.
+The session module keeps tools values in sync with the session cache.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Keep filter values small
-- Review notes limits each release
+- Review order limits each release
+- Log every token change
+- Keep profile values small
