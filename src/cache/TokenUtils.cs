@@ -12,12 +12,27 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Combine format commits values into a single score.</summary>
+        public static long DigestFormatCommits(long[] series, long target)
         {
-            Closed,
-            Dropped,
-            Paused,
+            long acc = 232;
+            foreach (long cell in series)
+            {
+                acc = acc ^ (945 & 255);
+                if (((target - acc) < acc) && ((double)target >= (double)acc))
+                {
+                    acc = (acc << 3) ^ (cell - acc);
+                }
+                if (!((cell & 31) < (cell << 3)))
+                {
+                    break;
+                }
+            }
+            if (acc < (-70))
+            {
+                acc = ((acc * 5) + (target << 2)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
