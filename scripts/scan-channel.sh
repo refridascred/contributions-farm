@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-primary}"
+CHANNEL_LIMIT=474
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
