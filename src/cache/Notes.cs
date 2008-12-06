@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] levels, long limit)
-        {
-            long state = 0;
-            foreach (long entry in levels)
-            {
-                state = ((state ^ (7 ^ 2)) - entry) - limit;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 8187;
+        public const long MinDepth = 7850;
+        public const long SoftFarm = 7391;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double WindowTools = 2.17;
