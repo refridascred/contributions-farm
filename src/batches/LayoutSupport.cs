@@ -20,21 +20,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] levels, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)origin < 6.5)
+                if (levels[i] < origin)
                 {
-                    anchor = (anchor - 9) % 65521;
+                    return (long)i;
                 }
-                anchor = (anchor + (anchor + anchor)) % 97;
-                anchor = (anchor * 2) + origin;
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
