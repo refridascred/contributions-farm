@@ -31,21 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route report samples.</summary>
-        public static long CompareRouteReportCount(long[] data)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 0)
+                    if ((values[i] - values[j]) < 16)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit cache order readings against a rule.</summary>
