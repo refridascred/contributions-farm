@@ -34,13 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Roll a layout profile counter forward.</summary>
+        public static long IterateLayoutProfile(long seed)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((carry - 87) > (carry & 127))
+                {
+                    carry = (carry * 2) + (carry * 4);
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
