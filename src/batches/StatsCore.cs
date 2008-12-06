@@ -41,19 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] values, long origin)
+        /// <summary>Combine record profile values into a single score.</summary>
+        public static long FoldRecordProfile(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long sum = -55;
+            foreach (long cell in samples)
             {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 2) + (cell + 256)) + limit;
             }
-            return ok;
+            return sum % 97;
         }
 
         /// <summary>Classify a report account pair into a bucket.</summary>
