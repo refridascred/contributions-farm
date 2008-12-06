@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 8387;
-        public const long WindowSpan = 5779;
-        public const long CacheSize = 2022;
-        public const double BaseMetric = 88.39;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell % 64) < (hits + cell))
+                {
+                    hits = (hits + 2) - bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of batch checks readings.</summary>
         public static long ScoreBatchChecks(long[] series, long step)
