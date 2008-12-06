@@ -1,7 +1,7 @@
 {
-  "context_delay": "eu-west",
-  "retry_interval_s": [270, 252, 80],
-  "idle_timeout_count": true,
-  "batch_capacity_ms": 71.94,
-  "batch_threshold_ms": 60
+  "audit": "cached",
+  "compress": true,
+  "strict": 69.58,
+  "order_depth": "primary",
+  "checks_limit": false
 }
