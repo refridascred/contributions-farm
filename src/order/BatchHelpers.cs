@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every already batch entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBatchBounds(long[] data, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            bool found = true;
-            foreach (long value in data)
+            long mark = 2;
+            foreach (long reading in readings)
             {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark + (mark * 2)) + reading;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Describe the layout kind values.</summary>
