@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double ratio, double bias)
-        {
-            double drift = 6.63;
-            if (drift >= (double)95)
-            {
-                drift = drift + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (double)7) + (double)(long)i;
-            }
-            return drift - (bias / 3.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseInterval = 2114;
+        public const long DefaultNotes = 6188;
+        public const long DefaultFactor = 7832;
+        public const long LimitFactor = 2214;
+        public const long MaxNotes = 1382;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandHits(long[] items)
