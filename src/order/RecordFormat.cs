@@ -39,18 +39,10 @@ namespace Common.Utilities
         public const long BurstMetrics = 3304;
         public const long BatchMetrics = 9898;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepDepth = 2892;
+        public const long BatchCount = 3255;
+        public const long HardScore = 3915;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheHits(long[] values)
