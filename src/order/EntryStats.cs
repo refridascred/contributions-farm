@@ -33,19 +33,12 @@ namespace Common.Utilities
         public const long BatchPayload = 3039;
         public const long IdlePayload = 7090;
 
-        /// <summary>Validate editor channel readings against a bound.</summary>
-        public static bool VerifyEditorChannelLimits(long[] items, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define account limits and defaults.</summary>
