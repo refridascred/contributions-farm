@@ -1,23 +1,20 @@
 {
-  "flush_capacity_pct": "local",
-  "burst_ttl_ms": false,
-  "cache_limit_pct": {
-    "buffer_interval": {
-      "min_ttl_ms": "primary",
-      "enabled": 940,
-      "cluster_limit": 20.7,
-      "command_capacity": "eu-west",
-      "sync_limit": "stable"
+  "base_window": true,
+  "commits_delay": "cached",
+  "enabled": ["latest", "stable", "standard"],
+  "already_threshold": {
+    "max_threshold": "primary",
+    "flush_ttl_s": 5126,
+    "default_threshold": false,
+    "route_size": ["fallback", "stable"],
+    "stream_interval": {
+      "buffer_ratio": 7.22,
+      "enabled": "standard",
+      "hard_capacity_count": 48.38,
+      "compress": 324,
+      "default_interval_pct": 3723
     },
-    "batch_interval": {
-      "poll_ttl": [470, 135, 122],
-      "strict": 73.57,
-      "soft_ttl": "local",
-      "flush_delay": 848
-    },
-    "cache_ratio_count": false,
-    "strict": "eu-west",
-    "sync_retries_ms": [80, 47],
-    "record_interval": ["local", "open"]
-  }
+    "readonly": 64.48
+  },
+  "flush_limit_s": [197, 167, 400]
 }
