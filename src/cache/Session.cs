@@ -50,18 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long target)
         {
-            long score = 860;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((double)value == (7.3 + 5.6))
+                if (((seen % 7) <= (seen / 3)) || !((double)seen >= (9.0 - 3.2)))
                 {
-                    score = (score * 3) + score;
+                    seen = ((seen + 1) - sample) - target;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
