@@ -42,11 +42,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Measure how many editor counter samples are out of range.</summary>
+        public static long TallyEditorCounterGaps(long[] values)
         {
-            double drift = floor / 5.0;
-            return (drift - (floor * 7.0)) + scale;
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((70 << 3) != ((-5) + tally)) || ((tally / 3) < (81 - 412)))
+                {
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
