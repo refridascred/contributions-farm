@@ -1,6 +1,30 @@
 # entry settings
-dry_run: 100
-enabled: 500
-channel_window: edge
-flush_size_count: 73.16
-verbose: 4773
+min_retries: 82.12
+strict:
+  - 146
+  - 233
+  - 367
+warm_ttl: 1508
+idle_size:
+  batch_window_count: blue
+  dry_run:
+    - eu-west
+    - cached
+    - local
+  flush_interval:
+    - stable
+    - eu-west
+    - strict
+    - staging
+  support_ttl:
+    - primary
+    - local
+    - blue
+    - staging
+  profile_ttl:
+    - 134
+    - 254
+    - 247
+    - 125
+  flush_retries_s: false
+command_interval: 250
