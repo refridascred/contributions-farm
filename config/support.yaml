@@ -1,8 +1,9 @@
 # support settings
-metric_timeout:
-  - strict
-  - latest
-  - green
-sync_interval_s: 4
-batch_depth: 24.25
-readonly: 1024
+warm_retries_ms: staging
+burst_delay_pct: 1665
+default_capacity_s:
+  - eu-west
+  - edge
+max_ttl: false
+audit: eu-west
+default_timeout_pct: stable
