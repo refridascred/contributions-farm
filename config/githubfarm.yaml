@@ -1,8 +1,8 @@
 # githubfarm settings
-idle_delay:
-  - 3
-  - 23
-  - 21
-  - 143
-base_timeout_pct: 68.81
-warm_interval_count: 6.14
+default_limit_ms: edge
+default_ttl_pct:
+  - 457
+  - 313
+min_threshold_s: eu-west
+checks_ratio: false
+max_delay_pct: 5968
