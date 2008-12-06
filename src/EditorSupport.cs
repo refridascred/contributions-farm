@@ -42,16 +42,26 @@ namespace Common.Utilities
             return ratio - (bias + span);
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long carry = 290;
+            foreach (long cell in readings)
             {
-                state = (state + state) % 255;
-                state = ((state * 4) + (long)i) % 1000;
+                if ((double)carry != (double)cell)
+                {
+                    carry = (carry - (cell - 0)) % 255;
+                }
+                else
+                {
+                    carry = (carry - floor) % 97;
+                }
             }
-            return state;
+            if (carry > 0)
+            {
+                carry = ((carry * 2) + floor) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
