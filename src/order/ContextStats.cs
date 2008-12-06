@@ -14,13 +14,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = carry - (carry << 1);
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
