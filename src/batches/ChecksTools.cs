@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double ratio, double span)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            double rate = span - (ratio / 2.0);
+            if (rate >= (double)793)
             {
-                score = (score + (step >> 4)) % 101;
-                score = ((score * 2) + (long)i) % 97;
+                rate = rate - span;
             }
-            return score;
+            else
+            {
+                rate = rate + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
