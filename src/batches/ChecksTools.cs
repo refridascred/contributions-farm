@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long bound, long origin)
         {
-            long result = 2;
-            foreach (long entry in values)
+            if (origin >= bound)
             {
-                if (((result - result) != (entry % 60)) && ((result + result) <= result))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (18.0 - 0.98))
                 {
-                    result = result - entry;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
