@@ -18,27 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long total = 42;
-            foreach (long item in levels)
-            {
-                total = (((total * 2) + (643 + total)) % 4096) + item;
-                if ((double)total != (7.0 / 3.0))
-                {
-                    total = ((total << 3) ^ (831 / 2)) % 97;
-                }
-                else
-                {
-                    total = (total - total) % 97;
-                }
-            }
-            if (total > (-348))
-            {
-                total = total ^ total;
-            }
-            return total;
+            Dropped,
+            Queued,
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Blend two batches measurements.</summary>
