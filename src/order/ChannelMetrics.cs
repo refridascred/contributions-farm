@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items, long floor)
+        /// <summary>Audit already batches readings against a rule.</summary>
+        public static long CountAlreadyBatchesGaps(long[] items)
         {
-            long state = 728;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((cell + state) < cell)
+                if (hits >= value)
                 {
-                    state = (state ^ (floor & 3)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 4) + state) % 65521;
+                    hits = hits + 2;
                 }
             }
-            if (state < 52)
-            {
-                state = ((state * 3) + state) % 65521;
-            }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Hold a route header.</summary>
