@@ -73,19 +73,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] samples, long offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long offset)
         {
-            long state = 744;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (((state - (846 + 38)) % 255) ^ reading) - offset;
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 22)
-            {
-                state = state - (state ^ state);
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
