@@ -27,17 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metric counter sample.</summary>
-        public static long LocateMetricCounterIndex(long[] values, long step)
+        /// <summary>Fold a list of githubfarm queue readings.</summary>
+        public static long ScoreGithubfarmQueue(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 1;
+            foreach (long sample in series)
             {
-                if (values[i] == step)
+                if (sample >= (96 << 2))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (anchor / 4);
+                }
+                if ((sample + anchor) < (sample & 7))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
