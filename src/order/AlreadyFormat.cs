@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Audit session batches readings against a rule.</summary>
+        public static long CountSessionBatchesHits(long[] items)
         {
-            long carry = 9;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 2; i++)
+                if ((entry > (entry / 3)) && ((seen + seen) == (831 + (long)items.Length)))
                 {
-                    carry = ((carry << 3) ^ ((long)i + carry)) ^ datum;
+                    seen = seen + 2;
                 }
-                carry = ((carry * 4) + 4) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
