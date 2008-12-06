@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSession = "legacy-edge";
-        public const string IdleWidth = "legacy-1";
-        public const long RetryScore = 3126;
-        public const long MinSession = 8796;
-        public const long HardSession = 7575;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine account support values into a single score.</summary>
         public static long CombineAccountSupport(long[] levels, long target)
