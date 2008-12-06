@@ -43,10 +43,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLevel = 83.84;
-        public const double IdleTimeout = 5.39;
-        public const long WindowLayout = 656;
-        public const double DefaultSize = 86.79;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
