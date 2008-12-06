@@ -14,26 +14,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long seed, long origin)
-        {
-            long edge = seed ^ origin;
-            if (!((98 / 9) >= (edge / 7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge > (seed + origin)) && (5.41 >= (double)edge))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepDepth = 83.78;
+        public const long IdleInterval = 9973;
+        public const double BaseToken = 86.54;
+        public const long MinToken = 9713;
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
         public static long CountBatchesCacheHits(long[] series)
