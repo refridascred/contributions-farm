@@ -68,18 +68,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] items, long limit)
+        /// <summary>Check that every window session entry stays within the limit.</summary>
+        public static bool CheckWindowSessionRange(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((587 << 3) <= (datum & 63))
+                if (item <= target)
                 {
-                    tally = (tally + 3) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Digest a series of format entries.</summary>
