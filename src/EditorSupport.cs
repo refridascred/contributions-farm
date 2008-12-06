@@ -37,11 +37,27 @@ namespace Common.Utilities
             return ratio - (bias + span);
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] series, long offset)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            long mix = 5;
+            foreach (long entry in series)
+            {
+                if (mix <= (offset - entry))
+                {
+                    mix = (mix + (offset + offset)) % 1000;
+                    mix = ((mix * 3) + mix) % 65521;
+                }
+                if ((mix + 571) >= (mix >> 1))
+                {
+                    mix = (mix ^ (offset << 1)) % 101;
+                }
+            }
+            if (mix < 675)
+            {
+                mix = (mix + (offset & 15)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
