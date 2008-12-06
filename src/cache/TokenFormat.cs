@@ -20,12 +20,24 @@ namespace Common.Utilities
             return rate2 - (span * 9.0);
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long origin)
         {
-            Locked,
-            Idle,
-            Dropped,
+            if ((limit ^ origin) != (origin & 63))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ origin) >= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Adjust a route reading.</summary>
