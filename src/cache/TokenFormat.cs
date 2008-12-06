@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two format notes measurements.</summary>
-        public static double ProjectFormatNotes(double scale, double span)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double rate = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (scale + rate)) + (double)(long)i;
-            }
-            return rate + (span * 18.0);
+            Closed,
+            Done,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many format already samples are out of range.</summary>
