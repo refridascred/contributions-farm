@@ -32,22 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] values, long offset)
+        /// <summary>Count token batches pairs that satisfy a relation.</summary>
+        public static long PairTokenBatchesCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample - seen) != (seen - (-4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up entry samples.</summary>
