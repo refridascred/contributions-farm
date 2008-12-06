@@ -16,32 +16,15 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] series, long floor)
         {
-            long acc = 81;
-            foreach (long entry in levels)
+            long carry = 0;
+            foreach (long sample in series)
             {
-                if (((acc & 31) != (acc - acc)) || (30 > acc))
-                {
-                    acc = (acc * 2) + acc;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (1 % 10)) % 1000;
-                    acc = ((acc << 2) ^ acc) % 101;
-                }
-                acc = acc + (47 + acc);
-                if (((double)entry < (double)acc) && ((double)entry == (17.0 + 9.9)))
-                {
-                    acc = (acc * 3) + (entry * 4);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (6 ^ 93)) % 97;
-                }
+                carry = (((carry << 3) ^ sample) % 255) - floor;
             }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
