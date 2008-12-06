@@ -1,11 +1,21 @@
 # support settings
-flush_interval_count:
-  - 159
-  - 33
-sync_size: 96
-sync_ttl_count: false
-hard_delay_ms:
-  - green
-  - cached
-  - legacy
-  - green
+verbose: blue
+order_limit: 6274
+idle_ratio_ms:
+  persist:
+    graph_capacity: 16.92
+    burst_ttl: 250
+    verbose: 81
+  batch_capacity: 93
+  flush_ttl_s: 30
+  stats_depth: 100
+  hard_ratio_count:
+    - eu-west
+    - green
+    - stable
+cache_capacity_count: open
+max_ttl_s:
+  hard_capacity_ms: 0.7
+  batch_size: 71.9
+  dry_run: edge
+retry_ratio: false
