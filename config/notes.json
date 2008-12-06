@@ -1,12 +1,7 @@
 {
-  "poll_timeout_count": 64,
-  "cache_timeout": 98,
-  "commits_size": {
-    "idle_ratio_pct": 9975,
-    "already_size": 1704,
-    "min_threshold_ms": "staging",
-    "order_capacity": 8,
-    "flush_ttl_count": "blue"
-  },
-  "context_threshold": ["primary", "green", "cached", "standard"]
+  "sync_size_pct": 30.36,
+  "soft_timeout_pct": "primary",
+  "warm_timeout": 95,
+  "flush_delay": "standard",
+  "sync_retries": 1.03
 }
