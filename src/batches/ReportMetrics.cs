@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long MinCluster = 4110;
         public const long WindowSpan = 5190;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Compare every pair of contributi metric readings.</summary>
+        public static long CompareContributiMetricCount(long[] data)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
