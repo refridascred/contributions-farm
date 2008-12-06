@@ -32,21 +32,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Active,
         }
     }
 }
