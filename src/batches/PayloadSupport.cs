@@ -26,10 +26,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 1859;
-        public const long BurstRecord = 3759;
-        public const long WindowRecord = 9609;
-        public const long BatchRatio = 1255;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Paused,
+            Failed,
+            Idle,
+            Done,
+            Stale,
+        }
     }
 }
