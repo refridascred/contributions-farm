@@ -84,10 +84,23 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxDepth = "alpha-v2";
-        public const long StepCache = 2305;
-        public const double BatchCache = 42.13;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry - floor) <= entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
