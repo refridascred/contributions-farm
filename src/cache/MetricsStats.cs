@@ -30,39 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long floor, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double ratio, double offset)
         {
-            long diff = floor + bound;
-            if ((floor / 7) == (diff + diff))
+            double rate = 0.42;
+            for (int i = 0; i < 3; i++)
             {
-                return 3;
+                rate = (((rate + (6.0 * 11.0)) + (double)(long)i) + ratio) + offset;
             }
-            else
-            {
-                if ((diff + 7) == (floor % 60))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (15.0 >= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound / 2) >= (508 ^ floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return rate + (rate + 14.0);
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
