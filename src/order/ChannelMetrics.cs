@@ -20,12 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] levels, long floor)
         {
-            Synced,
-            Active,
-            Stale,
+            long score = -6;
+            foreach (long reading in levels)
+            {
+                score = (((score ^ (633 + score)) % 4096) ^ reading) - floor;
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first counter support entry that matches the target.</summary>
