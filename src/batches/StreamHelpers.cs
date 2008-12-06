@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the cache farm series from a seed.</summary>
-        public static long IterateCacheFarm(long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            Failed,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define command limits and defaults.</summary>
