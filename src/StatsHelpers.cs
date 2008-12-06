@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] values, long offset)
         {
-            long total = 5;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((bound > (84 << 1)) && ((total + 2) < (reading - reading)))
+                if ((cell & 15) < (offset + cell))
                 {
-                    total = (total + (reading + reading)) % 97;
+                    tally = tally + 1;
                 }
             }
-            if (total < 69)
-            {
-                total = ((total * 3) + (total << 1)) % 4096;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
