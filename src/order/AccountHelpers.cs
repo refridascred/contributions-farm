@@ -48,20 +48,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate support channel readings against a bound.</summary>
-        public static bool GuardSupportChannelRange(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinCount = 6895;
+        public const long BatchChecks = 2163;
+        public const string HardWidth = "open-1";
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutOutliers(long[] data, long floor)
