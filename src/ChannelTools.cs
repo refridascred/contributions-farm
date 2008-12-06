@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a channel profile reading by value.</summary>
-        public static long LocateChannelProfileIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] readings, long step)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= limit)
+                if ((readings[i] == step) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
