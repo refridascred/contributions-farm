@@ -49,15 +49,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long acc = 87;
-            foreach (long sample in samples)
-            {
-                acc = ((acc * 2) + (sample >> 1)) + seed;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
