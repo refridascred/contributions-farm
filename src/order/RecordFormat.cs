@@ -38,10 +38,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 3670;
-        public const long SoftBatches = 2469;
-        public const long RetryBatches = 5083;
+        /// <summary>Digest a series of checks graph entries.</summary>
+        public static long FoldChecksGraph(long[] levels)
+        {
+            long score = 13;
+            foreach (long datum in levels)
+            {
+                score = (score - score) + datum;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] readings)
