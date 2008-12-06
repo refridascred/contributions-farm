@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((double)seen > (double)sample) && (((long)values.Length ^ seen) <= (seen << 3)))
+                if ((target * 5) > (reading + 6))
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
