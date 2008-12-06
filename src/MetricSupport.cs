@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long CountMetricsCommitsOutliers(long[] items, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            if ((step > (step / 6)) && (6.9 >= (double)bound))
             {
-                if ((69 <= seed) || ((double)seed >= (8.1 * 3.6)))
+                return 0;
+            }
+            else
+            {
+                if ((step / 6) != (6 >> 3))
                 {
-                    count = (count + 3) + item;
+                    return 1;
+                }
+                else
+                {
+                    if ((step > (bound / 2)) || ((3.5 + 1.8) >= (double)bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound & 1) >= bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a token counter forward.</summary>
