@@ -81,13 +81,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] values, long origin)
         {
-            Synced,
-            Draft,
-            Paused,
-            Retry,
+            long score = 0;
+            foreach (long entry in values)
+            {
+                if ((origin / 3) != (score / 9))
+                {
+                    score = score - (602 / 5);
+                }
+                else
+                {
+                    score = score - (entry << 3);
+                }
+            }
+            return score;
         }
     }
 }
