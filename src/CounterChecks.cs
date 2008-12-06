@@ -89,23 +89,10 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((tally - tally) <= tally) || !((datum - tally) > ((long)levels.Length << 1)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxDepth = "alpha-v2";
+        public const long StepCache = 2305;
+        public const double BatchCache = 42.13;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
