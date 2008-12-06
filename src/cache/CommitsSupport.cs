@@ -66,18 +66,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long sum = 576;
+            foreach (long sample in samples)
             {
-                if ((sample + 53) == (sample - sample))
-                {
-                    count = count + 1;
-                }
+                sum = ((sum + (1 - (long)samples.Length)) % 101) ^ sample;
             }
-            return count;
+            if (sum > 364)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a record stats.</summary>
