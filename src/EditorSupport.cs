@@ -40,19 +40,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many already cache samples are out of range.</summary>
-        public static long TallyAlreadyCacheMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum & 63) != (datum + 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 9515;
+        public const long MinOrder = 9339;
+        public const long BurstSize = 7824;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
