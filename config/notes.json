@@ -1,6 +1,18 @@
 {
-  "notes_threshold": [435, 493, 294, 316],
-  "hard_window_pct": 7930,
-  "context_ratio": true,
-  "retry_window": 60
+  "profile_depth": 6609,
+  "warm_depth": 4993,
+  "batch_depth_count": "cached",
+  "min_retries_ms": {
+    "payload_delay": "green",
+    "hard_threshold_ms": "primary",
+    "githubfarm_interval": {
+      "verbose": "green",
+      "min_ttl": "cached",
+      "base_depth_s": "cached",
+      "burst_delay_s": 59
+    },
+    "already_delay": 3487,
+    "dry_run": 52.36
+  },
+  "batch_timeout_pct": 6469
 }
