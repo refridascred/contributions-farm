@@ -26,19 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every channel checks entry stays within the limit.</summary>
-        public static bool ValidateChannelChecksLimits(long[] levels, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            double bias2 = 6.59;
+            if (bias2 <= 9.92)
             {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = bias2 + bias;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + scale) + (double)(long)i;
+            }
+            return bias2 - (double)920;
         }
 
         /// <summary>Hold a metric stats.</summary>
