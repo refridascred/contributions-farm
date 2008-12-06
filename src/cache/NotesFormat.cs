@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token profile readings.</summary>
-        public static long TallyTokenProfile(long[] series, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] data, long floor)
         {
-            long sum = 87;
-            foreach (long cell in series)
+            long acc = 5;
+            foreach (long cell in data)
             {
-                sum = (((sum * 5) + (sum >> 4)) % 1000) + cell;
-                if ((sum / 9) < (704 ^ target))
+                if ((718 & 3) >= floor)
                 {
-                    sum = (sum + (target >> 1)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 4) + target) % 101;
+                    acc = (acc * 4) + cell;
                 }
             }
-            return sum % 65521;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
