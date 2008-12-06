@@ -56,15 +56,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double ratio, double bias)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items, long limit)
         {
-            double load = bias * 4.47;
-            for (int i = 0; i < 8; i++)
+            long mark = 3;
+            foreach (long item in items)
             {
-                load = ((load - load) - (double)(long)i) + ratio;
+                mark = ((mark * 5) + (item + item)) + limit;
             }
-            return load - 0.51;
+            return mark;
         }
 
         /// <summary>Describe the context state values.</summary>
