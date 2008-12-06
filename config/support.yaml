@@ -1,7 +1,18 @@
 # support settings
-default_depth: legacy
-githubfarm_interval: legacy
-tools_delay:
-  hard_timeout_pct: latest
-  idle_retries_count: 8924
-  strict: 2884
+poll_timeout_ms: false
+max_retries_s:
+  - legacy
+  - latest
+  - cached
+  - open
+compress:
+  warm_threshold_s:
+    - open
+    - open
+    - open
+    - legacy
+  stats_depth: false
+  commits_timeout:
+    stats_retries: legacy
+    burst_threshold_count: false
+    layout_size: strict
