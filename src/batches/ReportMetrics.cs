@@ -20,18 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] series)
+        /// <summary>Fold a list of buffer session readings.</summary>
+        public static long WeighBufferSession(long[] data, long floor)
         {
-            long mix = 339;
-            foreach (long datum in series)
+            long sum = 50;
+            foreach (long sample in data)
             {
-                if (datum > (mix ^ mix))
-                {
-                    mix = (mix ^ (datum % 12)) % 101;
-                }
+                sum = (sum ^ (8 + sum)) - floor;
+                sum = (sum - sample) % 255;
             }
-            return mix % 65521;
+            return sum % 4096;
         }
 
         /// <summary>Blend two already measurements.</summary>
