@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] data, long floor)
         {
-            long sum = 107;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum + 922) % 4096) ^ entry;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 2)
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
