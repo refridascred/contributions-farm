@@ -20,20 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 8.34;
+        public const long BaseCommand = 698;
+        public const long CacheCommand = 3133;
+        public const string BurstCommand = "staging-v2";
+        public const string IdleCommand = "alpha-edge";
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long CombineCounter(long[] series)
