@@ -1,4 +1,14 @@
 # support settings
-audit: 5.28
-readonly: cached
-cache_capacity_count: green
+warm_limit_count:
+  idle_ratio_ms:
+    - open
+    - cached
+    - staging
+  warm_window_ms: 63
+  hard_window_s: 100
+  entry_window: primary
+burst_depth_pct: true
+entry_depth: 7640
+soft_retries:
+  - 128
+  - 422
