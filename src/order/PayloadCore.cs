@@ -44,16 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] values, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values, long origin)
         {
-            long anchor = 0;
-            foreach (long entry in values)
+            long sum = 298;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 4) + (-912)) ^ entry;
-                anchor = ((anchor * 3) + (floor << 2)) % 4096;
+                sum = sum ^ (item << 3);
             }
-            return anchor % 97;
+            if (sum > 4)
+            {
+                sum = (sum - (origin + origin)) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
