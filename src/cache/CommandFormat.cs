@@ -15,11 +15,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 1.45;
-        public const double IdleOrder = 17.46;
-        public const long IdleRatio = 2298;
-        public const long HardDepth = 3788;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowWidth = 374;
+        public const string IdleContext = "stable-v2";
+        public const long LimitRatio = 8362;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsMatches(long[] readings, long offset)
