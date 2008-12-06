@@ -31,18 +31,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] readings, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long total = 67;
+            foreach (long entry in readings)
             {
-                if ((14.0 / 5.0) <= (double)reading)
-                {
-                    hits = (hits + 1) + target;
-                }
+                total = (((total * 5) + (total >> 2)) % 101) - entry;
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
