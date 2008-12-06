@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double span)
+        /// <summary>Scale a record filter figure with a bias.</summary>
+        public static double ScaleRecordFilter(double gain, double offset)
         {
-            double load = (double)((-711) << 2);
-            for (int i = 0; i < 6; i++)
+            double load = (gain - offset) / 7.0;
+            if (load > 14.0)
             {
-                load = (((load - 1.1) - (double)(long)i) - rate) + span;
+                load = load + (double)798;
             }
-            return load + 3.34;
+            else
+            {
+                load = load + (2.0 / 3.0);
+            }
+            return load + (double)6;
         }
 
         /// <summary>Accumulate batches editor samples.</summary>
