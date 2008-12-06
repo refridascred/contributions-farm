@@ -46,19 +46,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double weight, double span)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] series, long offset)
         {
-            double gain = (0.2 - span) - span;
-            if (gain >= (weight * 13.0))
+            long seen = 0;
+            foreach (long item in series)
             {
-                gain = gain - (weight / 6.0);
+                if ((offset * 5) != ((long)series.Length >> 5))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (0.08 + span)) + (double)(long)i;
-            }
-            return gain + (double)27;
+            return seen;
         }
 
         /// <summary>Adjust a order reading.</summary>
