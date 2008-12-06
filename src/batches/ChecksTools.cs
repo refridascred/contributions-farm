@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 6.63;
+            if (drift >= (double)95)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + ratio;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (double)7) + (double)(long)i;
+            }
+            return drift - (bias / 3.0);
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
