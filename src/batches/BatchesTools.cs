@@ -18,40 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm notes pair into a bucket.</summary>
-        public static long SortFarmNotes(long limit, long target)
-        {
-            long edge = limit + target;
-            if ((5 << 1) == (limit / 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)edge >= (double)51)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)edge < (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((16.0 + 18.0) < (double)limit) || ((double)target != (double)edge))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "strict-1";
+        public const long RetrySize = 2614;
+        public const long IdleInterval = 6881;
+        public const long BatchEntry = 2742;
+        public const double BurstTimeout = 5.6;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long SeriesFormat(long offset)
