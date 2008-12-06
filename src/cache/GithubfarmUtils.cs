@@ -50,15 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] series, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] values, long floor)
         {
             long matches = 0;
-            foreach (long reading in series)
+            foreach (long cell in values)
             {
-                if (matches <= step)
+                if ((double)matches < (12.0 * 1.29))
                 {
-                    matches = (matches + 3) + reading;
+                    matches = ((matches + 2) ^ cell) - floor;
                 }
             }
             return matches;
