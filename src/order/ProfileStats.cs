@@ -14,15 +14,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                mark = (mark * 2) + target;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Check that every channel checks entry stays within the limit.</summary>
