@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Classify a notes cache pair into a bucket.</summary>
+        public static long BucketNotesCache(long origin, long step)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            long lane = origin - step;
+            if ((3.0 < (double)origin) || ((8.0 - 7.9) == (double)step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step / 6) < lane)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
