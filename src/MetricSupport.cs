@@ -30,14 +30,13 @@ namespace Common.Utilities
         public const string DefaultAlready = "alpha-1";
         public const long IdleTimeout = 7762;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Dropped,
-            Idle,
-            Pending,
-            Draft,
-            Closed,
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
