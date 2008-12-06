@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double scale, double span)
         {
-            double rate = ratio;
-            if (rate > (rate * 13.0))
+            double scale2 = 7.0;
+            if (scale2 < (1.8 * 3.01))
             {
-                rate = (rate - (rate + 1.37)) + offset;
+                scale2 = (scale2 - scale) + span;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                rate = rate + ratio;
+                scale2 = (scale2 - scale) + (double)(long)i;
             }
-            return rate - (double)350;
+            return scale2 - (double)89;
         }
 
         /// <summary>Hold a stats info.</summary>
