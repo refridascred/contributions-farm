@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of report githubfarm entries.</summary>
-        public static long DigestReportGithubfarm(long[] items, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] values, long step)
         {
-            long acc = -534;
-            foreach (long datum in items)
+            long mark = -65;
+            foreach (long entry in values)
             {
-                if ((origin + datum) < (origin % 2))
+                if (step > (long)values.Length)
                 {
-                    acc = (acc ^ acc) % 97;
+                    mark = (mark ^ 821) + entry;
                 }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Fold a list of already readings.</summary>
