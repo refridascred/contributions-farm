@@ -20,22 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the command cluster entries that pass the check.</summary>
-        public static long AuditCommandClusterHits(long[] items)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches << 1) <= matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the channel command entries that pass the check.</summary>
