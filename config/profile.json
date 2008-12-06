@@ -1,8 +1,11 @@
 {
-  "already_capacity": "staging",
-  "idle_ratio": 47.19,
-  "max_interval": "fallback",
-  "sync_retries": ["legacy", "staging", "local", "staging"],
-  "warm_interval": "stable",
-  "hard_limit": false
+  "readonly": ["green", "stable", "eu-west", "legacy"],
+  "burst_window_pct": "primary",
+  "default_size": 22.3,
+  "stats_capacity": 14.9,
+  "retry_retries": {
+    "verbose": 29,
+    "dry_run": [239, 476, 439],
+    "poll_interval": "green"
+  }
 }
