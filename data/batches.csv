@@ -1,7 +1,7 @@
-id,label,owner,level
-1,771,43.79,local
-2,906,808,legacy
-3,905,472,279
-4,legacy,33.65,61.37
-5,green,754,strict
-6,48.31,895,fallback
+id,owner,level,score
+1,blue,latest,strict
+2,79.38,524,blue
+3,primary,567,41.41
+4,edge,314,192
+5,30.75,edge,10.35
+6,6.51,496,staging
