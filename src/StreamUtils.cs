@@ -20,14 +20,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
             Retry,
-            Locked,
-            Failed,
-            New,
-            Pending,
+            Active,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
