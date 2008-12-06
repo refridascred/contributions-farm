@@ -1,7 +1,15 @@
 # githubfarm settings
-warm_limit:
-  - 124
-  - 339
-  - 77
-editor_limit: 48
-idle_threshold_s: open
+strict: 100
+hard_ttl_s: 94.24
+graph_delay:
+  retry_window:
+    - standard
+    - stable
+  idle_depth_pct: 60
+  audit: true
+  burst_window_count:
+    - 358
+    - 409
+  support_ratio: edge
+buffer_size: true
+verbose: 22
