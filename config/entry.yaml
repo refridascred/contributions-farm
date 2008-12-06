@@ -1,4 +1,6 @@
 # entry settings
-audit: false
-warm_interval_ms: primary
-dry_run: primary
+commits_size: 1024
+default_timeout_count: false
+retry_delay_s: true
+default_retries_s: local
+default_interval_pct: 50
