@@ -22,19 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] items, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long carry = 0;
+            foreach (long item in data)
             {
-                if (cell != seed)
+                if (((item >> 4) <= (origin + carry)) || ((double)carry >= (8.57 * 2.0)))
                 {
-                    ok = false;
-                    break;
+                    carry = carry + (carry * 3);
+                    carry = (carry + (441 + origin)) % 97;
+                }
+                if ((carry + item) > (origin + carry))
+                {
+                    carry = (carry - (origin ^ origin)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ item) % 65521;
+                }
+                if ((double)item <= (9.6 / 5.0))
+                {
+                    carry = ((carry << 3) ^ (origin & 7)) % 4096;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Digest a series of record queue entries.</summary>
