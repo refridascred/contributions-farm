@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] values, long limit)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((9.35 + 0.4) >= (double)item)
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of farm record readings.</summary>
