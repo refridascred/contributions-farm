@@ -19,10 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 1351;
-        public const double BurstContext = 26.64;
-        public const string BurstFactor = "staging";
+        /// <summary>Compare every pair of channel buffer readings.</summary>
+        public static long PairChannelBufferCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two route measurements.</summary>
         public static double BlendRoute(double ratio, double span)
