@@ -1,13 +1,6 @@
 {
-  "flush_depth_s": {
-    "poll_ttl": [378, 446],
-    "dry_run": 18.61,
-    "flush_limit_ms": "open",
-    "flush_interval_s": "cached",
-    "sync_delay_ms": "local"
-  },
-  "min_depth_count": 250,
-  "compress": 250,
-  "sync_threshold_count": "eu-west",
-  "githubfarm_delay": 500
+  "batch_delay_s": "green",
+  "compress": false,
+  "readonly": 3656,
+  "default_ttl_pct": 77.93
 }
