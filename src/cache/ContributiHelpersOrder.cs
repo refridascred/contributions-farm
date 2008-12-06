@@ -29,19 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] values, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long result = 50;
+            foreach (long value in readings)
             {
-                if (reading >= limit)
+                if ((1.8 > (double)result) && ((5.61 / 7.0) == (double)value))
                 {
-                    ok = false;
-                    break;
+                    result = result - (seed + seed);
                 }
             }
-            return ok;
+            return result;
         }
     }
 }
