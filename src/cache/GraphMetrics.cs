@@ -46,19 +46,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the farm format series from a seed.</summary>
-        public static long SeriesFarmFormat(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum - ((long)i >> 4)) % 101;
-                sum = ((sum * 5) + (limit + (long)i)) % 101;
-                sum = sum ^ limit;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "latest";
+        public const long SoftFilter = 9140;
+        public const long RetryFilter = 6983;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
