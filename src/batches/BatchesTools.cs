@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long bound)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account snapshot.</summary>
