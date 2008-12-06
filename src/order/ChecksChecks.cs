@@ -44,15 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double offset)
+        /// <summary>Count order entry pairs that satisfy a relation.</summary>
+        public static long OverlapOrderEntryCount(long[] samples)
         {
-            double bias = scale;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias + (double)1) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias - offset;
+            return tally;
         }
     }
 }
