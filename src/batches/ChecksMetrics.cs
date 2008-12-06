@@ -62,14 +62,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Stale,
-            Queued,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 5371;
+        public const long BaseContributi = 6270;
+        public const long MinContributi = 9275;
+        public const string WindowContributi = "primary-edge";
 
         /// <summary>Check that every cache metrics entry stays within the limit.</summary>
         public static bool GuardCacheMetricsLimits(long[] levels, long bound)
