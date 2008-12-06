@@ -60,22 +60,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] samples)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((double)sample >= 5.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry + (carry << 3)) % 4096;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
