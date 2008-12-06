@@ -41,19 +41,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] levels, long offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
