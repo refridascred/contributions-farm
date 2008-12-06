@@ -78,11 +78,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 8775;
-        public const long RetryInterval = 5261;
-        public const long RetryProfile = 3357;
-        public const long BatchProfile = 2613;
-        public const long BaseProfile = 2735;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long offset)
+        {
+            if ((683 >> 5) <= (offset + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset << 1) <= (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
