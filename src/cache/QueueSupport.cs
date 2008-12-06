@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] samples, long floor)
+        /// <summary>Measure how many batches cache samples are out of range.</summary>
+        public static long CountBatchesCacheOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((((hits - cell) < (cell & 31)) && ((859 ^ 793) <= (floor - cell))) || ((double)floor > (1.8 + 16.0)))
+                if ((double)value == (2.4 - 0.2))
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
