@@ -23,19 +23,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double ratio, double floor)
         {
-            double load = floor * 5.46;
-            if (load <= (load + 7.0))
+            double bias = (floor + ratio) + ratio;
+            if (bias >= floor)
             {
-                load = (load + (13.0 / 8.0)) + gain;
+                bias = bias - (bias * 2.54);
             }
-            else
-            {
-                load = load + 4.1;
-            }
-            return load - 6.0;
+            return bias - (double)657;
         }
 
         /// <summary>Describe the metrics status values.</summary>
