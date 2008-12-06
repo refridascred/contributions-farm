@@ -30,10 +30,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryInterval = 786;
-        public const long IdleTools = 6393;
-        public const long MaxTools = 2484;
-        public const long MinTools = 9547;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Done,
+            Active,
+            Locked,
+            Synced,
+        }
     }
 }
