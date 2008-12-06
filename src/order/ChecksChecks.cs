@@ -12,22 +12,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine stream batches values into a single score.</summary>
-        public static long FoldStreamBatches(long[] items, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long floor, long limit)
         {
-            long mark = 929;
-            foreach (long entry in items)
+            long delta = floor ^ limit;
+            if (((double)limit >= 14.0) || ((floor + delta) >= limit))
             {
-                if ((double)floor > 0.16)
+                return 3;
+            }
+            else
+            {
+                if ((limit + delta) > (floor >> 4))
                 {
-                    mark = (mark - mark) + entry;
+                    return 7;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (871 >> 5)) % 1000;
+                    return 4;
                 }
             }
-            return mark % 97;
         }
 
         /// <summary>Describe the session mode values.</summary>
