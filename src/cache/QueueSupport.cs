@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const double MinBudget = 77.6;
         public const double CacheCounter = 88.55;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchInterval = 85.8;
-        public const long WindowInterval = 9222;
-        public const long WindowGraph = 6425;
-        public const long HardScore = 2209;
+        /// <summary>Audit tools layout readings against a rule.</summary>
+        public static long TallyToolsLayoutOutliers(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)floor > (double)(-2))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] values, long step)
