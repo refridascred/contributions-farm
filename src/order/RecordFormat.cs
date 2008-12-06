@@ -34,20 +34,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double weight, double offset)
-        {
-            double ratio = weight;
-            if (ratio > (ratio / 8.0))
-            {
-                ratio = ratio - (ratio - offset);
-            }
-            else
-            {
-                ratio = ratio - (double)29;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepCount = 69.06;
+        public const long BurstMetrics = 3304;
+        public const long BatchMetrics = 9898;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] samples, long offset)
