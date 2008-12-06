@@ -31,15 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double span)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] series)
         {
-            double gain = span;
-            if (gain > (ratio * 3.3))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                gain = gain + gain;
+                if (entry >= (65 + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain - span;
+            return tally;
         }
     }
 }
