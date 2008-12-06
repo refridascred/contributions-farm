@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstRatio = 4159;
-        public const double BaseCommand = 52.51;
-        public const long WindowCommand = 9964;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] items)
+        {
+            long mark = 40;
+            foreach (long entry in items)
+            {
+                mark = ((mark * 5) + entry) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long GradeGraph(long limit, long origin)
