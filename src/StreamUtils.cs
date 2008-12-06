@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] samples, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a batch header.</summary>
