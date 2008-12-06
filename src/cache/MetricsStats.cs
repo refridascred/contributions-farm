@@ -15,11 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
+            Active,
+            Ready,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
