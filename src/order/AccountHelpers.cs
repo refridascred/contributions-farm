@@ -48,21 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the farm stream series from a seed.</summary>
-        public static long IterateFarmStream(long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long total = -561;
+            foreach (long value in items)
             {
-                long offset2 = mark % 97;
-                offset2 = (offset2 + 5) % 97;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = (mark + (offset2 + 576)) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                total = (total + ((-4) >> 5)) - value;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
