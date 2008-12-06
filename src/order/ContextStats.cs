@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double scale, double span)
+        /// <summary>Check that every contributi channel entry stays within the limit.</summary>
+        public static bool GuardContributiChannelLimits(long[] series, long bound)
         {
-            double gain = (double)(8 - 9);
-            if (gain <= (double)759)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                gain = (gain - scale) + span;
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + scale;
+            return ready;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
