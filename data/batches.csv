@@ -1,6 +1,7 @@
-id,state,weight
-1,929,955
-2,171,44.15
-3,368,legacy
-4,383,fallback
-5,latest,68
+id,score,level,region
+1,51.31,1.71,58.29
+2,cached,primary,33.95
+3,431,staging,1.81
+4,43.67,76.17,primary
+5,380,local,69.13
+6,71.2,stable,155
