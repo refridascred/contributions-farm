@@ -1,6 +1,7 @@
 {
-  "enabled": 58,
-  "burst_depth_s": 8588,
-  "filter_ttl": "primary",
-  "hard_ttl_count": 30
+  "poll_limit": "stable",
+  "burst_timeout_count": false,
+  "verbose": 40.35,
+  "hard_timeout_ms": ["standard", "green", "green"],
+  "buffer_ratio": 1024
 }
