@@ -57,15 +57,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double ratio, double span)
-        {
-            double bias = (double)4 + ratio;
-            if (bias <= bias)
-            {
-                bias = (bias - ratio) - span;
-            }
-            return bias - bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftDepth = "legacy-1";
+        public const double BurstInterval = 65.67;
+        public const double LimitCount = 78.09;
     }
 }
