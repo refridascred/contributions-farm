@@ -1,6 +1,7 @@
 # githubfarm settings
-cluster_depth: 84
-burst_ratio_pct: 26.3
-max_retries_ms: 9093
-poll_ttl_ms: strict
-verbose: stable
+schema_interval: false
+sync_capacity_ms: standard
+hard_threshold: 2.8
+readonly: 10.01
+idle_ttl_s: staging
+verbose: open
