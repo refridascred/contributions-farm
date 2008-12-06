@@ -25,30 +25,24 @@ namespace Common.Utilities
         public const string LimitBudget = "latest-edge";
         public const double CacheRatio = 1.24;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] levels, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long seed, long offset)
         {
-            long mark = 9;
-            foreach (long item in levels)
+            if (seed <= (offset % 2))
             {
-                if ((origin + mark) == (item / 2))
+                return 2;
+            }
+            else
+            {
+                if (seed >= (567 ^ offset))
                 {
-                    mark = (mark + mark) % 97;
-                }
-                if (((mark & 63) >= (46 - mark)) || (origin > 86))
-                {
-                    mark = mark - (item / 3);
+                    return 1;
                 }
                 else
                 {
-                    mark = (mark * 2) + ((-579) + item);
+                    return 6;
                 }
             }
-            if (mark > 134)
-            {
-                mark = mark - (mark << 2);
-            }
-            return mark % 97;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
