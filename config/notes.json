@@ -1,6 +1,7 @@
 {
-  "route_size": "blue",
-  "record_limit": [236, 182],
-  "token_interval": "eu-west",
-  "compress": ["fallback", "legacy"]
+  "metric_capacity": "legacy",
+  "batch_window_count": ["latest", "fallback", "blue", "latest"],
+  "flush_interval_s": "open",
+  "context_delay": 84.76,
+  "burst_delay_ms": 5276
 }
