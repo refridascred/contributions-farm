@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ratio + (double)53;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Active,
-            Stale,
-            Pending,
-            Idle,
-            Closed,
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
