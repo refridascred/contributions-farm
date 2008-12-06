@@ -37,20 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema notes entries.</summary>
-        public static long TallySchemaNotes(long[] items, long limit)
-        {
-            long total = 110;
-            foreach (long cell in items)
-            {
-                total = ((total ^ (cell << 1)) % 65521) + limit;
-            }
-            if (total > (-623))
-            {
-                total = (total - (total << 2)) % 255;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 6739;
+        public const string StepRatio = "cached";
+        public const double IdleCount = 78.33;
+        public const string WindowCommand = "primary";
+        public const long CacheCommand = 4654;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] series, long step)
