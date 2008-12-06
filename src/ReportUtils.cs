@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long origin, long target)
+        /// <summary>Look up the position of a route stats sample.</summary>
+        public static long LookupRouteStatsIndex(long[] items, long target)
         {
-            if (!((double)origin <= (0.15 - 4.0)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin * 2) < origin)
+                if ((items[i] >= target) && ((items[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
