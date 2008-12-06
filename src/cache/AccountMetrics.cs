@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] series, long limit)
         {
-            Pending,
-            Ready,
-            Queued,
-            Closed,
-            Synced,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the profile state values.</summary>
