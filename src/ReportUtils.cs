@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix ^ (38 + mix)) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Dropped,
+            Queued,
+            Synced,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
