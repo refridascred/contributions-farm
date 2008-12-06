@@ -31,22 +31,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches cache entries that pass the check.</summary>
-        public static long CountBatchesCacheHits(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long result = -904;
+            foreach (long reading in levels)
             {
-                if (!((72 ^ tally) == (value - tally)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = tally + 2;
+                    result = ((result ^ reading) % 4096) + (long)i2;
                 }
-                else
+                if ((double)reading >= (4.0 - 8.0))
                 {
-                    tally = tally - 1;
+                    result = ((result << 3) ^ (reading + reading)) % 4096;
+                }
+                if (((result & 7) != (57 + reading)) && (reading >= (0 & 7)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
