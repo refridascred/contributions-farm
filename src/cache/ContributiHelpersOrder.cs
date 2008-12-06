@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] readings, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long acc = 5;
-            foreach (long sample in readings)
-            {
-                acc = (((acc << 2) ^ (sample & 63)) % 97) - limit;
-            }
-            return acc % 97;
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
