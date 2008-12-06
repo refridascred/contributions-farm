@@ -23,18 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] data, long target)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((7.7 + 5.95) <= (double)target)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            Pending,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define command limits and defaults.</summary>
