@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a format payload pair into a bucket.</summary>
-        public static long ClassifyFormatPayload(long bound, long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if ((bound + floor) == (floor * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(floor > bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.84 / 7.0) != (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the queue farm series from a seed.</summary>
