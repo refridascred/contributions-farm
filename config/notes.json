@@ -1,8 +1,5 @@
 {
-  "format_size": "edge",
-  "checks_threshold": false,
-  "enabled": 4936,
-  "flush_threshold_pct": true,
-  "poll_ttl": 18.79,
-  "base_limit": false
+  "poll_delay_pct": 31.64,
+  "cache_retries_count": "cached",
+  "enabled": 87.06
 }
