@@ -17,11 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
