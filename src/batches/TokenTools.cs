@@ -42,38 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long origin, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            if ((origin << 1) > (seed ^ origin))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin % 60) == (seed >> 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - 63) > seed)
+                    if ((series[i] + series[j]) != 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin >= (75 & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
