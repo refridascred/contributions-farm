@@ -48,13 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Validate support channel readings against a bound.</summary>
+        public static bool GuardSupportChannelRange(long[] items, long seed)
         {
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
