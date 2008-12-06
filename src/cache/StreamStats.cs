@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                state = ((state << 2) ^ (bound % 16)) % 1000;
-                for (int i2 = 0; i2 < 6; i2++)
+                if (seen <= (seen + entry))
                 {
-                    state = ((state - bound) % 97) + (long)i2;
-                    state = (state - (state + state)) % 4096;
+                    seen = seen + 2;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
