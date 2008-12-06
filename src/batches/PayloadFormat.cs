@@ -38,17 +38,19 @@ namespace Common.Utilities
         public const double DefaultEntry = 16.53;
         public const long MinEntry = 2372;
 
-        /// <summary>Find the first stats cluster entry that matches the target.</summary>
-        public static long SeekStatsClusterIndex(long[] series, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((series[i] <= limit) && ((series[i] % 5) != 0))
+                if (item < origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
