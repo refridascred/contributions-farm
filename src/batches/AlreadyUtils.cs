@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the window graph entries that pass the check.</summary>
-        public static long AuditWindowGraphMatches(long[] samples)
+        /// <summary>Compare every pair of batches filter readings.</summary>
+        public static long PairBatchesFilterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum < (2.39 + 1.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine account report values into a single score.</summary>
