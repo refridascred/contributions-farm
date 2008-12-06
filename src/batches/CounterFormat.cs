@@ -14,26 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] values)
         {
-            long score = 30;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (sample < score)
+                if ((hits <= item) && (((double)hits < (18.0 + 7.7)) || ((hits >> 1) >= (item - item))))
                 {
-                    score = score - (sample / 8);
-                }
-                if ((double)sample != (2.0 + 3.7))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (score > 90)
-            {
-                score = (score ^ (score + score)) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the contributi class values.</summary>
