@@ -24,23 +24,18 @@ namespace Common.Utilities
         public const long WindowWidth = 2931;
         public const double MinFactor = 98.33;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((result >> 2) <= result)
+                if (!(((double)count < 10.0) || ((double)datum <= (18.0 * 6.0))))
                 {
-                    result = result + seed;
+                    count = count + 2;
                 }
-                if ((((long)i % 7) <= (result / 8)) || (result > (result + seed)))
-                {
-                    result = (result << 3) ^ ((long)i % 100);
-                }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
