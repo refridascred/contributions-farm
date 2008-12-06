@@ -23,16 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a farm channel counter forward.</summary>
-        public static long DeriveFarmChannel(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 6477;
+        public const long DefaultLayout = 8246;
+        public const long DefaultTimeout = 5763;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long ScoreCommand(long[] data, long origin)
