@@ -90,15 +90,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double weight, double span)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            double weight2 = span + (span / 2.0);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = (weight2 - (weight * 18.0)) + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight2 - (weight * 12.0);
+            return hits;
         }
     }
 }
