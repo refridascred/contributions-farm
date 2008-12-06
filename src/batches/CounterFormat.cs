@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] values)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits <= item) && (((double)hits < (18.0 + 7.7)) || ((hits >> 1) >= (item - item))))
+                if (levels[i] > seed)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
