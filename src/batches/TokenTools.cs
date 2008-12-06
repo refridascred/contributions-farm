@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ (202 << 3)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
