@@ -34,10 +34,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstLevel = 33.35;
-        public const double MaxStream = 29.02;
-        public const double StepDepth = 61.88;
+        /// <summary>Measure how many already cache samples are out of range.</summary>
+        public static long TallyAlreadyCacheMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum & 63) != (datum + 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
