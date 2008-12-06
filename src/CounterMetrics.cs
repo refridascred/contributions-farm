@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long anchor = -1;
-            foreach (long item in data)
-            {
-                if ((anchor >= (anchor ^ 16)) && (item <= (item + 0)))
-                {
-                    anchor = (anchor * 4) + (anchor + step);
-                }
-            }
-            if (anchor > 46)
-            {
-                anchor = ((anchor << 3) ^ (step - step)) % 101;
-            }
-            return anchor % 65521;
+            Draft,
+            Active,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
