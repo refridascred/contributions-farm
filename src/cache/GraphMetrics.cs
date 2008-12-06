@@ -60,30 +60,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] samples, long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 87;
-            foreach (long cell in samples)
-            {
-                if (!(7 >= (offset - (long)samples.Length)))
-                {
-                    score = (score + (score * 2)) % 255;
-                }
-                else
-                {
-                    score = (score + (offset << 2)) % 4096;
-                }
-                if ((((-9) - cell) <= (cell - score)) || (offset >= (score + offset)))
-                {
-                    break;
-                }
-            }
-            if (score > 457)
-            {
-                score = (score * 4) + (208 ^ score);
-            }
-            return score;
+            Pending,
+            Ready,
+            Retry,
         }
     }
 }
