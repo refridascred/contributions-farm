@@ -53,18 +53,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item << 3) != (count & 3))
-                {
-                    count = (count + 1) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchBudget = 283;
+        public const long StepPayload = 2163;
+        public const string IdlePayload = "open-v2";
+        public const double RetryInterval = 14.26;
     }
 }
