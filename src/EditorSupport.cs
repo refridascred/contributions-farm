@@ -54,12 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Failed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
