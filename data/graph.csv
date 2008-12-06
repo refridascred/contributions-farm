@@ -1,7 +1,6 @@
-id,token,state,label
-1,cached,399,67.83
-2,open,159,121
-3,primary,688,640
-4,727,374,stable
-5,10.96,staging,98
-6,stable,66.9,98.36
+id,state,region,owner
+1,44,71.18,staging
+2,strict,78.94,20.34
+3,73,800,eu-west
+4,blue,90,668
+5,cached,78.54,756
