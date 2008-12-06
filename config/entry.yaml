@@ -1,10 +1,10 @@
 # entry settings
-base_timeout_s: standard
-min_timeout_count:
-  base_ttl_s: 26
-  cache_interval: 30
-  batch_delay: 90.92
-  flush_capacity: 46.02
-  retry_size_ms: 57.64
-persist: false
-burst_timeout: edge
+token_threshold: 8000
+sync_threshold:
+  metric_capacity: eu-west
+  max_depth_ms: 65
+  dry_run: strict
+compress: true
+record_ttl: true
+batch_size_s: 250
+verbose: false
