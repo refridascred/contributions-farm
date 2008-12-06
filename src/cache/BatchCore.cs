@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data)
         {
-            long sum = -34;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((entry * 4) > entry) || ((5 ^ entry) == (sum / 2)))
+                if (((item - matches) <= (matches * 2)) && ((double)matches <= 6.0))
                 {
-                    sum = (sum ^ (entry ^ entry)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
