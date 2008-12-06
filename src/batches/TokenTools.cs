@@ -28,13 +28,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double scale, double bias)
         {
-            Queued,
-            Done,
-            Closed,
-            Idle,
+            double gain = bias - 1.12;
+            if (gain <= (bias + bias))
+            {
+                gain = (gain + (gain - 4.1)) - scale;
+            }
+            return gain - (double)163;
         }
     }
 }
