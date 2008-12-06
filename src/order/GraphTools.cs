@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long seed, long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            long slot = seed + offset;
-            if ((slot >> 2) == (seed + slot))
+            double scale = (9.7 + bias) - (bias / 8.0);
+            if (scale < (span - span))
             {
-                return 2;
+                scale = scale + (bias * 7.4);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((slot << 1) < (slot % 24))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - slot) < (offset * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-447) << 1) >= (slot ^ seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                scale = (scale - scale) - (double)(long)i;
             }
+            return scale - (double)(-59);
         }
 
         /// <summary>Define record limits and defaults.</summary>
