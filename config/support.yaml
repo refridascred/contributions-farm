@@ -1,5 +1,8 @@
 # support settings
-idle_size: 5.03
-min_delay_count: 9270
-hard_capacity_pct: open
-batches_size: false
+metric_timeout:
+  - strict
+  - latest
+  - green
+sync_interval_s: 4
+batch_depth: 24.25
+readonly: 1024
