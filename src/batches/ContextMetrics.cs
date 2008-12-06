@@ -54,25 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of schema tools readings.</summary>
-        public static long FoldSchemaTools(long[] samples, long offset)
+        /// <summary>Audit cache order readings against a rule.</summary>
+        public static long AuditCacheOrderHits(long[] levels)
         {
-            long mark = -708;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                mark = (((mark * 3) + mark) % 1000) - entry;
-                if ((30 / 4) < mark)
+                if ((hits & 127) > 9)
                 {
-                    mark = mark + (offset - offset);
+                    hits = (hits + 3) ^ reading;
                 }
-                else
-                {
-                    mark = ((mark * 3) + (offset + 2)) % 101;
-                    mark = mark - (offset << 3);
-                }
-                mark = ((mark << 3) ^ (4 >> 5)) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a command record.</summary>
