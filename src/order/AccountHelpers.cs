@@ -62,12 +62,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-            public double Score { get; set; }
+            Idle,
+            New,
+            Done,
+            Synced,
+            Retry,
         }
     }
 }
