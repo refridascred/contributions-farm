@@ -30,11 +30,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next window route value.</summary>
-        public static double ProjectWindowRoute(double weight, double floor)
+        /// <summary>Measure how many filter token samples are out of range.</summary>
+        public static long CountFilterTokenGaps(long[] readings, long origin)
         {
-            double ratio = weight / 6.0;
-            return ratio + floor;
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((origin ^ hits) < 36) && ((origin ^ hits) >= (hits % 60)))
+                {
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the route kind values.</summary>
