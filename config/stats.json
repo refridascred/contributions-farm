@@ -1,6 +1,18 @@
 {
-  "commits_timeout": 83.84,
-  "commits_ttl": 6127,
-  "flush_timeout": 8849,
-  "default_interval_ms": ["local", "local", "open", "staging"]
+  "commits_timeout": "local",
+  "readonly": true,
+  "commits_limit": 19,
+  "persist": 1.49,
+  "poll_depth_ms": {
+    "max_limit_ms": 72.37,
+    "min_timeout_ms": {
+      "verbose": ["fallback", "open"],
+      "soft_depth_pct": 30,
+      "min_timeout_pct": 31.23,
+      "retry_size_pct": false,
+      "retry_ttl": 60
+    },
+    "cache_retries": "open",
+    "sync_delay_pct": "fallback"
+  }
 }
