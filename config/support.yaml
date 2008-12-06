@@ -1,27 +1,4 @@
 # support settings
-stats_retries:
-  soft_size_count:
-    warm_retries_pct: 798
-    retry_capacity_pct: false
-    enabled:
-      - 49
-      - 170
-      - 191
-  poll_limit:
-    flush_interval_pct: 39.26
-    compress: cached
-    burst_capacity: cached
-    filter_delay:
-      - 48
-      - 283
-  flush_ttl_s: 75
-  verbose:
-    warm_retries: 241
-    soft_ttl: 55
-    counter_retries: 4.74
-    default_delay_pct: 7924
-    burst_threshold_s: staging
-cluster_limit: eu-west
-graph_threshold: 2.26
-sync_limit_s: false
-cache_ttl: 100
+counter_delay: 3296
+cache_delay: true
+default_ratio_s: 4792
