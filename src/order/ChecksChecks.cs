@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] readings)
         {
-            long score = 6;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (((score + score) >= (score / 3)) && ((sample / 4) > (score + score)))
+                if (seen >= (datum + datum))
                 {
-                    score = ((score * 3) + sample) % 255;
+                    seen = seen + 2;
                 }
             }
-            if (score > 7)
-            {
-                score = (score << 2) ^ (score - score);
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Hold a report stats.</summary>
