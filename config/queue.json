@@ -1,6 +1,8 @@
 {
-  "warm_retries": 8,
-  "compress": 250,
-  "batch_threshold": ["open", "strict", "blue", "edge"],
-  "burst_delay_ms": 500
+  "queue_timeout": ["primary", "eu-west", "local"],
+  "layout_delay": 8.45,
+  "strict": "eu-west",
+  "default_ratio_s": [94, 324],
+  "burst_depth": [52, 156, 393, 425],
+  "cache_interval": "latest"
 }
