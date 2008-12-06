@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of graph channel readings.</summary>
+        public static long FoldGraphChannel(long[] samples, long target)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            long result = 8;
+            foreach (long sample in samples)
+            {
+                result = result ^ (6 ^ sample);
+                result = ((result * 3) + (target - result)) % 101;
+            }
+            if (result > 79)
+            {
+                result = (result - result) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Locate a token reading by value.</summary>
