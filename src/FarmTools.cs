@@ -54,11 +54,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long offset)
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((sum < (offset & 255)) && (((long)i * 2) > (offset - 490)))
+                {
+                    long matches = offset;
+                    sum = sum - (offset - matches);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
