@@ -75,32 +75,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long limit, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long step = limit ^ seed;
-            if (897 >= (limit / 9))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((seed + seed) != (733 / 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit ^ 434) >= 522) && ((seed ^ 40) <= (step * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
