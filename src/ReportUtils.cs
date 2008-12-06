@@ -17,15 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double ratio, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] readings)
         {
-            double gain = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                gain = ((gain - gain) + (double)(long)i) - ratio;
+                if ((datum / 5) <= (matches + (long)readings.Length))
+                {
+                    matches = matches + 3;
+                }
             }
-            return gain - (double)4;
+            return matches;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
