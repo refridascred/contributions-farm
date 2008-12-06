@@ -30,21 +30,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count schema counter pairs that satisfy a relation.</summary>
-        public static long PairSchemaCounterCount(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 1;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((mark / 7) != (mark + 81)))
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ datum;
+                    continue;
+                }
+                if ((7.98 <= (double)mark) || ((mark >> 2) < (mark ^ datum)))
+                {
+                    mark = (mark * 3) + 6;
+                }
+                if (datum >= mark)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark < 1)
+            {
+                mark = (mark + (632 >> 1)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
