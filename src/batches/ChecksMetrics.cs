@@ -13,23 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            double load = (double)42 - (double)238;
-            if (load <= offset)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                load = load + (double)39;
+                if ((datum / 3) < (datum % 7))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                load = load - (offset * 7.92);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load + (double)525;
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
