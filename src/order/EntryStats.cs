@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] items)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally << 2) < tally)
+                if (values[i] < limit)
                 {
-                    tally = (tally + 3) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a support header.</summary>
