@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 63;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = (state - (2 << 2)) % 97;
+                state = ((state << 3) ^ (reading << 3)) % 65521;
+                if ((double)state >= (4.0 / 9.0))
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
