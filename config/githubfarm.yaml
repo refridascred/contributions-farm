@@ -1,6 +1,5 @@
 # githubfarm settings
-max_depth_s: fallback
-strict: true
-base_size: 49
-window_capacity: fallback
-metrics_size: standard
+default_size: cached
+enabled: 83
+hard_capacity: 78
+payload_limit: edge
