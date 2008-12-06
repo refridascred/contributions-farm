@@ -58,19 +58,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double bias)
-        {
-            double weight = (bias - scale) * 9.3;
-            if (weight <= 8.2)
-            {
-                weight = weight - (8.0 - 1.4);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (double)9;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 1842;
+        public const long HardAccount = 8640;
+        public const double CacheAccount = 95.22;
+        public const double RetrySpan = 2.25;
+        public const long WindowAccount = 6633;
     }
 }
