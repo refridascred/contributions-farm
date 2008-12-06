@@ -36,10 +36,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchBudget = "legacy-edge";
-        public const long BatchInterval = 2219;
-        public const double MinDepth = 27.26;
-        public const double CacheScore = 68.36;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (((-61) - count) >= sample)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
