@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Project the next commits cluster value.</summary>
+        public static double BlendCommitsCluster(double bias, double span)
         {
-            long anchor = 75;
-            foreach (long sample in readings)
+            double ratio = span;
+            if (ratio > (double)902)
             {
-                if (!((double)anchor < (8.69 + 0.6)))
-                {
-                    anchor = ((anchor << 3) ^ (sample ^ 494)) % 255;
-                }
-                anchor = ((anchor * 4) + anchor) % 65521;
-                if ((double)(long)readings.Length > (2.4 / 2.0))
-                {
-                    anchor = (anchor ^ (sample ^ anchor)) % 101;
-                }
+                ratio = (ratio + span) + bias;
             }
-            if (anchor > 94)
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor - anchor) % 1000;
+                ratio = (ratio - (double)5) - (double)(long)i;
             }
-            return anchor;
+            return ratio + (double)53;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
