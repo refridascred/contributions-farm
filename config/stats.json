@@ -1,9 +1,6 @@
 {
-  "sync_ttl": "primary",
-  "base_ttl": 65.48,
-  "sync_timeout_ms": {
-    "batches_retries": 4279,
-    "poll_depth": "strict",
-    "base_window_count": [263, 99, 113, 413]
-  }
+  "commits_timeout": 83.84,
+  "commits_ttl": 6127,
+  "flush_timeout": 8849,
+  "default_interval_ms": ["local", "local", "open", "staging"]
 }
