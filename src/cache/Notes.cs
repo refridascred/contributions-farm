@@ -45,16 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix + (long)i) % 4096;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a context options.</summary>
