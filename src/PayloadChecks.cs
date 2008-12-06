@@ -31,19 +31,27 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] readings, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            long result = 9;
-            foreach (long value in readings)
+            long sum = -538;
+            foreach (long datum in readings)
             {
-                result = ((result << 2) ^ 20) + value;
+                sum = ((sum * 5) + (datum << 1)) % 65521;
+                if (((long)readings.Length / 9) >= sum)
+                {
+                    sum = (sum ^ (sum & 127)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + datum)) % 101;
+                }
             }
-            if (result < 0)
+            if (sum < 93)
             {
-                result = result - (bound ^ bound);
+                sum = (sum - sum) % 4096;
             }
-            return result % 65521;
+            return sum;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
