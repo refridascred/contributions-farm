@@ -39,11 +39,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 35.04;
-        public const long MinBatches = 244;
-        public const long MaxLevel = 7446;
-        public const string BurstBatches = "legacy-v2";
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileOutliers(long[] data)
