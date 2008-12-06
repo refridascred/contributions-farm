@@ -1,8 +1,13 @@
 {
-  "batch_limit_count": "standard",
-  "poll_timeout_count": 60,
-  "base_ratio_s": "local",
-  "audit": 5243,
-  "checks_threshold": "legacy",
-  "report_threshold": 92
+  "flush_timeout_s": 60.96,
+  "audit": "eu-west",
+  "default_delay": false,
+  "flush_limit_s": "stable",
+  "graph_size": {
+    "min_threshold_pct": "fallback",
+    "enabled": "primary",
+    "verbose": false,
+    "sync_window": true
+  },
+  "idle_size_ms": "stable"
 }
