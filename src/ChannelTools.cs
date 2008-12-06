@@ -27,22 +27,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit context cache readings against a rule.</summary>
-        public static long MeasureContextCacheMatches(long[] data, long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((target ^ item) > (target + target))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Idle,
         }
     }
 }
