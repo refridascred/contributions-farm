@@ -54,12 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] values, long step)
         {
-            Dropped,
-            Paused,
-            Locked,
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
