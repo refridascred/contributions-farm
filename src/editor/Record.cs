@@ -44,9 +44,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 19.65;
-        public const long HardSize = 5733;
-        public const long BurstLevel = 2658;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long bound, long bound2)
+        {
+            long cur = bound + bound2;
+            if ((bound2 - bound) == (bound2 << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound / 2) == (bound2 - bound2)) && ((double)bound > (2.0 * 3.4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound <= (bound - bound2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound2 + cur) < cur) && ((bound2 >> 3) > (bound - bound2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
