@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a payload graph reading.</summary>
-        public static double BlendPayloadGraph(double gain, double offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] series)
         {
-            double bias = (gain * 0.91) / 2.0;
-            if (bias <= (double)1)
+            long acc = 293;
+            foreach (long item in series)
             {
-                bias = bias - (double)81;
+                if (acc >= (acc >> 3))
+                {
+                    acc = ((acc - (-583)) % 1000) ^ item;
+                }
             }
-            else
-            {
-                bias = bias + (offset - offset);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (offset / 2.0)) - (double)(long)i;
-            }
-            return bias - gain;
+            return acc;
         }
 
         /// <summary>Hold a notes summary.</summary>
