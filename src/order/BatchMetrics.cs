@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double weight, double offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double scale = (double)(39 - 4);
-            return (scale + offset) + weight;
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
