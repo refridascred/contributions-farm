@@ -1,12 +1,6 @@
 # entry settings
-flush_delay_ms:
-  - stable
-  - fallback
-  - blue
-readonly:
-  strict: 1346
-  warm_ratio_pct: 72.19
-  min_depth: 0.93
-metric_ttl: local
-retry_window: 81.68
-default_interval: primary
+soft_window_pct:
+  - 170
+  - 45
+burst_capacity_s: 500
+base_delay: 1024
