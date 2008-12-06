@@ -33,10 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 4.47;
-        public const long DefaultAlready = 3588;
-        public const long BurstBudget = 5062;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
