@@ -29,21 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total - total) % 97;
+                total = total ^ ((long)i >> 4);
+                total = ((total * 2) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
