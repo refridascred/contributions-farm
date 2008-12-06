@@ -27,18 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] readings, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = 74;
+            foreach (long reading in levels)
             {
-                if (((target - target) != (entry % 12)) || ((target + hits) == (hits - hits)))
+                state = (state ^ 43) + reading;
+                if ((bound & 255) >= (bound * 3))
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            if (state < 36)
+            {
+                state = (state ^ (state / 6)) % 65521;
+            }
+            return state;
         }
     }
 }
