@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double WindowBuffer = 42.18;
         public const string BaseDepth = "cached-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 6099;
-        public const long MinCommand = 5825;
-        public const long CacheWidth = 7016;
-        public const long MinWidth = 3018;
-        public const long BurstCommand = 2866;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 8336;
+        public const string LimitEntry = "standard-1";
+        public const string BatchInterval = "staging-1";
+        public const string RetryEntry = "legacy-1";
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] items, long target)
