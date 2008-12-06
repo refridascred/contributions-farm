@@ -20,11 +20,19 @@ namespace Common.Utilities
             return scale - (scale + bias);
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double rate, double offset)
         {
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
+            double rate2 = (double)(7 % 24);
+            if (rate2 < (double)592)
+            {
+                rate2 = ((rate2 + 15.0) + rate) - offset;
+            }
+            else
+            {
+                rate2 = rate2 + (2.41 * 2.1);
+            }
+            return rate2 - (rate2 * 5.64);
         }
 
         /// <summary>Describe the session status values.</summary>
