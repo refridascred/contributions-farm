@@ -72,11 +72,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultSize = 3745;
-        public const long RetrySize = 679;
-        public const long BurstContributi = 8351;
-        public const long MaxContributi = 3780;
-        public const double CacheCount = 10.21;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
