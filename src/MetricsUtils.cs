@@ -28,11 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            Dropped,
+            Retry,
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Accumulate schema samples.</summary>
