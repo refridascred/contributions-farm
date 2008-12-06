@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long bound, long seed)
+        /// <summary>Measure how many filter commits samples are out of range.</summary>
+        public static long CountFilterCommitsOutliers(long[] values)
         {
-            long edge = bound - seed;
-            if ((88 >= (seed >> 5)) || ((seed + bound) > (edge + bound)))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1.44 - 2.0) >= (double)seed)
+                if (!((matches + matches) < (item + matches)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge - seed) > (453 + 234))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)edge != (18.0 - 8.6)) || ((bound - edge) > (seed / 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
