@@ -45,10 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstSpan = 6022;
-        public const long BurstBudget = 8774;
-        public const string RetryCache = "stable-1";
-        public const string WindowCache = "staging-1";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally + tally) >= sample)
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
+        }
     }
 }
