@@ -32,11 +32,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            Retry,
+            Done,
+            Failed,
         }
     }
 }
