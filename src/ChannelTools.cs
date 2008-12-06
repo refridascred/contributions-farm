@@ -21,19 +21,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings, long seed)
         {
-            bool stale = true;
+            long state = 70;
             foreach (long datum in readings)
             {
-                if (datum != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (((state << 3) ^ 88) + datum) + seed;
             }
-            return stale;
+            return state;
         }
     }
 }
