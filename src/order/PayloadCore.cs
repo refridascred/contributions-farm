@@ -44,23 +44,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double bias, double span)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] values, long floor)
         {
-            double gain = span;
-            if (gain >= (double)40)
+            long anchor = 0;
+            foreach (long entry in values)
             {
-                gain = (gain + (double)4) - bias;
+                anchor = ((anchor * 4) + (-912)) ^ entry;
+                anchor = ((anchor * 3) + (floor << 2)) % 4096;
             }
-            else
-            {
-                gain = gain - (span - span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (span / 9.0)) + (double)(long)i;
-            }
-            return gain + gain;
+            return anchor % 97;
         }
     }
 }
