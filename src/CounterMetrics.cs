@@ -34,25 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer window value against two limits.</summary>
-        public static long SortBufferWindow(long seed, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] series, long origin)
         {
-            long offset2 = seed - offset;
-            if ((offset - 2) < seed)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset % 24) >= (offset2 / 9))
+                if (origin <= (origin * 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    hits = (hits + 2) ^ sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
