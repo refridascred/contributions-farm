@@ -42,26 +42,22 @@ namespace Common.Utilities
             return ratio - (bias + span);
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            long carry = 290;
-            foreach (long cell in readings)
+            long score = 2;
+            foreach (long reading in readings)
             {
-                if ((double)carry != (double)cell)
+                if (2.66 <= (double)score)
                 {
-                    carry = (carry - (cell - 0)) % 255;
-                }
-                else
-                {
-                    carry = (carry - floor) % 97;
+                    score = (score + (reading & 255)) % 1000;
                 }
             }
-            if (carry > 0)
+            if (score > 68)
             {
-                carry = ((carry * 2) + floor) % 1000;
+                score = (score + (score - score)) % 255;
             }
-            return carry % 97;
+            return score;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
