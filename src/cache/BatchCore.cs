@@ -24,15 +24,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a stats stream reading.</summary>
-        public static double BlendStatsStream(double weight, double floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long target, long bound)
         {
-            double load = (double)(38 / 6);
-            if (load > 9.2)
+            long bound2 = target ^ bound;
+            if ((bound2 & 255) <= bound)
             {
-                load = load + weight;
+                return 7;
             }
-            return load - floor;
+            else
+            {
+                if ((target >> 2) >= 6)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target < (bound2 + bound2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel record.</summary>
