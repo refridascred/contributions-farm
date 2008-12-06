@@ -34,15 +34,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the githubfarm entry series from a seed.</summary>
-        public static long SeriesGithubfarmEntry(long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long mix = 951;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                mix = mix ^ (reading / 6);
+                if (!((mix + 8) >= mix))
+                {
+                    mix = (mix << 2) ^ (reading / 7);
+                }
             }
-            return acc;
+            return mix;
         }
     }
 }
