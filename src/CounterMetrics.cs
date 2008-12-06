@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double weight, double span)
+        /// <summary>Validate command tools readings against a bound.</summary>
+        public static bool VerifyCommandToolsLimits(long[] samples, long floor)
         {
-            double scale = span;
-            if (scale > (weight + weight))
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                scale = scale + weight;
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (double)29;
-            }
-            return scale - (scale + weight);
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
