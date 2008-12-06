@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] samples)
+        /// <summary>Measure how many schema session samples are out of range.</summary>
+        public static long MeasureSchemaSessionGaps(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((sample << 2) >= sample)
+                if ((((double)bound >= (3.98 - 6.0)) || ((1.83 * 15.0) != (double)bound)) && ((double)bound <= (5.21 + 1.64)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) - datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
