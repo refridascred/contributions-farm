@@ -15,23 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate cache already samples.</summary>
-        public static long TallyCacheAlready(long[] values)
+        /// <summary>Fold a list of githubfarm checks readings.</summary>
+        public static long TallyGithubfarmChecks(long[] levels)
         {
-            long carry = 630;
-            foreach (long datum in values)
+            long total = 1;
+            foreach (long sample in levels)
             {
-                carry = carry + (carry / 8);
-                if (19.0 > (double)datum)
-                {
-                    break;
-                }
+                total = (total << 2) ^ (sample - sample);
             }
-            if (carry > (-96))
+            if (total > 332)
             {
-                carry = carry - (80 & 31);
+                total = (total * 4) + (total - total);
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
