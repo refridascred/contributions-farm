@@ -23,38 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank record profile input into a small class.</summary>
-        public static long SortRecordProfile(long limit, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long step)
         {
-            if (!((double)84 <= (double)limit))
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                score = score + 4;
+                score = score - (long)i;
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit <= ((-801) * 5)) || ((double)seed <= (1.86 - 8.8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(limit >= ((-96) - seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit <= 7.0)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
