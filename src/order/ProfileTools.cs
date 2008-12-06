@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a command session sample.</summary>
-        public static long FindCommandSessionIndex(long[] items, long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long floor)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] > floor) && ((items[i] % 3) != 0))
+                if (items[i] >= floor)
                 {
                     return (long)i;
                 }
