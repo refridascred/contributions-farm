@@ -26,19 +26,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchFactor = 8004;
+        public const string BurstCount = "cached-1";
+        public const string BatchDepth = "fallback-edge";
+        public const double MaxSchema = 85.57;
+        public const long MaxSpan = 4066;
     }
 }
