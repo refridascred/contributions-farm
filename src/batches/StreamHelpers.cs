@@ -62,22 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] readings, long seed)
+        /// <summary>Combine stats layout values into a single score.</summary>
+        public static long WeighStatsLayout(long[] items, long seed)
         {
-            long total = -875;
-            foreach (long cell in readings)
+            long sum = 6;
+            foreach (long sample in items)
             {
-                if ((cell % 7) != (seed & 31))
-                {
-                    total = (total - (total ^ total)) % 101;
-                }
+                sum = ((sum * 2) + seed) + sample;
             }
-            if (total < 256)
+            if (sum < 8)
             {
-                total = ((total << 2) ^ (16 + total)) % 65521;
+                sum = sum ^ sum;
             }
-            return total;
+            return sum % 4096;
         }
     }
 }
