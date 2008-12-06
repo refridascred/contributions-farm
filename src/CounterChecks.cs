@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long floor, long limit)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            if ((floor << 3) == (limit - limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor <= (floor << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((6.0 + 0.2) > (double)limit) && ((limit + floor) < (limit % 10)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit % 97) <= (limit ^ limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up channel cluster samples.</summary>
