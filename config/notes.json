@@ -1,14 +1,6 @@
 {
-  "batch_retries_ms": "staging",
-  "entry_limit": "edge",
-  "base_window_ms": 83.3,
-  "idle_threshold_pct": {
-    "max_timeout_pct": false,
-    "hard_interval_s": 37.88,
-    "stats_capacity": {
-      "soft_ttl_s": false,
-      "token_threshold": 8230,
-      "dry_run": false
-    }
-  }
+  "burst_ratio_pct": 100,
+  "cache_threshold": 30,
+  "flush_threshold_ms": 98.37,
+  "idle_ttl_s": 7952
 }
