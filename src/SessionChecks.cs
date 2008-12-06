@@ -37,10 +37,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardTimeout = "strict";
-        public const string MaxEditor = "latest-v2";
-        public const double LimitInterval = 89.6;
-        public const long RetryLevel = 5285;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
