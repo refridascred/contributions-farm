@@ -17,14 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] readings, long seed)
         {
-            Locked,
-            Dropped,
-            Stale,
-            Ready,
-            Queued,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the batch mode values.</summary>
