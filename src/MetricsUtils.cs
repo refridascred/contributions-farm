@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double CacheBatch = 71.5;
         public const long CacheScore = 5170;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] data, long target)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample > (sample % 8)) && ((hits - (long)data.Length) == (36 ^ 4)))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
