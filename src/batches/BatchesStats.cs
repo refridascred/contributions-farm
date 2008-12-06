@@ -16,16 +16,19 @@ namespace Common.Utilities
         public const double CacheEntry = 73.64;
         public const double HardEntry = 81.43;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double ratio, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            double weight = (ratio * 0.57) / 9.0;
+            if (weight > (weight * 12.0))
             {
-                total = (total + ((long)i & 127)) % 4096;
-                total = ((total * 2) + (long)i) % 97;
+                weight = (weight + ratio) + floor;
             }
-            return total;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - weight;
         }
 
         /// <summary>Audit graph batches readings against a rule.</summary>
