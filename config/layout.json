@@ -1,15 +1,5 @@
 {
-  "strict": {
-    "buffer_limit": "edge",
-    "stats_size": false,
-    "persist": "green"
-  },
-  "metric_retries": true,
-  "soft_interval_s": [18, 266, 354],
-  "default_timeout": {
-    "sync_ttl_s": 6007,
-    "persist": 69,
-    "strict": true
-  },
-  "idle_ratio_s": "open"
+  "persist": [228, 194, 498],
+  "flush_depth_s": "blue",
+  "sync_ttl": "stable"
 }
