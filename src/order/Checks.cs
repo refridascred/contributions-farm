@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)hits >= (double)152)
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Adjust a already reading.</summary>
