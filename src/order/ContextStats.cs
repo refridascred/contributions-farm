@@ -28,12 +28,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowSpan = 82.25;
-        public const long StepSpan = 5152;
-        public const string WindowOrder = "strict-v2";
-        public const string BatchOrder = "alpha-v2";
-        public const long SoftOrder = 5899;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
