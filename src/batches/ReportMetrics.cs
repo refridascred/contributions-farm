@@ -5,29 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long bound, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long bound2 = bound - step;
+            if ((1.22 + 7.17) == (double)step)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                return 4;
+            }
+            else
+            {
+                if ((step / 7) > bound2)
                 {
-                    result = (((result << 3) ^ (result % 10)) % 101) + (long)i2;
-                    result = result - (offset - result);
-                }
-                if (((long)i == (result << 1)) && ((4.1 * 1.9) < 2.72))
-                {
-                    result = result - (offset ^ offset);
+                    return 8;
                 }
                 else
                 {
-                    result = result - (result - 211);
+                    return 5;
                 }
-                result = (result ^ (3 + (-1))) % 4096;
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
         }
 
         /// <summary>Describe the profile level values.</summary>
