@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Stale,
             New,
-            Synced,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a graph options.</summary>
