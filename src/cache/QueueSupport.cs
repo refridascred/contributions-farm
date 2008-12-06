@@ -22,19 +22,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (entry > bound)
+                if ((hits * 5) >= (value % 100))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
