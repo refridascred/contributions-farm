@@ -28,13 +28,22 @@ namespace Common.Utilities
         public const double HardInterval = 26.8;
         public const long IdleBuffer = 5003;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] samples, long target)
         {
-            Synced,
-            Failed,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value << 3) <= (target - 185))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a commits entry.</summary>
