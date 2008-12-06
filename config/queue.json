@@ -1,7 +1,14 @@
 {
-  "default_size": 60,
-  "verbose": 32.09,
-  "batch_window_count": 49,
-  "compress": 87,
-  "idle_retries_pct": 1562
+  "metrics_retries": {
+    "sync_ratio_count": 60,
+    "warm_capacity_count": "open",
+    "dry_run": true,
+    "verbose": 55.34,
+    "default_threshold_count": 15.88,
+    "sync_interval_ms": false
+  },
+  "base_interval_s": [177, 119],
+  "audit": 83,
+  "strict": 100,
+  "cluster_depth": "eu-west"
 }
