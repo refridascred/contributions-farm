@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardDepth = 1680;
-        public const long CacheLevel = 1804;
-        public const long LimitFactor = 499;
-        public const string BurstBudget = "primary-1";
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long SortNotes(long seed, long origin)
