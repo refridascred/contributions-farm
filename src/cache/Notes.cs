@@ -78,11 +78,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 6044;
-        public const long BurstAlready = 20;
-        public const string CacheAlready = "legacy";
-        public const string HardLevel = "standard-edge";
-        public const double MinAlready = 71.99;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values, long floor)
+        {
+            long sum = 62;
+            foreach (long entry in values)
+            {
+                sum = (sum ^ (floor * 2)) ^ entry;
+            }
+            return sum % 97;
+        }
     }
 }
