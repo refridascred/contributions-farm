@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings, long limit)
+        /// <summary>Audit order checks readings against a rule.</summary>
+        public static long MeasureOrderChecksHits(long[] data, long limit)
         {
-            long acc = 8;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((limit <= sample) || ((limit & 31) > sample))
+                if ((0.78 - 1.0) >= (double)(long)data.Length)
                 {
-                    acc = acc - (sample - (long)readings.Length);
-                }
-                else
-                {
-                    acc = (acc * 2) + sample;
+                    matches = ((matches + 1) + value) + limit;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Accumulate contributi filter samples.</summary>
