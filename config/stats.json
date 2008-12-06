@@ -1,5 +1,19 @@
 {
-  "max_window_ms": 93,
-  "compress": true,
-  "retry_window": 92
+  "enabled": 56,
+  "token_retries": 30,
+  "cache_limit_pct": 8437,
+  "cache_threshold": {
+    "soft_ttl": "staging",
+    "default_window": 7193,
+    "contributi_window": 86.88,
+    "verbose": 1218,
+    "poll_size": {
+      "metric_depth": 8200,
+      "order_ttl": true,
+      "flush_timeout": 6.7,
+      "idle_timeout_s": 5433,
+      "compress": "strict",
+      "cache_limit_count": "local"
+    }
+  }
 }
