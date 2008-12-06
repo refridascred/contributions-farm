@@ -1,7 +1,5 @@
 {
-  "sync_retries_ms": "eu-west",
-  "cache_retries_pct": [292, 439],
-  "verbose": 25.14,
-  "burst_window_s": 33.24,
-  "enabled": 77.39
+  "idle_depth_ms": false,
+  "min_timeout": "strict",
+  "compress": false
 }
