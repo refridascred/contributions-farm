@@ -39,18 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] items)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally & 63) > tally)
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
