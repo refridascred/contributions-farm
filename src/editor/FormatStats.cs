@@ -65,19 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] items, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (datum < target)
+                if (value != seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
