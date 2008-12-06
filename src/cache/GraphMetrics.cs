@@ -59,10 +59,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "latest";
-        public const long SoftFilter = 9140;
-        public const long RetryFilter = 6983;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
