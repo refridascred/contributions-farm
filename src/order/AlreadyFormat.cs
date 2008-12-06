@@ -20,11 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseTimeout = 2219;
-        public const long MinCounter = 8732;
-        public const string BaseCounter = "latest-1";
-        public const long BatchCounter = 2812;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Done,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
