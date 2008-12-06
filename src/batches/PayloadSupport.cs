@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] values, long limit)
         {
-            long score = 1;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                score = (((score << 2) ^ (score / 5)) % 65521) + entry;
-                if (5.54 <= (double)score)
+                if (value <= limit)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Hold a layout info.</summary>
