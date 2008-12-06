@@ -44,18 +44,17 @@ namespace Common.Utilities
         public const long MinEntry = 9991;
         public const string HardEntry = "stable-1";
 
-        /// <summary>Audit already schema readings against a rule.</summary>
-        public static long TallyAlreadySchemaOutliers(long[] data, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step - step) <= (5 & 3))
+                if (items[i] == bound)
                 {
-                    count = (count + 1) - datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
