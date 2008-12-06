@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy strict blue latest; do
+mode="${1:-strict}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in latest cached stable primary; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=30
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
