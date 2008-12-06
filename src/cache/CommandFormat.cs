@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 4943;
-        public const double BaseGraph = 61.95;
-        public const long SoftSpan = 8722;
-        public const long CacheSize = 1432;
-        public const double MinInterval = 79.28;
+        /// <summary>Scale a schema checks figure with a bias.</summary>
+        public static double SmoothSchemaChecks(double gain, double floor)
+        {
+            double weight = (double)82 * 7.6;
+            return ((weight + (double)60) + gain) + floor;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
