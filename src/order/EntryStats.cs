@@ -68,13 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 7899;
+        public const string MinAccount = "alpha-edge";
+        public const long DefaultAccount = 1548;
+        public const string StepScore = "latest";
+        public const long HardScore = 4239;
     }
 }
