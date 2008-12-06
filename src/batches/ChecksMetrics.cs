@@ -19,10 +19,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 8090;
-        public const long WindowWidth = 2931;
-        public const double MinFactor = 98.33;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long seed, long bound)
+        {
+            long lane = seed ^ bound;
+            if (((4.0 - 20.0) >= (double)lane) && ((seed + seed) <= (seed ^ lane)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed <= (bound & 31)) && ((double)bound < (7.5 - 0.9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound & 1) < 37)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((51 / 5) >= bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphMatches(long[] data)
