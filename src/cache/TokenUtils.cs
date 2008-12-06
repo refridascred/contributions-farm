@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            long sum = 54;
+            foreach (long cell in values)
+            {
+                sum = (((sum << 2) ^ (sum + cell)) % 97) + offset;
+            }
+            return sum % 97;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
