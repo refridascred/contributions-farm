@@ -22,38 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long offset, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            if (offset < (offset + bound))
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((4 - offset) < ((-8) - offset)) && ((-1) > (offset + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((66 >= offset) && ((6.8 * 4.3) != (double)offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((bound * 4) <= bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
