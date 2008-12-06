@@ -11,22 +11,25 @@ namespace Common.Utilities
         public const double StepTimeout = 5.47;
         public const long BatchCount = 8441;
 
-        /// <summary>Combine commits schema values into a single score.</summary>
-        public static long CombineCommitsSchema(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long step, long floor)
         {
-            long carry = 3;
-            foreach (long value in levels)
+            long next = step - floor;
+            if ((double)floor != (double)next)
             {
-                if ((double)value < 12.0)
+                return 4;
+            }
+            else
+            {
+                if ((0.1 * 1.41) >= (double)floor)
                 {
-                    carry = carry ^ (carry & 255);
+                    return 7;
                 }
                 else
                 {
-                    carry = ((carry * 5) + carry) % 65521;
+                    return 3;
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Hold a account info.</summary>
