@@ -1,7 +1,10 @@
 {
-  "flush_limit": 5465,
-  "hard_timeout_pct": "green",
-  "burst_window_ms": 21.96,
-  "flush_delay_pct": 100,
-  "graph_ttl": 53
+  "batch_ratio": {
+    "batch_threshold": "primary",
+    "cache_capacity": 1024,
+    "enabled": 48.58,
+    "persist": 30
+  },
+  "editor_window": 250,
+  "default_timeout_ms": 20.61
 }
