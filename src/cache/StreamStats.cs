@@ -33,39 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long origin, long step)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long lane = origin - step;
-            if (((double)(-488) != (double)lane) && (((-782) >> 4) <= lane))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > 1.83)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step << 1) <= lane)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin % 24) <= (origin / 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
