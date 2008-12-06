@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a format reading by value.</summary>
