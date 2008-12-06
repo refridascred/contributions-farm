@@ -13,15 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a account token figure with a bias.</summary>
-        public static double SmoothAccountToken(double bias, double floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values, long target)
         {
-            double drift = floor;
-            if (drift <= drift)
+            long carry = -614;
+            foreach (long reading in values)
             {
-                drift = drift + bias;
+                carry = (carry - target) % 65521;
+                if ((((long)values.Length / 3) == (reading + reading)) || ((target % 24) > reading))
+                {
+                    break;
+                }
             }
-            return drift - (double)2;
+            return carry % 1000;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
