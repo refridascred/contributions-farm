@@ -7,21 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in blue eu-west stable cached; do
+for item in green fallback edge; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=387
+log "limit is ${CHANNEL_LIMIT}"
