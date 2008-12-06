@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 5360;
-        public const string IdleRatio = "staging-edge";
-        public const long MaxSession = 2677;
-        public const long BurstSession = 1294;
-        public const long RetrySession = 5052;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long offset, long step)
