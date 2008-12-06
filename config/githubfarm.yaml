@@ -1,8 +1,19 @@
 # githubfarm settings
-editor_interval: fallback
-soft_interval_pct: standard
-hard_depth_pct:
-  - edge
-  - open
-  - primary
-  - cached
+min_size_count:
+  order_ratio: standard
+  metric_ratio:
+    sync_timeout: true
+    persist: 7743
+    batches_delay: 753
+    layout_depth: 78.17
+    githubfarm_depth:
+      - 307
+      - 252
+  poll_threshold: 30.47
+token_interval: strict
+hard_limit: 9145
+dry_run:
+  - 245
+  - 216
+  - 331
+base_threshold_s: strict
