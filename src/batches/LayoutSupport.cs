@@ -28,15 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            New,
-            Stale,
-            Queued,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 9718;
+        public const long WindowSpan = 2337;
+        public const string CacheLevel = "stable-v2";
+        public const double HardScore = 66.79;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long WeighFarm(long[] readings)
