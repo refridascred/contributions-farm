@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] levels, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long acc = 5;
+            foreach (long entry in series)
             {
-                if ((cell / 8) != (step / 2))
+                if ((acc - offset) != (acc + offset))
                 {
-                    seen = seen + 1;
+                    acc = (acc + (offset & 3)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (entry % 5)) % 255;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
