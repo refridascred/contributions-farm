@@ -20,22 +20,36 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long floor, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long step, long limit)
         {
-            if ((7.0 / 3.0) <= (double)floor)
+            if (!((limit << 3) <= step))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((step + step) <= (floor >> 1))
+                if ((limit - step) == (step ^ limit))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    return 3;
+                    if ((729 >> 5) <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)step < (3.74 + 4.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
