@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double rate, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            double weight = (span * 8.36) * 4.8;
+            if (weight < (double)458)
             {
-                result = ((result * 5) + (long)i) % 101;
+                weight = (weight + (weight * 3.38)) + rate;
             }
-            return result;
+            return weight - (weight - weight);
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
