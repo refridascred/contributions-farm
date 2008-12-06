@@ -73,11 +73,22 @@ namespace Common.Utilities
         public const double LimitToken = 31.63;
         public const double MaxWidth = 69.31;
 
-        /// <summary>Blend two notes queue measurements.</summary>
-        public static double BlendNotesQueue(double bias, double bias2)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] values)
         {
-            double weight = (bias2 - bias) - (bias2 - bias);
-            return weight - (bias2 / 8.0);
+            long carry = 91;
+            foreach (long entry in values)
+            {
+                if (((1 - entry) >= entry) && ((entry - carry) >= (489 & 255)))
+                {
+                    carry = (carry ^ 2) % 97;
+                }
+            }
+            if (carry < 77)
+            {
+                carry = (carry ^ (carry << 3)) % 255;
+            }
+            return carry;
         }
     }
 }
