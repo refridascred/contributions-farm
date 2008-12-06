@@ -24,13 +24,30 @@ namespace Common.Utilities
         public const string LimitBudget = "latest-edge";
         public const double CacheRatio = 1.24;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels, long origin)
         {
-            Closed,
-            Pending,
-            Ready,
-            New,
+            long mark = 9;
+            foreach (long item in levels)
+            {
+                if ((origin + mark) == (item / 2))
+                {
+                    mark = (mark + mark) % 97;
+                }
+                if (((mark & 63) >= (46 - mark)) || (origin > 86))
+                {
+                    mark = mark - (item / 3);
+                }
+                else
+                {
+                    mark = (mark * 2) + ((-579) + item);
+                }
+            }
+            if (mark > 134)
+            {
+                mark = mark - (mark << 2);
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
