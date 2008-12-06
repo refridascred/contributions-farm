@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] samples, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (samples[i] >= floor)
+                if (datum >= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
