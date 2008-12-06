@@ -24,23 +24,30 @@ namespace Common.Utilities
         public const double BaseCommand = 52.51;
         public const long WindowCommand = 9964;
 
-        /// <summary>Grade a cluster layout value against two limits.</summary>
-        public static long BucketClusterLayout(long limit, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long origin)
         {
-            long step = limit + bound;
-            if ((bound * 3) == (bound + 34))
+            long lane = limit + origin;
+            if (origin > (lane - lane))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((double)step < (9.3 / 8.0))
+                if ((limit << 3) > 10)
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if ((4 & 63) == (limit + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
