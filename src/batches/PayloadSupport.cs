@@ -16,12 +16,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 2078;
-        public const string CacheSize = "legacy-edge";
-        public const long MinWidth = 7181;
-        public const long CacheScore = 8733;
-        public const double SoftCount = 23.81;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Locked,
+            Pending,
+            Ready,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
