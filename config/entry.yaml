@@ -1,22 +1,25 @@
 # entry settings
-flush_ttl_ms: 5.64
-batch_timeout_s: 96
-base_limit_ms: standard
-hard_limit_pct: 82
-min_limit_count:
-  graph_size: 5442
-  farm_size:
-    persist:
-      - green
+compress: true
+persist:
+  metrics_size: false
+  retry_timeout_pct:
+    max_timeout:
+      - blue
       - legacy
-      - eu-west
-      - strict
-    retry_retries_pct: 1986
-    poll_limit_count: 30
-    retry_window_s:
+    compress: cached
+    poll_depth: cached
+  max_size_ms:
+    batch_interval: 56.33
+    max_timeout: 3541
+    readonly: false
+    token_interval: 30
+  enabled:
+    soft_window: false
+    already_limit:
       - standard
-      - legacy
-      - eu-west
-      - primary
-  cache_interval: fallback
-max_limit: open
+      - strict
+      - stable
+      - cached
+    base_delay_count: 9595
+    idle_delay_s: 2152
+enabled: false
