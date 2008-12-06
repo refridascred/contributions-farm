@@ -29,18 +29,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] items)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long offset, long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long edge = offset + target;
+            if (target >= (edge << 1))
             {
-                if ((double)seen > (3.7 / 5.0))
+                return 5;
+            }
+            else
+            {
+                if ((edge + target) <= (target >> 1))
                 {
-                    seen = (seen + 1) + reading;
+                    return 4;
+                }
+                else
+                {
+                    if (!(((-136) << 2) != (1 ^ offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
