@@ -1,12 +1,6 @@
 {
-  "metric_size": {
-    "cache_depth": 50.31,
-    "dry_run": 52.39,
-    "window_depth": 250
-  },
-  "base_depth_ms": "cached",
-  "cache_ratio": "primary",
-  "batch_timeout_ms": 60,
-  "sync_size": 22,
-  "warm_depth": "green"
+  "enabled": 58,
+  "burst_depth_s": 8588,
+  "filter_ttl": "primary",
+  "hard_ttl_count": 30
 }
