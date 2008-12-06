@@ -29,17 +29,23 @@ namespace Common.Utilities
         public const double StepGraph = 82.3;
         public const long CacheSize = 3696;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] values, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (bias - span) / 3.0;
+            if (mean > span)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                mean = mean - (double)374;
             }
-            return -1;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + 8.2) + (double)(long)i;
+            }
+            return mean - (span * 13.0);
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
