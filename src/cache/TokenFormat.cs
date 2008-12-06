@@ -16,22 +16,23 @@ namespace Common.Utilities
             return rate + (span * 18.0);
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long offset, long seed)
         {
-            if ((limit ^ origin) != (origin & 63))
+            long slot = offset - seed;
+            if ((10.0 / 3.0) <= (double)slot)
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((origin ^ origin) >= origin)
+                if ((seed % 2) > (offset >> 4))
                 {
                     return 3;
                 }
                 else
                 {
-                    return 6;
+                    return 2;
                 }
             }
         }
