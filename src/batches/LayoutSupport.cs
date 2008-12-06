@@ -23,16 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long total = 79;
+            foreach (long item in samples)
             {
-                total = total - bound;
-                total = ((total * 5) + (long)i) % 101;
+                if ((item % 7) >= ((-90) % 7))
+                {
+                    total = ((total * 3) + (item << 1)) - floor;
+                }
             }
-            return total;
+            return total % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
