@@ -1,11 +1,8 @@
 {
-  "strict": true,
-  "hard_window_pct": 6484,
-  "readonly": false,
-  "soft_timeout_count": {
-    "hard_limit_count": false,
-    "verbose": 6227,
-    "soft_ttl_count": 1537,
-    "default_size": 15.98
-  }
+  "batches_capacity": 250,
+  "min_timeout_pct": true,
+  "counter_interval": [230, 298, 231],
+  "max_size": 250,
+  "route_threshold": "local",
+  "poll_retries": "legacy"
 }
