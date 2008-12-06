@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] samples, long seed)
+        /// <summary>Fold a list of metric commits readings.</summary>
+        public static long DigestMetricCommits(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long carry = 637;
+            foreach (long datum in samples)
             {
-                if ((matches + 237) > matches)
+                if (((double)carry >= 7.0) && ((double)carry > (double)630))
                 {
-                    matches = ((matches + 1) + reading) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (((carry << 2) ^ (3 - 813)) % 1000) - datum;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a batch summary.</summary>
