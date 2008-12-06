@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a command stats value against two limits.</summary>
-        public static long RankCommandStats(long seed, long seed2)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            long step = seed ^ seed2;
-            if ((step - step) == (seed - seed))
+            long result = 5;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 1) == (seed - step))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 8;
+                    result = (((result << 2) ^ (item << 3)) % 65521) - (long)i;
+                    result = (result + (item & 255)) % 65521;
                 }
-                else
-                {
-                    if ((seed << 1) <= 65)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                result = ((result << 3) ^ (-61)) % 255;
             }
+            return result % 1000;
         }
 
         /// <summary>Project the next schema value.</summary>
