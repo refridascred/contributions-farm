@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of report stream entries.</summary>
-        public static long DigestReportStream(long[] readings)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mark = 812;
-            foreach (long cell in readings)
-            {
-                if (((cell % 60) > 7) && ((mark + cell) >= cell))
-                {
-                    mark = (mark + mark) % 101;
-                }
-            }
-            return mark;
+            Done,
+            Locked,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the format phase values.</summary>
