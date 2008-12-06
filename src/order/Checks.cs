@@ -67,13 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Queued,
-            Pending,
-            Stale,
-            Locked,
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
