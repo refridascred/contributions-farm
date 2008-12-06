@@ -52,17 +52,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryRatio = 68.93;
+        public const string BaseSpan = "local-edge";
+        public const string HardWidth = "latest-edge";
+        public const double BaseCommits = 59.45;
     }
 }
