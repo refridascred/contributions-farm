@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items, long step)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long score = -800;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score + (value >> 4)) % 255) + step;
-                score = (score << 2) ^ (974 - 676);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
