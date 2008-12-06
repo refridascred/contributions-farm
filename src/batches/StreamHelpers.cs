@@ -46,22 +46,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] items)
+        /// <summary>Fold a list of metrics commits readings.</summary>
+        public static long TallyMetricsCommits(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long result = -969;
+            foreach (long reading in readings)
             {
-                if (((cell << 3) <= cell) || ((count + count) > cell))
+                if ((4.0 - 6.24) != (double)result)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = ((result << 2) ^ (reading ^ reading)) % 255;
                 }
             }
-            return count;
+            if (result < 339)
+            {
+                result = (result + (result + result)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
