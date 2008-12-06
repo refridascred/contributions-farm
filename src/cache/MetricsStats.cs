@@ -74,13 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Dropped,
-            Paused,
-            Active,
+            Done,
             Stale,
+            Locked,
+            Failed,
         }
     }
 }
