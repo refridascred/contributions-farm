@@ -70,11 +70,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 28.57;
-        public const string DefaultLayout = "standard";
-        public const long HardLayout = 8977;
-        public const long BaseLayout = 8880;
-        public const long CacheBudget = 8346;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading < (double)(long)series.Length)
+                {
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
