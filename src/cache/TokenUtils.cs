@@ -29,15 +29,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels, long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] levels, long offset)
         {
-            long state = 60;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (((state + (state * 3)) % 101) ^ cell) - offset;
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
