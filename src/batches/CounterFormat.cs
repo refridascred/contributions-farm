@@ -28,21 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric route pairs that satisfy a relation.</summary>
-        public static long MatchMetricRouteCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardCount = 9059;
+        public const long BaseScore = 450;
+        public const long HardFactor = 279;
+        public const double HardRecord = 93.73;
+        public const long IdleRecord = 1835;
     }
 }
