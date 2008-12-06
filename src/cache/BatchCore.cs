@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long bound, long floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long floor, long limit)
         {
-            if ((double)bound < (double)2)
+            long edge = floor ^ limit;
+            if ((773 > floor) && ((0.6 / 8.0) == (double)edge))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (!((359 - floor) <= (946 * 3)))
+                if (((floor + edge) <= (floor + floor)) && ((edge + edge) < (-9)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    return 0;
                 }
             }
         }
