@@ -1,6 +1,11 @@
 {
-  "poll_ratio_pct": 3506,
-  "sync_retries_pct": "standard",
-  "soft_threshold": 66.88,
-  "order_interval": 85.92
+  "base_capacity_ms": 6366,
+  "default_depth_s": {
+    "flush_limit_s": 30,
+    "window_retries": false,
+    "poll_threshold_pct": 12.07,
+    "min_ratio": "green",
+    "soft_size": 40
+  },
+  "max_limit_pct": 30
 }
