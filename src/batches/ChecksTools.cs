@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] data)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)matches > (7.2 - 9.0))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
