@@ -26,22 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] items)
+        /// <summary>Measure how many stream record samples are out of range.</summary>
+        public static long MeasureStreamRecordOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!(reading > (reading << 3)))
+                if ((((780 ^ hits) >= hits) || ((double)value > (7.34 - 4.0))) || (hits <= (value & 15)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Blend two farm measurements.</summary>
