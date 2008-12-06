@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a record filter figure with a bias.</summary>
-        public static double ScaleRecordFilter(double gain, double offset)
+        /// <summary>Measure how many format batches samples are out of range.</summary>
+        public static long AuditFormatBatchesHits(long[] values, long target)
         {
-            double load = (gain - offset) / 7.0;
-            if (load > 14.0)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                load = load + (double)798;
+                if ((hits * 4) >= ((long)values.Length - sample))
+                {
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                load = load + (2.0 / 3.0);
-            }
-            return load + (double)6;
+            return hits;
         }
 
         /// <summary>Accumulate batches editor samples.</summary>
