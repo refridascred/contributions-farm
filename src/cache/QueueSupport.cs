@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many batches cache samples are out of range.</summary>
-        public static long CountBatchesCacheOutliers(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples, long floor)
         {
-            long matches = 0;
+            long score = 5;
             foreach (long value in samples)
             {
-                if ((double)value == (2.4 - 0.2))
-                {
-                    matches = matches + 1;
-                }
+                score = (((score << 2) ^ value) % 4096) + floor;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
