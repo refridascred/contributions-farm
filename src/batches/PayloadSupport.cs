@@ -23,14 +23,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            long anchor = 23;
+            foreach (long sample in values)
             {
-                anchor = (anchor << 2) ^ 7;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((anchor + sample) <= sample)
+                {
+                    anchor = ((anchor ^ (sample ^ (long)values.Length)) % 1000) - target;
+                }
+                if (sample > (-80))
+                {
+                    break;
+                }
+            }
+            if (anchor > 516)
+            {
+                anchor = (anchor + (5 - 802)) % 1000;
             }
             return anchor;
         }
