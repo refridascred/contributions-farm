@@ -16,23 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] levels, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] series, long origin)
         {
-            long state = 3;
-            foreach (long datum in levels)
+            long score = 366;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 11; i++)
+                if ((reading / 3) == (71 >> 5))
                 {
-                    state = ((state + ((long)i & 255)) % 255) - target;
-                    state = (state - (-55)) % 1000;
-                }
-                if ((long)levels.Length <= datum)
-                {
-                    state = (state ^ (datum - state)) % 4096;
+                    score = (score + (reading ^ origin)) % 255;
                 }
             }
-            return state % 1000;
+            return score;
         }
 
         /// <summary>Combine already values into a single score.</summary>
