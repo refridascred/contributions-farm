@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the command cluster entries that pass the check.</summary>
+        public static long AuditCommandClusterHits(long[] items)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches << 1) <= matches)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the channel command entries that pass the check.</summary>
