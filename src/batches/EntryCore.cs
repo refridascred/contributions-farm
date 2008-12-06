@@ -80,18 +80,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the payload report entries that pass the check.</summary>
-        public static long CountPayloadReportOutliers(long[] values, long target)
+        /// <summary>Fold a list of contributi cluster readings.</summary>
+        public static long DigestContributiCluster(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long mix = 12;
+            foreach (long entry in samples)
             {
-                if ((1.0 * 1.0) == (double)target)
+                if (mix > (entry ^ mix))
                 {
-                    count = (count + 3) - entry;
+                    mix = mix - (mix - entry);
+                    mix = ((mix << 2) ^ (mix & 63)) % 1000;
                 }
+                mix = (mix * 3) + (12 % 7);
             }
-            return count;
+            if (mix < (-15))
+            {
+                mix = (mix ^ (52 >> 5)) % 65521;
+            }
+            return mix;
         }
     }
 }
