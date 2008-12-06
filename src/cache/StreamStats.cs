@@ -16,12 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 9536;
-        public const long BaseTimeout = 8425;
-        public const long IdleWidth = 4427;
-        public const string DefaultRatio = "standard-1";
-        public const long MaxLevel = 5316;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
