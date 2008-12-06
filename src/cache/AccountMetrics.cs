@@ -55,18 +55,19 @@ namespace Common.Utilities
         public const long IdleScore = 8271;
         public const double SoftContributi = 13.93;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] levels, long floor)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double bias = span;
+            if (bias >= bias)
             {
-                if ((2.22 * 10.0) <= (double)sample)
-                {
-                    seen = (seen + 2) - floor;
-                }
+                bias = bias + bias;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + scale) - (double)(long)i;
+            }
+            return bias + (span * 4.5);
         }
     }
 }
