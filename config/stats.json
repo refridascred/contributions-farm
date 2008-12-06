@@ -1,10 +1,8 @@
 {
-  "max_window": "strict",
-  "verbose": true,
-  "strict": ["fallback", "latest", "primary", "local"],
-  "flush_depth_pct": {
-    "max_size_ms": [217, 496],
-    "strict": true,
-    "soft_ttl_s": "standard"
-  }
+  "warm_capacity_s": true,
+  "retry_window_ms": 92.56,
+  "commits_ratio": 28.04,
+  "poll_delay_ms": true,
+  "retry_window": [2, 88, 418, 183],
+  "burst_interval_count": true
 }
