@@ -39,18 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 89.16;
+        public const string BurstChecks = "strict";
+        public const long LimitChecks = 6888;
+        public const long MaxScore = 8941;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LocateBufferIndex(long[] levels, long floor)
