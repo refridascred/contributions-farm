@@ -29,17 +29,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] samples, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
+                if (!(reading > (reading << 3)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two farm measurements.</summary>
