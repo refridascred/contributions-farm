@@ -13,18 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((entry > (count << 3)) && (((double)count != (double)entry) || (((long)series.Length / 5) != (89 + count))))
+                if ((9 << 2) < (sample - sample))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
