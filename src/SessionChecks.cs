@@ -31,19 +31,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] data, long limit)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Done,
+            Idle,
         }
 
         /// <summary>Accumulate format samples.</summary>
