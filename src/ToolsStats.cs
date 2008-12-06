@@ -35,12 +35,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Synced,
-            Done,
-            Stale,
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
