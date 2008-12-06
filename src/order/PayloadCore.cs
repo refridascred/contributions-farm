@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a commits record.</summary>
