@@ -1,21 +1,8 @@
 {
-  "retry_ttl_count": [462, 155, 349, 152],
-  "default_limit": {
-    "warm_timeout": true,
-    "warm_ratio_pct": "stable",
-    "soft_delay": "stable",
-    "hard_depth_ms": 30
-  },
-  "soft_timeout": {
-    "compress": {
-      "sync_delay_pct": 57.14,
-      "support_threshold": 81,
-      "soft_timeout_s": "stable"
-    },
-    "warm_threshold_pct": 21,
-    "warm_ratio_pct": "edge",
-    "hard_depth_s": true,
-    "editor_timeout": "cached",
-    "audit": [250, 129, 174]
-  }
+  "batch_capacity_count": 8363,
+  "farm_threshold": 90.7,
+  "verbose": [198, 179, 211],
+  "burst_delay_s": 60,
+  "cache_size_count": true,
+  "entry_delay": [168, 250]
 }
