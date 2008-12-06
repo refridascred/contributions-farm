@@ -28,19 +28,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double rate, double floor)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            double load = rate;
-            if (load < (double)(-97))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (load - rate)) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + rate;
-            }
-            return load + (load * 17.0);
+            return seen;
         }
 
         /// <summary>Describe the farm level values.</summary>
