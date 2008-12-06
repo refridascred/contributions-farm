@@ -28,22 +28,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the commits notes entries that pass the check.</summary>
-        public static long AuditCommitsNotesGaps(long[] readings, long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((matches << 3) < (value ^ value)) && ((matches << 3) == (target - matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Stale,
+            Paused,
         }
     }
 }
