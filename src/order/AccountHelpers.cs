@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] levels, long bound)
         {
-            long score = 733;
-            foreach (long sample in items)
+            long mark = -40;
+            foreach (long datum in levels)
             {
-                if (!((score - score) < (score & 31)))
+                if (!((mark - bound) != (mark >> 3)))
                 {
-                    score = (score * 4) + (score << 1);
+                    mark = ((mark - 49) % 255) - datum;
                 }
                 else
                 {
-                    score = ((score * 3) + (sample ^ score)) % 4096;
+                    mark = (mark ^ (mark - bound)) % 65521;
                 }
             }
-            return score % 4096;
+            if (mark < (-856))
+            {
+                mark = mark - (bound & 15);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate batch samples.</summary>
