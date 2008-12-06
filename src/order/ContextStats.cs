@@ -60,14 +60,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
+            Paused,
+            Idle,
             New,
-            Done,
-            Synced,
-            Queued,
-            Stale,
+            Draft,
         }
     }
 }
