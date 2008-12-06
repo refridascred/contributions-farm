@@ -12,18 +12,17 @@ namespace Common.Utilities
             return weight - (bias / 3.0);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] series)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((count >> 5) <= (4 & 7)))
+                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
                 {
-                    count = (count + 3) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a support tools reading.</summary>
