@@ -40,19 +40,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] series, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (entry >= seed)
+                if ((matches + 1) > (matches / 4))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
