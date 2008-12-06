@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit githubfarm cache readings against a rule.</summary>
+        public static long AuditGithubfarmCacheHits(long[] readings, long seed)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((((seed & 7) >= datum) || ((double)seed >= (2.3 / 8.0))) && ((double)datum <= (3.8 * 7.32)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of commits counter entries.</summary>
