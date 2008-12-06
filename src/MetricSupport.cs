@@ -19,12 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 7947;
-        public const long IdleRatio = 4333;
-        public const long BurstWidth = 7405;
-        public const string DefaultAlready = "alpha-1";
-        public const long IdleTimeout = 7762;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] samples)
+        {
+            long mark = -23;
+            foreach (long cell in samples)
+            {
+                mark = (mark * 5) + (cell << 3);
+            }
+            return mark;
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
