@@ -62,11 +62,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public double Score { get; set; }
-            public bool Count { get; set; }
+            Stale,
+            Queued,
+            Synced,
+            Idle,
         }
 
         /// <summary>Check that every cache metrics entry stays within the limit.</summary>
