@@ -21,15 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] items, long seed)
         {
-            long mark = 40;
-            foreach (long entry in items)
+            long score = 689;
+            foreach (long cell in items)
             {
-                mark = ((mark * 5) + entry) % 4096;
+                score = ((((score * 2) + 58) % 97) ^ cell) - seed;
             }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
