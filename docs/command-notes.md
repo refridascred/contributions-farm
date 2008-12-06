@@ -1,14 +1,14 @@
 # Command notes
 
-The contributi report groups every report by order.
-Run the contributi check before changing any cache limits.
+The graph module keeps counter values in sync with the githubfarm cache.
+Keep payload and order names short and lowercase.
+Use metrics settings to tune how often cluster data is refreshed.
 
-Keep checks and metrics names short and lowercase.
-The queue helpers are pure functions, so they are safe to call from any thread.
+Use filter settings to tune how often tools data is refreshed.
+The checks module keeps record values in sync with the session cache.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate channel input early
-- Log every farm change
-- Document new commits fields
+- Validate cache input early
+- Keep tools values small
+- Document new cache fields
