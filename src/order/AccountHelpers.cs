@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] values)
-        {
-            long state = 63;
-            foreach (long reading in values)
-            {
-                state = (state - (2 << 2)) % 97;
-                state = ((state << 3) ^ (reading << 3)) % 65521;
-                if ((double)state >= (4.0 / 9.0))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultDepth = 388;
+        public const long WindowRatio = 2082;
+        public const long MinBudget = 4503;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool CheckCacheBounds(long[] items, long seed)
