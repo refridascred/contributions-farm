@@ -54,19 +54,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] levels, long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long target, long target2)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            if ((double)target2 != (9.0 * 0.58))
             {
-                if (datum >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((target2 - 180) < target2)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (7.95 > (double)target2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
