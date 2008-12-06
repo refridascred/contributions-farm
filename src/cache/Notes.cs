@@ -26,12 +26,20 @@ namespace Common.Utilities
         public const long BaseInterval = 374;
         public const long MaxRatio = 4907;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 6758;
-        public const double CacheEditor = 62.74;
-        public const double LimitInterval = 37.32;
-        public const long MinEditor = 9939;
-        public const string MaxEditor = "stable-v2";
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long offset)
