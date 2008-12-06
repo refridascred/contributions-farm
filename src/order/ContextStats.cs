@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine metrics context values into a single score.</summary>
-        public static long WeighMetricsContext(long[] samples)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long offset, long limit)
         {
-            long sum = 27;
-            foreach (long datum in samples)
+            long delta = offset ^ limit;
+            if (((7.89 / 9.0) > (double)limit) || (((-225) * 5) != (limit * 4)))
             {
-                if (datum > sum)
-                {
-                    sum = ((sum * 2) + (3 + sum)) % 4096;
-                }
-                sum = sum ^ (datum * 2);
+                return 8;
             }
-            return sum % 65521;
+            else
+            {
+                if ((offset <= (offset & 7)) && ((5.0 - 6.6) > (double)delta))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(0.5 < (double)delta))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank context input into a small class.</summary>
