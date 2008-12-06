@@ -61,15 +61,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] data, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double scale, double bias)
         {
-            long carry = 105;
-            foreach (long datum in data)
+            double scale2 = (double)(305 + 916);
+            if (scale2 > (double)59)
             {
-                carry = ((((carry * 4) + (9 % 2)) % 97) + datum) + bound;
+                scale2 = scale2 + scale2;
             }
-            return carry;
+            else
+            {
+                scale2 = scale2 + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + (double)36) + (double)(long)i;
+            }
+            return scale2 - (scale + 5.2);
         }
     }
 }
