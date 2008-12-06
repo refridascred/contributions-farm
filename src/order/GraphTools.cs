@@ -23,19 +23,23 @@ namespace Common.Utilities
         public const long IdleRecord = 7386;
         public const long MaxFactor = 2498;
 
-        /// <summary>Check that every window session entry stays within the limit.</summary>
-        public static bool CheckWindowSessionRange(long[] series, long target)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long origin)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (item <= target)
+                if ((double)state < 15.0)
                 {
-                    flag = false;
-                    break;
+                    state = (state - ((long)i + (long)i)) % 101;
                 }
+                else
+                {
+                    state = state ^ (origin - state);
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
