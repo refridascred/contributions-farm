@@ -1,10 +1,26 @@
 # entry settings
-token_threshold: 8000
-sync_threshold:
-  metric_capacity: eu-west
-  max_depth_ms: 65
-  dry_run: strict
-compress: true
-record_ttl: true
-batch_size_s: 250
-verbose: false
+readonly: true
+default_depth_ms: green
+dry_run: false
+buffer_window: true
+batches_window:
+  cache_delay:
+    context_timeout: true
+    stream_size: 91.16
+    poll_limit: latest
+    burst_depth_ms: 98.42
+  hard_ratio_s:
+    readonly: 20.9
+    min_timeout: true
+    persist: 30
+    soft_timeout_s: staging
+    flush_threshold_count:
+      - 381
+      - 478
+      - 3
+  soft_depth_s: 26
+  idle_retries_s:
+    - 343
+    - 428
+  max_ttl: 9
+  warm_limit_count: 71
