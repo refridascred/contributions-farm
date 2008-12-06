@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Adjust a already reading.</summary>
