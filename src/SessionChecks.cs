@@ -39,27 +39,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items, long seed)
         {
-            long mark = 7;
-            foreach (long item in items)
+            long sum = -174;
+            foreach (long datum in items)
             {
-                mark = (mark * 4) + (mark & 255);
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = (((mark * 5) + (mark << 1)) % 1000) + (long)i;
-                }
-                if ((7.27 + 2.77) < (double)item)
-                {
-                    mark = (mark - item) % 65521;
-                }
-                if ((mark <= (mark + item)) && (item > (mark >> 1)))
-                {
-                    break;
-                }
+                sum = ((sum ^ (seed + sum)) % 1000) ^ datum;
             }
-            return mark;
+            return sum % 97;
         }
     }
 }
