@@ -73,18 +73,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] items, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double bias2 = (bias / 9.0) + (bias + 4.6);
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= (7 % 24))
-                {
-                    hits = (hits + 1) - offset;
-                }
+                bias2 = ((bias2 + (double)690) + (double)(long)i) - offset;
             }
-            return hits;
+            return bias2 + bias2;
         }
 
         /// <summary>Hold a cluster stats.</summary>
