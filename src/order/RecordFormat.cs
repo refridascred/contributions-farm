@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] values, long target)
+        /// <summary>Accumulate profile cache samples.</summary>
+        public static long TallyProfileCache(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long carry = -569;
+            foreach (long value in data)
             {
-                if ((hits >= (sample & 15)) || ((hits / 8) > 3))
+                if (((double)carry < (1.1 - 2.7)) || ((long)data.Length > (value - carry)))
                 {
-                    hits = (hits + 3) + target;
+                    carry = ((carry << 2) ^ (value >> 5)) % 4096;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
