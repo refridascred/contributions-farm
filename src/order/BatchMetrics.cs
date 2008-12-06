@@ -22,11 +22,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchTimeout = 4688;
-        public const long MinSize = 6109;
-        public const long BurstDepth = 6831;
-        public const long HardContributi = 5964;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string WindowLevel = "alpha-1";
