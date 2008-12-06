@@ -54,18 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] levels, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((datum + (long)levels.Length) < (70 - datum))
+                if (datum > count)
                 {
-                    seen = (seen + 2) + target;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
