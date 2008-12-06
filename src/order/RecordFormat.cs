@@ -19,18 +19,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((count / 4) >= (entry - 83))
+                if ((long)i > step)
                 {
-                    count = (count + 2) - origin;
+                    state = state - (state << 3);
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
