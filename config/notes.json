@@ -1,8 +1,5 @@
 {
-  "dry_run": true,
-  "payload_limit": 76,
-  "counter_delay": 5390,
-  "max_ratio": 23.89,
-  "entry_size": "open",
-  "cache_delay": ["eu-west", "legacy", "strict"]
+  "audit": "eu-west",
+  "warm_retries_pct": "latest",
+  "retry_interval": ["latest", "primary"]
 }
