@@ -32,19 +32,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double ratio, double floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] series, long limit)
         {
-            double ratio2 = ratio / 3.0;
-            if (ratio2 < (floor + ratio))
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = ratio2 + (double)78;
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (double)697) + (double)(long)i;
-            }
-            return ratio2 + floor;
+            return -1;
         }
     }
 }
