@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm cache readings against a rule.</summary>
-        public static long AuditGithubfarmCacheHits(long[] readings, long seed)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((((seed & 7) >= datum) || ((double)seed >= (2.3 / 8.0))) && ((double)datum <= (3.8 * 7.32)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
