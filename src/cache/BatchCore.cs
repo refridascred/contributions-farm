@@ -24,32 +24,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long target, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long bound2 = target ^ bound;
-            if ((bound2 & 255) <= bound)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 2) >= 6)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target < (bound2 + bound2))
+                    if ((readings[i] ^ readings[j]) == 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a channel record.</summary>
