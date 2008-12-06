@@ -1,5 +1,6 @@
 {
-  "window_retries": 39.49,
-  "layout_retries": 32.69,
-  "flush_ratio": "strict"
+  "soft_retries_count": 60,
+  "flush_capacity_pct": 3474,
+  "retry_threshold": 88,
+  "poll_delay_pct": "latest"
 }
