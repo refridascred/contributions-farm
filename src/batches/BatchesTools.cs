@@ -29,19 +29,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double bias)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long bound, long bound2)
         {
-            double weight2 = bias;
-            if (weight2 <= weight)
+            if (bound >= (742 << 3))
             {
-                weight2 = weight2 - 8.5;
+                return 5;
             }
             else
             {
-                weight2 = weight2 - weight2;
+                if ((double)bound > 0.4)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)bound2 == (5.43 + 19.0)) && ((bound2 % 3) >= (bound2 + (-241))))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return weight2 - bias;
         }
     }
 }
