@@ -28,15 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the counter state values.</summary>
