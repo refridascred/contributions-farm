@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] values, long offset)
+        /// <summary>Count the entry route entries that pass the check.</summary>
+        public static long MeasureEntryRouteGaps(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((87 >= (reading * 4)) || (offset > (offset - reading)))
+                if (cell < (cell + (long)samples.Length))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) - limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
