@@ -16,15 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Synced,
+            Ready,
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
