@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCount = 10.52;
-        public const long BurstCluster = 3071;
-        public const double BurstScore = 71.07;
-        public const double RetryScore = 38.16;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsMatches(long[] items, long offset)
