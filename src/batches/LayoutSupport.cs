@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 8435;
-        public const double SoftFactor = 92.27;
-        public const long DefaultTimeout = 3242;
-        public const long MinCount = 7505;
-        public const long DefaultCache = 6442;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)origin < 6.5)
+                {
+                    anchor = (anchor - 9) % 65521;
+                }
+                anchor = (anchor + (anchor + anchor)) % 97;
+                anchor = (anchor * 2) + origin;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryInterval = "fallback-edge";
