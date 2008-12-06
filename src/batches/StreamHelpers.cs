@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long MinWidth = 3018;
         public const long BurstCommand = 2866;
 
-        /// <summary>Measure how many queue editor samples are out of range.</summary>
-        public static long TallyQueueEditorGaps(long[] items, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (((8.1 * 19.0) <= (double)seen) && ((limit & 255) >= ((-9) / 2)))
+                if ((mark & 1) < (8 % 97))
                 {
-                    seen = (seen + 3) - item;
+                    mark = mark ^ mark;
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a order options.</summary>
