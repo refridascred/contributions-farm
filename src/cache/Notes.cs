@@ -43,17 +43,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long seed)
+        /// <summary>Project the next support cluster value.</summary>
+        public static double BlendSupportCluster(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (5.1 / 9.0) + (floor / 9.0);
+            if (gain > (double)(-64))
             {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
+                gain = gain + gain;
             }
-            return -1;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + weight;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
