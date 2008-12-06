@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBudget = 8702;
-        public const long IdleBatch = 854;
-        public const long CacheRatio = 7578;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardWidth = 572;
+        public const long MinMetric = 6870;
+        public const long SoftCount = 2709;
+        public const string CacheScore = "alpha-v2";
+        public const long BatchMetric = 375;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long MatchReportCount(long[] samples)
