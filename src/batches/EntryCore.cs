@@ -53,10 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 71.49;
-        public const double BaseProfile = 96.3;
-        public const double BurstProfile = 86.03;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Limit { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double BlendAccount(double ratio, double span)
