@@ -12,10 +12,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftSpan = 10.98;
-        public const double WindowBatches = 92.7;
-        public const long WindowScore = 1155;
+        /// <summary>Combine stream batches values into a single score.</summary>
+        public static long FoldStreamBatches(long[] items, long floor)
+        {
+            long mark = 929;
+            foreach (long entry in items)
+            {
+                if ((double)floor > 0.16)
+                {
+                    mark = (mark - mark) + entry;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (871 >> 5)) % 1000;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
