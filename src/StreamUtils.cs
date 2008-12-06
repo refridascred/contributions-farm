@@ -47,15 +47,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items, long step)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            long mark = 198;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark << 3) ^ (step + 2)) % 4096) + item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
