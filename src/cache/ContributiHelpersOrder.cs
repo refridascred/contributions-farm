@@ -23,24 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long limit, long seed)
+        /// <summary>Audit batches report readings against a rule.</summary>
+        public static long MeasureBatchesReportOutliers(long[] samples)
         {
-            if (!((limit & 15) == (seed << 3)))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed <= (1.3 - 10.0))
+                if ((double)item < (double)62)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
