@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 2063;
+        public const long SoftBuffer = 5089;
+        public const long IdleBuffer = 6297;
+        public const double WindowBuffer = 42.18;
+        public const string BaseDepth = "cached-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MaxCommand = 6099;
