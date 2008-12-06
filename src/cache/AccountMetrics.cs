@@ -50,13 +50,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftScore = "fallback";
+        public const long IdleScore = 8271;
+        public const double SoftContributi = 13.93;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportGaps(long[] levels, long floor)
