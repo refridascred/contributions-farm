@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long floor, long limit)
+        /// <summary>Roll a checks commits counter forward.</summary>
+        public static long IterateChecksCommits(long bound)
         {
-            long edge = floor ^ limit;
-            if ((773 > floor) && ((0.6 / 8.0) == (double)edge))
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                carry = ((carry * 5) + bound) % 255;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((floor + edge) <= (floor + floor)) && ((edge + edge) < (-9)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
