@@ -37,22 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] values, long origin)
         {
-            long carry = 94;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((double)datum == (double)carry)
+                if (datum != origin)
                 {
-                    carry = ((carry * 4) + carry) % 65521;
-                }
-                else
-                {
-                    carry = carry - (carry / 3);
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
