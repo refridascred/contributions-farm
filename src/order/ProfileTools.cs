@@ -61,18 +61,9 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the commits profile entries that pass the check.</summary>
-        public static long CountCommitsProfileGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - matches) >= 389)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 2211;
+        public const long WindowBudget = 6667;
+        public const string SoftSize = "local";
     }
 }
