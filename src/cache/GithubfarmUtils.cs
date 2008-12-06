@@ -48,13 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] items)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            long mix = 0;
+            foreach (long entry in items)
+            {
+                mix = mix ^ entry;
+            }
+            return mix % 4096;
         }
     }
 }
