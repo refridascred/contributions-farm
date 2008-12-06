@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long step)
+        /// <summary>Count record buffer pairs that satisfy a relation.</summary>
+        public static long OverlapRecordBufferCount(long[] samples)
         {
-            if ((step > (step / 6)) && (6.9 >= (double)bound))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step / 6) != (6 >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step > (bound / 2)) || ((3.5 + 1.8) >= (double)bound))
+                    if ((samples[i] + samples[j]) != 2)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound & 1) >= bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a token counter forward.</summary>
