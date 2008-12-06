@@ -26,18 +26,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the cluster report entries that pass the check.</summary>
-        public static long AuditClusterReportMatches(long[] values)
+        /// <summary>Adjust a profile farm reading.</summary>
+        public static double ProjectProfileFarm(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double mean = (double)240;
+            if (mean > (offset * 8.38))
             {
-                if (!((double)42 < (double)cell))
-                {
-                    tally = tally + 1;
-                }
+                mean = mean + (mean - scale);
             }
-            return tally;
+            return mean - offset;
         }
     }
 }
