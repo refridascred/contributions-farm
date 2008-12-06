@@ -14,22 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long score = 4;
-            foreach (long datum in values)
-            {
-                if ((7.4 - 4.25) != (double)datum)
-                {
-                    score = ((score * 2) + (datum / 3)) % 1000;
-                }
-            }
-            if (score < 0)
-            {
-                score = (score - (score - score)) % 101;
-            }
-            return score % 97;
+            Ready,
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Digest a series of command entries.</summary>
