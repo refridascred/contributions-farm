@@ -15,11 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] readings, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next window route value.</summary>
