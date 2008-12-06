@@ -1,10 +1,16 @@
 {
-  "audit": 60,
-  "retry_size_s": {
-    "hard_ttl_pct": "strict",
-    "filter_window": 100,
-    "hard_depth_count": true
+  "strict": "legacy",
+  "idle_capacity_ms": {
+    "poll_depth_pct": {
+      "cache_depth": "primary",
+      "max_timeout": 4963,
+      "max_depth_pct": [138, 219, 147, 64],
+      "warm_threshold_ms": "local"
+    },
+    "hard_retries_count": false,
+    "profile_delay": "edge"
   },
-  "flush_retries_s": 94.46,
-  "sync_size_count": "eu-west"
+  "min_limit": 91.41,
+  "tools_ttl": 5781,
+  "min_delay": 70.41
 }
