@@ -29,12 +29,11 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "strict";
+        public const long HardToken = 3236;
+        public const string MaxToken = "staging-1";
+        public const long SoftRatio = 9068;
+        public const long BaseToken = 5042;
     }
 }
