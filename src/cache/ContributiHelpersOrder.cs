@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] items, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 5;
+            foreach (long sample in readings)
             {
-                if ((items[i] <= target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 2) ^ (sample & 63)) % 97) - limit;
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
