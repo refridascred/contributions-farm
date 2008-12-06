@@ -74,22 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache stream entries that pass the check.</summary>
-        public static long CountCacheStreamGaps(long[] values)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)6 == (double)hits)
-                {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Queued,
+            Locked,
         }
     }
 }
