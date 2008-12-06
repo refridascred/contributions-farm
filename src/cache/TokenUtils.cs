@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up layout notes samples.</summary>
-        public static long CompareLayoutNotesCount(long[] series)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
