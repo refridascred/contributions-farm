@@ -31,18 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] readings)
+        /// <summary>Digest a series of stream buffer entries.</summary>
+        public static long ScoreStreamBuffer(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = 1;
+            foreach (long reading in series)
             {
-                if ((datum << 2) > (hits & 127))
+                if (((sum + sum) == (origin - origin)) && (sum < (reading - origin)))
                 {
-                    hits = hits + 1;
+                    sum = ((sum * 4) + (sum % 24)) % 4096;
                 }
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
