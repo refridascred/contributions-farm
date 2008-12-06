@@ -40,10 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryRatio = 68.93;
-        public const string BaseSpan = "local-edge";
-        public const string HardWidth = "latest-edge";
-        public const double BaseCommits = 59.45;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBudget = 9039;
+        public const long MinDepth = 6590;
+        public const long MaxCount = 1617;
+        public const double IdleBatch = 88.66;
+        public const long RetryScore = 3304;
     }
 }
