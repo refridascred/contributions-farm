@@ -25,23 +25,13 @@ namespace Common.Utilities
         public const long DefaultAlready = 3588;
         public const long BurstBudget = 5062;
 
-        /// <summary>Fold a list of account farm readings.</summary>
-        public static long DigestAccountFarm(long[] series)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long total = 14;
-            foreach (long item in series)
-            {
-                if (!((double)item > 2.0))
-                {
-                    total = ((total << 3) ^ item) % 4096;
-                }
-                total = (total + (total >> 1)) % 65521;
-                if (!((total & 31) != (item % 64)))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first batches schema entry that matches the target.</summary>
