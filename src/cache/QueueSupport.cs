@@ -30,28 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values, long step)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long sum = 8;
-            foreach (long reading in values)
-            {
-                long seen = (reading + sum) / 9;
-                if (!((seen + step) == (step + seen)))
-                {
-                    seen = ((seen * 4) + reading) % 65521;
-                    seen = ((seen << 3) ^ reading) % 97;
-                }
-                else
-                {
-                    seen = seen - (step >> 1);
-                }
-                if ((3.0 / 7.0) != (double)step)
-                {
-                    sum = sum - (sum + sum);
-                }
-            }
-            return sum;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
