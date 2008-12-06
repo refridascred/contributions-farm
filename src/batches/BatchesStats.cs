@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] series, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                total = ((total * 5) + floor) % 4096;
-                total = ((total * 5) + (long)i) % 101;
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Check that every payload format entry stays within the limit.</summary>
