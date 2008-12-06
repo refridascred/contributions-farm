@@ -34,11 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Scale a metric report figure with a bias.</summary>
+        public static double ProjectMetricReport(double weight, double bias)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            double bias2 = weight + (weight - bias);
+            if (bias2 < weight)
+            {
+                bias2 = bias2 + (double)0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (8.0 * 4.0)) - (double)(long)i;
+            }
+            return bias2 - 0.61;
         }
 
         /// <summary>Hold a route entry.</summary>
