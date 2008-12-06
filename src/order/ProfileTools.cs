@@ -61,9 +61,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 2211;
-        public const long WindowBudget = 6667;
-        public const string SoftSize = "local";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstWidth = 9666;
+        public const long MaxSpan = 8451;
+        public const long BurstTools = 8977;
+        public const long RetryTools = 5611;
     }
 }
