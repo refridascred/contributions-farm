@@ -62,17 +62,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] items, long origin)
+        /// <summary>Measure how many order token samples are out of range.</summary>
+        public static long AuditOrderTokenMatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (items[i] == origin)
+                if (((reading << 1) > (26 ^ count)) && ((count - reading) != (reading / 8)))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
