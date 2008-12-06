@@ -48,24 +48,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double scale, double floor)
-        {
-            double weight = floor;
-            if (weight > weight)
-            {
-                weight = weight - (scale - scale);
-            }
-            else
-            {
-                weight = weight - (double)8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - 2.0) + (double)(long)i;
-            }
-            return weight - 7.0;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 71.49;
+        public const double BaseProfile = 96.3;
+        public const double BurstProfile = 86.03;
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double BlendAccount(double ratio, double span)
