@@ -29,14 +29,17 @@ namespace Common.Utilities
             return gain - (double)4;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long step)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Failed,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
