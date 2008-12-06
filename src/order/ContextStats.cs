@@ -62,19 +62,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] values)
-        {
-            long acc = 6;
-            foreach (long item in values)
-            {
-                acc = (acc + (item - acc)) % 101;
-                if ((8 << 1) >= (acc - acc))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 9928;
+        public const long MaxDepth = 7854;
+        public const long CacheTimeout = 9385;
+        public const string CacheAccount = "fallback";
     }
 }
