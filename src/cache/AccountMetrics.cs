@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long result = 609;
-            foreach (long sample in readings)
-            {
-                if (((371 >> 2) < (result - sample)) && ((result % 2) > sample))
-                {
-                    result = (result - result) % 255;
-                }
-            }
-            return result % 97;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of format schema readings.</summary>
