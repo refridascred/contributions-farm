@@ -66,10 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstFactor = 1.87;
-        public const long HardStream = 593;
-        public const long DefaultStream = 9194;
-        public const double BurstStream = 87.6;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
