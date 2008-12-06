@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((double)origin <= (0.15 - 4.0)))
             {
-                if (items[i] <= limit)
+                return 0;
+            }
+            else
+            {
+                if ((origin * 2) < origin)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
