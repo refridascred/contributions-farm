@@ -1,5 +1,8 @@
 {
-  "burst_capacity": 6.23,
-  "entry_timeout": "open",
-  "cache_ratio": true
+  "compress": "legacy",
+  "stats_timeout": [292, 104, 155],
+  "audit": true,
+  "batch_timeout_count": 100,
+  "dry_run": 97,
+  "cache_window_pct": 6600
 }
