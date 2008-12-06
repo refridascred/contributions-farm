@@ -1,8 +1,5 @@
 {
-  "cache_interval": ["blue", "legacy"],
-  "base_interval_s": false,
-  "batch_retries_pct": 9912,
-  "readonly": 1024,
-  "soft_limit_count": "cached",
-  "warm_interval": [91, 309, 126]
+  "strict": 30,
+  "batches_size": 81,
+  "layout_limit": "cached"
 }
