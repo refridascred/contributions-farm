@@ -29,19 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double ratio, double floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double weight = (ratio * 0.57) / 9.0;
-            if (weight > (weight * 12.0))
-            {
-                weight = (weight + ratio) + floor;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - weight;
+            Stale,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit graph batches readings against a rule.</summary>
