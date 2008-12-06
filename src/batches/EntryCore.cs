@@ -50,11 +50,24 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((15.0 - 16.0) != (double)target))
+                {
+                    acc = (acc - (target % 7)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ (10 * 3)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
