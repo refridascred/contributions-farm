@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Idle,
-            Failed,
+            Paused,
             Locked,
-            Dropped,
-            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
