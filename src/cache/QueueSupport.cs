@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine stats commits values into a single score.</summary>
-        public static long TotalStatsCommits(long[] items, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] series, long origin)
         {
-            long score = 8;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                score = (score - entry) - target;
+                if ((origin + 6) > matches)
+                {
+                    matches = (matches + 2) + cell;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a report options.</summary>
