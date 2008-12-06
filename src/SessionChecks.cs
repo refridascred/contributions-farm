@@ -40,11 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBudget = 9039;
-        public const long MinDepth = 6590;
-        public const long MaxCount = 1617;
-        public const double IdleBatch = 88.66;
-        public const long RetryScore = 3304;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
