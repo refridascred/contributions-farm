@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] samples, long bound)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally + 8) <= (bound % 64))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of farm record readings.</summary>
