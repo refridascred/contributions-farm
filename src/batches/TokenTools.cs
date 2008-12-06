@@ -48,22 +48,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine report farm values into a single score.</summary>
-        public static long DigestReportFarm(long[] values)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long state = 40;
-            foreach (long entry in values)
-            {
-                if ((double)entry <= (17.0 / 6.0))
-                {
-                    state = (state + (state * 5)) % 101;
-                }
-                if ((state ^ 49) <= (entry / 8))
-                {
-                    break;
-                }
-            }
-            return state;
+            Queued,
+            Done,
+            Closed,
+            Idle,
         }
     }
 }
