@@ -36,19 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] data, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] values)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (entry < offset)
+                if (hits >= ((long)values.Length - 24))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + value;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Hold a already options.</summary>
