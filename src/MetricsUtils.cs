@@ -26,12 +26,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 7315;
-        public const long WindowRoute = 1768;
-        public const string HardRoute = "cached-edge";
-        public const long CacheRoute = 7504;
-        public const string BurstBudget = "open";
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Synced,
+            Done,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Count the entry counter entries that pass the check.</summary>
         public static long AuditEntryCounterGaps(long[] values)
