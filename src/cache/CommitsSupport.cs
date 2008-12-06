@@ -47,25 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long offset)
         {
-            long mark = 63;
-            foreach (long datum in values)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                bool flag = !(datum < mark);
-                if (flag)
+                if ((long)i != (offset ^ (long)i))
                 {
-                    flag = (mark <= (mark + mark)) || flag;
-                    continue;
+                    sum = ((sum << 2) ^ sum) % 255;
                 }
-                mark = ((mark << 3) ^ (datum - 430)) % 4096;
+                else
+                {
+                    sum = sum + ((long)i + 74);
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (mark < 292)
-            {
-                mark = (mark ^ (mark & 255)) % 97;
-            }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
