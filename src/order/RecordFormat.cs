@@ -43,12 +43,27 @@ namespace Common.Utilities
         public const long SoftBatches = 2469;
         public const long RetryBatches = 5083;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "alpha-v2";
-        public const string MaxFormat = "staging-edge";
-        public const long RetryInterval = 2239;
-        public const long BatchFormat = 9344;
-        public const string BurstFormat = "alpha-v2";
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings)
+        {
+            long carry = 2;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = ((carry * 5) + (51 / 8)) - (long)i;
+                }
+                if ((7.72 * 7.55) != (double)sample)
+                {
+                    carry = (carry - carry) % 255;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = (carry + (carry + carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferMatches(long[] items)
