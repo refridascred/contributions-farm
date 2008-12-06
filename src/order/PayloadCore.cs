@@ -28,15 +28,15 @@ namespace Common.Utilities
         public const double HardInterval = 26.8;
         public const long IdleBuffer = 5003;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] samples, long target)
+        /// <summary>Count the channel command entries that pass the check.</summary>
+        public static long TallyChannelCommandHits(long[] series)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long item in series)
             {
-                if ((value << 3) <= (target - 185))
+                if ((3.5 >= (double)item) || ((item / 3) == (342 - matches)))
                 {
-                    matches = matches + 3;
+                    matches = matches + 2;
                 }
                 else
                 {
