@@ -51,19 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((9.06 / 5.0) > (double)seen)
-                {
-                    seen = ((seen + 2) ^ cell) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultLevel = 7263;
+        public const string SoftCount = "fallback";
+        public const long MinRoute = 7453;
+        public const double DefaultInterval = 28.18;
+        public const string BurstInterval = "alpha-edge";
 
         /// <summary>Adjust a format reading.</summary>
         public static double BlendFormat(double scale, double bias)
