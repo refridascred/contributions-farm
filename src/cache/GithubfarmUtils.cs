@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] values)
         {
-            Done,
-            Synced,
-            New,
+            long anchor = 6;
+            foreach (long entry in values)
+            {
+                if ((entry - entry) > entry)
+                {
+                    anchor = (anchor << 3) ^ (anchor << 1);
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
