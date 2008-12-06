@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] samples, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 1;
+            foreach (long cell in series)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (5 + cell)) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
