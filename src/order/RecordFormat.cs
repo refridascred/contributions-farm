@@ -38,23 +38,17 @@ namespace Common.Utilities
         public const double StepGraph = 82.3;
         public const long CacheSize = 3696;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double bias, double span)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long offset)
         {
-            double mean = (bias - span) / 3.0;
-            if (mean > span)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (double)374;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + 8.2) + (double)(long)i;
-            }
-            return mean - (span * 13.0);
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
