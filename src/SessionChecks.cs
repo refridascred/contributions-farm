@@ -20,17 +20,18 @@ namespace Common.Utilities
             return scale - (scale + bias);
         }
 
-        /// <summary>Find the first profile cache entry that matches the target.</summary>
-        public static long LocateProfileCacheIndex(long[] readings, long bound)
+        /// <summary>Audit filter cluster readings against a rule.</summary>
+        public static long MeasureFilterClusterGaps(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] == bound)
+                if ((double)sample != (3.4 - 8.7))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the batch mode values.</summary>
