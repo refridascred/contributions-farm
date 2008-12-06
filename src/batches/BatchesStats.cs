@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Done,
-            Locked,
-            Active,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleLevel = 9446;
+        public const double SoftCache = 66.64;
+        public const long MinCache = 930;
+        public const string MinWidth = "primary-1";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowGaps(long[] items)
