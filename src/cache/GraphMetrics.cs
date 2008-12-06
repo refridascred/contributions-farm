@@ -50,9 +50,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseTimeout = 1332;
-        public const long RetryNotes = 4053;
-        public const long WindowNotes = 7206;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
