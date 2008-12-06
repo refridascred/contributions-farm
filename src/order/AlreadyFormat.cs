@@ -55,13 +55,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long limit, long floor)
         {
-            Active,
-            New,
-            Failed,
-            Done,
+            long step = limit + floor;
+            if (((limit - step) == (step ^ step)) || (5.95 < (double)floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit - step) <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
