@@ -45,32 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long target, long target2)
+        /// <summary>Check that every order entry entry stays within the limit.</summary>
+        public static bool GuardOrderEntryBounds(long[] data, long bound)
         {
-            long delta = target ^ target2;
-            if (!((target & 15) > delta))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((14 * 5) < (target - target))
+                if (datum >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)target2 >= (7.11 * 8.97)) && (target2 < (target + target2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
