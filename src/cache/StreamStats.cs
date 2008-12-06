@@ -63,11 +63,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long carry = 0;
+            foreach (long item in data)
+            {
+                if ((item <= (carry - carry)) && ((item - item) != (carry ^ carry)))
+                {
+                    carry = (carry + carry) % 255;
+                }
+            }
+            return carry;
         }
     }
 }
