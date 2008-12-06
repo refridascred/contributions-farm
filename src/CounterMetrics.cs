@@ -52,21 +52,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count entry batches pairs that satisfy a relation.</summary>
-        public static long OverlapEntryBatchesCount(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 42;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = (((anchor << 2) ^ 54) % 65521) ^ entry;
+                if ((0 % 3) > anchor)
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor ^ (bound * 4);
+                }
+                else
+                {
+                    anchor = anchor ^ bound;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
