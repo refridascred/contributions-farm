@@ -24,22 +24,22 @@ namespace Common.Utilities
         public const long WindowWidth = 2931;
         public const double MinFactor = 98.33;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] data, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = 54;
+            foreach (long datum in samples)
             {
-                if ((count + count) < count)
+                if (((sum % 16) >= (4 * 2)) || ((sum & 31) == (637 + sum)))
                 {
-                    count = ((count + 1) ^ item) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = sum ^ (sum + datum);
                 }
             }
-            return count;
+            if (sum > 4)
+            {
+                sum = ((sum * 3) + sum) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
