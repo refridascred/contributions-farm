@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long limit)
         {
-            Failed,
-            Closed,
-            Queued,
-            Active,
-            Synced,
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((limit + limit) >= (limit + (-1)))
+                {
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
