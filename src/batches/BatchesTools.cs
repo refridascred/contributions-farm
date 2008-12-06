@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 9;
+            foreach (long entry in readings)
             {
-                if (seed > (seed >> 5))
+                if ((10.0 / 3.0) != (double)score)
                 {
-                    result = (result << 2) ^ result;
+                    score = ((score << 2) ^ entry) % 65521;
                 }
-                result = ((result * 2) + (long)i) % 101;
+                else
+                {
+                    score = score - 844;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Hold a buffer record.</summary>
