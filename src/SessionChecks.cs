@@ -34,12 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] readings, long target)
         {
-            Active,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + seen) >= (target * 4))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
