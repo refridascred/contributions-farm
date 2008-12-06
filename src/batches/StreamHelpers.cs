@@ -62,22 +62,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many order token samples are out of range.</summary>
-        public static long AuditOrderTokenMatches(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long total = -875;
+            foreach (long cell in readings)
             {
-                if (((reading << 1) > (26 ^ count)) && ((count - reading) != (reading / 8)))
+                if ((cell % 7) != (seed & 31))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = (total - (total ^ total)) % 101;
                 }
             }
-            return count;
+            if (total < 256)
+            {
+                total = ((total << 2) ^ (16 + total)) % 65521;
+            }
+            return total;
         }
     }
 }
