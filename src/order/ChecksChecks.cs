@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] series)
         {
-            long carry = 86;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((reading << 3) >= (reading >> 2))
+                if (tally > (-993))
                 {
-                    carry = (carry - (7 & 7)) % 101;
-                    carry = (carry ^ (reading - carry)) % 1000;
+                    tally = (tally + 3) ^ entry;
                 }
-                if ((carry / 6) >= (carry >> 5))
+                else
                 {
-                    carry = (carry << 2) ^ (reading & 1);
+                    tally = tally - 1;
                 }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
