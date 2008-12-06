@@ -40,22 +40,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of metrics commits readings.</summary>
-        public static long TallyMetricsCommits(long[] readings)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] levels, long origin)
         {
-            long result = -969;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.0 - 6.24) != (double)result)
+                if (levels[i] > origin)
                 {
-                    result = ((result << 2) ^ (reading ^ reading)) % 255;
+                    return (long)i;
                 }
             }
-            if (result < 339)
-            {
-                result = (result + (result + result)) % 97;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
