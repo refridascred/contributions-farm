@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit profile schema readings against a rule.</summary>
+        public static long TallyProfileSchemaHits(long[] items, long floor)
         {
-            Idle,
-            Locked,
-            Ready,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((floor / 8) > (seen + floor))
+                {
+                    seen = (seen + 1) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
