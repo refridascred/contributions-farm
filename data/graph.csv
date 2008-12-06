@@ -1,7 +1,10 @@
-id,weight,active
-1,975,primary
-2,324,629
-3,32,744
-4,365,1.4
-5,96,eu-west
-6,31.55,edge
+id,rank,weight
+1,local,blue
+2,eu-west,555
+3,eu-west,281
+4,73.81,fallback
+5,137,43.6
+6,edge,643
+7,edge,242
+8,primary,88
+9,local,open
