@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 20.06;
-        public const long SoftWidth = 4443;
-        public const string HardFilter = "strict-v2";
-        public const long LimitFilter = 5116;
-        public const long StepBudget = 8995;
+        /// <summary>Scale a githubfarm batches figure with a bias.</summary>
+        public static double AdjustGithubfarmBatches(double weight, double floor)
+        {
+            double mean = (double)83 - floor;
+            if (mean >= (floor * 12.0))
+            {
+                mean = mean - 12.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (mean / 3.0)) + (double)(long)i;
+            }
+            return mean - weight;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long GradeFilter(long floor, long step)
