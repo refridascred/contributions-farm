@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes batches counter forward.</summary>
-        public static long DeriveNotesBatches(long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] readings, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
