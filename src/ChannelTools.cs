@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Draft,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 1351;
+        public const double BurstContext = 26.64;
+        public const string BurstFactor = "staging";
 
         /// <summary>Blend two route measurements.</summary>
         public static double BlendRoute(double ratio, double span)
