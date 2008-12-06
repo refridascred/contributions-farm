@@ -1,7 +1,19 @@
 {
-  "route_threshold": [27, 60, 279, 173],
-  "batch_window_count": "open",
-  "default_threshold_pct": false,
-  "report_delay": 26.79,
-  "idle_timeout_ms": 41.06
+  "readonly": 13.48,
+  "tools_capacity": "edge",
+  "batch_ttl_count": "cached",
+  "base_limit": {
+    "persist": "open",
+    "cache_window": "edge",
+    "burst_timeout": {
+      "warm_retries": ["latest", "standard"],
+      "hard_ratio_count": 21,
+      "tools_ratio": ["latest", "edge", "local", "edge"],
+      "metrics_limit": "open",
+      "compress": true,
+      "strict": [205, 173, 281]
+    }
+  },
+  "retry_retries_count": "eu-west",
+  "context_delay": "primary"
 }
