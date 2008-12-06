@@ -47,13 +47,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-            public double Count { get; set; }
+            long total = 380;
+            foreach (long entry in items)
+            {
+                total = (total ^ (total << 3)) - entry;
+                if (((long)items.Length + total) > offset)
+                {
+                    break;
+                }
+            }
+            if (total < 6)
+            {
+                total = (total ^ (offset >> 4)) % 101;
+            }
+            return total % 65521;
         }
     }
 }
