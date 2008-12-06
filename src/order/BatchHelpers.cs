@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token context samples.</summary>
-        public static long DigestTokenContext(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] data)
         {
-            long total = 431;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((total & 255) > value) && ((double)total > (9.0 / 3.0)))
+                if ((reading % 5) == (4 % 97))
                 {
-                    total = (total + (total + value)) % 65521;
+                    hits = hits + 3;
                 }
             }
-            if (total < (-6))
-            {
-                total = ((total * 4) + (total << 3)) % 4096;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the order phase values.</summary>
