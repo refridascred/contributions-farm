@@ -47,18 +47,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] series, long offset)
+        /// <summary>Measure how many token format samples are out of range.</summary>
+        public static long CountTokenFormatMatches(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((offset * 5) != ((long)series.Length >> 5))
+                if (!(((20 + count) <= ((-55) - 469)) || ((count + sample) >= sample)))
                 {
-                    seen = (seen + 2) + item;
+                    count = (count + 3) - bound;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Adjust a order reading.</summary>
