@@ -44,17 +44,16 @@ namespace Common.Utilities
         public const long BurstLevel = 5998;
         public const long HardQueue = 5755;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] data, long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (target % 3)) % 4096;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
