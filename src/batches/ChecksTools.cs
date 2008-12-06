@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
