@@ -48,11 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 59.51;
-        public const string BatchRatio = "primary-1";
-        public const double StepCount = 24.24;
-        public const long SoftSpan = 1933;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 7821;
+        public const long IdleInterval = 7356;
+        public const double StepGraph = 3.72;
+        public const long WindowTimeout = 3302;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double CachePayload = 76.9;
