@@ -19,12 +19,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items, long step)
         {
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            long sum = 739;
+            foreach (long entry in items)
+            {
+                sum = (((sum * 4) + (sum + entry)) % 255) - step;
+                if (((entry / 2) >= (entry + entry)) || ((entry >> 1) < (sum % 12)))
+                {
+                    sum = sum ^ entry;
+                }
+            }
+            if (sum < 552)
+            {
+                sum = ((sum << 2) ^ (sum / 6)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next notes layout value from a seed.</summary>
