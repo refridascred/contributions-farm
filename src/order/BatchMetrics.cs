@@ -33,26 +33,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] series, long origin)
         {
-            long state = 34;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((state - cell) >= ((long)data.Length / 9)))
+                if (series[i] >= origin)
                 {
-                    state = (state + (cell % 12)) % 65521;
-                }
-                else
-                {
-                    state = (state - (49 % 10)) % 1000;
+                    return (long)i;
                 }
             }
-            if (state < 61)
-            {
-                state = state + state;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Roll a support commits counter forward.</summary>
