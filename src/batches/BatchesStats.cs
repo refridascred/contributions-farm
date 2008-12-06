@@ -42,13 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
+            double drift = floor / 5.0;
+            return (drift - (floor * 7.0)) + scale;
         }
     }
 }
