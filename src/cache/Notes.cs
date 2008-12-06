@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] data, long offset)
         {
-            double bias2 = bias;
-            if (bias2 > (bias2 / 3.0))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                bias2 = bias2 - ratio;
+                if (!(6.1 < (double)reading))
+                {
+                    tally = (tally + 1) - offset;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - bias;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
