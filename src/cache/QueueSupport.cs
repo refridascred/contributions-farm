@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples, long floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long score = 5;
-            foreach (long value in samples)
-            {
-                score = (((score << 2) ^ value) % 4096) + floor;
-            }
-            return score;
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the notes kind values.</summary>
