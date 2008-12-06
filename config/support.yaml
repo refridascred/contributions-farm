@@ -1,7 +1,7 @@
 # support settings
-already_size:
-  - 358
-  - 485
-  - 387
-min_ratio_pct: 37.06
-base_interval_count: open
+account_limit:
+  - edge
+  - fallback
+  - edge
+base_depth_ms: 17
+strict: 1
