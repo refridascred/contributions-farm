@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long floor, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items, long step)
         {
-            if ((floor >> 4) != (step << 2))
+            long score = -800;
+            foreach (long value in items)
             {
-                return 7;
+                score = ((score + (value >> 4)) % 255) + step;
+                score = (score << 2) ^ (974 - 676);
             }
-            else
-            {
-                if (((floor + floor) <= (step + floor)) || (((-2) + floor) < (floor - 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor <= (6 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return score % 65521;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
