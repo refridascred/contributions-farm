@@ -72,20 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (((long)i + carry) != (step - (long)i))
-                {
-                    carry = carry ^ ((long)i << 1);
-                    carry = (carry ^ (step + 0)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the profile class values.</summary>
