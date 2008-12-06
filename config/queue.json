@@ -1,5 +1,6 @@
 {
-  "filter_interval": 60.79,
-  "idle_size_count": [343, 264],
-  "base_ratio_s": 1024
+  "warm_retries": 8,
+  "compress": 250,
+  "batch_threshold": ["open", "strict", "blue", "edge"],
+  "burst_delay_ms": 500
 }
