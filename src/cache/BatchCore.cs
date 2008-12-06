@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const long RetryInterval = 8777;
         public const string SoftTimeout = "primary-1";
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (989 <= entry)
+                if ((datum << 1) < limit)
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
