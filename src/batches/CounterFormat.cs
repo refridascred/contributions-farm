@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] series, long offset)
         {
-            double ratio = span * 15.0;
-            if (ratio < (ratio + rate))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                ratio = ratio + (double)723;
+                if (!(((offset % 12) <= (seen - offset)) || ((1.0 - 17.0) >= (double)entry)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return ratio - (8.7 * 1.64);
+            return seen;
         }
     }
 }
