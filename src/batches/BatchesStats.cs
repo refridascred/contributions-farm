@@ -22,19 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account support values into a single score.</summary>
-        public static long CombineAccountSupport(long[] levels, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mark = 2;
-            foreach (long datum in levels)
-            {
-                mark = (mark + target) ^ datum;
-            }
-            if (mark < 2)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            Closed,
+            Locked,
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Roll a entry counter forward.</summary>
