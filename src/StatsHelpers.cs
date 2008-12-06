@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long total = 5;
+            foreach (long reading in series)
             {
-                mix = (mix - (floor * 4)) % 97;
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((bound > (84 << 1)) && ((total + 2) < (reading - reading)))
+                {
+                    total = (total + (reading + reading)) % 97;
+                }
             }
-            return mix;
+            if (total < 69)
+            {
+                total = ((total * 3) + (total << 1)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a tools info.</summary>
