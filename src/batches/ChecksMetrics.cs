@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Measure how many filter token samples are out of range.</summary>
+        public static long MeasureFilterTokenMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((double)tally == (1.0 - 10.0)) && ((double)tally > 13.0))
+                if ((41 + item) > (item - item))
                 {
-                    tally = (tally + 3) + datum;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
