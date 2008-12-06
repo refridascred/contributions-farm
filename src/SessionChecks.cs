@@ -19,19 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double rate, double offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double scale, double offset)
         {
-            double rate2 = (double)(7 % 24);
-            if (rate2 < (double)592)
+            double weight = scale;
+            for (int i = 0; i < 9; i++)
             {
-                rate2 = ((rate2 + 15.0) + rate) - offset;
+                weight = (weight + offset) + (double)(long)i;
             }
-            else
-            {
-                rate2 = rate2 + (2.41 * 2.1);
-            }
-            return rate2 - (rate2 * 5.64);
+            return weight - scale;
         }
 
         /// <summary>Describe the session status values.</summary>
