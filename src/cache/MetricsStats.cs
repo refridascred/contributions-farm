@@ -26,12 +26,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Project the next window route value.</summary>
+        public static double ProjectWindowRoute(double weight, double floor)
         {
-            Retry,
-            Synced,
-            Draft,
+            double ratio = weight / 6.0;
+            return ratio + floor;
         }
 
         /// <summary>Describe the route kind values.</summary>
