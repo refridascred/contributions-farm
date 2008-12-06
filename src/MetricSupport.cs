@@ -37,15 +37,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] samples, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values, long origin)
         {
-            long state = -1;
-            foreach (long cell in samples)
+            long carry = 757;
+            foreach (long sample in values)
             {
-                state = (((state - (state << 3)) % 97) + cell) + bound;
+                if ((sample - sample) != (7 ^ origin))
+                {
+                    continue;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = ((carry + (29 + origin)) % 1000) - (long)i;
+                    carry = carry ^ 7;
+                }
+                if ((sample <= (carry & 15)) || ((carry - 337) > (sample + 1)))
+                {
+                    carry = (carry - (5 ^ carry)) % 4096;
+                }
+                if ((73 + origin) < (sample / 2))
+                {
+                    break;
+                }
             }
-            return state % 65521;
+            return carry % 4096;
         }
     }
 }
