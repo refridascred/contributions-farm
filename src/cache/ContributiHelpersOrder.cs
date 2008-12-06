@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit queue already readings against a rule.</summary>
+        public static long AuditQueueAlreadyOutliers(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches % 24) <= (88 * 3))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
