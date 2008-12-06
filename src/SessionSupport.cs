@@ -30,19 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mix = 951;
-            foreach (long reading in levels)
-            {
-                mix = mix ^ (reading / 6);
-                if (!((mix + 8) >= mix))
-                {
-                    mix = (mix << 2) ^ (reading / 7);
-                }
-            }
-            return mix;
+            Stale,
+            Idle,
+            Closed,
+            Done,
         }
     }
 }
