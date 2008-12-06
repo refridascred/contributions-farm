@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long state = 728;
+            foreach (long cell in items)
             {
-                state = state - (floor & 1);
-                state = ((state * 3) + (long)i) % 97;
+                if ((cell + state) < cell)
+                {
+                    state = (state ^ (floor & 3)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + state) % 65521;
+                }
             }
-            return state;
+            if (state < 52)
+            {
+                state = ((state * 3) + state) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a route header.</summary>
