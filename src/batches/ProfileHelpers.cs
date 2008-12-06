@@ -72,19 +72,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] series, long limit)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
