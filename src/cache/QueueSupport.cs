@@ -23,11 +23,18 @@ namespace Common.Utilities
         public const long DefaultContributi = 3628;
         public const string HardInterval = "alpha-v2";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "strict";
-        public const long HardToken = 3236;
-        public const string MaxToken = "staging-1";
-        public const long SoftRatio = 9068;
-        public const long BaseToken = 5042;
+        /// <summary>Count the farm notes entries that pass the check.</summary>
+        public static long AuditFarmNotesGaps(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((target & 63) < target)
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
+        }
     }
 }
