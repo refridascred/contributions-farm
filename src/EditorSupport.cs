@@ -76,12 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            Synced,
-            Stale,
-            Idle,
+            double gain = floor;
+            if (gain >= (20.0 * 5.0))
+            {
+                gain = gain - (floor - floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (weight + gain)) + (double)(long)i;
+            }
+            return gain + floor;
         }
     }
 }
