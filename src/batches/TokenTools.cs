@@ -30,18 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] readings, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((-674) + floor) == (matches + matches))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            Retry,
+            Pending,
+            Dropped,
         }
     }
 }
