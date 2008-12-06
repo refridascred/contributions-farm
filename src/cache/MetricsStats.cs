@@ -34,15 +34,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double ratio, double offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long bound)
         {
-            double rate = 0.42;
-            for (int i = 0; i < 3; i++)
+            if ((bound & 63) < bound)
             {
-                rate = (((rate + (6.0 * 11.0)) + (double)(long)i) + ratio) + offset;
+                return 7;
             }
-            return rate + (rate + 14.0);
+            else
+            {
+                if (!((bound * 2) <= (8 & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit < bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit <= (limit % 100)) || ((limit ^ bound) < bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
