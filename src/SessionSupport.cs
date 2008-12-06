@@ -27,11 +27,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 9511;
-        public const double MinMetrics = 44.66;
-        public const long BurstMetrics = 4783;
-        public const long CacheFactor = 7509;
-        public const long SoftDepth = 8606;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Failed,
+            Stale,
+            Paused,
+            Locked,
+            Retry,
+        }
     }
 }
