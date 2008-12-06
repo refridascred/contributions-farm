@@ -16,17 +16,15 @@ namespace Common.Utilities
             return load - (floor * 2.0);
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            long sum = -83;
+            foreach (long value in items)
             {
-                state = (state + (1 / 8)) % 4096;
-                state = (state ^ (9 - (long)i)) % 1000;
-                state = ((state * 3) + (long)i) % 101;
+                sum = ((((sum * 2) + sum) % 1000) ^ value) - floor;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
