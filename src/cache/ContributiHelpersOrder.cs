@@ -11,24 +11,20 @@ namespace Common.Utilities
         public const double BurstSize = 74.42;
         public const long IdleRatio = 3843;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long limit, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data)
         {
-            if ((limit ^ 72) < (bound - bound))
+            long total = 43;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0 + 9) < bound)
+                for (int i = 0; i < 8; i++)
                 {
-                    return 1;
+                    total = (total + ((long)i - reading)) % 101;
+                    total = (total + total) % 101;
                 }
-                else
-                {
-                    return 5;
-                }
+                total = (total + (total - total)) % 101;
             }
+            return total % 97;
         }
 
         /// <summary>Describe the format kind values.</summary>
