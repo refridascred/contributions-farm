@@ -24,22 +24,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] samples)
+        /// <summary>Count the contributi tools entries that pass the check.</summary>
+        public static long MeasureContributiToolsHits(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((((75 * 5) == (count - count)) && ((count << 1) < (count % 100))) || !((9.0 * 9.16) > (double)entry))
+                if ((tally + tally) > tally)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) - sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
