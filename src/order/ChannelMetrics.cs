@@ -40,25 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long floor, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
         {
-            long span = floor ^ offset;
-            if ((double)offset < (6.9 + 1.81))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor ^ offset) < span)
+                if ((double)item < (0.4 / 9.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
