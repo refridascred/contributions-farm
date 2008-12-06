@@ -31,18 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long score = 504;
-            foreach (long sample in data)
-            {
-                if (((0 ^ score) >= (score % 100)) && (9.8 < (double)sample))
-                {
-                    score = ((score * 2) + score) % 4096;
-                }
-            }
-            return score % 4096;
+            Dropped,
+            Pending,
+            Locked,
         }
     }
 }
