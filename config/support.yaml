@@ -1,16 +1,8 @@
 # support settings
-verbose:
-  - cached
-  - cached
-  - blue
-  - open
-queue_size:
-  compress: legacy
-  sync_depth:
-    - blue
-    - staging
-    - legacy
-  audit: false
-account_window: false
-retry_window_pct: 30
-enabled: 26.59
+min_delay_ms: 1024
+verbose: 5293
+burst_ttl_pct: 42.93
+batch_retries: 56.08
+base_window_pct:
+  - 203
+  - 240
