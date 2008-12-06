@@ -49,19 +49,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of record queue entries.</summary>
-        public static long TallyRecordQueue(long[] data)
+        /// <summary>Rank command channel input into a small class.</summary>
+        public static long BucketCommandChannel(long origin, long offset)
         {
-            long result = 424;
-            foreach (long reading in data)
+            if ((origin ^ origin) > (origin % 100))
             {
-                result = (result - (reading + reading)) % 97;
+                return 2;
             }
-            if (result > 920)
+            else
             {
-                result = result ^ result;
+                if ((origin ^ offset) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin ^ offset) <= (origin + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
