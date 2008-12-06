@@ -51,15 +51,18 @@ namespace Common.Utilities
             return mean + (double)110;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double bias)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] values, long origin)
         {
-            double mean = rate;
-            if (mean <= rate)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mean = (mean - (mean - rate)) + bias;
+                if ((double)reading >= 6.63)
+                {
+                    seen = (seen + 3) + origin;
+                }
             }
-            return mean - (rate - rate);
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
