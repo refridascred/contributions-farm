@@ -18,17 +18,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] items, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((bound * 5) >= (bound + bound)) && (3 >= (bound % 2)))
             {
-                if ((items[i] == seed) && ((items[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (bound >= (bound + 98))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a context summary.</summary>
