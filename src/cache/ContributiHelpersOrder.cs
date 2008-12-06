@@ -16,23 +16,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double bias, double offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long limit, long seed)
         {
-            double mean = offset - offset;
-            if (mean >= bias)
+            if (!((limit & 15) == (seed << 3)))
             {
-                mean = mean - (double)433;
+                return 1;
             }
             else
             {
-                mean = mean + (bias / 7.0);
+                if ((double)seed <= (1.3 - 10.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (offset + mean)) - (double)(long)i;
-            }
-            return mean - offset;
         }
 
         /// <summary>Match up notes samples.</summary>
