@@ -1,6 +1,11 @@
 {
-  "warm_depth_pct": "staging",
-  "poll_ratio": "latest",
-  "strict": true,
-  "audit": 23.79
+  "default_ttl_count": {
+    "farm_limit": 29,
+    "min_limit_count": 35,
+    "queue_capacity": "blue"
+  },
+  "audit": 3483,
+  "batch_capacity": 4.46,
+  "soft_size_count": "strict",
+  "burst_capacity": 26.17
 }
