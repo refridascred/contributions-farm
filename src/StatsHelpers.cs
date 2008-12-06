@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum + (bound & 15)) % 65521;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a editor info.</summary>
