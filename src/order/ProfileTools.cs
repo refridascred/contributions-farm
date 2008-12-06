@@ -18,14 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Rank command format input into a small class.</summary>
+        public static long RankCommandFormat(long offset, long bound)
         {
-            Dropped,
-            Queued,
-            Active,
-            Locked,
-            Done,
+            if ((bound * 5) == (3 * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset > bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
