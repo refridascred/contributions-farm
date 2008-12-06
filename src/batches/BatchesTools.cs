@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings, long target)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long acc = 3;
-            foreach (long sample in readings)
-            {
-                acc = (acc ^ acc) ^ sample;
-            }
-            if (acc > (-788))
-            {
-                acc = (acc << 3) ^ ((-97) - target);
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
