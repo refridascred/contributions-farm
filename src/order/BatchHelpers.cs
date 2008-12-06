@@ -28,13 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] series, long limit)
         {
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
