@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series, long limit)
-        {
-            long anchor = -767;
-            foreach (long item in series)
-            {
-                if (!((anchor & 255) < anchor))
-                {
-                    anchor = (anchor + (item ^ (long)series.Length)) % 97;
-                }
-                if (!((double)271 > (double)limit))
-                {
-                    anchor = anchor - (735 + anchor);
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultScore = 989;
+        public const long MaxSpan = 1046;
+        public const long IdleMetrics = 4127;
+        public const long BaseMetrics = 7446;
+        public const long RetryRatio = 5599;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double MinScore = 12.73;
