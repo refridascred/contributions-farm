@@ -24,11 +24,13 @@ namespace Common.Utilities
             return bias - (offset / 3.0);
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
