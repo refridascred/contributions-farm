@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Ready,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleDepth = 898;
+        public const long MaxBudget = 6281;
+        public const long BaseAccount = 2406;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportHits(long[] series)
