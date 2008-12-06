@@ -34,10 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchDepth = 3028;
-        public const long RetryRatio = 4363;
-        public const long BatchScore = 8271;
-        public const double HardTimeout = 24.1;
+        /// <summary>Accumulate counter layout samples.</summary>
+        public static long CombineCounterLayout(long[] series)
+        {
+            long result = 8;
+            foreach (long sample in series)
+            {
+                if (((result + 0) != (928 / 4)) && ((double)result >= (5.02 - 8.2)))
+                {
+                    result = (result << 2) ^ (sample - sample);
+                }
+                result = result - (result / 7);
+            }
+            return result;
+        }
     }
 }
