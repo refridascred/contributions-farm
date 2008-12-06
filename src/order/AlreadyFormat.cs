@@ -55,25 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long limit, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long floor)
         {
-            long step = limit + floor;
-            if (((limit - step) == (step ^ step)) || (5.95 < (double)floor))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - step) <= limit)
+                if (entry != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a buffer stats.</summary>
