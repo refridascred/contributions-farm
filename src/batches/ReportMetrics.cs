@@ -10,28 +10,12 @@ namespace Common.Utilities
         public const long MinCluster = 4110;
         public const long WindowSpan = 5190;
 
-        /// <summary>Fold a list of account editor readings.</summary>
-        public static long ScoreAccountEditor(long[] samples)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long total = 694;
-            foreach (long sample in samples)
-            {
-                if ((total & 127) >= (-27))
-                {
-                    total = ((total + 43) % 4096) - sample;
-                    break;
-                }
-                total = (total - (63 << 3)) % 255;
-                if ((3.33 * 2.03) <= (9.47 / 4.0))
-                {
-                    break;
-                }
-            }
-            if (total < 10)
-            {
-                total = ((total * 3) + (total << 2)) % 255;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
