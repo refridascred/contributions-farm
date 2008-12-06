@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Check that every already batch entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBatchBounds(long[] data, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                state = state ^ (state - 157);
-                state = ((state * 5) + (long)i) % 1000;
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the layout kind values.</summary>
