@@ -1,6 +1,11 @@
-id,active,region
-1,817,primary
-2,690,69
-3,933,11.07
-4,244,stable
-5,edge,905
+id,token,score
+1,staging,blue
+2,latest,98.48
+3,36.76,stable
+4,open,94.9
+5,13.68,strict
+6,open,legacy
+7,744,21.05
+8,30.52,778
+9,legacy,21.71
+10,998,661
