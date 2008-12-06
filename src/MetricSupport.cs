@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] items, long step)
+        /// <summary>Compare every pair of route session readings.</summary>
+        public static long CompareRouteSessionCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (step > (matches + step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) ^ cell;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the commits phase values.</summary>
