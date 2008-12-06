@@ -1,9 +1,10 @@
 # support settings
-hard_delay: standard
-base_ratio_ms: standard
-base_window:
-  - 323
-  - 96
-burst_delay_count: 53.85
-cache_delay: true
-hard_window_s: 1.02
+base_timeout_pct:
+  - latest
+  - staging
+  - primary
+  - standard
+persist: true
+idle_delay_ms:
+  - edge
+  - standard
