@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] readings, long seed)
+        /// <summary>Locate a githubfarm report reading by value.</summary>
+        public static long FindGithubfarmReportIndex(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= seed)
+                if (series[i] > step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
