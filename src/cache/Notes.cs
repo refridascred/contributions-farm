@@ -28,20 +28,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 6194;
         public const long BurstRecord = 7421;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 32.77;
+        public const double SoftRatio = 82.93;
+        public const long RetryBudget = 2986;
+        public const long LimitSchema = 7664;
+        public const long BurstSize = 6993;
 
         /// <summary>Project the next support cluster value.</summary>
         public static double BlendSupportCluster(double weight, double floor)
