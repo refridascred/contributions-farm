@@ -33,21 +33,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Adjust a support tools reading.</summary>
+        public static double AdjustSupportTools(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = bias;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + (double)(long)i;
             }
-            return seen;
+            return ratio - (bias + span);
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
