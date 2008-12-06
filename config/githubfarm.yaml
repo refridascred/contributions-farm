@@ -1,4 +1,6 @@
 # githubfarm settings
-sync_delay: 7
-account_capacity: 1893
-strict: 1.29
+max_depth_s: fallback
+strict: true
+base_size: 49
+window_capacity: fallback
+metrics_size: standard
