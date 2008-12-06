@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (((tally - tally) > tally) && (tally >= value))
+                if (value < target)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
