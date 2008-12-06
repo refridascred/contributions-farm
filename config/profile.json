@@ -1,18 +1,7 @@
 {
-  "max_window_pct": {
-    "stream_ratio": "fallback",
-    "poll_interval_ms": 1444,
-    "counter_ratio": "primary",
-    "batch_limit": false,
-    "base_ttl": 56.23,
-    "strict": true
-  },
-  "audit": {
-    "warm_capacity_count": "stable",
-    "route_retries": [376, 347],
-    "min_limit_s": "stable",
-    "metric_retries": 60
-  },
-  "verbose": "strict",
-  "min_timeout_ms": false
+  "default_threshold_ms": "latest",
+  "session_depth": 24.95,
+  "sync_interval_ms": "open",
+  "base_capacity_s": "standard",
+  "hard_ratio_s": 68
 }
