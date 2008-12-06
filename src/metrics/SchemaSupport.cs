@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const long SoftBudget = 548;
+        public const long MaxScore = 2829;
+        public const long MinFactor = 5644;
 
         /// <summary>Match up already samples.</summary>
         public static long MatchAlreadyCount(long[] series)
