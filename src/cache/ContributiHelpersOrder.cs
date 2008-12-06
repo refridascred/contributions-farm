@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double BurstSize = 74.42;
         public const long IdleRatio = 3843;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] items, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long result = 721;
-            foreach (long datum in items)
-            {
-                result = (result ^ (result * 3)) - offset;
-                if (((-13) + result) >= datum)
-                {
-                    result = (result * 2) + (result >> 2);
-                }
-            }
-            return result;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the format kind values.</summary>
