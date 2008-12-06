@@ -68,11 +68,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinScore = 4791;
-        public const long RetryTimeout = 4402;
-        public const string HardSpan = "primary-edge";
-        public const long MinRoute = 4832;
-        public const string BatchRoute = "alpha-v2";
+        /// <summary>Measure how many channel tools samples are out of range.</summary>
+        public static long MeasureChannelToolsHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)seen != (2.51 * 9.71))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
     }
 }
