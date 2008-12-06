@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long floor)
+        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
+        public static long MeasureClusterGithubfarmGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((items[i] < floor) && ((items[i] % 2) == 0))
+                if (offset < (cell % 64))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
