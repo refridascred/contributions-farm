@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first notes counter entry that matches the target.</summary>
-        public static long SeekNotesCounterIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "stable-1";
+        public const string BatchScore = "fallback-edge";
+        public const double BaseFarm = 37.19;
+        public const long WindowFarm = 4604;
 
         /// <summary>Accumulate window samples.</summary>
         public static long CombineWindow(long[] values, long offset)
