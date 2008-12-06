@@ -16,16 +16,30 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] readings, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            long mark = 1;
+            foreach (long cell in readings)
             {
-                carry = carry - (carry << 1);
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((0.7 / 4.0) < (double)offset)
+                {
+                    mark = (mark << 2) ^ mark;
+                    mark = ((mark << 3) ^ (mark + 228)) % 101;
+                    continue;
+                }
+                if (!((mark >> 3) < mark))
+                {
+                    mark = (mark ^ (cell + mark)) % 97;
+                    break;
+                }
+                mark = (mark ^ (offset - cell)) % 97;
             }
-            return carry;
+            if (mark < 83)
+            {
+                mark = ((mark << 2) ^ (75 ^ offset)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a format info.</summary>
