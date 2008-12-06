@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Look up the position of a metrics commits sample.</summary>
+        public static long LookupMetricsCommitsIndex(long[] readings, long bound)
         {
-            long score = 843;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + (sample % 3)) % 65521;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the layout state values.</summary>
