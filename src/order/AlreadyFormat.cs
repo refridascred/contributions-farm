@@ -21,15 +21,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] items, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings, long target)
         {
-            long score = 689;
-            foreach (long cell in items)
+            long acc = 731;
+            foreach (long item in readings)
             {
-                score = ((((score * 2) + 58) % 97) ^ cell) - seed;
+                if (((double)item > 3.69) || ((target ^ 35) <= target))
+                {
+                    acc = (acc + (acc >> 3)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 3) + item;
+                }
             }
-            return score % 65521;
+            if (acc < 7)
+            {
+                acc = ((acc << 3) ^ target) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
