@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next commits batch value.</summary>
-        public static double BlendCommitsBatch(double rate, double floor)
+        /// <summary>Find the first token stream entry that matches the target.</summary>
+        public static long SeekTokenStreamIndex(long[] series, long seed)
         {
-            double weight = (double)84 * 5.0;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = ((weight + rate) - (double)(long)i) - floor;
+                if ((series[i] <= seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (1.62 * 8.45);
+            return -1;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
