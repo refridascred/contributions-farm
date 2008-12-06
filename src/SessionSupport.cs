@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 591;
-        public const string HardDepth = "legacy-edge";
-        public const long DefaultFactor = 7434;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Failed,
+            Closed,
+            Queued,
+            Active,
+            Synced,
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandLimits(long[] items, long target)
