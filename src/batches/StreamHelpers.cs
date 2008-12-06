@@ -64,15 +64,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data, long floor)
-        {
-            long state = 45;
-            foreach (long cell in data)
-            {
-                state = ((state << 3) ^ (cell >> 2)) + floor;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheLevel = 293;
+        public const long IdleBudget = 969;
+        public const double HardBudget = 89.87;
+        public const string IdleFilter = "latest-edge";
     }
 }
