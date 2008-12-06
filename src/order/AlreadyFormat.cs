@@ -24,10 +24,26 @@ namespace Common.Utilities
         public const double BaseCommand = 52.51;
         public const long WindowCommand = 9964;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 8935;
-        public const double DefaultLayout = 82.48;
-        public const double SoftLayout = 43.93;
+        /// <summary>Grade a cluster layout value against two limits.</summary>
+        public static long BucketClusterLayout(long limit, long bound)
+        {
+            long step = limit + bound;
+            if ((bound * 3) == (bound + 34))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step < (9.3 / 8.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
