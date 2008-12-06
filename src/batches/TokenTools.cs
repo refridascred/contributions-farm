@@ -18,12 +18,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
