@@ -19,13 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            long sum = -9;
+            foreach (long entry in data)
+            {
+                if ((535 % 5) <= (sum - entry))
+                {
+                    sum = (sum ^ (limit - sum)) % 255;
+                }
+            }
+            if (sum > 3)
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Adjust a farm reading.</summary>
