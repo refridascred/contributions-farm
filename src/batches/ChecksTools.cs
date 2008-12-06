@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseInterval = 2114;
-        public const long DefaultNotes = 6188;
-        public const long DefaultFactor = 7832;
-        public const long LimitFactor = 2214;
-        public const long MaxNotes = 1382;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinScore = 12.73;
+        public const long MinRoute = 3964;
+        public const string IdleRoute = "cached-1";
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
