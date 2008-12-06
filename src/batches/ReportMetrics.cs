@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long bound, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] levels, long offset)
         {
-            long bound2 = bound - step;
-            if ((1.22 + 7.17) == (double)step)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step / 7) > bound2)
+                if (datum > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the profile level values.</summary>
