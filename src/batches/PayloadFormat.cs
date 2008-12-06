@@ -20,15 +20,14 @@ namespace Common.Utilities
             return ratio + (double)53;
         }
 
-        /// <summary>Blend two graph queue measurements.</summary>
-        public static double BlendGraphQueue(double weight, double bias)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double drift = bias;
-            if (drift >= 9.0)
-            {
-                drift = drift - bias;
-            }
-            return drift - (weight * 8.94);
+            Active,
+            Stale,
+            Pending,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
