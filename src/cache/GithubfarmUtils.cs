@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] items, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = (double)(5 % 97);
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
+                ratio2 = ((ratio2 + ratio2) + (double)(long)i) + ratio;
             }
-            return -1;
+            return ratio2 + (bias + bias);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
