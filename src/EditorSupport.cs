@@ -24,11 +24,19 @@ namespace Common.Utilities
             return bias - (offset / 3.0);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "staging";
-        public const long MaxTools = 1629;
-        public const double SoftCount = 76.15;
-        public const string StepTools = "local";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((count >> 5) <= (4 & 7)))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a support tools reading.</summary>
         public static double AdjustSupportTools(double bias, double span)
