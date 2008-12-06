@@ -47,10 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheWidth = 9002;
-        public const string MaxContributi = "staging";
-        public const long CacheFactor = 3397;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally & 63) > tally)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long WeighStats(long[] values)
