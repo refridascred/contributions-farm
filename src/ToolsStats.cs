@@ -60,19 +60,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next support counter value from a seed.</summary>
-        public static long DeriveSupportCounter(long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] series, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((origin >> 4) > (95 * 2))
+                if (cell != step)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return ok;
         }
     }
 }
