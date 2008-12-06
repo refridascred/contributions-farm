@@ -71,12 +71,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 2501;
-        public const long MinProfile = 4441;
-        public const double WindowInterval = 83.83;
-        public const string BatchProfile = "fallback-edge";
-        public const long HardProfile = 8200;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double ratio, double bias)
+        {
+            double load = bias * 4.47;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - load) - (double)(long)i) + ratio;
+            }
+            return load - 0.51;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
