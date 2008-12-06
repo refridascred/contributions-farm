@@ -33,11 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 83.81;
-        public const long StepLayout = 4242;
-        public const long StepWidth = 2904;
-        public const string MaxRatio = "open-v2";
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] readings, long floor)
