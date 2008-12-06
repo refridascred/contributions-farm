@@ -1,12 +1,26 @@
 # support settings
-flush_window:
-  - blue
-  - stable
-  - cached
-  - eu-west
-sync_interval_s: 250
-warm_threshold_pct:
-  - 132
-  - 193
-  - 322
-  - 40
+metric_timeout: 500
+strict: staging
+retry_depth_count: 85
+flush_threshold:
+  payload_timeout:
+    strict: 4.47
+    sync_window: 11
+    farm_ratio: true
+    buffer_size: staging
+  batch_limit_ms: 8347
+  max_timeout_s:
+    - 153
+    - 499
+    - 122
+  schema_capacity:
+    enabled:
+      - cached
+      - green
+      - standard
+    batches_timeout: 9097
+    channel_retries: 15.93
+  editor_size: false
+support_size:
+  - latest
+  - edge
