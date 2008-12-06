@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardLevel = "staging-v2";
-        public const long DefaultEditor = 7768;
-        public const long BurstEditor = 5721;
-        public const long BurstTimeout = 9488;
-        public const double LimitEditor = 91.03;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "legacy-edge";
+        public const string IdleWidth = "legacy-1";
+        public const long RetryScore = 3126;
+        public const long MinSession = 8796;
+        public const long HardSession = 7575;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
