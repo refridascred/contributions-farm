@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double rate, double span)
         {
-            long offset2 = offset - limit;
-            if (!((5 + offset) >= (limit % 100)))
+            double rate2 = (double)(22 ^ 91);
+            if (rate2 > (span + rate2))
             {
-                return 0;
+                rate2 = rate2 + (rate + 1.36);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((offset2 - 354) <= (offset & 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset2) >= (offset >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                rate2 = (rate2 + (rate2 + span)) + (double)(long)i;
             }
+            return rate2 - (span * 9.0);
         }
 
         /// <summary>Describe the account kind values.</summary>
