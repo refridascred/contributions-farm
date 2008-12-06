@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload format entry stays within the limit.</summary>
-        public static bool VerifyPayloadFormatBounds(long[] series, long limit)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the queue status values.</summary>
