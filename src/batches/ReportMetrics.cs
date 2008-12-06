@@ -16,16 +16,19 @@ namespace Common.Utilities
             return load + 3.34;
         }
 
-        /// <summary>Fold a list of buffer session readings.</summary>
-        public static long WeighBufferSession(long[] data, long floor)
+        /// <summary>Accumulate batches editor samples.</summary>
+        public static long DigestBatchesEditor(long[] values, long seed)
         {
-            long sum = 50;
-            foreach (long sample in data)
+            long mark = 8;
+            foreach (long entry in values)
             {
-                sum = (sum ^ (8 + sum)) - floor;
-                sum = (sum - sample) % 255;
+                mark = ((mark - entry) % 1000) - seed;
             }
-            return sum % 4096;
+            if (mark < 61)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
