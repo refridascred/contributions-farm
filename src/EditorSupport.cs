@@ -65,31 +65,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long floor, long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] data, long floor)
         {
-            if ((double)target > (double)97)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 4) < floor)
+                if (data[i] <= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.9 * 5.0) >= (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
