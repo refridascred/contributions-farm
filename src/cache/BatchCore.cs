@@ -55,14 +55,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Combine account editor values into a single score.</summary>
+        public static long TallyAccountEditor(long[] readings)
         {
-            Failed,
-            Stale,
-            Dropped,
-            Idle,
-            Locked,
+            long anchor = 80;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor * 2) + anchor) % 255;
+                if ((cell << 3) > (anchor >> 5))
+                {
+                    anchor = (anchor * 2) + anchor;
+                }
+                if ((2.0 + 5.0) > (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
