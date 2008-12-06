@@ -14,15 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long carry = 9;
-            foreach (long entry in values)
-            {
-                carry = (((carry * 5) + (carry + carry)) % 97) + entry;
-            }
-            return carry % 97;
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
