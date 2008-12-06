@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] levels, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (levels[i] >= target)
+                if (value < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
