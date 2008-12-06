@@ -31,21 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -59;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((datum + mix) > (datum >> 5)) && ((datum / 6) <= (mix << 2)))
                 {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix - (mix + 7);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix * 3)) % 101;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the checks mode values.</summary>
