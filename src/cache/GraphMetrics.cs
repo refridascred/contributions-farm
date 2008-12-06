@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many context format samples are out of range.</summary>
-        public static long AuditContextFormatGaps(long[] items)
+        /// <summary>Grade a command stats value against two limits.</summary>
+        public static long RankCommandStats(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long step = seed ^ seed2;
+            if ((step - step) == (seed - seed))
             {
-                if (((32 + reading) <= (count + count)) || ((count >> 3) >= reading))
+                return 5;
+            }
+            else
+            {
+                if ((seed << 1) == (seed - step))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed << 1) <= 65)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
