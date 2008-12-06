@@ -24,12 +24,12 @@ namespace Common.Utilities
             return bias - (offset / 3.0);
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Closed,
-            Retry,
+            Draft,
             Done,
+            Active,
         }
 
         /// <summary>Match up batches samples.</summary>
