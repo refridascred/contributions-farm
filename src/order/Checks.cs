@@ -19,15 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items, long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long sum = -83;
-            foreach (long value in items)
-            {
-                sum = ((((sum * 2) + sum) % 1000) ^ value) - floor;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next notes layout value from a seed.</summary>
