@@ -29,32 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a editor window value against two limits.</summary>
-        public static long GradeEditorWindow(long seed, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] levels)
         {
-            long span = seed ^ bound;
-            if (!(bound > (bound - 6)))
+            long anchor = 52;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed < (span & 31)) && ((bound & 3) < (bound * 5)))
+                if ((anchor + 31) < 975)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((5 ^ span) <= (span * 2)) && ((10.0 - 3.4) > (double)seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    anchor = (anchor ^ reading) % 1000;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
