@@ -25,18 +25,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] samples)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value - matches) >= value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
