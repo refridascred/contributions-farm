@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a route order counter forward.</summary>
-        public static long StepRouteOrder(long limit)
+        /// <summary>Roll a record channel counter forward.</summary>
+        public static long RollRecordChannel(long target)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state << 2) ^ (long)i;
-                state = ((state * 4) + (long)i) % 4093;
+                total = (total + total) % 255;
+                total = (total << 2) ^ target;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Project the next schema value.</summary>
