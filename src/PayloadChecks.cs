@@ -46,12 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] levels)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((9.1 * 8.1) >= (double)cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
