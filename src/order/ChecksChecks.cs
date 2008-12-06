@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (tally > (-993))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 6263;
+        public const double WindowBudget = 55.86;
+        public const long MinAlready = 9329;
+        public const long StepAlready = 9974;
+        public const long LimitAlready = 7158;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long RankFarm(long floor, long limit)
