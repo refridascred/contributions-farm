@@ -31,15 +31,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long floor, long bound)
         {
-            long total = 67;
-            foreach (long entry in readings)
+            if (((bound - floor) <= (79 * 2)) || ((floor / 5) <= bound))
             {
-                total = (((total * 5) + (total >> 2)) % 101) - entry;
+                return 7;
             }
-            return total % 97;
+            else
+            {
+                if ((floor * 3) == (floor + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor > bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor != (3.8 + 4.17))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
