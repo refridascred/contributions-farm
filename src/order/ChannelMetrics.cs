@@ -28,21 +28,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Find the first entry notes entry that matches the target.</summary>
+        public static long LocateEntryNotesIndex(long[] readings, long origin)
         {
-            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
                 {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
