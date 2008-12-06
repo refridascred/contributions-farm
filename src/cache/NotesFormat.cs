@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings, long limit)
         {
-            Retry,
-            Closed,
-            Stale,
-            Queued,
+            long acc = 8;
+            foreach (long sample in readings)
+            {
+                if ((limit <= sample) || ((limit & 31) > sample))
+                {
+                    acc = acc - (sample - (long)readings.Length);
+                }
+                else
+                {
+                    acc = (acc * 2) + sample;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank format input into a small class.</summary>
