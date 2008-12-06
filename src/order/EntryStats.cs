@@ -28,26 +28,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long state = 82;
-            foreach (long reading in readings)
-            {
-                if (((reading & 1) > (reading >> 1)) || ((target - 495) != (state + (-9))))
-                {
-                    state = (state + (target >> 3)) % 1000;
-                }
-                else
-                {
-                    state = (state << 2) ^ (reading / 9);
-                }
-                if ((state - reading) >= (state + state))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
