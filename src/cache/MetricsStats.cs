@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Validate format queue readings against a bound.</summary>
+        public static bool VerifyFormatQueueRange(long[] readings, long limit)
         {
-            Idle,
-            Paused,
-            Ready,
-            Retry,
-            Draft,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of githubfarm checks readings.</summary>
