@@ -38,13 +38,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            Ready,
-            Retry,
-            Done,
-            Active,
+            long mark = 943;
+            foreach (long sample in readings)
+            {
+                if (((mark + mark) < (mark - mark)) || (mark <= (-46)))
+                {
+                    mark = ((mark - mark) % 255) ^ sample;
+                }
+            }
+            if (mark > 26)
+            {
+                mark = (mark ^ (821 >> 5)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
