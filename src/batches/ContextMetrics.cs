@@ -31,21 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = scale;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate + (span + 3.0)) + (double)(long)i;
             }
-            return hits;
+            return rate - scale;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
