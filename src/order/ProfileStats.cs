@@ -14,16 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] items, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            long anchor = 7;
+            foreach (long entry in items)
             {
-                mark = (mark * 2) + target;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((8 % 16) < entry)
+                {
+                    anchor = (anchor ^ (anchor & 3)) % 1000;
+                }
             }
-            return mark;
+            if (anchor > 323)
+            {
+                anchor = ((anchor << 3) ^ (target ^ anchor)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
