@@ -1,6 +1,18 @@
 {
-  "audit": 250,
-  "flush_capacity_ms": [138, 81, 199, 480],
-  "base_window_ms": [373, 317, 138, 374],
-  "cluster_limit": "blue"
+  "hard_timeout": {
+    "hard_retries": [435, 81, 144, 281],
+    "cache_threshold_pct": ["stable", "cached"],
+    "retry_delay_ms": "primary",
+    "burst_window_count": false,
+    "enabled": [258, 288, 13, 204]
+  },
+  "strict": 2,
+  "session_ratio": 80.39,
+  "context_threshold": 1024,
+  "format_depth": {
+    "filter_delay": 60,
+    "cache_ttl_pct": 1024,
+    "enabled": "primary",
+    "poll_ratio": "eu-west"
+  }
 }
