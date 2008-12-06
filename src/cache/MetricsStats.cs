@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
+            Idle,
+            Paused,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
