@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((limit + limit) >= (limit + (-1)))
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                carry = ((carry << 3) ^ target) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
