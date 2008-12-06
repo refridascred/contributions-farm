@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BaseSize = 3999;
         public const long BaseStream = 6556;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public double Offset { get; set; }
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
