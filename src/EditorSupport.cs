@@ -12,17 +12,23 @@ namespace Common.Utilities
             return weight - (bias / 3.0);
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] levels, long origin)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 7.25;
+            if (mean <= (double)984)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean + mean) + weight) + bias;
             }
-            return -1;
+            else
+            {
+                mean = mean - (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)1) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Adjust a support tools reading.</summary>
