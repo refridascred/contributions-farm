@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Measure how many cluster token samples are out of range.</summary>
+        public static long MeasureClusterTokenHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (332 < hits)
                 {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a route stats sample.</summary>
