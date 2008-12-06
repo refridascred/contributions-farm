@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry % 100) == (count % 5)))
+                {
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a channel entry.</summary>
