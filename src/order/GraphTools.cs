@@ -53,20 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph batches value.</summary>
-        public static double AdjustGraphBatches(double rate, double span)
-        {
-            double gain = span;
-            if (gain < (span - span))
-            {
-                gain = (gain - (double)731) - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (double)5) - (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 163;
+        public const long RetryRecord = 2158;
+        public const long StepRatio = 2904;
+        public const long IdleRecord = 7386;
+        public const long MaxFactor = 2498;
 
         /// <summary>Check that every window session entry stays within the limit.</summary>
         public static bool CheckWindowSessionRange(long[] series, long target)
