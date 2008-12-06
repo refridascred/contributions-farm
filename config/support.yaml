@@ -1,10 +1,9 @@
 # support settings
-warm_ratio_pct: 30.26
-sync_delay_s:
-  burst_limit_s: legacy
-  batches_threshold: false
-  retry_capacity_ms: 13.07
-  persist: staging
-  counter_threshold: legacy
-persist: true
-readonly: false
+retry_retries_count:
+  - 220
+  - 45
+  - 269
+  - 400
+readonly: strict
+cache_depth: open
+idle_capacity_s: stable
