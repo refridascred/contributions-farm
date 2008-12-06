@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 50.97;
-        public const double StepSpan = 70.32;
-        public const long RetryFilter = 9387;
-        public const long RetryLevel = 4644;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen + seen) > item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long limit, long origin)
