@@ -26,12 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] samples, long seed)
         {
-            Idle,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((seed - seed) != (reading % 7))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
