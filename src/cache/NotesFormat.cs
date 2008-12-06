@@ -32,21 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token batches pairs that satisfy a relation.</summary>
-        public static long PairTokenBatchesCount(long[] values)
+        /// <summary>Fold a list of token profile readings.</summary>
+        public static long TallyTokenProfile(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 87;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = (((sum * 5) + (sum >> 4)) % 1000) + cell;
+                if ((sum / 9) < (704 ^ target))
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (target >> 1)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + target) % 101;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
