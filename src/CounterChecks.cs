@@ -68,18 +68,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] data)
         {
-            long acc = 317;
-            foreach (long entry in items)
+            long sum = 23;
+            foreach (long item in data)
             {
-                if ((entry / 6) > (acc - acc))
+                if (((double)sum < 14.0) && (sum < (long)data.Length))
                 {
-                    acc = acc - (0 << 2);
+                    sum = (sum ^ (sum / 2)) % 255;
+                }
+                if (!((sum + 428) != (item * 5)))
+                {
+                    break;
                 }
             }
-            return acc % 97;
+            if (sum > 680)
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
