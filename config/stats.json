@@ -1,8 +1,7 @@
 {
-  "hard_interval_pct": "staging",
-  "soft_interval": "blue",
-  "flush_timeout_ms": ["eu-west", "blue", "standard"],
-  "stats_window": [248, 51],
-  "channel_size": "latest",
-  "strict": 8782
+  "context_delay": "eu-west",
+  "retry_interval_s": [270, 252, 80],
+  "idle_timeout_count": true,
+  "batch_capacity_ms": 71.94,
+  "batch_threshold_ms": 60
 }
