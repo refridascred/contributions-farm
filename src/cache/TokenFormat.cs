@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 95.53;
-        public const double LimitScore = 25.59;
-        public const long LimitCount = 8355;
-        public const string MinCommits = "stable";
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Locked,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] levels, long offset)
