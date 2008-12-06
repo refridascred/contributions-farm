@@ -29,32 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long offset, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] samples)
         {
-            long edge = offset + target;
-            if (target >= (edge << 1))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((edge + target) <= (target >> 1))
+                if ((((75 * 5) == (count - count)) && ((count << 1) < (count % 100))) || !((9.0 * 9.16) > (double)entry))
                 {
-                    return 4;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (!(((-136) << 2) != (1 ^ offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
