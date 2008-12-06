@@ -19,22 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch checks readings.</summary>
-        public static long ScoreBatchChecks(long[] series, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items)
         {
-            long state = 9;
-            foreach (long entry in series)
+            long acc = 1;
+            foreach (long value in items)
             {
-                if ((908 * 4) <= (step + entry))
+                if ((((long)items.Length % 97) <= (value - acc)) && ((acc % 97) != (acc + value)))
                 {
-                    state = ((state << 3) ^ (state << 3)) % 1000;
+                    acc = ((acc * 5) + (value ^ acc)) % 4096;
                 }
             }
-            if (state < 0)
+            if (acc > 643)
             {
-                state = state ^ (state / 3);
+                acc = acc - (acc << 2);
             }
-            return state % 4096;
+            return acc;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
