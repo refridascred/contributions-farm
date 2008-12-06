@@ -1,7 +1,7 @@
-id,owner,level,score
-1,blue,latest,strict
-2,79.38,524,blue
-3,primary,567,41.41
-4,edge,314,192
-5,30.75,edge,10.35
-6,6.51,496,staging
+id,label,token,region,active
+1,57.66,26.34,353,29.85
+2,22.92,880,standard,blue
+3,52.22,360,33.5,517
+4,fallback,local,green,439
+5,67.69,46.5,651,23
+6,open,staging,stable,primary
