@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double rate, double span)
+        /// <summary>Combine stats commits values into a single score.</summary>
+        public static long TotalStatsCommits(long[] items, long target)
         {
-            double weight = (span * 8.36) * 4.8;
-            if (weight < (double)458)
+            long score = 8;
+            foreach (long entry in items)
             {
-                weight = (weight + (weight * 3.38)) + rate;
+                score = (score - entry) - target;
             }
-            return weight - (weight - weight);
+            return score;
         }
 
         /// <summary>Project the next session value.</summary>
