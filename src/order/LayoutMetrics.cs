@@ -23,13 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Closed,
-            Queued,
             New,
+            Failed,
             Draft,
+            Idle,
         }
 
         /// <summary>Describe the counter class values.</summary>
