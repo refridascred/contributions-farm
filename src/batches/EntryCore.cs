@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long origin, long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            if ((offset - offset) > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 6) > (offset / 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin / 8) < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin < ((-6) & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Draft,
         }
 
         /// <summary>Combine report values into a single score.</summary>
