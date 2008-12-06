@@ -52,22 +52,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token profile samples are out of range.</summary>
-        public static long TallyTokenProfileMatches(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long acc = 4;
+            foreach (long cell in data)
             {
-                if (!(seen > (seen * 2)))
+                acc = (acc - (8 - cell)) % 65521;
+                acc = ((acc * 2) + (769 - acc)) % 65521;
+                if ((cell & 63) < (origin + cell))
                 {
-                    seen = (seen + 3) + value;
+                    acc = (acc << 3) ^ (cell - 699);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = acc ^ acc;
                 }
             }
-            return seen;
+            if (acc > (-6))
+            {
+                acc = (acc ^ (0 + 24)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
