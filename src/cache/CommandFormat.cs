@@ -35,21 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total - (total + (long)i)) % 97;
-                if (total <= (offset & 127))
-                {
-                    total = (total - (total / 5)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 4943;
+        public const double BaseGraph = 61.95;
+        public const long SoftSpan = 8722;
+        public const long CacheSize = 1432;
+        public const double MinInterval = 79.28;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
