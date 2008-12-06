@@ -52,12 +52,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long step, long offset)
         {
-            Draft,
-            Closed,
-            Stale,
+            if (((offset + offset) > (step * 4)) && ((double)offset <= (2.93 * 3.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8 - offset) != (step >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset >> 2) <= (step << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step + step) >= step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
