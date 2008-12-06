@@ -1,5 +1,10 @@
 {
-  "hard_timeout_ms": 25.75,
-  "flush_window": 98.5,
-  "already_delay": "green"
+  "flush_timeout_ms": "staging",
+  "enabled": 500,
+  "token_timeout": {
+    "batch_delay": false,
+    "burst_ttl": true,
+    "graph_retries": 15.93
+  },
+  "base_ttl_pct": 3718
 }
