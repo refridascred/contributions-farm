@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long offset)
         {
-            Locked,
-            Failed,
-            Active,
+            long score = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Project the next tools cluster value.</summary>
