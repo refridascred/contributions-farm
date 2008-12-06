@@ -56,19 +56,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every graph tools entry stays within the limit.</summary>
-        public static bool VerifyGraphToolsBounds(long[] values, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (cell < seed)
+                if ((entry << 1) > (entry % 2))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
