@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -767;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((anchor & 255) < anchor))
                 {
-                    if ((items[i] - items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor + (item ^ (long)series.Length)) % 97;
+                }
+                if (!((double)271 > (double)limit))
+                {
+                    anchor = anchor - (735 + anchor);
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
