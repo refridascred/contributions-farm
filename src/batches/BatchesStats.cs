@@ -26,18 +26,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stream record samples are out of range.</summary>
-        public static long MeasureStreamRecordOutliers(long[] series)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((((780 ^ hits) >= hits) || ((double)value > (7.34 - 4.0))) || (hits <= (value & 15)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Blend two farm measurements.</summary>
