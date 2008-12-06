@@ -31,18 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] series, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((double)tally == (2.06 + 0.1)) && ((661 > (tally >> 1)) && ((tally + datum) > datum)))
+                if ((14.0 / 5.0) <= (double)reading)
                 {
-                    tally = (tally + 3) - offset;
+                    hits = (hits + 1) + target;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
