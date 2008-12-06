@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const double WindowBuffer = 42.18;
         public const string BaseDepth = "cached-edge";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 8336;
-        public const string LimitEntry = "standard-1";
-        public const string BatchInterval = "staging-1";
-        public const string RetryEntry = "legacy-1";
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] items, long target)
