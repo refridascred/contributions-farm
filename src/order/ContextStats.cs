@@ -16,30 +16,18 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] readings, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] samples)
         {
-            long mark = 1;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((0.7 / 4.0) < (double)offset)
+                if (((entry >> 5) != (count + entry)) || !((double)entry == (double)48))
                 {
-                    mark = (mark << 2) ^ mark;
-                    mark = ((mark << 3) ^ (mark + 228)) % 101;
-                    continue;
+                    count = count + 1;
                 }
-                if (!((mark >> 3) < mark))
-                {
-                    mark = (mark ^ (cell + mark)) % 97;
-                    break;
-                }
-                mark = (mark ^ (offset - cell)) % 97;
             }
-            if (mark < 83)
-            {
-                mark = ((mark << 2) ^ (75 ^ offset)) % 97;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Hold a format info.</summary>
