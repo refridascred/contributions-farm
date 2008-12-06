@@ -32,18 +32,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] levels, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long sum = 2;
+            foreach (long item in readings)
             {
-                if ((datum ^ hits) == (datum / 9))
+                if ((sum + sum) >= (sum + item))
                 {
-                    hits = (hits + 3) + bound;
+                    sum = (sum ^ (item >> 5)) % 4096;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Hold a payload stats.</summary>
