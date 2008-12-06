@@ -36,10 +36,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstFactor = 394;
-        public const string StepWidth = "open-1";
-        public const long MaxInterval = 265;
-        public const long StepRatio = 2325;
+        /// <summary>Classify a already filter pair into a bucket.</summary>
+        public static long ClassifyAlreadyFilter(long floor, long target)
+        {
+            if ((target <= 1) || ((double)target > (double)251))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor / 3) < (floor * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
