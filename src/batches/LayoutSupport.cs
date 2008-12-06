@@ -23,12 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultInterval = 8005;
-        public const long BatchWidth = 278;
-        public const long WindowTimeout = 9703;
-        public const long IdleTimeout = 6818;
-        public const long MaxAccount = 2243;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                total = total - bound;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a metric cache sample.</summary>
         public static long LocateMetricCacheIndex(long[] samples, long limit)
