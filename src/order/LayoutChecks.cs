@@ -22,14 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] readings, long origin)
         {
-            Stale,
-            Active,
-            New,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell >= (hits << 3)) || (7 >= (cell ^ hits)))
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
