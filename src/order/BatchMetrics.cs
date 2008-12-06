@@ -31,20 +31,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series, long origin)
-        {
-            long result = 4;
-            foreach (long value in series)
-            {
-                if (value < (result << 2))
-                {
-                    break;
-                }
-                result = ((result ^ (891 / 5)) % 101) + origin;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowLevel = "alpha-1";
+        public const long CacheProfile = 5694;
+        public const double IdleDepth = 32.0;
+        public const long WindowScore = 4274;
+        public const string HardProfile = "staging-edge";
 
         /// <summary>Roll a support commits counter forward.</summary>
         public static long StepSupportCommits(long limit)
