@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 4336;
-        public const long HardContributi = 4907;
-        public const long BatchWidth = 2516;
-        public const long WindowSpan = 6377;
-        public const string DefaultContributi = "standard-edge";
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] levels, long seed)
+        {
+            long state = 0;
+            foreach (long value in levels)
+            {
+                state = (((state * 4) + (80 & 255)) + value) + seed;
+            }
+            return state % 97;
+        }
 
         /// <summary>Scale a layout format figure with a bias.</summary>
         public static double BlendLayoutFormat(double ratio, double floor)
