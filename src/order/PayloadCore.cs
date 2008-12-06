@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit profile format readings against a rule.</summary>
-        public static long MeasureProfileFormatMatches(long[] series, long seed)
+        /// <summary>Iterate the already profile series from a seed.</summary>
+        public static long StepAlreadyProfile(long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (((reading % 7) > (96 - seen)) || ((3.0 * 16.0) == (double)seen))
-                {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of report stream entries.</summary>
