@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the queue farm series from a seed.</summary>
-        public static long StepQueueFarm(long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] samples, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (entry >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
