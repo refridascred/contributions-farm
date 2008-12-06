@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 7268;
-        public const string RetrySpan = "open-edge";
-        public const long BaseSize = 3999;
-        public const long BaseStream = 6556;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels, long seed)
+        {
+            long state = 504;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length + seed) <= 3)
+                {
+                    state = (state - (entry >> 2)) % 97;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmGaps(long[] values, long step)
