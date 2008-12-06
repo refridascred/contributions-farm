@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 2063;
-        public const long SoftBuffer = 5089;
-        public const long IdleBuffer = 6297;
-        public const double WindowBuffer = 42.18;
-        public const string BaseDepth = "cached-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "legacy";
+        public const long StepCount = 2081;
+        public const long BurstEditor = 4864;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long OverlapSchemaCount(long[] readings)
