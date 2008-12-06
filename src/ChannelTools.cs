@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            long score = 70;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (!((1.0 - 0.3) <= (double)entry))
+                if ((3.3 / 2.0) > (double)sample)
                 {
-                    score = (score - (floor - entry)) % 255;
+                    tally = tally + 3;
                 }
             }
-            if (score > 9)
-            {
-                score = ((score << 2) ^ (score / 4)) % 1000;
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Describe the tools phase values.</summary>
