@@ -35,10 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardCluster = "strict-v2";
-        public const long RetryCluster = 1513;
-        public const double StepSpan = 87.7;
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count entry batches pairs that satisfy a relation.</summary>
         public static long OverlapEntryBatchesCount(long[] data)
