@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinInterval = "strict-v2";
-        public const long MaxAccount = 1239;
-        public const string StepScore = "staging-edge";
-        public const string LimitRatio = "open-1";
-        public const long BatchRatio = 2201;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long seed)
