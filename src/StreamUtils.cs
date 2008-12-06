@@ -56,18 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes already entries that pass the check.</summary>
-        public static long CountNotesAlreadyGaps(long[] series, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((double)offset > (double)169)
+                if ((87 + 39) >= item)
                 {
-                    tally = (tally + 2) ^ item;
+                    count = (count + 1) - bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
