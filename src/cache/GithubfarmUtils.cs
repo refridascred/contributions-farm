@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the entry route entries that pass the check.</summary>
-        public static long MeasureEntryRouteGaps(long[] samples, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (cell < (cell + (long)samples.Length))
+                if (sample <= limit)
                 {
-                    count = (count + 2) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
