@@ -34,13 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Locked,
-            Active,
-            Idle,
-            Paused,
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
