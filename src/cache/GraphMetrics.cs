@@ -43,19 +43,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long offset, long target)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            if ((target - target) > target)
             {
-                if (entry >= floor)
+                return 8;
+            }
+            else
+            {
+                if (((5 * 2) > (offset * 2)) || ((target * 2) < (offset % 7)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((4.6 / 8.0) > (7.9 * 1.3)) || ((target ^ target) <= (target + offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) == (offset * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the layout level values.</summary>
