@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] values, long bound)
+        /// <summary>Validate filter context readings against a bound.</summary>
+        public static bool ValidateFilterContextRange(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((bound + cell) <= (seen << 1))
+                if (cell > seed)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the editor phase values.</summary>
