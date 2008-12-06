@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] samples, long floor)
         {
-            long carry = 1;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                carry = ((carry << 2) ^ (5 + cell)) % 101;
+                if ((((hits - cell) < (cell & 31)) && ((859 ^ 793) <= (floor - cell))) || ((double)floor > (1.8 + 16.0)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
