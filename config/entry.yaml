@@ -1,6 +1,6 @@
 # entry settings
-commits_size: 1024
-default_timeout_count: false
-retry_delay_s: true
-default_retries_s: local
-default_interval_pct: 50
+default_ttl: false
+default_depth_pct: edge
+warm_size_s: edge
+hard_interval_pct: edge
+flush_depth_s: 64.35
