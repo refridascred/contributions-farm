@@ -51,9 +51,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSize = 626;
-        public const long BaseEntry = 3839;
-        public const double StepDepth = 62.03;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
