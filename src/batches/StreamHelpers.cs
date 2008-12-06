@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const long MinWidth = 3018;
         public const long BurstCommand = 2866;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] items, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark & 1) < (8 % 97))
+                if (items[i] > target)
                 {
-                    mark = mark ^ mark;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
