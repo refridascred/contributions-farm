@@ -13,14 +13,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 2309;
+        public const long MaxFactor = 5827;
+        public const long MinBudget = 2963;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] items, long origin)
