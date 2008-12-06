@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const string CacheScore = "alpha-v2";
         public const long BatchMetric = 375;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Combine session values into a single score.</summary>
