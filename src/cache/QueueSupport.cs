@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph report readings against a bound.</summary>
-        public static bool GuardGraphReportRange(long[] values, long step)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
