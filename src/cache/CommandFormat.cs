@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] values, long step)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mark = -65;
-            foreach (long entry in values)
-            {
-                if (step > (long)values.Length)
-                {
-                    mark = (mark ^ 821) + entry;
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
