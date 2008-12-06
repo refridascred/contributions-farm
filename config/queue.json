@@ -1,12 +1,10 @@
 {
-  "cache_window": [222, 344, 495],
-  "batch_size": {
-    "audit": 3401,
-    "metric_size": "cached",
-    "warm_threshold_count": 30
+  "audit": 60,
+  "retry_size_s": {
+    "hard_ttl_pct": "strict",
+    "filter_window": 100,
+    "hard_depth_count": true
   },
-  "default_timeout_pct": "eu-west",
-  "enabled": ["staging", "edge", "local", "fallback"],
-  "warm_retries_pct": 49,
-  "batch_delay_ms": true
+  "flush_retries_s": 94.46,
+  "sync_size_count": "eu-west"
 }
