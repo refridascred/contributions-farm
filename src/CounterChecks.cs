@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Match up channel cluster samples.</summary>
+        public static long OverlapChannelClusterCount(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((long)i == ((long)i << 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score * 5) + (score - seed);
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
