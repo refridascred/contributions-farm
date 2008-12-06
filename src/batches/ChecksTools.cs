@@ -37,18 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks record samples are out of range.</summary>
-        public static long AuditChecksRecordMatches(long[] items, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((value >> 5) == (seen - seen)) && ((double)seen == (4.0 + 5.0)))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            Draft,
+            Failed,
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Digest a series of session report entries.</summary>
