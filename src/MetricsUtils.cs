@@ -33,10 +33,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchSize = 9548;
-        public const long DefaultBudget = 6312;
-        public const long BaseFactor = 4471;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long DigestSchema(long[] series, long limit)
