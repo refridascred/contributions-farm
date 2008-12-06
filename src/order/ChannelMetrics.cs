@@ -31,18 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] data)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)item < (0.4 / 9.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
