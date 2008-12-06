@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)tally != (13.0 * 3.3))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            Queued,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Compare every pair of channel buffer readings.</summary>
