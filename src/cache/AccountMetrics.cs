@@ -42,22 +42,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache record readings.</summary>
-        public static long CombineCacheRecord(long[] values)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long origin)
         {
-            long state = 8;
-            foreach (long cell in values)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)state < (3.4 + 7.27))
-                {
-                    state = (state ^ state) % 101;
-                }
-                else
-                {
-                    state = (state ^ (state + cell)) % 255;
-                }
+                result = result - (-30);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
