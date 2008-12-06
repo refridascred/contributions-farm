@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] readings)
+        /// <summary>Digest a series of batches command entries.</summary>
+        public static long ScoreBatchesCommand(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long total = -3;
+            foreach (long reading in data)
             {
-                if (7.25 < (double)sample)
+                if ((reading % 10) <= reading)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = total - (total / 7);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
