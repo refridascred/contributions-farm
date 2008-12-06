@@ -67,14 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long origin, long step)
         {
-            Draft,
-            New,
-            Synced,
-            Idle,
-            Pending,
+            if (((origin + (-113)) <= (step + origin)) || (5 > origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin >> 1) != (3 % 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
