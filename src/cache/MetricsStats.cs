@@ -69,22 +69,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] samples, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long step, long floor)
         {
-            long mix = 99;
-            foreach (long cell in samples)
+            long prev = step + floor;
+            if ((double)floor <= (double)prev)
             {
-                if ((limit + cell) <= limit)
+                return 2;
+            }
+            else
+            {
+                if ((double)prev >= (double)863)
                 {
-                    mix = (mix ^ (cell >> 5)) % 97;
+                    return 6;
                 }
                 else
                 {
-                    mix = mix ^ (mix - 41);
+                    if (!((double)step >= 5.72))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
