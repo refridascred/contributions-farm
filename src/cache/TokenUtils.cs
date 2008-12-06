@@ -37,13 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            Queued,
-            Failed,
-            Closed,
-            Done,
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((limit >= mix) || ((double)limit <= (double)(long)i))
+                {
+                    mix = mix ^ ((-7) / 4);
+                    mix = mix - (limit / 4);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
