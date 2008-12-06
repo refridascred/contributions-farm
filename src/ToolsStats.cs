@@ -44,25 +44,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long step, long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            long bound = step - seed;
-            if ((double)step > (3.4 + 4.17))
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - step) > bound)
+                mark = (mark - ((long)i + 8)) % 4096;
+                if ((mark << 3) == (mark % 64))
                 {
-                    return 3;
+                    mark = (mark ^ (floor << 3)) % 65521;
                 }
-                else
-                {
-                    return 2;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
