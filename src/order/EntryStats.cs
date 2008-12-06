@@ -60,17 +60,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] items, long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
