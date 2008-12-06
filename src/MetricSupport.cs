@@ -29,14 +29,13 @@ namespace Common.Utilities
         public const string DefaultAlready = "alpha-1";
         public const long IdleTimeout = 7762;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Stale,
-            Synced,
-            Draft,
-            Paused,
-            Active,
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
