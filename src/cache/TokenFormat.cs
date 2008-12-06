@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Blend two format notes measurements.</summary>
+        public static double ProjectFormatNotes(double scale, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double rate = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if ((seen + seen) > item)
-                {
-                    seen = seen + 1;
-                }
+                rate = (rate - (scale + rate)) + (double)(long)i;
             }
-            return seen;
+            return rate + (span * 18.0);
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
