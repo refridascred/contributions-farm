@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const double BaseCommand = 52.51;
         public const long WindowCommand = 9964;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] data, long floor)
         {
-            Paused,
-            New,
-            Retry,
-            Idle,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((43 / 5) >= (hits ^ hits))
+                {
+                    hits = ((hits + 3) + cell) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window mode values.</summary>
