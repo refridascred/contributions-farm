@@ -16,31 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] levels)
         {
-            long carry = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (((item >> 4) <= (origin + carry)) || ((double)carry >= (8.57 * 2.0)))
+                if (0.7 < (double)seen)
                 {
-                    carry = carry + (carry * 3);
-                    carry = (carry + (441 + origin)) % 97;
-                }
-                if ((carry + item) > (origin + carry))
-                {
-                    carry = (carry - (origin ^ origin)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ item) % 65521;
-                }
-                if ((double)item <= (9.6 / 5.0))
-                {
-                    carry = ((carry << 3) ^ (origin & 7)) % 4096;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank command channel input into a small class.</summary>
