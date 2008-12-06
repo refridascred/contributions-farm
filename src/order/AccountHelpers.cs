@@ -47,10 +47,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinCount = 6895;
-        public const long BatchChecks = 2163;
-        public const string HardWidth = "open-1";
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i + carry) != (step - (long)i))
+                {
+                    carry = carry ^ ((long)i << 1);
+                    carry = (carry ^ (step + 0)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutOutliers(long[] data, long floor)
