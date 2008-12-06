@@ -34,17 +34,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first batches schema entry that matches the target.</summary>
-        public static long FindBatchesSchemaIndex(long[] readings, long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Draft,
+            Done,
+            Locked,
+            Closed,
         }
     }
 }
