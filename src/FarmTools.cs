@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] items, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) != 0))
+                if (cell > step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
