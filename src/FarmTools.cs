@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series)
-        {
-            long mix = 55;
-            foreach (long item in series)
-            {
-                mix = ((mix - (mix + mix)) % 255) - item;
-            }
-            if (mix < 561)
-            {
-                mix = mix - (mix >> 2);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinChecks = 69.27;
+        public const string BatchBudget = "stable-edge";
+        public const long HardChecks = 1943;
+        public const long DefaultChecks = 4964;
+        public const string RetryChecks = "cached-v2";
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
