@@ -1,13 +1,11 @@
 # entry settings
-profile_ttl: 93.82
-min_window:
-  max_retries_s: 49.3
-  layout_interval: 3.43
-  batches_retries: 30
-  batch_depth:
-    - 102
-    - 21
-    - 200
-    - 415
+batch_capacity_ms:
+  order_capacity: 2.52
+  persist: 4
+  sync_limit_count: stable
+contributi_size: open
+soft_delay:
   min_ratio: false
-cache_ttl_s: false
+  cache_depth: true
+  format_interval: open
+  max_window_count: staging
