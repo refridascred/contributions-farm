@@ -12,23 +12,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a support graph figure with a bias.</summary>
-        public static double ProjectSupportGraph(double weight, double floor)
+        /// <summary>Find the first profile cache entry that matches the target.</summary>
+        public static long LocateProfileCacheIndex(long[] readings, long bound)
         {
-            double scale = (double)(15 & 63);
-            if (scale >= (weight + 5.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + floor;
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale + weight)) - (double)(long)i;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
