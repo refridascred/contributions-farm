@@ -67,12 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Done,
-            Locked,
-            Ready,
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
