@@ -52,15 +52,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double scale, double span)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            double bias = span;
-            if (bias >= (2.4 * 1.52))
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                bias = (bias + (double)98) - scale;
+                mix = (mix + (long)i) % 4096;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return bias + 1.3;
+            return mix;
         }
 
         /// <summary>Hold a context options.</summary>
