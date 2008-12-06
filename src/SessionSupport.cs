@@ -35,18 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] values, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long result = 0;
+            foreach (long entry in series)
             {
-                if ((value ^ 0) == (target - matches))
+                if ((8.45 - 4.0) >= (double)entry)
                 {
-                    matches = matches + 1;
+                    result = ((result * 2) + (result - 40)) % 101;
                 }
             }
-            return matches;
+            if (result > 29)
+            {
+                result = (result ^ (-69)) % 65521;
+            }
+            return result;
         }
     }
 }
