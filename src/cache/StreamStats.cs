@@ -36,13 +36,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Done,
-            Paused,
-            Synced,
-            Ready,
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
