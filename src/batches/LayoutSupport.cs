@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] readings, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long anchor = 0;
+            foreach (long item in values)
             {
-                if (cell < limit)
+                anchor = (anchor + (item >> 1)) % 1000;
+                if (((-8) > (37 ^ anchor)) && ((anchor << 1) >= anchor))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return anchor % 97;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
