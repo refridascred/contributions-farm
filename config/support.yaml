@@ -1,11 +1,4 @@
 # support settings
-min_ttl:
-  - 358
-  - 249
-  - 357
-warm_retries: 81
-soft_depth_ms: latest
-default_retries:
-  - 248
-  - 479
-retry_depth_s: true
+retry_timeout_ms: eu-west
+retry_limit_count: 75.45
+burst_threshold_count: 250
