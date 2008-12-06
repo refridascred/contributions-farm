@@ -1,7 +1,17 @@
 {
-  "record_capacity": 30.03,
-  "burst_ttl_count": [45, 242],
-  "batch_capacity": "legacy",
-  "queue_window": ["latest", "latest"],
-  "checks_ratio": 2479
+  "order_capacity": {
+    "max_retries_count": ["open", "latest", "staging"],
+    "dry_run": false,
+    "retry_limit_pct": 53,
+    "contributi_limit": {
+      "filter_threshold": 75,
+      "max_depth_count": false,
+      "verbose": 1
+    },
+    "batch_capacity": "green",
+    "min_depth_pct": ["fallback", "fallback", "stable"]
+  },
+  "soft_ratio": 827,
+  "checks_limit": [68, 47, 458, 379],
+  "sync_delay_count": 9899
 }
