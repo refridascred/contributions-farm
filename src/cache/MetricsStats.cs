@@ -74,11 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryInterval = 98.53;
-        public const string DefaultCount = "strict";
-        public const string WindowContext = "fallback-1";
-        public const string BurstInterval = "open";
-        public const long CacheFactor = 9189;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Dropped,
+            Paused,
+            Active,
+            Stale,
+        }
     }
 }
