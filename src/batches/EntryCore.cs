@@ -38,22 +38,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Roll a session report counter forward.</summary>
+        public static long DeriveSessionReport(long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item + item) <= (tally ^ item))
+                if (bound >= (total - bound))
                 {
-                    tally = tally + 1;
+                    total = (total * 3) + (total - bound);
+                    total = (total + (bound * 3)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total - (bound >> 5)) % 97;
                 }
+                total = (total << 2) ^ ((long)i - total);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
