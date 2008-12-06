@@ -30,38 +30,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a metrics window pair into a bucket.</summary>
-        public static long ClassifyMetricsWindow(long floor, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            if (!(63 > (bound * 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 4) <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((41 - bound) > (floor << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor / 2) == (bound - bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a already options.</summary>
