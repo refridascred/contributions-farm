@@ -22,16 +22,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result ^ 863) % 65521;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Queued,
+            Pending,
+            Retry,
+            Paused,
         }
     }
 }
