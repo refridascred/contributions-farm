@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] levels, long origin)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((entry % 100) == (count % 5)))
-                {
-                    count = (count + 2) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a channel entry.</summary>
