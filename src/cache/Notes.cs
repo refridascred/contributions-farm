@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two farm editor measurements.</summary>
-        public static double AdjustFarmEditor(double gain, double bias)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double bias2 = bias;
-            if (bias2 > (8.4 - bias))
-            {
-                bias2 = bias2 - (double)18;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (gain + bias)) - (double)(long)i;
-            }
-            return bias2 + (double)458;
+            Dropped,
+            Closed,
+            New,
+            Active,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
