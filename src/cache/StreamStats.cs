@@ -23,18 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] samples, long floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)seen == (5.0 / 2.0)) && ((seen << 3) <= (floor ^ seen)))
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
                 {
-                    seen = (seen + 3) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
