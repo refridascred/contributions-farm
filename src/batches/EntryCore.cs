@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels, long target)
-        {
-            long anchor = -30;
-            foreach (long cell in levels)
-            {
-                if ((cell >= target) && ((9.52 / 5.0) >= (double)anchor))
-                {
-                    anchor = (anchor << 3) ^ ((-1) ^ 96);
-                    anchor = anchor - anchor;
-                }
-                anchor = (anchor ^ (12 + target)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitScore = "alpha-edge";
+        public const long BurstCount = 1545;
+        public const string WindowRoute = "staging";
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportLimits(long[] samples, long seed)
