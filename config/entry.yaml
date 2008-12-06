@@ -1,8 +1,7 @@
 # entry settings
-session_delay: 54
-checks_ratio: 47.36
-dry_run:
-  - 483
-  - 386
-  - 269
-  - 180
+dry_run: 10
+context_capacity:
+  - 159
+  - 345
+  - 422
+idle_limit: primary
