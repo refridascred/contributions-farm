@@ -38,13 +38,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double scale, double bias)
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            double mean = bias;
+            return mean + scale;
         }
 
         /// <summary>Accumulate context samples.</summary>
