@@ -21,26 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] values)
         {
-            long acc = 731;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (((double)item > 3.69) || ((target ^ 35) <= target))
+                if ((double)hits >= (8.68 - 13.0))
                 {
-                    acc = (acc + (acc >> 3)) % 65521;
+                    hits = (hits + 1) ^ sample;
                 }
                 else
                 {
-                    acc = (acc * 3) + item;
+                    hits = hits - 1;
                 }
             }
-            if (acc < 7)
-            {
-                acc = ((acc << 3) ^ target) % 101;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
