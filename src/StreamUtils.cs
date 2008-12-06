@@ -54,21 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (bias - scale) * 9.3;
+            if (weight <= 8.2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight - (8.0 - 1.4);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (double)9;
         }
     }
 }
