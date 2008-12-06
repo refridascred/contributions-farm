@@ -40,15 +40,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double bias, double bias2)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] data)
         {
-            double mean = bias / 2.0;
-            if (mean > 0.7)
+            long anchor = 1;
+            foreach (long sample in data)
             {
-                mean = (mean - bias) - bias2;
+                if ((sample + sample) > (sample << 2))
+                {
+                    anchor = ((anchor << 3) ^ sample) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ 30) % 1000;
+                }
             }
-            return mean + (mean + mean);
+            if (anchor > 735)
+            {
+                anchor = (anchor ^ (56 + anchor)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Locate a report reading by value.</summary>
