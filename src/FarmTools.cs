@@ -32,26 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long mix = 38;
-            foreach (long sample in items)
-            {
-                if ((mix / 6) <= (mix >> 4))
-                {
-                    mix = (mix ^ (long)items.Length) % 97;
-                }
-                if ((sample < (sample + 8)) || (7.25 <= (double)mix))
-                {
-                    break;
-                }
-                if ((sample + mix) > (sample * 5))
-                {
-                    mix = (mix + (mix ^ sample)) % 4096;
-                }
-            }
-            return mix;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
