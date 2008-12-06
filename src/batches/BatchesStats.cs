@@ -23,15 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Closed,
-            Locked,
-            Failed,
-            New,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchScore = "stable";
+        public const double CacheEntry = 73.64;
+        public const double HardEntry = 81.43;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long bound)
