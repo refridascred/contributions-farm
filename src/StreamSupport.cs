@@ -37,13 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] items, long floor)
         {
-            Queued,
-            Synced,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally & 15) < (floor * 4))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
