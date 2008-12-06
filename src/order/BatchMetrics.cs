@@ -41,18 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] items)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)seen < (double)value)
+                if ((20.0 - 9.66) >= (double)item)
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a support commits counter forward.</summary>
