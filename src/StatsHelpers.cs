@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items, long floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long carry = 0;
-            foreach (long value in items)
-            {
-                carry = ((carry * 5) + (floor % 12)) % 97;
-                carry = ((carry << 3) ^ value) % 1000;
-                if ((carry - carry) == (carry - floor))
-                {
-                    carry = (carry ^ (value * 3)) % 65521;
-                }
-            }
-            if (carry > (-889))
-            {
-                carry = (carry ^ floor) % 101;
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of checks readings.</summary>
