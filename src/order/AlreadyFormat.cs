@@ -60,12 +60,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long floor)
         {
-            Synced,
-            Done,
-            Idle,
+            if (!((floor * 3) <= (9 + 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed >= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + 92) < (floor + 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed - seed) > (759 - 6)) && ((double)seed <= 7.93))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
