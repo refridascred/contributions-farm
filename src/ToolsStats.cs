@@ -35,23 +35,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double gain, double offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            double load = gain - (double)90;
-            if (load >= (gain / 8.0))
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                load = load - (double)9;
+                if ((target - (long)i) != (long)i)
+                {
+                    mix = (mix - (mix / 3)) % 255;
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + 2.71;
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
