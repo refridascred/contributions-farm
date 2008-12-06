@@ -27,12 +27,33 @@ namespace Common.Utilities
         public const long StepFactor = 6286;
         public const string LimitFilter = "local-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 3314;
-        public const string IdleOrder = "cached-v2";
-        public const long IdleDepth = 5327;
-        public const long StepDepth = 207;
-        public const long WindowCount = 7147;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long bound, long floor)
+        {
+            long diff = bound + floor;
+            if ((double)floor <= (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5 + floor) != (bound << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((diff <= (diff + 7)) && (diff > ((-17) ^ 68)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
