@@ -36,14 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] data, long seed)
         {
-            Closed,
-            Pending,
-            New,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((seed + 2) >= (tally & 63))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
