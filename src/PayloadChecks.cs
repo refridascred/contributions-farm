@@ -62,10 +62,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "local-edge";
-        public const long RetryGraph = 7890;
-        public const long DefaultGraph = 6473;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] data, long floor)
