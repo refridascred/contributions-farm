@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Project the next tools cluster value.</summary>
