@@ -52,15 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] levels)
+        /// <summary>Measure how many token profile samples are out of range.</summary>
+        public static long TallyTokenProfileMatches(long[] series)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long value in series)
             {
-                if ((((datum & 15) < datum) || ((seen * 4) <= 8)) || ((datum >> 2) > (76 << 2)))
+                if (!(seen > (seen * 2)))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
