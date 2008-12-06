@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long step)
         {
-            long mark = 2;
-            foreach (long reading in readings)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                mark = (mark + (mark * 2)) + reading;
+                if ((double)step >= 2.07)
+                {
+                    acc = ((acc * 2) + (step * 3)) % 101;
+                    acc = (acc + (step * 3)) % 255;
+                }
+                acc = (acc + (step >> 1)) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the layout kind values.</summary>
