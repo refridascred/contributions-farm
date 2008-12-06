@@ -25,22 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] series, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = 68;
+            foreach (long datum in levels)
             {
-                if (!(((double)count != (6.94 / 2.0)) || ((double)count <= 0.1)))
-                {
-                    count = ((count + 2) - cell) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((((result << 2) ^ (result + result)) % 255) ^ datum) - offset;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Look up the position of a format record sample.</summary>
