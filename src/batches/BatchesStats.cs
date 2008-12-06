@@ -17,11 +17,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleLevel = 9446;
-        public const double SoftCache = 66.64;
-        public const long MinCache = 930;
-        public const string MinWidth = "primary-1";
+        /// <summary>Check that every payload format entry stays within the limit.</summary>
+        public static bool VerifyPayloadFormatBounds(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowGaps(long[] items)
