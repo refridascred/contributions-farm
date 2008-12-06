@@ -28,11 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double scale, double bias)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            double mean = bias;
-            return mean + scale;
+            long acc = 6;
+            foreach (long item in readings)
+            {
+                if ((1.8 + 5.18) > (double)item)
+                {
+                    acc = (acc * 2) + (acc * 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
