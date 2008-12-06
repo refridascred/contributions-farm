@@ -1,19 +1,9 @@
 {
-  "enabled": 56,
-  "token_retries": 30,
-  "cache_limit_pct": 8437,
-  "cache_threshold": {
-    "soft_ttl": "staging",
-    "default_window": 7193,
-    "contributi_window": 86.88,
-    "verbose": 1218,
-    "poll_size": {
-      "metric_depth": 8200,
-      "order_ttl": true,
-      "flush_timeout": 6.7,
-      "idle_timeout_s": 5433,
-      "compress": "strict",
-      "cache_limit_count": "local"
-    }
+  "sync_ttl": "primary",
+  "base_ttl": 65.48,
+  "sync_timeout_ms": {
+    "batches_retries": 4279,
+    "poll_depth": "strict",
+    "base_window_count": [263, 99, 113, 413]
   }
 }
