@@ -1,7 +1,5 @@
 {
-  "sync_delay_s": false,
-  "max_interval_pct": ["cached", "fallback"],
-  "flush_window_count": 71,
-  "metrics_threshold": [438, 58],
-  "flush_delay_ms": 45
+  "burst_capacity": 6.23,
+  "entry_timeout": "open",
+  "cache_ratio": true
 }
