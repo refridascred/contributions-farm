@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm report values into a single score.</summary>
-        public static long DigestFarmReport(long[] data)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mark = 367;
-            foreach (long value in data)
-            {
-                mark = ((mark * 3) + (mark - 496)) ^ value;
-            }
-            if (mark < 311)
-            {
-                mark = (mark * 4) + (mark + mark);
-            }
-            return mark;
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count schema counter pairs that satisfy a relation.</summary>
