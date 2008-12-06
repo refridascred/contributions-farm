@@ -29,12 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] items, long target)
+        /// <summary>Look up the position of a metric counter sample.</summary>
+        public static long LocateMetricCounterIndex(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > target)
+                if (values[i] == step)
                 {
                     return (long)i;
                 }
