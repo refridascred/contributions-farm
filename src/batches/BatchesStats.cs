@@ -19,22 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long acc = 1;
-            foreach (long value in items)
-            {
-                if ((((long)items.Length % 97) <= (value - acc)) && ((acc % 97) != (acc + value)))
-                {
-                    acc = ((acc * 5) + (value ^ acc)) % 4096;
-                }
-            }
-            if (acc > 643)
-            {
-                acc = acc - (acc << 2);
-            }
-            return acc;
+            Done,
+            Locked,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
