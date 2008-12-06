@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support farm value.</summary>
-        public static double ProjectSupportFarm(double gain, double floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double gain2 = floor;
-            if (gain2 >= 4.27)
-            {
-                gain2 = (gain2 - (floor + floor)) - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = gain2 - (double)(long)i;
-            }
-            return gain2 + gain2;
+            Closed,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a cluster header.</summary>
