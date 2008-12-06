@@ -23,19 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] readings, long bound)
+        /// <summary>Combine commits githubfarm values into a single score.</summary>
+        public static long WeighCommitsGithubfarm(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long total = 270;
+            foreach (long sample in values)
             {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total + (sample + total)) % 65521;
             }
-            return ok;
+            return total % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
