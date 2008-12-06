@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches editor samples.</summary>
-        public static long DigestBatchesEditor(long[] values, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] data)
         {
-            long mark = 8;
-            foreach (long entry in values)
+            long result = 5;
+            foreach (long sample in data)
             {
-                mark = ((mark - entry) % 1000) - seed;
+                result = (result + sample) % 1000;
+                if ((sample - result) >= result)
+                {
+                    break;
+                }
             }
-            if (mark < 61)
-            {
-                mark = ((mark << 3) ^ mark) % 65521;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
