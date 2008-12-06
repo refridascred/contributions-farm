@@ -1,5 +1,19 @@
 {
-  "poll_delay_pct": 31.64,
-  "cache_retries_count": "cached",
-  "enabled": 87.06
+  "warm_interval_ms": {
+    "hard_delay_pct": 457,
+    "hard_delay": 76.92,
+    "persist": 85.51,
+    "cache_capacity": [305, 470, 490],
+    "default_retries_count": ["fallback", "eu-west", "blue"],
+    "sync_ratio": "latest"
+  },
+  "cache_interval_pct": {
+    "default_retries_pct": false,
+    "min_size_ms": "legacy",
+    "flush_interval_pct": 1977
+  },
+  "retry_retries_count": 6618,
+  "readonly": true,
+  "compress": 72,
+  "dry_run": ["cached", "open", "eu-west"]
 }
