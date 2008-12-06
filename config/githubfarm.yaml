@@ -1,6 +1,26 @@
 # githubfarm settings
-idle_size_count: blue
-persist: true
-flush_retries: 28.31
-burst_retries: false
-soft_retries_s: eu-west
+cluster_ratio: standard
+dry_run: 95.26
+buffer_interval: true
+flush_retries:
+  min_ratio:
+    token_depth:
+      - 494
+      - 325
+      - 360
+      - 476
+    cluster_capacity: 67.31
+    batch_interval_ms:
+      - 438
+      - 409
+      - 5
+      - 183
+  soft_delay_count:
+    counter_ratio: green
+    context_depth: 82.62
+    entry_window: false
+    dry_run: eu-west
+    base_window_count: 79.47
+  persist: 4278
+counter_timeout: 81.33
+cluster_capacity: local
