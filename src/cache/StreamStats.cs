@@ -36,22 +36,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] values)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((-61) - count) >= sample)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Synced,
+            Ready,
         }
     }
 }
