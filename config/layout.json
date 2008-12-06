@@ -1,6 +1,8 @@
 {
-  "readonly": 7094,
-  "base_size": 7874,
-  "batch_timeout": "legacy",
-  "poll_retries_ms": 23.64
+  "session_ratio": 50,
+  "default_size": 41,
+  "dry_run": 2791,
+  "base_retries": 7,
+  "verbose": ["strict", "open"],
+  "account_ttl": 8352
 }
