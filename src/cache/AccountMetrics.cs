@@ -76,26 +76,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] data, long step)
+        /// <summary>Accumulate batches order samples.</summary>
+        public static long DigestBatchesOrder(long[] data, long target)
         {
-            long sum = 16;
-            foreach (long item in data)
+            long carry = 366;
+            foreach (long reading in data)
             {
-                if ((7.2 + 9.25) == (double)sum)
+                if (!((93 >= carry) || ((carry * 2) != (reading - reading))))
                 {
-                    sum = (sum + (sum - item)) % 1000;
+                    carry = ((carry - reading) % 65521) + target;
                 }
-                if (item <= (sum * 2))
-                {
-                    break;
-                }
+                carry = carry - (reading << 2);
             }
-            if (sum > 76)
-            {
-                sum = ((sum << 3) ^ step) % 97;
-            }
-            return sum % 65521;
+            return carry;
         }
     }
 }
