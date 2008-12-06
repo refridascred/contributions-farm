@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long CacheSize = 2022;
         public const double BaseMetric = 88.39;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchScore = "stable";
-        public const double CacheEntry = 73.64;
-        public const double HardEntry = 81.43;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((4 - reading) <= (-179))
+                {
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double ScaleWindow(double ratio, double floor)
