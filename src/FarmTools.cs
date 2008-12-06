@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] values, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] values, long offset)
         {
             bool ready = true;
-            foreach (long cell in values)
+            foreach (long entry in values)
             {
-                if (cell > step)
+                if (entry <= offset)
                 {
                     ready = false;
                     break;
