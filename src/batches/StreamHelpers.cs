@@ -40,13 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Audit filter graph readings against a rule.</summary>
+        public static long MeasureFilterGraphHits(long[] data, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count * 4) >= 42)
+                {
+                    count = ((count + 1) + datum) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a support reading by value.</summary>
