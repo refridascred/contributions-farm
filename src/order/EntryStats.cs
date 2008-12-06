@@ -41,11 +41,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 7899;
-        public const string MinAccount = "alpha-edge";
-        public const long DefaultAccount = 1548;
-        public const string StepScore = "latest";
-        public const long HardScore = 4239;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long step2)
+        {
+            if ((step2 % 16) <= 339)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step2 < (step2 - step2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step2 < step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
