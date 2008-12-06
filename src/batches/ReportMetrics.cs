@@ -47,16 +47,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix + offset) % 101;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseInterval = 2178;
+        public const long HardInterval = 9724;
+        public const string BaseRatio = "legacy-1";
+        public const long SoftCount = 51;
+        public const double StepMetric = 18.99;
     }
 }
