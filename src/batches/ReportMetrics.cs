@@ -29,19 +29,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] values, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Draft,
+            Dropped,
+            New,
         }
     }
 }
