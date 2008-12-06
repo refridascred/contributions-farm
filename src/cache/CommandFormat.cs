@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long target)
         {
-            Ready,
-            Pending,
-            Closed,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
