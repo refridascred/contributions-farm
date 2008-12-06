@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] items, long bound)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((2.38 * 15.0) > (double)datum) || ((bound + hits) != (datum * 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
