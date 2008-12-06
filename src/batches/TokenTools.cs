@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] levels)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long step)
         {
-            long sum = 232;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum / 2)) % 65521;
-                if ((sum >> 3) >= datum)
+                if (levels[i] >= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < (-66))
-            {
-                sum = sum + ((long)levels.Length & 31);
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
