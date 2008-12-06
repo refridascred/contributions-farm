@@ -12,12 +12,25 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Classify a context record pair into a bucket.</summary>
+        public static long GradeContextRecord(long step, long target)
         {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
+            long next = step - target;
+            if ((double)next > 18.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if (target >= (967 - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
