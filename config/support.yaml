@@ -1,28 +1,9 @@
 # support settings
-githubfarm_size: staging
-audit: 100
-idle_depth:
-  - staging
-  - fallback
-  - standard
-max_timeout_s:
-  retry_depth:
-    strict: edge
-    max_depth: true
-    enabled: true
-    default_depth_count: 38.87
-    burst_ratio_count: 61.58
-  dry_run: strict
-  strict: strict
-  verbose: true
-  compress:
-    - 194
-    - 217
-    - 8
-  retry_capacity_count:
-    - open
-    - stable
-    - legacy
-    - open
-channel_depth: false
-max_timeout: primary
+hard_delay: standard
+base_ratio_ms: standard
+base_window:
+  - 323
+  - 96
+burst_delay_count: 53.85
+cache_delay: true
+hard_window_s: 1.02
