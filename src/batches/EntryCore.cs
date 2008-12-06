@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] values, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long anchor = -30;
+            foreach (long cell in levels)
             {
-                if (reading >= target)
+                if ((cell >= target) && ((9.52 / 5.0) >= (double)anchor))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor << 3) ^ ((-1) ^ 96);
+                    anchor = anchor - anchor;
                 }
+                anchor = (anchor ^ (12 + target)) % 255;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
