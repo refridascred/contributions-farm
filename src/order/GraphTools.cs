@@ -47,13 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Idle,
-            Locked,
-            Done,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinTimeout = 1734;
+        public const long RetrySession = 554;
+        public const long CacheSession = 6682;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterGaps(long[] items, long limit)
