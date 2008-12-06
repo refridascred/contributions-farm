@@ -48,20 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session report entries.</summary>
-        public static long DigestSessionReport(long[] values)
+        /// <summary>Audit command notes readings against a rule.</summary>
+        public static long AuditCommandNotesHits(long[] samples)
         {
-            long state = 90;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                state = (state << 2) ^ ((long)values.Length + item);
-                state = (state - (item - item)) % 4096;
+                if ((((-6) / 3) == (datum << 1)) || (782 < (seen / 9)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (state < 4)
-            {
-                state = (state ^ (state / 2)) % 101;
-            }
-            return state % 1000;
+            return seen;
         }
     }
 }
