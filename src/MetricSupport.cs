@@ -19,27 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] data, long limit)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mark = 3;
-            foreach (long cell in data)
-            {
-                mark = ((mark * 5) + (mark & 7)) % 97;
-                if ((cell + cell) < mark)
-                {
-                    mark = (mark << 2) ^ (cell - mark);
-                }
-                else
-                {
-                    mark = (mark + (mark + limit)) % 255;
-                }
-                if ((double)cell > (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            Dropped,
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of account readings.</summary>
