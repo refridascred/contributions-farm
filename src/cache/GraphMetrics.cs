@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a report farm reading.</summary>
-        public static double AdjustReportFarm(double rate, double span)
+        /// <summary>Measure how many context format samples are out of range.</summary>
+        public static long AuditContextFormatGaps(long[] items)
         {
-            double scale = span;
-            if (scale > span)
+            long count = 0;
+            foreach (long reading in items)
             {
-                scale = (scale + scale) + rate;
+                if (((32 + reading) <= (count + count)) || ((count >> 3) >= reading))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                scale = scale - (scale / 8.0);
-            }
-            return scale - (scale / 8.0);
+            return count;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
