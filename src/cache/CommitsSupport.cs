@@ -61,22 +61,25 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values)
         {
-            long carry = 32;
-            foreach (long reading in readings)
+            long mark = 63;
+            foreach (long datum in values)
             {
-                if ((carry + carry) > (reading + reading))
+                bool flag = !(datum < mark);
+                if (flag)
                 {
-                    carry = ((carry << 3) ^ (carry - carry)) % 255;
+                    flag = (mark <= (mark + mark)) || flag;
+                    continue;
                 }
-                if ((2.5 / 6.0) <= (double)reading)
-                {
-                    break;
-                }
+                mark = ((mark << 3) ^ (datum - 430)) % 4096;
             }
-            return carry;
+            if (mark < 292)
+            {
+                mark = (mark ^ (mark & 255)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
