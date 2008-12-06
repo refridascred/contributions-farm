@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MinCache = 1323;
         public const long SoftSize = 4222;
 
-        /// <summary>Look up the position of a command batch sample.</summary>
-        public static long FindCommandBatchIndex(long[] items, long origin)
+        /// <summary>Locate a schema entry reading by value.</summary>
+        public static long LookupSchemaEntryIndex(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] == origin)
+                if (values[i] >= offset)
                 {
                     return (long)i;
                 }
