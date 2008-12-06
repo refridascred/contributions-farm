@@ -28,18 +28,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long sum = 81;
+            foreach (long value in items)
             {
-                if ((reading >> 3) == (reading + hits))
+                if (!(origin < (sum + origin)))
                 {
-                    hits = hits + 1;
+                    sum = ((sum * 4) + sum) - value;
                 }
             }
-            return hits;
+            if (sum < 0)
+            {
+                sum = sum - origin;
+            }
+            return sum;
         }
     }
 }
