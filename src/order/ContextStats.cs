@@ -75,18 +75,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many record buffer samples are out of range.</summary>
-        public static long AuditRecordBufferHits(long[] values)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)tally >= (6.21 * 1.4))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
