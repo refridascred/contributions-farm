@@ -51,15 +51,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] samples, long origin)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = 35;
-            foreach (long reading in samples)
-            {
-                anchor = (((anchor * 3) + (reading - anchor)) % 4096) + origin;
-            }
-            return anchor % 1000;
+            Locked,
+            Active,
+            Idle,
+            Paused,
         }
     }
 }
