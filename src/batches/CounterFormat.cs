@@ -31,21 +31,23 @@ namespace Common.Utilities
             return drift - (double)809;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Accumulate entry graph samples.</summary>
+        public static long ScoreEntryGraph(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 173;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = state + state;
+                if ((state - state) >= state)
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state - (sample & 3)) % 101;
+                }
+                else
+                {
+                    state = (state ^ state) % 97;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
