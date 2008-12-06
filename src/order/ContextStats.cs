@@ -36,12 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Compare every pair of order support readings.</summary>
+        public static long PairOrderSupportCount(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the schema status values.</summary>
