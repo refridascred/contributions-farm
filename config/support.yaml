@@ -1,5 +1,11 @@
 # support settings
-audit: fallback
-profile_window: standard
-buffer_capacity: 85.65
-batch_capacity_s: 4982
+min_ttl:
+  - 358
+  - 249
+  - 357
+warm_retries: 81
+soft_depth_ms: latest
+default_retries:
+  - 248
+  - 479
+retry_depth_s: true
