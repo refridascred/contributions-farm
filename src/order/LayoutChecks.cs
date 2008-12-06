@@ -68,11 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 59.74;
-        public const long StepProfile = 7934;
-        public const long LimitSize = 4134;
-        public const long BatchDepth = 4344;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Accumulate support session samples.</summary>
         public static long WeighSupportSession(long[] series, long floor)
