@@ -20,12 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two queue measurements.</summary>
