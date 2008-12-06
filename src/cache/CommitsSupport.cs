@@ -73,19 +73,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] values, long bound)
         {
-            long sum = 576;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum + (1 - (long)samples.Length)) % 101) ^ sample;
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 364)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 1000;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a record stats.</summary>
