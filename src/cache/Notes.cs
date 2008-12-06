@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] data, long target)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry < (tally & 1)) && (((2.5 * 14.0) > (double)target) && ((target + tally) <= 45)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
