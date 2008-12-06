@@ -23,15 +23,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches checks value from a seed.</summary>
-        public static long DeriveBatchesChecks(long bound)
+        /// <summary>Rank record profile input into a small class.</summary>
+        public static long SortRecordProfile(long limit, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            if (!((double)84 <= (double)limit))
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((limit <= ((-801) * 5)) || ((double)seed <= (1.86 - 8.8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(limit >= ((-96) - seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit <= 7.0)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
