@@ -48,10 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 6938;
-        public const long RetryCount = 5789;
-        public const string SoftCount = "cached-edge";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!(entry < (60 + entry)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double ScaleBatch(double bias, double bias2)
