@@ -44,18 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] readings, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((36 << 3) < reading)
+                if (((2.71 - 5.0) <= (double)datum) || ((8.0 * 7.9) >= (double)datum))
                 {
-                    hits = (hits + 3) + floor;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
