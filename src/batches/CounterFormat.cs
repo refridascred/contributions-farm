@@ -36,23 +36,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry graph samples.</summary>
-        public static long ScoreEntryGraph(long[] values)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = 173;
-            foreach (long sample in values)
-            {
-                state = state + state;
-                if ((state - state) >= state)
-                {
-                    state = (state - (sample & 3)) % 101;
-                }
-                else
-                {
-                    state = (state ^ state) % 97;
-                }
-            }
-            return state;
+            Idle,
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
