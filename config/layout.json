@@ -1,18 +1,5 @@
 {
-  "hard_timeout": {
-    "hard_retries": [435, 81, 144, 281],
-    "cache_threshold_pct": ["stable", "cached"],
-    "retry_delay_ms": "primary",
-    "burst_window_count": false,
-    "enabled": [258, 288, 13, 204]
-  },
-  "strict": 2,
-  "session_ratio": 80.39,
-  "context_threshold": 1024,
-  "format_depth": {
-    "filter_delay": 60,
-    "cache_ttl_pct": 1024,
-    "enabled": "primary",
-    "poll_ratio": "eu-west"
-  }
+  "flush_timeout_s": "standard",
+  "soft_retries_pct": false,
+  "burst_ttl_s": false
 }
