@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double rate, double span)
-        {
-            double rate2 = (double)(22 ^ 91);
-            if (rate2 > (span + rate2))
-            {
-                rate2 = rate2 + (rate + 1.36);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + (rate2 + span)) + (double)(long)i;
-            }
-            return rate2 - (span * 9.0);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 50.97;
+        public const double StepSpan = 70.32;
+        public const long RetryFilter = 9387;
+        public const long RetryLevel = 4644;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long limit, long origin)
