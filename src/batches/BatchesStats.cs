@@ -45,21 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Audit graph batches readings against a rule.</summary>
+        public static long CountGraphBatchesGaps(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9 >> 3) > tally)
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 3) ^ datum) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
