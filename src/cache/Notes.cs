@@ -25,23 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] readings, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (datum >= offset)
                 {
-                    score = ((score ^ (score << 1)) % 1000) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                if ((limit * 5) > (score << 3))
-                {
-                    score = (score - ((long)i << 1)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
