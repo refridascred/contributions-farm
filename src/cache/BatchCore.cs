@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] levels, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = -34;
+            foreach (long entry in data)
             {
-                if ((double)entry < (3.23 / 6.0))
+                if (((entry * 4) > entry) || ((5 ^ entry) == (sum / 2)))
                 {
-                    count = (count + 3) - offset;
+                    sum = (sum ^ (entry ^ entry)) % 4096;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
