@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double scale, double span)
         {
-            Closed,
-            Pending,
-            Paused,
-            Retry,
+            double gain = (double)(8 - 9);
+            if (gain <= (double)759)
+            {
+                gain = (gain - scale) + span;
+            }
+            return gain + scale;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
