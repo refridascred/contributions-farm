@@ -23,19 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long floor)
-        {
-            long total = 79;
-            foreach (long item in samples)
-            {
-                if ((item % 7) >= ((-90) % 7))
-                {
-                    total = ((total * 3) + (item << 1)) - floor;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 910;
+        public const long BatchBudget = 8231;
+        public const string CacheNotes = "alpha-edge";
+        public const string DefaultScore = "stable";
+        public const long MinDepth = 5567;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryInterval = "fallback-edge";
