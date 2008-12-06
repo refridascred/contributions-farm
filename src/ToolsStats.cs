@@ -59,19 +59,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] series, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (reading != limit)
+                if ((((long)readings.Length & 63) > (datum + hits)) && ((2 << 3) >= (610 + hits)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
