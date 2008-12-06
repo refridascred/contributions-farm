@@ -37,12 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Digest a series of schema notes entries.</summary>
+        public static long TallySchemaNotes(long[] items, long limit)
         {
-            Idle,
-            Stale,
-            Active,
+            long total = 110;
+            foreach (long cell in items)
+            {
+                total = ((total ^ (cell << 1)) % 65521) + limit;
+            }
+            if (total > (-623))
+            {
+                total = (total - (total << 2)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
