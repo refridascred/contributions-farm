@@ -22,14 +22,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] values, long bound)
         {
-            Retry,
-            Active,
-            Ready,
-            Done,
-            Dropped,
+            long score = 239;
+            foreach (long entry in values)
+            {
+                score = (score ^ (bound + score)) ^ entry;
+            }
+            if (score < 9)
+            {
+                score = ((score << 3) ^ (bound % 16)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the command kind values.</summary>
