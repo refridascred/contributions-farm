@@ -39,15 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long carry = 2;
-            foreach (long datum in readings)
-            {
-                carry = (((carry * 4) + (carry + carry)) % 101) ^ datum;
-            }
-            return carry % 1000;
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
