@@ -35,15 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 13)
+                    if ((series[i] + series[j]) == 8)
                     {
                         tally = tally + 1;
                     }
