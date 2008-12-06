@@ -1,8 +1,7 @@
-id,region,label
-1,67.93,98.48
-2,legacy,42.24
-3,primary,557
-4,841,783
-5,9,primary
-6,77.85,454
-7,292,local
+id,label,owner,level
+1,771,43.79,local
+2,906,808,legacy
+3,905,472,279
+4,legacy,33.65,61.37
+5,green,754,strict
+6,48.31,895,fallback
