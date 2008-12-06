@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample <= target)
                 {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the filter state values.</summary>
