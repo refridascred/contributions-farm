@@ -70,11 +70,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryBudget = "local";
-        public const double HardContributi = 17.55;
-        public const double BatchContributi = 87.26;
-        public const long WindowLevel = 8260;
-        public const long MinContributi = 81;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long limit, long limit2)
+        {
+            long offset = limit ^ limit2;
+            if ((603 - offset) < (limit2 ^ limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + limit) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
