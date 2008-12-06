@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] samples, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                mix = (mix + mix) % 101;
-                if ((4.1 / 5.0) == (double)mix)
+                if (((double)tally >= 9.0) && !(tally >= (35 + tally)))
                 {
-                    break;
+                    tally = ((tally + 3) + value) + target;
                 }
-                mix = (mix - (floor % 24)) % 255;
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the support state values.</summary>
