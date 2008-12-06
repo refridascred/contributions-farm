@@ -60,11 +60,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseTimeout = 1332;
+        public const long RetryNotes = 4053;
+        public const long WindowNotes = 7206;
     }
 }
