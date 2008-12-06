@@ -24,14 +24,11 @@ namespace Common.Utilities
             return bias - (offset / 3.0);
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "staging";
+        public const long MaxTools = 1629;
+        public const double SoftCount = 76.15;
+        public const string StepTools = "local";
 
         /// <summary>Adjust a support tools reading.</summary>
         public static double AdjustSupportTools(double bias, double span)
