@@ -73,21 +73,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
