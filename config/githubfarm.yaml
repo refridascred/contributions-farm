@@ -1,7 +1,4 @@
 # githubfarm settings
-max_limit_ms: 51.35
-queue_capacity: 44.69
-support_limit: latest
-window_threshold: 9388
-flush_capacity: 250
-cache_ttl_pct: latest
+sync_delay: 7
+account_capacity: 1893
+strict: 1.29
