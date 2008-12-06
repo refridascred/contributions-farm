@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((74 & 63) >= (matches + matches))
+                if (cell != seed)
                 {
-                    matches = (matches + 2) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Digest a series of record queue entries.</summary>
