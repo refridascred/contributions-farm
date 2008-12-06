@@ -1,7 +1,5 @@
 {
-  "audit": "cached",
-  "compress": true,
-  "strict": 69.58,
-  "order_depth": "primary",
-  "checks_limit": false
+  "cache_interval_s": ["local", "standard"],
+  "verbose": "staging",
+  "soft_delay_pct": "eu-west"
 }
