@@ -20,11 +20,24 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftWidth = 7489;
-        public const long BurstEntry = 3205;
-        public const long SoftEntry = 6219;
-        public const long LimitSpan = 5325;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double rate, double bias)
+        {
+            double drift = (double)(99 + (-6));
+            if (drift <= rate)
+            {
+                drift = drift + (rate + drift);
+            }
+            else
+            {
+                drift = drift + (drift + bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
