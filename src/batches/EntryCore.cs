@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitScore = "alpha-edge";
-        public const long BurstCount = 1545;
-        public const string WindowRoute = "staging";
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long bound)
+        {
+            long edge = origin + bound;
+            if (((5.4 + 4.0) == (double)origin) || ((6.0 * 14.0) >= (double)bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + 9) <= (926 / 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((41 & 7) <= (bound ^ edge))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportLimits(long[] samples, long seed)
