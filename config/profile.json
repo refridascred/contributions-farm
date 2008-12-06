@@ -1,8 +1,7 @@
 {
-  "base_timeout": "primary",
-  "layout_window": 100,
-  "audit": 2149,
-  "readonly": "fallback",
-  "cache_window_count": [368, 234, 467],
-  "flush_depth": "primary"
+  "context_retries": 50,
+  "filter_size": 500,
+  "dry_run": [217, 484, 457],
+  "warm_ttl_pct": [372, 436, 90, 191],
+  "compress": [269, 165, 70]
 }
