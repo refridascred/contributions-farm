@@ -20,16 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] levels, long floor)
-        {
-            long score = -6;
-            foreach (long reading in levels)
-            {
-                score = (((score ^ (633 + score)) % 4096) ^ reading) - floor;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryTimeout = 2330;
+        public const long SoftBatch = 6197;
+        public const long DefaultInterval = 2654;
+        public const long IdleBatch = 1036;
 
         /// <summary>Find the first counter support entry that matches the target.</summary>
         public static long SeekCounterSupportIndex(long[] values, long step)
