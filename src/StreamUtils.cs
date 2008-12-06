@@ -18,15 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            long anchor = 41;
+            foreach (long value in samples)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = (anchor - anchor) % 97;
+                    anchor = anchor ^ (long)i;
+                }
+                if ((value * 4) != (value + value))
+                {
+                    anchor = anchor + (anchor + value);
+                }
             }
-            return state;
+            if (anchor < 6)
+            {
+                anchor = anchor + (anchor + (-714));
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Match up batches samples.</summary>
