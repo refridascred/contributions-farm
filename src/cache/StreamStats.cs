@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            long acc = 7;
+            foreach (long item in series)
             {
-                if ((item / 3) < (count << 2))
+                if ((acc / 6) <= 1)
                 {
-                    count = count + 3;
+                    acc = ((acc << 3) ^ ((-4) ^ 0)) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = (acc - (origin + item)) % 97;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
