@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry * 4) + 564;
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((items[i] >= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
