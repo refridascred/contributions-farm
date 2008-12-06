@@ -49,12 +49,16 @@ namespace Common.Utilities
             return ratio - (bias + span);
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Derive the next counter command value from a seed.</summary>
+        public static long RollCounterCommand(long seed)
         {
-            Draft,
-            Queued,
-            Paused,
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc + (acc + seed)) % 4096;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
