@@ -67,13 +67,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long bound, long target)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
+            if ((target >> 4) > (target * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 1) != (target ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)bound < (4.42 - 15.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target - target) > target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
