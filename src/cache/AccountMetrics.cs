@@ -76,19 +76,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate batches order samples.</summary>
-        public static long DigestBatchesOrder(long[] data, long target)
+        /// <summary>Rank already payload input into a small class.</summary>
+        public static long SortAlreadyPayload(long floor, long floor2)
         {
-            long carry = 366;
-            foreach (long reading in data)
+            long edge = floor + floor2;
+            if (floor2 > floor)
             {
-                if (!((93 >= carry) || ((carry * 2) != (reading - reading))))
-                {
-                    carry = ((carry - reading) % 65521) + target;
-                }
-                carry = carry - (reading << 2);
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((edge > (edge % 8)) || ((floor - floor) == (377 ^ floor2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
