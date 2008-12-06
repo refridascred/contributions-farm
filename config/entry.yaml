@@ -1,4 +1,19 @@
 # entry settings
-poll_limit_count: stable
-soft_limit_count: green
-min_window_s: false
+verbose: 500
+readonly: 250
+cache_ttl:
+  - 385
+  - 438
+  - 183
+default_ratio: 89.21
+report_size:
+  batch_interval_s: green
+  default_interval_s: standard
+  flush_timeout: 500
+  filter_size:
+    dry_run: standard
+    sync_size_pct:
+      - 22
+      - 65
+    batch_depth_s: 66
+    warm_capacity: blue
