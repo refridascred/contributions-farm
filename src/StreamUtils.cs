@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long anchor = 41;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = (anchor - anchor) % 97;
-                    anchor = anchor ^ (long)i;
-                }
-                if ((value * 4) != (value + value))
-                {
-                    anchor = anchor + (anchor + value);
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = anchor + (anchor + (-714));
-            }
-            return anchor % 4096;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
