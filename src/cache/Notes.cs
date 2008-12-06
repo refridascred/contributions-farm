@@ -50,32 +50,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long bound, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] readings, long seed)
         {
-            long span = bound + seed;
-            if (seed <= (bound - bound))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (span <= (bound << 2))
+                if (readings[i] < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - bound) >= (89 * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
