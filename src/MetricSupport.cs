@@ -30,13 +30,19 @@ namespace Common.Utilities
         public const string DefaultAlready = "alpha-1";
         public const long IdleTimeout = 7762;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmChecksBounds(long[] samples, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
