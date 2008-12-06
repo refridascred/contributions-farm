@@ -78,13 +78,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 8775;
+        public const long RetryInterval = 5261;
+        public const long RetryProfile = 3357;
+        public const long BatchProfile = 2613;
+        public const long BaseProfile = 2735;
     }
 }
