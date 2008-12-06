@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = weight;
+            if (bias2 <= (double)53)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = (bias2 - (5.81 - bias2)) - bias;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - bias2) - (double)(long)i;
+            }
+            return bias2 - (bias2 - weight);
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
