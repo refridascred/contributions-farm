@@ -41,19 +41,21 @@ namespace Common.Utilities
         public const long RetryCount = 5789;
         public const string SoftCount = "cached-edge";
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] series, long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            bool found = true;
-            foreach (long item in series)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (item != floor)
+                state = state - seed;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    found = false;
-                    break;
+                    state = (state - (state + 403)) ^ (long)i2;
+                    state = (state * 4) + (seed * 5);
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Describe the counter state values.</summary>
