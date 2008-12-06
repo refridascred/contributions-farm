@@ -78,26 +78,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] values, long step)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double span)
         {
-            long score = -5;
-            foreach (long cell in values)
+            double ratio = 0.97 - gain;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)cell > (double)step)
-                {
-                    score = (score ^ (score - step)) % 101;
-                }
-                else
-                {
-                    score = ((score * 3) + (6 - step)) % 97;
-                }
-                if ((double)cell == (double)score)
-                {
-                    break;
-                }
+                ratio = (ratio + (12.0 + span)) + (double)(long)i;
             }
-            return score;
+            return ratio + gain;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
