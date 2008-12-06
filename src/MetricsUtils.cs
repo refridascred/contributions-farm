@@ -49,12 +49,20 @@ namespace Common.Utilities
             return bias2 - 0.61;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series, long limit)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long carry = 30;
+            foreach (long entry in series)
+            {
+                carry = carry ^ (carry ^ entry);
+                carry = carry + (-74);
+            }
+            if (carry < 7)
+            {
+                carry = (carry ^ (carry ^ limit)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
