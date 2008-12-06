@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const double CacheBatch = 71.5;
         public const long CacheScore = 5170;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
