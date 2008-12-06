@@ -15,23 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double gain, double span)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double scale, double floor)
         {
-            double rate = (double)((-65) >> 5);
-            if (rate > (double)216)
+            double ratio = (scale - scale) + (double)9;
+            if (ratio < ratio)
             {
-                rate = rate - 13.0;
+                ratio = (ratio + scale) - floor;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate + (double)(-898);
+                ratio = (ratio - (ratio / 2.0)) - (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - gain) + (double)(long)i;
-            }
-            return rate - span;
+            return ratio + (double)683;
         }
 
         /// <summary>Fold a list of token readings.</summary>
