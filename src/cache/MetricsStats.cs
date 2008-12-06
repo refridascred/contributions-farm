@@ -75,38 +75,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long limit, long step)
-        {
-            if ((step - limit) == (2 - step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step != (9.0 * 17.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (11 <= (limit + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step * 2) > limit) || (step < (limit ^ limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryInterval = 98.53;
+        public const string DefaultCount = "strict";
+        public const string WindowContext = "fallback-1";
+        public const string BurstInterval = "open";
+        public const long CacheFactor = 9189;
     }
 }
