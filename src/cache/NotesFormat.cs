@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double rate, double span)
-        {
-            double rate2 = rate;
-            if (rate2 < rate)
-            {
-                rate2 = (rate2 + (double)(-4)) + span;
-            }
-            else
-            {
-                rate2 = rate2 - (rate2 * 1.16);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + (double)(-86)) + (double)(long)i;
-            }
-            return rate2 - rate2;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinTimeout = 53.42;
+        public const double BatchStats = 27.59;
+        public const string BurstDepth = "staging-1";
+        public const long WindowSpan = 7940;
+        public const long RetryScore = 9612;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long FoldMetric(long[] levels, long step)
