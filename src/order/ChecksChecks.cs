@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 7303;
-        public const string MaxContext = "stable-1";
-        public const string StepContext = "local-v2";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((reading & 15) > (matches + reading))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long DeriveReport(long limit)
