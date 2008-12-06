@@ -48,13 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Fold a list of graph filter readings.</summary>
+        public static long FoldGraphFilter(long[] series, long offset)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long carry = 66;
+            foreach (long sample in series)
+            {
+                if ((carry + carry) >= (carry >> 2))
+                {
+                    carry = (((carry - (976 % 64)) % 101) - sample) - offset;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
