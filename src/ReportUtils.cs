@@ -42,19 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] values, long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (item <= seed)
+                if ((9.06 / 5.0) > (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 2) ^ cell) + target;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Accumulate layout samples.</summary>
