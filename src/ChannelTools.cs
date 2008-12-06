@@ -14,19 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two graph account measurements.</summary>
-        public static double ProjectGraphAccount(double weight, double span)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double weight2 = (double)9 + (double)114;
-            if (weight2 > (double)719)
-            {
-                weight2 = weight2 - (double)75;
-            }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 + (span * 3.02);
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
