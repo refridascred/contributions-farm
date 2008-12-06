@@ -65,19 +65,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (datum != bound)
+                if ((sample + 53) == (sample - sample))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a record stats.</summary>
