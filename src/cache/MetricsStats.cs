@@ -38,22 +38,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many payload checks samples are out of range.</summary>
-        public static long AuditPayloadChecksHits(long[] levels, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long diff = floor + bound;
+            if ((floor / 7) == (diff + diff))
             {
-                if ((floor - sample) == (seen ^ sample))
+                return 3;
+            }
+            else
+            {
+                if ((diff + 7) == (floor % 60))
                 {
-                    seen = seen + 2;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (15.0 >= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound / 2) >= (508 ^ floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
