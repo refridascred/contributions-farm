@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinTimeout = 53.42;
-        public const double BatchStats = 27.59;
-        public const string BurstDepth = "staging-1";
-        public const long WindowSpan = 7940;
-        public const long RetryScore = 9612;
+        /// <summary>Project the next commits batch value.</summary>
+        public static double BlendCommitsBatch(double rate, double floor)
+        {
+            double weight = (double)84 * 5.0;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight + rate) - (double)(long)i) - floor;
+            }
+            return weight - (1.62 * 8.45);
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double ratio, double offset)
