@@ -22,18 +22,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits * 5) >= (value % 100))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
