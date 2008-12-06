@@ -34,19 +34,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double gain, double span)
+        /// <summary>Iterate the githubfarm entry series from a seed.</summary>
+        public static long SeriesGithubfarmEntry(long offset)
         {
-            double scale = (span * 3.31) + (span - gain);
-            if (scale < (span / 9.0))
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                scale = scale + (scale / 5.0);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale + (double)0;
-            }
-            return scale + gain;
+            return acc;
         }
     }
 }
