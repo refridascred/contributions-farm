@@ -67,15 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double scale, double span)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double scale2 = (scale * 6.1) / 8.0;
-            if (scale2 < 9.0)
-            {
-                scale2 = scale2 + (double)70;
-            }
-            return scale2 - (3.88 - span);
+            Stale,
+            Done,
+            Idle,
+            Closed,
+            Locked,
         }
     }
 }
