@@ -39,15 +39,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record profile values into a single score.</summary>
-        public static long FoldRecordProfile(long[] samples, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long sum = -55;
-            foreach (long cell in samples)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                sum = ((sum * 2) + (cell + 256)) + limit;
+                if (!((double)(long)i < 20.0))
+                {
+                    result = result ^ (limit % 16);
+                }
+                if (((limit << 1) == (limit ^ 63)) || ((double)result > (7.6 / 8.0)))
+                {
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Classify a report account pair into a bucket.</summary>
