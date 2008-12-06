@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double bias, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] values, long target)
         {
-            double load = (double)544 * 9.62;
-            if (load >= bias)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                load = load + (bias * 9.7);
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (load * 9.8);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + (floor - 1.7);
+            return ready;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
