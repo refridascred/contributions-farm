@@ -1,5 +1,22 @@
 {
-  "burst_threshold": [179, 41, 390, 300],
-  "idle_delay": [442, 312, 247],
-  "soft_window": "blue"
+  "verbose": 26.65,
+  "farm_retries": false,
+  "warm_timeout": 5152,
+  "burst_ratio": {
+    "burst_interval_pct": 3895,
+    "strict": 10,
+    "format_retries": 22.61,
+    "warm_depth_s": 100
+  },
+  "compress": "open",
+  "sync_limit_s": {
+    "commits_window": 250,
+    "burst_retries_pct": {
+      "cache_depth_count": 3036,
+      "flush_timeout_s": [490, 396, 168],
+      "base_threshold": "fallback"
+    },
+    "batch_retries": false,
+    "min_retries_ms": "cached"
+  }
 }
