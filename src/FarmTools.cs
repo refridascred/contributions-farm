@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] series, long origin)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double bias)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double bias2 = bias;
+            if (bias2 < (rate - rate))
             {
-                if (origin >= (7 & 1))
-                {
-                    count = (count + 1) - datum;
-                }
+                bias2 = bias2 + rate;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
