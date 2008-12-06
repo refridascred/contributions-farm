@@ -35,25 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long seed, long origin)
+        /// <summary>Count the cache metrics entries that pass the check.</summary>
+        public static long TallyCacheMetricsGaps(long[] levels)
         {
-            long edge = seed + origin;
-            if ((seed < (seed - 487)) && ((-4) > (edge - origin)))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((edge - seed) > seed) || ((7.5 / 4.0) >= (2.45 + 5.3)))
+                if ((4.3 - 3.0) != (double)tally)
                 {
-                    return 2;
+                    tally = (tally + 3) ^ value;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
