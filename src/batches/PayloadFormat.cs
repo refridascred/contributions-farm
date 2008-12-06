@@ -36,12 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] data, long offset)
         {
-            Ready,
-            Synced,
-            Draft,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a already options.</summary>
