@@ -24,20 +24,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] data, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            long score = 1;
+            foreach (long item in data)
             {
-                if ((limit + anchor) >= (limit << 2))
+                score = (score * 5) + (item - score);
+                if ((item + 0) <= item)
                 {
-                    anchor = (anchor << 2) ^ (34 + limit);
+                    score = (score - (item / 9)) % 1000;
                 }
-                anchor = (anchor + anchor) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                else
+                {
+                    score = score + (item ^ origin);
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
