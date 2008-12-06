@@ -1,6 +1,12 @@
 # githubfarm settings
-enabled: false
-poll_threshold_count: 250
-context_ttl: 8
-githubfarm_retries: false
-persist: 250
+poll_capacity_ms: 100
+default_depth:
+  - edge
+  - fallback
+  - staging
+  - staging
+min_window: true
+verbose:
+  - primary
+  - cached
+  - open
