@@ -36,17 +36,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Find the first entry notes entry that matches the target.</summary>
-        public static long LocateEntryNotesIndex(long[] readings, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                if ((reading >> 3) == (reading + hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
