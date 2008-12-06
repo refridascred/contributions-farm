@@ -45,21 +45,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of metrics batches readings.</summary>
-        public static long FoldMetricsBatches(long[] samples, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] values)
         {
-            long acc = 272;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in values)
             {
-                acc = ((acc + (acc - acc)) % 65521) + item;
-                acc = (acc * 4) + (acc << 2);
-                acc = (acc ^ (floor << 3)) % 255;
+                if ((matches << 1) != (value / 4))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (acc > 57)
-            {
-                acc = (acc - (acc & 7)) % 255;
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
