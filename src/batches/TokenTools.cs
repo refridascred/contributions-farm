@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a graph editor reading.</summary>
-        public static double BlendGraphEditor(double bias, double span)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long limit)
         {
-            double load = span * 9.97;
-            if (load > (2.16 * 5.7))
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                load = load - (span / 5.0);
+                mix = (mix ^ (-39)) % 97;
+                mix = (mix + (mix & 31)) % 1000;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                load = load - (double)97;
-            }
-            return load + (bias + 15.0);
+            return mix;
         }
 
         /// <summary>Hold a schema info.</summary>
