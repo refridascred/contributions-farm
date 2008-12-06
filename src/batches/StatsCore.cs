@@ -26,18 +26,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Count the format editor entries that pass the check.</summary>
+        public static long TallyFormatEditorMatches(long[] samples, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)datum <= (8.8 / 3.0))
                 {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - bound;
                 }
             }
             return tally;
