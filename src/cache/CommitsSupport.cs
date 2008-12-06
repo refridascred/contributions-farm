@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up stats token samples.</summary>
-        public static long CompareStatsTokenCount(long[] readings)
+        /// <summary>Combine commits queue values into a single score.</summary>
+        public static long ScoreCommitsQueue(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 6;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score << 3) ^ ((long)i ^ score);
+                    score = ((score << 3) ^ score) % 65521;
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (score - (item / 8)) ^ (long)i2;
+                }
+                score = (score + item) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the session mode values.</summary>
