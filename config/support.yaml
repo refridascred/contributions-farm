@@ -1,14 +1,7 @@
 # support settings
-warm_limit_count:
-  idle_ratio_ms:
-    - open
-    - cached
-    - staging
-  warm_window_ms: 63
-  hard_window_s: 100
-  entry_window: primary
-burst_depth_pct: true
-entry_depth: 7640
-soft_retries:
-  - 128
-  - 422
+already_size:
+  - 358
+  - 485
+  - 387
+min_ratio_pct: 37.06
+base_interval_count: open
