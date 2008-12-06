@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (series[i] == target)
+                if ((double)count <= (1.45 * 7.0))
                 {
-                    return (long)i;
+                    count = ((count + 1) + sample) + floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate token context samples.</summary>
