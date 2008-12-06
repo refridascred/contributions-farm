@@ -52,38 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long step, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] values, long offset)
         {
-            if (((offset + offset) > (step * 4)) && ((double)offset <= (2.93 * 3.0)))
+            bool ok = true;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8 - offset) != (step >> 2))
+                if (value > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset >> 2) <= (step << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step + step) >= step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
