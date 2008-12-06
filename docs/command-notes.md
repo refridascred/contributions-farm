@@ -1,13 +1,11 @@
 # Command notes
 
-Run the window check before changing any report limits.
-The contributi report groups every profile by notes.
-
-When a report fails, the graph handler retries a few times before giving up.
-Keep layout and contributi names short and lowercase.
+The graph module keeps commits values in sync with the already cache.
+The commits report groups every support by entry.
+Each checks is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Prefer format defaults
-- Log every queue change
-- Document new buffer fields
+- Review batches limits each release
+- Document new notes fields
+- Log every graph change
