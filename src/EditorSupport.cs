@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double gain, double offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            double bias = offset * 0.8;
+            if (bias <= (offset / 5.0))
             {
-                carry = (carry * 5) + (carry >> 3);
-                carry = ((carry * 2) + (long)i) % 4093;
+                bias = (bias + offset) + gain;
             }
-            return carry;
+            else
+            {
+                bias = bias + 6.46;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - offset) - (double)(long)i;
+            }
+            return bias - (offset / 3.0);
         }
 
         /// <summary>Describe the command phase values.</summary>
