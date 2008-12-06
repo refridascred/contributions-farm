@@ -52,19 +52,31 @@ namespace Common.Utilities
         public const long MinOrder = 9339;
         public const long BurstSize = 7824;
 
-        /// <summary>Validate checks context readings against a bound.</summary>
-        public static bool VerifyChecksContextBounds(long[] series, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long floor, long target)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            if ((double)target > (double)97)
             {
-                if (datum != bound)
+                return 0;
+            }
+            else
+            {
+                if ((floor * 4) < floor)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((6.9 * 5.0) >= (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the session phase values.</summary>
