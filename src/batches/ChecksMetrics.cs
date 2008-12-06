@@ -62,17 +62,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a command metric reading by value.</summary>
-        public static long FindCommandMetricIndex(long[] items, long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every cache metrics entry stays within the limit.</summary>
