@@ -1,30 +1,15 @@
 # entry settings
-min_retries: 82.12
-strict:
-  - 146
-  - 233
-  - 367
-warm_ttl: 1508
-idle_size:
-  batch_window_count: blue
-  dry_run:
-    - eu-west
-    - cached
-    - local
-  flush_interval:
-    - stable
-    - eu-west
-    - strict
-    - staging
-  support_ttl:
-    - primary
-    - local
-    - blue
-    - staging
-  profile_ttl:
-    - 134
-    - 254
-    - 247
-    - 125
-  flush_retries_s: false
-command_interval: 250
+hard_ttl: true
+batch_size_s:
+  - staging
+  - primary
+  - open
+poll_ratio_count: 62
+max_limit:
+  - 147
+  - 74
+poll_retries_ms:
+  - open
+  - standard
+  - edge
+audit: 8811
