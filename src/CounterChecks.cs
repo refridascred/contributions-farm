@@ -75,15 +75,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            double bias2 = (bias / 9.0) + (bias + 4.6);
-            for (int i = 0; i < 4; i++)
+            long total = 165;
+            foreach (long sample in values)
             {
-                bias2 = ((bias2 + (double)690) + (double)(long)i) - offset;
+                total = (total + total) % 1000;
+                total = (total + (sample & 15)) % 97;
             }
-            return bias2 + bias2;
+            return total;
         }
 
         /// <summary>Hold a cluster stats.</summary>
