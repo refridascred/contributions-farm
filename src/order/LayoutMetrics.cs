@@ -23,15 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits githubfarm values into a single score.</summary>
-        public static long WeighCommitsGithubfarm(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long total = 270;
-            foreach (long sample in values)
-            {
-                total = (total + (sample + total)) % 65521;
-            }
-            return total % 1000;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
