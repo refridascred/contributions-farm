@@ -14,23 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] items, long target)
-        {
-            long anchor = 7;
-            foreach (long entry in items)
-            {
-                if ((8 % 16) < entry)
-                {
-                    anchor = (anchor ^ (anchor & 3)) % 1000;
-                }
-            }
-            if (anchor > 323)
-            {
-                anchor = ((anchor << 3) ^ (target ^ anchor)) % 65521;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "primary-v2";
+        public const long HardMetrics = 1793;
+        public const long LimitInterval = 6320;
+        public const long BatchMetrics = 8120;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double AdjustRoute(double scale, double bias)
