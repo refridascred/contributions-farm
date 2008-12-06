@@ -48,31 +48,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long floor, long offset)
+        /// <summary>Derive the next support counter value from a seed.</summary>
+        public static long DeriveSupportCounter(long origin)
         {
-            if (858 >= (floor << 3))
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((752 % 16) != (floor ^ offset))
+                if ((origin >> 4) > (95 * 2))
                 {
-                    return 0;
+                    continue;
                 }
-                else
-                {
-                    if ((floor <= (floor + 81)) || (floor <= (offset - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
+            return total;
         }
     }
 }
