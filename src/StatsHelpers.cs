@@ -12,25 +12,12 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Classify a context record pair into a bucket.</summary>
-        public static long GradeContextRecord(long step, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long next = step - target;
-            if ((double)next > 18.0)
-            {
-                return 7;
-            }
-            else
-            {
-                if (target >= (967 - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a account stats.</summary>
