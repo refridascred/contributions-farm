@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
