@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((977 + (-68)) >= count)
+                if ((double)floor == (7.1 * 19.0))
                 {
-                    count = (count + 1) + cell;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the metrics profile series from a seed.</summary>
