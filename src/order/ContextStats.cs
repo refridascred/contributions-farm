@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] samples, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((datum - hits) > 60)
+                if ((((seed % 2) > (cell ^ 66)) && ((matches + seed) <= (matches >> 1))) || ((2.84 * 1.3) < (double)matches))
                 {
-                    hits = (hits + 3) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of order support readings.</summary>
