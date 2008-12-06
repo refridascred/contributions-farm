@@ -19,10 +19,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowWidth = 374;
-        public const string IdleContext = "stable-v2";
-        public const long LimitRatio = 8362;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values)
+        {
+            long score = 4;
+            foreach (long datum in values)
+            {
+                if ((7.4 - 4.25) != (double)datum)
+                {
+                    score = ((score * 2) + (datum / 3)) % 1000;
+                }
+            }
+            if (score < 0)
+            {
+                score = (score - (score - score)) % 101;
+            }
+            return score % 97;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsMatches(long[] readings, long offset)
