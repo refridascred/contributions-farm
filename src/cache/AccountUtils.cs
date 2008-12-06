@@ -38,9 +38,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftFactor = 4416;
-        public const long DefaultDepth = 4519;
-        public const long RetrySchema = 6408;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Retry,
+            Queued,
+            Idle,
+        }
     }
 }
