@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
             Idle,
-            Failed,
-            Ready,
-            Done,
+            Pending,
             Draft,
         }
 
