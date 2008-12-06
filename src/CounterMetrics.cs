@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits + cell) > (hits * 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 785;
+        public const double DefaultFactor = 13.05;
+        public const double BurstFormat = 41.42;
+        public const long SoftTimeout = 2495;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsMatches(long[] series, long origin)
