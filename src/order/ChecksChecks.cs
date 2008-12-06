@@ -44,19 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] values, long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            double bias = scale;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias + (double)1) + (double)(long)i;
             }
-            return ok;
+            return bias - offset;
         }
     }
 }
