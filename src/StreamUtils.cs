@@ -30,22 +30,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] items)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((((item / 9) >= (item * 4)) && ((count - count) >= item)) && ((item << 1) == (item + count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Fold a list of graph filter readings.</summary>
