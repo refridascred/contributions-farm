@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 27.85;
-        public const double CacheFactor = 20.85;
-        public const string RetryFarm = "legacy-1";
-        public const double StepFarm = 96.64;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] values)
