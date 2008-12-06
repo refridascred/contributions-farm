@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long bound)
+        /// <summary>Adjust a report farm reading.</summary>
+        public static double AdjustReportFarm(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = span;
+            if (scale > span)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale + scale) + rate;
             }
-            return -1;
+            else
+            {
+                scale = scale - (scale / 8.0);
+            }
+            return scale - (scale / 8.0);
         }
 
         /// <summary>Fold a list of metric readings.</summary>
