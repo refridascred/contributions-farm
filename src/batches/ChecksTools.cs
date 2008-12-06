@@ -35,18 +35,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit command notes readings against a rule.</summary>
-        public static long AuditCommandNotesHits(long[] samples)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((((-6) / 3) == (datum << 1)) || (782 < (seen / 9)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
