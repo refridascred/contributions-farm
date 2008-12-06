@@ -1,12 +1,7 @@
 # githubfarm settings
-readonly: 18.39
-compress: local
-max_window:
-  sync_threshold_count: 21
-  soft_interval_ms: eu-west
-  record_interval:
-    base_interval_pct: 250
-    max_ratio_pct: local
-    profile_limit: 75
-    sync_ratio_count: false
-  base_window_pct: cached
+warm_limit:
+  - 124
+  - 339
+  - 77
+editor_limit: 48
+idle_threshold_s: open
