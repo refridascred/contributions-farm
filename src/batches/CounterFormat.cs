@@ -28,13 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] readings)
         {
-            Idle,
-            Stale,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (hits >= (sample * 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
