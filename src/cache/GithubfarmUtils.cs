@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many cluster token samples are out of range.</summary>
-        public static long MeasureClusterTokenHits(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long score = 79;
+            foreach (long value in levels)
             {
-                if (332 < hits)
+                if (((33 & 255) >= (value + 32)) && ((8 - value) > score))
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = score - value;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a route stats sample.</summary>
