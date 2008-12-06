@@ -20,20 +20,19 @@ namespace Common.Utilities
             return ratio + (double)53;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (entry <= target)
                 {
-                    score = ((score ^ (seed - score)) % 101) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                score = ((score << 3) ^ (seed ^ seed)) % 4096;
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
