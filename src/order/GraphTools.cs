@@ -47,30 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long carry = 35;
-            foreach (long item in samples)
-            {
-                if ((double)carry <= (8.78 + 4.9))
-                {
-                    carry = ((carry * 4) + (item % 16)) % 255;
-                }
-                else
-                {
-                    carry = (carry - (item - item)) % 4096;
-                }
-                if (((1 + 8) >= (item - carry)) || ((2 & 255) > (item + item)))
-                {
-                    break;
-                }
-            }
-            if (carry > 644)
-            {
-                carry = (carry * 3) + (3 / 4);
-            }
-            return carry;
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the already phase values.</summary>
