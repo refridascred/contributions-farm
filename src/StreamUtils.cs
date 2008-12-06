@@ -46,18 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] readings, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (578 >= (datum - datum))
+                if ((((item / 9) >= (item * 4)) && ((count - count) >= item)) && ((item << 1) == (item + count)))
                 {
-                    hits = (hits + 1) + seed;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a channel stats.</summary>
