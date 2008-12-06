@@ -68,32 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long gap = offset ^ target;
-            if ((640 * 5) <= (offset % 12))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ offset) != (offset / 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap * 4) != (691 & 63))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
