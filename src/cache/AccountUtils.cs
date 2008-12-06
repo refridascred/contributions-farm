@@ -33,16 +33,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor << 3) ^ (bound % 16)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftFactor = 4416;
+        public const long DefaultDepth = 4519;
+        public const long RetrySchema = 6408;
     }
 }
