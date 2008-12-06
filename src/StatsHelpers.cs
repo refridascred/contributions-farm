@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double rate, double span)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] series)
         {
-            double weight = rate;
-            return weight + span;
+            long mix = 500;
+            foreach (long reading in series)
+            {
+                if ((mix >> 2) <= mix)
+                {
+                    mix = mix ^ reading;
+                }
+                mix = ((mix * 5) + ((-51) / 5)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a notes entry.</summary>
