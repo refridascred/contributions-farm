@@ -52,15 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double bias2)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] values, long floor)
         {
-            double drift = (bias2 - 0.4) - (1.07 / 9.0);
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                drift = ((drift - bias2) + (double)(long)i) - bias;
+                if (datum < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (double)(-749);
+            return flag;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
