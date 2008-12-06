@@ -66,25 +66,15 @@ namespace Common.Utilities
             return gain + (double)27;
         }
 
-        /// <summary>Rank already payload input into a small class.</summary>
-        public static long SortAlreadyPayload(long floor, long floor2)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double scale, double span)
         {
-            long edge = floor + floor2;
-            if (floor2 > floor)
+            double load = (double)(429 & 1);
+            if (load >= scale)
             {
-                return 2;
+                load = load + span;
             }
-            else
-            {
-                if ((edge > (edge % 8)) || ((floor - floor) == (377 ^ floor2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return load + 14.0;
         }
     }
 }
