@@ -72,19 +72,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultSize = 3745;
+        public const long RetrySize = 679;
+        public const long BurstContributi = 8351;
+        public const long MaxContributi = 3780;
+        public const double CacheCount = 10.21;
     }
 }
