@@ -42,27 +42,16 @@ namespace Common.Utilities
             return ratio - (bias + span);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] series, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long mix = 5;
-            foreach (long entry in series)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (mix <= (offset - entry))
-                {
-                    mix = (mix + (offset + offset)) % 1000;
-                    mix = ((mix * 3) + mix) % 65521;
-                }
-                if ((mix + 571) >= (mix >> 1))
-                {
-                    mix = (mix ^ (offset << 1)) % 101;
-                }
+                state = (state + state) % 255;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (mix < 675)
-            {
-                mix = (mix + (offset & 15)) % 97;
-            }
-            return mix % 97;
+            return state;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
