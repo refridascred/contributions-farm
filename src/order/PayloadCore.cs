@@ -28,17 +28,13 @@ namespace Common.Utilities
         public const double HardInterval = 26.8;
         public const long IdleBuffer = 5003;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
