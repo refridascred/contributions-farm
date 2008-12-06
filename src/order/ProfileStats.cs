@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] values, long step)
+        /// <summary>Locate a graph account reading by value.</summary>
+        public static long LocateGraphAccountIndex(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == step)
+                if (readings[i] <= target)
                 {
                     return (long)i;
                 }
