@@ -67,26 +67,9 @@ namespace Common.Utilities
         public const long MinContributi = 9275;
         public const string WindowContributi = "primary-edge";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] data)
-        {
-            long mark = 492;
-            foreach (long cell in data)
-            {
-                if ((double)mark < (4.5 - 8.8))
-                {
-                    mark = (mark - (cell & 1)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (mark - mark)) % 1000;
-                }
-                if ((cell - cell) == (mark + mark))
-                {
-                    mark = ((mark << 3) ^ (mark / 8)) % 97;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 3975;
+        public const string CacheEntry = "local-edge";
+        public const double RetryWidth = 0.61;
     }
 }
