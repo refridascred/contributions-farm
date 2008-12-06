@@ -1,10 +1,13 @@
 # entry settings
-verbose:
-  - 359
-  - 277
-  - 50
-  - 219
-batch_ratio_s: 76.2
-cluster_limit: 30
-soft_limit_count: false
-warm_delay: blue
+base_interval_count: edge
+poll_retries_ms:
+  - 252
+  - 358
+  - 380
+idle_size_pct: false
+base_interval: 100
+poll_ttl_count:
+  - 278
+  - 357
+  - 434
+  - 354
