@@ -30,19 +30,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstFactor = 394;
+        public const string StepWidth = "open-1";
+        public const long MaxInterval = 265;
+        public const long StepRatio = 2325;
     }
 }
