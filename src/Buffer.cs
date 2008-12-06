@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = ratio;
+            if (load >= ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + (load - 15.0)) - bias;
             }
-            return seen;
+            else
+            {
+                load = load + 5.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (ratio + load)) + (double)(long)i;
+            }
+            return load - (ratio * 11.0);
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
