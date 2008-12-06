@@ -27,18 +27,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] series, long origin)
+        /// <summary>Audit context cache readings against a rule.</summary>
+        public static long MeasureContextCacheMatches(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((seen ^ cell) > (origin ^ seen))
+                if ((target ^ item) > (target + target))
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
