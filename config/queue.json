@@ -1,7 +1,11 @@
 {
-  "audit": [104, 411, 322],
-  "warm_depth_s": "stable",
-  "batch_ratio": 2356,
-  "cache_depth_s": ["eu-west", "fallback", "eu-west"],
-  "poll_ttl_ms": 4371
+  "strict": true,
+  "hard_window_pct": 6484,
+  "readonly": false,
+  "soft_timeout_count": {
+    "hard_limit_count": false,
+    "verbose": 6227,
+    "soft_ttl_count": 1537,
+    "default_size": 15.98
+  }
 }
