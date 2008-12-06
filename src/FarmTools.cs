@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultWidth = 75.5;
-        public const long MinBudget = 2651;
-        public const long BatchBudget = 4407;
-        public const long BaseContext = 4561;
-        public const long CacheContext = 1428;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series)
+        {
+            long mix = 55;
+            foreach (long item in series)
+            {
+                mix = ((mix - (mix + mix)) % 255) - item;
+            }
+            if (mix < 561)
+            {
+                mix = mix - (mix >> 2);
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
