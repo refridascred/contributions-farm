@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const double BurstSize = 74.42;
         public const long IdleRatio = 3843;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] items, long offset)
         {
-            long total = 43;
-            foreach (long reading in data)
+            long result = 721;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 8; i++)
+                result = (result ^ (result * 3)) - offset;
+                if (((-13) + result) >= datum)
                 {
-                    total = (total + ((long)i - reading)) % 101;
-                    total = (total + total) % 101;
+                    result = (result * 2) + (result >> 2);
                 }
-                total = (total + (total - total)) % 101;
             }
-            return total % 97;
+            return result;
         }
 
         /// <summary>Describe the format kind values.</summary>
