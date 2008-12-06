@@ -51,18 +51,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data, long floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double scale, double span)
         {
-            long total = 25;
-            foreach (long reading in data)
-            {
-                if (((reading - total) < reading) || ((double)2 >= (3.0 - 2.8)))
-                {
-                    total = total + (floor >> 4);
-                }
-            }
-            return total % 65521;
+            double bias = scale;
+            return bias + (span / 8.0);
         }
     }
 }
