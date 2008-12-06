@@ -32,22 +32,39 @@ namespace Common.Utilities
             return load + (double)525;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] items, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long diff = limit ^ offset;
+            if (5.0 <= (double)offset)
             {
-                if ((offset % 2) <= (0 + matches))
+                return 2;
+            }
+            else
+            {
+                if ((diff > limit) && ((double)limit < 6.0))
                 {
-                    matches = (matches + 3) + cell;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((limit - limit) > (offset % 24)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + limit) <= (limit >> 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of command entries.</summary>
