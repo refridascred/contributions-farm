@@ -46,30 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long anchor = -2;
-            foreach (long datum in items)
-            {
-                if (((anchor - offset) >= (offset & 3)) || (5.0 < (double)datum))
-                {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (69 + datum)) % 97;
-                }
-                if ((double)offset >= (3.6 + 9.21))
-                {
-                    break;
-                }
-            }
-            if (anchor > 49)
-            {
-                anchor = (anchor ^ (offset ^ 64)) % 101;
-            }
-            return anchor;
+            New,
+            Draft,
+            Closed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
