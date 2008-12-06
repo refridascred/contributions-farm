@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] items)
         {
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches << 2) <= (item + 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a account record.</summary>
