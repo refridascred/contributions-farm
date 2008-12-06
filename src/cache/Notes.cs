@@ -22,11 +22,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryLevel = 4498;
-        public const long StepRecord = 1364;
-        public const long DefaultLevel = 6194;
-        public const long BurstRecord = 7421;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public long Size { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double RetrySchema = 32.77;
