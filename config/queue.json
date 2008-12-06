@@ -1,11 +1,5 @@
 {
-  "default_limit_s": {
-    "poll_capacity_count": true,
-    "window_size": "legacy",
-    "persist": "blue",
-    "checks_depth": "strict"
-  },
-  "audit": "eu-west",
-  "account_threshold": false,
-  "sync_capacity_s": 5.77
+  "filter_interval": 60.79,
+  "idle_size_count": [343, 264],
+  "base_ratio_s": 1024
 }
