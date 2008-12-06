@@ -30,12 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Retry,
-            Pending,
-            Dropped,
+            Closed,
+            Queued,
+            Locked,
         }
     }
 }
