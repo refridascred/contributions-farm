@@ -64,18 +64,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long target)
         {
-            long carry = 0;
-            foreach (long item in data)
+            long gap = offset ^ target;
+            if ((640 * 5) <= (offset % 12))
             {
-                if ((item <= (carry - carry)) && ((item - item) != (carry ^ carry)))
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ offset) != (offset / 8))
                 {
-                    carry = (carry + carry) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if ((gap * 4) != (691 & 63))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
