@@ -24,13 +24,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "standard-1";
+        public const double StepGraph = 82.3;
+        public const long CacheSize = 3696;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] values, long target)
