@@ -25,23 +25,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a metrics record reading.</summary>
-        public static double BlendMetricsRecord(double bias, double offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            double load = (double)(-5) * 7.0;
-            if (load > (7.0 - offset))
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                load = load + bias;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    score = ((score ^ (score << 1)) % 1000) - (long)i2;
+                }
+                if ((limit * 5) > (score << 3))
+                {
+                    score = (score - ((long)i << 1)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (double)2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + 9.7;
+            return score;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
