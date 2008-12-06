@@ -33,13 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long limit, long seed)
         {
-            public bool Label { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            if (!((5.8 * 4.5) != (double)seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)limit == (13.0 - 8.47)) && ((seed % 3) != (seed + limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed & 31) < 44) && ((1.0 * 3.5) < (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed + limit) == (seed << 2)) || ((1.81 + 20.0) != (double)limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
