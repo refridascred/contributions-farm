@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] items, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long offset, long offset2)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            if (offset2 > (offset2 ^ 1))
             {
-                if (reading != step)
+                return 2;
+            }
+            else
+            {
+                if ((offset2 - offset) == (offset - offset2))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
