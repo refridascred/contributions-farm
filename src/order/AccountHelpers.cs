@@ -78,14 +78,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Idle,
-            New,
-            Done,
-            Synced,
-            Retry,
+            Pending,
+            Paused,
+            Dropped,
         }
     }
 }
