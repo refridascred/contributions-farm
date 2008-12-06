@@ -51,22 +51,32 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] samples)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long step = limit ^ seed;
+            if (897 >= (limit / 9))
             {
-                if ((double)reading < (5.3 - 3.0))
+                return 2;
+            }
+            else
+            {
+                if (!((seed + seed) != (733 / 4)))
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((limit ^ 434) >= 522) && ((seed ^ 40) <= (step * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
