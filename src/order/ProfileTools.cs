@@ -52,19 +52,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] values, long offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double drift = (bias2 - 0.4) - (1.07 / 9.0);
+            for (int i = 0; i < 4; i++)
             {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = ((drift - bias2) + (double)(long)i) - bias;
             }
-            return ok;
+            return drift - (double)(-749);
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
