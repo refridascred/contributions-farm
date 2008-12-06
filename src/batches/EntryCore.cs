@@ -54,12 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
+            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
