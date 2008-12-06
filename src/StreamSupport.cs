@@ -28,18 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] items, long floor)
+        /// <summary>Look up the position of a format record sample.</summary>
+        public static long SeekFormatRecordIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally & 15) < (floor * 4))
+                if (data[i] < origin)
                 {
-                    tally = (tally + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
