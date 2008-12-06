@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] values, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Project the next tools cluster value.</summary>
