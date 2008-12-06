@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] data, long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset * 4) < (bound >> 4))
             {
-                if (data[i] >= floor)
+                return 6;
+            }
+            else
+            {
+                if (((2.46 + 2.5) >= (double)bound) || ((double)offset >= (3.7 * 5.64)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
