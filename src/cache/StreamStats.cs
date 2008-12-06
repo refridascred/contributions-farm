@@ -68,12 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] items, long offset)
         {
-            New,
-            Retry,
-            Synced,
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
