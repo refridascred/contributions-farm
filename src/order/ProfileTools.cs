@@ -47,15 +47,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] levels, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] values)
         {
             long count = 0;
-            foreach (long value in levels)
+            foreach (long value in values)
             {
-                if ((double)step != (10.0 / 9.0))
+                if (value > (count ^ value))
                 {
-                    count = (count + 1) - value;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
