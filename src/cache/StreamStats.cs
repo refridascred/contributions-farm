@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] items)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double scale, double span)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double ratio = scale - (span + span);
+            if (ratio >= (scale + span))
             {
-                if (seen <= (seen + entry))
-                {
-                    seen = seen + 2;
-                }
+                ratio = ratio + (ratio + ratio);
             }
-            return seen;
+            return ratio + (scale * 15.0);
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
