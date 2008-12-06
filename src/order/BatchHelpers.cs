@@ -37,25 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long origin, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long span = origin ^ offset;
-            if ((double)origin <= 0.9)
-            {
-                return 2;
-            }
-            else
-            {
-                if (span >= (origin / 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Failed,
+            Locked,
+            Idle,
         }
     }
 }
