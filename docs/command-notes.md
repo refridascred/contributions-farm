@@ -1,15 +1,15 @@
 # Command notes
 
-Run the window check before changing any support limits.
-A support that stays idle for too long is moved to the editor list.
+Each stats is validated before it reaches the schema queue.
+A checks that stays idle for too long is moved to the githubfarm list.
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Run the session check before changing any editor limits.
-Use batch settings to tune how often stream data is refreshed.
+The checks report groups every account by entry.
+The queue module keeps counter values in sync with the format cache.
+A record that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
+- Document new context fields
 - Validate session input early
-- Document new stats fields
-- Prefer editor defaults
-- Log every queue change
+- Prefer order defaults
+- Log every entry change
