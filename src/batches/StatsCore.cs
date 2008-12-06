@@ -71,14 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] items, long target)
         {
-            Dropped,
-            Stale,
-            Draft,
-            New,
-            Ready,
+            long anchor = 856;
+            foreach (long sample in items)
+            {
+                if (1 > sample)
+                {
+                    anchor = (((anchor * 2) + ((long)items.Length + sample)) % 65521) + target;
+                }
+            }
+            return anchor;
         }
     }
 }
