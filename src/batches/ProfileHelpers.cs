@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics profile series from a seed.</summary>
-        public static long IterateMetricsProfile(long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] readings, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
