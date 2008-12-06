@@ -39,11 +39,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 89.16;
-        public const string BurstChecks = "strict";
-        public const long LimitChecks = 6888;
-        public const long MaxScore = 8941;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 35.04;
+        public const long MinBatches = 244;
+        public const long MaxLevel = 7446;
+        public const string BurstBatches = "legacy-v2";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileOutliers(long[] data)
