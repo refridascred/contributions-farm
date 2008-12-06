@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit profile schema readings against a rule.</summary>
-        public static long TallyProfileSchemaHits(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((floor / 8) > (seen + floor))
-                {
-                    seen = (seen + 1) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 591;
+        public const string HardDepth = "legacy-edge";
+        public const long DefaultFactor = 7434;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] levels)
