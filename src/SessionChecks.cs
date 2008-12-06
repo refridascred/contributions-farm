@@ -30,14 +30,15 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long limit)
         {
-            Queued,
-            Locked,
-            Stale,
-            Paused,
-            Idle,
+            long total = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Project the next commits value.</summary>
