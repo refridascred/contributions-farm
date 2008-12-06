@@ -24,18 +24,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values, long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mix = 501;
-            foreach (long item in values)
-            {
-                if (((offset + offset) != (mix % 10)) && ((double)(-140) == (double)mix))
-                {
-                    mix = (mix + (mix * 4)) - item;
-                }
-            }
-            return mix % 65521;
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
