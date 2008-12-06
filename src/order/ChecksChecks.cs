@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen + seen) > value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batches mode values.</summary>
