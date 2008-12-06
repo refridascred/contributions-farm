@@ -38,17 +38,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] readings, long target)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (readings[i] <= target)
+                total = total - 9;
+                if (limit <= (limit << 3))
                 {
-                    return (long)i;
+                    total = total - total;
                 }
+                else
+                {
+                    total = (total ^ (total >> 4)) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
