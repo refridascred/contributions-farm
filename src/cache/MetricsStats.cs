@@ -34,32 +34,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long step, long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long prev = step + floor;
-            if ((double)floor <= (double)prev)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev >= (double)863)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)step >= 5.72))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the payload level values.</summary>
