@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit window tools readings against a rule.</summary>
+        public static long AuditWindowToolsMatches(long[] samples, long offset)
         {
-            Retry,
-            Queued,
-            Locked,
-            Dropped,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)count >= (1.0 + 6.25))
+                {
+                    count = ((count + 1) + reading) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine account report values into a single score.</summary>
