@@ -28,38 +28,18 @@ namespace Common.Utilities
             return bias2 - (bias2 - weight);
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long seed)
+        /// <summary>Fold a list of contributi githubfarm readings.</summary>
+        public static long ScoreContributiGithubfarm(long[] levels, long limit)
         {
-            if (!((double)step == (5.5 - 9.64)))
+            long mark = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.92 / 6.0) != (double)step)
+                if (((limit - limit) != (7 - limit)) || (limit < 6))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (step <= (seed - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step ^ step) != (8 + seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = ((mark << 2) ^ (limit ^ sample)) % 4096;
                 }
             }
+            return mark;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
