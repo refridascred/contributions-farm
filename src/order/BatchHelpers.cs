@@ -28,15 +28,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] levels)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long sum = 93;
-            foreach (long value in levels)
+            long total = 1;
+            foreach (long value in readings)
             {
-                sum = ((sum << 3) ^ (value + value)) % 101;
+                if ((16.0 * 2.0) != (double)value)
+                {
+                    total = (total * 4) + total;
+                }
             }
-            return sum;
+            if (total > 481)
+            {
+                total = total ^ (45 << 1);
+            }
+            return total;
         }
     }
 }
