@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] values, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell & 15) < (offset + cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
