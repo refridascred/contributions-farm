@@ -14,11 +14,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepDepth = 83.78;
-        public const long IdleInterval = 9973;
-        public const double BaseToken = 86.54;
-        public const long MinToken = 9713;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
         public static long CountBatchesCacheHits(long[] series)
