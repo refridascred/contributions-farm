@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long carry = 2;
+            foreach (long datum in readings)
+            {
+                carry = (((carry * 4) + (carry + carry)) % 101) ^ datum;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
