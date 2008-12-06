@@ -19,12 +19,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of format schema readings.</summary>
+        public static long FoldFormatSchema(long[] data)
         {
-            Failed,
-            Active,
-            Retry,
+            long sum = 70;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = (sum ^ sample) + (long)i;
+                }
+                sum = sum + (sample - sum);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
