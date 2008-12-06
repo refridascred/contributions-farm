@@ -48,11 +48,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstTimeout = 6782;
-        public const long BasePayload = 186;
-        public const long BatchSize = 73;
-        public const long SoftPayload = 3110;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] series, long floor)
+        {
+            long result = 561;
+            foreach (long value in series)
+            {
+                result = (((result << 2) ^ (1 ^ floor)) % 1000) ^ value;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of format report readings.</summary>
         public static long DigestFormatReport(long[] samples, long limit)
