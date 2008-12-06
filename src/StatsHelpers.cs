@@ -47,15 +47,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] data, long origin)
+        /// <summary>Fold a list of metrics batches readings.</summary>
+        public static long FoldMetricsBatches(long[] samples, long floor)
         {
-            long carry = 94;
-            foreach (long item in data)
+            long acc = 272;
+            foreach (long item in samples)
             {
-                carry = (((carry + 51) % 65521) + item) + origin;
+                acc = ((acc + (acc - acc)) % 65521) + item;
+                acc = (acc * 4) + (acc << 2);
+                acc = (acc ^ (floor << 3)) % 255;
             }
-            return carry % 1000;
+            if (acc > 57)
+            {
+                acc = (acc - (acc & 7)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
