@@ -60,17 +60,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] values, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((values[i] < seed) && ((values[i] % 5) == 0))
+                if ((tally > sample) || ((156 << 3) > (sample - (-5))))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
