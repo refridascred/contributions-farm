@@ -60,13 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long offset)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)anchor != (double)offset)
+                {
+                    anchor = (anchor - offset) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
