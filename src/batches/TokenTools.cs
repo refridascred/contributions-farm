@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] values, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = 232;
+            foreach (long datum in levels)
             {
-                if ((557 + hits) >= 37)
+                sum = ((sum << 3) ^ (sum / 2)) % 65521;
+                if ((sum >> 3) >= datum)
                 {
-                    hits = ((hits + 3) ^ reading) - limit;
+                    break;
                 }
             }
-            return hits;
+            if (sum < (-66))
+            {
+                sum = sum + ((long)levels.Length & 31);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
