@@ -1,15 +1,7 @@
 {
-  "warm_capacity": false,
-  "cache_size": {
-    "idle_depth": "blue",
-    "stats_size": ["cached", "standard", "edge", "primary"],
-    "max_depth_ms": "strict",
-    "audit": [163, 327, 19, 223],
-    "idle_ratio_s": 30,
-    "base_interval_s": ["primary", "open", "staging"]
-  },
-  "cache_window": ["open", "eu-west"],
-  "checks_size": 6272,
-  "batch_timeout_ms": [123, 138, 446, 400],
-  "min_ratio": 75.94
+  "default_size": 60,
+  "verbose": 32.09,
+  "batch_window_count": 49,
+  "compress": 87,
+  "idle_retries_pct": 1562
 }
