@@ -26,22 +26,13 @@ namespace Common.Utilities
         public const string RetryBudget = "local-1";
         public const long MinLevel = 9739;
 
-        /// <summary>Count the channel command entries that pass the check.</summary>
-        public static long TallyChannelCommandHits(long[] series)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((3.5 >= (double)item) || ((item / 3) == (342 - matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Dropped,
+            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
