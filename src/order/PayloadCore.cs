@@ -46,15 +46,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items, long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double bias, double span)
         {
-            long score = 63;
-            foreach (long item in items)
+            double gain = span;
+            if (gain >= (double)40)
             {
-                score = (((score + (score - score)) % 4096) ^ item) - limit;
+                gain = (gain + (double)4) - bias;
             }
-            return score;
+            else
+            {
+                gain = gain - (span - span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (span / 9.0)) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
