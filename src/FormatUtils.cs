@@ -54,18 +54,23 @@ namespace Common.Utilities
         public const long BatchSize = 73;
         public const long SoftPayload = 3110;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((0.13 - 3.97) != (double)cell)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    matches = matches + 1;
+                    result = (((result << 3) ^ (result - limit)) % 4096) ^ (long)i2;
                 }
+                if (((double)result >= (7.8 / 7.0)) || ((8.4 - 5.5) >= (double)result))
+                {
+                    result = result ^ limit;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Match up channel samples.</summary>
