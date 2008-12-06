@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long CacheSize = 2022;
         public const double BaseMetric = 88.39;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] readings, long target)
+        /// <summary>Fold a list of batch checks readings.</summary>
+        public static long ScoreBatchChecks(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long state = 9;
+            foreach (long entry in series)
             {
-                if ((4 - reading) <= (-179))
+                if ((908 * 4) <= (step + entry))
                 {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = ((state << 3) ^ (state << 3)) % 1000;
                 }
             }
-            return hits;
+            if (state < 0)
+            {
+                state = state ^ (state / 3);
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the cache mode values.</summary>
