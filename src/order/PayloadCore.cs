@@ -37,21 +37,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long sum = 9;
-            foreach (long reading in data)
-            {
-                sum = (sum ^ sum) % 4096;
-                if (!(128 >= reading))
-                {
-                    sum = (sum + (reading - reading)) % 4096;
-                    sum = (sum ^ (reading - sum)) % 255;
-                }
-                sum = ((sum << 2) ^ (sum + sum)) % 97;
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
