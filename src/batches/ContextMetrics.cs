@@ -37,15 +37,12 @@ namespace Common.Utilities
             return rate - (double)350;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double rate, double floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double bias = floor;
-            if (bias <= (floor * 8.6))
-            {
-                bias = bias - (rate / 8.0);
-            }
-            return bias - 4.0;
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a format snapshot.</summary>
