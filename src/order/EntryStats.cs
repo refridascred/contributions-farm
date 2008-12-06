@@ -47,17 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long seed)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
