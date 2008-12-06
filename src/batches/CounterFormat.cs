@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] series, long offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!(((offset % 12) <= (seen - offset)) || ((1.0 - 17.0) >= (double)entry)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double gain2 = 8.4 + bias;
+            return (gain2 - bias) + gain;
         }
     }
 }
