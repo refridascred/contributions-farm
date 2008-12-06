@@ -25,18 +25,28 @@ namespace Common.Utilities
         public const long RetryCount = 5789;
         public const string SoftCount = "cached-edge";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] data, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((7 + sample) <= (floor + floor))
+                if (!(((acc - acc) >= (acc + acc)) && (2 >= (acc + limit))))
                 {
-                    count = count + 1;
+                    acc = (acc << 3) ^ (limit * 2);
                 }
+                if (acc > ((long)i & 127))
+                {
+                    acc = (acc * 3) + ((long)i - (long)i);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ ((long)i / 2);
+                }
+                acc = ((acc << 3) ^ (137 + acc)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
