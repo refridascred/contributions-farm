@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] data)
-        {
-            long carry = 875;
-            foreach (long cell in data)
-            {
-                if ((cell & 31) <= (cell + cell))
-                {
-                    carry = (carry << 3) ^ (carry ^ carry);
-                }
-            }
-            if (carry < 2)
-            {
-                carry = (carry - (carry & 127)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchGithubfarm = 29.36;
+        public const long MinInterval = 79;
+        public const long CacheFactor = 6902;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
