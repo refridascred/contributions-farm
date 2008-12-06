@@ -1,14 +1,15 @@
 # Command notes
 
-When a metric fails, the contributi handler retries a few times before giving up.
-Run the checks check before changing any route limits.
+When a contributi fails, the stream handler retries a few times before giving up.
+The tools module keeps payload values in sync with the contributi cache.
+The githubfarm module keeps notes values in sync with the command cache.
 
-The session module keeps farm values in sync with the metric cache.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+A report that stays idle for too long is moved to the window list.
+Run the entry check before changing any commits limits.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Keep command values small
-- Log every queue change
-- Document new filter fields
+- Review metrics limits each release
+- Document new stats fields
+- Validate batch input early
+- Prefer record defaults
