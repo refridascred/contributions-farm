@@ -39,14 +39,19 @@ namespace Common.Utilities
         public const long LimitCount = 8355;
         public const string MinCommits = "stable";
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] levels, long offset)
         {
-            Stale,
-            Done,
-            Idle,
-            Closed,
-            Locked,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
