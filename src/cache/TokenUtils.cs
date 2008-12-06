@@ -12,11 +12,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
