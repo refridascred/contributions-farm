@@ -56,20 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry entry stays within the limit.</summary>
-        public static bool GuardOrderEntryBounds(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 4097;
+        public const long MaxChannel = 2077;
+        public const double BurstChannel = 61.03;
+        public const long HardChannel = 9232;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesGaps(long[] series, long bound)
