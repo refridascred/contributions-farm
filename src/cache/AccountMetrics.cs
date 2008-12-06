@@ -51,16 +51,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] values)
-        {
-            long sum = 563;
-            foreach (long sample in values)
-            {
-                sum = ((sum ^ (6 >> 2)) % 4096) ^ sample;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 72.63;
+        public const long RetryDepth = 6618;
+        public const long MaxMetric = 3636;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double scale, double span)
