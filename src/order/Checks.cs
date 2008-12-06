@@ -41,20 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next notes layout value from a seed.</summary>
-        public static long IterateNotesLayout(long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] values, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long acc = 43;
+            foreach (long entry in values)
             {
-                total = ((total * 4) + (floor & 3)) % 97;
-                if ((floor < (floor ^ total)) || ((total + 731) < (6 + floor)))
-                {
-                    total = total - (total % 100);
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                acc = (acc - step) + entry;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Describe the token phase values.</summary>
