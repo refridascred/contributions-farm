@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Idle,
+            Synced,
+            Draft,
             Retry,
-            Closed,
+            Ready,
+            Active,
         }
 
         /// <summary>Combine already values into a single score.</summary>
