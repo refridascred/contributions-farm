@@ -27,23 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] levels, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] readings, long step)
         {
-            long state = 74;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                state = (state ^ 43) + reading;
-                if ((bound & 255) >= (bound * 3))
+                if ((value ^ (long)readings.Length) <= matches)
                 {
-                    break;
+                    matches = (matches + 1) - step;
                 }
             }
-            if (state < 36)
-            {
-                state = (state ^ (state / 6)) % 65521;
-            }
-            return state;
+            return matches;
         }
     }
 }
