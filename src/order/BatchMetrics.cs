@@ -41,18 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] items)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((20.0 - 9.66) >= (double)item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Roll a support commits counter forward.</summary>
