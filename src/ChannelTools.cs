@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long step, long step2)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] series, long bound)
         {
-            if ((5.5 - 9.0) < (double)step2)
+            long state = 403;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (step2 < (step & 63))
+                if ((state % 8) != (state % 2))
                 {
-                    return 8;
+                    state = ((state ^ (bound * 4)) % 97) + reading;
                 }
-                else
-                {
-                    if ((step % 97) > step2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                state = (state ^ state) % 97;
             }
+            return state % 1000;
         }
 
         /// <summary>Hold a cache info.</summary>
