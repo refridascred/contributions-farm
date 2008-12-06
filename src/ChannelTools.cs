@@ -14,17 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] series, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (series[i] > limit)
+                if (sample > (sample / 2))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
