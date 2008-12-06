@@ -1,10 +1,8 @@
 {
-  "warm_size_pct": {
-    "audit": 99,
-    "layout_ttl": 500,
-    "burst_timeout_count": ["local", "primary", "strict", "local"],
-    "base_retries_ms": "stable"
-  },
-  "githubfarm_ratio": 27.81,
-  "default_interval": ["eu-west", "local"]
+  "max_timeout": true,
+  "account_limit": true,
+  "context_interval": 64.91,
+  "retry_ttl_ms": [61, 362, 413],
+  "persist": false,
+  "strict": 5556
 }
