@@ -19,23 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double weight, double bias)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double mean = 4.0 / 4.0;
-            if (mean >= mean)
-            {
-                mean = (mean - (double)78) + bias;
-            }
-            else
-            {
-                mean = mean + (mean - weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + 2.84) - (double)(long)i;
-            }
-            return mean - 7.1;
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
