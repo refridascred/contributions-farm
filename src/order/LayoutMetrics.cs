@@ -29,19 +29,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every route stats entry stays within the limit.</summary>
-        public static bool CheckRouteStatsLimits(long[] levels, long step)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "open-v2";
+        public const double WindowCount = 80.62;
+        public const double CacheContributi = 85.5;
+        public const long StepSize = 5613;
     }
 }
