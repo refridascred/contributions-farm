@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long total = 13;
+            foreach (long datum in samples)
             {
-                if (!(((361 + (-9)) > (tally ^ entry)) && ((double)entry > (double)tally)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 3) + (target >> 1)) + datum;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Roll a editor schema counter forward.</summary>
