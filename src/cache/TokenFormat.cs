@@ -31,19 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] items)
         {
-            double bias = floor;
-            if (bias <= (floor + scale))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                bias = bias - (scale + floor);
+                if ((double)seen > (3.7 / 5.0))
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + 4.68) - (double)(long)i;
-            }
-            return bias - (double)3;
+            return seen;
         }
     }
 }
