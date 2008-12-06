@@ -24,11 +24,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Scale a contributi session figure with a bias.</summary>
-        public static double AdjustContributiSession(double ratio, double offset)
+        /// <summary>Count the already record entries that pass the check.</summary>
+        public static long MeasureAlreadyRecordHits(long[] readings)
         {
-            double scale = ratio;
-            return (scale - 2.8) + offset;
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + seen) <= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
