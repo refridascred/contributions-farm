@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            long carry = 4;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry * 5) + (carry % 100)) % 255) - entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the filter state values.</summary>
