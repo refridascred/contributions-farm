@@ -27,12 +27,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double span)
         {
-            Closed,
-            Locked,
-            Idle,
+            double gain = span;
+            if (gain > (ratio * 3.3))
+            {
+                gain = gain + gain;
+            }
+            return gain - span;
         }
     }
 }
