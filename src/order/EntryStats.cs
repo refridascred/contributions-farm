@@ -39,16 +39,11 @@ namespace Common.Utilities
             return rate + bias2;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 3045;
+        public const long MinFactor = 6319;
+        public const long MinEntry = 9991;
+        public const string HardEntry = "stable-1";
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiHits(long[] data)
