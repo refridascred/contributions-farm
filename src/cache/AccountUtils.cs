@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long bound, long offset)
+        /// <summary>Audit queue filter readings against a rule.</summary>
+        public static long TallyQueueFilterOutliers(long[] levels)
         {
-            if ((offset * 4) < (bound >> 4))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((2.46 + 2.5) >= (double)bound) || ((double)offset >= (3.7 * 5.64)))
+                if ((6.0 - 0.12) >= (double)matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 3) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
