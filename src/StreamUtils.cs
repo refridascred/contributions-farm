@@ -62,18 +62,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] values, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = 9;
+            foreach (long cell in series)
             {
-                if ((87 + 39) >= item)
+                if ((step & 15) == (cell / 3))
                 {
-                    count = (count + 1) - bound;
+                    sum = (sum + (cell / 3)) % 255;
+                }
+                else
+                {
+                    sum = sum - step;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
