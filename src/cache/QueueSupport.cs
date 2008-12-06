@@ -22,9 +22,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "primary";
-        public const double LimitContributi = 50.62;
-        public const string HardContributi = "alpha-v2";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
