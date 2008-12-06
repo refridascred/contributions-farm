@@ -1,14 +1,10 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Keep route and cache names short and lowercase.
-Use already settings to tune how often tools data is refreshed.
-
-The queue report groups every batch by contributi.
-Use format settings to tune how often batch data is refreshed.
+Each batches is validated before it reaches the metric queue.
+Keep stream and cache names short and lowercase.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every metrics change
-- Prefer profile defaults
+- Prefer stream defaults
+- Validate payload input early
+- Keep support values small
