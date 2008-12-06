@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardSize = 49.5;
+        public const long CacheFilter = 3535;
+        public const string BurstDepth = "standard-edge";
 
         /// <summary>Fold a list of buffer session readings.</summary>
         public static long WeighBufferSession(long[] data, long floor)
