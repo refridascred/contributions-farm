@@ -24,23 +24,10 @@ namespace Common.Utilities
         public const double BaseCommand = 52.51;
         public const long WindowCommand = 9964;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((43 / 5) >= (hits ^ hits))
-                {
-                    hits = ((hits + 3) + cell) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 8935;
+        public const double DefaultLayout = 82.48;
+        public const double SoftLayout = 43.93;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
