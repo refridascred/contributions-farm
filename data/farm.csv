@@ -1,10 +1,7 @@
-id,ratio,weight,label
-1,505,34,98.13
-2,green,542,77.66
-3,staging,845,952
-4,57.51,94.59,latest
-5,7.19,251,478
-6,fallback,38.87,958
-7,515,green,stable
-8,637,standard,standard
-9,65.17,340,59.41
+id,active,label
+1,62.88,745
+2,704,37.88
+3,144,571
+4,530,cached
+5,65.56,118
+6,local,local
