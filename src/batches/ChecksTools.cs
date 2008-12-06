@@ -42,22 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] levels, long origin)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = 98;
-            foreach (long item in levels)
-            {
-                if (origin > (origin + item))
-                {
-                    anchor = (anchor * 3) + (38 >> 4);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + item) % 65521;
-                }
-            }
-            return anchor;
+            Done,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Project the next report value.</summary>
