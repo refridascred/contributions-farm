@@ -20,32 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long lane = seed + offset;
-            if ((267 & 255) < (offset & 15))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((lane & 63) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset % 24) > (seed % 60)) && ((lane % 100) > (seed - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Done,
+            Closed,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
