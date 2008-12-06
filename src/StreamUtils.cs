@@ -59,22 +59,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] series, long step)
+        /// <summary>Derive the next cache farm value from a seed.</summary>
+        public static long RollCacheFarm(long limit)
         {
-            long sum = 9;
-            foreach (long cell in series)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((step & 15) == (cell / 3))
+                if ((5.66 / 6.0) == (double)(long)i)
                 {
-                    sum = (sum + (cell / 3)) % 255;
+                    mark = mark + (limit / 6);
                 }
                 else
                 {
-                    sum = sum - step;
+                    mark = (mark - mark) % 65521;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
