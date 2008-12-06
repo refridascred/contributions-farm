@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] levels, long step)
         {
-            Draft,
-            Idle,
-            Dropped,
+            long result = 71;
+            foreach (long sample in levels)
+            {
+                if (((3.2 + 5.0) <= (double)sample) || (52 < (result * 2)))
+                {
+                    result = ((result << 2) ^ (-715)) + step;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a counter info.</summary>
