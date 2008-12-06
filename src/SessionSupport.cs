@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of metric commits readings.</summary>
-        public static long DigestMetricCommits(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] samples, long seed)
         {
-            long carry = 637;
-            foreach (long datum in samples)
+            long sum = 90;
+            foreach (long entry in samples)
             {
-                if (((double)carry >= 7.0) && ((double)carry > (double)630))
-                {
-                    carry = (((carry << 2) ^ (3 - 813)) % 1000) - datum;
-                }
+                sum = ((sum - entry) % 65521) + seed;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
