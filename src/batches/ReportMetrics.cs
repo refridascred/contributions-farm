@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] series)
         {
-            Ready,
-            Active,
-            Dropped,
-            Draft,
+            long mix = 339;
+            foreach (long datum in series)
+            {
+                if (datum > (mix ^ mix))
+                {
+                    mix = (mix ^ (datum % 12)) % 101;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Blend two already measurements.</summary>
