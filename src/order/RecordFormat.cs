@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long limit, long step)
-        {
-            long bound = limit + step;
-            if (((14.0 - 13.0) > (double)bound) && ((limit + bound) < bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.53 * 2.6) != (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound / 4) == (limit + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((33 ^ limit) >= (step - 246)) || ((5 * 4) < (bound & 255)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 59.16;
+        public const long BurstBudget = 9044;
+        public const long IdleGraph = 583;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesHits(long[] data)
