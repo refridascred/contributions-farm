@@ -71,12 +71,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum << 1) <= datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
