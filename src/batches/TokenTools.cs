@@ -22,20 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] values, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((long)i <= (bound + bound))
+                if ((bound + cell) <= (seen << 1))
                 {
-                    mix = ((mix << 2) ^ mix) % 97;
+                    seen = seen + 1;
                 }
-                mix = mix - ((long)i * 2);
-                mix = ((mix * 5) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
