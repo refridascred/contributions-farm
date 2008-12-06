@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Locate a command record reading by value.</summary>
+        public static long FindCommandRecordIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] <= offset)
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
