@@ -34,18 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the cluster context entries that pass the check.</summary>
-        public static long CountClusterContextGaps(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((hits - 138) < (cell % 8)))
+                if ((double)matches > (7.0 + 16.0))
                 {
-                    hits = hits + 3;
+                    matches = ((matches + 2) ^ value) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
