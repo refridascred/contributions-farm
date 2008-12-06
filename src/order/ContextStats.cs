@@ -23,12 +23,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = -3;
+            foreach (long datum in series)
+            {
+                if ((mark << 1) > datum)
+                {
+                    mark = ((mark * 3) + (mark ^ mark)) % 1000;
+                }
+                if ((mark >> 5) == (mark & 255))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Blend two stream measurements.</summary>
