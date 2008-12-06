@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] levels, long seed)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long state = 0;
-            foreach (long value in levels)
-            {
-                state = (((state * 4) + (80 & 255)) + value) + seed;
-            }
-            return state % 97;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
