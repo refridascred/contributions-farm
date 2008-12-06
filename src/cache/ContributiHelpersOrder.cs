@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings, long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] series, long limit)
         {
-            long result = 50;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.8 > (double)result) && ((5.61 / 7.0) == (double)value))
+                if (series[i] == limit)
                 {
-                    result = result - (seed + seed);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
