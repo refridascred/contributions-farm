@@ -37,13 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] samples, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
+            long anchor = 35;
+            foreach (long reading in samples)
+            {
+                anchor = (((anchor * 3) + (reading - anchor)) % 4096) + origin;
+            }
+            return anchor % 1000;
         }
     }
 }
