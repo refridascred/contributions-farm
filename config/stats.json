@@ -1,8 +1,20 @@
 {
-  "retry_size_ms": "latest",
-  "hard_retries_ms": "fallback",
-  "cluster_ratio": true,
-  "metric_timeout": "primary",
-  "burst_window": "strict",
-  "cache_retries": false
+  "token_retries": {
+    "batch_capacity": "blue",
+    "readonly": 500,
+    "soft_retries_s": true,
+    "context_timeout": [6, 481, 106, 77],
+    "poll_limit": 30
+  },
+  "dry_run": true,
+  "audit": {
+    "readonly": "eu-west",
+    "counter_threshold": "legacy",
+    "default_retries": "standard",
+    "sync_limit_pct": "primary",
+    "compress": "strict"
+  },
+  "burst_size": [8, 83, 226, 61],
+  "default_limit": "primary",
+  "max_window_pct": 34
 }
