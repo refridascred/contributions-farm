@@ -45,12 +45,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Fold a list of schema tools readings.</summary>
+        public static long FoldSchemaTools(long[] samples, long offset)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long mark = -708;
+            foreach (long entry in samples)
+            {
+                mark = (((mark * 3) + mark) % 1000) - entry;
+                if ((30 / 4) < mark)
+                {
+                    mark = mark + (offset - offset);
+                }
+                else
+                {
+                    mark = ((mark * 3) + (offset + 2)) % 101;
+                    mark = mark - (offset << 3);
+                }
+                mark = ((mark << 3) ^ (4 >> 5)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
