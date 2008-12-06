@@ -13,16 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the counter record series from a seed.</summary>
-        public static long IterateCounterRecord(long limit)
+        /// <summary>Iterate the report stream series from a seed.</summary>
+        public static long StepReportStream(long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state * 3) + (limit * 4)) % 101;
-                state = ((state * 4) + (long)i) % 1000;
+                acc = (acc - (limit & 127)) % 97;
+                acc = acc - (acc % 12);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Match up batch samples.</summary>
