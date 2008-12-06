@@ -1,5 +1,8 @@
 {
-  "idle_depth_ms": false,
-  "min_timeout": "strict",
-  "compress": false
+  "min_capacity_ms": "cached",
+  "batch_size_pct": 37,
+  "audit": "standard",
+  "cache_retries": "blue",
+  "soft_depth": ["legacy", "legacy"],
+  "idle_ttl": true
 }
