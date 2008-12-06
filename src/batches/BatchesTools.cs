@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
+            Locked,
+            New,
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
