@@ -1,8 +1,6 @@
 {
-  "batches_capacity": 250,
-  "min_timeout_pct": true,
-  "counter_interval": [230, 298, 231],
-  "max_size": 250,
-  "route_threshold": "local",
-  "poll_retries": "legacy"
+  "enabled": "stable",
+  "poll_capacity_s": 4950,
+  "counter_size": "eu-west",
+  "strict": false
 }
