@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples)
         {
-            Locked,
-            Synced,
-            Draft,
+            long result = 60;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = ((result + reading) % 4096) ^ (long)i;
+                }
+                result = ((result << 2) ^ reading) % 4096;
+            }
+            if (result > 634)
+            {
+                result = result ^ (result >> 2);
+            }
+            return result % 97;
         }
 
         /// <summary>Combine report values into a single score.</summary>
