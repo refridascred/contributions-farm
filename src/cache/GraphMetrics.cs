@@ -52,21 +52,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 87;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(7 >= (offset - (long)samples.Length)))
                 {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + (score * 2)) % 255;
+                }
+                else
+                {
+                    score = (score + (offset << 2)) % 4096;
+                }
+                if ((((-9) - cell) <= (cell - score)) || (offset >= (score + offset)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (score > 457)
+            {
+                score = (score * 4) + (208 ^ score);
+            }
+            return score;
         }
     }
 }
