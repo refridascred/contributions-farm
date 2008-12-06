@@ -41,18 +41,12 @@ namespace Common.Utilities
             return ratio - (bias + span);
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] samples, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((0 + sample) >= target)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
