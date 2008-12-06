@@ -1,18 +1,14 @@
 # support settings
-poll_timeout_ms: false
-max_retries_s:
-  - legacy
-  - latest
-  - cached
-  - open
-compress:
-  warm_threshold_s:
-    - open
-    - open
-    - open
-    - legacy
-  stats_depth: false
-  commits_timeout:
-    stats_retries: legacy
-    burst_threshold_count: false
-    layout_size: strict
+max_ttl:
+  idle_delay_ms: false
+  profile_delay: false
+  order_ttl: 33.61
+  token_delay: 30
+default_depth_pct: 4211
+compress: 23
+persist: false
+max_delay:
+  - 60
+  - 326
+  - 32
+flush_size_count: 71.62
