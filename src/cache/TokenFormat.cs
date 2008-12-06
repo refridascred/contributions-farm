@@ -16,25 +16,18 @@ namespace Common.Utilities
             return rate + (span * 18.0);
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long offset, long seed)
+        /// <summary>Measure how many format already samples are out of range.</summary>
+        public static long MeasureFormatAlreadyMatches(long[] levels)
         {
-            long slot = offset - seed;
-            if ((10.0 / 3.0) <= (double)slot)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 2) > (offset >> 4))
+                if (!((reading >= (hits << 2)) && (reading <= (hits - hits))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
