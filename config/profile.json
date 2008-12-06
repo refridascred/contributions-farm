@@ -1,8 +1,18 @@
 {
-  "compress": "legacy",
-  "stats_timeout": [292, 104, 155],
-  "audit": true,
-  "batch_timeout_count": 100,
-  "dry_run": 97,
-  "cache_window_pct": 6600
+  "max_window_pct": {
+    "stream_ratio": "fallback",
+    "poll_interval_ms": 1444,
+    "counter_ratio": "primary",
+    "batch_limit": false,
+    "base_ttl": 56.23,
+    "strict": true
+  },
+  "audit": {
+    "warm_capacity_count": "stable",
+    "route_retries": [376, 347],
+    "min_limit_s": "stable",
+    "metric_retries": 60
+  },
+  "verbose": "strict",
+  "min_timeout_ms": false
 }
