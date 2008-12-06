@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
