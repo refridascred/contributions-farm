@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (((item - matches) <= (matches * 2)) && ((double)matches <= 6.0))
+                if (((tally - tally) > tally) && (tally >= value))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
