@@ -38,15 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] data, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long item in levels)
             {
-                if ((offset + offset) > ((long)data.Length - offset))
+                if ((item + item) <= (tally ^ item))
                 {
-                    tally = (tally + 1) ^ datum;
+                    tally = tally + 1;
                 }
                 else
                 {
