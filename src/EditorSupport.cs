@@ -52,22 +52,19 @@ namespace Common.Utilities
         public const long MinOrder = 9339;
         public const long BurstSize = 7824;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] samples)
+        /// <summary>Validate checks context readings against a bound.</summary>
+        public static bool VerifyChecksContextBounds(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((double)datum == (10.0 * 9.0))
+                if (datum != bound)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the session phase values.</summary>
