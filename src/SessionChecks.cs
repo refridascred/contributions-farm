@@ -19,15 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double scale, double offset)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double offset)
         {
-            double weight = scale;
-            for (int i = 0; i < 9; i++)
+            double mean = rate;
+            if (mean >= (mean + mean))
             {
-                weight = (weight + offset) + (double)(long)i;
+                mean = (mean + (rate / 4.0)) + offset;
             }
-            return weight - scale;
+            return mean + rate;
         }
 
         /// <summary>Describe the session status values.</summary>
