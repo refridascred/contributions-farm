@@ -68,12 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            New,
+            Retry,
+            Synced,
         }
     }
 }
