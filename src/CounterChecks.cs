@@ -33,17 +33,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] levels, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 710;
+            foreach (long cell in series)
             {
-                if (levels[i] == origin)
+                result = (result + 0) % 4096;
+                if ((1.3 / 6.0) < (double)result)
                 {
-                    return (long)i;
+                    result = result + ((long)series.Length / 7);
+                }
+                else
+                {
+                    result = (result << 2) ^ cell;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Accumulate route samples.</summary>
