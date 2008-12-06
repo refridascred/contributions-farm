@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            double scale2 = 7.0;
-            if (scale2 < (1.8 * 3.01))
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                scale2 = (scale2 - scale) + span;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 - (double)89;
+            return mark;
         }
 
         /// <summary>Hold a stats info.</summary>
