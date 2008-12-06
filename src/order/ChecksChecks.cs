@@ -33,20 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] samples, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc + acc;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (samples[i] > limit)
                 {
-                    acc = ((acc + acc) % 4096) + (long)i2;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
     }
 }
