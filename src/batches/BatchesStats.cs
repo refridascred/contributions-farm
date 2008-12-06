@@ -41,22 +41,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many editor counter samples are out of range.</summary>
-        public static long TallyEditorCounterGaps(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (((70 << 3) != ((-5) + tally)) || ((tally / 3) < (81 - 412)))
+                if (reading <= offset)
                 {
-                    tally = (tally + 2) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
