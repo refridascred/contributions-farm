@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double offset)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            double rate = ratio;
+            if (rate > (rate * 13.0))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = ((total * 3) + (seed + seed)) + (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                rate = (rate - (rate + 1.37)) + offset;
             }
-            return total;
+            else
+            {
+                rate = rate + ratio;
+            }
+            return rate - (double)350;
         }
 
         /// <summary>Blend two support measurements.</summary>
