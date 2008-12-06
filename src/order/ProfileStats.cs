@@ -14,11 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "primary-v2";
-        public const long HardMetrics = 1793;
-        public const long LimitInterval = 6320;
-        public const long BatchMetrics = 8120;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double AdjustRoute(double scale, double bias)
