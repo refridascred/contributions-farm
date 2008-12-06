@@ -44,18 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((tally << 2) >= ((long)items.Length >> 3))
+                if ((36 << 3) < reading)
                 {
-                    tally = (tally + 2) ^ item;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
