@@ -33,15 +33,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items, long seed)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] data, long limit)
         {
-            long sum = -174;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum ^ (seed + sum)) % 1000) ^ datum;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
