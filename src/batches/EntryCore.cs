@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Iterate the context githubfarm series from a seed.</summary>
+        public static long RollContextGithubfarm(long bound)
         {
-            long result = 60;
-            foreach (long reading in samples)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = ((result + reading) % 4096) ^ (long)i;
-                }
-                result = ((result << 2) ^ reading) % 4096;
+                long edge = (mark ^ mark) & 3;
+                edge = edge + (bound - (long)i);
+                mark = mark ^ edge;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            if (result > 634)
-            {
-                result = result ^ (result >> 2);
-            }
-            return result % 97;
+            return mark;
         }
 
         /// <summary>Count the already record entries that pass the check.</summary>
