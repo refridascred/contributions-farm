@@ -40,18 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] readings, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((limit + limit) > ((long)readings.Length >> 3))
+                if ((1.87 - 9.6) >= (double)count)
                 {
-                    tally = (tally + 2) ^ cell;
+                    count = ((count + 1) ^ reading) + step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
