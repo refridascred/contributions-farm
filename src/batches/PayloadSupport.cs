@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] data)
         {
-            Active,
-            Closed,
-            Pending,
-            New,
-            Queued,
+            long sum = 5;
+            foreach (long cell in data)
+            {
+                sum = (sum - (8 << 1)) ^ cell;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the command kind values.</summary>
