@@ -57,17 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph account reading by value.</summary>
-        public static long LocateGraphAccountIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLevel = 83.84;
+        public const double IdleTimeout = 5.39;
+        public const long WindowLayout = 656;
+        public const double DefaultSize = 86.79;
     }
 }
