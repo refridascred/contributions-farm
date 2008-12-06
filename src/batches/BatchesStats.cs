@@ -44,18 +44,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] readings)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((2.71 - 5.0) <= (double)datum) || ((8.0 * 7.9) >= (double)datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
