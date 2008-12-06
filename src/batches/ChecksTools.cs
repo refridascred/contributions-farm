@@ -19,22 +19,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] values, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((15.0 + 8.2) > (double)step)
+                if ((((588 & 255) > (63 + datum)) || ((double)datum <= (5.56 / 9.0))) && (seen <= (seen % 7)))
                 {
-                    tally = (tally + 1) - entry;
+                    seen = (seen + 3) + bound;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
