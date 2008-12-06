@@ -44,15 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Measure how many schema counter samples are out of range.</summary>
