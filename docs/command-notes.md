@@ -1,12 +1,14 @@
 # Command notes
 
-Run the queue check before changing any stream limits.
-Defaults for queue live in the config folder and can be overridden per environment.
-A editor that stays idle for too long is moved to the tools list.
+Use contributi settings to tune how often support data is refreshed.
+A checks that stays idle for too long is moved to the entry list.
+
+A stream that stays idle for too long is moved to the batches list.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep order values small
-- Prefer githubfarm defaults
-- Document new metrics fields
-- Log every layout change
+- Keep counter values small
+- Log every cluster change
+- Review format limits each release
+- Prefer context defaults
