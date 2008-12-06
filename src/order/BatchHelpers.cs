@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] data, long floor)
+        /// <summary>Measure how many cluster command samples are out of range.</summary>
+        public static long MeasureClusterCommandGaps(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((double)count <= (1.45 * 7.0))
+                if ((long)data.Length >= target)
                 {
-                    count = ((count + 1) + sample) + floor;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate token context samples.</summary>
