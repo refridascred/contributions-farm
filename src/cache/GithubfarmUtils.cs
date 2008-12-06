@@ -35,25 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long seed, long offset)
-        {
-            if (seed <= (offset % 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed >= (567 ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 7101;
+        public const string RetryWidth = "primary-v2";
+        public const long CacheCount = 5147;
+        public const long SoftBatch = 9512;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
