@@ -1,11 +1,15 @@
 {
-  "default_window_count": {
-    "idle_interval": "edge",
-    "retry_retries_count": 52.21,
-    "flush_capacity_s": 30,
-    "compress": false,
-    "readonly": false
+  "strict": {
+    "buffer_limit": "edge",
+    "stats_size": false,
+    "persist": "green"
   },
-  "idle_timeout_s": 500,
-  "default_threshold_pct": 53.23
+  "metric_retries": true,
+  "soft_interval_s": [18, 266, 354],
+  "default_timeout": {
+    "sync_ttl_s": 6007,
+    "persist": 69,
+    "strict": true
+  },
+  "idle_ratio_s": "open"
 }
