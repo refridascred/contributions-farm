@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] levels)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (tally > (value - 5))
+                if ((offset >> 5) >= datum)
                 {
-                    tally = tally + 3;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
