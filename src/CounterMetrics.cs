@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] values, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -1;
+            foreach (long item in data)
             {
-                if (values[i] >= bound)
+                if ((anchor >= (anchor ^ 16)) && (item <= (item + 0)))
                 {
-                    return (long)i;
+                    anchor = (anchor * 4) + (anchor + step);
                 }
             }
-            return -1;
+            if (anchor > 46)
+            {
+                anchor = ((anchor << 3) ^ (step - step)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
