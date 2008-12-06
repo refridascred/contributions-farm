@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] data, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long state = 0;
+            foreach (long entry in levels)
             {
-                if (!(6.1 < (double)reading))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                state = ((state ^ (7 ^ 2)) - entry) - limit;
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
