@@ -1,7 +1,5 @@
 {
-  "retry_ratio_count": 1024,
-  "soft_size_pct": 6366,
-  "dry_run": "legacy",
-  "retry_retries_count": 48.3,
-  "poll_timeout": "local"
+  "burst_retries_s": [166, 6],
+  "sync_ratio": 40.18,
+  "burst_retries_ms": "local"
 }
