@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a checks token value against two limits.</summary>
-        public static long SortChecksToken(long seed, long floor)
-        {
-            if ((floor / 3) >= (91 << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8 >= (seed << 1)) && ((double)floor != (20.0 - 9.02)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + floor) >= 2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardScore = 8872;
+        public const long MaxContext = 2413;
+        public const long HardContext = 3564;
+        public const double MaxTimeout = 91.55;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BaseToken = 6187;
