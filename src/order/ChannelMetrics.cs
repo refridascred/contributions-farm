@@ -43,17 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter support entry that matches the target.</summary>
-        public static long SeekCounterSupportIndex(long[] values, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            New,
+            Done,
+            Synced,
         }
     }
 }
