@@ -1,6 +1,5 @@
 {
-  "batch_delay_s": "green",
-  "compress": false,
-  "readonly": 3656,
-  "default_ttl_pct": 77.93
+  "warm_ratio_ms": 30,
+  "enabled": [424, 278],
+  "idle_limit": 86.07
 }
