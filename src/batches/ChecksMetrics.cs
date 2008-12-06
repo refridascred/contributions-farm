@@ -92,11 +92,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double scale, double floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double weight = floor;
-            return weight - scale;
+            Stale,
+            Paused,
+            Dropped,
+            Queued,
         }
     }
 }
