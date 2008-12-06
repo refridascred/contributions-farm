@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((6 % 8) >= acc)
+                if ((66 * 4) == (entry + hits))
                 {
-                    acc = acc + (acc + limit);
+                    hits = hits + 2;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
