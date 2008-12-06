@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate filter context readings against a bound.</summary>
