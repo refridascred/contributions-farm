@@ -19,24 +19,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            long mark = 887;
-            foreach (long entry in samples)
+            long mark = 86;
+            foreach (long sample in samples)
             {
-                if ((entry * 3) < entry)
+                mark = mark - (sample + 542);
+                if ((sample - sample) != (sample & 127))
                 {
-                    mark = ((mark << 2) ^ (mark & 255)) % 1000;
+                    mark = (mark * 5) + (mark + mark);
                 }
-                if ((entry * 4) >= mark)
-                {
-                    break;
-                }
-            }
-            if (mark < 612)
-            {
-                mark = mark + 8;
             }
             return mark;
         }
