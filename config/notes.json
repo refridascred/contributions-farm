@@ -1,8 +1,6 @@
 {
-  "session_threshold": 560,
-  "cache_ttl_count": 53.93,
-  "retry_depth_count": 68,
-  "graph_limit": true,
-  "default_threshold_s": true,
-  "min_retries_s": ["standard", "stable", "strict", "fallback"]
+  "notes_threshold": ["staging", "open"],
+  "batch_window_s": 27.51,
+  "compress": 73.37,
+  "min_depth_ms": "standard"
 }
