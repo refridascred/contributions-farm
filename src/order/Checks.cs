@@ -57,25 +57,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long bound, long step)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long gap = bound + step;
-            if ((double)step != (13.0 - 1.61))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step ^ 355) < (bound - gap)) && ((bound & 1) <= (66 >> 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Active,
+            Idle,
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a payload info.</summary>
