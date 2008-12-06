@@ -34,22 +34,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9591;
+        public const double DefaultCommits = 74.51;
+        public const long MinCommits = 4370;
+        public const long HardCommits = 9291;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
