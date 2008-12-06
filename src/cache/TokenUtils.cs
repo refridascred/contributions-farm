@@ -12,27 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine format commits values into a single score.</summary>
-        public static long DigestFormatCommits(long[] series, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] data)
         {
-            long acc = 232;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                acc = acc ^ (945 & 255);
-                if (((target - acc) < acc) && ((double)target >= (double)acc))
+                if ((0.29 < (double)count) && ((double)entry > (double)4))
                 {
-                    acc = (acc << 3) ^ (cell - acc);
-                }
-                if (!((cell & 31) < (cell << 3)))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (acc < (-70))
-            {
-                acc = ((acc * 5) + (target << 2)) % 4096;
-            }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
