@@ -33,17 +33,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter layout samples.</summary>
-        public static long CombineCounterLayout(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series, long bound)
         {
-            long result = 8;
+            long result = 394;
             foreach (long sample in series)
             {
-                if (((result + 0) != (928 / 4)) && ((double)result >= (5.02 - 8.2)))
+                if (!((sample * 4) >= result))
                 {
-                    result = (result << 2) ^ (sample - sample);
+                    result = (result - 1) - bound;
                 }
-                result = result - (result / 7);
+                else
+                {
+                    result = (result + ((long)series.Length % 2)) % 255;
+                }
+                if ((10.0 * 5.0) >= (double)sample)
+                {
+                    break;
+                }
+            }
+            if (result > 3)
+            {
+                result = (result ^ (72 ^ (-8))) % 65521;
             }
             return result;
         }
