@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchFactor = 1207;
-        public const double StepWidth = 74.76;
-        public const long LimitSchema = 236;
-        public const string BatchSchema = "fallback-v2";
-        public const long HardFactor = 1480;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!!((long)i == ((long)i - 439)))
+                {
+                    anchor = (anchor * 5) + (seed - anchor);
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long CombineAccount(long[] samples, long bound)
