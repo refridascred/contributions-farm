@@ -53,10 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 72.63;
-        public const long RetryDepth = 6618;
-        public const long MaxMetric = 3636;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((((datum & 15) < datum) || ((seen * 4) <= 8)) || ((datum >> 2) > (76 << 2)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double scale, double span)
