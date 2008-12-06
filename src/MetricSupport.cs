@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data, long offset)
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long CountMetricsCommitsOutliers(long[] items, long seed)
         {
-            long acc = 33;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)offset <= (4.0 / 2.0))
+                if ((69 <= seed) || ((double)seed >= (8.1 * 3.6)))
                 {
-                    acc = ((acc * 2) + offset) % 4096;
-                }
-                if ((item << 1) <= offset)
-                {
-                    acc = (acc + offset) % 255;
+                    count = (count + 3) + item;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
