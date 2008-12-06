@@ -26,18 +26,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((seed - seed) != (reading % 7))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 1859;
+        public const long BurstRecord = 3759;
+        public const long WindowRecord = 9609;
+        public const long BatchRatio = 1255;
     }
 }
