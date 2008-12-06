@@ -53,27 +53,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Look up the position of a layout channel sample.</summary>
+        public static long FindLayoutChannelIndex(long[] levels, long bound)
         {
-            long anchor = -69;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((sample < (anchor / 3)) || ((anchor << 1) > (3 % 8))))
+                if (levels[i] <= bound)
                 {
-                    anchor = (anchor + ((long)data.Length + anchor)) % 101;
-                }
-                anchor = (anchor - anchor) % 255;
-                if ((double)anchor != (8.03 + 6.9))
-                {
-                    anchor = (anchor + (anchor / 4)) % 65521;
-                }
-                if (anchor >= 2)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
