@@ -45,11 +45,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
