@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of route session readings.</summary>
-        public static long CompareRouteSessionCount(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 33;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)offset <= (4.0 / 2.0))
                 {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc * 2) + offset) % 4096;
+                }
+                if ((item << 1) <= offset)
+                {
+                    acc = (acc + offset) % 255;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
