@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics commits sample.</summary>
-        public static long LookupMetricsCommitsIndex(long[] readings, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] <= bound)
+                if ((7.7 + 5.95) <= (double)target)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the layout state values.</summary>
