@@ -19,39 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long seed, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] items, long step)
         {
-            long lane = seed ^ bound;
-            if (((4.0 - 20.0) >= (double)lane) && ((seed + seed) <= (seed ^ lane)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed <= (bound & 31)) && ((double)bound < (7.5 - 0.9)))
+                if ((items[i] == step) && ((items[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound & 1) < 37)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((51 / 5) >= bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
