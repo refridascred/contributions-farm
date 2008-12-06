@@ -20,19 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((hits - hits) < (hits / 4))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstRatio = 4159;
+        public const double BaseCommand = 52.51;
+        public const long WindowCommand = 9964;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
