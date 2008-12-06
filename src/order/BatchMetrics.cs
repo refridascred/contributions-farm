@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 2745;
-        public const long BaseSize = 2410;
-        public const long BurstBudget = 5335;
-        public const long SoftContext = 2778;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Draft,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long SeekTokenIndex(long[] data, long floor)
