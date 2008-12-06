@@ -33,19 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double mean = (double)(697 ^ 4);
-            if (mean <= (double)(-3))
-            {
-                mean = (mean - (7.36 + mean)) - rate;
-            }
-            else
-            {
-                mean = mean + (3.17 - floor);
-            }
-            return mean - 4.63;
+            Idle,
+            Paused,
+            Closed,
+            New,
         }
     }
 }
