@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Match up layout notes samples.</summary>
+        public static long CompareLayoutNotesCount(long[] series)
         {
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the filter state values.</summary>
