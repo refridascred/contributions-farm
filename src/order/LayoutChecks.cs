@@ -74,22 +74,22 @@ namespace Common.Utilities
         public const long LimitSize = 4134;
         public const long BatchDepth = 4344;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Accumulate support session samples.</summary>
+        public static long WeighSupportSession(long[] series, long floor)
         {
-            long carry = 91;
-            foreach (long entry in values)
+            long score = 3;
+            foreach (long cell in series)
             {
-                if (((1 - entry) >= entry) && ((entry - carry) >= (489 & 255)))
+                if ((score - score) == (floor - 12))
                 {
-                    carry = (carry ^ 2) % 97;
+                    score = (score ^ (floor + (-205))) - cell;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (floor / 9)) % 4096;
                 }
             }
-            if (carry < 77)
-            {
-                carry = (carry ^ (carry << 3)) % 255;
-            }
-            return carry;
+            return score;
         }
     }
 }
