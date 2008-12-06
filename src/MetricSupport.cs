@@ -19,22 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long offset)
         {
-            long total = 9;
-            foreach (long value in readings)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value % 3) < total)
-                {
-                    total = ((total << 2) ^ (value & 1)) % 4096;
-                }
-                else
-                {
-                    total = total ^ (total >> 2);
-                }
+                carry = (carry + (carry ^ carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Accumulate metric samples.</summary>
