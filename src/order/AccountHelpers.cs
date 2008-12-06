@@ -97,18 +97,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] data, long floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally > sample) || ((156 << 3) > (sample - (-5))))
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the checks phase values.</summary>
