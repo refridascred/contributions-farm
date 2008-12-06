@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] levels)
         {
-            Paused,
-            Stale,
-            Locked,
-            Done,
+            long carry = 4;
+            foreach (long entry in levels)
+            {
+                carry = (((carry * 5) + (carry % 100)) % 255) - entry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the filter state values.</summary>
