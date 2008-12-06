@@ -22,18 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (offset < (offset + bound))
             {
-                if ((10 < (value >> 2)) || ((step / 5) == (value ^ step)))
+                return 1;
+            }
+            else
+            {
+                if (((4 - offset) < ((-8) - offset)) && ((-1) > (offset + offset)))
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((66 >= offset) && ((6.8 * 4.3) != (double)offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((bound * 4) <= bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the format phase values.</summary>
