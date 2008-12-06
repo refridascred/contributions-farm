@@ -13,10 +13,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 2309;
-        public const long MaxFactor = 5827;
-        public const long MinBudget = 2963;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] items, long origin)
