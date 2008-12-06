@@ -1,15 +1,14 @@
 # Command notes
 
-The context module keeps farm values in sync with the support cache.
-Defaults for commits live in the config folder and can be overridden per environment.
-When a metric fails, the record handler retries a few times before giving up.
+A command that stays idle for too long is moved to the editor list.
+Defaults for stats live in the config folder and can be overridden per environment.
 
-When a format fails, the checks handler retries a few times before giving up.
-Keep cache and stream names short and lowercase.
+The counter module keeps report values in sync with the route cache.
+Keep batch and token names short and lowercase.
+The cluster module keeps githubfarm values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Keep session values small
-- Validate cluster input early
-- Review stats limits each release
-- Document new payload fields
+- Review commits limits each release
+- Keep payload values small
+- Log every contributi change
