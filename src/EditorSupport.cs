@@ -25,10 +25,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4410;
-        public const string RetrySchema = "open-1";
-        public const long BatchDepth = 8503;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double BurstLevel = 33.35;
