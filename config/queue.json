@@ -1,11 +1,10 @@
 {
-  "cache_ratio_pct": {
-    "already_threshold": ["blue", "fallback", "edge"],
-    "min_depth_count": 1024,
-    "default_interval_pct": ["standard", "blue", "staging", "cached"]
-  },
-  "poll_interval": ["cached", "eu-west"],
-  "editor_limit": ["cached", "local", "latest"],
-  "default_threshold_pct": "edge",
-  "burst_interval_ms": true
+  "flush_ttl": 1024,
+  "enabled": "eu-west",
+  "cache_ratio_ms": {
+    "burst_timeout_pct": "open",
+    "idle_ratio": "green",
+    "audit": 79,
+    "cache_threshold": "standard"
+  }
 }
