@@ -1,14 +1,7 @@
 {
-  "enabled": "cached",
-  "max_ttl_pct": 5132,
-  "sync_size_ms": {
-    "cache_timeout": ["green", "green", "open", "staging"],
-    "poll_threshold": "strict",
-    "poll_ttl_s": ["cached", "cached"],
-    "audit": "local",
-    "readonly": ["edge", "standard", "staging", "edge"],
-    "flush_threshold": false
-  },
-  "cache_retries_ms": "cached",
-  "token_limit": 70.57
+  "sync_delay_s": false,
+  "max_interval_pct": ["cached", "fallback"],
+  "flush_window_count": 71,
+  "metrics_threshold": [438, 58],
+  "flush_delay_ms": 45
 }
