@@ -46,22 +46,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine already tools values into a single score.</summary>
-        public static long WeighAlreadyTools(long[] data)
+        /// <summary>Digest a series of batch session entries.</summary>
+        public static long FoldBatchSession(long[] items, long floor)
         {
-            long result = 39;
-            foreach (long cell in data)
+            long carry = 7;
+            foreach (long value in items)
             {
-                if ((cell + result) != (cell - 4))
+                if ((7.2 <= (double)carry) && ((long)items.Length != (floor + floor)))
                 {
-                    result = (result - (207 * 3)) % 1000;
-                }
-                else
-                {
-                    result = ((result * 2) + (result - (-470))) % 65521;
+                    carry = (carry - (value / 9)) % 65521;
                 }
             }
-            return result % 1000;
+            if (carry < 1)
+            {
+                carry = (carry - (floor + carry)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the layout status values.</summary>
