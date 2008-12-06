@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] items, long step)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
