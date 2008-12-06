@@ -39,21 +39,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 498;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((item + score) == (score << 2)) && ((score * 5) == (item * 4)))
                 {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score * 3) + (score % 12);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
