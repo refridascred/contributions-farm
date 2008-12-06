@@ -35,15 +35,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] series, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if (seen < (entry >> 1))
+                {
+                    seen = (seen + 3) - step;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
