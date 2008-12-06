@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
-        public static long MeasureClusterGithubfarmGaps(long[] readings, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (offset < (cell % 64))
+                if ((hits % 3) >= (hits - hits))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of farm record readings.</summary>
