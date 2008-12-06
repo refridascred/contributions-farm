@@ -67,11 +67,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double ratio, double floor)
-        {
-            double mean = (floor + floor) * 1.3;
-            return mean + (floor - ratio);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseInterval = 8204;
+        public const string WindowQueue = "strict-edge";
+        public const double BaseWidth = 52.16;
+        public const double LimitQueue = 1.83;
     }
 }
