@@ -25,21 +25,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value ^ 0) == (target - matches))
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
