@@ -40,18 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] data, long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double mean = bias / 2.0;
+            if (mean > 0.7)
             {
-                if (28 < (entry + floor))
-                {
-                    hits = hits + 2;
-                }
+                mean = (mean - bias) - bias2;
             }
-            return hits;
+            return mean + (mean + mean);
         }
 
         /// <summary>Locate a report reading by value.</summary>
