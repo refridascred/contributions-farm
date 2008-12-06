@@ -33,13 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long limit)
         {
-            Pending,
-            Queued,
-            Stale,
-            Paused,
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = acc + acc;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = ((acc + acc) % 4096) + (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
