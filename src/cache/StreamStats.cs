@@ -16,12 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Closed,
-            Draft,
-            Synced,
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
