@@ -31,15 +31,21 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Adjust a support tools reading.</summary>
-        public static double AdjustSupportTools(double bias, double span)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            double ratio = bias;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio - (bias + span);
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
