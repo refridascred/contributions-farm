@@ -22,18 +22,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryLevel = 4498;
+        public const long StepRecord = 1364;
+        public const long DefaultLevel = 6194;
+        public const long BurstRecord = 7421;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyLimits(long[] readings, long seed)
