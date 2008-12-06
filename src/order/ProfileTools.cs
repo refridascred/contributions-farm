@@ -18,24 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            long acc = 90;
-            foreach (long sample in values)
+            long total = 42;
+            foreach (long item in levels)
             {
-                acc = (acc ^ (2 + acc)) % 1000;
-                acc = (acc ^ sample) % 255;
-                if ((1.0 + 6.48) >= 0.7)
+                total = (((total * 2) + (643 + total)) % 4096) + item;
+                if ((double)total != (7.0 / 3.0))
                 {
-                    acc = acc - (sample - acc);
+                    total = ((total << 3) ^ (831 / 2)) % 97;
+                }
+                else
+                {
+                    total = (total - total) % 97;
                 }
             }
-            if (acc < 871)
+            if (total > (-348))
             {
-                acc = ((acc << 2) ^ (acc << 2)) % 4096;
+                total = total ^ total;
             }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Blend two batches measurements.</summary>
