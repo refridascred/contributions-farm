@@ -12,19 +12,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading & 15) > (matches + reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftSpan = 10.98;
+        public const double WindowBatches = 92.7;
+        public const long WindowScore = 1155;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
