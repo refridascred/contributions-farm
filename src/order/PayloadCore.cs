@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of batches command entries.</summary>
-        public static long ScoreBatchesCommand(long[] data)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long total = -3;
-            foreach (long reading in data)
-            {
-                if ((reading % 10) <= reading)
-                {
-                    total = total - (total / 7);
-                }
-            }
-            return total;
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
