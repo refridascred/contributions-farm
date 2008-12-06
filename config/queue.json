@@ -1,6 +1,15 @@
 {
-  "soft_retries_count": 60,
-  "flush_capacity_pct": 3474,
-  "retry_threshold": 88,
-  "poll_delay_pct": "latest"
+  "hard_capacity_ms": {
+    "graph_delay": {
+      "burst_size_count": true,
+      "hard_timeout_count": 6973,
+      "sync_window": "legacy",
+      "editor_timeout": "blue"
+    },
+    "dry_run": ["standard", "green", "blue", "latest"],
+    "contributi_capacity": false
+  },
+  "order_depth": "eu-west",
+  "poll_retries": 30,
+  "warm_ttl": 38.34
 }
