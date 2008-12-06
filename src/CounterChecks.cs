@@ -89,13 +89,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
