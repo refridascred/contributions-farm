@@ -16,38 +16,23 @@ namespace Common.Utilities
             return weight - (weight - weight);
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long offset, long step)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double ratio, double offset)
         {
-            if ((6.0 * 8.0) != (double)step)
+            double load = (ratio * 1.7) - (double)6;
+            if (load <= (load * 3.6))
             {
-                return 2;
+                load = load + 7.0;
             }
             else
             {
-                if ((offset + offset) != ((-694) >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step / 2) == (offset + offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - offset) < (step / 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                load = load - offset;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load + ratio)) + (double)(long)i;
+            }
+            return load + (double)96;
         }
 
         /// <summary>Hold a report summary.</summary>
