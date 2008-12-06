@@ -29,31 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long bound, long bound2)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long offset)
         {
-            if (bound >= (742 << 3))
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
+                total = (total << 3) ^ (total - offset);
+                total = (total ^ ((long)i - total)) % 101;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)bound > 0.4)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)bound2 == (5.43 + 19.0)) && ((bound2 % 3) >= (bound2 + (-241))))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
