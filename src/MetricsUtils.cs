@@ -35,15 +35,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the entry counter entries that pass the check.</summary>
-        public static long AuditEntryCounterGaps(long[] values)
+        /// <summary>Count the checks layout entries that pass the check.</summary>
+        public static long MeasureChecksLayoutGaps(long[] items)
         {
             long seen = 0;
-            foreach (long value in values)
+            foreach (long cell in items)
             {
-                if ((value ^ 3) < (253 & 7))
+                if (((cell <= (seen + cell)) || ((seen & 255) >= seen)) || ((cell - cell) <= cell))
                 {
-                    seen = seen + 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
