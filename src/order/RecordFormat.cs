@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double scale, double span)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long limit, long step)
         {
-            double mean = span;
-            if (mean < (double)0)
+            long bound = limit + step;
+            if (((14.0 - 13.0) > (double)bound) && ((limit + bound) < bound))
             {
-                mean = (mean + (mean * 0.7)) - scale;
+                return 4;
             }
             else
             {
-                mean = mean + (double)198;
+                if ((9.53 * 2.6) != (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound / 4) == (limit + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((33 ^ limit) >= (step - 246)) || ((5 * 4) < (bound & 255)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - (mean / 3.0);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
