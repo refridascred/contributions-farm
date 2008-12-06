@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items, long bound)
         {
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long anchor = -8;
+            foreach (long item in items)
+            {
+                if (!((bound - 7) < (item % 100)))
+                {
+                    anchor = (anchor ^ bound) % 4096;
+                }
+            }
+            if (anchor < 66)
+            {
+                anchor = (anchor - 696) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
