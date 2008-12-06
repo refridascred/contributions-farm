@@ -42,24 +42,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long anchor = -3;
-            foreach (long entry in series)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = anchor ^ (580 << 2);
-                if ((anchor >= (entry + (-1))) && ((21 + entry) == (anchor / 6)))
-                {
-                    anchor = anchor + (anchor + (long)series.Length);
-                }
-                anchor = (anchor * 2) + ((-93) + entry);
-                if ((double)entry >= 9.11)
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
