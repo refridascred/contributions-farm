@@ -76,15 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
