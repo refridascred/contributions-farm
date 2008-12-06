@@ -50,13 +50,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] series, long seed)
         {
-            Done,
-            Closed,
-            Idle,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
