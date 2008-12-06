@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] values, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
