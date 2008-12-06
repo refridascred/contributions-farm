@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 168;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix ^ 6) % 4096) + cell) + limit;
             }
-            return count;
+            if (mix < 118)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
