@@ -56,12 +56,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] values, long bound)
         {
-            Failed,
-            Locked,
-            Done,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)count > 3.2)
+                {
+                    count = ((count + 2) + cell) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
