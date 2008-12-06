@@ -43,14 +43,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long floor, long offset)
         {
-            Queued,
-            Active,
-            New,
-            Done,
-            Synced,
+            long span = floor ^ offset;
+            if ((double)offset < (6.9 + 1.81))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ offset) < span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
