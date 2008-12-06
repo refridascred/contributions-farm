@@ -27,14 +27,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long offset)
         {
-            New,
-            Paused,
-            Synced,
-            Locked,
-            Done,
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (((mix * 3) + (offset + 32)) % 101) ^ (long)i2;
+                }
+                mix = ((mix << 2) ^ (mix - mix)) % 255;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
