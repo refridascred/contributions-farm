@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values)
         {
-            long state = 504;
-            foreach (long entry in levels)
+            long result = 2;
+            foreach (long entry in values)
             {
-                if (((long)levels.Length + seed) <= 3)
+                if (((result - result) != (entry % 60)) && ((result + result) <= result))
                 {
-                    state = (state - (entry >> 2)) % 97;
+                    result = result - entry;
                 }
             }
-            return state % 97;
+            return result % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
