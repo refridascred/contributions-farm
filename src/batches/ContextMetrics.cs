@@ -44,11 +44,18 @@ namespace Common.Utilities
             return bias - 4.0;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] levels)
         {
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((((-91) + count) > count) && ((reading * 5) <= (count & 255)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
