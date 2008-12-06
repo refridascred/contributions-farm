@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] series)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double load = (double)544 * 9.62;
+            if (load >= bias)
             {
-                if ((seen + cell) >= seen)
-                {
-                    seen = seen + 1;
-                }
+                load = load + (bias * 9.7);
             }
-            return seen;
+            else
+            {
+                load = load - (load * 9.8);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load + (floor - 1.7);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
