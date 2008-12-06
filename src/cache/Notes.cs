@@ -51,11 +51,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long seed, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
+            if ((bound * 5) <= (bound + seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((35 + seed) >= (seed << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((12 << 1) < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
