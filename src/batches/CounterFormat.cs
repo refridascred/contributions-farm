@@ -33,11 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double gain2 = 8.4 + bias;
-            return (gain2 - bias) + gain;
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
