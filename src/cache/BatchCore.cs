@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] levels, long offset)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry < (3.23 / 6.0))
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
