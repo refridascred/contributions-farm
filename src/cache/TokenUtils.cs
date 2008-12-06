@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double bias)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] items, long bound)
         {
-            double bias2 = scale;
-            if (bias2 < (double)(-37))
+            bool ok = true;
+            foreach (long datum in items)
             {
-                bias2 = bias2 + bias2;
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (double)407) + (double)(long)i;
-            }
-            return bias2 + (8.5 - bias2);
+            return ok;
         }
 
         /// <summary>Hold a counter options.</summary>
