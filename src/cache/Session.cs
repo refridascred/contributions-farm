@@ -53,17 +53,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a layout channel sample.</summary>
-        public static long FindLayoutChannelIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchSize = "local-1";
+        public const string BurstSpan = "fallback-edge";
+        public const double BurstFactor = 56.27;
     }
 }
