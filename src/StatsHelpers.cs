@@ -39,22 +39,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] values)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches << 1) != (value / 4))
+                if (data[i] > seed)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
