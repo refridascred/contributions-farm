@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long MinLevel = 9115;
         public const string RetryLevel = "open";
 
-        /// <summary>Fold a list of order command readings.</summary>
-        public static long ScoreOrderCommand(long[] samples, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] items)
         {
-            long mix = 654;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)mix >= (double)limit)
+                if (((414 + item) <= item) || ((double)item < 5.4))
                 {
-                    mix = (mix ^ (4 % 24)) + item;
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of session report entries.</summary>
