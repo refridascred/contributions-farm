@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] series, long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long floor)
         {
-            long acc = 7;
-            foreach (long item in series)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((acc / 6) <= 1)
-                {
-                    acc = ((acc << 3) ^ ((-4) ^ 0)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (origin + item)) % 97;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
