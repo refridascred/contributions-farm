@@ -35,12 +35,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
