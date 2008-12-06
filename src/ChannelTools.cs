@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] readings, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                if ((readings[i] == step) && ((readings[i] % 2) != 0))
+                if (((double)result <= (9.3 - 5.0)) && ((origin >> 4) <= (origin ^ cell)))
                 {
-                    return (long)i;
+                    result = ((result * 4) + (cell / 2)) % 255;
+                }
+                if (cell >= (6 + origin))
+                {
+                    result = (result << 3) ^ (cell + origin);
+                }
+                else
+                {
+                    result = (result - (origin << 3)) % 255;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a graph options.</summary>
