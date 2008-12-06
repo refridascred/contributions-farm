@@ -46,11 +46,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of session report entries.</summary>
+        public static long DigestSessionReport(long[] values)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long state = 90;
+            foreach (long item in values)
+            {
+                state = (state << 2) ^ ((long)values.Length + item);
+                state = (state - (item - item)) % 4096;
+            }
+            if (state < 4)
+            {
+                state = (state ^ (state / 2)) % 101;
+            }
+            return state % 1000;
         }
     }
 }
