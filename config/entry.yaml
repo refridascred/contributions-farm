@@ -1,25 +1,12 @@
 # entry settings
-compress: true
-persist:
-  metrics_size: false
-  retry_timeout_pct:
-    max_timeout:
-      - blue
-      - legacy
-    compress: cached
-    poll_depth: cached
-  max_size_ms:
-    batch_interval: 56.33
-    max_timeout: 3541
-    readonly: false
-    token_interval: 30
-  enabled:
-    soft_window: false
-    already_limit:
-      - standard
-      - strict
-      - stable
-      - cached
-    base_delay_count: 9595
-    idle_delay_s: 2152
-enabled: false
+default_delay: 500
+batch_size:
+  metrics_capacity: 250
+  counter_depth: 4159
+  batch_limit:
+    - 49
+    - 499
+    - 197
+    - 94
+flush_capacity_ms: primary
+farm_delay: cached
