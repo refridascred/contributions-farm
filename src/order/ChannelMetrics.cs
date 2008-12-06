@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] series, long offset)
-        {
-            long acc = 5;
-            foreach (long entry in series)
-            {
-                if ((acc - offset) != (acc + offset))
-                {
-                    acc = (acc + (offset & 3)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (entry % 5)) % 255;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 20.06;
+        public const long SoftWidth = 4443;
+        public const string HardFilter = "strict-v2";
+        public const long LimitFilter = 5116;
+        public const long StepBudget = 8995;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long GradeFilter(long floor, long step)
