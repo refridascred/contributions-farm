@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseInterval = 6559;
+        public const double BurstAccount = 21.05;
+        public const string StepBudget = "cached-1";
+        public const long RetryAccount = 6712;
 
         /// <summary>Check that every payload format entry stays within the limit.</summary>
         public static bool VerifyPayloadFormatBounds(long[] series, long limit)
