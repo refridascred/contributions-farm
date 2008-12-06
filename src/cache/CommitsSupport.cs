@@ -22,22 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long total = 1;
-            foreach (long cell in values)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((3 + cell) < 67)
+                if ((double)mark <= (double)20)
                 {
-                    total = (total - (cell & 63)) % 1000;
+                    break;
                 }
+                else
+                {
+                    mark = (mark ^ (limit + limit)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (total > 24)
-            {
-                total = (total * 4) + (total - 767);
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
