@@ -52,20 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 8598;
+        public const long BurstMetrics = 9031;
+        public const string MaxDepth = "cached-1";
+        public const string BatchDepth = "fallback-v2";
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long BucketBatches(long bound, long target)
