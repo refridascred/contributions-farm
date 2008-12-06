@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 629;
+        public const long BurstCommits = 377;
+        public const long CacheCommits = 3150;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
