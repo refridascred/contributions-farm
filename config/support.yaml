@@ -1,14 +1,10 @@
 # support settings
-max_ttl:
-  idle_delay_ms: false
-  profile_delay: false
-  order_ttl: 33.61
-  token_delay: 30
-default_depth_pct: 4211
-compress: 23
-persist: false
-max_delay:
-  - 60
-  - 326
-  - 32
-flush_size_count: 71.62
+hard_window_count: cached
+dry_run: 60
+payload_interval: 29
+enabled:
+  - 189
+  - 394
+  - 5
+hard_retries: blue
+cache_limit_count: fallback
