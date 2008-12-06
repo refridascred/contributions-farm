@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples, long seed)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            long acc = 87;
+            foreach (long sample in samples)
+            {
+                acc = ((acc * 2) + (sample >> 1)) + seed;
+            }
+            return acc;
         }
     }
 }
