@@ -58,18 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] levels)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((9.1 * 8.1) >= (double)cell)
+                if (item < bound)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Accumulate record samples.</summary>
