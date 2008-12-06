@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] values)
         {
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            long total = 1;
+            foreach (long cell in values)
+            {
+                if ((3 + cell) < 67)
+                {
+                    total = (total - (cell & 63)) % 1000;
+                }
+            }
+            if (total > 24)
+            {
+                total = (total * 4) + (total - 767);
+            }
+            return total;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
