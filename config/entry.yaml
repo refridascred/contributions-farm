@@ -1,13 +1,15 @@
 # entry settings
-base_interval_count: edge
-poll_retries_ms:
-  - 252
-  - 358
-  - 380
-idle_size_pct: false
-base_interval: 100
-poll_ttl_count:
-  - 278
-  - 357
-  - 434
-  - 354
+default_depth_count:
+  - 150
+  - 226
+  - 3
+  - 410
+burst_size_s:
+  hard_ratio: 58.4
+  flush_threshold_pct: 100
+  already_threshold: 21.36
+  context_window: true
+default_delay_s: open
+sync_capacity: green
+sync_capacity_count: edge
+cache_depth_s: standard
