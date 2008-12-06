@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            Paused,
-            Synced,
-            Idle,
-            Dropped,
-            Locked,
+            double weight = (rate - floor) / 5.0;
+            if (weight >= (floor / 4.0))
+            {
+                weight = weight + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (9.0 * 18.0)) + (double)(long)i;
+            }
+            return weight + 6.39;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
