@@ -16,24 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a editor schema counter forward.</summary>
-        public static long RollEditorSchema(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((carry ^ carry) != ((long)i - carry))
-                {
-                    carry = (carry - (target + carry)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 5) + ((long)i & 127)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseTimeout = 2219;
+        public const long MinCounter = 8732;
+        public const string BaseCounter = "latest-1";
+        public const long BatchCounter = 2812;
 
         /// <summary>Locate a cluster contributi reading by value.</summary>
         public static long LocateClusterContributiIndex(long[] data, long floor)
