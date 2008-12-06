@@ -26,20 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowSpan = 82.25;
+        public const long StepSpan = 5152;
+        public const string WindowOrder = "strict-v2";
+        public const string BatchOrder = "alpha-v2";
+        public const long SoftOrder = 5899;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double AdjustStream(double weight, double bias)
