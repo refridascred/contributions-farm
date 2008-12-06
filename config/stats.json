@@ -1,6 +1,17 @@
 {
-  "flush_delay": 11,
-  "dry_run": 9.73,
-  "batch_retries": 65.28,
-  "warm_limit_s": "open"
+  "cache_depth_pct": {
+    "window_threshold": 62,
+    "dry_run": true,
+    "audit": 1.57,
+    "flush_ttl": {
+      "retry_delay_count": ["standard", "standard", "staging", "local"],
+      "readonly": 65,
+      "poll_size_count": "edge",
+      "flush_threshold_s": "legacy",
+      "report_ttl": 76.75
+    }
+  },
+  "default_threshold_count": "legacy",
+  "readonly": "staging",
+  "idle_retries_count": 1024
 }
