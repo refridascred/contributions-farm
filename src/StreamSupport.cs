@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] levels, long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double bias = offset;
+            return (bias + (bias - 0.9)) + gain;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
