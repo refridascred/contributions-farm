@@ -73,24 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi cluster readings.</summary>
-        public static long DigestContributiCluster(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] series, long bound)
         {
-            long mix = 12;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (mix > (entry ^ mix))
+                if ((seen - seen) < (datum - seen))
                 {
-                    mix = mix - (mix - entry);
-                    mix = ((mix << 2) ^ (mix & 63)) % 1000;
+                    seen = (seen + 2) + bound;
                 }
-                mix = (mix * 3) + (12 % 7);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mix < (-15))
-            {
-                mix = (mix ^ (52 >> 5)) % 65521;
-            }
-            return mix;
+            return seen;
         }
     }
 }
