@@ -16,15 +16,11 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double gain, double span)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            double scale = gain * 7.0;
-            if (scale < (double)1)
-            {
-                scale = (scale + (gain / 4.0)) + span;
-            }
-            return scale - (double)156;
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
