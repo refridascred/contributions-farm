@@ -1,11 +1,5 @@
 {
-  "readonly": ["green", "stable", "eu-west", "legacy"],
-  "burst_window_pct": "primary",
-  "default_size": 22.3,
-  "stats_capacity": 14.9,
-  "retry_retries": {
-    "verbose": 29,
-    "dry_run": [239, 476, 439],
-    "poll_interval": "green"
-  }
+  "window_capacity": false,
+  "retry_ttl": true,
+  "burst_ratio": 500
 }
