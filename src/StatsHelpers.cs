@@ -58,18 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum * 4) != (datum >> 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
     }
 }
