@@ -22,19 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Rank token githubfarm input into a small class.</summary>
+        public static long ClassifyTokenGithubfarm(long offset, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            if ((offset + offset) <= (offset % 7))
             {
-                if (!!((long)i == ((long)i - 439)))
-                {
-                    anchor = (anchor * 5) + (seed - anchor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((4 % 3) < (offset + 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the contributi status values.</summary>
