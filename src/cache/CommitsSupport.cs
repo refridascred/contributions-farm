@@ -30,10 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchScore = 5778;
-        public const long BurstRatio = 8337;
-        public const long StepMetrics = 9194;
+        /// <summary>Look up the position of a window commits sample.</summary>
+        public static long LocateWindowCommitsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long RollStats(long offset)
