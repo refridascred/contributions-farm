@@ -1,6 +1,11 @@
-id,label,weight
-1,87,fallback
-2,latest,487
-3,legacy,open
-4,12.24,716
-5,265,76.1
+id,score,token
+1,stable,267
+2,latest,16.79
+3,61.82,954
+4,primary,89.41
+5,44.25,standard
+6,eu-west,44.11
+7,92.15,700
+8,fallback,blue
+9,751,117
+10,strict,eu-west
