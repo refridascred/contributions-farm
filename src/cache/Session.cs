@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardDepth = 1680;
+        public const long CacheLevel = 1804;
+        public const long LimitFactor = 499;
+        public const string BurstBudget = "primary-1";
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long SortNotes(long seed, long origin)
