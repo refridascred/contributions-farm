@@ -18,25 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long step, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] data)
         {
-            long next = step - floor;
-            if ((double)floor != (double)next)
+            long score = -94;
+            foreach (long value in data)
             {
-                return 4;
+                score = score + value;
             }
-            else
-            {
-                if ((0.1 * 1.41) >= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a account info.</summary>
