@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] items, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (entry >= floor)
+                if (seen <= (seed + seed))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Digest a series of session report entries.</summary>
