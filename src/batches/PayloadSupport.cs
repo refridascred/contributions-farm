@@ -23,26 +23,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values, long target)
-        {
-            long anchor = 23;
-            foreach (long sample in values)
-            {
-                if ((anchor + sample) <= sample)
-                {
-                    anchor = ((anchor ^ (sample ^ (long)values.Length)) % 1000) - target;
-                }
-                if (sample > (-80))
-                {
-                    break;
-                }
-            }
-            if (anchor > 516)
-            {
-                anchor = (anchor + (5 - 802)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "stable-v2";
+        public const long StepChecks = 5136;
+        public const long HardLevel = 9462;
     }
 }
