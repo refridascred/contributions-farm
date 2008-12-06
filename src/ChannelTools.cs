@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] levels)
         {
-            New,
-            Failed,
-            Retry,
-            Paused,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (tally > (value - 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of account entries.</summary>
