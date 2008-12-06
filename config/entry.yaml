@@ -1,17 +1,4 @@
 # entry settings
-githubfarm_ratio: 7867
-cache_threshold_pct: true
-strict:
-  default_depth:
-    - 126
-    - 24
-    - 229
-  max_threshold_count: 35.07
-  sync_window_ms: standard
-default_delay:
-  retry_ratio_ms: 94.72
-  retry_delay_ms: 500
-  warm_window_pct: true
-  dry_run: 8064
-soft_interval: 35
-default_delay_pct: stable
+poll_limit_count: stable
+soft_limit_count: green
+min_window_s: false
