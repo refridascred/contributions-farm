@@ -46,11 +46,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 9591;
-        public const double DefaultCommits = 74.51;
-        public const long MinCommits = 4370;
-        public const long HardCommits = 9291;
+        /// <summary>Combine already tools values into a single score.</summary>
+        public static long WeighAlreadyTools(long[] data)
+        {
+            long result = 39;
+            foreach (long cell in data)
+            {
+                if ((cell + result) != (cell - 4))
+                {
+                    result = (result - (207 * 3)) % 1000;
+                }
+                else
+                {
+                    result = ((result * 2) + (result - (-470))) % 65521;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
