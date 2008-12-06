@@ -16,23 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double ratio, double offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double load = (ratio * 1.7) - (double)6;
-            if (load <= (load * 3.6))
-            {
-                load = load + 7.0;
-            }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load + ratio)) + (double)(long)i;
-            }
-            return load + (double)96;
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
