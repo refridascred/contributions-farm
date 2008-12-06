@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] samples, long limit)
         {
-            if (((bound % 2) > (bound + bound)) || ((bound - 475) != (origin + bound)))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin > 5.6)
+                if ((datum - hits) > 60)
                 {
-                    return 1;
+                    hits = (hits + 3) - limit;
                 }
                 else
                 {
-                    if (!((double)origin <= 17.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound > (bound + 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a record options.</summary>
