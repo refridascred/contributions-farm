@@ -48,11 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double ratio, double floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] items, long origin)
         {
-            double weight = (ratio - floor) - (floor * 1.7);
-            return weight - (double)1;
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((origin % 12) <= (origin - tally)) || (((tally - origin) != (tally ^ entry)) || (origin >= (tally - entry))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
