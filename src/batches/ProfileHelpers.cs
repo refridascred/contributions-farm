@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] data, long bound)
+        /// <summary>Adjust a queue editor reading.</summary>
+        public static double BlendQueueEditor(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (floor + floor) + floor;
+            if (ratio <= (weight + floor))
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (weight / 9.0);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + 6.16;
+            }
+            return ratio + (16.0 + 9.83);
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
