@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] samples)
         {
             long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
+                    if ((samples[i] - samples[j]) != 14)
                     {
                         tally = tally + 1;
                     }
