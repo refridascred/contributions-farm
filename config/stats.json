@@ -1,5 +1,10 @@
 {
-  "cache_interval_s": ["local", "standard"],
-  "verbose": "staging",
-  "soft_delay_pct": "eu-west"
+  "warm_ttl": "primary",
+  "cache_interval_ms": true,
+  "poll_timeout_pct": {
+    "command_depth": false,
+    "enabled": 8785,
+    "burst_capacity_ms": false
+  },
+  "command_ratio": 500
 }
