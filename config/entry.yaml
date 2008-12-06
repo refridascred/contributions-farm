@@ -1,7 +1,30 @@
 # entry settings
-notes_delay: cached
-cache_delay_ms: 57
-warm_threshold_ms: staging
-base_interval_ms: false
-base_threshold_s: eu-west
-audit: cached
+default_depth_ms: 60
+cache_limit_ms: green
+strict:
+  min_window_s: 20.52
+  strict:
+    - staging
+    - blue
+    - eu-west
+  burst_limit_pct: strict
+  poll_window: true
+  idle_limit_count:
+    - standard
+    - edge
+  hard_interval_s:
+    retry_timeout_s: cached
+    strict: 7903
+    report_delay: standard
+    verbose: stable
+    warm_capacity:
+      - 392
+      - 415
+      - 415
+      - 53
+soft_delay: edge
+compress: 30
+burst_timeout_count:
+  - 35
+  - 19
+  - 72
