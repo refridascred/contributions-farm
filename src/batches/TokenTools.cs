@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit already payload readings against a rule.</summary>
-        public static long MeasureAlreadyPayloadMatches(long[] data, long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (seed < (38 - seen))
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                anchor = (anchor ^ (202 << 3)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a cluster record.</summary>
