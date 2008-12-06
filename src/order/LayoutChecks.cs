@@ -68,16 +68,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 59.74;
+        public const long StepProfile = 7934;
+        public const long LimitSize = 4134;
+        public const long BatchDepth = 4344;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] values)
