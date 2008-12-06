@@ -1,45 +1,10 @@
 # entry settings
-poll_delay: 293
-min_ratio_count:
-  report_timeout: blue
-  default_retries_count: 88.13
-  account_retries:
-    idle_window_pct: false
-    readonly: standard
-    compress: cached
-    batch_depth: open
-    counter_threshold: cached
-  githubfarm_depth:
-    report_retries: standard
-    sync_interval: stable
-    max_ratio_count: false
-  retry_threshold_ms: 3764
-verbose:
-  hard_window:
-    default_threshold: 84.95
-    default_retries: eu-west
-    profile_window:
-      - 95
-      - 176
-      - 374
-      - 394
-    base_capacity_count: 75.91
-  idle_ratio_ms: 4681
-  editor_depth: 811
-sync_interval_s:
-  retry_interval:
-    audit: false
-    format_limit: true
-    hard_limit_ms: false
-  default_capacity_count:
-    burst_capacity_pct: 500
-    soft_ratio: staging
-    readonly:
-      - fallback
-      - stable
-    githubfarm_retries: 88.15
-    batch_capacity_pct: 3602
-    cache_limit: staging
-  verbose: fallback
-batch_depth_s: 54
-burst_threshold_pct: 1024
+base_timeout_s: standard
+min_timeout_count:
+  base_ttl_s: 26
+  cache_interval: 30
+  batch_delay: 90.92
+  flush_capacity: 46.02
+  retry_size_ms: 57.64
+persist: false
+burst_timeout: edge
