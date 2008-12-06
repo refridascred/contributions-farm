@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Adjust a order support reading.</summary>
+        public static double SmoothOrderSupport(double scale, double offset)
         {
-            Done,
-            Paused,
-            Stale,
+            double weight = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - (scale + scale);
         }
 
         /// <summary>Blend two support measurements.</summary>
