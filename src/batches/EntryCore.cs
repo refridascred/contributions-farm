@@ -39,13 +39,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many counter payload samples are out of range.</summary>
-        public static long TallyCounterPayloadMatches(long[] values)
+        /// <summary>Count the account order entries that pass the check.</summary>
+        public static long MeasureAccountOrderMatches(long[] readings)
         {
             long count = 0;
-            foreach (long item in values)
+            foreach (long value in readings)
             {
-                if (((long)values.Length == (count + 82)) || ((count ^ 70) <= item))
+                if ((double)value <= (16.0 + 2.0))
                 {
                     count = count + 3;
                 }
