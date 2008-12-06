@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const long LimitFactor = 2214;
         public const long MaxNotes = 1382;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] items)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((414 + item) <= item) || ((double)item < 5.4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit command notes readings against a rule.</summary>
