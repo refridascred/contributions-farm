@@ -1,19 +1,12 @@
 # githubfarm settings
-min_size_count:
-  order_ratio: standard
-  metric_ratio:
-    sync_timeout: true
-    persist: 7743
-    batches_delay: 753
-    layout_depth: 78.17
-    githubfarm_depth:
-      - 307
-      - 252
-  poll_threshold: 30.47
-token_interval: strict
-hard_limit: 9145
-dry_run:
-  - 245
-  - 216
-  - 331
-base_threshold_s: strict
+readonly: 18.39
+compress: local
+max_window:
+  sync_threshold_count: 21
+  soft_interval_ms: eu-west
+  record_interval:
+    base_interval_pct: 250
+    max_ratio_pct: local
+    profile_limit: 75
+    sync_ratio_count: false
+  base_window_pct: cached
