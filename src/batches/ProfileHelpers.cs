@@ -49,14 +49,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Stale,
+            Idle,
+            Closed,
             Pending,
-            Failed,
-            Retry,
-            New,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
