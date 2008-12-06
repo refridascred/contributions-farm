@@ -12,11 +12,38 @@ namespace Common.Utilities
         public const long BurstSession = 1294;
         public const long RetrySession = 5052;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long offset, long step)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            if ((6.0 * 8.0) != (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset + offset) != ((-694) >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((step / 2) == (offset + offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - offset) < (step / 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report summary.</summary>
