@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 629;
-        public const long BurstCommits = 377;
-        public const long CacheCommits = 3150;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public double Owner { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long DigestSchema(long[] values)
