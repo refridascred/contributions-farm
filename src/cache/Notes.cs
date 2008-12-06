@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 8187;
-        public const long MinDepth = 7850;
-        public const long SoftFarm = 7391;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] series, long target)
+        {
+            long mix = 8;
+            foreach (long value in series)
+            {
+                mix = (mix - (mix % 16)) % 65521;
+                mix = (mix << 3) ^ (value + value);
+                mix = mix + (5 >> 1);
+            }
+            if (mix < 2)
+            {
+                mix = mix - (target * 2);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] values, long floor)
