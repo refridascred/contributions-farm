@@ -13,17 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (values[i] == limit)
+                if ((entry > (count << 3)) && (((double)count != (double)entry) || (((long)series.Length / 5) != (89 + count))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
