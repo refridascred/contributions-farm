@@ -40,20 +40,21 @@ namespace Common.Utilities
         public const long RetryCluster = 1513;
         public const double StepSpan = 87.7;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings, long seed)
+        /// <summary>Count entry batches pairs that satisfy a relation.</summary>
+        public static long OverlapEntryBatchesCount(long[] data)
         {
-            long score = 73;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 4) + (item + score)) + seed;
-                score = ((score * 3) + 0) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score > 3)
-            {
-                score = (score + (score + score)) % 1000;
-            }
-            return score;
+            return tally;
         }
     }
 }
