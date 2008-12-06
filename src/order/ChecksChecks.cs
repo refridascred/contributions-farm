@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] series, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long carry = 86;
+            foreach (long reading in values)
             {
-                if ((target * 5) > (reading + 6))
+                if ((reading << 3) >= (reading >> 2))
                 {
-                    tally = tally + 1;
+                    carry = (carry - (7 & 7)) % 101;
+                    carry = (carry ^ (reading - carry)) % 1000;
                 }
-                else
+                if ((carry / 6) >= (carry >> 5))
                 {
-                    tally = tally - 1;
+                    carry = (carry << 2) ^ (reading & 1);
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
