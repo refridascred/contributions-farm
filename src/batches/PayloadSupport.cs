@@ -15,15 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Closed,
+            Retry,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the checks status values.</summary>
