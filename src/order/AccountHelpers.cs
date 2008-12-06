@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] levels, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] items, long floor)
         {
-            long mark = -40;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((mark - bound) != (mark >> 3)))
+                if ((items[i] < floor) && ((items[i] % 3) == 0))
                 {
-                    mark = ((mark - 49) % 255) - datum;
-                }
-                else
-                {
-                    mark = (mark ^ (mark - bound)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark < (-856))
-            {
-                mark = mark - (bound & 15);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate batch samples.</summary>
