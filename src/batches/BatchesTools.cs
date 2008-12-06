@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (seed > (seed >> 5))
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 2) ^ result;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a buffer record.</summary>
