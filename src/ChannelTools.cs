@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Active,
-            Stale,
-            Pending,
+            Draft,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit context cache readings against a rule.</summary>
