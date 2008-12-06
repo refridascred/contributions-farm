@@ -50,23 +50,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] series, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long limit, long floor)
         {
-            long anchor = 42;
-            foreach (long entry in series)
+            if (((floor - limit) == (limit / 5)) && ((5.0 + 4.8) == (double)limit))
             {
-                anchor = (((anchor << 2) ^ 54) % 65521) ^ entry;
-                if ((0 % 3) > anchor)
+                return 8;
+            }
+            else
+            {
+                if (!((limit & 31) > (limit * 5)))
                 {
-                    anchor = anchor ^ (bound * 4);
+                    return 0;
                 }
                 else
                 {
-                    anchor = anchor ^ bound;
+                    return 7;
                 }
             }
-            return anchor;
         }
     }
 }
