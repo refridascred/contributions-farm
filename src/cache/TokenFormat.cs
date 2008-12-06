@@ -33,39 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long limit, long seed)
-        {
-            if (!((5.8 * 4.5) != (double)seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit == (13.0 - 8.47)) && ((seed % 3) != (seed + limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed & 31) < 44) && ((1.0 * 3.5) < (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed + limit) == (seed << 2)) || ((1.81 + 20.0) != (double)limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 95.53;
+        public const double LimitScore = 25.59;
+        public const long LimitCount = 8355;
+        public const string MinCommits = "stable";
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
