@@ -31,26 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] readings)
         {
-            long result = -904;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((datum << 2) > (hits & 127))
                 {
-                    result = ((result ^ reading) % 4096) + (long)i2;
-                }
-                if ((double)reading >= (4.0 - 8.0))
-                {
-                    result = ((result << 3) ^ (reading + reading)) % 4096;
-                }
-                if (((result & 7) != (57 + reading)) && (reading >= (0 & 7)))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
