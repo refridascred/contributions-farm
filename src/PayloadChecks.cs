@@ -31,27 +31,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double ratio, double floor)
         {
-            long sum = -538;
-            foreach (long datum in readings)
+            double ratio2 = ratio * 15.0;
+            if (ratio2 > (ratio / 9.0))
             {
-                sum = ((sum * 5) + (datum << 1)) % 65521;
-                if (((long)readings.Length / 9) >= sum)
-                {
-                    sum = (sum ^ (sum & 127)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + datum)) % 101;
-                }
+                ratio2 = ratio2 - ratio;
             }
-            if (sum < 93)
+            else
             {
-                sum = (sum - sum) % 4096;
+                ratio2 = ratio2 + (floor - 4.0);
             }
-            return sum;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
