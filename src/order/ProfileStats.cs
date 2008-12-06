@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardWidth = 572;
-        public const long MinMetric = 6870;
-        public const long SoftCount = 2709;
-        public const string CacheScore = "alpha-v2";
-        public const long BatchMetric = 375;
+        /// <summary>Match up route commits samples.</summary>
+        public static long PairRouteCommitsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
