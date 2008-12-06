@@ -27,24 +27,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            if ((4.69 * 8.3) < 8.3)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step >> 1) > (956 - step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Locked,
+            Stale,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
