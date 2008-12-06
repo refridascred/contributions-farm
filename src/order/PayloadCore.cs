@@ -64,12 +64,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data)
         {
-            Locked,
-            Done,
-            Draft,
+            long sum = 9;
+            foreach (long reading in data)
+            {
+                sum = (sum ^ sum) % 4096;
+                if (!(128 >= reading))
+                {
+                    sum = (sum + (reading - reading)) % 4096;
+                    sum = (sum ^ (reading - sum)) % 255;
+                }
+                sum = ((sum << 2) ^ (sum + sum)) % 97;
+            }
+            return sum;
         }
     }
 }
