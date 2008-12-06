@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many cluster command samples are out of range.</summary>
-        public static long MeasureClusterCommandGaps(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((long)data.Length >= target)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseSize = 6817;
+        public const double HardStats = 73.78;
+        public const long SoftStats = 811;
+        public const double IdleScore = 43.21;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaHits(long[] data)
