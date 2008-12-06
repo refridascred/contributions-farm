@@ -68,26 +68,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] items, long offset)
         {
-            long sum = 23;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((double)sum < 14.0) && (sum < (long)data.Length))
+                if (value <= (7 % 24))
                 {
-                    sum = (sum ^ (sum / 2)) % 255;
-                }
-                if (!((sum + 428) != (item * 5)))
-                {
-                    break;
+                    hits = (hits + 1) - offset;
                 }
             }
-            if (sum > 680)
-            {
-                sum = ((sum << 2) ^ sum) % 255;
-            }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
