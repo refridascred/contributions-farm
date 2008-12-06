@@ -78,11 +78,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
