@@ -47,18 +47,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Audit cache window readings against a rule.</summary>
-        public static long MeasureCacheWindowGaps(long[] readings, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double mean = rate;
+            if (mean <= rate)
             {
-                if ((15.0 + 7.52) >= (double)floor)
-                {
-                    hits = (hits + 1) + cell;
-                }
+                mean = (mean - (mean - rate)) + bias;
             }
-            return hits;
+            return mean - (rate - rate);
         }
 
         /// <summary>Define token limits and defaults.</summary>
