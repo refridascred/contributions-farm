@@ -78,10 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 1555;
-        public const double CacheInterval = 16.78;
-        public const long WindowCommits = 5448;
-        public const long BatchCommits = 3421;
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] readings)
+        {
+            long mix = 446;
+            foreach (long cell in readings)
+            {
+                mix = (mix - mix) + cell;
+            }
+            if (mix > 314)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
+        }
     }
 }
