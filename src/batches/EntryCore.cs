@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long bound)
-        {
-            long edge = origin + bound;
-            if (((5.4 + 4.0) == (double)origin) || ((6.0 * 14.0) >= (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + 9) <= (926 / 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((41 & 7) <= (bound ^ edge))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitDepth = 6230;
+        public const long BaseAccount = 4811;
+        public const long WindowCount = 6246;
+        public const string MaxAccount = "cached-v2";
+        public const double WindowAccount = 92.52;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool CheckReportLimits(long[] samples, long seed)
