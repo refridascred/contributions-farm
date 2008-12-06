@@ -1,23 +1,7 @@
 # githubfarm settings
-contributi_depth: true
-burst_window_s:
-  - 240
-  - 245
-  - 403
-session_delay:
-  - 436
-  - 129
-max_capacity:
-  batch_ratio:
-    enabled: false
-    soft_ttl_count: false
-    buffer_limit:
-      - stable
-      - strict
-      - fallback
-  max_threshold_count: 7.76
-  compress:
-    cache_retries_s: 18.03
-    dry_run: 61.01
-    githubfarm_timeout: fallback
-    poll_window: true
+min_ttl_count:
+  - 248
+  - 318
+  - 493
+layout_retries: 6138
+batch_delay: open
