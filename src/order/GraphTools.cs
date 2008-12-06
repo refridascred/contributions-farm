@@ -23,12 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] items, long step)
         {
-            Dropped,
-            Done,
-            Stale,
+            long mark = 258;
+            foreach (long item in items)
+            {
+                mark = ((mark - 95) - item) + step;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
