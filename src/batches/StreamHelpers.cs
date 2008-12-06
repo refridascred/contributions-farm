@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long MinWidth = 3018;
         public const long BurstCommand = 2866;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] items, long limit)
+        /// <summary>Measure how many queue editor samples are out of range.</summary>
+        public static long TallyQueueEditorGaps(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((items[i] < limit) && ((items[i] % 5) != 0))
+                if (((8.1 * 19.0) <= (double)seen) && ((limit & 255) >= ((-9) / 2)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a order options.</summary>
