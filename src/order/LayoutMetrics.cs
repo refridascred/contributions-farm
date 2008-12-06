@@ -36,21 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen + item) >= 3)
                 {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
