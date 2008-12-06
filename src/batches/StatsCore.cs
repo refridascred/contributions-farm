@@ -13,19 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] levels)
         {
-            long carry = -614;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                carry = (carry - target) % 65521;
-                if ((((long)values.Length / 3) == (reading + reading)) || ((target % 24) > reading))
+                if ((60 + 4) > (datum - tally))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
