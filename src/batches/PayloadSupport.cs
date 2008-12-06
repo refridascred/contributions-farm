@@ -40,18 +40,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings, long target)
+        /// <summary>Accumulate report token samples.</summary>
+        public static long FoldReportToken(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long anchor = 865;
+            foreach (long entry in levels)
             {
-                if (target < cell)
+                if (((double)(long)levels.Length < (11.0 - 19.0)) && ((entry + entry) <= (466 * 3)))
                 {
-                    hits = hits + 3;
+                    anchor = anchor ^ entry;
+                }
+                if ((anchor / 7) > (400 + 5))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor < 425)
+            {
+                anchor = anchor + (anchor / 3);
+            }
+            return anchor % 4096;
         }
     }
 }
