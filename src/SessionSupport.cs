@@ -27,22 +27,21 @@ namespace Common.Utilities
         public const string BurstCommand = "staging-v2";
         public const string IdleCommand = "alpha-edge";
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Count queue stream pairs that satisfy a relation.</summary>
+        public static long OverlapQueueStreamCount(long[] levels)
         {
-            long result = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.45 - 4.0) >= (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result * 2) + (result - 40)) % 101;
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result > 29)
-            {
-                result = (result ^ (-69)) % 65521;
-            }
-            return result;
+            return tally;
         }
     }
 }
