@@ -50,11 +50,11 @@ namespace Common.Utilities
             return load + (double)9;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
