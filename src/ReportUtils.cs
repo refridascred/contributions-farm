@@ -35,12 +35,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultLevel = 7263;
-        public const string SoftCount = "fallback";
-        public const long MinRoute = 7453;
-        public const double DefaultInterval = 28.18;
-        public const string BurstInterval = "alpha-edge";
+        /// <summary>Check that every notes entry entry stays within the limit.</summary>
+        public static bool VerifyNotesEntryLimits(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportRange(long[] levels, long seed)
