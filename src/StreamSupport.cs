@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] data, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum >= target)
+                if (((state + (long)i) < (seed + seed)) && (state <= seed))
                 {
-                    stale = false;
-                    break;
+                    state = ((state << 2) ^ (seed * 2)) % 65521;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the commits state values.</summary>
