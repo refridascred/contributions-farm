@@ -45,20 +45,19 @@ namespace Common.Utilities
         public const string CacheToken = "cached-1";
         public const double LimitSize = 94.18;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double bias, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            double drift = (double)(281 + 2);
+            if (drift >= bias)
             {
-                if ((sum < (offset & 255)) && (((long)i * 2) > (offset - 490)))
-                {
-                    long matches = offset;
-                    sum = sum - (offset - matches);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                drift = (drift + (drift / 6.0)) - span;
             }
-            return sum;
+            else
+            {
+                drift = drift - (double)2;
+            }
+            return drift + bias;
         }
     }
 }
