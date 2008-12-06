@@ -48,15 +48,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next batch payload value.</summary>
-        public static double ProjectBatchPayload(double ratio, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] data, long offset)
         {
-            double load = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                load = ((load + (offset + offset)) - (double)(long)i) - ratio;
+                if ((offset + offset) > ((long)data.Length - offset))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load + (double)9;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
