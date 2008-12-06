@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] items, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (items[i] <= floor)
+                if (sample <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
