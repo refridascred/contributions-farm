@@ -1,14 +1,6 @@
 # githubfarm settings
-strict:
-  - 108
-  - 443
-  - 16
-  - 379
-poll_delay_count:
-  verbose: 7.1
-  enabled: 71.6
-  burst_ttl_ms: true
-  batch_delay: blue
-command_retries: false
-persist: blue
-account_ratio: 4.41
+idle_size_count: blue
+persist: true
+flush_retries: 28.31
+burst_retries: false
+soft_retries_s: eu-west
