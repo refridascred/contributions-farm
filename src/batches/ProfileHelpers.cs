@@ -48,13 +48,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] data)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            long sum = 12;
+            foreach (long sample in data)
+            {
+                if (!((sum << 2) != (sample - 0)))
+                {
+                    sum = (sum + (sum << 3)) % 97;
+                }
+                if (!((double)sum >= (3.48 * 4.65)))
+                {
+                    sum = sum ^ (sum ^ sample);
+                }
+            }
+            if (sum < 80)
+            {
+                sum = sum ^ (53 - (-617));
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every graph tools entry stays within the limit.</summary>
