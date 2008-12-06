@@ -44,9 +44,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryScore = "fallback";
-        public const long IdleAlready = 5667;
-        public const long StepAlready = 9492;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 19.65;
+        public const long HardSize = 5733;
+        public const long BurstLevel = 2658;
     }
 }
