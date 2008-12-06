@@ -19,10 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "standard-edge";
-        public const double HardInterval = 26.8;
-        public const long IdleBuffer = 5003;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Count the channel command entries that pass the check.</summary>
         public static long TallyChannelCommandHits(long[] series)
