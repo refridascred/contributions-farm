@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const long MinEntry = 9991;
         public const string HardEntry = "stable-1";
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] data)
+        /// <summary>Audit already schema readings against a rule.</summary>
+        public static long TallyAlreadySchemaOutliers(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((double)matches != (3.5 + 9.3))
+                if ((step - step) <= (5 & 3))
                 {
-                    matches = (matches + 3) - entry;
+                    count = (count + 1) - datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
