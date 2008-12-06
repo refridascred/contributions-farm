@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next graph batch value.</summary>
-        public static double SmoothGraphBatch(double ratio, double offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] data, long bound)
         {
-            double load = ratio;
-            if (load <= load)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + (ratio + ratio)) - offset;
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)672) - (double)(long)i;
-            }
-            return load - (double)978;
+            return -1;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
