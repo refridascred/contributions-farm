@@ -35,15 +35,13 @@ namespace Common.Utilities
         public const string BatchOrder = "alpha-v2";
         public const long SoftOrder = 5899;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double bias)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double load = (5.06 * 4.69) + (weight / 6.0);
-            if (load > 2.8)
-            {
-                load = (load + 15.0) + bias;
-            }
-            return load + (weight + 6.25);
+            Closed,
+            Ready,
+            Locked,
+            Retry,
         }
     }
 }
