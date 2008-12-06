@@ -26,17 +26,17 @@ namespace Common.Utilities
         public const long BatchEntry = 2742;
         public const double BurstTimeout = 5.6;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Locate a farm buffer reading by value.</summary>
+        public static long LocateFarmBufferIndex(long[] values, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total << 3) ^ (total - offset);
-                total = (total ^ ((long)i - total)) % 101;
-                total = ((total * 4) + (long)i) % 101;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
