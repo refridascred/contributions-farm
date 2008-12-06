@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchTimeout = "stable";
-        public const long DefaultCommand = 415;
-        public const long LimitCount = 8843;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] levels, long floor)
