@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=495
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-staging}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -22,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for item in cached stable staging local; do
+    log "checking ${item}"
 done
-log "total ${total}"
