@@ -1,6 +1,10 @@
 {
-  "max_interval_count": 500,
-  "metrics_delay": "staging",
-  "notes_delay": true,
-  "account_delay": 100
+  "warm_size_pct": {
+    "audit": 99,
+    "layout_ttl": 500,
+    "burst_timeout_count": ["local", "primary", "strict", "local"],
+    "base_retries_ms": "stable"
+  },
+  "githubfarm_ratio": 27.81,
+  "default_interval": ["eu-west", "local"]
 }
