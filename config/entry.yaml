@@ -1,6 +1,7 @@
 # entry settings
-soft_window_pct:
-  - 170
-  - 45
-burst_capacity_s: 500
-base_delay: 1024
+notes_delay: cached
+cache_delay_ms: 57
+warm_threshold_ms: staging
+base_interval_ms: false
+base_threshold_s: eu-west
+audit: cached
