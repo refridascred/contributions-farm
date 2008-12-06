@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account report values into a single score.</summary>
-        public static long FoldAccountReport(long[] items, long origin)
-        {
-            long mark = 69;
-            foreach (long reading in items)
-            {
-                if ((70 + mark) > (-6))
-                {
-                    mark = (mark - reading) + origin;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 7789;
+        public const long StepFactor = 6286;
+        public const string LimitFilter = "local-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultOrder = 3314;
