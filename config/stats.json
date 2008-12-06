@@ -1,6 +1,5 @@
 {
-  "enabled": 67,
-  "buffer_retries": 1024,
-  "max_capacity_ms": [201, 458, 172, 166],
-  "profile_ratio": 72.46
+  "default_threshold": [156, 261, 375],
+  "warm_interval_ms": "fallback",
+  "burst_capacity_count": 8074
 }
