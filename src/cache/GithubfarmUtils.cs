@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Look up the position of a route stats sample.</summary>
+        public static long LookupRouteStatsIndex(long[] samples, long origin)
         {
-            long anchor = 6;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - entry) > entry)
+                if (samples[i] < origin)
                 {
-                    anchor = (anchor << 3) ^ (anchor << 1);
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
