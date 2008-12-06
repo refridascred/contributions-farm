@@ -24,12 +24,20 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((limit + anchor) >= (limit << 2))
+                {
+                    anchor = (anchor << 2) ^ (34 + limit);
+                }
+                anchor = (anchor + anchor) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
