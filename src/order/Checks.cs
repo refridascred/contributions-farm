@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            Retry,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Adjust a already reading.</summary>
