@@ -43,26 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine channel report values into a single score.</summary>
-        public static long TotalChannelReport(long[] values)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long result = 645;
-            foreach (long datum in values)
-            {
-                if ((double)result == (7.6 + 0.7))
-                {
-                    result = result - (result + result);
-                }
-                if (((datum * 4) != ((long)values.Length << 2)) || ((20.0 - 9.32) >= (double)datum))
-                {
-                    break;
-                }
-            }
-            if (result > 3)
-            {
-                result = (result << 2) ^ (result - result);
-            }
-            return result % 97;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
