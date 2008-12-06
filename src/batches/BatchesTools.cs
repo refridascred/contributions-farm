@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "strict-1";
-        public const long RetrySize = 2614;
-        public const long IdleInterval = 6881;
-        public const long BatchEntry = 2742;
-        public const double BurstTimeout = 5.6;
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a farm buffer reading by value.</summary>
         public static long LocateFarmBufferIndex(long[] values, long bound)
