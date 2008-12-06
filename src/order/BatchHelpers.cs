@@ -37,24 +37,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a already filter pair into a bucket.</summary>
-        public static long ClassifyAlreadyFilter(long floor, long target)
-        {
-            if ((target <= 1) || ((double)target > (double)251))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 3) < (floor * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchGraph = "legacy-edge";
+        public const long MaxWidth = 9107;
+        public const double CacheGraph = 88.18;
+        public const string WindowGraph = "local-v2";
     }
 }
