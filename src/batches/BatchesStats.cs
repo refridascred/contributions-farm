@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] data, long floor)
-        {
-            long state = 60;
-            foreach (long reading in data)
-            {
-                if (((925 & 255) == (floor << 3)) && ((reading + (-96)) == ((-75) ^ (long)data.Length)))
-                {
-                    state = state ^ (state + reading);
-                }
-                else
-                {
-                    state = (state - (reading >> 2)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 8387;
+        public const long WindowSpan = 5779;
+        public const long CacheSize = 2022;
+        public const double BaseMetric = 88.39;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BatchScore = "stable";
