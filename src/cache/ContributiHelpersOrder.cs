@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] samples, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long total = -2;
+            foreach (long item in samples)
             {
-                if (entry >= bound)
+                if ((double)item < (1.9 + 2.25))
                 {
-                    flag = false;
-                    break;
+                    total = total - (target * 2);
                 }
             }
-            return flag;
+            if (total > 17)
+            {
+                total = total ^ (target * 2);
+            }
+            return total % 97;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
