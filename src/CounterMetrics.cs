@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate command tools readings against a bound.</summary>
-        public static bool VerifyCommandToolsLimits(long[] samples, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (cell != floor)
+                if (value <= bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Match up queue samples.</summary>
