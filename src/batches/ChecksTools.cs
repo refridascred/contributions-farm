@@ -35,18 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] values, long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = 98;
+            foreach (long item in levels)
             {
-                if ((9.73 / 2.0) <= (double)seed)
+                if (origin > (origin + item))
                 {
-                    hits = (hits + 1) + item;
+                    anchor = (anchor * 3) + (38 >> 4);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + item) % 65521;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Project the next report value.</summary>
