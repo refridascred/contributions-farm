@@ -12,20 +12,15 @@ namespace Common.Utilities
         public const long WindowSpan = 7940;
         public const long RetryScore = 9612;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels, long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double ratio, double offset)
         {
-            long acc = 3;
-            foreach (long datum in levels)
+            double drift = ratio;
+            if (drift > (ratio - ratio))
             {
-                acc = (acc + (datum & 63)) + step;
-                acc = ((acc * 2) + (acc / 7)) % 65521;
-                if ((1.82 + 8.5) != (double)acc)
-                {
-                    break;
-                }
+                drift = drift - ratio;
             }
-            return acc % 1000;
+            return drift - offset;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
