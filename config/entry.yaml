@@ -1,6 +1,22 @@
 # entry settings
-default_ttl: false
-default_depth_pct: edge
-warm_size_s: edge
-hard_interval_pct: edge
-flush_depth_s: 64.35
+flush_ttl_ms: 5.64
+batch_timeout_s: 96
+base_limit_ms: standard
+hard_limit_pct: 82
+min_limit_count:
+  graph_size: 5442
+  farm_size:
+    persist:
+      - green
+      - legacy
+      - eu-west
+      - strict
+    retry_retries_pct: 1986
+    poll_limit_count: 30
+    retry_window_s:
+      - standard
+      - legacy
+      - eu-west
+      - primary
+  cache_interval: fallback
+max_limit: open
