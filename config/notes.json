@@ -1,7 +1,6 @@
 {
-  "sync_size_pct": 30.36,
-  "soft_timeout_pct": "primary",
-  "warm_timeout": 95,
-  "flush_delay": "standard",
-  "sync_retries": 1.03
+  "route_size": "blue",
+  "record_limit": [236, 182],
+  "token_interval": "eu-west",
+  "compress": ["fallback", "legacy"]
 }
