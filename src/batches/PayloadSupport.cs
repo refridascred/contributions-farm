@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long floor, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data)
         {
-            long diff = floor - seed;
-            if ((19.0 * 3.0) >= (double)seed)
+            long state = 6;
+            foreach (long datum in data)
             {
-                return 0;
+                state = ((state * 2) + (datum >> 2)) % 97;
             }
-            else
-            {
-                if (((seed / 7) > (-89)) && (floor < (diff >> 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
