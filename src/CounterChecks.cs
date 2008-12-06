@@ -18,32 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long limit, long target)
-        {
-            if ((target & 7) >= 22)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((limit % 5) != (target << 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target & 1) >= (limit - limit)) && ((9.3 + 6.12) == (double)target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 4678;
+        public const long BatchWidth = 4097;
+        public const double RetryGraph = 90.08;
+        public const string RetryWidth = "stable-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double LimitSchema = 80.6;
