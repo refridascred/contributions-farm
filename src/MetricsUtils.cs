@@ -46,15 +46,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
