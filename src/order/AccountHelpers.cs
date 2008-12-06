@@ -57,15 +57,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Classify a profile metrics pair into a bucket.</summary>
+        public static long GradeProfileMetrics(long step, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            if ((step - step) == (offset + step))
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((step + step) >= (step ^ step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset * 3) >= (21 << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((step + offset) > (offset - step)) || ((double)step <= 4.9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile class values.</summary>
