@@ -17,12 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCommand = 8.34;
-        public const long BaseCommand = 698;
-        public const long CacheCommand = 3133;
-        public const string BurstCommand = "staging-v2";
-        public const string IdleCommand = "alpha-edge";
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Stale,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Count queue stream pairs that satisfy a relation.</summary>
         public static long OverlapQueueStreamCount(long[] levels)
