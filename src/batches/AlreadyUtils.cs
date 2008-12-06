@@ -33,22 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 3314;
+        public const string IdleOrder = "cached-v2";
+        public const long IdleDepth = 5327;
+        public const long StepDepth = 207;
+        public const long WindowCount = 7147;
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double bias, double floor)
