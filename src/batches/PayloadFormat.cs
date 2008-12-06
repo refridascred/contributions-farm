@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] values, long target)
+        /// <summary>Measure how many support entry samples are out of range.</summary>
+        public static long AuditSupportEntryGaps(long[] readings, long step)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long datum in readings)
             {
-                if ((3.3 / 7.0) >= (double)target)
+                if ((matches + matches) >= matches)
                 {
-                    matches = (matches + 3) + datum;
+                    matches = ((matches + 1) + datum) + step;
                 }
             }
             return matches;
