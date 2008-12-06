@@ -47,22 +47,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] levels, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = 35;
+            foreach (long item in samples)
             {
-                if ((datum - seed) > (93 % 10))
+                if ((double)carry <= (8.78 + 4.9))
                 {
-                    seen = seen + 2;
+                    carry = ((carry * 4) + (item % 16)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = (carry - (item - item)) % 4096;
+                }
+                if (((1 + 8) >= (item - carry)) || ((2 & 255) > (item + item)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry > 644)
+            {
+                carry = (carry * 3) + (3 / 4);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
