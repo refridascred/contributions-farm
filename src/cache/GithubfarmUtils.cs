@@ -41,11 +41,13 @@ namespace Common.Utilities
         public const long CacheCount = 5147;
         public const long SoftBatch = 9512;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
