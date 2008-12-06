@@ -63,19 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema tools readings against a bound.</summary>
-        public static bool CheckSchemaToolsRange(long[] readings, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (value > step)
+                if (value != bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Hold a filter info.</summary>
