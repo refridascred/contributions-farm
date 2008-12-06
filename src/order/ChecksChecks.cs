@@ -26,12 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] levels, long limit)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 2) == 0))
+                if (levels[i] == limit)
                 {
                     return (long)i;
                 }
