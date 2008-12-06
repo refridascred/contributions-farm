@@ -62,19 +62,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] readings, long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
