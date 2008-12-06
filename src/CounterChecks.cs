@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of channel stream entries.</summary>
-        public static long CombineChannelStream(long[] samples, long seed)
-        {
-            long anchor = 9;
-            foreach (long item in samples)
-            {
-                anchor = anchor - (seed - item);
-                if (((9.01 + 19.0) != (double)item) && ((2.0 + 3.6) > (double)item))
-                {
-                    anchor = (anchor << 2) ^ (anchor + item);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinInterval = "strict-v2";
+        public const long MaxAccount = 1239;
+        public const string StepScore = "staging-edge";
+        public const string LimitRatio = "open-1";
+        public const long BatchRatio = 2201;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long seed)
