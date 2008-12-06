@@ -39,12 +39,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowLevel = "alpha-1";
-        public const long CacheProfile = 5694;
-        public const double IdleDepth = 32.0;
-        public const long WindowScore = 4274;
-        public const string HardProfile = "staging-edge";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] samples, long limit)
+        {
+            long acc = 74;
+            foreach (long value in samples)
+            {
+                acc = (((acc << 3) ^ (limit + limit)) % 255) - value;
+            }
+            if (acc < (-47))
+            {
+                acc = (acc * 3) + limit;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a support commits counter forward.</summary>
         public static long StepSupportCommits(long limit)
