@@ -20,18 +20,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] readings, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long lane = seed + offset;
+            if ((267 & 255) < (offset & 15))
             {
-                if ((cell >= (hits << 3)) || (7 >= (cell ^ hits)))
+                return 0;
+            }
+            else
+            {
+                if ((lane & 63) > offset)
                 {
-                    hits = (hits + 1) - origin;
+                    return 7;
+                }
+                else
+                {
+                    if (((offset % 24) > (seed % 60)) && ((lane % 100) > (seed - seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
