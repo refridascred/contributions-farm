@@ -1,7 +1,8 @@
 # githubfarm settings
-min_ttl_count:
-  - 248
-  - 318
-  - 493
-layout_retries: 6138
-batch_delay: open
+batch_retries: legacy
+base_limit_s:
+  - legacy
+  - standard
+  - staging
+  - cached
+farm_ratio: 30.54
