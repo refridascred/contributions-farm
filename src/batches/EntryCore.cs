@@ -24,12 +24,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Iterate the cluster batches series from a seed.</summary>
+        public static long IterateClusterBatches(long offset)
         {
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total + total) % 1000;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
