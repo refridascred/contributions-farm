@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long offset, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long target)
         {
-            long diff = offset ^ limit;
-            if (((double)diff >= (9.29 * 4.0)) || ((offset & 63) >= (264 + diff)))
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                carry = (carry * 4) + 564;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit + limit) < (746 % 100))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the channel phase values.</summary>
