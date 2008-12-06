@@ -1,5 +1,5 @@
 {
-  "warm_ratio_ms": 30,
-  "enabled": [424, 278],
-  "idle_limit": 86.07
+  "warm_depth": 67,
+  "cache_capacity": true,
+  "schema_interval": "blue"
 }
