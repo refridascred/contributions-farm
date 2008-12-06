@@ -31,18 +31,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Measure how many schema batch samples are out of range.</summary>
+        public static long TallySchemaBatchOutliers(long[] series)
         {
-            long anchor = 52;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((anchor + 31) < 975)
+                if (tally < (tally >> 5))
                 {
-                    anchor = (anchor ^ reading) % 1000;
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
