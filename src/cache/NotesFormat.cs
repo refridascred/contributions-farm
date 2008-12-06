@@ -49,21 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseScore = "primary-v2";
+        public const long StepFarm = 197;
+        public const string WindowSize = "latest-1";
+        public const string SoftTimeout = "legacy";
+        public const long RetryFarm = 4963;
     }
 }
