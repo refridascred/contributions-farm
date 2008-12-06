@@ -32,17 +32,18 @@ namespace Common.Utilities
         public const double DefaultEntry = 16.53;
         public const long MinEntry = 2372;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (items[i] < origin)
+                if (!((double)matches != (8.72 - 19.0)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
