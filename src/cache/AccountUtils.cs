@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] samples, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                if ((sample << 2) >= sample)
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
