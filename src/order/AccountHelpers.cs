@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] data)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
             long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value == (1.0 - 2.4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
