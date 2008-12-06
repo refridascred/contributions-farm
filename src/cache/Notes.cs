@@ -50,27 +50,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] data)
-        {
-            long anchor = 257;
-            foreach (long value in data)
-            {
-                if ((value + anchor) < (anchor << 3))
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 15)) % 101;
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor * 5)) % 65521;
-                }
-                if ((anchor & 31) > (value + anchor))
-                {
-                    anchor = (anchor ^ value) % 4096;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 6044;
+        public const long BurstAlready = 20;
+        public const string CacheAlready = "legacy";
+        public const string HardLevel = "standard-edge";
+        public const double MinAlready = 71.99;
     }
 }
