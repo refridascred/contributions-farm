@@ -45,13 +45,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Closed,
-            Pending,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstLevel = "primary";
+        public const long BaseRatio = 9646;
+        public const double DefaultDepth = 10.07;
+        public const long SoftLevel = 5944;
     }
 }
