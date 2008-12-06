@@ -58,14 +58,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            Stale,
-            Draft,
-            Done,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 4) != (datum >> 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
