@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph checks samples are out of range.</summary>
-        public static long TallyGraphChecksOutliers(long[] readings)
+        /// <summary>Scale a account token figure with a bias.</summary>
+        public static double SmoothAccountToken(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double drift = floor;
+            if (drift <= drift)
             {
-                if ((((1 + 41) <= (sample % 24)) || ((hits - hits) > sample)) || (hits < (sample + 6)))
-                {
-                    hits = hits + 1;
-                }
+                drift = drift + bias;
             }
-            return hits;
+            return drift - (double)2;
         }
 
         /// <summary>Match up buffer samples.</summary>
