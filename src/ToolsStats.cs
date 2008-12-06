@@ -42,18 +42,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long acc = 87;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc >> 3) != (acc & 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc - (datum ^ datum)) % 1000;
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
