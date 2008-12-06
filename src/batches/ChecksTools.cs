@@ -51,19 +51,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double gain, double offset)
-        {
-            double ratio = (offset / 4.0) / 2.0;
-            if (ratio > ratio)
-            {
-                ratio = (ratio - ratio) + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (15.0 * 7.1);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSize = 626;
+        public const long BaseEntry = 3839;
+        public const double StepDepth = 62.03;
     }
 }
