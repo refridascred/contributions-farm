@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] data, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                if (reading != floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
