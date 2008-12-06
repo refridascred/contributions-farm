@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long step)
         {
-            Done,
-            Locked,
-            Paused,
-            Pending,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((10 < (value >> 2)) || ((step / 5) == (value ^ step)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the format phase values.</summary>
