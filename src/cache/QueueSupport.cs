@@ -34,18 +34,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the farm notes entries that pass the check.</summary>
-        public static long AuditFarmNotesGaps(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((target & 63) < target)
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "primary";
+        public const double LimitContributi = 50.62;
+        public const string HardContributi = "alpha-v2";
     }
 }
