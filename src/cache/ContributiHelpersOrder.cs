@@ -29,12 +29,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] series, long limit)
         {
-            Dropped,
-            Pending,
-            Locked,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
