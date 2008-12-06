@@ -33,14 +33,19 @@ namespace Common.Utilities
         public const long BatchPayload = 3039;
         public const long IdlePayload = 7090;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Validate editor channel readings against a bound.</summary>
+        public static bool VerifyEditorChannelLimits(long[] items, long seed)
         {
-            Idle,
-            Retry,
-            Paused,
-            New,
-            Draft,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
