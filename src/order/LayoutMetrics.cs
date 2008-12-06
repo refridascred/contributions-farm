@@ -23,17 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
-            {
-                score = score + 4;
-                score = score - (long)i;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Closed,
+            Queued,
+            New,
+            Draft,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
