@@ -16,17 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] levels, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
