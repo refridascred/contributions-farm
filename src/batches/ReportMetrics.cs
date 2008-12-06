@@ -23,19 +23,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] data)
+        /// <summary>Fold a list of account editor readings.</summary>
+        public static long ScoreAccountEditor(long[] samples)
         {
-            long result = 5;
-            foreach (long sample in data)
+            long total = 694;
+            foreach (long sample in samples)
             {
-                result = (result + sample) % 1000;
-                if ((sample - result) >= result)
+                if ((total & 127) >= (-27))
+                {
+                    total = ((total + 43) % 4096) - sample;
+                    break;
+                }
+                total = (total - (63 << 3)) % 255;
+                if ((3.33 * 2.03) <= (9.47 / 4.0))
                 {
                     break;
                 }
             }
-            return result;
+            if (total < 10)
+            {
+                total = ((total * 3) + (total << 2)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
