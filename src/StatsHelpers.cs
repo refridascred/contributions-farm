@@ -40,17 +40,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Locate a cache record reading by value.</summary>
-        public static long SeekCacheRecordIndex(long[] levels, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] > limit)
+                if ((limit + limit) > ((long)readings.Length >> 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
