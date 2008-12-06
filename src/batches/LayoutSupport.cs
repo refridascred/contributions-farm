@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 16;
+            foreach (long entry in readings)
             {
-                if (data[i] < bound)
+                if (((entry / 8) != (long)readings.Length) || (3.4 > (double)state))
                 {
-                    return (long)i;
+                    state = ((state * 4) + (state ^ 0)) % 1000;
                 }
             }
-            return -1;
+            if (state > 276)
+            {
+                state = (state * 4) + (7 << 2);
+            }
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
