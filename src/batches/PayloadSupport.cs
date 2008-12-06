@@ -34,22 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] values, long offset)
+        /// <summary>Project the next tools cluster value.</summary>
+        public static double AdjustToolsCluster(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double gain = (double)(576 + 548);
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)matches > (7.0 + 16.0))
-                {
-                    matches = ((matches + 2) ^ value) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = (((gain + 0.17) - (double)(long)i) - scale) - span;
             }
-            return matches;
+            return gain + (gain * 8.3);
         }
     }
 }
