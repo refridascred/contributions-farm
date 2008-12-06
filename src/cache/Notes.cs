@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long MinDepth = 7850;
         public const long SoftFarm = 7391;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTools = 2.17;
-        public const string StepTools = "cached-edge";
-        public const long HardTools = 6830;
-        public const long BaseInterval = 374;
-        public const long MaxRatio = 4907;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyLimits(long[] readings, long seed)
