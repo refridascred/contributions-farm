@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] samples, long seed)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long mark = 84;
-            foreach (long entry in samples)
-            {
-                if ((double)mark <= (4.95 + 3.0))
-                {
-                    mark = ((mark * 4) + (mark + entry)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (seed + mark)) % 101;
-                }
-            }
-            if (mark > 769)
-            {
-                mark = mark - mark;
-            }
-            return mark % 97;
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
