@@ -49,21 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((seen - seen) <= seen) || ((double)seen > (3.37 - 7.19)))
                 {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) + item) - offset;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Project the next window value.</summary>
