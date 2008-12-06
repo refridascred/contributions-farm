@@ -26,11 +26,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Derive the next filter support value from a seed.</summary>
+        public static long RollFilterSupport(long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
+            long total = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                bool stale = !((bound - (long)i) >= (bound - 62));
+                if (stale)
+                {
+                    total = (total << 3) ^ (-94);
+                    total = ((total * 5) + total) % 101;
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
