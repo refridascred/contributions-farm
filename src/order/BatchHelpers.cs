@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "legacy";
-        public const long SoftContext = 380;
-        public const long BatchContext = 5606;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc * 4) + (acc + step);
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
