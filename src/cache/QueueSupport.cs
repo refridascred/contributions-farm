@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheInterval = 1614;
-        public const long BurstFactor = 1516;
-        public const long LimitScore = 4504;
-        public const long DefaultContributi = 3628;
-        public const string HardInterval = "alpha-v2";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the farm notes entries that pass the check.</summary>
         public static long AuditFarmNotesGaps(long[] values, long target)
