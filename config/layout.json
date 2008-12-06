@@ -1,8 +1,7 @@
 {
-  "dry_run": 100,
-  "batch_depth": 100,
-  "hard_ratio_pct": ["stable", "cached"],
-  "soft_window": 46.61,
-  "audit": "primary",
-  "persist": 5899
+  "retry_ratio_count": 1024,
+  "soft_size_pct": 6366,
+  "dry_run": "legacy",
+  "retry_retries_count": 48.3,
+  "poll_timeout": "local"
 }
