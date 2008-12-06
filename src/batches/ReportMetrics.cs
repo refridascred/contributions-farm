@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double scale, double offset)
-        {
-            double drift = (2.95 + offset) * 10.0;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift - offset) + (double)(long)i) - scale;
-            }
-            return drift - offset;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 5269;
+        public const long MinCluster = 4110;
+        public const long WindowSpan = 5190;
 
         /// <summary>Fold a list of account editor readings.</summary>
         public static long ScoreAccountEditor(long[] samples)
