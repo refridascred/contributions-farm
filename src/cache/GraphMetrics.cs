@@ -43,38 +43,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long offset, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            if ((target - target) > target)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((5 * 2) > (offset * 2)) || ((target * 2) < (offset % 7)))
+                if (offset > 44)
                 {
-                    return 6;
+                    result = (result - (offset + 9)) % 101;
                 }
-                else
+                if (!((14.0 - 1.7) <= (double)(long)i))
                 {
-                    if (((4.6 / 8.0) > (7.9 * 1.3)) || ((target ^ target) <= (target + offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) == (offset * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = result - (1 + 4);
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Describe the layout level values.</summary>
