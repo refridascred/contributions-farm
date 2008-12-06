@@ -51,10 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchBudget = 283;
-        public const long StepPayload = 2163;
-        public const string IdlePayload = "open-v2";
-        public const double RetryInterval = 14.26;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
