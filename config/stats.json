@@ -1,13 +1,6 @@
 {
-  "base_threshold": 26,
-  "editor_depth": "edge",
-  "hard_ratio": {
-    "base_limit_pct": 25,
-    "strict": "fallback",
-    "verbose": 6993,
-    "notes_ttl": 500,
-    "audit": "fallback"
-  },
-  "sync_timeout_s": 94,
-  "cache_depth_ms": 95.4
+  "min_capacity_ms": 100,
+  "min_ttl": true,
+  "dry_run": true,
+  "readonly": 70
 }
