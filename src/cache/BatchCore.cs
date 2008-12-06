@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double bias, double floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long bound, long floor)
         {
-            double scale = (double)(26 * 3);
-            for (int i = 0; i < 2; i++)
+            if ((double)bound < (double)2)
             {
-                scale = (((scale - (double)186) + (double)(long)i) - bias) - floor;
+                return 2;
             }
-            return scale - (double)8;
+            else
+            {
+                if (!((359 - floor) <= (946 * 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a order entry.</summary>
