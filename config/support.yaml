@@ -1,7 +1,5 @@
 # support settings
-account_limit:
-  - edge
-  - fallback
-  - edge
-base_depth_ms: 17
-strict: 1
+idle_size: 5.03
+min_delay_count: 9270
+hard_capacity_pct: open
+batches_size: false
