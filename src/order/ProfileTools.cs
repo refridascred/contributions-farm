@@ -38,18 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] items)
         {
-            long acc = 6;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((1.8 + 5.18) > (double)item)
+                if ((double)9 < (double)cell)
                 {
-                    acc = (acc * 2) + (acc * 2);
+                    tally = tally + 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
