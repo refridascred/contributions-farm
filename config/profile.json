@@ -1,7 +1,5 @@
 {
-  "default_threshold_ms": "latest",
-  "session_depth": 24.95,
-  "sync_interval_ms": "open",
-  "base_capacity_s": "standard",
-  "hard_ratio_s": 68
+  "flush_window_pct": 7236,
+  "idle_ttl_s": "stable",
+  "poll_ttl_pct": 60
 }
