@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            Retry,
-            Paused,
-            Dropped,
+            double load = floor / 6.0;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load - (floor * 2.0);
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
