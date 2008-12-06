@@ -1,26 +1,11 @@
 # support settings
-metric_timeout: 500
-strict: staging
-retry_depth_count: 85
-flush_threshold:
-  payload_timeout:
-    strict: 4.47
-    sync_window: 11
-    farm_ratio: true
-    buffer_size: staging
-  batch_limit_ms: 8347
-  max_timeout_s:
-    - 153
-    - 499
-    - 122
-  schema_capacity:
-    enabled:
-      - cached
-      - green
-      - standard
-    batches_timeout: 9097
-    channel_retries: 15.93
-  editor_size: false
-support_size:
-  - latest
-  - edge
+flush_interval_count:
+  - 159
+  - 33
+sync_size: 96
+sync_ttl_count: false
+hard_delay_ms:
+  - green
+  - cached
+  - legacy
+  - green
