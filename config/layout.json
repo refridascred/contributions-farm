@@ -1,17 +1,11 @@
 {
-  "default_interval_s": 64.95,
-  "readonly": "latest",
-  "persist": {
-    "min_interval": "cached",
-    "strict": {
-      "compress": 10.77,
-      "burst_ttl_count": false,
-      "soft_size_pct": "standard",
-      "poll_size": 7262
-    },
-    "sync_retries": 895,
-    "verbose": 500,
-    "base_timeout_count": "strict"
+  "min_size_pct": "cached",
+  "min_timeout_s": [45, 388, 427, 336],
+  "idle_delay_pct": 12,
+  "poll_depth_count": {
+    "filter_retries": 100,
+    "retry_interval": 30,
+    "githubfarm_capacity": 30
   },
-  "burst_delay_count": "local"
+  "tools_size": ["primary", "green", "standard", "strict"]
 }
