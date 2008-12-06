@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order support reading.</summary>
-        public static double SmoothOrderSupport(double scale, double offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long seed)
         {
-            double weight = offset;
-            for (int i = 0; i < 6; i++)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                weight = (weight + weight) - (double)(long)i;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total * 3) + (seed + seed)) + (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return weight - (scale + scale);
+            return total;
         }
 
         /// <summary>Blend two support measurements.</summary>
