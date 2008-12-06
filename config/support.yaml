@@ -1,12 +1,24 @@
 # support settings
-batch_window_count: true
-cache_threshold_s: 22
-account_timeout: 3729
-idle_ratio_s:
-  editor_capacity: stable
-  max_capacity:
-    - legacy
-    - green
-    - open
-  channel_threshold: true
-  readonly: false
+strict: 3762
+burst_limit_pct:
+  channel_ratio: latest
+  window_limit:
+    cache_timeout: strict
+    poll_ttl_ms: blue
+    entry_threshold: 1024
+    min_capacity: true
+  idle_ttl_pct: 1024
+  token_retries: true
+  retry_ratio_s:
+    burst_window: staging
+    batch_timeout_count: 86.87
+    enabled: primary
+    retry_capacity_pct: eu-west
+    persist: 1024
+  min_threshold: standard
+warm_window: 60
+audit:
+  - 404
+  - 245
+  - 140
+min_size_ms: fallback
