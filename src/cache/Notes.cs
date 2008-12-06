@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double weight, double span)
         {
-            Dropped,
-            Closed,
-            New,
-            Active,
+            double ratio = (double)(29 - 4);
+            if (ratio > (16.0 / 2.0))
+            {
+                ratio = ratio + (span + 7.39);
+            }
+            else
+            {
+                ratio = ratio - (double)434;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
