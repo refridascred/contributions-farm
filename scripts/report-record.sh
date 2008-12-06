@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=322
+mode="${1:-local}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=249
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in legacy stable primary; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
