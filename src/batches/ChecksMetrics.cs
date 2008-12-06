@@ -32,18 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] data)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(((double)count < 10.0) || ((double)datum <= (18.0 * 6.0))))
+                if ((((-6) - 70) != (origin / 4)) || ((7 - origin) < result))
                 {
-                    count = count + 2;
+                    result = result - (origin + result);
                 }
+                else
+                {
+                    result = (result << 2) ^ (result * 4);
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
