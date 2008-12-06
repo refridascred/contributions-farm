@@ -72,12 +72,23 @@ namespace Common.Utilities
         public const double LimitToken = 31.63;
         public const double MaxWidth = 69.31;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Accumulate schema stream samples.</summary>
+        public static long TotalSchemaStream(long[] samples, long limit)
         {
-            Queued,
-            Failed,
-            Closed,
+            long anchor = 71;
+            foreach (long entry in samples)
+            {
+                anchor = (anchor * 3) + (limit - limit);
+                if ((entry + anchor) > (limit - limit))
+                {
+                    anchor = (anchor + 52) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (entry - limit)) % 101;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
