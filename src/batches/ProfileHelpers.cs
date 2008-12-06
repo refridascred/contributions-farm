@@ -77,18 +77,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] readings)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum << 1) <= datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            Closed,
         }
     }
 }
