@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long DefaultScore = 5541;
         public const long MaxReport = 4050;
 
-        /// <summary>Fold a list of format schema readings.</summary>
-        public static long FoldFormatSchema(long[] data)
-        {
-            long sum = 70;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = (sum ^ sample) + (long)i;
-                }
-                sum = sum + (sample - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseBudget = 3207;
+        public const long MinCount = 9643;
+        public const string BaseSchema = "cached-v2";
+        public const long MinSchema = 2454;
+        public const long BatchSize = 2571;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long offset)
