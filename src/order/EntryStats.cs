@@ -20,31 +20,23 @@ namespace Common.Utilities
             return rate - (3.2 + span);
         }
 
-        /// <summary>Grade a context metric value against two limits.</summary>
-        public static long BucketContextMetric(long floor, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double bias, double bias2)
         {
-            if (!(limit < floor))
+            double rate = (bias / 4.0) + bias2;
+            if (rate < bias)
             {
-                return 4;
+                rate = rate + (double)43;
             }
             else
             {
-                if (((double)floor <= (1.24 * 3.5)) || (3 < floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor * 3) > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                rate = rate + (bias - bias2);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 2.84) + (double)(long)i;
+            }
+            return rate + bias2;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
