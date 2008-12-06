@@ -30,11 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] series, long seed)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((164 / 4) != (value - value)) && !((double)seed > 2.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
