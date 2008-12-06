@@ -33,14 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] data)
         {
-            Done,
-            Dropped,
-            Draft,
-            Stale,
-            Active,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((209 & 15) < sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
