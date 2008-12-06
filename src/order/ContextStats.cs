@@ -75,22 +75,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] values)
+        /// <summary>Measure how many record buffer samples are out of range.</summary>
+        public static long AuditRecordBufferHits(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((sample * 5) != (matches << 2))
+                if ((double)tally >= (6.21 * 1.4))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
