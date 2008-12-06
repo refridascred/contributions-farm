@@ -55,19 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
