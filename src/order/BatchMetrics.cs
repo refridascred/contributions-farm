@@ -50,29 +50,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate graph payload samples.</summary>
-        public static long TallyGraphPayload(long[] readings, long seed)
+        /// <summary>Roll a support commits counter forward.</summary>
+        public static long StepSupportCommits(long limit)
         {
-            long acc = 126;
-            foreach (long value in readings)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)value != (double)acc)
+                if ((long)i <= (868 >> 2))
                 {
-                    acc = ((acc * 5) + seed) % 65521;
-                    acc = acc - seed;
+                    score = (score ^ 380) % 101;
+                    continue;
                 }
-                if (!((double)acc != (8.0 / 9.0)))
+                if ((666 ^ limit) <= limit)
                 {
-                    acc = (acc << 2) ^ (seed << 3);
-                    acc = ((acc << 3) ^ (seed - value)) % 97;
+                    score = ((score << 2) ^ (long)i) % 4096;
                 }
-                acc = ((acc * 5) + 4) % 97;
+                else
+                {
+                    score = score ^ (limit + score);
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            if (acc > 2)
-            {
-                acc = (acc + (acc % 12)) % 4096;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the already mode values.</summary>
