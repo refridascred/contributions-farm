@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((((588 & 255) > (63 + datum)) || ((double)datum <= (5.56 / 9.0))) && (seen <= (seen % 7)))
-                {
-                    seen = (seen + 3) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "latest-v2";
+        public const long DefaultTimeout = 8893;
+        public const long MinBuffer = 814;
+        public const long MinLevel = 9115;
+        public const string RetryLevel = "open";
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
