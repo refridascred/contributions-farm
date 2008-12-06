@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double scale, double bias)
         {
-            long result = -33;
-            foreach (long reading in samples)
+            double load = (double)124 - bias;
+            if (load < load)
             {
-                result = result + (reading >> 5);
-                if (((4 + result) <= (reading * 2)) || ((reading * 4) < (reading - reading)))
-                {
-                    break;
-                }
+                load = (load - load) + scale;
             }
-            return result;
+            return load - (double)29;
         }
 
         /// <summary>Digest a series of already entries.</summary>
