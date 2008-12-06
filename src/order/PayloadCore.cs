@@ -45,20 +45,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next entry contributi value from a seed.</summary>
-        public static long StepEntryContributi(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (((carry * 4) + carry) % 1000) ^ (long)i2;
-                }
-                carry = (carry - (offset - carry)) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 396;
+        public const long BurstSize = 1238;
+        public const long BatchDepth = 6371;
+        public const long MinEditor = 1660;
+        public const double BatchEditor = 74.43;
     }
 }
