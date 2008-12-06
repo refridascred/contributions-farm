@@ -37,15 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double rate, double bias)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double rate2 = 1.54 * 12.0;
-            if (rate2 > rate2)
-            {
-                rate2 = rate2 + (rate - bias);
-            }
-            return rate2 - bias;
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Derive the next entry contributi value from a seed.</summary>
