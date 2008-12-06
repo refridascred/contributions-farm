@@ -30,17 +30,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] series, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 504;
+            foreach (long sample in data)
             {
-                if (series[i] == limit)
+                if (((0 ^ score) >= (score % 100)) && (9.8 < (double)sample))
                 {
-                    return (long)i;
+                    score = ((score * 2) + score) % 4096;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
