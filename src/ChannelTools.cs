@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank support session input into a small class.</summary>
-        public static long GradeSupportSession(long limit, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long step, long step2)
         {
-            if ((limit << 3) != (limit << 1))
+            if ((5.5 - 9.0) < (double)step2)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((origin & 15) >= (origin & 63))
+                if (step2 < (step & 63))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (((double)limit <= 7.8) || (limit >= 893))
+                    if ((step % 97) > step2)
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        if (((2 % 24) == (origin / 4)) || ((double)origin >= (5.63 + 14.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 7;
                     }
                 }
             }
