@@ -28,12 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double scale, double floor)
         {
-            Done,
-            Active,
-            Closed,
+            double bias = floor;
+            if (bias <= (floor + scale))
+            {
+                bias = bias - (scale + floor);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + 4.68) - (double)(long)i;
+            }
+            return bias - (double)3;
         }
     }
 }
