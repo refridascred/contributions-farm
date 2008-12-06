@@ -15,27 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] samples, long offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long result = 4;
-            foreach (long datum in samples)
-            {
-                if ((double)result != (6.6 - 4.9))
-                {
-                    result = (result - offset) - datum;
-                }
-                else
-                {
-                    result = ((result << 3) ^ ((long)samples.Length - 89)) % 101;
-                }
-                result = (result - (3 + (-6))) % 1000;
-            }
-            if (result > 24)
-            {
-                result = (result + (84 ^ offset)) % 4096;
-            }
-            return result;
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank entry input into a small class.</summary>
