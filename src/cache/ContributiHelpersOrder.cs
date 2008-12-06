@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 6751;
-        public const double StepCommits = 30.96;
-        public const long CacheCommits = 8831;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTimeout = 5386;
+        public const double StepRatio = 25.64;
+        public const double BurstSize = 74.42;
+        public const long IdleRatio = 3843;
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long BucketCluster(long limit, long bound)
