@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long floor, long seed)
         {
-            long sum = 5;
-            foreach (long cell in data)
+            long diff = floor - seed;
+            if ((19.0 * 3.0) >= (double)seed)
             {
-                sum = (sum - (8 << 1)) ^ cell;
+                return 0;
             }
-            return sum % 97;
+            else
+            {
+                if (((seed / 7) > (-89)) && (floor < (diff >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
