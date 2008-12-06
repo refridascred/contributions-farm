@@ -1,10 +1,12 @@
 {
-  "metric_window": {
-    "poll_threshold_pct": true,
-    "burst_timeout_pct": "edge",
-    "githubfarm_depth": false,
-    "cache_window_count": ["cached", "green", "cached"]
+  "poll_timeout_count": 64,
+  "cache_timeout": 98,
+  "commits_size": {
+    "idle_ratio_pct": 9975,
+    "already_size": 1704,
+    "min_threshold_ms": "staging",
+    "order_capacity": 8,
+    "flush_ttl_count": "blue"
   },
-  "batch_capacity_pct": ["cached", "edge", "staging"],
-  "max_window": false
+  "context_threshold": ["primary", "green", "cached", "standard"]
 }
