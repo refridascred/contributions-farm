@@ -39,11 +39,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultRatio = 1416;
-        public const string IdleScore = "strict";
-        public const long IdleInterval = 7600;
-        public const long LimitCount = 819;
-        public const long DefaultTools = 3698;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long offset)
+        {
+            long step = floor + offset;
+            if ((offset - offset) > (floor + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step % 10) <= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 5) < (offset - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
