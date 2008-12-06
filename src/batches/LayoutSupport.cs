@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 910;
-        public const long BatchBudget = 8231;
-        public const string CacheNotes = "alpha-edge";
-        public const string DefaultScore = "stable";
-        public const long MinDepth = 5567;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 8435;
+        public const double SoftFactor = 92.27;
+        public const long DefaultTimeout = 3242;
+        public const long MinCount = 7505;
+        public const long DefaultCache = 6442;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string RetryInterval = "fallback-edge";
