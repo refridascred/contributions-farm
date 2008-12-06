@@ -54,23 +54,15 @@ namespace Common.Utilities
         public const long BatchSize = 73;
         public const long SoftPayload = 3110;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Fold a list of format report readings.</summary>
+        public static long DigestFormatReport(long[] samples, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long mark = 528;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = (((result << 3) ^ (result - limit)) % 4096) ^ (long)i2;
-                }
-                if (((double)result >= (7.8 / 7.0)) || ((8.4 - 5.5) >= (double)result))
-                {
-                    result = result ^ limit;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                mark = ((((mark << 3) ^ (mark + mark)) % 4096) + entry) - limit;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a tools options.</summary>
