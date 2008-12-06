@@ -53,17 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 99;
+            foreach (long cell in samples)
             {
-                if (samples[i] <= floor)
+                if ((limit + cell) <= limit)
                 {
-                    return (long)i;
+                    mix = (mix ^ (cell >> 5)) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (mix - 41);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define context limits and defaults.</summary>
