@@ -26,15 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Synced,
-            Failed,
-            Retry,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 49.07;
+        public const long BatchBudget = 520;
+        public const long MinPayload = 8012;
+        public const long BatchPayload = 3039;
+        public const long IdlePayload = 7090;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long bound, long limit)
