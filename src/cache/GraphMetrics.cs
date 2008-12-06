@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Active,
-            New,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 36.98;
+        public const double LimitScore = 37.68;
+        public const double StepTimeout = 5.47;
+        public const long BatchCount = 8441;
 
         /// <summary>Combine commits schema values into a single score.</summary>
         public static long CombineCommitsSchema(long[] levels)
