@@ -1,10 +1,20 @@
 {
-  "batch_ratio": {
-    "batch_threshold": "primary",
-    "cache_capacity": 1024,
-    "enabled": 48.58,
-    "persist": 30
-  },
-  "editor_window": 250,
-  "default_timeout_ms": 20.61
+  "stream_interval": "staging",
+  "stats_capacity": false,
+  "min_ttl_s": ["open", "green"],
+  "min_window": "staging",
+  "poll_window": {
+    "hard_timeout_pct": true,
+    "dry_run": "edge",
+    "enabled": "staging",
+    "min_ttl_count": 4718,
+    "batch_threshold_count": {
+      "max_timeout": "cached",
+      "flush_depth_s": [203, 28, 136, 77],
+      "flush_interval": [54, 493],
+      "burst_timeout": true,
+      "verbose": 44.29
+    },
+    "audit": 4294
+  }
 }
