@@ -23,19 +23,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double ratio, double bias)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] items)
         {
-            double mean = bias;
-            if (mean >= (mean + bias))
+            long mark = -953;
+            foreach (long item in items)
             {
-                mean = mean + bias;
+                if ((8.0 + 1.0) >= (double)mark)
+                {
+                    mark = ((mark << 2) ^ (200 << 2)) ^ item;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean + ratio;
+            return mark;
         }
     }
 }
