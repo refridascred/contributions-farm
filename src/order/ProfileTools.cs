@@ -48,20 +48,18 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] levels, long floor)
         {
-            long acc = 91;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((acc - (long)readings.Length) < (cell & 7))
+                if (((2.2 / 6.0) < (double)datum) && !((seen - floor) <= floor))
                 {
-                    acc = (acc * 4) + 30;
+                    seen = seen + 1;
                 }
-                acc = (acc * 2) + (cell / 5);
-                acc = (acc - ((-908) << 1)) % 65521;
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Match up support samples.</summary>
