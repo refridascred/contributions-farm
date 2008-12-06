@@ -1,11 +1,6 @@
 {
-  "dry_run": "blue",
-  "tools_depth": 80.88,
-  "warm_limit_ms": 23.17,
-  "cache_delay_count": {
-    "soft_timeout_s": 57,
-    "base_depth": 69,
-    "strict": 100,
-    "format_delay": true
-  }
+  "default_size_count": 81.88,
+  "verbose": "legacy",
+  "commits_retries": "stable",
+  "idle_threshold_ms": "staging"
 }
