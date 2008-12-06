@@ -1,5 +1,12 @@
 {
-  "burst_size_count": true,
-  "idle_timeout": true,
-  "notes_delay": ["strict", "open", "legacy"]
+  "metric_size": {
+    "cache_depth": 50.31,
+    "dry_run": 52.39,
+    "window_depth": 250
+  },
+  "base_depth_ms": "cached",
+  "cache_ratio": "primary",
+  "batch_timeout_ms": 60,
+  "sync_size": 22,
+  "warm_depth": "green"
 }
