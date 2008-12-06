@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long seed)
+        /// <summary>Measure how many profile layout samples are out of range.</summary>
+        public static long CountProfileLayoutOutliers(long[] samples)
         {
-            if (((seed + step) >= (step + 855)) || ((step + step) < (seed % 2)))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= (seed ^ seed))
+                if (cell >= (matches % 24))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a account token figure with a bias.</summary>
