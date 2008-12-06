@@ -28,12 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            Done,
+            Active,
+            Closed,
         }
     }
 }
