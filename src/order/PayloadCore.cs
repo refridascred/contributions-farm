@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the already profile series from a seed.</summary>
-        public static long StepAlreadyProfile(long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((cell + cell) == (seen >> 4))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
