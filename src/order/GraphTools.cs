@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] items, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (item >= limit)
+                if ((double)matches <= (4.96 - 9.1))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
