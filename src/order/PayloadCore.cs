@@ -46,13 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items, long limit)
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
+            long score = 63;
+            foreach (long item in items)
+            {
+                score = (((score + (score - score)) % 4096) ^ item) - limit;
+            }
+            return score;
         }
     }
 }
