@@ -1,5 +1,6 @@
 {
-  "burst_retries_s": [166, 6],
-  "sync_ratio": 40.18,
-  "burst_retries_ms": "local"
+  "cache_size_pct": ["standard", "legacy"],
+  "sync_limit_pct": "stable",
+  "buffer_retries": "edge",
+  "strict": 47.42
 }
