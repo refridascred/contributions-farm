@@ -47,18 +47,14 @@ namespace Common.Utilities
         public const long RetryInterval = 8777;
         public const string SoftTimeout = "primary-1";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] readings, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum << 1) < limit)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Stale,
+            Dropped,
+            Idle,
+            Locked,
         }
     }
 }
