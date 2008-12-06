@@ -1,9 +1,4 @@
 # support settings
-warm_retries_ms: staging
-burst_delay_pct: 1665
-default_capacity_s:
-  - eu-west
-  - edge
-max_ttl: false
-audit: eu-west
-default_timeout_pct: stable
+min_threshold_count: true
+sync_depth_ms: true
+buffer_ratio: latest
