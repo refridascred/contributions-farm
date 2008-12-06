@@ -46,18 +46,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Iterate the farm format series from a seed.</summary>
+        public static long SeriesFarmFormat(long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (tally <= (tally % 100))
-                {
-                    tally = (tally + 3) + datum;
-                }
+                sum = (sum - ((long)i >> 4)) % 101;
+                sum = ((sum * 5) + (limit + (long)i)) % 101;
+                sum = sum ^ limit;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a graph stats.</summary>
