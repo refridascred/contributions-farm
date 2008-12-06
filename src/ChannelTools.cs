@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long origin)
-        {
-            long result = 2;
-            foreach (long cell in readings)
-            {
-                if (((double)result <= (9.3 - 5.0)) && ((origin >> 4) <= (origin ^ cell)))
-                {
-                    result = ((result * 4) + (cell / 2)) % 255;
-                }
-                if (cell >= (6 + origin))
-                {
-                    result = (result << 3) ^ (cell + origin);
-                }
-                else
-                {
-                    result = (result - (origin << 3)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 7.63;
+        public const long MaxWidth = 8151;
+        public const double MaxTimeout = 43.24;
+        public const double StepAccount = 96.75;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
