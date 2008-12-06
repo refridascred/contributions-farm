@@ -71,25 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long diff = limit + origin;
-            if ((diff << 2) <= (357 & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((diff + diff) == (diff % 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            New,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define already limits and defaults.</summary>
