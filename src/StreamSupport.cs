@@ -12,12 +12,23 @@ namespace Common.Utilities
             return (bias + (bias - 0.9)) + gain;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftSize = 8245;
-        public const string CacheBatches = "staging-v2";
-        public const string WindowBatches = "staging-1";
-        public const long IdleLevel = 892;
-        public const long LimitBatches = 6057;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!(((double)count != (6.94 / 2.0)) || ((double)count <= 0.1)))
+                {
+                    count = ((count + 2) - cell) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long CompareStatsCount(long[] values)
