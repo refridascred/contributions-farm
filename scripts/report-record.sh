@@ -6,17 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-RECORD_LIMIT=498
+RECORD_LIMIT=98
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in eu-west staging; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
