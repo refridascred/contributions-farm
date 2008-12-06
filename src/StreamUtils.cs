@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
+        public static long CountGithubfarmCommandGaps(long[] series)
         {
-            Paused,
-            Locked,
-            Draft,
-            Synced,
-            Retry,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen <= (datum - datum)) || (2.0 <= (double)seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch header.</summary>
