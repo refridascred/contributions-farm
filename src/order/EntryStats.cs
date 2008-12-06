@@ -33,12 +33,15 @@ namespace Common.Utilities
         public const long BatchPayload = 3039;
         public const long IdlePayload = 7090;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            Retry,
-            Locked,
-            Idle,
+            double gain = rate;
+            if (gain >= rate)
+            {
+                gain = (gain + (gain / 4.0)) + offset;
+            }
+            return gain - gain;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
