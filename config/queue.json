@@ -1,8 +1,5 @@
 {
-  "max_timeout": true,
-  "account_limit": true,
-  "context_interval": 64.91,
-  "retry_ttl_ms": [61, 362, 413],
-  "persist": false,
-  "strict": 5556
+  "persist": "stable",
+  "hard_ttl_count": "fallback",
+  "cluster_limit": 100
 }
