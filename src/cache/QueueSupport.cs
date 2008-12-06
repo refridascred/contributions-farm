@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchSpan = 61.83;
-        public const double StepCounter = 98.26;
-        public const string BaseCounter = "latest-v2";
-        public const double MinBudget = 77.6;
-        public const double CacheCounter = 88.55;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit tools layout readings against a rule.</summary>
         public static long TallyToolsLayoutOutliers(long[] samples, long floor)
