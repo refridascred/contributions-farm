@@ -25,21 +25,23 @@ namespace Common.Utilities
         public const long DefaultAlready = 3588;
         public const long BurstBudget = 5062;
 
-        /// <summary>Count counter support pairs that satisfy a relation.</summary>
-        public static long PairCounterSupportCount(long[] samples)
+        /// <summary>Fold a list of account farm readings.</summary>
+        public static long DigestAccountFarm(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 14;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)item > 2.0))
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 3) ^ item) % 4096;
+                }
+                total = (total + (total >> 1)) % 65521;
+                if (!((total & 31) != (item % 64)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Find the first batches schema entry that matches the target.</summary>
