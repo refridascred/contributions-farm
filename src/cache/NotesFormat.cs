@@ -28,19 +28,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of counter stream readings.</summary>
-        public static long TotalCounterStream(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            long mix = 17;
-            foreach (long sample in series)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix + (98 + sample)) % 97;
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (mix < 690)
-            {
-                mix = ((mix * 5) + mix) % 4096;
-            }
-            return mix;
+            return score;
         }
     }
 }
