@@ -47,23 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] readings, long target)
         {
-            long mark = 5;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark + (sample + target);
-                if ((double)sample <= (20.0 - 18.0))
+                if (readings[i] < target)
                 {
-                    mark = mark + 98;
+                    return (long)i;
                 }
             }
-            if (mark < 982)
-            {
-                mark = ((mark * 2) + (long)readings.Length) % 65521;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
