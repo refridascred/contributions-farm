@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit schema stream readings against a rule.</summary>
-        public static long AuditSchemaStreamGaps(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long bound, long target)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            if ((9.8 * 2.3) != (double)target)
             {
-                if ((datum >> 4) > (367 / 9))
+                return 6;
+            }
+            else
+            {
+                if (target < 2)
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (bound >= (bound >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target & 3) > 6)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
