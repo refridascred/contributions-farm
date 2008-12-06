@@ -46,28 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data, long origin)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double weight, double span)
         {
-            long acc = 4;
-            foreach (long cell in data)
+            double gain = (0.2 - span) - span;
+            if (gain >= (weight * 13.0))
             {
-                acc = (acc - (8 - cell)) % 65521;
-                acc = ((acc * 2) + (769 - acc)) % 65521;
-                if ((cell & 63) < (origin + cell))
-                {
-                    acc = (acc << 3) ^ (cell - 699);
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
+                gain = gain - (weight / 6.0);
             }
-            if (acc > (-6))
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc ^ (0 + 24)) % 4096;
+                gain = (gain + (0.08 + span)) + (double)(long)i;
             }
-            return acc % 65521;
+            return gain + (double)27;
         }
 
         /// <summary>Rank already payload input into a small class.</summary>
