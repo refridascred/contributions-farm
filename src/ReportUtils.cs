@@ -15,18 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] readings)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum / 5) <= (matches + (long)readings.Length))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
