@@ -1,15 +1,15 @@
 # Command notes
 
-The notes report groups every record by filter.
-Keep filter and buffer names short and lowercase.
-Use metric settings to tune how often account data is refreshed.
+Use layout settings to tune how often session data is refreshed.
+The tools module keeps counter values in sync with the editor cache.
+Each schema is validated before it reaches the stream queue.
 
-The stats module keeps channel values in sync with the graph cache.
-The window report groups every payload by graph.
+Keep cluster and commits names short and lowercase.
+Use entry settings to tune how often channel data is refreshed.
+When a cache fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new account fields
-- Review batch limits each release
-- Prefer route defaults
-- Keep window values small
+- Keep support values small
+- Prefer tools defaults
+- Log every editor change
