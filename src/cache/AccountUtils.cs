@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account githubfarm entries.</summary>
-        public static long DigestAccountGithubfarm(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long acc = 25;
-            foreach (long sample in values)
+            long result = -33;
+            foreach (long reading in samples)
             {
-                acc = (acc + (0 + acc)) + sample;
+                result = result + (reading >> 5);
+                if (((4 + result) <= (reading * 2)) || ((reading * 4) < (reading - reading)))
+                {
+                    break;
+                }
             }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
