@@ -40,22 +40,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of batch session entries.</summary>
-        public static long FoldBatchSession(long[] items, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings)
         {
-            long carry = 7;
-            foreach (long value in items)
+            long acc = 87;
+            foreach (long datum in readings)
             {
-                if ((7.2 <= (double)carry) && ((long)items.Length != (floor + floor)))
+                if ((acc >> 3) != (acc & 1))
                 {
-                    carry = (carry - (value / 9)) % 65521;
+                    acc = (acc - (datum ^ datum)) % 1000;
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry - (floor + carry)) % 4096;
-            }
-            return carry % 4096;
+            return acc % 4096;
         }
 
         /// <summary>Describe the layout status values.</summary>
