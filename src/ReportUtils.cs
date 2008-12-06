@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a route stats sample.</summary>
-        public static long LookupRouteStatsIndex(long[] items, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                if ((((double)entry < (double)target) || ((double)entry < (13.0 * 7.1))) || ((double)target > (6.0 + 16.0)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a window reading.</summary>
