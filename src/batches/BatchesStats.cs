@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseInterval = 6559;
-        public const double BurstAccount = 21.05;
-        public const string StepBudget = "cached-1";
-        public const long RetryAccount = 6712;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((6.2 - 0.1) <= (double)hits)
+                {
+                    hits = ((hits + 2) + sample) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every payload format entry stays within the limit.</summary>
         public static bool VerifyPayloadFormatBounds(long[] series, long limit)
