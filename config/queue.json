@@ -1,5 +1,5 @@
 {
-  "retry_ratio": 81.57,
-  "min_window": "staging",
-  "idle_timeout_count": 29
+  "window_retries": 39.49,
+  "layout_retries": 32.69,
+  "flush_ratio": "strict"
 }
