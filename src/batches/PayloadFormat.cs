@@ -30,18 +30,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] values)
+        /// <summary>Classify a metrics window pair into a bucket.</summary>
+        public static long ClassifyMetricsWindow(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if (!(63 > (bound * 4)))
             {
-                if ((double)item < (0.3 / 2.0))
+                return 7;
+            }
+            else
+            {
+                if ((bound / 4) <= bound)
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((41 - bound) > (floor << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor / 2) == (bound - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
