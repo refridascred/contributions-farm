@@ -1,6 +1,12 @@
 {
-  "burst_capacity_count": "standard",
-  "counter_ratio": "strict",
-  "sync_ttl": "cached",
-  "verbose": 81.94
+  "window_window": {
+    "warm_capacity": true,
+    "soft_limit": 29,
+    "entry_ratio": 60.48,
+    "cache_window_ms": false,
+    "soft_threshold_ms": 2045,
+    "dry_run": 57
+  },
+  "commits_depth": "primary",
+  "format_interval": true
 }
