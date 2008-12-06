@@ -38,22 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long bound, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long target)
         {
-            if (((bound + 6) > 73) || ((bound - bound) >= (bound % 60)))
+            long cur = offset ^ target;
+            if ((cur << 1) < target)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((bound % 16) >= (bound / 2))
+                if (((double)cur != (4.3 + 13.0)) || ((59 * 2) >= (cur * 4)))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 6;
+                    return 0;
                 }
             }
         }
