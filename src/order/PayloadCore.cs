@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] series)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell + cell) == (seen >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
