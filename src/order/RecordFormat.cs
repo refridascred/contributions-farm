@@ -42,17 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a checks schema sample.</summary>
-        public static long FindChecksSchemaIndex(long[] data, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
     }
 }
