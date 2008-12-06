@@ -32,23 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] items, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((((-6) - 70) != (origin / 4)) || ((7 - origin) < result))
+                if ((offset % 2) <= (0 + matches))
                 {
-                    result = result - (origin + result);
+                    matches = (matches + 3) + cell;
                 }
                 else
                 {
-                    result = (result << 2) ^ (result * 4);
+                    matches = matches - 1;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
