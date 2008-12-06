@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double bias)
-        {
-            double mean = 5.41;
-            if (mean < mean)
-            {
-                mean = (mean - ratio) + bias;
-            }
-            return mean + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheInterval = 1614;
+        public const long BurstFactor = 1516;
+        public const long LimitScore = 4504;
+        public const long DefaultContributi = 3628;
+        public const string HardInterval = "alpha-v2";
 
         /// <summary>Define token limits and defaults.</summary>
         public const string LimitToken = "strict";
