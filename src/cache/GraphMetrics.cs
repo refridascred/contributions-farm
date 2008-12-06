@@ -20,16 +20,11 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] data)
-        {
-            long score = -94;
-            foreach (long value in data)
-            {
-                score = score + value;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftWidth = 7489;
+        public const long BurstEntry = 3205;
+        public const long SoftEntry = 6219;
+        public const long LimitSpan = 5325;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
