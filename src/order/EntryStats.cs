@@ -50,18 +50,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardDepth = 4161;
+        public const long CacheBudget = 9576;
+        public const long BaseChecks = 326;
+        public const string DefaultInterval = "primary-v2";
+        public const long SoftBudget = 4906;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheCount = 7231;
