@@ -34,22 +34,19 @@ namespace Common.Utilities
         public const string CacheLevel = "stable-v2";
         public const double HardScore = 66.79;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Adjust a session buffer reading.</summary>
+        public static double AdjustSessionBuffer(double ratio, double bias)
         {
-            long mark = 943;
-            foreach (long sample in readings)
+            double ratio2 = bias;
+            if (ratio2 < (ratio + bias))
             {
-                if (((mark + mark) < (mark - mark)) || (mark <= (-46)))
-                {
-                    mark = ((mark - mark) % 255) ^ sample;
-                }
+                ratio2 = ratio2 + ratio;
             }
-            if (mark > 26)
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark ^ (821 >> 5)) % 4096;
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
             }
-            return mark;
+            return ratio2 + (ratio * 20.0);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
