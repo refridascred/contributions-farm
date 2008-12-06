@@ -26,11 +26,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchFactor = 8004;
-        public const string BurstCount = "cached-1";
-        public const string BatchDepth = "fallback-edge";
-        public const double MaxSchema = 85.57;
-        public const long MaxSpan = 4066;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long target)
+        {
+            if ((9.7 * 4.0) > (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-106) - target) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target >= (1.0 - 5.51)) || (offset >= (offset - offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
