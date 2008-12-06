@@ -1,14 +1,14 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-The metrics module keeps cluster values in sync with the stats cache.
+Defaults for channel live in the config folder and can be overridden per environment.
+When a payload fails, the token handler retries a few times before giving up.
 
-Each report is validated before it reaches the farm queue.
-Each layout is validated before it reaches the githubfarm queue.
-Each channel is validated before it reaches the metrics queue.
+Use farm settings to tune how often window data is refreshed.
+The session module keeps payload values in sync with the batch cache.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new stats fields
-- Validate batches input early
+- Prefer queue defaults
+- Keep filter values small
+- Review notes limits each release
