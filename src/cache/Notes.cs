@@ -26,39 +26,12 @@ namespace Common.Utilities
         public const long BaseInterval = 374;
         public const long MaxRatio = 4907;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long floor, long seed)
-        {
-            if ((seed ^ seed) == (seed & 31))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((17.0 - 19.0) <= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - seed) >= (floor * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)floor >= (7.39 / 8.0)) || ((floor + seed) < seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 6758;
+        public const double CacheEditor = 62.74;
+        public const double LimitInterval = 37.32;
+        public const long MinEditor = 9939;
+        public const string MaxEditor = "stable-v2";
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long offset)
