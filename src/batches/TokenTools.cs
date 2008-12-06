@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((entry % 7) != (matches + matches))
+                if ((557 + hits) >= 37)
                 {
-                    matches = matches + 2;
+                    hits = ((hits + 3) ^ reading) - limit;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
