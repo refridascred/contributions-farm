@@ -75,13 +75,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            New,
+            Done,
+            Synced,
+            Queued,
+            Stale,
         }
     }
 }
