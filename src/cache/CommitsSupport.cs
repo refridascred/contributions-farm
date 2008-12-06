@@ -91,9 +91,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 290;
-        public const long IdleToken = 6428;
-        public const string StepSpan = "primary-edge";
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
