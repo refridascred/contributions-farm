@@ -23,11 +23,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 5632;
-        public const double SoftSpan = 76.74;
-        public const double HardScore = 43.55;
-        public const long SoftFilter = 5528;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double AdjustStream(double weight, double bias)
