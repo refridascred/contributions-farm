@@ -1,12 +1,8 @@
 {
-  "window_window": {
-    "warm_capacity": true,
-    "soft_limit": 29,
-    "entry_ratio": 60.48,
-    "cache_window_ms": false,
-    "soft_threshold_ms": 2045,
-    "dry_run": 57
-  },
-  "commits_depth": "primary",
-  "format_interval": true
+  "cache_interval": ["blue", "legacy"],
+  "base_interval_s": false,
+  "batch_retries_pct": 9912,
+  "readonly": 1024,
+  "soft_limit_count": "cached",
+  "warm_interval": [91, 309, 126]
 }
