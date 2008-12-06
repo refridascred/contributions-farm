@@ -25,12 +25,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepBudget = 4672;
-        public const double BurstGraph = 75.03;
-        public const long MaxGraph = 4234;
-        public const long DefaultFactor = 4547;
-        public const long StepSpan = 9981;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseLevel = 5975;
+        public const string MaxScore = "staging-edge";
+        public const double CacheFarm = 41.81;
 
         /// <summary>Combine record profile values into a single score.</summary>
         public static long FoldRecordProfile(long[] samples, long limit)
