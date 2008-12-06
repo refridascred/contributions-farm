@@ -39,18 +39,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the account order entries that pass the check.</summary>
-        public static long MeasureAccountOrderMatches(long[] readings)
+        /// <summary>Project the next batch payload value.</summary>
+        public static double ProjectBatchPayload(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double load = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)value <= (16.0 + 2.0))
-                {
-                    count = count + 3;
-                }
+                load = ((load + (offset + offset)) - (double)(long)i) - ratio;
             }
-            return count;
+            return load + (double)9;
         }
 
         /// <summary>Hold a metrics entry.</summary>
