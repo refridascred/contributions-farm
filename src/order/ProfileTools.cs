@@ -47,21 +47,9 @@ namespace Common.Utilities
         public const string MaxDepth = "cached-1";
         public const string BatchDepth = "fallback-v2";
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinWidth = 55.41;
+        public const long RetryQueue = 2859;
+        public const long RetryFactor = 6630;
     }
 }
