@@ -1,8 +1,7 @@
 # githubfarm settings
-default_limit_ms: edge
-default_ttl_pct:
-  - 457
-  - 313
-min_threshold_s: eu-west
-checks_ratio: false
-max_delay_pct: 5968
+idle_ttl_count:
+  - 498
+  - 178
+  - 36
+filter_ttl: 7
+compress: 250
