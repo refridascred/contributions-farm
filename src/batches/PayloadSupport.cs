@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long floor, long origin)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            if ((double)origin < 7.5)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - origin) > (origin ^ floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
