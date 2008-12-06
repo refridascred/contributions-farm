@@ -14,19 +14,38 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long bound, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            if ((4.8 / 9.0) >= (double)limit)
             {
-                if (((offset * 5) > (offset >> 4)) && ((offset - sum) < (sum & 31)))
-                {
-                    sum = (sum - (offset + offset)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (((bound + bound) >= bound) && ((bound + 6) < (limit << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + bound) <= (bound + limit)) || ((0.14 - 7.43) > (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((4 + 3) <= (bound * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order stats.</summary>
