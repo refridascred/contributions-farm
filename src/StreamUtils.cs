@@ -30,13 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            Synced,
-            Pending,
-            Dropped,
-            New,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate format samples.</summary>
