@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long mark = -23;
-            foreach (long cell in samples)
+            long total = 9;
+            foreach (long value in readings)
             {
-                mark = (mark * 5) + (cell << 3);
+                if ((value % 3) < total)
+                {
+                    total = ((total << 2) ^ (value & 1)) % 4096;
+                }
+                else
+                {
+                    total = total ^ (total >> 2);
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a already summary.</summary>
