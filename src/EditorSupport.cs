@@ -49,12 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardDepth = 5732;
+        public const string BurstBudget = "primary-edge";
+        public const long IdleChecks = 8950;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long floor, long target)
