@@ -18,12 +18,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Grade a editor window value against two limits.</summary>
+        public static long GradeEditorWindow(long seed, long bound)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long span = seed ^ bound;
+            if (!(bound > (bound - 6)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed < (span & 31)) && ((bound & 3) < (bound * 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((5 ^ span) <= (span * 2)) && ((10.0 - 3.4) > (double)seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
