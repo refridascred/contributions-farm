@@ -73,18 +73,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] readings)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((49 + count) > count)
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
