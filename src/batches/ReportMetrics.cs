@@ -30,18 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] series, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((164 / 4) != (value - value)) && !((double)seed > 2.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
