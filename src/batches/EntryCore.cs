@@ -33,25 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session report counter forward.</summary>
-        public static long DeriveSessionReport(long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (bound >= (total - bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total * 3) + (total - bound);
-                    total = (total + (bound * 3)) % 1000;
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    total = (total - (bound >> 5)) % 97;
-                }
-                total = (total << 2) ^ ((long)i - total);
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
