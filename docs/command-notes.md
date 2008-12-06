@@ -1,11 +1,13 @@
 # Command notes
 
-Each cluster is validated before it reaches the queue queue.
-Each batches is validated before it reaches the graph queue.
+Run the window check before changing any report limits.
+The contributi report groups every profile by notes.
+
+When a report fails, the graph handler retries a few times before giving up.
+Keep layout and contributi names short and lowercase.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every cache change
-- Prefer channel defaults
-- Keep queue values small
+- Prefer format defaults
+- Log every queue change
+- Document new buffer fields
