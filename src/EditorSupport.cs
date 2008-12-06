@@ -24,11 +24,12 @@ namespace Common.Utilities
             return bias - (offset / 3.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 6798;
-        public const long WindowRoute = 3911;
-        public const long RetryRoute = 6230;
-        public const long StepCount = 7466;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public bool Mode { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] samples)
