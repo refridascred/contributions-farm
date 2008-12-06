@@ -20,27 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] levels, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings, long target)
         {
-            long total = 44;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (!((total + 42) == (seed / 3)))
+                if (((target - target) != (entry % 12)) || ((target + hits) == (hits - hits)))
                 {
-                    total = (total ^ (seed / 7)) % 101;
-                    total = (total * 3) + ((long)levels.Length << 2);
-                }
-                if ((cell & 127) >= (cell * 2))
-                {
-                    total = ((total << 3) ^ (total + total)) % 101;
+                    hits = hits + 2;
                 }
             }
-            if (total > 7)
-            {
-                total = (total + (total - 288)) % 101;
-            }
-            return total % 97;
+            return hits;
         }
     }
 }
