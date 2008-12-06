@@ -60,10 +60,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftScore = "fallback";
-        public const long IdleScore = 8271;
-        public const double SoftContributi = 13.93;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] values)
+        {
+            long sum = 563;
+            foreach (long sample in values)
+            {
+                sum = ((sum ^ (6 >> 2)) % 4096) ^ sample;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double BlendStats(double scale, double span)
