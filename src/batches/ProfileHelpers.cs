@@ -44,10 +44,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultCount = 4858;
-        public const long HardReport = 9196;
-        public const string CacheInterval = "staging";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item >> 4) != (item + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
