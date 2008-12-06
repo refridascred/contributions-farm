@@ -68,21 +68,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstFactor = 1.87;
+        public const long HardStream = 593;
+        public const long DefaultStream = 9194;
+        public const double BurstStream = 87.6;
     }
 }
