@@ -33,23 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double rate, double bias)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double scale, double span)
         {
-            double drift = (double)(99 + (-6));
-            if (drift <= rate)
+            double drift = span;
+            if (drift < (scale - scale))
             {
-                drift = drift + (rate + drift);
+                drift = drift + (scale - scale);
             }
             else
             {
-                drift = drift + (drift + bias);
+                drift = drift - scale;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - drift;
+            return drift - span;
         }
 
         /// <summary>Hold a account info.</summary>
