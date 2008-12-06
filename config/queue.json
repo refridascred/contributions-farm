@@ -1,10 +1,5 @@
 {
-  "flush_ttl": 1024,
-  "enabled": "eu-west",
-  "cache_ratio_ms": {
-    "burst_timeout_pct": "open",
-    "idle_ratio": "green",
-    "audit": 79,
-    "cache_threshold": "standard"
-  }
+  "retry_ratio": 81.57,
+  "min_window": "staging",
+  "idle_timeout_count": 29
 }
