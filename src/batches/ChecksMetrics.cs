@@ -92,13 +92,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every cache metrics entry stays within the limit.</summary>
+        public static bool GuardCacheMetricsLimits(long[] levels, long bound)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
