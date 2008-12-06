@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double weight, double span)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double ratio = (double)(29 - 4);
-            if (ratio > (16.0 / 2.0))
-            {
-                ratio = ratio + (span + 7.39);
-            }
-            else
-            {
-                ratio = ratio - (double)434;
-            }
-            return ratio - weight;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a record sample.</summary>
