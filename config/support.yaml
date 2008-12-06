@@ -1,4 +1,11 @@
 # support settings
-min_threshold_count: true
-sync_depth_ms: true
-buffer_ratio: latest
+batch_capacity_ms:
+  - 383
+  - 383
+  - 432
+  - 297
+poll_interval_count: 26
+flush_size_ms: false
+stats_retries: 21.42
+batch_interval_s: fallback
+audit: false
