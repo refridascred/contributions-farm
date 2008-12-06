@@ -1,19 +1,6 @@
 # entry settings
-verbose: 500
-readonly: 250
-cache_ttl:
-  - 385
-  - 438
-  - 183
-default_ratio: 89.21
-report_size:
-  batch_interval_s: green
-  default_interval_s: standard
-  flush_timeout: 500
-  filter_size:
-    dry_run: standard
-    sync_size_pct:
-      - 22
-      - 65
-    batch_depth_s: 66
-    warm_capacity: blue
+dry_run: 100
+enabled: 500
+channel_window: edge
+flush_size_count: 73.16
+verbose: 4773
