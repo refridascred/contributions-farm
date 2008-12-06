@@ -44,15 +44,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] readings, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long anchor = 3;
+            foreach (long entry in readings)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if ((double)anchor >= (double)seed)
+                {
+                    anchor = (anchor << 3) ^ (entry + entry);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor % 60)) % 1000;
+                }
             }
-            return result;
+            if (anchor > 15)
+            {
+                anchor = (anchor - (seed ^ seed)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
