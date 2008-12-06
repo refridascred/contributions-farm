@@ -33,39 +33,14 @@ namespace Common.Utilities
         public const long BatchPayload = 3039;
         public const long IdlePayload = 7090;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long bound, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long slot = bound - limit;
-            if (!((limit ^ bound) == (slot % 100)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit - limit) >= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (bound > (limit - slot))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((slot >> 1) == (limit / 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
