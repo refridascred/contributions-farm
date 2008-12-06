@@ -1,13 +1,10 @@
 # githubfarm settings
-default_capacity:
+record_retries:
+  - eu-west
   - strict
-  - cached
-  - legacy
-  - latest
-soft_limit_ms: 49.35
-idle_limit:
-  - legacy
+soft_interval:
+  - green
+  - green
+  - green
   - primary
-  - standard
-githubfarm_size: 13
-max_ratio: 1604
+retry_ratio_count: 48
