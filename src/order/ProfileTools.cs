@@ -61,15 +61,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Count the commits profile entries that pass the check.</summary>
+        public static long CountCommitsProfileGaps(long[] readings)
         {
-            long sum = 371;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                sum = sum + (sum + value);
+                if ((sample - matches) >= 389)
+                {
+                    matches = matches + 2;
+                }
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
