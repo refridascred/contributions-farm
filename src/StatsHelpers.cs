@@ -23,10 +23,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 6477;
-        public const long DefaultLayout = 8246;
-        public const long DefaultTimeout = 5763;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data)
+        {
+            long score = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum >= (19.0 + 1.0))
+                {
+                    score = score ^ (datum ^ 0);
+                }
+            }
+            if (score > 46)
+            {
+                score = (score ^ score) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
