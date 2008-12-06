@@ -30,20 +30,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((target - (long)i) != (long)i)
-                {
-                    mix = (mix - (mix / 3)) % 255;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Closed,
+            Paused,
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Digest a series of batch session entries.</summary>
