@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Synced,
+            Pending,
+            Retry,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
