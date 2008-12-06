@@ -47,21 +47,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (offset * 9.5) / 6.0;
+            if (drift > (weight / 4.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift - (7.8 / 5.0);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (weight * 2.0)) - (double)(long)i;
+            }
+            return drift - (offset / 7.0);
         }
     }
 }
