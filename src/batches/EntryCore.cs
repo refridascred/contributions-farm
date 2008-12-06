@@ -71,22 +71,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm editor entries that pass the check.</summary>
-        public static long AuditFarmEditorGaps(long[] data)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long target, long target2)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long delta = target ^ target2;
+            if (!((target & 15) > delta))
             {
-                if (hits >= (item * 5))
+                return 7;
+            }
+            else
+            {
+                if ((14 * 5) < (target - target))
                 {
-                    hits = hits + 2;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((double)target2 >= (7.11 * 8.97)) && (target2 < (target + target2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of contributi cluster readings.</summary>
