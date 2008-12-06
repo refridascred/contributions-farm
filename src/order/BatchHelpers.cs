@@ -37,12 +37,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long origin, long offset)
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long span = origin ^ offset;
+            if ((double)origin <= 0.9)
+            {
+                return 2;
+            }
+            else
+            {
+                if (span >= (origin / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
