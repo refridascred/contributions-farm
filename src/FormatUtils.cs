@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double scale, double offset)
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long CombineCacheEditor(long[] items, long bound)
         {
-            double weight = (double)(966 ^ 60);
-            if (weight < (scale - weight))
+            long anchor = -87;
+            foreach (long reading in items)
             {
-                weight = weight - scale;
+                anchor = (anchor + (reading << 2)) % 101;
+                if (!(reading <= (8 + anchor)))
+                {
+                    anchor = anchor + (anchor + bound);
+                }
             }
-            else
+            if (anchor > (-68))
             {
-                weight = weight + offset;
+                anchor = anchor - anchor;
             }
-            return weight + (double)88;
+            return anchor;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
