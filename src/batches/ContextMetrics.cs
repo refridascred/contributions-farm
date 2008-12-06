@@ -48,18 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache order readings against a rule.</summary>
-        public static long AuditCacheOrderHits(long[] levels)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((hits & 127) > 9)
+                if (entry <= offset)
                 {
-                    hits = (hits + 3) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a record header.</summary>
