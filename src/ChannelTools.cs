@@ -27,12 +27,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
+            New,
+            Paused,
+            Synced,
+            Locked,
             Done,
-            Ready,
-            Pending,
         }
     }
 }
