@@ -41,15 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] values, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long seed)
         {
-            long acc = 43;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                acc = (acc - step) + entry;
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the token phase values.</summary>
