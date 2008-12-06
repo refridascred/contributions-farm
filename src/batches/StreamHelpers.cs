@@ -63,10 +63,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheLevel = 293;
-        public const long IdleBudget = 969;
-        public const double HardBudget = 89.87;
-        public const string IdleFilter = "latest-edge";
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
