@@ -1,26 +1,6 @@
 # githubfarm settings
-cluster_ratio: standard
-dry_run: 95.26
-buffer_interval: true
-flush_retries:
-  min_ratio:
-    token_depth:
-      - 494
-      - 325
-      - 360
-      - 476
-    cluster_capacity: 67.31
-    batch_interval_ms:
-      - 438
-      - 409
-      - 5
-      - 183
-  soft_delay_count:
-    counter_ratio: green
-    context_depth: 82.62
-    entry_window: false
-    dry_run: eu-west
-    base_window_count: 79.47
-  persist: 4278
-counter_timeout: 81.33
-cluster_capacity: local
+cluster_depth: 84
+burst_ratio_pct: 26.3
+max_retries_ms: 9093
+poll_ttl_ms: strict
+verbose: stable
