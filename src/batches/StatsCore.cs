@@ -56,15 +56,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items, long limit)
+        /// <summary>Classify a report account pair into a bucket.</summary>
+        public static long BucketReportAccount(long floor, long origin)
         {
-            long mark = 3;
-            foreach (long item in items)
+            long diff = floor ^ origin;
+            if (!((double)floor > (5.84 / 4.0)))
             {
-                mark = ((mark * 5) + (item + item)) + limit;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((double)diff != (1.0 + 9.59))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((676 - diff) < 188)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context state values.</summary>
