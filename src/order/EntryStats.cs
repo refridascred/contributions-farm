@@ -19,23 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double bias, double bias2)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double weight, double bias)
         {
-            double rate = (bias / 4.0) + bias2;
-            if (rate < bias)
+            double mean = 4.0 / 4.0;
+            if (mean >= mean)
             {
-                rate = rate + (double)43;
+                mean = (mean - (double)78) + bias;
             }
             else
             {
-                rate = rate + (bias - bias2);
+                mean = mean + (mean - weight);
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 6; i++)
             {
-                rate = (rate - 2.84) + (double)(long)i;
+                mean = (mean + 2.84) - (double)(long)i;
             }
-            return rate + bias2;
+            return mean - 7.1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
