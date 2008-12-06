@@ -24,22 +24,23 @@ namespace Common.Utilities
         public const long WindowWidth = 2931;
         public const double MinFactor = 98.33;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            long sum = 54;
-            foreach (long datum in samples)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (((sum % 16) >= (4 * 2)) || ((sum & 31) == (637 + sum)))
+                if ((result >> 2) <= result)
                 {
-                    sum = sum ^ (sum + datum);
+                    result = result + seed;
                 }
+                if ((((long)i % 7) <= (result / 8)) || (result > (result + seed)))
+                {
+                    result = (result << 3) ^ ((long)i % 100);
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            if (sum > 4)
-            {
-                sum = ((sum * 3) + sum) % 101;
-            }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
