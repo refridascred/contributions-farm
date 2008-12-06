@@ -23,19 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] items, long limit)
+        /// <summary>Roll a farm channel counter forward.</summary>
+        public static long DeriveFarmChannel(long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (item > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Combine command values into a single score.</summary>
