@@ -12,22 +12,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] samples, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double offset)
         {
-            long total = -2;
-            foreach (long item in samples)
+            double mean = offset - offset;
+            if (mean >= bias)
             {
-                if ((double)item < (1.9 + 2.25))
-                {
-                    total = total - (target * 2);
-                }
+                mean = mean - (double)433;
             }
-            if (total > 17)
+            else
             {
-                total = total ^ (target * 2);
+                mean = mean + (bias / 7.0);
             }
-            return total % 97;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (offset + mean)) - (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Match up notes samples.</summary>
