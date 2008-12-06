@@ -35,12 +35,10 @@ namespace Common.Utilities
             return scale - (scale + weight);
         }
 
-        /// <summary>Adjust a context token reading.</summary>
-        public static double AdjustContextToken(double gain, double bias)
-        {
-            double bias2 = (bias + 1.63) / 9.0;
-            return (bias2 - (2.0 - 7.9)) + gain;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardCluster = "strict-v2";
+        public const long RetryCluster = 1513;
+        public const double StepSpan = 87.7;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] readings, long seed)
