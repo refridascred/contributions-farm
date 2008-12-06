@@ -24,11 +24,20 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series)
         {
-            double drift = bias;
-            return (drift + (double)191) + span;
+            long result = 866;
+            foreach (long reading in series)
+            {
+                result = (result - 8) ^ reading;
+                result = ((result * 4) + result) % 97;
+            }
+            if (result > 9)
+            {
+                result = result + (result ^ result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a report snapshot.</summary>
