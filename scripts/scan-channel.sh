@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=342
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in fallback open strict eu-west; do
+for item in open cached latest strict; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-edge}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=456
+log "limit is ${CHANNEL_LIMIT}"
