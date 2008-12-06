@@ -1,14 +1,14 @@
 # Command notes
 
-The route report groups every context by farm.
-Keep account and counter names short and lowercase.
-Defaults for filter live in the config folder and can be overridden per environment.
+The channel helpers are pure functions, so they are safe to call from any thread.
+The metrics module keeps cluster values in sync with the stats cache.
 
-A stats that stays idle for too long is moved to the batch list.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Each report is validated before it reaches the farm queue.
+Each layout is validated before it reaches the githubfarm queue.
+Each channel is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Log every format change
-- Keep githubfarm values small
-- Document new buffer fields
+- Log every contributi change
+- Document new stats fields
+- Validate batches input early
