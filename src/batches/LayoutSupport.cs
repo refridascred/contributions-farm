@@ -28,18 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout window readings against a rule.</summary>
-        public static long MeasureLayoutWindowHits(long[] readings)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((item - (long)readings.Length) >= (item - matches)) || ((matches >> 5) > (item ^ item)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the command status values.</summary>
