@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            long mix = 803;
-            foreach (long datum in data)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((mix % 7) >= (mix >> 4))
-                {
-                    break;
-                }
-                mix = mix ^ (datum % 10);
+                total = (total ^ (offset << 3)) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return total;
         }
 
         /// <summary>Hold a checks info.</summary>
