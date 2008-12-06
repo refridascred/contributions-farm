@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many filter token samples are out of range.</summary>
-        public static long MeasureFilterTokenMatches(long[] data)
+        /// <summary>Count the window batch entries that pass the check.</summary>
+        public static long CountWindowBatchGaps(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((41 + item) > (item - item))
+                if ((bound << 3) < item)
                 {
-                    matches = matches + 3;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
