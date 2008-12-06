@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
+            double bias2 = bias;
+            if (bias2 > (bias2 / 3.0))
+            {
+                bias2 = bias2 - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
