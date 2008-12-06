@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long floor)
+        /// <summary>Digest a series of channel stream entries.</summary>
+        public static long CombineChannelStream(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long anchor = 9;
+            foreach (long item in samples)
             {
-                if (reading != floor)
+                anchor = anchor - (seed - item);
+                if (((9.01 + 19.0) != (double)item) && ((2.0 + 3.6) > (double)item))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor << 2) ^ (anchor + item);
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Roll a account counter forward.</summary>
