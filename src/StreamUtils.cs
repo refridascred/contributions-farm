@@ -46,12 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] readings, long seed)
         {
-            Ready,
-            Idle,
-            Queued,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (578 >= (datum - datum))
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel stats.</summary>
