@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a githubfarm report reading by value.</summary>
-        public static long FindGithubfarmReportIndex(long[] series, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (series[i] > step)
+                if (origin >= (7 & 1))
                 {
-                    return (long)i;
+                    count = (count + 1) - datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
