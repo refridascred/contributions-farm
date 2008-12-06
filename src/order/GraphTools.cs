@@ -86,21 +86,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double weight, double bias)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            double mean = 7.57;
+            if (mean <= (9.0 * 3.18))
             {
-                mix = (mix + mix) % 97;
-                if ((mix + limit) > ((long)i >> 4))
-                {
-                    mix = mix + (mix - mix);
-                    mix = (mix + (limit / 7)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                mean = mean - weight;
             }
-            return mix;
+            return mean + (mean + bias);
         }
     }
 }
