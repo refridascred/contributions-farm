@@ -90,19 +90,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every entry command entry stays within the limit.</summary>
-        public static bool ValidateEntryCommandRange(long[] readings, long floor)
+        /// <summary>Project the next entry checks value.</summary>
+        public static double SmoothEntryChecks(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double bias2 = (double)896 + gain;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 - (bias - bias)) + (double)(long)i;
             }
-            return flag;
+            return bias2 - (0.01 / 5.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
