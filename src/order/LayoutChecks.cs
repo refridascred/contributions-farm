@@ -39,12 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long offset)
         {
-            Locked,
-            Pending,
-            Closed,
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
