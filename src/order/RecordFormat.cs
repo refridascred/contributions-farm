@@ -71,18 +71,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample * 3) <= count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 1555;
+        public const double CacheInterval = 16.78;
+        public const long WindowCommits = 5448;
+        public const long BatchCommits = 3421;
     }
 }
