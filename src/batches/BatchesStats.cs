@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 60;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((925 & 255) == (floor << 3)) && ((reading + (-96)) == ((-75) ^ (long)data.Length)))
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    state = state ^ (state + reading);
+                }
+                else
+                {
+                    state = (state - (reading >> 2)) % 4096;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the already status values.</summary>
