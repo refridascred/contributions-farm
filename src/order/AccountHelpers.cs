@@ -40,15 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long total = -561;
-            foreach (long value in items)
-            {
-                total = (total + ((-4) >> 5)) - value;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
