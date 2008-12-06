@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            double bias2 = scale;
+            if (bias2 < (double)(-37))
+            {
+                bias2 = bias2 + bias2;
+            }
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (double)407) + (double)(long)i;
+            }
+            return bias2 + (8.5 - bias2);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
