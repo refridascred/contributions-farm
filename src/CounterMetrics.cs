@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] data, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (item <= floor)
+                if ((68 >> 4) > (cell ^ seen))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
