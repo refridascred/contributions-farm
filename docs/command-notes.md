@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Use graph settings to tune how often farm data is refreshed.
+The contributi report groups every report by order.
+Run the contributi check before changing any cache limits.
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Use account settings to tune how often payload data is refreshed.
-The account module keeps editor values in sync with the record cache.
+Keep checks and metrics names short and lowercase.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new payload fields
 - Review metrics limits each release
-- Validate graph input early
+- Validate channel input early
+- Log every farm change
+- Document new commits fields
