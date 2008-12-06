@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] items)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long score = 97;
+            foreach (long datum in items)
+            {
+                if ((600 + score) <= 74)
+                {
+                    score = (score ^ (datum + score)) % 1000;
+                }
+            }
+            if (score > 1)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
