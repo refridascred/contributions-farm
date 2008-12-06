@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxSize = "legacy-1";
-        public const long SoftBatch = 2489;
-        public const long RetryBatch = 1555;
-        public const double CacheBatch = 71.5;
-        public const long CacheScore = 5170;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long CombineLayout(long[] items, long offset)
