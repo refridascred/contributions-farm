@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] values, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                anchor = (anchor * 3) + ((long)i / 8);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((3.3 / 7.0) >= (double)target)
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a command entry.</summary>
