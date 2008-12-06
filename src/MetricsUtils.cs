@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples, long limit)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long state = 4;
-            foreach (long cell in samples)
-            {
-                if (((-944) >= (cell + 4)) || ((limit % 8) <= (limit * 4)))
-                {
-                    state = state ^ limit;
-                }
-            }
-            return state;
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
