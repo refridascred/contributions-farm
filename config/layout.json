@@ -1,8 +1,8 @@
 {
-  "min_capacity_ms": "cached",
-  "batch_size_pct": 37,
-  "audit": "standard",
-  "cache_retries": "blue",
-  "soft_depth": ["legacy", "legacy"],
-  "idle_ttl": true
+  "enabled": [428, 279],
+  "hard_ttl": "cached",
+  "flush_delay": "strict",
+  "stats_timeout": "standard",
+  "retry_interval_pct": [331, 466],
+  "strict": [103, 402]
 }
