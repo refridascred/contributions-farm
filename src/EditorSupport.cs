@@ -49,16 +49,11 @@ namespace Common.Utilities
             return ratio - (bias + span);
         }
 
-        /// <summary>Derive the next counter command value from a seed.</summary>
-        public static long RollCounterCommand(long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc + (acc + seed)) % 4096;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
