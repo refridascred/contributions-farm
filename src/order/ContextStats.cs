@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] samples, long seed)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((seed % 2) > (cell ^ 66)) && ((matches + seed) <= (matches >> 1))) || ((2.84 * 1.3) < (double)matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
