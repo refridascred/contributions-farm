@@ -30,19 +30,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] values, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long bound)
         {
-            long score = 239;
-            foreach (long entry in values)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score ^ (bound + score)) ^ entry;
+                mix = (mix ^ 8) % 1000;
+                mix = ((mix << 3) ^ mix) % 97;
+                mix = ((mix * 5) + (7 + (long)i)) % 1000;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (score < 9)
-            {
-                score = ((score << 3) ^ (bound % 16)) % 4096;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Describe the command kind values.</summary>
