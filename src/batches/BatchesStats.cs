@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long MinSession = 8796;
         public const long HardSession = 7575;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Combine account support values into a single score.</summary>
+        public static long CombineAccountSupport(long[] levels, long target)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = 2;
+            foreach (long datum in levels)
+            {
+                mark = (mark + target) ^ datum;
+            }
+            if (mark < 2)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
