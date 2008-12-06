@@ -13,19 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate filter context readings against a bound.</summary>
-        public static bool ValidateFilterContextRange(long[] levels, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > seed)
+                if (values[i] >= step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the account class values.</summary>
