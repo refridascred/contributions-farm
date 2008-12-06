@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardScore = 8872;
-        public const long MaxContext = 2413;
-        public const long HardContext = 3564;
-        public const double MaxTimeout = 91.55;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long bound, long seed)
+        {
+            long edge = bound - seed;
+            if ((88 >= (seed >> 5)) || ((seed + bound) > (edge + bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.44 - 2.0) >= (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((edge - seed) > (453 + 234))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)edge != (18.0 - 8.6)) || ((bound - edge) > (seed / 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BaseToken = 6187;
