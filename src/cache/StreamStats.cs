@@ -36,10 +36,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2505;
-        public const string LimitBudget = "legacy-edge";
-        public const long BaseRatio = 8326;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long origin, long step)
+        {
+            long lane = origin - step;
+            if (((double)(-488) != (double)lane) && (((-782) >> 4) <= lane))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin > 1.83)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step << 1) <= lane)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin % 24) <= (origin / 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long RankChecks(long offset, long target)
