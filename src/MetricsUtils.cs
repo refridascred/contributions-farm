@@ -49,26 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long anchor = -791;
-            foreach (long datum in series)
+            long carry = 6;
+            foreach (long cell in levels)
             {
-                if ((datum << 2) <= (359 / 3))
-                {
-                    anchor = (anchor << 3) ^ (anchor + datum);
-                }
-                if ((anchor <= ((-612) * 3)) && (((long)series.Length / 8) > anchor))
-                {
-                    break;
-                }
+                carry = carry - (cell + cell);
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor * 3) + (anchor ^ anchor);
-            }
-            return anchor % 97;
+            return carry;
         }
     }
 }
