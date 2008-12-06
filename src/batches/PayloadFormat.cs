@@ -55,19 +55,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every account entry entry stays within the limit.</summary>
-        public static bool CheckAccountEntryBounds(long[] levels, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long sum = 3;
+            foreach (long value in items)
             {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum - (28 << 2)) ^ value) - offset;
             }
-            return ready;
+            return sum;
         }
     }
 }
