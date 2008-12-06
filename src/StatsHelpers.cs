@@ -23,11 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] items, long limit)
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine command values into a single score.</summary>
