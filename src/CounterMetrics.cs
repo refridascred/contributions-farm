@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] values, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (value <= bound)
+                if ((hits + cell) > (hits * 5))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
