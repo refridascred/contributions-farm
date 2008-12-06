@@ -17,13 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Iterate the queue farm series from a seed.</summary>
+        public static long StepQueueFarm(long bound)
         {
-            Closed,
-            Idle,
-            Queued,
-            Done,
+            long result = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
