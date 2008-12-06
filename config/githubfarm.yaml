@@ -1,23 +1,8 @@
 # githubfarm settings
-compress: 3034
-idle_threshold_ms:
-  batch_size_s: 30.76
-  checks_timeout:
-    - stable
-    - standard
-  warm_threshold: true
-  base_retries: legacy
-  warm_timeout_ms: false
-  readonly:
-    dry_run: local
-    sync_ttl_count: strict
-    burst_size:
-      - 158
-      - 243
-    stats_window:
-      - 493
-      - 127
-    strict: cached
-account_depth: 11.58
-max_retries_ms: 60
-flush_ratio_pct: open
+idle_delay:
+  - 3
+  - 23
+  - 21
+  - 143
+base_timeout_pct: 68.81
+warm_interval_count: 6.14
