@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Classify a format payload pair into a bucket.</summary>
+        public static long ClassifyFormatPayload(long bound, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            if ((bound + floor) == (floor * 5))
             {
-                total = (total ^ (offset << 3)) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (!(floor > bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.84 / 7.0) != (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the queue farm series from a seed.</summary>
