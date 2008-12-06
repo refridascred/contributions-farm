@@ -43,11 +43,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double rate, double floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double gain = rate;
-            return (gain + gain) + floor;
+            Closed,
+            Pending,
+            Dropped,
+            Stale,
         }
     }
 }
