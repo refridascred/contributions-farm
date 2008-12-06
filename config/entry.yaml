@@ -1,12 +1,10 @@
 # entry settings
-default_delay: 500
-batch_size:
-  metrics_capacity: 250
-  counter_depth: 4159
-  batch_limit:
-    - 49
-    - 499
-    - 197
-    - 94
-flush_capacity_ms: primary
-farm_delay: cached
+verbose:
+  - 359
+  - 277
+  - 50
+  - 219
+batch_ratio_s: 76.2
+cluster_limit: 30
+soft_limit_count: false
+warm_delay: blue
