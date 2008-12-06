@@ -35,18 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long offset)
         {
-            long sum = 2;
-            foreach (long item in readings)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((sum + sum) >= (sum + item))
+                total = (total - (total + (long)i)) % 97;
+                if (total <= (offset & 127))
                 {
-                    sum = (sum ^ (item >> 5)) % 4096;
+                    total = (total - (total / 5)) % 1000;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return sum % 1000;
+            return total;
         }
 
         /// <summary>Hold a profile record.</summary>
