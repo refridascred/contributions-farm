@@ -1,10 +1,11 @@
 # Command notes
 
-Each batches is validated before it reaches the metric queue.
-Keep stream and cache names short and lowercase.
+Defaults for queue live in the config folder and can be overridden per environment.
+Use command settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Validate payload input early
-- Keep support values small
+- Keep contributi values small
+- Document new already fields
+- Review cluster limits each release
+- Validate cache input early
