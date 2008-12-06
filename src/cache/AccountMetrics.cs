@@ -21,22 +21,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] levels, long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((bound * 5) <= (bound ^ bound))
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
