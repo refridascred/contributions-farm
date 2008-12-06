@@ -1,17 +1,12 @@
 # route settings
-max_interval_pct:
-  - 242
-  - 284
-  - 352
-  - 128
-default_ratio_pct: 65.6
-dry_run:
-  warm_retries_ms: true
-  default_depth: 9821
-  enabled:
-    compress: 74
-    default_depth_count: 3570
-    min_capacity_ms: eu-west
-    default_depth_ms: strict
-  default_ttl: legacy
-batches_limit: 84.58
+compress: 68.35
+burst_delay_pct: 60
+strict: false
+report_retries: true
+batch_ratio_ms:
+  default_window_pct: fallback
+  persist:
+    - 361
+    - 473
+  batch_depth_pct: 2.23
+hard_threshold: true
