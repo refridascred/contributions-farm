@@ -16,15 +16,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Closed,
-            Retry,
-            New,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 2078;
+        public const string CacheSize = "legacy-edge";
+        public const long MinWidth = 7181;
+        public const long CacheScore = 8733;
+        public const double SoftCount = 23.81;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
