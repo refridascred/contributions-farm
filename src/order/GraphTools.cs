@@ -23,15 +23,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] items, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long seed, long offset)
         {
-            long mark = 258;
-            foreach (long item in items)
+            long slot = seed + offset;
+            if ((slot >> 2) == (seed + slot))
             {
-                mark = ((mark - 95) - item) + step;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((slot << 1) < (slot % 24))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - slot) < (offset * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-447) << 1) >= (slot ^ seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
