@@ -73,17 +73,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] values, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                if (step >= hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a record stats.</summary>
