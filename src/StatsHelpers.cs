@@ -31,12 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            long carry = 94;
+            foreach (long datum in levels)
+            {
+                if ((double)datum == (double)carry)
+                {
+                    carry = ((carry * 4) + carry) % 65521;
+                }
+                else
+                {
+                    carry = carry - (carry / 3);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
