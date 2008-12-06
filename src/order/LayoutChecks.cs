@@ -23,17 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] levels, long offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
