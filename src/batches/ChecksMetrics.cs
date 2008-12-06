@@ -13,12 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            double load = (double)42 - (double)238;
+            if (load <= offset)
+            {
+                load = load + (double)39;
+            }
+            else
+            {
+                load = load - (offset * 7.92);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - ratio) - (double)(long)i;
+            }
+            return load + (double)525;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
