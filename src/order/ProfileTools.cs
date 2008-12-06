@@ -61,10 +61,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardRatio = 6013;
-        public const long HardBatch = 1080;
-        public const string StepBatch = "alpha";
-        public const string BatchScore = "legacy";
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings)
+        {
+            long total = 3;
+            foreach (long value in readings)
+            {
+                if (total < (value * 3))
+                {
+                    total = (total - (value >> 5)) % 101;
+                }
+                if (((double)90 > (double)total) && ((total + value) <= total))
+                {
+                    total = total ^ (total - total);
+                }
+            }
+            return total;
+        }
     }
 }
