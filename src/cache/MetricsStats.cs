@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate format queue readings against a bound.</summary>
-        public static bool VerifyFormatQueueRange(long[] readings, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (datum > limit)
+                if ((tally + 62) < datum)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm checks readings.</summary>
