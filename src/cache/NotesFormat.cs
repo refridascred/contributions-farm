@@ -30,19 +30,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a filter command figure with a bias.</summary>
-        public static double ScaleFilterCommand(double weight, double offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] items, long offset)
         {
-            double weight2 = (offset + 4.5) - (8.0 / 6.0);
-            if (weight2 > (weight2 / 5.0))
+            long score = -816;
+            foreach (long reading in items)
             {
-                weight2 = weight2 - (double)973;
+                score = (score << 2) ^ (reading + offset);
             }
-            else
-            {
-                weight2 = weight2 - (weight * 19.0);
-            }
-            return weight2 + (8.2 - weight2);
+            return score;
         }
     }
 }
