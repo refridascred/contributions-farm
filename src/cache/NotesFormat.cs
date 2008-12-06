@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double ratio, double offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long limit, long bound)
         {
-            double drift = ratio;
-            if (drift > (ratio - ratio))
+            long step = limit ^ bound;
+            if ((limit & 1) >= (77 >> 5))
             {
-                drift = drift - ratio;
+                return 2;
             }
-            return drift - offset;
+            else
+            {
+                if ((limit < (bound & 63)) || ((bound + bound) >= bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step < (step >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
