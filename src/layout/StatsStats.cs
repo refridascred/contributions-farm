@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 2747;
         public const long HardTools = 6056;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] series)
         {
-            public bool Limit { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long total = 4;
+            foreach (long item in series)
+            {
+                total = ((total ^ (total & 255)) % 101) ^ item;
+                if (((6.0 - 5.0) >= (double)(long)series.Length) && ((730 - (-8)) == (total + total)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
