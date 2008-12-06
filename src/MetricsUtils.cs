@@ -55,18 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] samples)
+        /// <summary>Audit contributi graph readings against a rule.</summary>
+        public static long MeasureContributiGraphGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (datum > count)
+                if ((double)matches == (5.3 - 9.0))
                 {
-                    count = count + 1;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
