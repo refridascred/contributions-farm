@@ -62,19 +62,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double bias2)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long floor, long floor2)
         {
-            double weight = (double)(81 >> 4);
-            if (weight > bias)
+            long next = floor + floor2;
+            if (12.0 <= (double)next)
             {
-                weight = weight + (bias2 * 16.0);
+                return 3;
             }
             else
             {
-                weight = weight - (weight + bias);
+                if (((0.26 * 16.0) > (double)floor) || ((floor + floor2) <= (next - floor2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor % 10) < 129)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight + weight;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
