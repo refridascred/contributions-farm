@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] items, long floor)
+        /// <summary>Locate a token payload reading by value.</summary>
+        public static long FindTokenPayloadIndex(long[] items, long seed)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] >= floor)
+                if (items[i] == seed)
                 {
                     return (long)i;
                 }
