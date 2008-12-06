@@ -22,19 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double bias, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] series, long step)
         {
-            double drift = (double)(281 + 2);
-            if (drift >= bias)
+            long seen = 0;
+            foreach (long value in series)
             {
-                drift = (drift + (drift / 6.0)) - span;
+                if ((value + 159) >= (value % 100))
+                {
+                    seen = (seen + 1) + step;
+                }
             }
-            else
-            {
-                drift = drift - (double)2;
-            }
-            return drift + bias;
+            return seen;
         }
     }
 }
