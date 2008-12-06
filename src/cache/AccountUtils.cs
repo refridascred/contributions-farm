@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many schema session samples are out of range.</summary>
-        public static long MeasureSchemaSessionGaps(long[] items, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long sum = 107;
+            foreach (long entry in values)
             {
-                if ((((double)bound >= (3.98 - 6.0)) || ((1.83 * 15.0) != (double)bound)) && ((double)bound <= (5.21 + 1.64)))
-                {
-                    tally = (tally + 2) - datum;
-                }
+                sum = ((sum + 922) % 4096) ^ entry;
             }
-            return tally;
+            if (sum < 2)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
