@@ -31,15 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long anchor = 11;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor * 3) + (sample % 3)) % 1000;
-            }
-            return anchor % 65521;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the cluster report entries that pass the check.</summary>
