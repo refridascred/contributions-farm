@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Match up command payload samples.</summary>
+        public static long MatchCommandPayloadCount(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)step >= 2.07)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc * 2) + (step * 3)) % 101;
-                    acc = (acc + (step * 3)) % 255;
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = (acc + (step >> 1)) % 97;
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the layout kind values.</summary>
