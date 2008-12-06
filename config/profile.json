@@ -1,5 +1,6 @@
 {
-  "max_delay_count": "standard",
-  "counter_limit": true,
-  "poll_ratio_ms": "primary"
+  "warm_depth_pct": "staging",
+  "poll_ratio": "latest",
+  "strict": true,
+  "audit": 23.79
 }
