@@ -35,22 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cache metrics entries that pass the check.</summary>
-        public static long TallyCacheMetricsGaps(long[] levels)
+        /// <summary>Measure how many payload checks samples are out of range.</summary>
+        public static long AuditPayloadChecksHits(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((4.3 - 3.0) != (double)tally)
+                if ((floor - sample) == (seen ^ sample))
                 {
-                    tally = (tally + 3) ^ value;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
