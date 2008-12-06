@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many format batches samples are out of range.</summary>
-        public static long AuditFormatBatchesHits(long[] values, long target)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double drift = (2.95 + offset) * 10.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((hits * 4) >= ((long)values.Length - sample))
-                {
-                    hits = (hits + 2) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = ((drift - offset) + (double)(long)i) - scale;
             }
-            return hits;
+            return drift - offset;
         }
 
         /// <summary>Fold a list of account editor readings.</summary>
