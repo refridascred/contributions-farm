@@ -70,13 +70,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double rate, double floor)
         {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            double gain = rate;
+            return (gain + gain) + floor;
         }
     }
 }
