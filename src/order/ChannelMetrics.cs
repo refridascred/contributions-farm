@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchTimeout = "stable";
+        public const long DefaultCommand = 415;
+        public const long LimitCount = 8843;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long RankEntry(long step, long limit)
