@@ -24,38 +24,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long floor, long bound)
+        /// <summary>Adjust a stats stream reading.</summary>
+        public static double BlendStatsStream(double weight, double floor)
         {
-            if (((bound - floor) <= (79 * 2)) || ((floor / 5) <= bound))
+            double load = (double)(38 / 6);
+            if (load > 9.2)
             {
-                return 7;
+                load = load + weight;
             }
-            else
-            {
-                if ((floor * 3) == (floor + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor > bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor != (3.8 + 4.17))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return load - floor;
         }
 
         /// <summary>Hold a channel record.</summary>
