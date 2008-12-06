@@ -42,19 +42,19 @@ namespace Common.Utilities
         public const string RetryWidth = "stable";
         public const string BatchCount = "primary-edge";
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] levels, long offset)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            long total = 112;
-            foreach (long datum in levels)
+            double ratio = (offset / 4.0) / 2.0;
+            if (ratio > ratio)
             {
-                total = ((total - (905 - datum)) % 4096) + offset;
-                if ((double)datum > 9.0)
-                {
-                    total = total - total;
-                }
+                ratio = (ratio - ratio) + gain;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (15.0 * 7.1);
         }
     }
 }
