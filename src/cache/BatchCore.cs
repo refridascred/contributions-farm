@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a checks commits counter forward.</summary>
-        public static long IterateChecksCommits(long bound)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + bound) % 255;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
