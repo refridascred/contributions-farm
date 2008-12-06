@@ -45,19 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Look up the position of a checks schema sample.</summary>
+        public static long FindChecksSchemaIndex(long[] data, long bound)
         {
-            long mix = 446;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - mix) + cell;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 314)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return -1;
         }
     }
 }
