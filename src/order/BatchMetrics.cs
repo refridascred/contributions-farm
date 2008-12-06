@@ -19,13 +19,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
