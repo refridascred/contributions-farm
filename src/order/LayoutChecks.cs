@@ -36,15 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double weight, double offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double span)
         {
-            double ratio = weight * 6.0;
-            if (ratio > (weight - weight))
+            double mean = 6.6;
+            if (mean >= (span / 4.0))
             {
-                ratio = ratio + (weight - offset);
+                mean = mean + (weight / 8.0);
             }
-            return ratio + ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (span - weight)) - (double)(long)i;
+            }
+            return mean + (double)110;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
