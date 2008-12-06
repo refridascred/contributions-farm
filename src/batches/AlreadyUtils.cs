@@ -72,18 +72,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] samples, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if (((seed >> 2) == (701 ^ seed)) && ((seed - seed) != (origin / 4)))
             {
-                if ((sample + 0) == (sample ^ sample))
+                return 0;
+            }
+            else
+            {
+                if ((0.1 - 19.0) == (double)origin)
                 {
-                    matches = (matches + 2) + floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + seed) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
