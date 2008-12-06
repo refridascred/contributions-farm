@@ -28,13 +28,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double span)
         {
-            Queued,
-            Closed,
-            Locked,
-            Retry,
+            double drift = bias;
+            return (drift + (double)191) + span;
         }
 
         /// <summary>Hold a report snapshot.</summary>
