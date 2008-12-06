@@ -57,18 +57,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] readings, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double bias)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double drift = weight;
+            if (drift <= (double)70)
             {
-                if ((1.87 - 9.6) >= (double)count)
-                {
-                    count = ((count + 1) ^ reading) + step;
-                }
+                drift = (drift - 0.62) - bias;
             }
-            return count;
+            return drift - (drift / 2.0);
         }
 
         /// <summary>Describe the buffer mode values.</summary>
