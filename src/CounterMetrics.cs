@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] data, long floor)
         {
-            long acc = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (((long)values.Length + acc) >= value)
+                if (item <= floor)
                 {
-                    acc = (acc ^ (acc / 9)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Project the next payload value.</summary>
