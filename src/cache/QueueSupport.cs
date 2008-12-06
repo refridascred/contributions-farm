@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] values, long floor)
-        {
-            long anchor = -31;
-            foreach (long cell in values)
-            {
-                if (anchor <= (anchor % 64))
-                {
-                    anchor = ((anchor + 2) % 255) - floor;
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
-                if (((-132) * 5) <= cell)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchSpan = 61.83;
+        public const double StepCounter = 98.26;
+        public const string BaseCounter = "latest-v2";
+        public const double MinBudget = 77.6;
+        public const double CacheCounter = 88.55;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BatchInterval = 85.8;
