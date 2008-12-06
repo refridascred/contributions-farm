@@ -1,4 +1,5 @@
 # support settings
-counter_delay: 3296
-cache_delay: true
-default_ratio_s: 4792
+audit: fallback
+profile_window: standard
+buffer_capacity: 85.65
+batch_capacity_s: 4982
