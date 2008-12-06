@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] readings, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)limit <= (2.6 - 6.0))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            double scale = (double)330 * 8.3;
+            return (scale + (offset + 1.0)) + bias;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
