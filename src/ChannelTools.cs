@@ -32,14 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Draft,
+            Closed,
             Done,
-            Queued,
-            Paused,
-            Synced,
+            Pending,
+            Ready,
+            Idle,
         }
     }
 }
