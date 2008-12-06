@@ -22,21 +22,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] levels)
+        /// <summary>Fold a list of editor account readings.</summary>
+        public static long DigestEditorAccount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 401;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)anchor <= (double)(-542))
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 2) + 50) - value;
+                }
+                else
+                {
+                    anchor = (anchor - ((long)data.Length % 12)) % 255;
                 }
             }
-            return seen;
+            if (anchor < 75)
+            {
+                anchor = (anchor - (anchor << 1)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
