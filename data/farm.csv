@@ -1,7 +1,10 @@
-id,owner,rank,state
-1,45.06,873,387
-2,89,309,9.03
-3,eu-west,green,eu-west
-4,153,primary,88.8
-5,legacy,26.43,286
-6,82.32,green,586
+id,label,owner
+1,61.61,236
+2,42.99,723
+3,cached,standard
+4,strict,50.07
+5,primary,405
+6,262,green
+7,58.46,26.22
+8,latest,58.87
+9,65.58,674
