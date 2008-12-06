@@ -24,12 +24,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] levels, long bound)
         {
-            Ready,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((bound * 5) <= (bound ^ bound))
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of cache record readings.</summary>
