@@ -1,6 +1,11 @@
-id,label,owner
-1,staging,21.53
-2,standard,100
-3,89.87,819
-4,fallback,394
-5,790,local
+id,active,count,label,token
+1,68.71,98.83,53.93,stable
+2,816,38.43,681,653
+3,32.53,958,487,433
+4,79.96,7.61,551,strict
+5,eu-west,standard,84,620
+6,89.11,180,98.8,616
+7,242,green,blue,87
+8,153,52.43,standard,303
+9,962,22.31,47.82,505
+10,340,7.93,580,459
