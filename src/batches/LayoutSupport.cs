@@ -44,18 +44,17 @@ namespace Common.Utilities
         public const long BurstLevel = 5998;
         public const long HardQueue = 5755;
 
-        /// <summary>Count the contributi graph entries that pass the check.</summary>
-        public static long CountContributiGraphHits(long[] values, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)reading > (15.0 + 5.8))
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
                 {
-                    tally = (tally + 1) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
