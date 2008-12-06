@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitDepth = 6230;
-        public const long BaseAccount = 4811;
-        public const long WindowCount = 6246;
-        public const string MaxAccount = "cached-v2";
-        public const double WindowAccount = 92.52;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long origin, long offset)
+        {
+            if ((offset - offset) > origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset / 6) > (offset / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin / 8) < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin < ((-6) & 255))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] values, long offset)
