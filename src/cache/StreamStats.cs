@@ -16,22 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 9536;
+        public const long BaseTimeout = 8425;
+        public const long IdleWidth = 4427;
+        public const string DefaultRatio = "standard-1";
+        public const long MaxLevel = 5316;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
