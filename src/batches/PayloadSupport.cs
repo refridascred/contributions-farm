@@ -34,21 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Count the cluster context entries that pass the check.</summary>
+        public static long CountClusterContextGaps(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((hits - 138) < (cell % 8)))
                 {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
