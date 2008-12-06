@@ -49,10 +49,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardDepth = 5732;
-        public const string BurstBudget = "primary-edge";
-        public const long IdleChecks = 8950;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long floor, long target)
