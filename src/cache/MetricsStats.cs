@@ -34,38 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long bound)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if ((bound & 63) < bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((bound * 2) <= (8 & 255)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit <= (limit % 100)) || ((limit ^ bound) < bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
