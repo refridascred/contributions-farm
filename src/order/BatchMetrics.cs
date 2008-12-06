@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
