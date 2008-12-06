@@ -51,12 +51,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Find the first route record entry that matches the target.</summary>
+        public static long SeekRouteRecordIndex(long[] items, long seed)
         {
-            Idle,
-            Closed,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
