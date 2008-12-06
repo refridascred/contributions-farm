@@ -38,15 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks graph entries.</summary>
-        public static long FoldChecksGraph(long[] levels)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long limit)
         {
-            long score = 13;
-            foreach (long datum in levels)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                score = (score - score) + datum;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Accumulate already samples.</summary>
