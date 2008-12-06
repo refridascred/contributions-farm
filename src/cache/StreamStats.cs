@@ -23,38 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long bound, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] samples, long floor)
         {
-            if ((4.8 / 9.0) >= (double)limit)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound + bound) >= bound) && ((bound + 6) < (limit << 2)))
+                if (((double)seen == (5.0 / 2.0)) && ((seen << 3) <= (floor ^ seen)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + bound) <= (bound + limit)) || ((0.14 - 7.43) > (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((4 + 3) <= (bound * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 3) + sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a order stats.</summary>
