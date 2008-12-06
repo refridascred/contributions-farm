@@ -26,22 +26,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] series)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (entry >= (65 + tally))
+                if (datum != bound)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
