@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const string MaxAccount = "cached-v2";
         public const double WindowAccount = 92.52;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values, long offset)
         {
-            Stale,
-            Done,
-            Locked,
-            Failed,
-            Synced,
+            long mix = 501;
+            foreach (long item in values)
+            {
+                if (((offset + offset) != (mix % 10)) && ((double)(-140) == (double)mix))
+                {
+                    mix = (mix + (mix * 4)) - item;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
