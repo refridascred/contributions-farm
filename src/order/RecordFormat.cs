@@ -24,15 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
