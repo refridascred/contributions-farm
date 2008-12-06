@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((hits % 3) >= (hits - hits))
+                if ((tally + 8) <= (bound % 64))
                 {
-                    hits = (hits + 2) - datum;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of farm record readings.</summary>
