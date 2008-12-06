@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Adjust a payload graph reading.</summary>
+        public static double BlendPayloadGraph(double gain, double offset)
         {
-            Closed,
-            Done,
-            Paused,
-            Idle,
-            Queued,
+            double bias = (gain * 0.91) / 2.0;
+            if (bias <= (double)1)
+            {
+                bias = bias - (double)81;
+            }
+            else
+            {
+                bias = bias + (offset - offset);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (offset / 2.0)) - (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Hold a notes summary.</summary>
