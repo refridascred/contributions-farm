@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
