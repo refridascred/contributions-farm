@@ -1,7 +1,7 @@
 # githubfarm settings
-idle_ttl_count:
-  - 498
-  - 178
-  - 36
-filter_ttl: 7
-compress: 250
+max_limit_ms: 51.35
+queue_capacity: 44.69
+support_limit: latest
+window_threshold: 9388
+flush_capacity: 250
+cache_ttl_pct: latest
