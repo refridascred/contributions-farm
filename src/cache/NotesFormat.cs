@@ -28,11 +28,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseScore = "primary-v2";
-        public const long StepFarm = 197;
-        public const string WindowSize = "latest-1";
-        public const string SoftTimeout = "legacy";
-        public const long RetryFarm = 4963;
+        /// <summary>Fold a list of counter stream readings.</summary>
+        public static long TotalCounterStream(long[] series)
+        {
+            long mix = 17;
+            foreach (long sample in series)
+            {
+                mix = (mix + (98 + sample)) % 97;
+            }
+            if (mix < 690)
+            {
+                mix = ((mix * 5) + mix) % 4096;
+            }
+            return mix;
+        }
     }
 }
