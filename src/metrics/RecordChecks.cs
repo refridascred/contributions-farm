@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] samples, long offset)
         {
-            long mix = 945;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix << 3) ^ (mix ^ mix)) - entry;
+                if ((seen > cell) && ((706 * 2) < (seen & 127)))
+                {
+                    seen = (seen + 1) + offset;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
