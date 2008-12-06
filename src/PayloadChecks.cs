@@ -13,20 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long score = 843;
+            foreach (long sample in readings)
             {
-                if (!(sum >= (origin % 97)))
-                {
-                    sum = ((sum * 2) + (origin * 3)) % 101;
-                    sum = sum ^ origin;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                score = ((score * 4) + (sample % 3)) % 65521;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Describe the layout state values.</summary>
