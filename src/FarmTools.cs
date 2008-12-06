@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepRatio = 11.98;
-        public const long MaxLevel = 4203;
-        public const long WindowFarm = 3692;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long offset, long limit)
+        {
+            long diff = offset ^ limit;
+            if (((double)diff >= (9.29 * 4.0)) || ((offset & 63) >= (264 + diff)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) < (746 % 100))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
