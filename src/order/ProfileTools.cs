@@ -47,22 +47,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long acc = 91;
+            foreach (long cell in readings)
             {
-                if (value > (count ^ value))
+                if ((acc - (long)readings.Length) < (cell & 7))
                 {
-                    count = count + 2;
+                    acc = (acc * 4) + 30;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc * 2) + (cell / 5);
+                acc = (acc - ((-908) << 1)) % 65521;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of order readings.</summary>
