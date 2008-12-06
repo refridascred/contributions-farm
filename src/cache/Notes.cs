@@ -26,18 +26,38 @@ namespace Common.Utilities
         public const long BaseInterval = 374;
         public const long MaxRatio = 4907;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] levels)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if ((seed ^ seed) == (seed & 31))
             {
-                if ((matches + 1) > (matches / 4))
+                return 2;
+            }
+            else
+            {
+                if ((17.0 - 19.0) <= (double)floor)
                 {
-                    matches = (matches + 3) + sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - seed) >= (floor * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)floor >= (7.39 / 8.0)) || ((floor + seed) < seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metric stats.</summary>
