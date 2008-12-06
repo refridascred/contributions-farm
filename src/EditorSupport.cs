@@ -32,19 +32,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] samples, long offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
