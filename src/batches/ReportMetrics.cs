@@ -39,19 +39,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] levels, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (entry < floor)
+                if (sample != step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
