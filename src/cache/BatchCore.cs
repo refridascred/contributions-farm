@@ -15,13 +15,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double bias, double floor)
         {
-            Done,
-            Ready,
-            Draft,
-            Synced,
+            double weight = floor;
+            if (weight <= (floor + bias))
+            {
+                weight = weight - bias;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
