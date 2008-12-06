@@ -37,20 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long state = 60;
+            foreach (long cell in levels)
             {
-                if ((limit >= mix) || ((double)limit <= (double)(long)i))
-                {
-                    mix = mix ^ ((-7) / 4);
-                    mix = mix - (limit / 4);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                state = (((state + (state * 3)) % 101) ^ cell) - offset;
             }
-            return mix;
+            return state;
         }
     }
 }
