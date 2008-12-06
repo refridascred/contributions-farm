@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 6187;
+        public const string CacheToken = "cached-1";
+        public const double LimitSize = 94.18;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long SeriesStats(long offset)
