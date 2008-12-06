@@ -1,11 +1,14 @@
 # Command notes
 
-The channel report groups every contributi by metrics.
-The token module keeps buffer values in sync with the stream cache.
+The route report groups every context by farm.
+Keep account and counter names short and lowercase.
+Defaults for filter live in the config folder and can be overridden per environment.
+
+A stats that stays idle for too long is moved to the batch list.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new support fields
-- Prefer record defaults
-- Review report limits each release
-- Validate buffer input early
+- Log every format change
+- Keep githubfarm values small
+- Document new buffer fields
