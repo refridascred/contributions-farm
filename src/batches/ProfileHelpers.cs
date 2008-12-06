@@ -48,12 +48,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Done,
-            Ready,
-            Locked,
+            Stale,
+            Pending,
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
