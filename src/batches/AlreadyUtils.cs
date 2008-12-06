@@ -50,14 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double bias, double floor)
         {
-            Active,
-            Locked,
-            Pending,
-            Paused,
-            Stale,
+            double bias2 = floor;
+            if (bias2 <= (10.0 + floor))
+            {
+                bias2 = (bias2 - (bias2 - bias2)) + bias;
+            }
+            else
+            {
+                bias2 = bias2 + (double)99;
+            }
+            return bias2 - (floor / 9.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
