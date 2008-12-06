@@ -1,5 +1,6 @@
 {
-  "persist": [228, 194, 498],
-  "flush_depth_s": "blue",
-  "sync_ttl": "stable"
+  "min_size_s": [22, 110, 165, 84],
+  "poll_delay_count": "cached",
+  "contributi_timeout": false,
+  "report_delay": 96.31
 }
