@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next commits cluster value.</summary>
-        public static double BlendCommitsCluster(double bias, double span)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            double ratio = span;
-            if (ratio > (double)902)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                ratio = (ratio + span) + bias;
+                anchor = (anchor * 3) + ((long)i / 8);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)5) - (double)(long)i;
-            }
-            return ratio + (double)53;
+            return anchor;
         }
 
         /// <summary>Hold a cluster summary.</summary>
