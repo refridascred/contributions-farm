@@ -39,21 +39,19 @@ namespace Common.Utilities
         public const long RetryCount = 5789;
         public const string SoftCount = "cached-edge";
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)(81 >> 4);
+            if (weight > bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + (bias2 * 16.0);
             }
-            return tally;
+            else
+            {
+                weight = weight - (weight + bias);
+            }
+            return weight + weight;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
