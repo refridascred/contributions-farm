@@ -102,12 +102,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
