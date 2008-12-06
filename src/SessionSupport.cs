@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] samples, long seed)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long sum = 90;
-            foreach (long entry in samples)
-            {
-                sum = ((sum - entry) % 65521) + seed;
-            }
-            return sum;
+            Idle,
+            Locked,
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
