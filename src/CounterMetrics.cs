@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] samples)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] values)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((68 >> 4) > (cell ^ seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
