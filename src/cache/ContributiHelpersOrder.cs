@@ -23,18 +23,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batches report readings against a rule.</summary>
-        public static long MeasureBatchesReportOutliers(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long score = 40;
+            foreach (long cell in levels)
             {
-                if ((double)item < (double)62)
-                {
-                    matches = matches + 3;
-                }
+                score = ((score << 2) ^ (cell - score)) % 97;
+                score = ((score * 5) + (score / 4)) % 65521;
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
