@@ -1,25 +1,28 @@
 # support settings
-base_capacity: fallback
-warm_threshold: 9144
-burst_ratio_pct:
-  readonly: blue
-  warm_depth_pct: false
+githubfarm_size: staging
+audit: 100
+idle_depth:
+  - staging
+  - fallback
+  - standard
+max_timeout_s:
+  retry_depth:
+    strict: edge
+    max_depth: true
+    enabled: true
+    default_depth_count: 38.87
+    burst_ratio_count: 61.58
+  dry_run: strict
+  strict: strict
+  verbose: true
   compress:
-    - 353
-    - 178
-    - 44
-  dry_run: 40
-  buffer_depth: 60
-  contributi_timeout: 3
-readonly:
-  cache_ttl_pct: green
-  verbose: 6841
-  hard_retries_ms:
-    poll_ttl: open
-    hard_threshold_s: true
-    base_capacity_ms: cached
-    burst_limit_pct:
-      - fallback
-      - local
-    poll_retries_count: staging
-  cache_timeout: 7604
+    - 194
+    - 217
+    - 8
+  retry_capacity_count:
+    - open
+    - stable
+    - legacy
+    - open
+channel_depth: false
+max_timeout: primary
