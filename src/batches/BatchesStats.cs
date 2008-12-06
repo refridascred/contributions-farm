@@ -37,25 +37,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long seed, long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            long edge = seed + limit;
-            if (edge < 742)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                total = (total + ((long)i & 127)) % 4096;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((seed >> 5) < limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the queue mode values.</summary>
