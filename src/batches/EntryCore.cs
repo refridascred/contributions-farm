@@ -48,19 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report graph counter forward.</summary>
-        public static long RollReportGraph(long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (32 < (acc & 7))
+                if (value <= floor)
                 {
-                    acc = ((acc << 2) ^ (bound - acc)) % 255;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
