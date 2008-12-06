@@ -1,15 +1,12 @@
 # support settings
-max_ttl_count: eu-west
-dry_run: 48
-session_size: fallback
-hard_threshold_pct: primary
-base_limit_s: 36
-warm_window_ms:
-  readonly: 7962
-  min_retries_count: local
-  retry_threshold: true
-  warm_interval: edge
-  max_ratio_s: 60
-  batch_capacity_ms:
-    - 117
-    - 368
+flush_window:
+  - blue
+  - stable
+  - cached
+  - eu-west
+sync_interval_s: 250
+warm_threshold_pct:
+  - 132
+  - 193
+  - 322
+  - 40
