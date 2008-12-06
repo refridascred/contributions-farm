@@ -20,14 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Retry,
-            Active,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheDepth = 75;
+        public const string IdleInterval = "stable-v2";
+        public const string RetryBudget = "local-1";
+        public const long MinLevel = 9739;
 
         /// <summary>Count the channel command entries that pass the check.</summary>
         public static long TallyChannelCommandHits(long[] series)
