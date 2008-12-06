@@ -1,5 +1,8 @@
 {
-  "default_threshold": [156, 261, 375],
-  "warm_interval_ms": "fallback",
-  "burst_capacity_count": 8074
+  "retry_size_ms": "latest",
+  "hard_retries_ms": "fallback",
+  "cluster_ratio": true,
+  "metric_timeout": "primary",
+  "burst_window": "strict",
+  "cache_retries": false
 }
