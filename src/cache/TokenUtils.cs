@@ -24,18 +24,12 @@ namespace Common.Utilities
             return bias2 + (8.5 - bias2);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] data)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((0.29 < (double)count) && ((double)entry > (double)4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
