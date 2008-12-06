@@ -35,18 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a metric cache sample.</summary>
-        public static long LocateMetricCacheIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryInterval = "fallback-edge";
+        public const long StepInterval = 3253;
+        public const long BaseRatio = 9292;
+        public const long BurstLevel = 5998;
+        public const long HardQueue = 5755;
 
         /// <summary>Adjust a session buffer reading.</summary>
         public static double AdjustSessionBuffer(double ratio, double bias)
