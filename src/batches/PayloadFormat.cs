@@ -34,11 +34,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultSpan = "stable-v2";
-        public const double BatchEntry = 19.58;
-        public const double DefaultEntry = 16.53;
-        public const long MinEntry = 2372;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Done,
+            Pending,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool GuardQueueRange(long[] series, long origin)
