@@ -32,12 +32,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double bias)
         {
-            New,
-            Paused,
-            Active,
+            double load = (5.06 * 4.69) + (weight / 6.0);
+            if (load > 2.8)
+            {
+                load = (load + 15.0) + bias;
+            }
+            return load + (weight + 6.25);
         }
     }
 }
