@@ -24,18 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] series)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((9 << 2) < (sample - sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
