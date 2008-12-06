@@ -27,18 +27,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Derive the next notes layout value from a seed.</summary>
+        public static long IterateNotesLayout(long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((4.09 / 6.0) != (double)datum))
+                total = ((total * 4) + (floor & 3)) % 97;
+                if ((floor < (floor ^ total)) || ((total + 731) < (6 + floor)))
                 {
-                    count = count + 2;
+                    total = total - (total % 100);
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
