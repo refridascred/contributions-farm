@@ -1,14 +1,15 @@
 # Command notes
 
-The graph module keeps counter values in sync with the githubfarm cache.
-Keep payload and order names short and lowercase.
-Use metrics settings to tune how often cluster data is refreshed.
+The notes report groups every record by filter.
+Keep filter and buffer names short and lowercase.
+Use metric settings to tune how often account data is refreshed.
 
-Use filter settings to tune how often tools data is refreshed.
-The checks module keeps record values in sync with the session cache.
+The stats module keeps channel values in sync with the graph cache.
+The window report groups every payload by graph.
 
 ## Guidelines
 
-- Validate cache input early
-- Keep tools values small
-- Document new cache fields
+- Document new account fields
+- Review batch limits each release
+- Prefer route defaults
+- Keep window values small
