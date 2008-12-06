@@ -72,11 +72,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 5371;
-        public const long BaseContributi = 6270;
-        public const long MinContributi = 9275;
-        public const string WindowContributi = "primary-edge";
+        /// <summary>Check that every entry command entry stays within the limit.</summary>
+        public static bool ValidateEntryCommandRange(long[] readings, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowEntry = 3975;
