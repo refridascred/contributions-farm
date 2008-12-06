@@ -76,12 +76,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            Retry,
+            Failed,
+            New,
+            Locked,
+            Closed,
         }
     }
 }
