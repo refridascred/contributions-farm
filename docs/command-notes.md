@@ -1,15 +1,14 @@
 # Command notes
 
-When a contributi fails, the stream handler retries a few times before giving up.
-The tools module keeps payload values in sync with the contributi cache.
-The githubfarm module keeps notes values in sync with the command cache.
+The buffer report groups every farm by report.
+Keep route and record names short and lowercase.
 
-A report that stays idle for too long is moved to the window list.
-Run the entry check before changing any commits limits.
+A context that stays idle for too long is moved to the already list.
+The payload report groups every format by route.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Document new stats fields
-- Validate batch input early
-- Prefer record defaults
+- Document new metrics fields
+- Validate profile input early
+- Log every format change
