@@ -34,18 +34,12 @@ namespace Common.Utilities
             return gain - (double)4;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 833;
+        public const long RetryFormat = 4550;
+        public const double CacheFormat = 76.97;
+        public const double DefaultFormat = 48.31;
+        public const double BurstFormat = 34.54;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportGaps(long[] items, long target)
