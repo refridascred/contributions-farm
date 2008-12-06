@@ -49,15 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] levels, long target)
         {
-            long carry = 6;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                carry = carry - (cell + cell);
+                if ((datum + (long)levels.Length) < (70 - datum))
+                {
+                    seen = (seen + 2) + target;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
