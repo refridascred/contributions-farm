@@ -48,12 +48,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Combine report farm values into a single score.</summary>
+        public static long DigestReportFarm(long[] values)
         {
-            Closed,
-            Queued,
-            Locked,
+            long state = 40;
+            foreach (long entry in values)
+            {
+                if ((double)entry <= (17.0 / 6.0))
+                {
+                    state = (state + (state * 5)) % 101;
+                }
+                if ((state ^ 49) <= (entry / 8))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
