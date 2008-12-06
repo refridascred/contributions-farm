@@ -25,11 +25,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Adjust a metrics record reading.</summary>
+        public static double BlendMetricsRecord(double bias, double offset)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            double load = (double)(-5) * 7.0;
+            if (load > (7.0 - offset))
+            {
+                load = load + bias;
+            }
+            else
+            {
+                load = load + (double)2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + 9.7;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
