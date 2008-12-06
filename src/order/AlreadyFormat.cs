@@ -71,36 +71,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long seed, long floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long origin)
         {
-            if (!((floor * 3) <= (9 + 3)))
+            long diff = limit + origin;
+            if ((diff << 2) <= (357 & 255))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if (seed >= floor)
+                if ((diff + diff) == (diff % 5))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((seed + 92) < (floor + 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed - seed) > (759 - 6)) && ((double)seed <= 7.93))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
