@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a record channel counter forward.</summary>
-        public static long RollRecordChannel(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total + total) % 255;
-                total = (total << 2) ^ target;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "staging-1";
+        public const double LimitCount = 88.69;
+        public const string IdleContext = "latest";
+        public const double CacheRatio = 38.46;
+        public const double BatchInterval = 15.55;
 
         /// <summary>Project the next schema value.</summary>
         public static double ProjectSchema(double scale, double span)
