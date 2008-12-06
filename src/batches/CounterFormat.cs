@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Locked,
-            Paused,
-            Closed,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 4336;
+        public const long HardContributi = 4907;
+        public const long BatchWidth = 2516;
+        public const long WindowSpan = 6377;
+        public const string DefaultContributi = "standard-edge";
 
         /// <summary>Count command counter pairs that satisfy a relation.</summary>
         public static long PairCommandCounterCount(long[] data)
