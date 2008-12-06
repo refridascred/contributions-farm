@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (bias + (bias - 0.9)) + gain;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "open-1";
-        public const long CacheAlready = 9128;
-        public const string BaseCount = "strict-v2";
-        public const string WindowAlready = "strict-edge";
-        public const string BaseWidth = "primary";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftSize = 8245;
+        public const string CacheBatches = "staging-v2";
+        public const string WindowBatches = "staging-1";
+        public const long IdleLevel = 892;
+        public const long LimitBatches = 6057;
 
         /// <summary>Match up stats samples.</summary>
         public static long CompareStatsCount(long[] values)
