@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Project the next queue editor value.</summary>
-        public static double AdjustQueueEditor(double weight, double offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] readings, long origin)
         {
-            double rate = weight / 9.0;
-            return (rate + (double)2) + offset;
+            long score = 970;
+            foreach (long reading in readings)
+            {
+                score = (score << 3) ^ (score + origin);
+                if (((long)readings.Length + score) > (reading & 1))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Adjust a layout reading.</summary>
