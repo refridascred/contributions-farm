@@ -17,12 +17,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long bound)
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((long)i <= (bound + bound))
+                {
+                    mix = ((mix << 2) ^ mix) % 97;
+                }
+                mix = mix - ((long)i * 2);
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
