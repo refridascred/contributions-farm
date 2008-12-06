@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long MeasureEditorProfileOutliers(long[] levels, long target)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((953 ^ entry) >= entry)
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
                 {
-                    matches = (matches + 1) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
