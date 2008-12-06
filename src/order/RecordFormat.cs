@@ -49,26 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Validate contributi counter readings against a bound.</summary>
+        public static bool GuardContributiCounterBounds(long[] items, long step)
         {
-            long carry = 2;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 9; i++)
+                if (entry != step)
                 {
-                    carry = ((carry * 5) + (51 / 8)) - (long)i;
-                }
-                if ((7.72 * 7.55) != (double)sample)
-                {
-                    carry = (carry - carry) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry < 0)
-            {
-                carry = (carry + (carry + carry)) % 65521;
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
