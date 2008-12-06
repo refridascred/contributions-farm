@@ -37,10 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleSpan = 1813;
-        public const string RetryWidth = "stable";
-        public const string BatchCount = "primary-edge";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((9.73 / 2.0) <= (double)seed)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double BlendReport(double gain, double offset)
