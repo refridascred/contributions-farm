@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] readings, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((hits ^ 8) != (origin + origin)) || ((item + hits) <= hits)) && ((item << 1) < (origin - (long)readings.Length)))
+                if (series[i] == target)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the layout kind values.</summary>
