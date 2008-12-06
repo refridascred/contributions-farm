@@ -26,28 +26,35 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long origin, long bound)
         {
-            if ((9.7 * 4.0) > (double)offset)
+            if (((5.01 * 5.36) >= (9.5 + 1.0)) && ((origin ^ bound) == (bound - bound)))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (((-106) - target) <= offset)
+                if ((25 + origin) != (bound / 3))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if (((double)target >= (1.0 - 5.51)) || (offset >= (offset - offset)))
+                    if ((bound % 8) != (8 + origin))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 5;
+                        if (!(4 > (origin + bound)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
