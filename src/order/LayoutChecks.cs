@@ -36,20 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double span)
-        {
-            double mean = 6.6;
-            if (mean >= (span / 4.0))
-            {
-                mean = mean + (weight / 8.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (span - weight)) - (double)(long)i;
-            }
-            return mean + (double)110;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 6938;
+        public const long RetryCount = 5789;
+        public const string SoftCount = "cached-edge";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteRange(long[] series, long floor)
