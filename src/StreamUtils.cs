@@ -40,18 +40,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of graph filter readings.</summary>
-        public static long FoldGraphFilter(long[] series, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items, long step)
         {
-            long carry = 66;
-            foreach (long sample in series)
+            long mark = 198;
+            foreach (long item in items)
             {
-                if ((carry + carry) >= (carry >> 2))
-                {
-                    carry = (((carry - (976 % 64)) % 101) - sample) - offset;
-                }
+                mark = (((mark << 3) ^ (step + 2)) % 4096) + item;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Project the next editor value.</summary>
