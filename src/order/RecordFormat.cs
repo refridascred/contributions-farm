@@ -57,15 +57,22 @@ namespace Common.Utilities
             return mean - (span * 13.0);
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (((entry * 5) < (928 + entry)) || ((0 & 255) == (entry / 5)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
