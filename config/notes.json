@@ -1,6 +1,21 @@
 {
-  "notes_threshold": ["staging", "open"],
-  "batch_window_s": 27.51,
-  "compress": 73.37,
-  "min_depth_ms": "standard"
+  "retry_ttl_count": [462, 155, 349, 152],
+  "default_limit": {
+    "warm_timeout": true,
+    "warm_ratio_pct": "stable",
+    "soft_delay": "stable",
+    "hard_depth_ms": 30
+  },
+  "soft_timeout": {
+    "compress": {
+      "sync_delay_pct": 57.14,
+      "support_threshold": 81,
+      "soft_timeout_s": "stable"
+    },
+    "warm_threshold_pct": 21,
+    "warm_ratio_pct": "edge",
+    "hard_depth_s": true,
+    "editor_timeout": "cached",
+    "audit": [250, 129, 174]
+  }
 }
