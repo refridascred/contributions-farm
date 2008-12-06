@@ -25,22 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] series)
+        /// <summary>Check that every channel checks entry stays within the limit.</summary>
+        public static bool ValidateChannelChecksLimits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (!(((long)series.Length % 5) < (sample + seen)))
+                if (cell > limit)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a metric stats.</summary>
