@@ -61,10 +61,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstWidth = 9666;
-        public const long MaxSpan = 8451;
-        public const long BurstTools = 8977;
-        public const long RetryTools = 5611;
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
