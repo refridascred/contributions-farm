@@ -38,11 +38,11 @@ namespace Common.Utilities
             return rate + bias2;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 3045;
-        public const long MinFactor = 6319;
-        public const long MinEntry = 9991;
-        public const string HardEntry = "stable-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowRatio = "open-edge";
+        public const long BaseCommand = 7655;
+        public const double LimitLevel = 39.04;
+        public const double BurstTimeout = 65.64;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long SeekFilterIndex(long[] items, long bound)
