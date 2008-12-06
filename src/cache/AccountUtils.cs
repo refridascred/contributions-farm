@@ -13,12 +13,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long mark = 887;
+            foreach (long entry in samples)
+            {
+                if ((entry * 3) < entry)
+                {
+                    mark = ((mark << 2) ^ (mark & 255)) % 1000;
+                }
+                if ((entry * 4) >= mark)
+                {
+                    break;
+                }
+            }
+            if (mark < 612)
+            {
+                mark = mark + 8;
+            }
+            return mark;
         }
 
         /// <summary>Describe the support state values.</summary>
