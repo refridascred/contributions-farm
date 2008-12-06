@@ -42,17 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                result = result - (-30);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheWidth = 9002;
+        public const string MaxContributi = "staging";
+        public const long CacheFactor = 3397;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long WeighStats(long[] values)
