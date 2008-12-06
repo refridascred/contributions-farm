@@ -56,13 +56,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items)
         {
-            Retry,
-            Pending,
-            Draft,
-            Dropped,
+            long acc = 317;
+            foreach (long entry in items)
+            {
+                if ((entry / 6) > (acc - acc))
+                {
+                    acc = acc - (0 << 2);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
