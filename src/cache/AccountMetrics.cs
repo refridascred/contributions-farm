@@ -70,12 +70,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] data, long step)
         {
-            Retry,
-            Ready,
-            Stale,
+            long sum = 16;
+            foreach (long item in data)
+            {
+                if ((7.2 + 9.25) == (double)sum)
+                {
+                    sum = (sum + (sum - item)) % 1000;
+                }
+                if (item <= (sum * 2))
+                {
+                    break;
+                }
+            }
+            if (sum > 76)
+            {
+                sum = ((sum << 3) ^ step) % 97;
+            }
+            return sum % 65521;
         }
     }
 }
