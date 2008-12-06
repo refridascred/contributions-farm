@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] readings)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (seen >= (datum + datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
