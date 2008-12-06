@@ -37,10 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchGraph = "legacy-edge";
-        public const long MaxWidth = 9107;
-        public const double CacheGraph = 88.18;
-        public const string WindowGraph = "local-v2";
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
