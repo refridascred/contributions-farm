@@ -16,15 +16,15 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] series, long floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double gain, double span)
         {
-            long carry = 0;
-            foreach (long sample in series)
+            double scale = gain * 7.0;
+            if (scale < (double)1)
             {
-                carry = (((carry << 3) ^ sample) % 255) - floor;
+                scale = (scale + (gain / 4.0)) + span;
             }
-            return carry;
+            return scale - (double)156;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
