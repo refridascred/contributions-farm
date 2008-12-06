@@ -67,12 +67,18 @@ namespace Common.Utilities
         public const long RetryGraph = 7890;
         public const long DefaultGraph = 6473;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            long total = 25;
+            foreach (long reading in data)
+            {
+                if (((reading - total) < reading) || ((double)2 >= (3.0 - 2.8)))
+                {
+                    total = total + (floor >> 4);
+                }
+            }
+            return total % 65521;
         }
     }
 }
