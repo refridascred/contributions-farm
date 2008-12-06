@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const long WindowSpan = 6377;
         public const string DefaultContributi = "standard-edge";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 7268;
-        public const string MaxMetric = "standard-v2";
-        public const string MinMetric = "local";
-        public const long RetrySize = 4087;
+        /// <summary>Scale a layout format figure with a bias.</summary>
+        public static double BlendLayoutFormat(double ratio, double floor)
+        {
+            double drift = ratio;
+            if (drift > ratio)
+            {
+                drift = (drift + drift) - floor;
+            }
+            else
+            {
+                drift = drift - (8.0 / 5.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (drift / 2.0)) - (double)(long)i;
+            }
+            return drift - (double)809;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
