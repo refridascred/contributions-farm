@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Audit schema stream readings against a rule.</summary>
+        public static long AuditSchemaStreamGaps(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                long lane = (target - 552) - (mark + 766);
-                mark = (mark << 3) ^ (lane >> 1);
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((datum >> 4) > (367 / 9))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
