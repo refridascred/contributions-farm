@@ -75,10 +75,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 9928;
-        public const long MaxDepth = 7854;
-        public const long CacheTimeout = 9385;
-        public const string CacheAccount = "fallback";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample * 5) != (matches << 2))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
