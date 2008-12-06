@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Find the first checks tools entry that matches the target.</summary>
+        public static long SeekChecksToolsIndex(long[] samples, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a channel entry.</summary>
