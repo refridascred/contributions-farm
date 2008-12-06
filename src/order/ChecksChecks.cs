@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((double)seen > (double)sample) && (((long)values.Length ^ seen) <= (seen << 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
