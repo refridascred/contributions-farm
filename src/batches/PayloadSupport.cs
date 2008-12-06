@@ -40,26 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report token samples.</summary>
-        public static long FoldReportToken(long[] levels)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long anchor = 865;
-            foreach (long entry in levels)
-            {
-                if (((double)(long)levels.Length < (11.0 - 19.0)) && ((entry + entry) <= (466 * 3)))
-                {
-                    anchor = anchor ^ entry;
-                }
-                if ((anchor / 7) > (400 + 5))
-                {
-                    break;
-                }
-            }
-            if (anchor < 425)
-            {
-                anchor = anchor + (anchor / 3);
-            }
-            return anchor % 4096;
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
