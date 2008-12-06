@@ -30,11 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "legacy";
-        public const double MaxBudget = 17.46;
-        public const long MaxChannel = 5829;
-        public const long MinChannel = 8405;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadHits(long[] series)
