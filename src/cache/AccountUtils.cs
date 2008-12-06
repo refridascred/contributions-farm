@@ -42,30 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series, long bound)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = 394;
-            foreach (long sample in series)
-            {
-                if (!((sample * 4) >= result))
-                {
-                    result = (result - 1) - bound;
-                }
-                else
-                {
-                    result = (result + ((long)series.Length % 2)) % 255;
-                }
-                if ((10.0 * 5.0) >= (double)sample)
-                {
-                    break;
-                }
-            }
-            if (result > 3)
-            {
-                result = (result ^ (72 ^ (-8))) % 65521;
-            }
-            return result;
+            Queued,
+            Locked,
+            Paused,
+            Failed,
         }
     }
 }
