@@ -20,18 +20,11 @@ namespace Common.Utilities
             return scale - (scale + bias);
         }
 
-        /// <summary>Audit filter cluster readings against a rule.</summary>
-        public static long MeasureFilterClusterGaps(long[] values, long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample != (3.4 - 8.7))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
