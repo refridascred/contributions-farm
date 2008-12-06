@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] data, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] == seed)
+                if ((double)tally != (13.0 * 3.3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a cache info.</summary>
