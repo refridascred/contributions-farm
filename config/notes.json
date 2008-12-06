@@ -1,8 +1,7 @@
 {
-  "batch_capacity_count": 8363,
-  "farm_threshold": 90.7,
-  "verbose": [198, 179, 211],
-  "burst_delay_s": 60,
-  "cache_size_count": true,
-  "entry_delay": [168, 250]
+  "entry_interval": 29.15,
+  "persist": 30,
+  "account_delay": "standard",
+  "base_ratio_pct": true,
+  "batch_retries_pct": false
 }
