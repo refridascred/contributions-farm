@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached latest strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=456
+CHANNEL_LIMIT=181
 log "limit is ${CHANNEL_LIMIT}"
