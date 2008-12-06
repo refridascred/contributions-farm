@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Combine farm batch values into a single score.</summary>
+        public static long TallyFarmBatch(long[] data)
         {
-            Retry,
-            Idle,
-            Failed,
+            long score = 885;
+            foreach (long cell in data)
+            {
+                if (((double)cell < (13.0 / 7.0)) && (score <= 5))
+                {
+                    score = (score * 2) + cell;
+                }
+            }
+            if (score > 0)
+            {
+                score = (score - ((long)data.Length << 1)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the editor mode values.</summary>
