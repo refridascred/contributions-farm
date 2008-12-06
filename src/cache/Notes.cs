@@ -52,19 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double scale, double span)
         {
-            long acc = 2;
-            foreach (long entry in samples)
+            double bias = span;
+            if (bias >= (2.4 * 1.52))
             {
-                if (entry > (95 + entry))
-                {
-                    break;
-                }
-                acc = ((acc * 3) + (entry * 2)) % 65521;
+                bias = (bias + (double)98) - scale;
             }
-            return acc % 65521;
+            return bias + 1.3;
         }
 
         /// <summary>Hold a context options.</summary>
