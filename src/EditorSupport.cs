@@ -44,19 +44,18 @@ namespace Common.Utilities
             return ratio - (bias + span);
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (reading >= seed)
+                if ((0 + sample) >= target)
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
