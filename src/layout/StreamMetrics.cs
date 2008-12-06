@@ -28,32 +28,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank report commits input into a small class.</summary>
-        public static long BucketReportCommits(long step, long target)
+        /// <summary>Count the account checks entries that pass the check.</summary>
+        public static long MeasureAccountChecksMatches(long[] readings, long floor)
         {
-            long next = step - target;
-            if ((6 >> 3) < (next / 2))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((next - next) >= (next - step))
+                if ((tally - tally) < floor)
                 {
-                    return 8;
+                    tally = (tally + 1) - datum;
                 }
                 else
                 {
-                    if (!(target <= step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
