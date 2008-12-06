@@ -32,12 +32,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 6739;
-        public const string StepRatio = "cached";
-        public const double IdleCount = 78.33;
-        public const string WindowCommand = "primary";
-        public const long CacheCommand = 4654;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] readings, long bound)
+        {
+            long result = 9;
+            foreach (long value in readings)
+            {
+                result = ((result << 2) ^ 20) + value;
+            }
+            if (result < 0)
+            {
+                result = result - (bound ^ bound);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] series, long step)
