@@ -45,17 +45,18 @@ namespace Common.Utilities
         public const long LimitChecks = 6888;
         public const long MaxScore = 8941;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] levels, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] == floor)
+                if ((0.13 - 3.97) != (double)cell)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up channel samples.</summary>
