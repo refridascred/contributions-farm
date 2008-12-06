@@ -20,18 +20,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] series, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value + 159) >= (value % 100))
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Draft,
+            Stale,
+            Active,
         }
     }
 }
