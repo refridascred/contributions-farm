@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mean - (mean / 3.0);
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] samples, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (entry >= floor)
+                if ((double)cell < 9.0)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
