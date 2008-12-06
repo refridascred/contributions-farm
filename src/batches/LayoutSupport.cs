@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const long BurstLevel = 5998;
         public const long HardQueue = 5755;
 
-        /// <summary>Adjust a session buffer reading.</summary>
-        public static double AdjustSessionBuffer(double ratio, double bias)
+        /// <summary>Count the contributi graph entries that pass the check.</summary>
+        public static long CountContributiGraphHits(long[] values, long offset)
         {
-            double ratio2 = bias;
-            if (ratio2 < (ratio + bias))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                ratio2 = ratio2 + ratio;
+                if ((double)reading > (15.0 + 5.8))
+                {
+                    tally = (tally + 1) - offset;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 + (ratio * 20.0);
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
