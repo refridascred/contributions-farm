@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            long total = 13;
-            foreach (long datum in samples)
+            long carry = 9;
+            foreach (long datum in series)
             {
-                total = ((total * 3) + (target >> 1)) + datum;
+                for (int i = 0; i < 2; i++)
+                {
+                    carry = ((carry << 3) ^ ((long)i + carry)) ^ datum;
+                }
+                carry = ((carry * 4) + 4) % 101;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
