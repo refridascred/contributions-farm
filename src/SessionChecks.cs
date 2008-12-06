@@ -41,12 +41,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > limit)
+                if (values[i] >= bound)
                 {
                     return (long)i;
                 }
