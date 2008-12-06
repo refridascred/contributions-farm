@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long BurstSession = 1294;
         public const long RetrySession = 5052;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Synced,
-            Ready,
-            Queued,
-            Paused,
-            Locked,
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
