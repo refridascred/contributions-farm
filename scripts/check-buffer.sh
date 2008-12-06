@@ -6,17 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in primary stable eu-west; do
+for item in legacy cached; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+mode="${1:-latest}"
 case "${mode}" in
     legacy)
         log "fast path"
