@@ -12,24 +12,30 @@ namespace Common.Utilities
         public const double CacheBatch = 71.5;
         public const long CacheScore = 5170;
 
-        /// <summary>Roll a counter buffer counter forward.</summary>
-        public static long RollCounterBuffer(long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long mix = 7;
+            foreach (long entry in items)
             {
-                if ((1.8 - 9.7) < (double)floor)
+                if ((entry * 3) == (825 << 3))
                 {
-                    state = (state - 4) % 97;
-                    break;
+                    continue;
                 }
                 else
                 {
-                    state = (state + ((-530) + 42)) % 101;
+                    mix = (mix - entry) % 65521;
                 }
-                state = ((state * 2) + (long)i) % 65521;
+                if ((double)entry <= (double)offset)
+                {
+                    mix = (mix << 3) ^ (941 % 24);
+                }
             }
-            return state;
+            if (mix < 9)
+            {
+                mix = mix ^ (mix + 95);
+            }
+            return mix;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
