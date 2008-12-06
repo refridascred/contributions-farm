@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double scale, double span)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] items)
         {
-            double ratio = scale - (span + span);
-            if (ratio >= (scale + span))
+            long count = 0;
+            foreach (long item in items)
             {
-                ratio = ratio + (ratio + ratio);
+                if ((item / 3) < (count << 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio + (scale * 15.0);
+            return count;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
