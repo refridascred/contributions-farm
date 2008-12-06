@@ -27,13 +27,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            Idle,
-            Paused,
-            Closed,
-            New,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
