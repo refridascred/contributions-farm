@@ -26,15 +26,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Adjust a profile farm reading.</summary>
-        public static double ProjectProfileFarm(double scale, double offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] values, long step)
         {
-            double mean = (double)240;
-            if (mean > (offset * 8.38))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (mean - scale);
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mean - offset;
+            return -1;
         }
     }
 }
