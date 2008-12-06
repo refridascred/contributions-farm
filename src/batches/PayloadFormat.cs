@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ratio + (double)53;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long target)
+        /// <summary>Blend two graph queue measurements.</summary>
+        public static double BlendGraphQueue(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double drift = bias;
+            if (drift >= 9.0)
             {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - bias;
             }
-            return ok;
+            return drift - (weight * 8.94);
         }
 
         /// <summary>Audit support readings against a rule.</summary>
