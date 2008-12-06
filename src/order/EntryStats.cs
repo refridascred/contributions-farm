@@ -68,9 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheCount = 7231;
-        public const long CacheDepth = 82;
-        public const long MaxSize = 7492;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
