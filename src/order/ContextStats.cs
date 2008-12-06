@@ -26,15 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] values, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] levels, long offset)
         {
-            long result = 6;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                result = ((result + (result ^ reading)) % 97) - bound;
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return ready;
         }
 
         /// <summary>Blend two stream measurements.</summary>
