@@ -38,17 +38,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] series, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mix = (mix + offset) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
