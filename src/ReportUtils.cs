@@ -52,23 +52,15 @@ namespace Common.Utilities
         public const double DefaultInterval = 28.18;
         public const string BurstInterval = "alpha-edge";
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double scale, double bias)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            double scale2 = (double)(305 + 916);
-            if (scale2 > (double)59)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                scale2 = scale2 + scale2;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                scale2 = scale2 + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + (double)36) + (double)(long)i;
-            }
-            return scale2 - (scale + 5.2);
+            return result;
         }
     }
 }
