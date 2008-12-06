@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double gain, double offset)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double scale, double bias)
         {
-            double bias = offset * 0.8;
-            if (bias <= (offset / 5.0))
-            {
-                bias = (bias + offset) + gain;
-            }
-            else
-            {
-                bias = bias + 6.46;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - offset) - (double)(long)i;
-            }
-            return bias - (offset / 3.0);
+            double weight = (scale * 1.1) / 4.0;
+            return weight - (bias / 3.0);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
