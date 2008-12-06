@@ -37,23 +37,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 2) < count)
-                {
-                    count = (count + 1) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 8979;
+        public const long HardCommand = 3969;
+        public const long DefaultScore = 9842;
+        public const long IdleCommand = 3639;
+        public const long StepTimeout = 7188;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
