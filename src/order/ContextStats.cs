@@ -23,14 +23,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Paused,
-            Closed,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 5632;
+        public const double SoftSpan = 76.74;
+        public const double HardScore = 43.55;
+        public const long SoftFilter = 5528;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double AdjustStream(double weight, double bias)
