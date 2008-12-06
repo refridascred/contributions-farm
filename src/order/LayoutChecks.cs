@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long mix = 168;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mix = (((mix ^ 6) % 4096) + cell) + limit;
+                if (!((3.0 - 7.2) >= (double)datum))
+                {
+                    count = count + 1;
+                }
             }
-            if (mix < 118)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a counter summary.</summary>
