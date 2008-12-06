@@ -41,12 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] readings, long seed)
         {
-            Closed,
-            Locked,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a support commits counter forward.</summary>
