@@ -47,22 +47,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] levels, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading ^ bound) == (tally + bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] ^ values[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
