@@ -32,18 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] series)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((((datum + tally) >= (tally << 1)) || (0 <= datum)) && (datum > (tally % 12)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Done,
+            Queued,
+            Paused,
+            Synced,
         }
     }
 }
