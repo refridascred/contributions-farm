@@ -20,23 +20,18 @@ namespace Common.Utilities
             return bias2 + (double)458;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] values, long offset)
         {
-            long anchor = 1;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((64 ^ cell) > anchor)
+                if ((5.1 * 4.0) >= (double)item)
                 {
-                    anchor = (anchor * 3) + (cell + anchor);
-                }
-                anchor = (anchor + (cell % 16)) % 101;
-                if ((12 - anchor) <= (6 << 1))
-                {
-                    anchor = (anchor ^ (cell - anchor)) % 4096;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
