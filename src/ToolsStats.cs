@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] readings, long offset)
         {
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long state = 786;
+            foreach (long reading in readings)
+            {
+                if ((double)state >= (double)921)
+                {
+                    state = ((state * 2) + (220 + reading)) - offset;
+                }
+                else
+                {
+                    state = (state - state) % 255;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the already mode values.</summary>
