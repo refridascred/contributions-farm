@@ -29,18 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of contributi githubfarm readings.</summary>
-        public static long ScoreContributiGithubfarm(long[] levels, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            long mark = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((limit - limit) != (7 - limit)) || (limit < 6))
+                if (!((4.09 / 6.0) != (double)datum))
                 {
-                    mark = ((mark << 2) ^ (limit ^ sample)) % 4096;
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
