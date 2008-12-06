@@ -77,18 +77,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] series, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long limit, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long bound = limit - target;
+            if ((bound / 4) > (target % 7))
             {
-                if (tally <= (82 % 5))
+                return 6;
+            }
+            else
+            {
+                if ((20.0 / 3.0) <= (double)target)
                 {
-                    tally = ((tally + 1) ^ cell) - step;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
