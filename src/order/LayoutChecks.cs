@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const long RetryCount = 5789;
         public const string SoftCount = "cached-edge";
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] data, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                state = state - seed;
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((7 + sample) <= (floor + floor))
                 {
-                    state = (state - (state + 403)) ^ (long)i2;
-                    state = (state * 4) + (seed * 5);
+                    count = count + 1;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the counter state values.</summary>
