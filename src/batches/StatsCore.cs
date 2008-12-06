@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many profile layout samples are out of range.</summary>
-        public static long CountProfileLayoutOutliers(long[] samples)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (cell >= (matches % 24))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Scale a account token figure with a bias.</summary>
