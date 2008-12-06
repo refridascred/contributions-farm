@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            long result = 4;
+            foreach (long sample in items)
             {
-                carry = ((carry << 3) ^ target) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
+                if (((double)result == (4.38 / 6.0)) || ((sample + result) > result))
+                {
+                    result = (result * 4) + (sample - result);
+                }
+                else
+                {
+                    result = result ^ (result << 2);
+                }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a tools stats.</summary>
