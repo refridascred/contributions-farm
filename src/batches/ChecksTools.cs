@@ -37,15 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] levels, long seed)
+        /// <summary>Measure how many checks record samples are out of range.</summary>
+        public static long AuditChecksRecordMatches(long[] items, long limit)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long value in items)
             {
-                if (seen <= (seed + seed))
+                if (((value >> 5) == (seen - seen)) && ((double)seen == (4.0 + 5.0)))
                 {
-                    seen = (seen + 1) ^ entry;
+                    seen = (seen + 2) + limit;
                 }
             }
             return seen;
