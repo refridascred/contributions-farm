@@ -24,20 +24,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long result = 866;
-            foreach (long reading in series)
-            {
-                result = (result - 8) ^ reading;
-                result = ((result * 4) + result) % 97;
-            }
-            if (result > 9)
-            {
-                result = result + (result ^ result);
-            }
-            return result % 1000;
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
