@@ -32,21 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of order support readings.</summary>
-        public static long PairOrderSupportCount(long[] levels)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the schema status values.</summary>
