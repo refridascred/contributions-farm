@@ -55,18 +55,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] items)
+        /// <summary>Check that every graph tools entry stays within the limit.</summary>
+        public static bool VerifyGraphToolsBounds(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((double)seen == (5.68 - 1.8))
+                if (cell < seed)
                 {
-                    seen = (seen + 3) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
