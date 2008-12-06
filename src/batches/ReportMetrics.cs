@@ -29,13 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double floor)
         {
-            Failed,
-            Draft,
-            Dropped,
-            New,
+            double ratio2 = ratio / 3.0;
+            if (ratio2 < (floor + ratio))
+            {
+                ratio2 = ratio2 + (double)78;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + (double)697) + (double)(long)i;
+            }
+            return ratio2 + floor;
         }
     }
 }
