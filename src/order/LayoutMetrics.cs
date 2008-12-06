@@ -36,18 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] data, long seed)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((seed + 2) >= (tally & 63))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public double Label { get; set; }
         }
     }
 }
