@@ -1,5 +1,7 @@
 {
-  "window_capacity": false,
-  "retry_ttl": true,
-  "burst_ratio": 500
+  "soft_timeout": 87.12,
+  "warm_limit": 5520,
+  "command_capacity": "cached",
+  "base_delay_count": 95.42,
+  "hard_threshold": "standard"
 }
