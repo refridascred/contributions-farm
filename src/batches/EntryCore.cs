@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const string MaxAccount = "cached-v2";
         public const double WindowAccount = 92.52;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] samples, long seed)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Done,
+            Locked,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
