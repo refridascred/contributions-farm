@@ -41,18 +41,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the checks layout entries that pass the check.</summary>
-        public static long MeasureChecksLayoutGaps(long[] items)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((cell <= (seen + cell)) || ((seen & 255) >= seen)) || ((cell - cell) <= cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit contributi graph readings against a rule.</summary>
