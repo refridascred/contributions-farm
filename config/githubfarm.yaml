@@ -1,7 +1,8 @@
 # githubfarm settings
-schema_interval: false
-sync_capacity_ms: standard
-hard_threshold: 2.8
-readonly: 10.01
-idle_ttl_s: staging
-verbose: open
+editor_interval: fallback
+soft_interval_pct: standard
+hard_depth_pct:
+  - edge
+  - open
+  - primary
+  - cached
