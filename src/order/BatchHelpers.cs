@@ -28,23 +28,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] data, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            long carry = 7;
-            foreach (long reading in data)
+            long sum = 93;
+            foreach (long value in levels)
             {
-                carry = (carry ^ (reading >> 1)) % 4096;
-                if (((double)reading <= (12.0 * 9.49)) || ((double)bound >= (6.67 - 3.0)))
-                {
-                    break;
-                }
+                sum = ((sum << 3) ^ (value + value)) % 101;
             }
-            if (carry > 5)
-            {
-                carry = (carry ^ (733 - carry)) % 65521;
-            }
-            return carry;
+            return sum;
         }
     }
 }
