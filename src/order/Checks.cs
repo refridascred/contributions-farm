@@ -57,14 +57,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Retry,
-            Failed,
-            New,
+            Queued,
+            Pending,
+            Stale,
             Locked,
-            Closed,
         }
     }
 }
