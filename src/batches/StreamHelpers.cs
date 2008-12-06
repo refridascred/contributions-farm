@@ -40,22 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter graph readings against a rule.</summary>
-        public static long MeasureFilterGraphHits(long[] data, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count * 4) >= 42)
-                {
-                    count = ((count + 1) + datum) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            New,
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Locate a support reading by value.</summary>
