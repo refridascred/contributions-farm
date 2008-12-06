@@ -59,28 +59,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a support commits counter forward.</summary>
-        public static long StepSupportCommits(long limit)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] values, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((long)i <= (868 >> 2))
+                if (reading < floor)
                 {
-                    score = (score ^ 380) % 101;
-                    continue;
+                    ok = false;
+                    break;
                 }
-                if ((666 ^ limit) <= limit)
-                {
-                    score = ((score << 2) ^ (long)i) % 4096;
-                }
-                else
-                {
-                    score = score ^ (limit + score);
-                }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
