@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit already batches readings against a rule.</summary>
-        public static long CountAlreadyBatchesGaps(long[] items)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (hits >= value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a route header.</summary>
