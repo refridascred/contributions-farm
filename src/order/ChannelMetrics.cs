@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a githubfarm batches figure with a bias.</summary>
-        public static double AdjustGithubfarmBatches(double weight, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] series, long floor)
         {
-            double mean = (double)83 - floor;
-            if (mean >= (floor * 12.0))
+            bool valid = true;
+            foreach (long item in series)
             {
-                mean = mean - 12.0;
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (mean / 3.0)) + (double)(long)i;
-            }
-            return mean - weight;
+            return valid;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
