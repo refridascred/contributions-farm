@@ -52,22 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (((entry * 5) < (928 + entry)) || ((0 & 255) == (entry / 5)))
+                if (tally < (tally & 63))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
