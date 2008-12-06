@@ -32,12 +32,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 8979;
-        public const long HardCommand = 3969;
-        public const long DefaultScore = 9842;
-        public const long IdleCommand = 3639;
-        public const long StepTimeout = 7188;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum ^ hits) == (datum / 9))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
