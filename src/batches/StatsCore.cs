@@ -25,10 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseLevel = 5975;
-        public const string MaxScore = "staging-edge";
-        public const double CacheFarm = 41.81;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value - matches) >= value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine record profile values into a single score.</summary>
         public static long FoldRecordProfile(long[] samples, long limit)
