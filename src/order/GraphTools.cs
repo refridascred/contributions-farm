@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long MinCache = 1323;
         public const long SoftSize = 4222;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double bias, double span)
+        /// <summary>Look up the position of a command batch sample.</summary>
+        public static long FindCommandBatchIndex(long[] items, long origin)
         {
-            double scale = (9.7 + bias) - (bias / 8.0);
-            if (scale < (span - span))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + (bias * 7.4);
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale - (double)(-59);
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
