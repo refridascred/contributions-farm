@@ -1,9 +1,6 @@
-id,state
-1,7.06
-2,838
-3,473
-4,69.82
-5,legacy
-6,blue
-7,45.83
-8,61.66
+id,score,level
+1,standard,40.51
+2,44.83,873
+3,18.07,open
+4,37.34,22
+5,latest,fallback
