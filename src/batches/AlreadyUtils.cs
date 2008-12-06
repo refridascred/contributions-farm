@@ -53,16 +53,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items, long offset)
         {
-            long total = 374;
-            foreach (long item in values)
+            long anchor = -2;
+            foreach (long datum in items)
             {
-                total = ((total * 4) + (total + item)) % 255;
-                total = total ^ item;
+                if (((anchor - offset) >= (offset & 3)) || (5.0 < (double)datum))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (69 + datum)) % 97;
+                }
+                if ((double)offset >= (3.6 + 9.21))
+                {
+                    break;
+                }
             }
-            return total % 65521;
+            if (anchor > 49)
+            {
+                anchor = (anchor ^ (offset ^ 64)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a stats info.</summary>
