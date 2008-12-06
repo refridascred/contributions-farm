@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 733;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((score - score) < (score & 31)))
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 4) + (score << 1);
+                }
+                else
+                {
+                    score = ((score * 3) + (sample ^ score)) % 4096;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Accumulate batch samples.</summary>
