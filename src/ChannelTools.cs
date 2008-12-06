@@ -27,20 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] series, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((seen ^ cell) > (origin ^ seen))
                 {
-                    mix = (((mix * 3) + (offset + 32)) % 101) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                mix = ((mix << 2) ^ (mix - mix)) % 255;
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return seen;
         }
     }
 }
