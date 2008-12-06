@@ -1,7 +1,5 @@
 {
-  "idle_ttl_count": ["fallback", "open", "eu-west", "green"],
-  "burst_ratio": 59,
-  "hard_capacity_count": 3707,
-  "soft_interval": "open",
-  "compress": false
+  "burst_threshold": [179, 41, 390, 300],
+  "idle_delay": [442, 312, 247],
+  "soft_window": "blue"
 }
