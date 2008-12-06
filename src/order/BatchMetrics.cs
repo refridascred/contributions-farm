@@ -22,14 +22,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchTimeout = 4688;
+        public const long MinSize = 6109;
+        public const long BurstDepth = 6831;
+        public const long HardContributi = 5964;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string WindowLevel = "alpha-1";
