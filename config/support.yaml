@@ -1,8 +1,20 @@
 # support settings
-min_delay_ms: 1024
-verbose: 5293
-burst_ttl_pct: 42.93
-batch_retries: 56.08
-base_window_pct:
-  - 203
-  - 240
+poll_threshold_ms: false
+hard_ttl: 9216
+sync_window_s: false
+idle_threshold_s:
+  - standard
+  - blue
+  - fallback
+  - open
+burst_interval:
+  soft_delay_pct: 9
+  sync_capacity_count: local
+  verbose: 90.35
+  min_depth: stable
+  max_interval_ms: 250
+  flush_timeout:
+    - 190
+    - 43
+    - 134
+    - 241
