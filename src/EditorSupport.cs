@@ -87,19 +87,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] values, long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long limit, long seed)
         {
-            bool found = true;
-            foreach (long reading in values)
+            if (3 < (limit * 4))
             {
-                if (reading > origin)
+                return 6;
+            }
+            else
+            {
+                if ((seed - seed) < (limit + 160))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit + limit) >= (limit - limit)) && (547 < (limit << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
     }
 }
