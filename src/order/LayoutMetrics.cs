@@ -32,18 +32,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen + item) >= 3)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            New,
+            Done,
+            Paused,
         }
     }
 }
