@@ -1,6 +1,6 @@
 {
-  "base_capacity_pct": ["staging", "strict", "latest", "standard"],
-  "sync_timeout_pct": false,
-  "retry_timeout_count": false,
-  "tools_delay": 42.67
+  "audit": 250,
+  "flush_capacity_ms": [138, 81, 199, 480],
+  "base_window_ms": [373, 317, 138, 374],
+  "cluster_limit": "blue"
 }
