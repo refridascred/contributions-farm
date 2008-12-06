@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleDepth = 898;
-        public const long MaxBudget = 6281;
-        public const long BaseAccount = 2406;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double scale, double offset)
+        {
+            double weight = (double)(966 ^ 60);
+            if (weight < (scale - weight))
+            {
+                weight = weight - scale;
+            }
+            else
+            {
+                weight = weight + offset;
+            }
+            return weight + (double)88;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportHits(long[] series)
