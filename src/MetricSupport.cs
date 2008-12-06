@@ -22,14 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Dropped,
-            Locked,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchFactor = 1207;
+        public const double StepWidth = 74.76;
+        public const long LimitSchema = 236;
+        public const string BatchSchema = "fallback-v2";
+        public const long HardFactor = 1480;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long CombineAccount(long[] samples, long bound)
