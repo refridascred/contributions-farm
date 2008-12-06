@@ -48,19 +48,18 @@ namespace Common.Utilities
             return bias2 - (double)920;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] items, long seed)
+        /// <summary>Count the cluster report entries that pass the check.</summary>
+        public static long AuditClusterReportMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (entry > seed)
+                if (!((double)42 < (double)cell))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
