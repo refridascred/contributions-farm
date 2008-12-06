@@ -24,13 +24,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Active,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultSpan = "stable-v2";
+        public const double BatchEntry = 19.58;
+        public const double DefaultEntry = 16.53;
+        public const long MinEntry = 2372;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] items, long origin)
