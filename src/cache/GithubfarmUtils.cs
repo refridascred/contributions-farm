@@ -50,18 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] values, long floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)matches < (12.0 * 1.29))
-                {
-                    matches = ((matches + 2) ^ cell) - floor;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
