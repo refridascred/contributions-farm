@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Dropped,
-            New,
-            Locked,
-            Pending,
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
