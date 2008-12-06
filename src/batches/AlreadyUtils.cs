@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit window tools readings against a rule.</summary>
-        public static long AuditWindowToolsMatches(long[] samples, long offset)
+        /// <summary>Count the window graph entries that pass the check.</summary>
+        public static long AuditWindowGraphMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((double)count >= (1.0 + 6.25))
+                if ((double)datum < (2.39 + 1.0))
                 {
-                    count = ((count + 1) + reading) + offset;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine account report values into a single score.</summary>
