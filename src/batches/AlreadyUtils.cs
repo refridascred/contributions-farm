@@ -55,12 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            long total = 374;
+            foreach (long item in values)
+            {
+                total = ((total * 4) + (total + item)) % 255;
+                total = total ^ item;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a stats info.</summary>
