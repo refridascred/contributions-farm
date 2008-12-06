@@ -22,26 +22,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of editor account readings.</summary>
-        public static long DigestEditorAccount(long[] data)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long anchor = 401;
-            foreach (long value in data)
-            {
-                if ((double)anchor <= (double)(-542))
-                {
-                    anchor = ((anchor * 2) + 50) - value;
-                }
-                else
-                {
-                    anchor = (anchor - ((long)data.Length % 12)) % 255;
-                }
-            }
-            if (anchor < 75)
-            {
-                anchor = (anchor - (anchor << 1)) % 97;
-            }
-            return anchor;
+            Retry,
+            Locked,
+            Failed,
+            New,
+            Pending,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
