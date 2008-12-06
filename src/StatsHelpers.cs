@@ -40,13 +40,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Locate a cache record reading by value.</summary>
+        public static long SeekCacheRecordIndex(long[] levels, long limit)
         {
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
