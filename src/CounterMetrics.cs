@@ -34,19 +34,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a layout profile counter forward.</summary>
-        public static long IterateLayoutProfile(long seed)
+        /// <summary>Grade a buffer window value against two limits.</summary>
+        public static long SortBufferWindow(long seed, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long offset2 = seed - offset;
+            if ((offset - 2) < seed)
             {
-                if ((carry - 87) > (carry & 127))
-                {
-                    carry = (carry * 2) + (carry * 4);
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((offset % 24) >= (offset2 / 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
