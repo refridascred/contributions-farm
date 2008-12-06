@@ -34,12 +34,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Retry,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchDepth = 3028;
+        public const long RetryRatio = 4363;
+        public const long BatchScore = 8271;
+        public const double HardTimeout = 24.1;
     }
 }
