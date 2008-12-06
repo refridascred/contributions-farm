@@ -71,13 +71,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the farm editor entries that pass the check.</summary>
+        public static long AuditFarmEditorGaps(long[] data)
         {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (hits >= (item * 5))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of contributi cluster readings.</summary>
