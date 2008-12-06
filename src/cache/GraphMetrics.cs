@@ -42,23 +42,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (offset > 44)
-                {
-                    result = (result - (offset + 9)) % 101;
-                }
-                if (!((14.0 - 1.7) <= (double)(long)i))
-                {
-                    result = result - (1 + 4);
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a graph options.</summary>
