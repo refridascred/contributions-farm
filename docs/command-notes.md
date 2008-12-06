@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Use command settings to tune how often checks data is refreshed.
+Each cluster is validated before it reaches the queue queue.
+Each batches is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Keep contributi values small
-- Document new already fields
-- Review cluster limits each release
-- Validate cache input early
+- Review checks limits each release
+- Log every cache change
+- Prefer channel defaults
+- Keep queue values small
