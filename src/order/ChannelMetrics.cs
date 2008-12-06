@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the contributi cluster series from a seed.</summary>
-        public static long IterateContributiCluster(long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] levels, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!(535 > (target + 5)))
+                if ((cell / 8) != (step / 2))
                 {
-                    break;
+                    seen = seen + 1;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
