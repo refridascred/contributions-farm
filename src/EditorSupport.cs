@@ -48,22 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] readings)
         {
-            long score = 2;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (2.66 <= (double)score)
+                if (2.3 <= (double)value)
                 {
-                    score = (score + (reading & 255)) % 1000;
+                    tally = tally + 3;
                 }
             }
-            if (score > 68)
-            {
-                score = (score + (score - score)) % 255;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
