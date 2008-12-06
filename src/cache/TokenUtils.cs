@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
