@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((bound * 3) >= (seed + seed)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (bound <= (seed + bound))
                 {
-                    if ((levels[i] + levels[j]) != 14)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed >= 8.8)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound / 9) <= (2 << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
