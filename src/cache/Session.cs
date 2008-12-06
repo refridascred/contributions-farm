@@ -33,15 +33,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] series, long limit)
+        /// <summary>Count the batches cache entries that pass the check.</summary>
+        public static long CountBatchesCacheHits(long[] series)
         {
-            long result = 65;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                result = (((result ^ (result ^ result)) % 65521) - sample) + limit;
+                if (!((72 ^ tally) == (value - tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
