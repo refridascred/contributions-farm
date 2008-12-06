@@ -61,23 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Count the support session entries that pass the check.</summary>
+        public static long MeasureSupportSessionGaps(long[] items, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((long)i != (offset ^ (long)i))
+                if (floor <= entry)
                 {
-                    sum = ((sum << 2) ^ sum) % 255;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    sum = sum + ((long)i + 74);
+                    tally = tally - 1;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
