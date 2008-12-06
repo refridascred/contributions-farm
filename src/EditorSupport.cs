@@ -24,13 +24,11 @@ namespace Common.Utilities
             return bias - (offset / 3.0);
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Draft,
-            Done,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 6798;
+        public const long WindowRoute = 3911;
+        public const long RetryRoute = 6230;
+        public const long StepCount = 7466;
 
         /// <summary>Match up batches samples.</summary>
         public static long MatchBatchesCount(long[] samples)
