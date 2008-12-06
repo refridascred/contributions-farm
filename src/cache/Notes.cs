@@ -14,18 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] values, long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.1 * 4.0) >= (double)item)
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
                 {
-                    tally = (tally + 3) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
