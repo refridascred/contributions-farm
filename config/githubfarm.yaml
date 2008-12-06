@@ -1,30 +1,6 @@
 # githubfarm settings
-graph_window:
-  default_limit_count: true
-  sync_capacity_s:
-    hard_retries: latest
-    channel_delay: 476
-    batch_size: cached
-    warm_threshold_count: 60
-  cache_timeout: 29.81
-  editor_ttl:
-    - 304
-    - 305
-payload_retries: 52
-profile_interval:
-  audit: false
-  dry_run: primary
-  cache_depth:
-    - staging
-    - green
-    - edge
-  verbose: false
-  cache_capacity_ms: eu-west
-  report_threshold:
-    compress: 58.11
-    entry_window: 500
-    cache_depth_ms:
-      - primary
-      - standard
-      - strict
-      - latest
+enabled: false
+poll_threshold_count: 250
+context_ttl: 8
+githubfarm_retries: false
+persist: 250
