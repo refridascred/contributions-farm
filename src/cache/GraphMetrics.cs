@@ -32,11 +32,13 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            Dropped,
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
