@@ -20,30 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] samples, long limit)
         {
-            long mix = 7;
-            foreach (long entry in items)
+            long state = 4;
+            foreach (long cell in samples)
             {
-                if ((entry * 3) == (825 << 3))
+                if (((-944) >= (cell + 4)) || ((limit % 8) <= (limit * 4)))
                 {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - entry) % 65521;
-                }
-                if ((double)entry <= (double)offset)
-                {
-                    mix = (mix << 3) ^ (941 % 24);
+                    state = state ^ limit;
                 }
             }
-            if (mix < 9)
-            {
-                mix = mix ^ (mix + 95);
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a payload summary.</summary>
