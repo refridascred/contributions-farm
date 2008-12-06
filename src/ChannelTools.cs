@@ -25,14 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Closed,
-            Done,
-            Pending,
-            Ready,
+            Draft,
             Idle,
+            Done,
+            Ready,
         }
     }
 }
