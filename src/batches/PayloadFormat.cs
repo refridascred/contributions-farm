@@ -52,22 +52,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many schema counter samples are out of range.</summary>
-        public static long CountSchemaCounterHits(long[] levels, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + 741) < tally)
-                {
-                    tally = (tally + 1) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
