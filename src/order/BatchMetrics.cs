@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double weight, double offset)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            double scale = (double)(39 - 4);
+            return (scale + offset) + weight;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
