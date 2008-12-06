@@ -45,12 +45,40 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardDepth = 4161;
-        public const long CacheBudget = 9576;
-        public const long BaseChecks = 326;
-        public const string DefaultInterval = "primary-v2";
-        public const long SoftBudget = 4906;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long bound, long limit)
+        {
+            long slot = bound - limit;
+            if (!((limit ^ bound) == (slot % 100)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit - limit) >= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (limit - slot))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((slot >> 1) == (limit / 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheCount = 7231;
