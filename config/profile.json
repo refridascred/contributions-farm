@@ -1,7 +1,23 @@
 {
-  "context_retries": 50,
-  "filter_size": 500,
-  "dry_run": [217, 484, 457],
-  "warm_ttl_pct": [372, 436, 90, 191],
-  "compress": [269, 165, 70]
+  "flush_capacity_pct": "local",
+  "burst_ttl_ms": false,
+  "cache_limit_pct": {
+    "buffer_interval": {
+      "min_ttl_ms": "primary",
+      "enabled": 940,
+      "cluster_limit": 20.7,
+      "command_capacity": "eu-west",
+      "sync_limit": "stable"
+    },
+    "batch_interval": {
+      "poll_ttl": [470, 135, 122],
+      "strict": 73.57,
+      "soft_ttl": "local",
+      "flush_delay": 848
+    },
+    "cache_ratio_count": false,
+    "strict": "eu-west",
+    "sync_retries_ms": [80, 47],
+    "record_interval": ["local", "open"]
+  }
 }
