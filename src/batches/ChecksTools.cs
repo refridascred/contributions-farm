@@ -37,13 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] items, long floor)
         {
-            Done,
-            Paused,
-            Dropped,
-            Stale,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of session report entries.</summary>
