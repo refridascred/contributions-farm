@@ -23,13 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Pending,
-            New,
-            Synced,
-            Draft,
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of layout entries.</summary>
