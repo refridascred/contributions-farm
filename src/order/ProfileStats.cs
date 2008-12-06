@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] values, long limit)
         {
-            Active,
-            Locked,
-            Closed,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
