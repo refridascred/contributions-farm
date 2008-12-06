@@ -26,18 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCount = 3515;
+        public const string BatchCounter = "strict-edge";
+        public const long MaxSize = 9648;
+        public const string BaseCounter = "legacy";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double SoftChecks = 89.16;
