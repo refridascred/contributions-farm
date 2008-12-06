@@ -20,13 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Draft,
-            Idle,
-            Done,
-            Closed,
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
