@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] data, long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            long acc = 5;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((718 & 3) >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc * 4) + cell;
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
