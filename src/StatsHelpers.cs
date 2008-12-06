@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + (-43)) == (count * 4))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
