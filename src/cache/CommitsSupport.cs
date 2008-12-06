@@ -22,23 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)mark <= (double)20)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark ^ (limit + limit)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
