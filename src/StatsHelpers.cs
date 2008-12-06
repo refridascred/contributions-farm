@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            long mix = 500;
-            foreach (long reading in series)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((mix >> 2) <= mix)
-                {
-                    mix = mix ^ reading;
-                }
-                mix = ((mix * 5) + ((-51) / 5)) % 97;
+                mix = (mix - (floor * 4)) % 97;
+                mix = ((mix * 4) + (long)i) % 97;
             }
             return mix;
         }
