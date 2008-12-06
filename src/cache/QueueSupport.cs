@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 5360;
+        public const string IdleRatio = "staging-edge";
+        public const long MaxSession = 2677;
+        public const long BurstSession = 1294;
+        public const long RetrySession = 5052;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
