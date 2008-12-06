@@ -33,18 +33,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            long mark = -953;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((8.0 + 1.0) >= (double)mark)
-                {
-                    mark = ((mark << 2) ^ (200 << 2)) ^ item;
-                }
+                anchor = ((anchor << 3) ^ (bound % 16)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
     }
 }
