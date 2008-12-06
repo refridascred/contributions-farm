@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] items)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long acc = -5;
-            foreach (long cell in items)
-            {
-                if ((acc << 2) > (85 ^ cell))
-                {
-                    acc = acc + (long)items.Length;
-                }
-            }
-            return acc;
+            Ready,
+            Closed,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the stream phase values.</summary>
