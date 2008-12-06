@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate token support samples.</summary>
-        public static long FoldTokenSupport(long[] items)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            long mark = 789;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9 % 3) != (mark + value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark ^ value) % 65521;
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
