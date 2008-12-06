@@ -26,13 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            Synced,
+            Failed,
+            Retry,
+            Closed,
+            Pending,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
