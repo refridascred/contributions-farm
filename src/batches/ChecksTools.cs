@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long BaseSize = 3999;
         public const long BaseStream = 6556;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] values, long step)
         {
-            Active,
-            Done,
-            Locked,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((15.0 + 8.2) > (double)step)
+                {
+                    tally = (tally + 1) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
