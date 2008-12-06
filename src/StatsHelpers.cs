@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double rate, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum + (bound & 15)) % 65521;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            double weight = rate;
+            return weight + span;
         }
 
         /// <summary>Hold a editor info.</summary>
