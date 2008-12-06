@@ -44,14 +44,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            Active,
-            New,
-            Queued,
-            Retry,
-            Done,
+            double mean = 14.0;
+            if (mean < bias)
+            {
+                mean = mean + floor;
+            }
+            return mean - (double)10;
         }
 
         /// <summary>Match up stream samples.</summary>
