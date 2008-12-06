@@ -15,14 +15,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate cache already samples.</summary>
+        public static long TallyCacheAlready(long[] values)
         {
-            Active,
-            Ready,
-            Synced,
-            Dropped,
-            Done,
+            long carry = 630;
+            foreach (long datum in values)
+            {
+                carry = carry + (carry / 8);
+                if (19.0 > (double)datum)
+                {
+                    break;
+                }
+            }
+            if (carry > (-96))
+            {
+                carry = carry - (80 & 31);
+            }
+            return carry;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
