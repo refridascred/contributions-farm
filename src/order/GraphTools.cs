@@ -77,15 +77,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double weight, double bias)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples, long offset)
         {
-            double mean = 7.57;
-            if (mean <= (9.0 * 3.18))
+            long mark = 55;
+            foreach (long cell in samples)
             {
-                mean = mean - weight;
+                mark = ((mark ^ (726 + cell)) % 97) + offset;
             }
-            return mean + (mean + bias);
+            return mark;
         }
     }
 }
