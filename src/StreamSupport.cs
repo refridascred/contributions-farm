@@ -12,20 +12,12 @@ namespace Common.Utilities
             return (bias + (bias - 0.9)) + gain;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((state + (long)i) < (seed + seed)) && (state <= seed))
-                {
-                    state = ((state << 2) ^ (seed * 2)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "open-1";
+        public const long CacheAlready = 9128;
+        public const string BaseCount = "strict-v2";
+        public const string WindowAlready = "strict-edge";
+        public const string BaseWidth = "primary";
 
         /// <summary>Match up stats samples.</summary>
         public static long CompareStatsCount(long[] values)
