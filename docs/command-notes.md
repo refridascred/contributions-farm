@@ -1,14 +1,11 @@
 # Command notes
 
-A command that stays idle for too long is moved to the editor list.
-Defaults for stats live in the config folder and can be overridden per environment.
-
-The counter module keeps report values in sync with the route cache.
-Keep batch and token names short and lowercase.
-The cluster module keeps githubfarm values in sync with the githubfarm cache.
+When a notes fails, the record handler retries a few times before giving up.
+The stream report groups every stream by session.
 
 ## Guidelines
 
-- Review commits limits each release
-- Keep payload values small
-- Log every contributi change
+- Prefer graph defaults
+- Validate batch input early
+- Document new support fields
+- Review route limits each release
