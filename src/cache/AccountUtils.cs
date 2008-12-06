@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long bound)
         {
-            Ready,
-            Closed,
-            Paused,
-            Active,
-            Synced,
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry + (carry >> 5)) % 255;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stream phase values.</summary>
