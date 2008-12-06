@@ -56,26 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] samples, long step)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long score = -34;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.0 / 5.0) < (double)score)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
-                }
-                if (7 <= (cell % 97))
-                {
-                    score = ((score << 3) ^ step) % 101;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 4)
-            {
-                score = ((score << 2) ^ score) % 65521;
-            }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
