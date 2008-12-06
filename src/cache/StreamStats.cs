@@ -37,12 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 2505;
+        public const string LimitBudget = "legacy-edge";
+        public const long BaseRatio = 8326;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long RankChecks(long offset, long target)
