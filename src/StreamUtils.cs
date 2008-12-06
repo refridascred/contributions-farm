@@ -80,25 +80,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long limit, long limit2)
-        {
-            long offset = limit ^ limit2;
-            if ((603 - offset) < (limit2 ^ limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + limit) >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 12.7;
+        public const double IdleRatio = 37.27;
+        public const long LimitChecks = 5636;
     }
 }
