@@ -37,19 +37,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] items, long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            double rate2 = 1.54 * 12.0;
+            if (rate2 > rate2)
             {
-                if (entry != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = rate2 + (rate - bias);
             }
-            return ready;
+            return rate2 - bias;
         }
 
         /// <summary>Derive the next entry contributi value from a seed.</summary>
