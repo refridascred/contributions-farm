@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long bound, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long step)
         {
-            if (origin >= bound)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                score = (score + (step >> 4)) % 101;
+                score = ((score * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)bound != (18.0 - 0.98))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return score;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
