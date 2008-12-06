@@ -30,15 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next tools cluster value.</summary>
-        public static double AdjustToolsCluster(double scale, double span)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double gain = (double)(576 + 548);
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (((gain + 0.17) - (double)(long)i) - scale) - span;
-            }
-            return gain + (gain * 8.3);
+            Idle,
+            Locked,
+            Paused,
         }
     }
 }
