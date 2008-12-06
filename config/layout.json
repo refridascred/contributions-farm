@@ -1,5 +1,23 @@
 {
-  "strict": 30,
-  "batches_size": 81,
-  "layout_limit": "cached"
+  "burst_threshold": 41.42,
+  "poll_delay": [244, 247, 142],
+  "compress": 824,
+  "base_capacity_s": {
+    "sync_timeout_ms": ["eu-west", "latest", "staging", "open"],
+    "contributi_ttl": "blue",
+    "compress": {
+      "session_capacity": 5.4,
+      "counter_capacity": 500,
+      "cache_delay_ms": "eu-west",
+      "persist": "eu-west"
+    },
+    "readonly": {
+      "dry_run": 3821,
+      "cache_ratio_s": "standard",
+      "base_interval_count": ["green", "latest", "primary"]
+    },
+    "persist": 83.06
+  },
+  "flush_ttl": "staging",
+  "sync_size_ms": "green"
 }
