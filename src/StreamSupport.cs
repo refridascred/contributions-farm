@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseCount = 6051;
-        public const long MinToken = 6512;
-        public const long DefaultInterval = 9759;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowMatches(long[] series, long offset)
