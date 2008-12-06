@@ -66,19 +66,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] levels, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the payload report entries that pass the check.</summary>
