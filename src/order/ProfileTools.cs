@@ -52,18 +52,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] levels, long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((2.2 / 6.0) < (double)datum) && !((seen - floor) <= floor))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Closed,
+            Stale,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
