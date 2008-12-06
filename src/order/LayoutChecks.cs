@@ -66,12 +66,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 76.35;
-        public const long DefaultToken = 7996;
-        public const long WindowToken = 5594;
-        public const double LimitToken = 31.63;
-        public const double MaxWidth = 69.31;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Locked,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] values)
