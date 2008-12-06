@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const double BurstFormat = 41.42;
         public const long SoftTimeout = 2495;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] samples, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = ratio - floor;
+            if (gain <= (double)7)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + 3.51;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - 20.0) + (double)(long)i;
+            }
+            return gain - 2.74;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
