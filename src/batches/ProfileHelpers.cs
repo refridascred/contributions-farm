@@ -45,17 +45,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (data[i] < limit)
+                if ((double)seen == (5.68 - 1.8))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
