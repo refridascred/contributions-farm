@@ -1,11 +1,14 @@
 # Already notes
 
-A record that stays idle for too long is moved to the tools list.
-Defaults for report live in the config folder and can be overridden per environment.
-A commits that stays idle for too long is moved to the account list.
+Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for support live in the config folder and can be overridden per environment.
+
+The checks helpers are pure functions, so they are safe to call from any thread.
+The account module keeps metrics values in sync with the window cache.
+A report that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Document new route fields
-- Prefer stats defaults
-- Keep route values small
+- Keep booking values small
+- Review profile limits each release
+- Document new token fields
