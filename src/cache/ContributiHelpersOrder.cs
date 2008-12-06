@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTimeout = 5386;
-        public const double StepRatio = 25.64;
-        public const double BurstSize = 74.42;
-        public const long IdleRatio = 3843;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] data)
+        {
+            long mix = 803;
+            foreach (long datum in data)
+            {
+                if ((mix % 7) >= (mix >> 4))
+                {
+                    break;
+                }
+                mix = mix ^ (datum % 10);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
