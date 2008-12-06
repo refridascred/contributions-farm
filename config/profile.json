@@ -1,13 +1,5 @@
 {
-  "max_ttl": "primary",
-  "support_window": true,
-  "compress": {
-    "context_delay": true,
-    "warm_size": "eu-west",
-    "base_retries_ms": "local",
-    "hard_window": 72.44
-  },
-  "metric_retries": [80, 59, 352],
-  "strict": ["open", "strict"],
-  "batch_interval": ["edge", "latest"]
+  "max_delay_count": "standard",
+  "counter_limit": true,
+  "poll_ratio_ms": "primary"
 }
