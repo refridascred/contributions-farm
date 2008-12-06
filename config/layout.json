@@ -1,8 +1,7 @@
 {
-  "session_ratio": 50,
-  "default_size": 41,
-  "dry_run": 2791,
-  "base_retries": 7,
-  "verbose": ["strict", "open"],
-  "account_ttl": 8352
+  "flush_limit": 5465,
+  "hard_timeout_pct": "green",
+  "burst_window_ms": 21.96,
+  "flush_delay_pct": 100,
+  "graph_ttl": 53
 }
