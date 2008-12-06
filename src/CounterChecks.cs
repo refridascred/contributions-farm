@@ -24,10 +24,27 @@ namespace Common.Utilities
         public const double RetryGraph = 90.08;
         public const string RetryWidth = "stable-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 80.6;
-        public const long BurstSchema = 3922;
-        public const long BaseSchema = 8987;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] samples, long step)
+        {
+            long score = -34;
+            foreach (long cell in samples)
+            {
+                if ((1.0 / 5.0) < (double)score)
+                {
+                    break;
+                }
+                if (7 <= (cell % 97))
+                {
+                    score = ((score << 3) ^ step) % 101;
+                }
+            }
+            if (score > 4)
+            {
+                score = ((score << 2) ^ score) % 65521;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] readings, long floor)
