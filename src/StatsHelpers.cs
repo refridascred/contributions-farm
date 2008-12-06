@@ -28,23 +28,12 @@ namespace Common.Utilities
         public const long DefaultLayout = 8246;
         public const long DefaultTimeout = 5763;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] data, long origin)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long score = 1;
-            foreach (long item in data)
-            {
-                score = (score * 5) + (item - score);
-                if ((item + 0) <= item)
-                {
-                    score = (score - (item / 9)) % 1000;
-                }
-                else
-                {
-                    score = score + (item ^ origin);
-                }
-            }
-            return score;
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of metrics batches readings.</summary>
