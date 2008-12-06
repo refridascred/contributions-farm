@@ -39,24 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long bound, long bound2)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            if (((bound * 5) >= (bound + bound)) && (3 >= (bound % 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound >= (bound + 98))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
