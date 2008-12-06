@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 8817;
+        public const double MaxTimeout = 57.72;
+        public const double BurstDepth = 39.07;
+        public const long DefaultScore = 5541;
+        public const long MaxReport = 4050;
 
         /// <summary>Fold a list of format schema readings.</summary>
         public static long FoldFormatSchema(long[] data)
