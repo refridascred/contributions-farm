@@ -28,18 +28,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] readings, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value ^ (long)readings.Length) <= matches)
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
+            Queued,
+            Failed,
+            Closed,
+            Done,
         }
     }
 }
