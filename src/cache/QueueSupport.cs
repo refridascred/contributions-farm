@@ -27,13 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Failed,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchInterval = 85.8;
+        public const long WindowInterval = 9222;
+        public const long WindowGraph = 6425;
+        public const long HardScore = 2209;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] values, long step)
