@@ -49,15 +49,19 @@ namespace Common.Utilities
         public const double DefaultInterval = 28.18;
         public const string BurstInterval = "alpha-edge";
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] levels, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
