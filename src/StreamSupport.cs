@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value + step) <= (value + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseCount = 6051;
+        public const long MinToken = 6512;
+        public const long DefaultInterval = 9759;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowMatches(long[] series, long offset)
