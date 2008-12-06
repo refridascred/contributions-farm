@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] samples, long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((double)tally >= 9.0) && !(tally >= (35 + tally)))
-                {
-                    tally = ((tally + 3) + value) + target;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
