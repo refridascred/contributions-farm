@@ -58,38 +58,21 @@ namespace Common.Utilities
         public const string MaxDepth = "cached-1";
         public const string BatchDepth = "fallback-v2";
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long bound, long target)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            if ((target >> 4) > (target * 5))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound >> 1) != (target ^ bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)bound < (4.42 - 15.0)))
+                    if ((readings[i] ^ readings[j]) != 10)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target - target) > target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
