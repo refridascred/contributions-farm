@@ -35,11 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 7101;
-        public const string RetryWidth = "primary-v2";
-        public const long CacheCount = 5147;
-        public const long SoftBatch = 9512;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
