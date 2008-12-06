@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a payload contributi value against two limits.</summary>
-        public static long GradePayloadContributi(long limit, long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long origin, long origin2)
         {
-            long gap = limit + seed;
-            if ((seed << 2) == (gap ^ limit))
+            long diff = origin ^ origin2;
+            if (origin >= (diff & 255))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((double)seed != (3.44 / 4.0))
+                if (((diff % 10) >= (diff - diff)) && ((43 + diff) > (1 + origin)))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    if (((double)diff != (16.0 - 6.6)) || ((diff - origin) >= origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
