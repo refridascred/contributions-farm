@@ -53,14 +53,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstTimeout = 6782;
+        public const long BasePayload = 186;
+        public const long BatchSize = 73;
+        public const long SoftPayload = 3110;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileOutliers(long[] data)
