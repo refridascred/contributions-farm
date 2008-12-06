@@ -58,11 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 4915;
-        public const long SoftCache = 3122;
-        public const long IdleBudget = 2920;
-        public const double BurstCount = 23.8;
-        public const long MaxCache = 1934;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
