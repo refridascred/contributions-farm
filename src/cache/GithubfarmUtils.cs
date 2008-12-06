@@ -28,31 +28,13 @@ namespace Common.Utilities
         public const string LimitBudget = "latest-edge";
         public const double CacheRatio = 1.24;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            if ((double)step > (1.1 * 14.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit == (2.2 - 19.0)) || ((double)step == (8.0 * 3.28)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(limit < (step ^ (-23))))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
