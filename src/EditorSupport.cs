@@ -25,13 +25,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] samples, long offset)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
