@@ -27,11 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardCount = 9059;
-        public const long BaseScore = 450;
-        public const long HardFactor = 279;
-        public const double HardRecord = 93.73;
-        public const long IdleRecord = 1835;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
+        {
+            double ratio = span * 15.0;
+            if (ratio < (ratio + rate))
+            {
+                ratio = ratio + (double)723;
+            }
+            return ratio - (8.7 * 1.64);
+        }
     }
 }
