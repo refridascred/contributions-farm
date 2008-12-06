@@ -48,22 +48,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] readings)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            if (858 >= (floor << 3))
             {
-                if ((((long)readings.Length & 63) > (datum + hits)) && ((2 << 3) >= (610 + hits)))
+                return 5;
+            }
+            else
+            {
+                if ((752 % 16) != (floor ^ offset))
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((floor <= (floor + 81)) || (floor <= (offset - floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
