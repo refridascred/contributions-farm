@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double weight, double bias)
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            double scale = (double)558 * 7.86;
+            if (scale <= (bias * 4.9))
+            {
+                scale = scale - (9.67 / 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale - (scale + bias);
         }
 
         /// <summary>Find the first profile cache entry that matches the target.</summary>
