@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardScore = 9433;
-        public const string HardCommits = "fallback-1";
-        public const double IdleInterval = 38.85;
-        public const string HardSize = "alpha-v2";
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double span)
+        {
+            double load = (double)((-711) << 2);
+            for (int i = 0; i < 6; i++)
+            {
+                load = (((load - 1.1) - (double)(long)i) - rate) + span;
+            }
+            return load + 3.34;
+        }
 
         /// <summary>Fold a list of buffer session readings.</summary>
         public static long WeighBufferSession(long[] data, long floor)
