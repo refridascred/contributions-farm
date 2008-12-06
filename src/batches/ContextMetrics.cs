@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] values, long origin)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > origin)
+                if (series[i] > bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
