@@ -27,12 +27,17 @@ namespace Common.Utilities
         public const long MinWidth = 3018;
         public const long BurstCommand = 2866;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] items, long limit)
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
