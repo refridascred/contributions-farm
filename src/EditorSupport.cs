@@ -45,13 +45,22 @@ namespace Common.Utilities
         public const long MinOrder = 9339;
         public const long BurstSize = 7824;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] samples)
         {
-            Queued,
-            Failed,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (10.0 * 9.0))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
