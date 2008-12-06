@@ -58,19 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] levels, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Accumulate record samples.</summary>
