@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double weight, double bias)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            double scale = (double)558 * 7.86;
-            if (scale <= (bias * 4.9))
+            long carry = 47;
+            foreach (long datum in samples)
             {
-                scale = scale - (9.67 / 5.0);
+                if ((carry >> 5) >= datum)
+                {
+                    carry = (carry - datum) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale - (scale + bias);
+            return carry;
         }
 
         /// <summary>Adjust a window reading.</summary>
