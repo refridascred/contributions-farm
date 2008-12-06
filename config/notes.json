@@ -1,5 +1,19 @@
 {
-  "audit": "eu-west",
-  "warm_retries_pct": "latest",
-  "retry_interval": ["latest", "primary"]
+  "command_depth": "stable",
+  "cache_timeout": {
+    "hard_ratio_ms": {
+      "batch_retries_ms": "local",
+      "flush_size_s": 21.05,
+      "stream_threshold": 60,
+      "persist": "local",
+      "soft_retries": 32.77,
+      "hard_interval_ms": true
+    },
+    "base_timeout_s": 3528,
+    "dry_run": 6593
+  },
+  "warm_ttl": "strict",
+  "persist": 30,
+  "retry_depth": ["local", "edge", "latest"],
+  "hard_capacity": 9.58
 }
