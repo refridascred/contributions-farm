@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double bias)
         {
-            Synced,
-            Retry,
-            New,
+            double mean = 5.41;
+            if (mean < mean)
+            {
+                mean = (mean - ratio) + bias;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
