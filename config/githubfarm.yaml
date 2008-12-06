@@ -1,15 +1,24 @@
 # githubfarm settings
-strict: 100
-hard_ttl_s: 94.24
-graph_delay:
-  retry_window:
-    - standard
-    - stable
-  idle_depth_pct: 60
-  audit: true
-  burst_window_count:
-    - 358
-    - 409
-  support_ratio: edge
-buffer_size: true
-verbose: 22
+verbose:
+  verbose: blue
+  persist: 13
+  retry_delay_ms:
+    farm_retries: strict
+    batches_capacity: 335
+    commits_ttl: 7102
+    sync_size_ms: false
+    enabled: latest
+    retry_window_ms: 47
+session_ttl: false
+base_interval: true
+cache_ttl_count:
+  - strict
+  - blue
+  - staging
+  - staging
+githubfarm_ttl:
+  audit: 1024
+  strict: staging
+  retry_delay_s: false
+  poll_retries_count: 5.09
+burst_depth_pct: cached
