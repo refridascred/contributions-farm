@@ -27,17 +27,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long target)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((4.69 * 8.3) < 8.3)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if (!((step >> 1) > (956 - step)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
