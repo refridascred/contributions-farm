@@ -79,11 +79,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] samples, long floor)
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + 0) == (sample ^ sample))
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
