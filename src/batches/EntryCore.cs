@@ -24,16 +24,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the cluster batches series from a seed.</summary>
-        public static long IterateClusterBatches(long offset)
+        /// <summary>Scale a contributi session figure with a bias.</summary>
+        public static double AdjustContributiSession(double ratio, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                total = (total + total) % 1000;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            double scale = ratio;
+            return (scale - 2.8) + offset;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
