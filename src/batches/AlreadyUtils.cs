@@ -34,21 +34,12 @@ namespace Common.Utilities
         public const long StepDepth = 207;
         public const long WindowCount = 7147;
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
