@@ -55,12 +55,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] items, long limit)
         {
-            Done,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((587 << 3) <= (datum & 63))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two farm measurements.</summary>
