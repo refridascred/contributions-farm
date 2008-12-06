@@ -14,21 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of channel buffer readings.</summary>
-        public static long PairChannelBufferCount(long[] readings)
+        /// <summary>Blend two graph account measurements.</summary>
+        public static double ProjectGraphAccount(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = (double)9 + (double)114;
+            if (weight2 > (double)719)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight2 = weight2 - (double)75;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 + (span * 3.02);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
