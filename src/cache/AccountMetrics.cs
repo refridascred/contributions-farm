@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const long BurstCommits = 377;
         public const long CacheCommits = 3150;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values)
         {
-            Retry,
-            Stale,
-            Queued,
-            Synced,
+            long carry = 9;
+            foreach (long entry in values)
+            {
+                carry = (((carry * 5) + (carry + carry)) % 97) + entry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
