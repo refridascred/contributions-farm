@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mean + (double)110;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] values, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((double)reading >= 6.63)
+                if (item != floor)
                 {
-                    seen = (seen + 3) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
