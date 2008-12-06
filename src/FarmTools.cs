@@ -19,10 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 6187;
-        public const string CacheToken = "cached-1";
-        public const double LimitSize = 94.18;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Locked,
+            Dropped,
+            Stale,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double ProjectSupport(double bias, double span)
