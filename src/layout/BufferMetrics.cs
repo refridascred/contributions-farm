@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Define booking limits and defaults.</summary>
-        public const long BurstScore = 6187;
-        public const long SoftBooking = 92;
-        public const long MaxBooking = 1072;
-        public const long BurstBooking = 3345;
-        public const long LimitBooking = 4783;
+        /// <summary>Derive the next entry route value from a seed.</summary>
+        public static long SeriesEntryRoute(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((total / 2) > origin)
+                {
+                    total = ((total << 3) ^ (697 << 3)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total & 63)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] values, long offset)
