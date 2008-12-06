@@ -33,17 +33,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] series, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 4;
+            foreach (long value in series)
             {
-                if (series[i] >= origin)
+                if (value < (result << 2))
                 {
-                    return (long)i;
+                    break;
                 }
+                result = ((result ^ (891 / 5)) % 101) + origin;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Roll a support commits counter forward.</summary>
