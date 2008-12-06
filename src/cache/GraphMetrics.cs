@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 36.98;
-        public const double LimitScore = 37.68;
-        public const double StepTimeout = 5.47;
-        public const long BatchCount = 8441;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long step, long floor)
