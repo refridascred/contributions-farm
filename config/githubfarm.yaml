@@ -1,8 +1,7 @@
 # githubfarm settings
-batch_retries: legacy
-base_limit_s:
-  - legacy
-  - standard
-  - staging
-  - cached
-farm_ratio: 30.54
+cache_ttl_pct:
+  - 297
+  - 37
+poll_window: 1817
+cache_delay_count: 250
+audit: 80.04
