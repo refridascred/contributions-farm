@@ -59,23 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache farm value from a seed.</summary>
-        public static long RollCacheFarm(long limit)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((5.66 / 6.0) == (double)(long)i)
-                {
-                    mark = mark + (limit / 6);
-                }
-                else
-                {
-                    mark = (mark - mark) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
