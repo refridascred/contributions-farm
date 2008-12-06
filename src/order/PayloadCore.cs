@@ -56,13 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            New,
-            Done,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 42.0;
+        public const long BaseRatio = 9516;
+        public const long BurstDepth = 6027;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long FoldCache(long[] data)
