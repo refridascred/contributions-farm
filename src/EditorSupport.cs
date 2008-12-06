@@ -84,19 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double weight, double floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] values, long origin)
         {
-            double gain = floor;
-            if (gain >= (20.0 * 5.0))
+            bool found = true;
+            foreach (long reading in values)
             {
-                gain = gain - (floor - floor);
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (weight + gain)) + (double)(long)i;
-            }
-            return gain + floor;
+            return found;
         }
     }
 }
