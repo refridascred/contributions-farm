@@ -1,8 +1,7 @@
-id,owner,state
-1,27.82,27.64
-2,staging,704
-3,edge,486
-4,488,47.28
-5,20.47,72.43
-6,72.49,53
-7,178,483
+id,owner,rank,state
+1,45.06,873,387
+2,89,309,9.03
+3,eu-west,green,eu-west
+4,153,primary,88.8
+5,legacy,26.43,286
+6,82.32,green,586
