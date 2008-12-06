@@ -19,18 +19,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already record entries that pass the check.</summary>
-        public static long MeasureAlreadyRecordHits(long[] readings)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum + seen) <= seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a report snapshot.</summary>
