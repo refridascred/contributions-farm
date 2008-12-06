@@ -31,19 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double ratio, double bias)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            double drift = 7.87;
-            if (drift < drift)
+            long anchor = 11;
+            foreach (long sample in samples)
             {
-                drift = drift + (double)68;
+                anchor = ((anchor * 3) + (sample % 3)) % 1000;
             }
-            else
-            {
-                drift = drift - ratio;
-            }
-            return drift + (bias - drift);
+            return anchor % 65521;
         }
 
         /// <summary>Count the cluster report entries that pass the check.</summary>
