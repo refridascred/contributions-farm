@@ -34,20 +34,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - ((long)i + 8)) % 4096;
-                if ((mark << 3) == (mark % 64))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark ^ (floor << 3)) % 65521;
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
