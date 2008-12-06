@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long total = -7;
-            foreach (long sample in readings)
-            {
-                if ((total & 127) < 6)
-                {
-                    total = (total ^ (sample - total)) % 101;
-                }
-                if ((4.98 * 8.0) != (double)sample)
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
