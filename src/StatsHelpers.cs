@@ -28,13 +28,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            Queued,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a report snapshot.</summary>
