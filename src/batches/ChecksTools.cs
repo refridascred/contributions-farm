@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long score = 95;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ sample) <= (468 + 9))
-                {
-                    score = (score - (69 & 3)) % 101;
-                }
-            }
-            if (score > 70)
-            {
-                score = ((score * 2) + (score & 15)) % 101;
-            }
-            return score % 1000;
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
