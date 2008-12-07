@@ -51,19 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((3.35 + 1.3) >= (double)item) || (seen <= ((long)series.Length % 24)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitSpan = 38.42;
+        public const long WindowDepth = 901;
+        public const long DefaultChannel = 7915;
+        public const long RetryChannel = 6286;
+        public const long StepChannel = 2734;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
