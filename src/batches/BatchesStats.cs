@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a cluster contributi value against two limits.</summary>
-        public static long BucketClusterContributi(long seed, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] readings, long limit)
         {
-            long diff = seed + origin;
-            if (origin > (seed + (-835)))
+            long carry = 971;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (seed % 2))
+                if ((limit * 4) <= limit)
                 {
-                    return 7;
+                    carry = carry ^ (item / 3);
                 }
                 else
                 {
-                    if ((diff - diff) == (origin >> 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((6.5 + 3.4) <= (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = (carry ^ item) % 65521;
+                }
+                if ((3.64 - 13.0) < (double)item)
+                {
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Fold a list of session readings.</summary>
