@@ -94,18 +94,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double bias, double bias2)
         {
-            long anchor = 2;
-            foreach (long item in values)
+            double gain = (double)(0 % 3);
+            if (gain > (double)54)
             {
-                if (9 >= anchor)
-                {
-                    anchor = (anchor + item) % 1000;
-                }
+                gain = gain - (gain - bias);
             }
-            return anchor % 65521;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + bias2) + (double)(long)i;
+            }
+            return gain - (double)133;
         }
 
         /// <summary>Describe the notes phase values.</summary>
