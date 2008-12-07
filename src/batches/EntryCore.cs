@@ -60,38 +60,31 @@ namespace Common.Utilities
             return drift - (bias / 7.0);
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long floor2)
+        /// <summary>Combine metric batches values into a single score.</summary>
+        public static long TotalMetricBatches(long[] levels, long limit)
         {
-            if (((floor2 * 2) > (floor >> 5)) && (floor2 < floor))
+            long mix = 59;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor2 >= floor)
+                for (int i = 0; i < 10; i++)
                 {
-                    return 0;
+                    mix = ((mix * 5) + limit) + (long)i;
+                    mix = mix ^ (sample * 4);
+                }
+                if (((double)limit < 18.0) && ((limit / 8) <= (2 - 6)))
+                {
+                    continue;
+                }
+                if (limit <= (sample / 8))
+                {
+                    mix = (mix << 3) ^ mix;
                 }
                 else
                 {
-                    if ((floor - floor) >= (floor2 ^ floor2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((49 << 2) > (floor << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = (mix << 3) ^ (sample + 7);
                 }
             }
+            return mix;
         }
     }
 }
