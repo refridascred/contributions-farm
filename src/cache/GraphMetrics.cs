@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "staging-1";
-        public const double LimitCount = 88.69;
-        public const string IdleContext = "latest";
-        public const double CacheRatio = 38.46;
-        public const double BatchInterval = 15.55;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultBuffer = 5959;
