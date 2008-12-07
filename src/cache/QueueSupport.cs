@@ -38,15 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double gain, double floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            double rate = (floor / 3.0) / 4.0;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                rate = (rate - (double)(long)i) - gain;
+                if ((entry % 8) < (entry + 75))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate - rate;
+            return seen;
         }
     }
 }
