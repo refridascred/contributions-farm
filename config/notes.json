@@ -1,5 +1,16 @@
 {
-  "strict": 87,
-  "layout_interval": false,
-  "format_ratio": 60
+  "verbose": "blue",
+  "layout_window": 15.12,
+  "default_delay_count": "eu-west",
+  "order_ratio": true,
+  "enabled": {
+    "idle_size": {
+      "idle_delay": 13.46,
+      "burst_ratio_pct": false,
+      "persist": [457, 285],
+      "max_timeout_pct": 70
+    },
+    "soft_threshold_ms": 60,
+    "compress": [145, 329, 245, 451]
+  }
 }
