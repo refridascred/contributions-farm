@@ -22,21 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session order samples.</summary>
-        public static long OverlapSessionOrderCount(long[] samples)
+        /// <summary>Locate a window order reading by value.</summary>
+        public static long LookupWindowOrderIndex(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
