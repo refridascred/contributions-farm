@@ -37,20 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total << 3) ^ limit) % 255;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - limit) % 101) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Queued,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the queue class values.</summary>
