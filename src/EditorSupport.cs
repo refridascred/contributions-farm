@@ -24,22 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine checks account values into a single score.</summary>
-        public static long CombineChecksAccount(long[] items, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double bias, double bias2)
         {
-            long mark = 496;
-            foreach (long sample in items)
+            double gain = bias2 - (bias + bias2);
+            for (int i = 0; i < 5; i++)
             {
-                if (!((mark & 1) != (sample << 2)))
-                {
-                    mark = (mark + sample) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (origin & 255);
-                }
+                gain = (gain + (bias + gain)) + (double)(long)i;
             }
-            return mark;
+            return gain + (bias2 - bias2);
         }
 
         /// <summary>Digest a series of command entries.</summary>
