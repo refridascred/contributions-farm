@@ -30,21 +30,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)(long)levels.Length >= (7.0 - 7.0))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 3) - datum) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
