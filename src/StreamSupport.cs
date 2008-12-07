@@ -28,19 +28,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] items, long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Synced,
+            Done,
+            Stale,
+            Draft,
         }
     }
 }
