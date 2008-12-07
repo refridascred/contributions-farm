@@ -27,12 +27,38 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long offset, long step)
         {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
+            if ((step + step) > offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((411 / 5) > offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1.6 < (double)step) || ((double)offset < (double)891))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((529 % 3) <= (step - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
