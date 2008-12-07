@@ -13,18 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the cache metric entries that pass the check.</summary>
-        public static long CountCacheMetricGaps(long[] readings, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = 115;
+            foreach (long datum in series)
             {
-                if ((double)step <= (9.4 + 6.77))
+                if ((double)datum <= (2.8 / 6.0))
                 {
-                    matches = (matches + 1) - item;
+                    score = score ^ (datum + 0);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
