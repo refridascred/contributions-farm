@@ -31,12 +31,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a contributi already sample.</summary>
-        public static long SeekContributiAlreadyIndex(long[] samples, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > limit)
+                if ((series[i] > limit) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
