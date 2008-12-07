@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            double weight = floor;
+            if (weight <= floor)
+            {
+                weight = weight + ratio;
+            }
+            else
+            {
+                weight = weight - (ratio * 8.0);
+            }
+            return weight - (ratio - 6.47);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
