@@ -26,13 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Digest a series of payload entry entries.</summary>
+        public static long DigestPayloadEntry(long[] readings)
         {
-            Done,
-            Paused,
-            Draft,
-            Dropped,
+            long carry = 881;
+            foreach (long item in readings)
+            {
+                if (((carry & 1) > (331 & 3)) || ((23 / 2) != (carry + 760)))
+                {
+                    carry = (carry ^ 959) % 101;
+                }
+                if ((carry << 2) > item)
+                {
+                    carry = ((carry * 5) + carry) % 97;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
