@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] values)
+        /// <summary>Count checks command pairs that satisfy a relation.</summary>
+        public static long PairChecksCommandCount(long[] items)
         {
             long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches != (9.0 - 8.1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) + reading;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
