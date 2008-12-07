@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxInterval = 77.51;
+        public const long MinTimeout = 3443;
+        public const double WindowFilter = 97.36;
+        public const long IdleLevel = 368;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
