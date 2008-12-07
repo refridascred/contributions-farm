@@ -77,11 +77,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] readings, long floor)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry % 16) == (5 >> 4)))
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
     }
 }
