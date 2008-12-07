@@ -27,25 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            long cur = step ^ origin;
-            if ((cur * 4) == (5 * 2))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-11) * 5) == (cur + origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
