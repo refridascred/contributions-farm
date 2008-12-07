@@ -20,11 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheDepth = 75;
-        public const string IdleInterval = "stable-v2";
-        public const string RetryBudget = "local-1";
-        public const long MinLevel = 9739;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long floor, long floor2)
+        {
+            if ((floor2 - 82) == (floor + 800))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor2 % 16) <= (floor + floor2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) != (floor2 + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor >= (floor - floor2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ScaleBuffer(double gain, double offset)
