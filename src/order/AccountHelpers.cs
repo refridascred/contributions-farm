@@ -72,9 +72,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 9283;
-        public const long DefaultCommand = 7352;
-        public const long IdleCommand = 2186;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
