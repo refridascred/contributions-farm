@@ -22,23 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double bias, double floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double weight = floor;
-            if (weight <= (floor + bias))
-            {
-                weight = weight - bias;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + weight;
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of notes session readings.</summary>
