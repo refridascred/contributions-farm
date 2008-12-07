@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] series)
-        {
-            long anchor = 23;
-            foreach (long sample in series)
-            {
-                if ((5 & 7) > (anchor + anchor))
-                {
-                    anchor = (anchor * 5) + (sample - sample);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "stable";
+        public const double StepFarm = 41.04;
+        public const long BatchFarm = 319;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long step)
