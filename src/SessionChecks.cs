@@ -35,12 +35,19 @@ namespace Common.Utilities
             return scale2 + 12.0;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSchema = 53.47;
-        public const long HardSchema = 4445;
-        public const long RetryInterval = 6369;
-        public const long IdleRatio = 8928;
-        public const double IdleWidth = 84.94;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((sample - seen) == (seen - seen)) || ((sample >> 3) > (seen % 97)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string DefaultLevel = "standard";
