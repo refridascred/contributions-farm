@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-A contributi that stays idle for too long is moved to the account list.
-The format helpers are pure functions, so they are safe to call from any thread.
+The checks report groups every stats by batches.
+Each report is validated before it reaches the payload queue.
+Keep notes and account names short and lowercase.
 
 ## Guidelines
 
-- Keep commits values small
-- Review profile limits each release
-- Prefer format defaults
-- Document new format fields
+- Review batches limits each release
+- Prefer route defaults
+- Log every githubfarm change
