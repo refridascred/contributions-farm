@@ -38,20 +38,10 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double floor)
-        {
-            double rate = floor;
-            if (rate >= (5.27 + 0.4))
-            {
-                rate = rate + (gain * 1.29);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate / 5.0)) + (double)(long)i;
-            }
-            return rate - floor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftCount = 4545;
+        public const string BatchScore = "staging-edge";
+        public const double HardSpan = 27.7;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 856;
