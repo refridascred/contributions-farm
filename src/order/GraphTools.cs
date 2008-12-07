@@ -37,10 +37,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultSize = "strict-edge";
-        public const double HardNotes = 81.16;
-        public const long LimitSize = 3683;
-        public const long WindowLevel = 1320;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally << 3) <= (floor >> 2))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
     }
 }
