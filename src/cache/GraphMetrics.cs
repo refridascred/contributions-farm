@@ -33,12 +33,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Roll a entry cluster counter forward.</summary>
+        public static long SeriesEntryCluster(long step)
         {
-            Draft,
-            Done,
-            Failed,
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate profile schema samples.</summary>
