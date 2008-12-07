@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] items)
+        /// <summary>Check that every channel command entry stays within the limit.</summary>
+        public static bool CheckChannelCommandRange(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((double)item >= (3.3 - 17.0))
+                if (entry <= target)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
