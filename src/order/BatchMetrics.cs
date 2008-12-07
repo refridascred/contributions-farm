@@ -71,21 +71,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(3.32 <= (double)item))
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
