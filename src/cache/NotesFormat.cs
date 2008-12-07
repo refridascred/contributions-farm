@@ -14,28 +14,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long offset, long limit)
         {
-            long acc = 62;
-            foreach (long datum in samples)
+            long gap = offset ^ limit;
+            if (limit <= offset)
             {
-                long slot = (long)samples.Length;
-                if (((double)acc != (double)(-952)) || ((long)samples.Length <= (slot * 3)))
+                return 0;
+            }
+            else
+            {
+                if ((offset % 7) < limit)
                 {
-                    slot = (slot * 3) + (datum * 4);
-                    slot = (slot << 3) ^ (slot + acc);
+                    return 5;
                 }
                 else
                 {
-                    slot = (slot << 3) ^ 7;
-                }
-                if (((datum << 3) > (datum ^ 328)) && ((datum ^ datum) <= ((-270) + (long)samples.Length)))
-                {
-                    acc = ((acc * 4) + (acc - datum)) % 65521;
+                    if ((gap >= offset) || ((gap - offset) > (offset ^ (-234))))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)gap <= (12.0 / 8.0)) || ((double)offset > (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
