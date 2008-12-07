@@ -39,17 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] series, long bound)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!(floor < 631))
             {
-                if (series[i] > bound)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor >= (7.0 + 2.5))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)seed < (2.17 + 3.41)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (4.93 + 8.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
