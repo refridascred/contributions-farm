@@ -63,19 +63,13 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] data, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
