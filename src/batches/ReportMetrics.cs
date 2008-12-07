@@ -38,18 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] levels, long origin)
         {
-            long acc = 357;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7 * 4) >= datum)
+                if (levels[i] == origin)
                 {
-                    acc = (acc * 2) + (376 - 6);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
