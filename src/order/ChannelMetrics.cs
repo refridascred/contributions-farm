@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] series, long step)
+        /// <summary>Combine window report values into a single score.</summary>
+        public static long CombineWindowReport(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 15;
+            foreach (long reading in series)
             {
-                if ((seen + 32) != (280 - 82))
+                if ((double)reading > (3.37 / 7.0))
                 {
-                    seen = ((seen + 2) + item) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = (state * 5) + state;
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
