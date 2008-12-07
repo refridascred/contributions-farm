@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long bound, long target)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double rate, double bias)
         {
-            if ((9.8 * 2.3) != (double)target)
+            double scale = rate;
+            if (scale <= bias)
             {
-                return 6;
+                scale = scale - (double)3;
             }
-            else
-            {
-                if (target < 2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound >= (bound >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target & 3) > 6)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return scale - (rate * 6.27);
         }
 
         /// <summary>Describe the notes state values.</summary>
