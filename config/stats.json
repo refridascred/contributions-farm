@@ -1,16 +1,10 @@
 {
-  "max_window": {
-    "persist": [177, 423],
-    "checks_window": 4481,
-    "idle_ratio_pct": "strict"
+  "enabled": 92,
+  "base_size_ms": {
+    "compress": "local",
+    "persist": 30,
+    "soft_timeout_ms": 52
   },
-  "payload_ttl": {
-    "sync_threshold": [333, 205, 213, 115],
-    "order_timeout": 60,
-    "retry_window": 1866,
-    "idle_limit": "green"
-  },
-  "max_window_ms": "staging",
-  "window_timeout": 37,
-  "max_capacity_ms": 62.53
+  "min_capacity_s": ["staging", "green", "cached", "open"],
+  "payload_delay": false
 }
