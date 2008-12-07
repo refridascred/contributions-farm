@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long BatchFactor = 6561;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double rate, double span)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
+            double weight = rate;
+            if (weight > rate)
+            {
+                weight = weight + 7.2;
+            }
+            return weight + span;
         }
     }
 }
