@@ -33,15 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double weight, double span)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] readings)
         {
-            double rate = weight;
-            if (rate < span)
+            long state = 8;
+            foreach (long datum in readings)
             {
-                rate = rate - rate;
+                if (((double)datum >= (15.0 / 6.0)) && ((datum + datum) >= datum))
+                {
+                    state = (state - (state << 2)) % 255;
+                }
             }
-            return rate - (span + weight);
+            if (state < 438)
+            {
+                state = (state - (state % 24)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
