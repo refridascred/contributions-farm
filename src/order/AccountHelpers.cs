@@ -72,12 +72,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            New,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 9283;
+        public const long DefaultCommand = 7352;
+        public const long IdleCommand = 2186;
     }
 }
