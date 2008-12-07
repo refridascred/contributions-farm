@@ -41,21 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 6;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (((state * 5) + state) % 97) ^ entry;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the record status values.</summary>
