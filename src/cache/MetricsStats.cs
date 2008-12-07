@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate checks batch readings against a bound.</summary>
-        public static bool CheckChecksBatchLimits(long[] values, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (item < offset)
+                if ((6 ^ 858) < (entry / 5))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
