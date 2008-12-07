@@ -40,23 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((double)(long)i < 20.0))
-                {
-                    result = result ^ (limit % 16);
-                }
-                if (((limit << 1) == (limit ^ 63)) || ((double)result > (7.6 / 8.0)))
-                {
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Classify a report account pair into a bucket.</summary>
