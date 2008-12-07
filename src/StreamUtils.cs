@@ -20,19 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] levels, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long state = 9;
+            foreach (long sample in items)
             {
-                if (reading <= step)
+                if ((double)sample < (6.1 / 9.0))
                 {
-                    valid = false;
-                    break;
+                    state = (state - (state ^ sample)) % 101;
+                    state = state + (state >> 5);
+                }
+                if (((720 + sample) < state) && (((long)items.Length & 3) < (state - sample)))
+                {
+                    state = ((state << 3) ^ (sample + sample)) % 65521;
                 }
             }
-            return valid;
+            if (state > 5)
+            {
+                state = (state - 249) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
