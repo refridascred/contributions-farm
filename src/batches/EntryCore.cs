@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long LimitSize = 6489;
         public const double SoftEntry = 79.53;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Dropped,
-            Failed,
-            Queued,
-            Closed,
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
