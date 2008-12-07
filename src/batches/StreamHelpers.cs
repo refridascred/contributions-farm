@@ -27,18 +27,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long step, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if ((76 + 634) < bound)
             {
-                if (tally > (entry >> 2))
+                return 6;
+            }
+            else
+            {
+                if ((0 - step) == (step & 3))
                 {
-                    tally = (tally + 3) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (bound + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
