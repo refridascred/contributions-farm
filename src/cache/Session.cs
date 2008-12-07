@@ -61,18 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches entry samples.</summary>
-        public static long TallyBatchesEntry(long[] values, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] readings, long bound)
         {
-            long acc = 7;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (target <= (acc ^ (long)values.Length))
+                if ((long)readings.Length == ((-478) - 845))
                 {
-                    acc = ((acc << 2) ^ (target + value)) % 255;
+                    tally = ((tally + 2) - reading) - bound;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
