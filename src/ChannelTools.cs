@@ -13,14 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
+        public static long TallyGithubfarmLayoutMatches(long[] samples)
         {
-            Paused,
-            Pending,
-            Synced,
-            Done,
-            Draft,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)seen == (7.59 * 9.7))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine support payload values into a single score.</summary>
