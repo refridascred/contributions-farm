@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((long)i >> 5) <= bound) && ((bound >> 5) >= result))
                 {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ (bound >> 5)) % 97;
+                    result = result - (bound >> 3);
                 }
+                else
+                {
+                    result = result + (9 << 3);
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
