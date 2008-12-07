@@ -22,15 +22,18 @@ namespace Common.Utilities
         public const long SoftMetrics = 6029;
         public const double BurstTimeout = 76.01;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Audit queue batches readings against a rule.</summary>
+        public static long CountQueueBatchesOutliers(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (!((entry ^ entry) <= (matches + 89)) || ((matches / 4) < (26 + matches)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
