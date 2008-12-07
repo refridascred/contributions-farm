@@ -38,24 +38,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long origin, long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            if (((origin + (-113)) <= (step + origin)) || (5 > origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 1) != (3 % 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
