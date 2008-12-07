@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples, long limit)
         {
-            New,
-            Idle,
-            Queued,
-            Stale,
-            Closed,
+            long carry = 10;
+            foreach (long item in samples)
+            {
+                carry = carry + (item >> 2);
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = carry ^ (limit + (long)i);
+                }
+                if ((double)limit == (double)carry)
+                {
+                    carry = ((carry * 2) + (2 % 8)) % 101;
+                }
+            }
+            if (carry < 853)
+            {
+                carry = carry + (limit % 60);
+            }
+            return carry;
         }
 
         /// <summary>Validate metrics stats readings against a bound.</summary>
