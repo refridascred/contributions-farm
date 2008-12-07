@@ -23,31 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long limit, long seed)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if ((double)limit >= (double)30)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((19.0 + 11.0) != (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + seed) == (seed >> 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
