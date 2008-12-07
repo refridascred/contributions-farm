@@ -27,14 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Check that every notes token entry stays within the limit.</summary>
+        public static bool VerifyNotesTokenLimits(long[] series, long seed)
         {
-            Failed,
-            Paused,
-            New,
-            Draft,
-            Closed,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
