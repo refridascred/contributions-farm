@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Combine cluster githubfarm values into a single score.</summary>
+        public static long ScoreClusterGithubfarm(long[] levels)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            long carry = 380;
+            foreach (long reading in levels)
+            {
+                carry = (carry + (carry + reading)) % 1000;
+                carry = (carry << 3) ^ (reading + carry);
+            }
+            if (carry < 73)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
