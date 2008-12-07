@@ -56,24 +56,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long target, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            if ((7.95 + 6.2) < (double)target)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                sum = (sum - origin) % 101;
+                sum = (sum * 2) + origin;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset / 8) < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Roll a metric editor counter forward.</summary>
