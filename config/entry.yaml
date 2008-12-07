@@ -1,9 +1,28 @@
 # entry settings
-verbose: 188
-default_capacity:
-  - 372
-  - 289
-  - 340
-soft_depth_s:
-  - 67
-  - 101
+base_size_s:
+  githubfarm_ttl: true
+  max_limit_ms:
+    layout_limit: 500
+    command_window:
+      - blue
+      - staging
+    editor_delay: 10
+    context_ttl:
+      - blue
+      - stable
+    poll_size: false
+    flush_size: 95.4
+  max_timeout_count: 80
+  min_interval: false
+  cache_depth: local
+  base_window:
+    schema_ttl: false
+    profile_ttl: fallback
+    readonly: true
+already_interval: open
+burst_delay_count: strict
+strict:
+  - primary
+  - fallback
+  - standard
+  - blue
