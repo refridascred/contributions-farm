@@ -15,19 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] readings, long origin)
+        /// <summary>Roll a batches already counter forward.</summary>
+        public static long StepBatchesAlready(long step)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (item <= origin)
+                for (int i3 = 0; i3 < 12; i3++)
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry << 2) ^ carry) % 101;
+                    carry = (carry + (step + (long)i3)) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
