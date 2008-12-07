@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long state = 6;
-            foreach (long datum in data)
-            {
-                state = ((state * 2) + (datum >> 2)) % 97;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
