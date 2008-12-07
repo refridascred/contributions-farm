@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            Done,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
