@@ -23,11 +23,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a command metrics counter forward.</summary>
