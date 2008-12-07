@@ -29,22 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes session readings.</summary>
-        public static long ScoreNotesSession(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mark = 6;
-            foreach (long reading in items)
-            {
-                if ((5.0 + 5.6) > (double)(long)items.Length)
-                {
-                    mark = mark ^ (reading - reading);
-                }
-            }
-            if (mark < 89)
-            {
-                mark = ((mark << 3) ^ (mark >> 5)) % 65521;
-            }
-            return mark % 65521;
+            Done,
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
