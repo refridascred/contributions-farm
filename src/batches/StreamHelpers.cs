@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const long RetryFactor = 5205;
         public const double MinSchema = 38.61;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            if (!(bound < (bound << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound > 9.14)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed >> 1) == (bound >> 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
