@@ -58,11 +58,39 @@ namespace Common.Utilities
         public const string BurstOrder = "strict-v2";
         public const double SoftOrder = 75.55;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long floor, long bound)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
+            long offset = floor - bound;
+            if ((double)offset != (1.5 + 11.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((4.4 + 3.44) < (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((19.0 - 9.7) > (double)bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (89 > floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account mode values.</summary>
