@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double rate, double bias)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long limit)
         {
-            double scale = rate;
-            if (scale <= bias)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                scale = scale - (double)3;
+                acc = (acc << 2) ^ (acc + acc);
+                if (!((limit <= (357 & 7)) && (((long)i + limit) <= (limit << 3))))
+                {
+                    acc = acc + (acc % 8);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return scale - (rate * 6.27);
+            return acc;
         }
 
         /// <summary>Describe the notes state values.</summary>
