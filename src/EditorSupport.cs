@@ -26,22 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values)
+        /// <summary>Audit queue command readings against a rule.</summary>
+        public static long MeasureQueueCommandGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((5 * 3) >= entry)
+                if (tally >= ((-839) >> 1))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
