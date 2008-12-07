@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] data, long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = 588;
-            foreach (long entry in data)
-            {
-                result = (result ^ (step + result)) % 4096;
-                if ((result - result) <= (entry + entry))
-                {
-                    result = (result ^ step) % 101;
-                }
-                if ((result + step) < (result - result))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a buffer info.</summary>
