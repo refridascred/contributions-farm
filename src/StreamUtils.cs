@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 2660;
-        public const long CacheSize = 3292;
-        public const double IdleTimeout = 30.37;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally - cell) == (cell << 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] levels)
