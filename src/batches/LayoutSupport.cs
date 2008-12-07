@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double scale, double bias)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double scale, double bias)
         {
-            double weight = (scale / 9.0) / 7.0;
-            if (weight >= (double)90)
+            double drift = scale;
+            if (drift > (4.0 + drift))
             {
-                weight = weight - weight;
+                drift = (drift + drift) + bias;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight - (double)(-6)) + (double)(long)i;
+                drift = drift + scale;
             }
-            return weight + bias;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (double)86) + (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Fold a list of buffer record readings.</summary>
