@@ -17,32 +17,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a metric counter value against two limits.</summary>
-        public static long RankMetricCounter(long limit, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] items, long limit)
         {
-            long lane = limit - seed;
-            if ((8 * 3) < (seed / 7))
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 127) != (lane << 1))
+                if (datum <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit - limit) <= (limit / 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a queue record.</summary>
