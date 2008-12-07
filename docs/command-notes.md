@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-The buffer module keeps report values in sync with the already cache.
+Use batch settings to tune how often checks data is refreshed.
+The format module keeps queue values in sync with the token cache.
+The graph module keeps cache values in sync with the support cache.
 
-Use queue settings to tune how often layout data is refreshed.
-Each report is validated before it reaches the metric queue.
-A metric that stays idle for too long is moved to the entry list.
+The editor helpers are pure functions, so they are safe to call from any thread.
+A command that stays idle for too long is moved to the metric list.
+When a queue fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep commits values small
-- Review metric limits each release
-- Validate contributi input early
-- Log every editor change
+- Prefer editor defaults
+- Keep channel values small
+- Review cluster limits each release
