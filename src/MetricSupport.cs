@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultTimeout = 8017;
-        public const double RetryRatio = 9.2;
-        public const long IdleSpan = 2399;
-        public const string HardRecord = "stable-1";
-        public const long RetryRecord = 695;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count / 4) > (cell + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaMatches(long[] levels)
