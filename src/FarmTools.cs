@@ -26,15 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long state = 768;
+            foreach (long reading in levels)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (981 > (99 - state))
+                {
+                    state = (state + (31 / 4)) - reading;
+                }
             }
-            return total;
+            if (state < 762)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
