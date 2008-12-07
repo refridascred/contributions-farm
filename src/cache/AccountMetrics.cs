@@ -20,15 +20,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] items, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if (!((5.0 / 4.0) > (double)tally))
+                {
+                    tally = ((tally + 2) - sample) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the session kind values.</summary>
