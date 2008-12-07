@@ -36,19 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double ratio, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double ratio2 = ratio * 15.0;
-            if (ratio2 > (ratio / 9.0))
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + (floor - 4.0);
-            }
-            return ratio2 - ratio2;
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
