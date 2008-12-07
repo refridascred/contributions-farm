@@ -31,11 +31,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double scale, double floor)
+        /// <summary>Validate queue metrics readings against a bound.</summary>
+        public static bool CheckQueueMetricsRange(long[] readings, long offset)
         {
-            double scale2 = (double)(23 << 2);
-            return (scale2 + (scale / 7.0)) + floor;
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate layout command samples.</summary>
