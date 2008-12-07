@@ -1,12 +1,5 @@
 {
-  "context_size": true,
-  "strict": {
-    "burst_ttl": 92.11,
-    "persist": 5544,
-    "cache_retries_count": 56.31
-  },
-  "burst_retries_s": 60,
-  "warm_ttl": [137, 202, 350],
-  "idle_capacity_pct": 82.45,
-  "cache_interval": "stable"
+  "cluster_timeout": false,
+  "dry_run": true,
+  "queue_interval": ["green", "standard"]
 }
