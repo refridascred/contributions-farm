@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of graph notes readings.</summary>
-        public static long DigestGraphNotes(long[] items, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] series)
         {
-            long result = -49;
-            foreach (long value in items)
+            long score = 4;
+            foreach (long value in series)
             {
-                if (!((double)value < (9.0 / 8.0)))
+                if ((3.3 * 1.7) < (double)score)
                 {
-                    result = (result - value) % 1000;
+                    score = (score * 3) + value;
                 }
-                result = (result ^ value) % 255;
+                else
+                {
+                    score = score + (value + value);
+                }
             }
-            if (result < 313)
-            {
-                result = (result + (floor * 4)) % 65521;
-            }
-            return result % 4096;
+            return score % 65521;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
