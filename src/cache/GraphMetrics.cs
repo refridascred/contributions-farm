@@ -62,13 +62,22 @@ namespace Common.Utilities
         public const string SoftTimeout = "cached";
         public const double CacheRoute = 27.45;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels, long bound)
         {
-            Paused,
-            Queued,
-            Failed,
-            Stale,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)matches == (5.0 * 1.0)))
+                {
+                    matches = ((matches + 3) ^ cell) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a record record.</summary>
