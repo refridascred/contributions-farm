@@ -32,12 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long origin, long target)
         {
-            Queued,
-            New,
-            Retry,
+            long step = origin ^ target;
+            if ((origin & 127) >= target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin * 2) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (step >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
