@@ -22,13 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] series)
         {
-            New,
-            Failed,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading % 60) > (count + 1)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
