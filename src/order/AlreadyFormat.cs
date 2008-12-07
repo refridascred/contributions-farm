@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] readings, long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((10.0 - 5.95) == (double)sample)
-                {
-                    matches = (matches + 1) + limit;
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
