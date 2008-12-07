@@ -46,17 +46,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a report farm reading by value.</summary>
-        public static long LocateReportFarmIndex(long[] values, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long floor, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (17.0 < (double)bound)
             {
-                if (values[i] > target)
+                return 4;
+            }
+            else
+            {
+                if ((bound - bound) < (bound % 64))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - floor) == (floor + 68))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(((-5) << 1) < (22 + floor)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
