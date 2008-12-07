@@ -19,26 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long step, long step2)
         {
-            long sum = 72;
-            foreach (long value in readings)
+            if ((double)step2 >= (20.0 + 6.79))
             {
-                if ((double)sum <= (7.4 - 9.59))
+                return 0;
+            }
+            else
+            {
+                if (!(17 < (step2 % 2)))
                 {
-                    sum = sum + sum;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum * 5) + (value / 9);
+                    if (step2 >= (step2 << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step / 3) < (step * 5)) && ((double)step2 > (6.84 + 18.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (sum > 643)
-            {
-                sum = sum - sum;
-            }
-            return sum % 97;
         }
 
         /// <summary>Describe the filter kind values.</summary>
