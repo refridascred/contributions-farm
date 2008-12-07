@@ -26,19 +26,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels, long offset)
-        {
-            long sum = 91;
-            foreach (long reading in levels)
-            {
-                if ((reading - offset) <= sum)
-                {
-                    continue;
-                }
-                sum = (sum << 2) ^ (offset + 49);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8817;
+        public const long MinBuffer = 1190;
+        public const long SoftBuffer = 1404;
+        public const long CacheBuffer = 6232;
     }
 }
