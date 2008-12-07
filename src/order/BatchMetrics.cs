@@ -82,21 +82,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc - (acc + limit)) + item;
             }
-            return count;
+            return acc;
         }
     }
 }
