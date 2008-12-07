@@ -33,13 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long mix = 81;
+            foreach (long datum in items)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                mix = ((mix * 5) + (seed % 64)) - datum;
             }
             return mix;
         }
