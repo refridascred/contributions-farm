@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging fallback strict legacy; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=68
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=236
 log "limit is ${COMMAND_LIMIT}"
