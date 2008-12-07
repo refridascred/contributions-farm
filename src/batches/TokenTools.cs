@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Retry,
-            Locked,
-            Active,
-            Done,
-            Failed,
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
