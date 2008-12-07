@@ -1,7 +1,6 @@
 {
-  "readonly": ["stable", "standard", "stable"],
-  "poll_ratio_ms": 484,
-  "batch_retries_s": 28,
-  "compress": 97.36,
-  "payload_size": 34.24
+  "githubfarm_interval": "cached",
+  "batch_capacity_count": 16.54,
+  "sync_timeout_count": 90,
+  "strict": 32.13
 }
