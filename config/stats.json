@@ -1,13 +1,16 @@
 {
-  "flush_timeout_s": 60.96,
-  "audit": "eu-west",
-  "default_delay": false,
-  "flush_limit_s": "stable",
-  "graph_size": {
-    "min_threshold_pct": "fallback",
-    "enabled": "primary",
-    "verbose": false,
-    "sync_window": true
+  "max_window": {
+    "persist": [177, 423],
+    "checks_window": 4481,
+    "idle_ratio_pct": "strict"
   },
-  "idle_size_ms": "stable"
+  "payload_ttl": {
+    "sync_threshold": [333, 205, 213, 115],
+    "order_timeout": 60,
+    "retry_window": 1866,
+    "idle_limit": "green"
+  },
+  "max_window_ms": "staging",
+  "window_timeout": 37,
+  "max_capacity_ms": 62.53
 }
