@@ -23,18 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] items, long target)
+        /// <summary>Locate a record notes reading by value.</summary>
+        public static long LocateRecordNotesIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count + sample) != (sample ^ sample))
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    count = (count + 3) - target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
