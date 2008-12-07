@@ -1,9 +1,8 @@
-id,count,state
-1,41,eu-west
-2,82.54,438
-3,fallback,40.29
-4,59,staging
-5,324,staging
-6,951,431
-7,92,20.28
-8,61.18,eu-west
+id,weight,token
+1,961,22
+2,green,822
+3,935,edge
+4,840,218
+5,77.91,37.98
+6,22.75,817
+7,34.31,strict
