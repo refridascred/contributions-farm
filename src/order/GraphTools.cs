@@ -26,12 +26,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSize = 1624;
+        public const long IdleMetrics = 727;
+        public const string DefaultInterval = "cached-edge";
+        public const string RetryWidth = "stable-1";
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] series, long limit)
