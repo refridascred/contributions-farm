@@ -51,11 +51,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 8598;
-        public const long BurstMetrics = 9031;
-        public const string MaxDepth = "cached-1";
-        public const string BatchDepth = "fallback-v2";
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
