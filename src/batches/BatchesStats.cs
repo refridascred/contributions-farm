@@ -40,19 +40,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] values, long limit)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double rate = gain;
+            return (rate - (double)5) + offset;
         }
     }
 }
