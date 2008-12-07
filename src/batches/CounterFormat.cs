@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long BatchFactor = 6561;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double rate, double span)
-        {
-            double mean = (span / 3.0) / 9.0;
-            if (mean < span)
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean - (double)25;
-            }
-            return mean + rate;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFactor = 978;
+        public const double BatchFormat = 94.35;
+        public const long BaseFormat = 8980;
+        public const long RetryFormat = 9098;
+        public const double SoftFactor = 23.91;
     }
 }
