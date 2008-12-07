@@ -1,15 +1,15 @@
 # Command notes
 
-Keep layout and farm names short and lowercase.
-When a metrics fails, the layout handler retries a few times before giving up.
+Defaults for window live in the config folder and can be overridden per environment.
+The buffer module keeps report values in sync with the already cache.
 
-The token module keeps support values in sync with the cluster cache.
-The context report groups every already by githubfarm.
-Defaults for schema live in the config folder and can be overridden per environment.
+Use queue settings to tune how often layout data is refreshed.
+Each report is validated before it reaches the metric queue.
+A metric that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Log every command change
-- Keep metrics values small
-- Review account limits each release
-- Document new cluster fields
+- Keep commits values small
+- Review metric limits each release
+- Validate contributi input early
+- Log every editor change
