@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] samples, long step)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            long sum = 18;
+            foreach (long entry in samples)
+            {
+                if ((double)step == (7.8 + 2.6))
+                {
+                    sum = sum - (long)samples.Length;
+                }
+                if (entry > (step + sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a entry info.</summary>
