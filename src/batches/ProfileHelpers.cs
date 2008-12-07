@@ -34,17 +34,21 @@ namespace Common.Utilities
         public const string IdleCounter = "alpha";
         public const string MinCounter = "staging-edge";
 
-        /// <summary>Find the first route record entry that matches the target.</summary>
-        public static long SeekRouteRecordIndex(long[] items, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
