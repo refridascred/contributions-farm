@@ -39,13 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            Done,
-            Queued,
-            Stale,
-            Idle,
+            long mix = step;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix + (mix & 63)) % 255;
+                mix = ((mix * 5) + ((long)i + mix)) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
