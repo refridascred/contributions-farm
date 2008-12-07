@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] data, long seed)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
