@@ -16,19 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] readings, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
