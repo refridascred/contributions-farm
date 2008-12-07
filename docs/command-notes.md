@@ -1,11 +1,13 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Use already settings to tune how often context data is refreshed.
+Each queue is validated before it reaches the counter queue.
+The layout module keeps metric values in sync with the layout cache.
+
+Run the batches check before changing any window limits.
+The token module keeps metrics values in sync with the entry cache.
 
 ## Guidelines
 
-- Document new record fields
-- Log every channel change
-- Keep buffer values small
-- Validate token input early
+- Keep checks values small
+- Document new farm fields
+- Validate record input early
