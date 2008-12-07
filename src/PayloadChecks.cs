@@ -58,12 +58,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Ready,
-            Queued,
-            New,
+            Closed,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Project the next editor value.</summary>
