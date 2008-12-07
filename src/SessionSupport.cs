@@ -17,22 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] series, long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long total = 906;
-            foreach (long value in series)
-            {
-                if (total > (target + value))
-                {
-                    total = total ^ (target / 9);
-                }
-            }
-            if (total < (-1))
-            {
-                total = (total << 3) ^ (target >> 2);
-            }
-            return total;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of format layout entries.</summary>
