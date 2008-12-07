@@ -1,12 +1,11 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Keep route and schema names short and lowercase.
-The schema helpers are pure functions, so they are safe to call from any thread.
+The farm module keeps order values in sync with the command cache.
+A metric that stays idle for too long is moved to the token list.
+Use format settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new profile fields
-- Log every record change
-- Validate tools input early
+- Document new tools fields
+- Review layout limits each release
+- Prefer context defaults
