@@ -50,18 +50,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultFactor = 4724;
+        public const long BaseEditor = 7877;
+        public const long DefaultEditor = 6130;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] samples, long limit)
