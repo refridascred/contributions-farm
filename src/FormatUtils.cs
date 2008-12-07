@@ -97,13 +97,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowSize = 9878;
+        public const string DefaultWidth = "fallback";
+        public const long DefaultTimeout = 9015;
+        public const double MinSize = 45.84;
     }
 }
