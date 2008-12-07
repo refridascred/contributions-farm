@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long target, long offset)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double span)
         {
-            if (((target + target) >= (offset << 3)) || (offset >= (offset + target)))
+            double weight2 = weight;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                weight2 = (weight2 + (double)80) + (double)(long)i;
             }
-            else
-            {
-                if (!((offset - 431) < (offset >> 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + target) <= (offset % 10))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset - target) < (target + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return weight2 + span;
         }
 
         /// <summary>Hold a editor options.</summary>
