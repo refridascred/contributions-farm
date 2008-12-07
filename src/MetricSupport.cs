@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] data)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count / 4) > (cell + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
