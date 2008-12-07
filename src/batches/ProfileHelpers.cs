@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] levels, long origin)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Rank context input into a small class.</summary>
