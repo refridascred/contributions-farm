@@ -1,19 +1,5 @@
 {
-  "flush_ttl_ms": "cached",
-  "hard_limit_pct": 9914,
-  "enabled": 9,
-  "soft_depth": {
-    "layout_ratio": "stable",
-    "report_interval": true,
-    "verbose": "staging",
-    "command_timeout": 1024,
-    "flush_depth": {
-      "poll_delay_ms": true,
-      "editor_threshold": 74.59,
-      "persist": false,
-      "flush_window_s": "fallback"
-    }
-  },
-  "context_interval": 96.66,
-  "max_ratio_s": "fallback"
+  "max_limit": true,
+  "cache_timeout_ms": 60,
+  "audit": 31.09
 }
