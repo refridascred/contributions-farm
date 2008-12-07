@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] series, long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
