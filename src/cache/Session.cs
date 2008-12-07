@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] series, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if (!(588 <= reading))
+                {
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
