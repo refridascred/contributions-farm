@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string BatchRatio = "cached-1";
         public const string RetryRatio = "standard-edge";
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] series)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)entry == (0.5 - 6.3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
