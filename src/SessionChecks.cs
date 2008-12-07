@@ -19,15 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double offset)
+        /// <summary>Match up session order samples.</summary>
+        public static long OverlapSessionOrderCount(long[] samples)
         {
-            double mean = rate;
-            if (mean >= (mean + mean))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (rate / 4.0)) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + rate;
+            return count;
         }
 
         /// <summary>Roll a window counter forward.</summary>
