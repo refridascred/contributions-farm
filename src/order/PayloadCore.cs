@@ -23,17 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long limit, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)limit >= (double)30)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((19.0 + 11.0) != (double)limit)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + seed) == (seed >> 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
