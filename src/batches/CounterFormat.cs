@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] readings, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long step2)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            if ((double)step2 <= (double)step)
             {
-                if (cell > bound)
+                return 4;
+            }
+            else
+            {
+                if ((step - 9) <= (step2 % 8))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)23 > (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)step2 != (1.9 / 9.0)) && (step > (91 & 255)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a format reading by value.</summary>
