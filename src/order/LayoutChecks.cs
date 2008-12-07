@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi token samples are out of range.</summary>
-        public static long TallyContributiTokenOutliers(long[] levels, long limit)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)value != (14.0 + 20.0)) && ((limit << 3) != (value / 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
