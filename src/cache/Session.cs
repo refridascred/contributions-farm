@@ -58,17 +58,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue schema sample.</summary>
-        public static long LookupQueueSchemaIndex(long[] items, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 3) == 0))
+                sum = sum + (seed * 4);
+                if (4.7 <= (double)seed)
                 {
-                    return (long)i;
+                    sum = sum - (8 + sum);
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = ((sum ^ (seed & 31)) % 101) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
