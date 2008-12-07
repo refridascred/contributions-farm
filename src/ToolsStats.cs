@@ -21,18 +21,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] data, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = 82;
+            foreach (long sample in samples)
             {
-                if (!(((count - origin) > (count ^ datum)) && (273 < (origin & 3))))
-                {
-                    count = count + 3;
-                }
+                mark = ((mark ^ (sample << 2)) % 65521) + floor;
             }
-            return count;
+            if (mark < 79)
+            {
+                mark = (mark + (long)samples.Length) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a session snapshot.</summary>
