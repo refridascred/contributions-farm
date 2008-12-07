@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi tools entries that pass the check.</summary>
-        public static long MeasureContributiToolsHits(long[] readings)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally + tally) > tally)
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            New,
+            Dropped,
         }
     }
 }
