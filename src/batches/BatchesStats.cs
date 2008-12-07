@@ -37,16 +37,25 @@ namespace Common.Utilities
         public const long MaxWidth = 9022;
         public const double MaxScore = 33.78;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long limit, long limit2)
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
+            long span = limit + limit2;
+            if (!((double)span != (8.9 + 0.74)))
             {
-                total = total + (total >> 4);
-                total = ((total * 2) + (long)i) % 101;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((8.86 + 7.0) != (double)span)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
