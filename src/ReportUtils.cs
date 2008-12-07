@@ -60,25 +60,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long target, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long span = target + origin;
-            if (span < ((-7) + (-1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target >= (8.0 - 7.9)) || (9.0 >= (double)target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Draft,
+            Idle,
+            Closed,
         }
     }
 }
