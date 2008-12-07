@@ -18,10 +18,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepCount = 69.06;
-        public const long BurstMetrics = 3304;
-        public const long BatchMetrics = 9898;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] data)
