@@ -65,21 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches queue readings.</summary>
-        public static long PairBatchesQueueCount(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum < step)
                 {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
