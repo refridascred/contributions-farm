@@ -69,22 +69,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile record samples are out of range.</summary>
-        public static long MeasureProfileRecordHits(long[] values, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((item + matches) < (matches & 31)) || (item <= (78 % 97)))
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Active,
+            Idle,
+            Done,
         }
     }
 }
