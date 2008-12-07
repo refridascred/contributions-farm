@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Synced,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Blend two entry measurements.</summary>
