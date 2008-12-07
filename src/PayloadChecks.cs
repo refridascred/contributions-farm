@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            Draft,
-            Paused,
-            Pending,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((((6 & 3) >= (reading % 10)) && ((hits + hits) > reading)) || ((300 % 5) >= reading))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine layout entry values into a single score.</summary>
