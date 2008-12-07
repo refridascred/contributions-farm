@@ -24,18 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] values, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.47 * 9.3) <= (double)hits)
+                if (readings[i] > limit)
                 {
-                    hits = ((hits + 3) + value) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
