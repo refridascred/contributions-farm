@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long mix = 4;
-            foreach (long value in items)
-            {
-                if ((mix * 5) >= (value * 3))
-                {
-                    mix = ((mix ^ (mix + mix)) % 101) + floor;
-                }
-                else
-                {
-                    mix = (mix - (value + mix)) % 97;
-                }
-            }
-            return mix % 4096;
+            Queued,
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Match up notes queue samples.</summary>
