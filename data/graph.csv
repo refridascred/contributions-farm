@@ -1,6 +1,6 @@
-id,level,rank,ratio,token
-1,green,latest,624,931
-2,standard,green,95.13,35
-3,22,637,675,green
-4,46.9,standard,921,71.49
-5,stable,eu-west,cached,latest
+id,region,score,count
+1,493,open,blue
+2,827,465,650
+3,71.04,green,764
+4,48.4,18.72,437
+5,923,41.97,69
