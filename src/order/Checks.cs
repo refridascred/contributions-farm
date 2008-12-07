@@ -22,19 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double gain, double floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double rate, double bias)
         {
-            double weight = (double)(64 >> 4);
-            if (weight > weight)
+            double weight = 3.0 + 0.2;
+            if (weight < weight)
             {
-                weight = weight + gain;
+                weight = (weight - weight) - bias;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight - (floor + weight)) + (double)(long)i;
+                weight = weight + weight;
             }
-            return weight - (gain + gain);
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
