@@ -22,11 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinCount = 4867;
-        public const long MaxTools = 1204;
-        public const double CacheTools = 68.38;
-        public const long SoftTools = 8091;
+        /// <summary>Combine format githubfarm values into a single score.</summary>
+        public static long ScoreFormatGithubfarm(long[] samples)
+        {
+            long sum = -59;
+            foreach (long reading in samples)
+            {
+                if ((sum + 79) > (reading >> 4))
+                {
+                    sum = sum - reading;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
