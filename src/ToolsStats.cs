@@ -62,13 +62,11 @@ namespace Common.Utilities
             return weight + (double)145;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Ready,
-            Closed,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftWidth = 9369;
+        public const string HardBudget = "fallback-edge";
+        public const long CacheSpan = 5276;
+        public const long MinContributi = 8003;
+        public const long MaxScore = 5099;
     }
 }
