@@ -22,11 +22,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            Queued,
+            Synced,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
