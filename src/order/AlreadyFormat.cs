@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSpan = 9056;
-        public const long IdleSize = 5161;
-        public const long SoftFactor = 2884;
-        public const double SoftSize = 40.07;
-        public const double SoftSession = 18.38;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (target > (831 - 72))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatOutliers(long[] values)
