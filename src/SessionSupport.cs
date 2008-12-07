@@ -35,14 +35,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a command metrics counter forward.</summary>
-        public static long StepCommandMetrics(long offset)
+        /// <summary>Digest a series of format layout entries.</summary>
+        public static long TallyFormatLayout(long[] data, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long total = 20;
+            foreach (long sample in data)
             {
-                total = ((total << 2) ^ (total ^ 0)) % 1000;
-                total = ((total * 5) + (long)i) % 4093;
+                if ((double)total > (5.43 / 2.0))
+                {
+                    total = (total ^ offset) - sample;
+                }
             }
             return total;
         }
