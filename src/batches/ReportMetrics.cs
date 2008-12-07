@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 5269;
-        public const long MinCluster = 4110;
-        public const long WindowSpan = 5190;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Done,
+            Stale,
+            Pending,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Compare every pair of contributi metric readings.</summary>
         public static long CompareContributiMetricCount(long[] data)
