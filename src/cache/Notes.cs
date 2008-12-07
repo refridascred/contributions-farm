@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many counter record samples are out of range.</summary>
+        public static long MeasureCounterRecordOutliers(long[] data)
         {
-            Queued,
-            Synced,
-            Draft,
-            Active,
-            Idle,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading < (2.5 + 3.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every filter entry entry stays within the limit.</summary>
