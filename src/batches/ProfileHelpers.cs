@@ -81,21 +81,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Combine schema token values into a single score.</summary>
+        public static long FoldSchemaToken(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 4;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry + carry) % 1000;
+                carry = (carry ^ (entry + entry)) % 4096;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Project the next checks value.</summary>
