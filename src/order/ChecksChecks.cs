@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Count session support pairs that satisfy a relation.</summary>
+        public static long MatchSessionSupportCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 15)
+                    if ((levels[i] - levels[j]) == 8)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
