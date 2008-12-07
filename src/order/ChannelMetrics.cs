@@ -23,12 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double span)
         {
-            Active,
-            Queued,
-            Synced,
+            double scale = ratio;
+            if (scale < scale)
+            {
+                scale = (scale + (ratio * 18.0)) - span;
+            }
+            return scale - 9.48;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
