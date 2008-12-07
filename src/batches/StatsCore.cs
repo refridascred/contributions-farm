@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long target)
+        /// <summary>Audit route token readings against a rule.</summary>
+        public static long TallyRouteTokenGaps(long[] levels)
         {
-            long step = floor ^ target;
-            if ((floor ^ floor) < (target - floor))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 5) != (target * 3))
+                if (!((0.9 + 8.3) <= (double)tally))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)target <= 4.0) || ((floor + step) <= (step + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of token account readings.</summary>
