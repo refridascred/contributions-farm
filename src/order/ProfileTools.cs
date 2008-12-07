@@ -23,17 +23,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] values, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
