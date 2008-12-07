@@ -23,14 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "alpha-edge";
+        public const long DefaultBudget = 8069;
+        public const string StepWidth = "stable-1";
+        public const long HardLayout = 1313;
+        public const double StepLayout = 98.18;
 
         /// <summary>Find the first filter order entry that matches the target.</summary>
         public static long SeekFilterOrderIndex(long[] readings, long offset)
