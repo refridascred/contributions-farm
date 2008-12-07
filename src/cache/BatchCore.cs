@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Rank contributi schema input into a small class.</summary>
+        public static long RankContributiSchema(long seed, long seed2)
         {
-            Synced,
-            Draft,
-            Active,
-            Ready,
-            Done,
+            if ((double)seed == (3.0 + 5.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed2 & 63) < (seed2 + seed2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + seed2) <= seed2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + seed2) > (seed2 + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
