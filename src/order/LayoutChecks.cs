@@ -32,18 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] levels)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.29 + 7.0) != (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) + sample;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
