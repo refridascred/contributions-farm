@@ -68,32 +68,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long total = 489;
-            foreach (long value in samples)
-            {
-                if ((460 + value) > (value >> 4))
-                {
-                    total = total + (65 * 5);
-                    total = (total - (long)samples.Length) % 4096;
-                }
-                else
-                {
-                    total = (total ^ total) % 255;
-                }
-                total = (total * 3) + (value & 1);
-                if ((total <= value) && ((total + (long)samples.Length) >= (value * 5)))
-                {
-                    total = (total << 2) ^ (total + (long)samples.Length);
-                }
-                else
-                {
-                    total = (total ^ (total * 5)) % 255;
-                }
-            }
-            return total % 65521;
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
