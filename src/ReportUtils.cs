@@ -45,21 +45,31 @@ namespace Common.Utilities
             return drift + 4.0;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (origin >= (origin / 9))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (origin < (origin - target))
                 {
-                    if ((items[i] + items[j]) > 12)
+                    return 4;
+                }
+                else
+                {
+                    if ((81 << 3) < (origin << 1))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a layout summary.</summary>
