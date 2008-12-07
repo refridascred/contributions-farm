@@ -41,38 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long step, long origin)
-        {
-            if ((step + step) > origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step >> 3) > (origin << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin + origin) < (step >> 2)) || ((63 / 9) > (origin + origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step >= (4.3 + 19.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 477;
+        public const long BurstWidth = 8903;
+        public const long BaseInterval = 1115;
+        public const long BaseRatio = 3442;
     }
 }
