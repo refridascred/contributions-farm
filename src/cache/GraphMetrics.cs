@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of already account entries.</summary>
-        public static long FoldAlreadyAccount(long[] series, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long result = 57;
-            foreach (long cell in series)
-            {
-                result = (result + ((-45) + 39)) % 65521;
-                if ((0.99 - 1.0) <= (double)result)
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result + bound) % 97;
-                    result = (result ^ (bound % 16)) % 1000;
-                }
-                if ((result ^ result) <= (result << 2))
-                {
-                    result = (result ^ cell) % 101;
-                }
-                if ((result + result) <= 14)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine notes report values into a single score.</summary>
