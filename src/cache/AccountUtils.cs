@@ -22,14 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values, long floor)
         {
-            Ready,
-            Dropped,
-            Active,
-            Paused,
-            Pending,
+            long mark = 137;
+            foreach (long sample in values)
+            {
+                mark = ((mark - (floor / 7)) % 4096) - sample;
+            }
+            if (mark < 0)
+            {
+                mark = (mark - floor) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Audit session graph readings against a rule.</summary>
