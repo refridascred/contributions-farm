@@ -23,19 +23,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] items, long origin)
+        /// <summary>Find the first report filter entry that matches the target.</summary>
+        public static long LookupReportFilterIndex(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < origin)
+                if (values[i] > bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
