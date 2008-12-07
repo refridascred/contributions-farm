@@ -41,19 +41,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a session queue counter forward.</summary>
-        public static long DeriveSessionQueue(long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] items, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (!((origin % 64) <= origin))
+                if (item > seed)
                 {
-                    score = (score ^ (origin + score)) % 101;
+                    found = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return found;
         }
     }
 }
