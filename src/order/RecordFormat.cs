@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((datum / 4) >= (matches & 3))
+                if ((double)sample != (1.0 - 19.0))
                 {
-                    matches = matches + 3;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a editor options.</summary>
