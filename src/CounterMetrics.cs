@@ -45,19 +45,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] series, long offset)
+        /// <summary>Adjust a format order reading.</summary>
+        public static double AdjustFormatOrder(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double bias = ratio;
+            if (bias >= (bias - offset))
             {
-                if (cell < offset)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - (double)58;
             }
-            return found;
+            return bias - bias;
         }
     }
 }
