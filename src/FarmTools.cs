@@ -31,32 +31,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long limit, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long offset2 = limit + offset;
-            if ((offset2 / 6) == ((-80) & 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((limit << 1) <= (offset + offset)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit < (7.0 * 3.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            Locked,
+            Active,
+            New,
         }
     }
 }
