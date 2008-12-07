@@ -1,7 +1,7 @@
 {
-  "support_threshold": ["standard", "blue", "staging", "fallback"],
-  "soft_retries_pct": true,
-  "max_limit": true,
-  "hard_limit": "standard",
-  "cache_ratio": ["eu-west", "standard", "staging"]
+  "strict": [314, 20, 215, 339],
+  "burst_interval_pct": 93,
+  "audit": 60,
+  "queue_delay": 8513,
+  "cache_limit": 82
 }
