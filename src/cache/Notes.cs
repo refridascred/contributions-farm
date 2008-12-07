@@ -39,23 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series, long origin)
         {
-            long total = -366;
-            foreach (long reading in values)
+            long carry = 50;
+            foreach (long sample in series)
             {
-                total = (total * 2) + (reading * 2);
-                if ((reading ^ reading) > (reading * 4))
-                {
-                    total = (total * 2) + (reading % 12);
-                }
-                if ((double)reading > (3.0 * 4.29))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (carry ^ sample)) % 1000;
             }
-            return total;
+            if (carry > 208)
+            {
+                carry = (carry * 5) + (origin << 2);
+            }
+            return carry % 97;
         }
 
         /// <summary>Compare every pair of batches filter readings.</summary>
