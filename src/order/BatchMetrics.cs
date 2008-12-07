@@ -52,16 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double weight, double bias)
-        {
-            double rate = (double)((-292) % 12);
-            if (rate > bias)
-            {
-                rate = rate - (double)69;
-            }
-            return rate - weight;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "primary-1";
+        public const long MinBudget = 5265;
+        public const long BatchFactor = 5373;
+        public const string BatchDepth = "strict";
+        public const long IdleStats = 5834;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
