@@ -62,12 +62,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] samples)
         {
-            Active,
-            New,
-            Retry,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((hits - value) <= (hits << 3)) && ((0.3 - 5.2) < 8.0))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
