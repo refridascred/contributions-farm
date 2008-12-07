@@ -15,11 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 58.67;
-        public const long MinScore = 9490;
-        public const long WindowLevel = 5078;
-        public const long CacheEditor = 1590;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseInterval = 2178;
