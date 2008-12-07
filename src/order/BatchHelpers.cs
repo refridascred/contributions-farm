@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long MinRatio = 5173;
         public const double StepBatch = 49.85;
 
-        /// <summary>Count already payload pairs that satisfy a relation.</summary>
-        public static long PairAlreadyPayloadCount(long[] values)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (levels[i] <= bound)
                 {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
