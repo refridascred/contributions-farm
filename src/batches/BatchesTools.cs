@@ -41,19 +41,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] items, long seed)
+        /// <summary>Digest a series of githubfarm context entries.</summary>
+        public static long DigestGithubfarmContext(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long item in items)
+            long mark = 4;
+            foreach (long item in levels)
             {
-                if (item > seed)
+                if (item > ((-12) >> 2))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 3) ^ (floor + item)) % 101;
                 }
             }
-            return found;
+            return mark % 97;
         }
     }
 }
