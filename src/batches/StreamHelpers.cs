@@ -11,17 +11,31 @@ namespace Common.Utilities
         public const long RetryFactor = 5205;
         public const double MinSchema = 38.61;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] values, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!(bound < (bound << 2)))
             {
-                if (values[i] == limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound > 9.14)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed >> 1) == (bound >> 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
