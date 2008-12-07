@@ -33,22 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi batches entries that pass the check.</summary>
-        public static long CountContributiBatchesHits(long[] levels, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = 879;
+            foreach (long datum in samples)
             {
-                if (!((origin % 12) < (cell + origin)))
+                total = (total << 3) ^ (datum & 63);
+                if (44 < (707 - datum))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = total ^ datum;
                 }
             }
-            return count;
+            return total % 97;
         }
     }
 }
