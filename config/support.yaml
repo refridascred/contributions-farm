@@ -1,4 +1,16 @@
 # support settings
-default_ratio_pct: 1024
-account_threshold: latest
-max_depth: edge
+retry_size_pct: true
+verbose:
+  max_ratio_pct:
+    - blue
+    - edge
+  readonly: latest
+  verbose: false
+  warm_capacity_count: cached
+  compress: false
+  dry_run: blue
+enabled: 50.49
+channel_retries:
+  warm_threshold_count: open
+  persist: false
+  min_timeout_s: primary
