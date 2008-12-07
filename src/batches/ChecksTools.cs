@@ -29,9 +29,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 3487;
-        public const double BaseInterval = 41.0;
-        public const long MaxSize = 3323;
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
