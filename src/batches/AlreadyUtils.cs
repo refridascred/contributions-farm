@@ -38,10 +38,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 2541;
-        public const string LimitLevel = "stable-v2";
-        public const string StepCommits = "alpha-1";
-        public const string RetryRatio = "strict";
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
