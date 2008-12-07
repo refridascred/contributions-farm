@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many command filter samples are out of range.</summary>
-        public static long AuditCommandFilterGaps(long[] samples)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long score = 95;
+            foreach (long sample in levels)
             {
-                if (((matches << 1) >= (value / 3)) && ((value & 31) >= value))
+                if ((sample ^ sample) <= (468 + 9))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (score - (69 & 3)) % 101;
                 }
             }
-            return matches;
+            if (score > 70)
+            {
+                score = ((score * 2) + (score & 15)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a commits record.</summary>
