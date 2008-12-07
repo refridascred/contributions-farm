@@ -29,14 +29,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Pending,
-            Locked,
-            Draft,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitInterval = "fallback-edge";
+        public const string HardInterval = "open-v2";
+        public const long StepFactor = 4870;
     }
 }
