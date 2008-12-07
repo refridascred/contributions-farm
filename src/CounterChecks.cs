@@ -27,21 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up channel cluster samples.</summary>
-        public static long OverlapChannelClusterCount(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((476 % 5) != (value & 7))
                 {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) - step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
