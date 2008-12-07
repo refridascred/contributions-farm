@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Paused,
-            Stale,
-            Retry,
+            New,
+            Idle,
             Queued,
-            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Validate metrics stats readings against a bound.</summary>
