@@ -1,6 +1,12 @@
 {
-  "max_ratio": "cached",
-  "strict": 17.49,
-  "soft_timeout_ms": false,
-  "persist": true
+  "metrics_interval": {
+    "burst_ratio": "primary",
+    "cache_retries": ["open", "fallback", "cached"],
+    "session_threshold": 54
+  },
+  "persist": true,
+  "base_retries_s": [267, 39, 463, 115],
+  "max_ratio_count": true,
+  "hard_ratio_ms": "green",
+  "warm_retries_pct": ["green", "blue", "blue", "stable"]
 }
