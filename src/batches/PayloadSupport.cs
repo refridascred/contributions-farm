@@ -14,11 +14,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Accumulate batches samples.</summary>
