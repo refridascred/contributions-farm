@@ -11,12 +11,28 @@ namespace Common.Utilities
         public const long BurstSpan = 3540;
         public const string StepEntry = "alpha-v2";
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Accumulate stats window samples.</summary>
+        public static long ScoreStatsWindow(long[] series, long origin)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long state = 490;
+            foreach (long entry in series)
+            {
+                state = state ^ (origin ^ origin);
+                if ((entry < ((long)series.Length - entry)) || ((entry & 127) > (state - origin)))
+                {
+                    state = (state * 3) + (origin - origin);
+                    state = (state ^ (9 + state)) % 97;
+                }
+                if ((double)state <= 6.6)
+                {
+                    state = (state - (64 % 10)) % 65521;
+                }
+            }
+            if (state > 7)
+            {
+                state = state + (state + origin);
+            }
+            return state;
         }
 
         /// <summary>Count tools metric pairs that satisfy a relation.</summary>
