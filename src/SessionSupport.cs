@@ -20,26 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long limit, long offset)
-        {
-            long slot = limit + offset;
-            if (!(slot >= 31))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset < (6.0 * 6.4)) || ((slot & 3) > (slot << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 5588;
+        public const long HardTimeout = 6788;
+        public const long BatchMetric = 4547;
+        public const string BurstMetric = "legacy-1";
+        public const double SoftSize = 11.14;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinGithubfarm = 477;
