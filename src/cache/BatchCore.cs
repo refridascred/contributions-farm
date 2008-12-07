@@ -39,19 +39,22 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long floor)
+        /// <summary>Fold a list of notes session readings.</summary>
+        public static long ScoreNotesSession(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long mark = 6;
+            foreach (long reading in items)
             {
-                if (entry >= floor)
+                if ((5.0 + 5.6) > (double)(long)items.Length)
                 {
-                    valid = false;
-                    break;
+                    mark = mark ^ (reading - reading);
                 }
             }
-            return valid;
+            if (mark < 89)
+            {
+                mark = ((mark << 3) ^ (mark >> 5)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
