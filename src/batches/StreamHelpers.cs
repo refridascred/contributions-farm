@@ -66,13 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Queued,
-            Retry,
-            Active,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 887;
+        public const long RetryRatio = 706;
+        public const long IdleRatio = 2496;
+        public const long DefaultPayload = 8575;
+        public const double IdleSize = 61.92;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] items, long step)
