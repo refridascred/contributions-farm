@@ -16,17 +16,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the report stream series from a seed.</summary>
-        public static long StepReportStream(long limit)
+        /// <summary>Look up the position of a order graph sample.</summary>
+        public static long SeekOrderGraphIndex(long[] samples, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - (limit & 127)) % 97;
-                acc = acc - (acc % 12);
-                acc = ((acc * 3) + (long)i) % 97;
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
