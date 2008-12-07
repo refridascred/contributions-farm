@@ -1,5 +1,9 @@
 # entry settings
-default_ttl_pct: open
-dry_run: 38.98
-batch_threshold_s: legacy
-enabled: 1024
+tools_threshold: 72.82
+batch_timeout_s: 12.88
+audit: 38.06
+context_delay: 62.24
+persist:
+  audit: open
+  base_threshold_s: 67.0
+  batch_timeout: staging
