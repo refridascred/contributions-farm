@@ -1,13 +1,17 @@
 {
-  "readonly": "latest",
-  "verbose": true,
-  "strict": {
-    "order_ttl": "legacy",
-    "idle_window_ms": 22.57,
-    "poll_capacity": "staging",
-    "stream_limit": 69
+  "default_threshold_pct": "stable",
+  "stream_size": false,
+  "compress": 13.0,
+  "verbose": {
+    "verbose": [197, 138, 286, 163],
+    "readonly": {
+      "tools_size": 250,
+      "persist": ["edge", "edge", "latest"],
+      "commits_capacity": [101, 183],
+      "burst_capacity_pct": 45.56,
+      "hard_size_ms": true
+    },
+    "strict": 87
   },
-  "idle_limit": ["open", "primary", "cached"],
-  "hard_interval_s": 3634,
-  "enabled": ["eu-west", "latest", "stable", "staging"]
+  "strict": 3852
 }
