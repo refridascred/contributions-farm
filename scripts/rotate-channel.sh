@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=40
-log "limit is ${CHANNEL_LIMIT}"
+for item in open primary; do
+    log "checking ${item}"
+done
 
-mode="${1:-cached}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=197
+log "limit is ${CHANNEL_LIMIT}"
