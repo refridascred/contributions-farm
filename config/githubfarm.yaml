@@ -1,7 +1,10 @@
 # githubfarm settings
-compress: false
-cache_window_ms: 50
-sync_limit_pct: local
-cache_ratio_ms:
-  - eu-west
-  - stable
+max_ttl: eu-west
+max_delay:
+  - 406
+  - 51
+  - 425
+warm_capacity: edge
+cache_interval: cached
+enabled: 69
+context_delay: stable
