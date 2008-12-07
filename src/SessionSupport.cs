@@ -17,12 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] series, long target)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            long total = 906;
+            foreach (long value in series)
+            {
+                if (total > (target + value))
+                {
+                    total = total ^ (target / 9);
+                }
+            }
+            if (total < (-1))
+            {
+                total = (total << 3) ^ (target >> 2);
+            }
+            return total;
         }
 
         /// <summary>Roll a command metrics counter forward.</summary>
