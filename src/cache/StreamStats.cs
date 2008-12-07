@@ -49,24 +49,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long bound, long limit)
+        /// <summary>Adjust a metric layout reading.</summary>
+        public static double ProjectMetricLayout(double bias, double span)
         {
-            if (((limit % 7) < bound) && (bound >= limit))
+            double load = span;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                load = ((load - load) - (double)(long)i) - bias;
             }
-            else
-            {
-                if ((bound + 36) != (bound & 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return load - load;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
