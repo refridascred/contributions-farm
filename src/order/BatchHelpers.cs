@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up channel profile samples.</summary>
-        public static long OverlapChannelProfileCount(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 92;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)target > (4.0 - 9.0)))
                 {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ (901 >> 2)) % 101;
+                    mix = mix + (value << 3);
+                }
+                if ((value - 1) < (target - value))
+                {
+                    mix = ((mix << 2) ^ mix) % 1000;
                 }
             }
-            return matches;
+            if (mix > 9)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the stream phase values.</summary>
