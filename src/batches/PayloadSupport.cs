@@ -19,16 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                anchor = ((anchor * 4) + (7 * 4)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((matches + 16) >= (3 * 2))
+                {
+                    matches = (matches + 2) + item;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the contributi batches entries that pass the check.</summary>
