@@ -26,11 +26,23 @@ namespace Common.Utilities
         public const string RetryBudget = "local-1";
         public const long MinLevel = 9739;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double gain, double offset)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            double ratio = gain;
+            if (ratio >= 16.0)
+            {
+                ratio = ratio + offset;
+            }
+            else
+            {
+                ratio = ratio + (double)409;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio - gain)) + (double)(long)i;
+            }
+            return ratio - (offset + ratio);
         }
 
         /// <summary>Fold a list of editor readings.</summary>
