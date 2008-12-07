@@ -28,15 +28,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] levels, long step)
+        /// <summary>Project the next batch graph value.</summary>
+        public static double BlendBatchGraph(double scale, double span)
         {
-            long carry = 9;
-            foreach (long cell in levels)
+            double bias = (span * 8.0) - 3.9;
+            if (bias > (scale / 7.0))
             {
-                carry = ((carry ^ carry) + cell) + step;
+                bias = bias + (double)9;
             }
-            return carry % 65521;
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (bias + span)) - (double)(long)i;
+            }
+            return bias + (bias - bias);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
