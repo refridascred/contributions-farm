@@ -45,15 +45,13 @@ namespace Common.Utilities
         public const string CacheCluster = "staging-edge";
         public const long MinSize = 1740;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long carry = 280;
-            foreach (long entry in levels)
-            {
-                carry = (((carry << 2) ^ (carry & 63)) % 255) + entry;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
