@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowDepth = 869;
-        public const long StepBudget = 474;
-        public const long LimitDepth = 3857;
-        public const string IdleInterval = "staging-edge";
-        public const string DefaultCommand = "latest-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 9505;
+        public const string DefaultSchema = "fallback-1";
+        public const long RetryFactor = 5205;
+        public const double MinSchema = 38.61;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long SortCommand(long limit, long seed)
