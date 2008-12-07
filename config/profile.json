@@ -1,12 +1,6 @@
 {
-  "enabled": 32.15,
-  "flush_retries": {
-    "soft_window_pct": "edge",
-    "session_threshold": "strict",
-    "window_size": "cached",
-    "burst_size": true,
-    "warm_threshold_ms": 27.05
-  },
-  "burst_retries": [418, 171, 427],
-  "cache_ttl_s": ["legacy", "latest"]
+  "max_ratio": "cached",
+  "strict": 17.49,
+  "soft_timeout_ms": false,
+  "persist": true
 }
