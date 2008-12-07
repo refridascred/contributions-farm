@@ -13,23 +13,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double scale = bias;
-            if (scale < bias)
-            {
-                scale = scale + (double)4;
-            }
-            else
-            {
-                scale = scale + (gain - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale + (double)115;
+            New,
+            Closed,
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a support summary.</summary>
