@@ -12,12 +12,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 7555;
-        public const long HardFormat = 8715;
-        public const double LimitTimeout = 84.05;
-        public const long MaxInterval = 5208;
-        public const long BatchFormat = 7286;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double bias, double floor)
