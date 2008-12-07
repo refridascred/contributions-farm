@@ -25,23 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue payload readings.</summary>
-        public static long TallyQueuePayload(long[] levels, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] items, long target)
         {
-            long acc = 265;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                acc = (acc + (item & 1)) % 97;
-                if (acc >= (origin + acc))
+                if ((datum + hits) < (hits & 31))
                 {
-                    acc = acc ^ (item + item);
+                    hits = (hits + 2) + target;
                 }
             }
-            if (acc < (-8))
-            {
-                acc = ((acc << 2) ^ (origin / 3)) % 4096;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a format record sample.</summary>
