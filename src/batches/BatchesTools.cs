@@ -23,18 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((double)(-448) >= (double)item) && !((tally & 15) >= 431))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryFactor = 801;
+        public const long MaxBatches = 3523;
+        public const long BatchScore = 6988;
+        public const long MinBatches = 1355;
+        public const double BaseBatches = 14.72;
     }
 }
