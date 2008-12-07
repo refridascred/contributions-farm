@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of entry support entries.</summary>
-        public static long CombineEntrySupport(long[] series, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] items, long seed)
         {
-            long total = 359;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((11 * 3) < (total ^ origin))
+                if (sample > seed)
                 {
-                    total = ((total << 3) ^ total) % 97;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    total = total ^ (sample >> 3);
-                    total = (total - (334 % 100)) % 4096;
-                }
-                if (origin < (sample - origin))
-                {
-                    total = total ^ sample;
-                }
-                total = ((total * 5) + (total % 5)) % 255;
             }
-            if (total < 20)
-            {
-                total = (total - (862 - origin)) % 255;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
