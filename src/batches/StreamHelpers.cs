@@ -27,29 +27,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long step, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long origin)
         {
-            if ((76 + 634) < bound)
+            long cur = step ^ origin;
+            if ((cur * 4) == (5 * 2))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((0 - step) == (step & 3))
+                if (((-11) * 5) == (cur + origin))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (bound >= (bound + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 8;
                 }
             }
         }
