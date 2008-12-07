@@ -55,21 +55,22 @@ namespace Common.Utilities
         public const string IdleCommand = "stable";
         public const double CacheInterval = 13.96;
 
-        /// <summary>Match up record filter samples.</summary>
-        public static long MatchRecordFilterCount(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 3;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)result == (double)limit)
                 {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (result + result)) + entry;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 97;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
