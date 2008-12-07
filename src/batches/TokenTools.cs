@@ -24,19 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = 3.2 - (double)71;
+            return ((ratio + ratio) + bias) + bias2;
         }
 
         /// <summary>Rank counter context input into a small class.</summary>
