@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] samples, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (matches > (limit ^ matches))
+                if (value <= target)
                 {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Project the next graph value.</summary>
