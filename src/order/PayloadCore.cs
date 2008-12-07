@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySpan = 85.64;
-        public const double CacheLevel = 96.98;
-        public const double MinSize = 60.42;
-        public const long MaxFactor = 8283;
+        /// <summary>Combine entry counter values into a single score.</summary>
+        public static long ScoreEntryCounter(long[] series)
+        {
+            long carry = 47;
+            foreach (long item in series)
+            {
+                if ((878 + item) >= (carry - carry))
+                {
+                    carry = carry + (carry >> 4);
+                    break;
+                }
+                carry = ((carry << 2) ^ item) % 4096;
+                carry = ((carry * 3) + (carry / 7)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long origin)
