@@ -22,11 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Stale,
-            New,
+            Locked,
             Done,
             Draft,
         }
