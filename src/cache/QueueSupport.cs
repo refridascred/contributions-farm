@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] items, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] items, long offset)
         {
-            long tally = 0;
+            long mix = 812;
             foreach (long item in items)
             {
-                if ((tally % 2) <= (item + tally))
+                if (((offset & 31) != (460 + 46)) || ((offset - 727) < (2 ^ mix)))
                 {
-                    tally = (tally + 1) - bound;
+                    mix = mix - item;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix >> 1);
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a report header.</summary>
