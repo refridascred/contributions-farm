@@ -22,23 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double gain, double floor)
         {
-            long sum = 739;
-            foreach (long entry in items)
+            double weight = (double)(64 >> 4);
+            if (weight > weight)
             {
-                sum = (((sum * 4) + (sum + entry)) % 255) - step;
-                if (((entry / 2) >= (entry + entry)) || ((entry >> 1) < (sum % 12)))
-                {
-                    sum = sum ^ entry;
-                }
+                weight = weight + gain;
             }
-            if (sum < 552)
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum << 2) ^ (sum / 6)) % 1000;
+                weight = (weight - (floor + weight)) + (double)(long)i;
             }
-            return sum;
+            return weight - (gain + gain);
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
