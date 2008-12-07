@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] levels, long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample / 4) > matches)
-                {
-                    matches = (matches + 2) + target;
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Accumulate account samples.</summary>
