@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=245
+CHANNEL_LIMIT=285
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in edge local open cached; do
+    log "checking ${item}"
+done
