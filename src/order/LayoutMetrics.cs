@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstLevel = 8311;
-        public const long StepBudget = 5914;
-        public const long BatchSpan = 9104;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long limit)
+        {
+            long anchor = 8;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor ^ (anchor + anchor)) + entry;
+                if (((anchor / 9) > limit) || ((1 ^ anchor) >= limit))
+                {
+                    anchor = ((anchor << 2) ^ (limit >> 3)) % 4096;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
