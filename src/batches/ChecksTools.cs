@@ -20,13 +20,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] data)
         {
-            Dropped,
-            Idle,
-            New,
-            Closed,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches ^ entry) <= (22 - entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up batch samples.</summary>
