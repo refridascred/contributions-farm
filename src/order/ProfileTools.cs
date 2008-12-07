@@ -58,28 +58,35 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long step)
+        /// <summary>Rank cache order input into a small class.</summary>
+        public static long ClassifyCacheOrder(long step, long step2)
         {
-            if ((step - 82) < (943 / 4))
+            if ((step2 + step2) != (912 + step))
             {
                 return 1;
             }
             else
             {
-                if ((step * 2) < (59 + step))
+                if ((step2 * 2) >= (step + step))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (!((3 << 1) == (origin % 7)))
+                    if ((double)step2 > (double)step)
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        if ((double)step2 <= (15.0 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
