@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardSize = 8293;
-        public const long LimitLevel = 2823;
-        public const long BatchContributi = 3571;
-        public const long HardSpan = 7597;
-        public const double IdleLevel = 75.51;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (mark - (mark * 2)) ^ (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long ScoreChannel(long[] items, long offset)
