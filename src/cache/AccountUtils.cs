@@ -26,21 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up editor metric samples.</summary>
-        public static long CompareEditorMetricCount(long[] samples)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)result >= (4.3 - 11.0))
                 {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
