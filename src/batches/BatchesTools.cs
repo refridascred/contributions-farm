@@ -27,16 +27,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Digest a series of tools entry entries.</summary>
+        public static long DigestToolsEntry(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long mix = -33;
+            foreach (long sample in series)
             {
-                score = ((score << 3) ^ (score - 6)) % 65521;
-                score = ((score * 2) + (long)i) % 1000;
+                mix = (mix + (mix - sample)) % 255;
             }
-            return score;
+            if (mix < 823)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
     }
 }
