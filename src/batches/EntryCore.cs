@@ -28,13 +28,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Project the next context value.</summary>
