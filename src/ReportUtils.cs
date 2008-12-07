@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Dropped,
-            Queued,
-            Synced,
-            Stale,
-            Idle,
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of counter checks readings.</summary>
