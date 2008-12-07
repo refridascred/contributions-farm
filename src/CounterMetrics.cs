@@ -24,29 +24,36 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long bound, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long offset, long offset2)
         {
-            long prev = bound ^ origin;
-            if ((origin % 5) > (5 >> 4))
+            long span = offset ^ offset2;
+            if (offset2 > (span + span))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (((87 - prev) >= (bound ^ 139)) || ((49 ^ 5) <= prev))
+                if (!((offset % 60) >= (offset2 & 1)))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if ((prev + bound) > (bound * 4))
+                    if ((offset & 31) > (offset2 % 12))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        return 1;
+                        if ((3.99 - 1.4) == (double)offset2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
