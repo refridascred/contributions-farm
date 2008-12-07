@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long floor, long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] readings, long seed)
         {
-            if ((floor << 3) == (limit - limit))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (floor << 2))
+                if (readings[i] < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((6.0 + 0.2) > (double)limit) && ((limit + floor) < (limit % 10)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit % 97) <= (limit ^ limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up channel cluster samples.</summary>
