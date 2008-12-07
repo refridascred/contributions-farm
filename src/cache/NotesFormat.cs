@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long seed, long floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if ((floor / 3) != (floor ^ seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < 12.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
