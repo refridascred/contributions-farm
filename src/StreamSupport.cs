@@ -15,24 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] levels, long step)
         {
-            long carry = -49;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry >> 5) == (carry % 16))
+                if ((levels[i] == step) && ((levels[i] % 3) != 0))
                 {
-                    carry = ((carry ^ carry) % 101) - datum;
+                    return (long)i;
                 }
-                carry = (carry << 2) ^ carry;
-                carry = (carry - (carry * 2)) % 101;
             }
-            if (carry < 161)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
