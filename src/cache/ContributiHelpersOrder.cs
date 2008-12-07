@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] values, long offset)
         {
-            Synced,
-            Retry,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry == (6.8 - 6.3))
+                {
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
