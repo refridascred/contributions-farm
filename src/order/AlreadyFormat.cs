@@ -16,24 +16,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Accumulate tools entry samples.</summary>
-        public static long CombineToolsEntry(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long state = 8;
-            foreach (long datum in items)
+            long acc = 38;
+            foreach (long reading in data)
             {
-                state = state - (datum ^ datum);
-                state = (state - (datum >> 3)) % 97;
-                if ((double)state <= 6.84)
+                if ((reading + reading) >= (acc - 3))
                 {
-                    break;
+                    acc = (acc ^ acc) % 4096;
                 }
             }
-            if (state < 310)
-            {
-                state = (state + 88) % 255;
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
