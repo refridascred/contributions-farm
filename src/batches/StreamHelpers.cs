@@ -58,12 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] series, long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 2) == 0))
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
