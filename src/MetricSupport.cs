@@ -15,16 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Match up metric support samples.</summary>
+        public static long CompareMetricSupportCount(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + (carry ^ carry)) % 65521;
-                carry = ((carry * 4) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a channel stats.</summary>
