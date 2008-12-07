@@ -38,11 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            Pending,
+            Locked,
+            Draft,
+            Paused,
+            Idle,
         }
     }
 }
