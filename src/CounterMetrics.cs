@@ -74,12 +74,18 @@ namespace Common.Utilities
             return mean + 7.5;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] values, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (hits >= (long)values.Length)
+                {
+                    hits = ((hits + 1) ^ cell) + seed;
+                }
+            }
+            return hits;
         }
     }
 }
