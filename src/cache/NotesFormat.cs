@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a commits context value against two limits.</summary>
-        public static long ClassifyCommitsContext(long step, long target)
+        /// <summary>Audit format graph readings against a rule.</summary>
+        public static long AuditFormatGraphOutliers(long[] data, long offset)
         {
-            long bound = step + target;
-            if ((bound & 31) <= (target << 1))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < (2.2 * 0.7))
+                if ((double)sample >= (6.0 * 16.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 2) + offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
