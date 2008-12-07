@@ -95,11 +95,22 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftWidth = 9369;
-        public const string HardBudget = "fallback-edge";
-        public const long CacheSpan = 5276;
-        public const long MinContributi = 8003;
-        public const long MaxScore = 5099;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long limit)
+        {
+            long total = 7;
+            foreach (long cell in readings)
+            {
+                if (((limit >> 3) < total) && (cell >= (cell + total)))
+                {
+                    total = (total * 5) + (limit % 12);
+                }
+                if ((total * 2) > (limit + total))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
+        }
     }
 }
