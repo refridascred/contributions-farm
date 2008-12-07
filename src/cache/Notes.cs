@@ -69,11 +69,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "cached";
-        public const long LimitReport = 8024;
-        public const long BaseReport = 8789;
-        public const string BatchTimeout = "primary";
-        public const string LimitSpan = "latest-edge";
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] data)
+        {
+            long state = 37;
+            foreach (long entry in data)
+            {
+                state = (state << 2) ^ (entry & 127);
+                if (6.75 < (double)entry)
+                {
+                    state = (state + (entry - entry)) % 65521;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
