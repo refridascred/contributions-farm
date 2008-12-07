@@ -46,21 +46,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry > offset)
                 {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many filter window samples are out of range.</summary>
