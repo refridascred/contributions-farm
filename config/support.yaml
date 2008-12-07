@@ -1,22 +1,10 @@
 # support settings
-retry_interval: 1024
-compress:
-  - stable
-  - cached
+base_retries: true
+commits_delay: false
+retry_limit_pct:
   - primary
-  - strict
-max_timeout_pct: 56.66
-command_retries:
-  - 279
-  - 248
-  - 406
-  - 367
-enabled:
-  graph_timeout:
-    - local
-    - fallback
-  entry_window: edge
-  soft_size:
-    strict: standard
-    batch_size: 60
-    base_threshold_count: cached
+  - green
+  - stable
+sync_capacity: false
+base_threshold_s: local
+min_size: 32.18
