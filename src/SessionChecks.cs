@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long carry = 47;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry >> 5) >= datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - datum) % 4096;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Match up session order samples.</summary>
