@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] samples, long target)
         {
-            long sum = 36;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (22 < (8 + bound))
+                if (reading >= target)
                 {
-                    sum = sum - sample;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
