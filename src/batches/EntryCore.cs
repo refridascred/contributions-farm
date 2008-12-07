@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two checks profile measurements.</summary>
