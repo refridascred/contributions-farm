@@ -1,14 +1,5 @@
 {
-  "soft_timeout_s": 26,
-  "buffer_timeout": 250,
-  "retry_depth_count": true,
-  "audit": {
-    "compress": 64.62,
-    "editor_size": "edge",
-    "base_limit_pct": "staging",
-    "persist": 9630,
-    "burst_delay": ["blue", "standard", "local"],
-    "warm_threshold_pct": false
-  },
-  "already_limit": ["staging", "cached", "edge"]
+  "enabled": 52.42,
+  "warm_ttl_count": false,
+  "retry_limit_ms": 500
 }
