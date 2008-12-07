@@ -34,19 +34,13 @@ namespace Common.Utilities
             return scale + (double)115;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double ratio, double floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double gain = ratio - floor;
-            if (gain <= (double)7)
-            {
-                gain = gain + 3.51;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 20.0) + (double)(long)i;
-            }
-            return gain - 2.74;
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
