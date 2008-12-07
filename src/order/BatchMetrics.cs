@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] data, long offset)
         {
-            Pending,
-            Retry,
-            Dropped,
-            Draft,
-            Closed,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of record entries.</summary>
