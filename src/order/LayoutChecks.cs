@@ -59,11 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 2653;
-        public const long LimitMetrics = 754;
-        public const long BaseMetrics = 316;
-        public const long LimitInterval = 6750;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
