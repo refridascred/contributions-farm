@@ -47,12 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Failed,
-            Paused,
-            Draft,
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
