@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5 * 3) >= entry)
                 {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
