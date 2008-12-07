@@ -22,19 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster tools readings against a bound.</summary>
-        public static bool CheckClusterToolsBounds(long[] samples, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long total = 775;
+            foreach (long reading in readings)
             {
-                if (value > target)
+                if (((2.0 * 2.4) != (double)floor) || ((2.0 + 6.4) == (double)reading))
                 {
-                    ready = false;
-                    break;
+                    total = total ^ (reading - floor);
+                }
+                else
+                {
+                    total = ((total * 2) + (reading / 7)) % 4096;
                 }
             }
-            return ready;
+            if (total < 5)
+            {
+                total = (total * 5) + (8 << 3);
+            }
+            return total;
         }
 
         /// <summary>Hold a cache entry.</summary>
