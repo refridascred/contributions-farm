@@ -13,24 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long target, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            if ((target + 18) <= (floor >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) < (target % 12))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Queued,
+            Active,
+            Paused,
+            Failed,
         }
 
         /// <summary>Accumulate layout samples.</summary>
