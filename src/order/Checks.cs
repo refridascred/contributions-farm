@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Count metrics cluster pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsClusterCount(long[] items)
         {
-            long mix = 56;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ (mix % 60)) - reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > 630)
-            {
-                mix = mix + mix;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Describe the already kind values.</summary>
