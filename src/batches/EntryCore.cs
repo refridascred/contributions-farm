@@ -43,19 +43,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] values, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double drift = (double)(64 - 107);
+            if (drift < (bias / 2.0))
             {
-                if (item > step)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + drift) - ratio;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (bias + bias)) + (double)(long)i;
+            }
+            return drift - (bias / 7.0);
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
