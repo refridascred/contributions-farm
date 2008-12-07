@@ -1,30 +1,12 @@
 # githubfarm settings
-warm_ttl_count: 100
-max_capacity: cached
-audit: primary
-flush_window_s: 100
-default_window: 7792
-warm_interval_s:
-  poll_depth: 3439
-  dry_run: fallback
-  stream_ttl:
-    - 208
-    - 243
-    - 134
-    - 80
-  enabled:
-    soft_timeout_count: standard
-    poll_capacity_ms: 39.16
-    notes_ttl: 84.03
-    channel_delay: 82
-  support_retries:
-    dry_run:
-      - eu-west
-      - blue
-      - blue
-    poll_delay_ms: 12
-    idle_delay:
-      - staging
-      - blue
-      - strict
-      - fallback
+max_ratio_s:
+  min_ttl_s: open
+  max_retries_pct: stable
+  max_capacity: 100
+  burst_ttl: primary
+  githubfarm_capacity: true
+burst_delay: open
+checks_depth: strict
+cache_interval_ms: false
+enabled: true
+layout_threshold: 9726
