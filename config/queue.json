@@ -1,7 +1,5 @@
 {
-  "audit": false,
-  "batch_capacity": true,
-  "soft_capacity_s": 30,
-  "base_ttl": true,
-  "layout_delay": 72.16
+  "default_ttl": false,
+  "sync_limit_s": false,
+  "warm_depth": "open"
 }
