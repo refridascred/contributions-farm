@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] series, long step)
+        /// <summary>Digest a series of batches payload entries.</summary>
+        public static long WeighBatchesPayload(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long sum = -35;
+            foreach (long sample in samples)
             {
-                if (sample >= step)
+                if ((sum % 7) >= (sample / 8))
                 {
-                    ok = false;
-                    break;
+                    sum = sum - (sum >> 3);
+                }
+                else
+                {
+                    sum = (sum * 5) + (sum << 2);
                 }
             }
-            return ok;
+            return sum % 4096;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
