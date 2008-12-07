@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long carry = 51;
-            foreach (long value in values)
-            {
-                carry = (((carry - (carry & 15)) % 4096) - value) - offset;
-            }
-            if (carry < 12)
-            {
-                carry = (carry * 5) + (carry + 7);
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
