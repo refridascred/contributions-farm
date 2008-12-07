@@ -50,14 +50,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFactor = 9745;
+        public const long MinFarm = 9781;
+        public const long HardFarm = 8768;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TotalNotes(long[] data, long bound)
