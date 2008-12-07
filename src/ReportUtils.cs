@@ -29,19 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] series, long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= step)
+                if (levels[i] <= origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a tools record.</summary>
