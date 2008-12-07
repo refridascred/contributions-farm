@@ -51,17 +51,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] levels, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (levels[i] > origin)
+                if (!((sample + 261) == (sample >> 3)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine stats layout values into a single score.</summary>
