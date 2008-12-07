@@ -18,13 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long origin)
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            if ((origin / 5) == (floor ^ origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2 + origin) == (579 / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin ^ (-719)) >= origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
