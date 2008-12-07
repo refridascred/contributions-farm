@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] > seed)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    mark = (((mark << 2) ^ (floor + mark)) % 1000) ^ (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Locate a report reading by value.</summary>
