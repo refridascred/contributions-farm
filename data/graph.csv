@@ -1,6 +1,6 @@
-id,ratio,count,label
-1,staging,14.29,35.43
-2,eu-west,eu-west,695
-3,11.98,34.05,24
-4,597,83.71,green
-5,legacy,748,eu-west
+id,token,active,label
+1,74.01,325,strict
+2,29.79,43.87,blue
+3,805,green,83.74
+4,local,primary,staging
+5,green,360,983
