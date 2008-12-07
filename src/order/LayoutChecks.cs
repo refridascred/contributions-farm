@@ -40,18 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] levels, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = 460;
+            foreach (long value in samples)
             {
-                if (((matches + matches) <= matches) && ((value * 3) == (matches - matches)))
+                if (!((value + value) < (sum / 5)))
                 {
-                    matches = (matches + 1) - bound;
+                    sum = (sum - (26 / 7)) % 97;
+                }
+                if (9.89 < (double)value)
+                {
+                    sum = (sum << 3) ^ (sum & 127);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a stats info.</summary>
