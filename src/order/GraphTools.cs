@@ -19,19 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (cell > floor)
+                if ((origin >= (origin + 17)) || (((hits << 2) == (hits - 8)) && ((origin + 79) >= (hits - hits))))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
