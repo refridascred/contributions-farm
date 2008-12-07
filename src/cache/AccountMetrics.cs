@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 8817;
-        public const double MaxTimeout = 57.72;
-        public const double BurstDepth = 39.07;
-        public const long DefaultScore = 5541;
-        public const long MaxReport = 4050;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Synced,
+            Queued,
+            Done,
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] data, long floor)
