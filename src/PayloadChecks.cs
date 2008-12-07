@@ -72,13 +72,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Compare every pair of cluster session readings.</summary>
+        public static long MatchClusterSessionCount(long[] readings)
         {
-            Closed,
-            Idle,
-            Paused,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next editor value.</summary>
