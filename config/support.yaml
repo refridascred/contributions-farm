@@ -1,12 +1,21 @@
 # support settings
-metrics_depth: 53
-enabled:
-  layout_delay: 85.0
-  checks_limit:
-    - 69
-    - 410
-    - 414
-    - 291
-  max_interval: edge
-poll_delay_pct: eu-west
-batches_timeout: 30
+audit:
+  hard_depth_ms: 39
+  verbose: 50.4
+  idle_limit: 30
+  idle_retries: true
+  profile_size: true
+  metrics_capacity: green
+persist:
+  - 251
+  - 218
+profile_interval: open
+idle_delay_pct: strict
+stats_size:
+  - blue
+  - edge
+retry_size_s:
+  - staging
+  - local
+  - stable
+  - eu-west
