@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] levels, long target)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Project the next graph value.</summary>
