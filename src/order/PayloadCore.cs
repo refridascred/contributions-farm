@@ -45,19 +45,22 @@ namespace Common.Utilities
             return ratio - (offset + ratio);
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            long sum = 298;
-            foreach (long item in values)
+            long total = 4;
+            foreach (long sample in samples)
             {
-                sum = sum ^ (item << 3);
+                if (sample < (total + sample))
+                {
+                    total = total + (total << 1);
+                }
             }
-            if (sum > 4)
+            if (total > (-533))
             {
-                sum = (sum - (origin + origin)) % 255;
+                total = (total << 3) ^ total;
             }
-            return sum % 1000;
+            return total;
         }
     }
 }
