@@ -19,24 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            if ((double)origin > (20.0 - 4.33))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin > (origin % 100))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
