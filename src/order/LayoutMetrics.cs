@@ -39,17 +39,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] series, long bound)
+        /// <summary>Scale a notes tools figure with a bias.</summary>
+        public static double AdjustNotesTools(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = span - span;
+            for (int i = 0; i < 5; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - scale) - (double)(long)i;
             }
-            return -1;
+            return load - scale;
         }
     }
 }
