@@ -37,19 +37,19 @@ namespace Common.Utilities
             return weight - (gain + gain);
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (value <= seed)
+                if (cell >= limit)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Hold a stats header.</summary>
