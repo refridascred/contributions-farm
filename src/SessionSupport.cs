@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 9176;
-        public const long MaxRoute = 6337;
-        public const string RetryCount = "stable-v2";
-        public const long LimitRoute = 1934;
-        public const string CacheRoute = "strict-v2";
+        /// <summary>Look up the position of a layout stats sample.</summary>
+        public static long LookupLayoutStatsIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
