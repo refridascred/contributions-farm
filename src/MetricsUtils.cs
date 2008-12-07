@@ -71,10 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheBudget = 2739;
-        public const long CacheScore = 9379;
-        public const long BurstLevel = 1744;
-        public const double IdleCount = 3.61;
+        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
+        public static long CountGithubfarmSchemaGaps(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches >> 4) < (961 & 15))
+                {
+                    matches = ((matches + 1) + reading) + bound;
+                }
+            }
+            return matches;
+        }
     }
 }
