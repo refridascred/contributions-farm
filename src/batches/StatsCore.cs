@@ -49,12 +49,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public bool Count { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
