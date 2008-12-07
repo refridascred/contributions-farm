@@ -29,18 +29,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a window commits sample.</summary>
-        public static long LocateWindowCommitsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitDepth = 96.43;
+        public const long CacheSize = 2193;
+        public const long IdleWidth = 476;
 
         /// <summary>Project the next tools value.</summary>
         public static double SmoothTools(double gain, double offset)
