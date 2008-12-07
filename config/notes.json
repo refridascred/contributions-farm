@@ -1,7 +1,8 @@
 {
-  "soft_size": "legacy",
-  "hard_window_count": "primary",
-  "soft_threshold_ms": 14.46,
-  "compress": "eu-west",
-  "queue_limit": ["standard", "stable", "green"]
+  "base_size_s": "cached",
+  "idle_depth_ms": false,
+  "base_window_ms": "primary",
+  "metrics_size": 4677,
+  "persist": "legacy",
+  "burst_window": "local"
 }
