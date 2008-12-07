@@ -14,18 +14,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] series, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            long mix = 511;
-            foreach (long item in series)
+            long sum = 72;
+            foreach (long value in readings)
             {
-                if ((floor << 3) > 32)
+                if ((double)sum <= (7.4 - 9.59))
                 {
-                    mix = ((mix - (floor * 5)) % 4096) ^ item;
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = (sum * 5) + (value / 9);
                 }
             }
-            return mix % 65521;
+            if (sum > 643)
+            {
+                sum = sum - sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of tools entry entries.</summary>
