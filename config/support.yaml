@@ -1,8 +1,18 @@
 # support settings
-max_size_count: staging
-queue_window:
-  - 279
-  - 29
-compress: true
-stats_ttl: 24.79
-poll_interval: 4292
+sync_ttl:
+  - 399
+  - 396
+strict: staging
+warm_interval_pct: 100
+audit: standard
+payload_depth:
+  base_timeout: stable
+  editor_interval: false
+  enabled: 100
+cache_interval:
+  burst_size: local
+  idle_ratio_s: 65.23
+  warm_interval_pct: blue
+  retry_limit_s: true
+  compress: latest
+  flush_size_count: 250
