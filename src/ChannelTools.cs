@@ -28,18 +28,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] samples)
+        /// <summary>Rank graph counter input into a small class.</summary>
+        public static long BucketGraphCounter(long step, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long lane = step - bound;
+            if (16.0 < (double)lane)
             {
-                if (seen > (seen % 5))
+                return 0;
+            }
+            else
+            {
+                if (!(bound < (lane << 2)))
                 {
-                    seen = (seen + 1) ^ cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((step & 127) == (393 + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
