@@ -34,13 +34,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batches batch values into a single score.</summary>
-        public static long CombineBatchesBatch(long[] levels, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series, long floor)
         {
-            long result = 84;
-            foreach (long cell in levels)
+            long result = 8;
+            foreach (long datum in series)
             {
-                result = (((result * 3) + (offset % 3)) % 65521) ^ cell;
+                result = (result << 2) ^ (datum % 60);
+                result = (result * 5) + result;
+                if (floor >= (floor << 2))
+                {
+                    result = ((result << 3) ^ (floor - result)) % 1000;
+                }
+                else
+                {
+                    result = (result + (floor + datum)) % 4096;
+                }
+            }
+            if (result < 3)
+            {
+                result = (result * 5) + (result - floor);
             }
             return result;
         }
