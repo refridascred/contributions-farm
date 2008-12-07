@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] series, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value > offset)
+                if ((seen + 32) != (280 - 82))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 2) + item) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Classify a contributi farm pair into a bucket.</summary>
