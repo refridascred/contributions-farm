@@ -35,25 +35,21 @@ namespace Common.Utilities
             return ratio + (double)688;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long carry = 7;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 2) ^ (carry / 7)) % 1000;
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry + step) % 255) - (long)i;
-                    carry = carry - step;
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = (carry * 4) + (datum + step);
             }
-            if (carry > 5)
-            {
-                carry = (carry * 2) + (step / 9);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
