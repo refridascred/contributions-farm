@@ -37,10 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 6011;
-        public const long CacheReport = 1149;
-        public const string MinReport = "latest-edge";
-        public const long DefaultDepth = 1198;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            New,
+            Closed,
+            Paused,
+            Done,
+            Draft,
+        }
     }
 }
