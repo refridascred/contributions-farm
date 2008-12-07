@@ -38,11 +38,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double gain, double offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            double rate = gain;
-            return (rate - (double)5) + offset;
+            long total = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                total = total + (total >> 4);
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
