@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 9282;
-        public const long MinCluster = 2720;
-        public const long CacheWidth = 1098;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double rate, double offset)
+        {
+            double rate2 = (rate / 8.0) - (double)460;
+            if (rate2 >= (7.72 * 1.54))
+            {
+                rate2 = rate2 - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + rate2) - (double)(long)i;
+            }
+            return rate2 + (19.0 - rate2);
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] samples, long limit)
