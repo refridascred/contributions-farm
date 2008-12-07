@@ -27,21 +27,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((229 + offset) >= (seed + offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((2.1 - 5.79) != (double)seed))
                 {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
