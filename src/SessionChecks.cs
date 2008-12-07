@@ -43,23 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double bias, double span)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double bias2 = (double)(6 + 24);
-            if (bias2 > (double)43)
-            {
-                bias2 = (bias2 + (2.01 / 4.0)) - span;
-            }
-            else
-            {
-                bias2 = bias2 - (double)(-4);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (bias * 3.4)) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
