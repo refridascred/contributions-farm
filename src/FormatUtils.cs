@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum ^ ((long)i * 2)) % 255;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 9596;
+        public const double BaseRatio = 17.41;
+        public const string BurstFormat = "staging-edge";
+        public const long BaseSize = 7989;
+        public const long BaseFormat = 1374;
 
         /// <summary>Match up window samples.</summary>
         public static long CompareWindowCount(long[] data)
