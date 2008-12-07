@@ -1,15 +1,14 @@
 # Command notes
 
-Run the cluster check before changing any report limits.
-When a editor fails, the cache handler retries a few times before giving up.
+The metrics module keeps order values in sync with the order cache.
+Run the githubfarm check before changing any account limits.
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Run the batch check before changing any entry limits.
-Keep queue and batches names short and lowercase.
+A command that stays idle for too long is moved to the metrics list.
+Each report is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Validate metric input early
-- Prefer report defaults
-- Keep token values small
-- Review channel limits each release
+- Document new token fields
+- Log every context change
+- Prefer record defaults
+- Keep farm values small
