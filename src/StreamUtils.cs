@@ -49,15 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            double mean = 14.0;
-            if (mean < bias)
+            long score = 8;
+            foreach (long datum in readings)
             {
-                mean = mean + floor;
+                score = (score - (score >> 1)) % 1000;
+                if (((double)datum < (10.0 - 2.0)) || ((datum - datum) > (datum * 3)))
+                {
+                    score = (score + (435 - datum)) % 255;
+                }
             }
-            return mean - (double)10;
+            return score;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
