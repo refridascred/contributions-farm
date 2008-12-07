@@ -57,13 +57,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every cache editor entry stays within the limit.</summary>
+        public static bool CheckCacheEditorLimits(long[] data, long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
