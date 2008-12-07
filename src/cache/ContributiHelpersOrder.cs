@@ -20,31 +20,10 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] levels)
-        {
-            long state = -69;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    state = (((state * 2) + ((long)i - state)) % 1000) + entry;
-                }
-                if ((414 % 24) >= ((long)levels.Length << 3))
-                {
-                    state = (state + (state - state)) % 1000;
-                }
-                else
-                {
-                    state = ((state * 5) + 8) % 1000;
-                }
-            }
-            if (state < 81)
-            {
-                state = (state * 2) + (state % 8);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleDepth = 5450;
+        public const double IdleSize = 25.16;
+        public const long StepLayout = 7567;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] series, long target)
