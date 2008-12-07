@@ -1,5 +1,15 @@
 {
-  "record_limit": true,
-  "sync_size": true,
-  "warm_timeout_ms": [362, 26, 434, 162]
+  "flush_capacity_pct": false,
+  "idle_depth_count": {
+    "payload_ratio": "latest",
+    "already_interval": 27,
+    "checks_limit": [126, 161, 272, 362],
+    "idle_timeout_count": {
+      "warm_depth_pct": 11,
+      "window_delay": "blue",
+      "dry_run": true,
+      "soft_window_ms": 9
+    }
+  },
+  "verbose": "cached"
 }
