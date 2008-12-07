@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long LimitSize = 6489;
         public const double SoftEntry = 79.53;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double ratio, double offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double scale = offset * 7.0;
-            if (scale < (double)0)
-            {
-                scale = scale + ratio;
-            }
-            return scale + (offset / 9.0);
+            Dropped,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a notes stats.</summary>
