@@ -69,10 +69,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 2675;
-        public const string LimitPayload = "local-v2";
-        public const long BurstPayload = 5388;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] data)
+        {
+            long score = 529;
+            foreach (long value in data)
+            {
+                score = ((score << 2) ^ (value / 3)) % 255;
+                if (!((score >> 2) < value))
+                {
+                    long lane = value ^ 912;
+                    score = score - ((long)data.Length ^ lane);
+                }
+                if ((value / 7) < ((-62) + score))
+                {
+                    score = (score * 3) + value;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 1144;
