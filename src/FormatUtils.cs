@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum ^ ((long)i * 2)) % 255;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Fold a list of command readings.</summary>
