@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double BatchSize = 66.47;
         public const long LimitDepth = 4440;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] items, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)bound > (8.4 + 4.19))
                 {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + item;
                 }
             }
             return matches;
