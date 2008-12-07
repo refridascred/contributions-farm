@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
             Paused,
-            Ready,
-            Failed,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Scale a commits format figure with a bias.</summary>
