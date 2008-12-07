@@ -66,13 +66,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
