@@ -15,11 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Compare every pair of counter checks readings.</summary>
+        public static long CompareCounterChecksCount(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
