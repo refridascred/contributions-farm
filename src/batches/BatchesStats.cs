@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Digest a series of window channel entries.</summary>
+        public static long TallyWindowChannel(long[] items, long limit)
         {
-            long anchor = 877;
-            foreach (long datum in series)
+            long mix = 494;
+            foreach (long value in items)
             {
-                anchor = (((anchor * 3) + (anchor / 9)) % 101) ^ datum;
+                if (mix >= limit)
+                {
+                    mix = ((mix + limit) % 101) + value;
+                }
+                else
+                {
+                    mix = (mix * 5) + mix;
+                }
             }
-            return anchor;
+            if (mix < 386)
+            {
+                mix = ((mix * 4) + (mix + 2)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of session readings.</summary>
