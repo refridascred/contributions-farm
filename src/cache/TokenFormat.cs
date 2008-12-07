@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxFactor = 909;
-        public const long HardInterval = 3480;
-        public const long MaxProfile = 258;
-        public const double DefaultProfile = 9.54;
+        /// <summary>Find the first cache stats entry that matches the target.</summary>
+        public static long LocateCacheStatsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmGaps(long[] series)
