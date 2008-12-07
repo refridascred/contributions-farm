@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] data, long target)
         {
-            long total = 395;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (!((9.0 / 8.0) >= (double)item))
+                if (reading >= target)
                 {
-                    total = (total ^ (total + 3)) % 65521;
-                }
-                if ((766 - item) <= (bound >> 5))
-                {
-                    total = (total ^ total) % 1000;
-                }
-                else
-                {
-                    total = (total - bound) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return valid;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
