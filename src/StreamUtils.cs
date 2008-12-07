@@ -20,18 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] values, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long total = 862;
+            foreach (long entry in levels)
             {
-                if ((datum * 5) != (origin << 2))
+                if (((7.8 * 0.35) == (double)total) && ((9 * 3) != (total + total)))
                 {
-                    seen = seen + 1;
+                    total = (total << 2) ^ (total - entry);
+                    break;
+                }
+                total = (total + (627 - entry)) % 1000;
+                if ((double)entry != (6.0 / 7.0))
+                {
+                    total = total ^ 59;
+                }
+                else
+                {
+                    total = total - total;
                 }
             }
-            return seen;
+            if (total > 0)
+            {
+                total = total - total;
+            }
+            return total % 97;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
