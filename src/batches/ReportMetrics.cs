@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
+            Done,
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Accumulate route samples.</summary>
