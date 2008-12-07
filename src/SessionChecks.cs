@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = weight;
+            if (weight2 < weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = (weight2 + (double)735) - offset;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (weight * 1.34)) + (double)(long)i;
+            }
+            return weight2 + (double)62;
         }
 
         /// <summary>Locate a window order reading by value.</summary>
