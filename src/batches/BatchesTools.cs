@@ -45,15 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account session samples.</summary>
-        public static long ScoreAccountSession(long[] readings)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mark = 726;
-            foreach (long datum in readings)
-            {
-                mark = (mark ^ mark) - datum;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
