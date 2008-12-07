@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long step, long origin)
         {
-            Queued,
-            Ready,
-            Closed,
-            Stale,
-            Dropped,
+            long lane = step - origin;
+            if (!((step >> 5) < (origin + lane)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((872 ^ origin) < origin) && ((lane + step) < (lane / 9)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a report metrics sample.</summary>
