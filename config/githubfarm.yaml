@@ -1,5 +1,4 @@
 # githubfarm settings
-stream_retries: true
-cache_interval_s: latest
-idle_ratio: 250
-default_retries: strict
+window_threshold: 3980
+idle_capacity_ms: 6.13
+cache_delay_ms: 28
