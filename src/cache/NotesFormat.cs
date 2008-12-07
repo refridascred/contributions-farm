@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data, long floor)
+        /// <summary>Fold a list of metric cache readings.</summary>
+        public static long TallyMetricCache(long[] series)
         {
-            long state = 929;
-            foreach (long datum in data)
+            long acc = 211;
+            foreach (long reading in series)
             {
-                state = (state ^ (datum + state)) - floor;
+                if ((72 + reading) == (acc * 4))
+                {
+                    acc = (acc + (100 + reading)) % 1000;
+                }
+                if (!((1.26 - 3.7) <= (double)acc))
+                {
+                    break;
+                }
             }
-            return state % 4096;
+            if (acc < 221)
+            {
+                acc = (acc - (acc - acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
