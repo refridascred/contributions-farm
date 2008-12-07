@@ -38,32 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long bound, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long next = bound + seed;
-            if ((seed / 3) <= (next - seed))
+            long mark = 877;
+            foreach (long datum in readings)
             {
-                return 5;
+                mark = ((mark - 18) % 4096) - datum;
             }
-            else
-            {
-                if ((bound / 8) <= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed * 4) == ((-882) - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the cache mode values.</summary>
