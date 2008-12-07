@@ -1,7 +1,6 @@
-id,state,token
-1,797,latest
-2,edge,eu-west
-3,local,3.62
-4,181,blue
-5,11.87,legacy
-6,847,718
+id,state,level
+1,483,283
+2,716,459
+3,224,65.82
+4,32,475
+5,standard,39.22
