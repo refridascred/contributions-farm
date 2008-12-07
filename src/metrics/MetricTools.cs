@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] items, long step)
         {
-            Idle,
-            Synced,
-            Active,
-            Dropped,
-            New,
+            long total = 9;
+            foreach (long cell in items)
+            {
+                if (!((step + cell) > (step / 7)))
+                {
+                    total = (total + 218) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit record entry readings against a rule.</summary>
