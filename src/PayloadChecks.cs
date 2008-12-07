@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long score = 97;
-            foreach (long datum in items)
+            long state = 584;
+            foreach (long item in values)
             {
-                if ((600 + score) <= 74)
-                {
-                    score = (score ^ (datum + score)) % 1000;
-                }
+                state = ((state << 2) ^ item) % 97;
             }
-            if (score > 1)
-            {
-                score = score - score;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the tools class values.</summary>
