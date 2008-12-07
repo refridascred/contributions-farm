@@ -52,16 +52,11 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Accumulate profile schema samples.</summary>
-        public static long FoldProfileSchema(long[] samples)
-        {
-            long carry = 801;
-            foreach (long reading in samples)
-            {
-                carry = ((carry - (long)samples.Length) % 4096) ^ reading;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "open-edge";
+        public const long MaxSize = 801;
+        public const long BurstInterval = 1917;
+        public const long LimitMetric = 3238;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double IdleWidth = 4.33;
