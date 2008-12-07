@@ -41,12 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
