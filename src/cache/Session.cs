@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const long BurstFarm = 5707;
         public const long SoftScore = 4219;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] readings, long bound)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)readings.Length == ((-478) - 845))
+                if (data[i] <= limit)
                 {
-                    tally = ((tally + 2) - reading) - bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
