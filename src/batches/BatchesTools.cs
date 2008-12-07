@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchCount = 3240;
-        public const double HardTools = 82.95;
-        public const long MaxTools = 1329;
-        public const double CacheTools = 73.63;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 8425;
+        public const double CacheLevel = 73.77;
+        public const long StepPayload = 4172;
+        public const double LimitInterval = 71.74;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long step, long step2)
