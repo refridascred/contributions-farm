@@ -1,18 +1,7 @@
 {
-  "entry_retries": 35.5,
-  "readonly": {
-    "verbose": ["edge", "eu-west"],
-    "entry_depth": 500,
-    "soft_interval_count": 55,
-    "max_depth_count": {
-      "session_timeout": 38,
-      "cache_depth_count": true,
-      "min_threshold": "latest",
-      "cache_size": false,
-      "burst_depth_ms": "open"
-    },
-    "persist": 865,
-    "counter_size": 71.41
-  },
-  "dry_run": "stable"
+  "verbose": true,
+  "schema_timeout": "primary",
+  "burst_size_s": ["latest", "edge", "blue"],
+  "soft_limit_count": 60.93,
+  "warm_ratio": "standard"
 }
