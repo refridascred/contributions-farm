@@ -38,17 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] levels, long origin)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Paused,
         }
     }
 }
