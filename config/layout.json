@@ -1,11 +1,7 @@
 {
-  "min_timeout_ms": 500,
-  "retry_limit_s": {
-    "poll_depth_pct": "strict",
-    "batches_size": "eu-west",
-    "profile_interval": false,
-    "sync_delay": [207, 162, 463, 141]
-  },
-  "burst_capacity_count": 2486,
-  "dry_run": "stable"
+  "support_threshold": ["standard", "blue", "staging", "fallback"],
+  "soft_retries_pct": true,
+  "max_limit": true,
+  "hard_limit": "standard",
+  "cache_ratio": ["eu-west", "standard", "staging"]
 }
