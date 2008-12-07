@@ -31,12 +31,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] series, long seed)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            long anchor = 98;
+            foreach (long value in series)
+            {
+                if ((7.8 * 5.33) >= (double)seed)
+                {
+                    anchor = (anchor - (74 >> 2)) - value;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (seed + 9)) % 65521;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a editor stats.</summary>
