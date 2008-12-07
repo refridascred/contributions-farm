@@ -40,25 +40,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((limit + 40) >= mark)
-                {
-                    mark = (mark + limit) % 255;
-                    mark = mark - (mark ^ limit);
-                }
-                if (!!(mark <= (mark - mark)))
-                {
-                    mark = (mark ^ limit) % 255;
-                }
-                mark = (mark << 3) ^ (mark + mark);
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
