@@ -20,19 +20,11 @@ namespace Common.Utilities
             return scale + (scale * 19.0);
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (cell <= (478 - count))
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 4839;
+        public const string CacheSpan = "legacy-v2";
+        public const long StepDepth = 9359;
+        public const long StepSpan = 7466;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string RetrySchema = "strict";
