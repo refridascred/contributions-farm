@@ -27,22 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] samples, long origin)
         {
-            long score = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((double)datum >= (19.0 + 1.0))
+                if (cell != origin)
                 {
-                    score = score ^ (datum ^ 0);
+                    flag = false;
+                    break;
                 }
             }
-            if (score > 46)
-            {
-                score = (score ^ score) % 97;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
