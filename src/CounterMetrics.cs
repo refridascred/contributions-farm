@@ -52,12 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
+            double mean = span;
+            if (mean >= (span + 9.89))
+            {
+                mean = (mean - mean) - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 8.3) + (double)(long)i;
+            }
+            return mean + 7.5;
         }
 
         /// <summary>Accumulate counter samples.</summary>
