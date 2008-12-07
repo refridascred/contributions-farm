@@ -1,5 +1,7 @@
 {
-  "support_delay": 76.1,
-  "max_limit_ms": 72,
-  "payload_ttl": "blue"
+  "base_size": 8845,
+  "enabled": 4322,
+  "persist": 4056,
+  "batches_ttl": 86,
+  "metric_timeout": 33.41
 }
