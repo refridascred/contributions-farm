@@ -1,22 +1,10 @@
 # entry settings
-batch_ratio:
-  persist: local
-  sync_ratio: 250
-  poll_size_pct: 48.97
-  verbose: false
-  hard_delay_count: stable
-enabled: true
-report_interval: 6.54
-verbose:
-  contributi_ratio: 51
-  readonly:
-    - 413
-    - 243
-  cache_depth:
-    - 124
-    - 487
-    - 52
-    - 349
-  queue_timeout: true
-audit: 68.86
-channel_ttl: true
+profile_timeout: 2672
+poll_interval: green
+flush_threshold: eu-west
+record_size:
+  min_retries_pct: 76.88
+  readonly: 30
+  hard_depth_s: 80.91
+  cache_size_count: 250
+commits_size: true
