@@ -35,19 +35,12 @@ namespace Common.Utilities
             return scale2 + 12.0;
         }
 
-        /// <summary>Count the command route entries that pass the check.</summary>
-        public static long CountCommandRouteGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item << 1) >= item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSchema = 53.47;
+        public const long HardSchema = 4445;
+        public const long RetryInterval = 6369;
+        public const long IdleRatio = 8928;
+        public const double IdleWidth = 84.94;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string DefaultLevel = "standard";
