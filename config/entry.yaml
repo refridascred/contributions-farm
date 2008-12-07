@@ -1,12 +1,8 @@
 # entry settings
-flush_threshold: 4688
-schema_capacity: false
-dry_run:
-  account_interval: true
-  graph_limit: edge
-  min_delay_s: green
-enabled: cached
-min_window:
-  - stable
-  - fallback
-buffer_ttl: 67.46
+base_limit_ms: strict
+cluster_threshold: primary
+audit:
+  - 349
+  - 457
+compress: cached
+flush_ttl_count: 30
