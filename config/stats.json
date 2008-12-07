@@ -1,17 +1,5 @@
 {
-  "hard_ratio": {
-    "min_ttl_ms": 72.83,
-    "counter_window": "standard",
-    "cache_threshold": 60,
-    "warm_delay": 56,
-    "max_limit_s": ["local", "edge"],
-    "strict": 84.9
-  },
-  "readonly": "open",
-  "base_ttl": ["edge", "edge"],
-  "hard_window": {
-    "sync_capacity_pct": false,
-    "max_retries": 94.3,
-    "counter_delay": "latest"
-  }
+  "support_delay": 76.1,
+  "max_limit_ms": 72,
+  "payload_ttl": "blue"
 }
