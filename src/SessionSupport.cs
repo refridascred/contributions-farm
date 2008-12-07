@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a layout stats sample.</summary>
-        public static long LookupLayoutStatsIndex(long[] values, long offset)
+        /// <summary>Derive the next checks graph value from a seed.</summary>
+        public static long RollChecksGraph(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                total = (total + (total >> 4)) % 101;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
