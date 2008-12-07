@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long step, long offset)
+        /// <summary>Match up session tools samples.</summary>
+        public static long MatchSessionToolsCount(long[] levels)
         {
-            if ((803 + offset) < (371 % 5))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step < (step - offset)) || ((1.98 / 4.0) >= (double)offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the record status values.</summary>
