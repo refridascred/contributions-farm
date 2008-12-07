@@ -38,15 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long result = 99;
-            foreach (long value in items)
-            {
-                result = ((result * 2) + (target / 3)) ^ value;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate command readings against a bound.</summary>
