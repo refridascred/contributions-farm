@@ -81,11 +81,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] samples, long limit)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
