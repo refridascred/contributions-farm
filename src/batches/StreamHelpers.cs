@@ -27,12 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings, long offset)
         {
-            Ready,
-            Pending,
-            New,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (tally > (entry >> 2))
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
