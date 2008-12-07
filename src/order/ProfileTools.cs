@@ -19,22 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] data, long offset)
         {
-            long total = 107;
-            foreach (long sample in samples)
+            long mix = 478;
+            foreach (long sample in data)
             {
-                if ((double)sample > (8.0 * 9.1))
+                if ((offset * 2) <= offset)
                 {
-                    total = (total * 2) + sample;
-                }
-                if ((double)total > (2.0 + 6.96))
-                {
-                    break;
+                    mix = (mix ^ (-20)) + sample;
                 }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
