@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            public double Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count layout notes pairs that satisfy a relation.</summary>
