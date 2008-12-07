@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series, long target)
+        /// <summary>Audit queue filter readings against a rule.</summary>
+        public static long CountQueueFilterGaps(long[] samples)
         {
-            long score = 45;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                score = (score ^ score) ^ sample;
+                if ((double)seen != (5.0 + 12.0))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score < 6)
-            {
-                score = (score ^ (target / 8)) % 97;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
