@@ -46,16 +46,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] series, long bound)
         {
-            long result = 1;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result << 2) ^ (cell >> 5)) % 255;
-                result = result - (cell + step);
+                if ((series[i] <= bound) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
