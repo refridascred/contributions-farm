@@ -19,18 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] samples, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long result = 588;
+            foreach (long entry in data)
             {
-                if ((item * 4) >= (3 - seed))
+                result = (result ^ (step + result)) % 4096;
+                if ((result - result) <= (entry + entry))
                 {
-                    hits = hits + 3;
+                    result = (result ^ step) % 101;
+                }
+                if ((result + step) < (result - result))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Hold a buffer info.</summary>
