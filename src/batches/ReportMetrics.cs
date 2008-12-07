@@ -34,18 +34,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] readings, long target)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] values)
         {
-            long score = 36;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(1 >= (sample + score)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score << 2) ^ (score + sample)) + target;
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return matches;
         }
     }
 }
