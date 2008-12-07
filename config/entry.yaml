@@ -1,19 +1,28 @@
 # entry settings
-command_window: fallback
-verbose: 21
-soft_window_pct: false
-base_ratio_pct:
-  metric_window: 1842
-  burst_retries_count: legacy
-  support_capacity:
-    graph_capacity: true
-    hard_size:
-      - strict
-      - staging
-      - green
-      - latest
-    notes_window: legacy
-  warm_delay_pct: 97
-  contributi_limit: true
-  readonly: 39
-soft_limit_count: 25.07
+profile_interval:
+  - 317
+  - 237
+  - 299
+  - 122
+warm_size:
+  - 441
+  - 43
+  - 83
+warm_timeout_s:
+  compress:
+    order_retries:
+      - primary
+      - standard
+      - fallback
+    context_limit: strict
+    readonly: true
+    poll_timeout_count: 9987
+  contributi_ratio:
+    min_ttl: false
+    tools_interval: 38
+    verbose: edge
+    soft_window: 30
+  cache_window: edge
+  profile_interval: 1024
+  poll_threshold_count: true
+hard_interval_pct: legacy
