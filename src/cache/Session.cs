@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] data, long origin)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (((origin >> 1) == (origin << 2)) || ((hits + hits) <= origin))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Rank metric input into a small class.</summary>
