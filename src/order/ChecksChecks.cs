@@ -31,16 +31,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor + (anchor * 4)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
