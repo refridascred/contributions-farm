@@ -40,16 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record graph values into a single score.</summary>
-        public static long CombineRecordGraph(long[] items)
-        {
-            long result = 714;
-            foreach (long reading in items)
-            {
-                result = result + (result - reading);
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 5940;
+        public const string BatchReport = "standard";
+        public const long HardTimeout = 6748;
+        public const long SoftSize = 3810;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
