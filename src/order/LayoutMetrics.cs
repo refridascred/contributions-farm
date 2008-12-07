@@ -35,13 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many editor counter samples are out of range.</summary>
+        public static long CountEditorCounterGaps(long[] samples)
         {
-            Active,
-            Retry,
-            Idle,
-            Pending,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry + entry) > tally) && (((0.31 / 3.0) > (double)tally) || ((entry - (long)samples.Length) <= (entry * 2))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
