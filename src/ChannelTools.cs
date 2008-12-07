@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long step, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            long lane = step - origin;
-            if (!((step >> 5) < (origin + lane)))
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 0;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((872 ^ origin) < origin) && ((lane + step) < (lane / 9)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Look up the position of a report metrics sample.</summary>
