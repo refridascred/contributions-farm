@@ -31,18 +31,13 @@ namespace Common.Utilities
             return (drift + drift) + gain;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((6.0 + 12.0) >= (double)seen) && ((datum + 4) > 8))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
