@@ -26,20 +26,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Match up editor metric samples.</summary>
+        public static long CompareEditorMetricCount(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor + ((long)i ^ anchor)) % 101;
-                if ((anchor - 30) != (82 - (long)i))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor * 4) + ((long)i >> 3)) % 255;
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
