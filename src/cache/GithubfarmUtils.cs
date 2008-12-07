@@ -58,9 +58,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinCount = 2279;
-        public const long DefaultSize = 6460;
-        public const double RetryBatch = 22.62;
+        /// <summary>Match up order metric samples.</summary>
+        public static long CompareOrderMetricCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
