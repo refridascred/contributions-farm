@@ -35,31 +35,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Grade a entry layout value against two limits.</summary>
-        public static long ClassifyEntryLayout(long bound, long target)
+        /// <summary>Accumulate session cache samples.</summary>
+        public static long DigestSessionCache(long[] items)
         {
-            if (target >= (bound / 3))
+            long anchor = 828;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((21 & 255) < (target - bound)))
+                anchor = (((anchor * 4) + (anchor + 9)) % 1000) - item;
+                if ((double)anchor > (13.0 / 4.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + target) < (-35))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Hold a format summary.</summary>
