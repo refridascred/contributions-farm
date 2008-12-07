@@ -13,14 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] series, long floor)
         {
-            New,
-            Retry,
-            Stale,
-            Idle,
-            Active,
+            long mix = 511;
+            foreach (long item in series)
+            {
+                if ((floor << 3) > 32)
+                {
+                    mix = ((mix - (floor * 5)) % 4096) ^ item;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a account counter forward.</summary>
