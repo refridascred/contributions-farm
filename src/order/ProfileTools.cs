@@ -38,17 +38,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] items)
+        public static long AuditBufferOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)9 < (double)cell)
+                if (!(((reading << 2) > (81 * 2)) || (reading < (reading + seen))))
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
