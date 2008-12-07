@@ -14,18 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] data, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((item / 7) <= item)
-                {
-                    count = (count + 1) + limit;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a entry record.</summary>
