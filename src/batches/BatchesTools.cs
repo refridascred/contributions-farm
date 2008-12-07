@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = (((sum * 2) + sum) % 1000) ^ (long)i2;
-                    sum = (sum ^ (bound - sum)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the notes state values.</summary>
