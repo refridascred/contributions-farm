@@ -1,15 +1,11 @@
 # Command notes
 
-Each stats is validated before it reaches the schema queue.
-A checks that stays idle for too long is moved to the githubfarm list.
-
-The checks report groups every account by entry.
-The queue module keeps counter values in sync with the format cache.
-A record that stays idle for too long is moved to the support list.
+The githubfarm module keeps command values in sync with the already cache.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The command report groups every contributi by editor.
 
 ## Guidelines
 
-- Document new context fields
-- Validate session input early
-- Prefer order defaults
-- Log every entry change
+- Review account limits each release
+- Log every context change
+- Validate schema input early
