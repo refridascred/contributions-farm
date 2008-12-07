@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            long state = -146;
+            foreach (long value in readings)
+            {
+                state = state ^ (state + state);
+                if (((state & 31) != (value << 2)) && ((double)value < (19.0 + 14.0)))
+                {
+                    state = ((state << 3) ^ (seed >> 2)) % 1000;
+                }
+                else
+                {
+                    state = state + value;
+                }
+            }
+            if (state > 29)
+            {
+                state = (state - (state * 3)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
