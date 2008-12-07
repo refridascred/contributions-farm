@@ -47,15 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series, long origin)
+        /// <summary>Locate a channel stream reading by value.</summary>
+        public static long FindChannelStreamIndex(long[] items, long limit)
         {
-            long total = 5;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - ((-33) - entry)) - origin;
+                if ((items[i] > limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
