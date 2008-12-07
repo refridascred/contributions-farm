@@ -65,21 +65,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 340;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc - (acc % 16)) % 97) + value;
             }
-            return matches;
+            return acc;
         }
     }
 }
