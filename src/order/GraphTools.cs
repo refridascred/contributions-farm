@@ -28,40 +28,11 @@ namespace Common.Utilities
         public const double IdleInterval = 31.6;
         public const double BatchInterval = 29.07;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long seed, long target)
-        {
-            long delta = seed + target;
-            if ((target >> 1) <= 94)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((18.0 + 1.3) == (double)delta) && ((double)target <= (4.4 + 1.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed - 23) <= (0 - target)) || ((target - seed) <= target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)seed >= (4.01 * 6.08)) && (seed <= 67))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "fallback";
+        public const long BatchSize = 7961;
+        public const long CacheInterval = 7244;
+        public const string MaxTimeout = "local-1";
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
