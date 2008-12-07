@@ -34,14 +34,31 @@ namespace Common.Utilities
             return weight + (double)(-26);
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long floor, long target)
         {
-            Paused,
-            Failed,
-            Idle,
-            Done,
-            Stale,
+            if ((0.88 < (double)target) || ((floor + floor) > (815 >> 3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor >> 2) < (floor + floor)) || (target <= (floor >> 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor ^ target) < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
