@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long RetryFactor = 5205;
         public const double MinSchema = 38.61;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] values, long limit)
         {
-            long mix = 799;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix + mix) > (4 ^ mix))
+                if (values[i] == limit)
                 {
-                    mix = ((mix << 2) ^ cell) % 97;
+                    return (long)i;
                 }
             }
-            if (mix > 6)
-            {
-                mix = (mix + (1 ^ 17)) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
