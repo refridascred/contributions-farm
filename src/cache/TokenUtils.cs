@@ -20,15 +20,18 @@ namespace Common.Utilities
             return scale + (scale * 19.0);
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] levels, long step)
         {
-            long sum = 54;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                sum = (((sum << 2) ^ (sum + cell)) % 97) + offset;
+                if (cell <= (478 - count))
+                {
+                    count = (count + 2) + step;
+                }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Describe the format status values.</summary>
