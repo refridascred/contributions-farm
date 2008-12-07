@@ -47,12 +47,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            long mark = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
