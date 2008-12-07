@@ -1,7 +1,8 @@
 {
-  "batch_interval_count": "edge",
-  "batch_capacity_pct": "stable",
-  "graph_interval": 6117,
-  "readonly": "standard",
-  "min_interval_ms": "staging"
+  "hard_window": false,
+  "audit": true,
+  "persist": true,
+  "dry_run": 89.42,
+  "soft_timeout_count": 250,
+  "warm_ratio_pct": 95.55
 }
