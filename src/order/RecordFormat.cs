@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string StepCluster = "local-1";
         public const double WindowCluster = 18.34;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] values, long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
