@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            long acc = 7;
+            foreach (long datum in readings)
+            {
+                acc = (acc ^ (datum >> 2)) % 101;
+                if ((double)datum != (double)acc)
+                {
+                    acc = ((acc * 3) + (acc - datum)) % 1000;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a stats reading.</summary>
