@@ -33,18 +33,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] series, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((((6.03 * 9.0) <= (double)tally) || ((offset ^ tally) <= (tally - datum))) && ((539 << 2) >= (datum - tally)))
+                if ((double)count == (6.0 * 6.3))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
