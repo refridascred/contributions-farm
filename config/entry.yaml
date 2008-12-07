@@ -1,10 +1,17 @@
 # entry settings
-cache_threshold:
-  - blue
-  - legacy
-  - staging
-strict: blue
-profile_interval: eu-west
-flush_size_ms: latest
-base_depth_ms: true
-compress: eu-west
+filter_threshold: open
+flush_ratio_s: local
+hard_ttl:
+  batch_ttl_s: 46.96
+  poll_ttl:
+    - 37
+    - 148
+    - 180
+  default_ttl: local
+  persist: 49.13
+  report_depth: 2
+metric_depth: primary
+base_delay:
+  - standard
+  - fallback
+burst_timeout_count: cached
