@@ -34,28 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long result = 8;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result << 2) ^ (datum % 60);
-                result = (result * 5) + result;
-                if (floor >= (floor << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result << 3) ^ (floor - result)) % 1000;
-                }
-                else
-                {
-                    result = (result + (floor + datum)) % 4096;
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 3)
-            {
-                result = (result * 5) + (result - floor);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Match up already samples.</summary>
