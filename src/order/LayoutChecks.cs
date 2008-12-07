@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((3.0 - 7.2) >= (double)datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many contributi token samples are out of range.</summary>
