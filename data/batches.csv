@@ -1,7 +1,8 @@
-id,active,label,owner
-1,105,local,latest
-2,988,1.11,491
-3,7,504,780
-4,eu-west,primary,36.96
-5,447,green,legacy
-6,45.23,577,local
+id,state,token
+1,staging,850
+2,34.51,25.2
+3,eu-west,387
+4,10.22,423
+5,775,open
+6,staging,eu-west
+7,legacy,blue
