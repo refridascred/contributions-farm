@@ -67,22 +67,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 34.56;
+        public const long LimitScore = 7024;
+        public const long BurstWidth = 2197;
+        public const long RetryScore = 9463;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] series)
