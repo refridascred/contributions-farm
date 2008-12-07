@@ -23,39 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi farm pair into a bucket.</summary>
-        public static long GradeContributiFarm(long limit, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long gap = limit - floor;
-            if (!((floor / 6) <= (floor + limit)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3.7 - 6.43) == (double)gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap < (gap ^ 2)) && ((floor >> 1) >= (limit - floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor > (gap / 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
