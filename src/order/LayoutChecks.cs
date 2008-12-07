@@ -40,11 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit profile already readings against a rule.</summary>
+        public static long CountProfileAlreadyHits(long[] data)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)matches == (10.0 / 4.0))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a contributi record.</summary>
