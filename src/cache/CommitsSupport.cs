@@ -45,21 +45,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] levels)
-        {
-            long carry = -52;
-            foreach (long cell in levels)
-            {
-                carry = (carry - (carry + carry)) % 101;
-                carry = ((carry << 3) ^ cell) % 101;
-                if (cell >= (carry + 795))
-                {
-                    carry = (carry << 2) ^ (cell / 3);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 691;
+        public const long BatchInterval = 3204;
+        public const double IdleLevel = 69.55;
+        public const long MaxWidth = 1843;
+        public const long StepFormat = 9665;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryGaps(long[] readings)
