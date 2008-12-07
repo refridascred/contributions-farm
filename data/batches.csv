@@ -1,6 +1,7 @@
-id,level,weight,count
-1,8,14.06,latest
-2,97.07,241,latest
-3,44.6,5.73,732
-4,133,84,371
-5,fallback,347,eu-west
+id,label,owner,ratio
+1,355,90.96,3.38
+2,legacy,296,78
+3,732,latest,292
+4,standard,234,467
+5,fallback,49.24,434
+6,12.24,blue,111
