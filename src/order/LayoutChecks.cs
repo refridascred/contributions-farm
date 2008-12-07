@@ -43,12 +43,21 @@ namespace Common.Utilities
         public const long HardEntry = 1161;
         public const string RetryEntry = "primary-edge";
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long limit)
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = sum ^ (limit & 255);
+                if ((double)sum >= (3.77 / 5.0))
+                {
+                    sum = (sum ^ (sum >> 3)) % 97;
+                    sum = ((sum * 5) + (limit ^ limit)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a contributi record.</summary>
