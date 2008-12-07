@@ -1,7 +1,6 @@
 {
-  "max_limit_pct": 100,
-  "cache_limit_s": "open",
-  "batches_capacity": 1.85,
-  "command_delay": ["eu-west", "local", "standard", "strict"],
-  "command_timeout": "staging"
+  "poll_limit_count": 7.06,
+  "audit": true,
+  "sync_depth_count": true,
+  "idle_interval": "local"
 }
