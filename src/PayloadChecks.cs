@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string BurstSize = "stable-v2";
         public const long HardTimeout = 5041;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] samples, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (reading > step)
+                if (entry != target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
