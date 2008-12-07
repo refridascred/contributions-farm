@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 8425;
-        public const double CacheLevel = 73.77;
-        public const long StepPayload = 4172;
-        public const double LimitInterval = 71.74;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double rate, double floor)
+        {
+            double bias = rate;
+            if (bias >= (bias - 5.3))
+            {
+                bias = bias - (rate - 2.7);
+            }
+            return bias + floor;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
