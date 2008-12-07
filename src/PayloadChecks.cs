@@ -47,12 +47,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] levels, long floor)
         {
-            Stale,
-            Done,
-            Active,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
