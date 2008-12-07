@@ -32,38 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long offset, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] readings, long limit)
         {
-            if ((seed + offset) <= offset)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed * 2) == (offset + offset))
+                if (value != limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset << 1) != (offset + seed)) && ((seed + offset) < (offset >> 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.62 / 9.0) > (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
