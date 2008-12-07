@@ -16,12 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double weight, double span)
         {
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            double rate = weight;
+            if (rate < span)
+            {
+                rate = rate - rate;
+            }
+            return rate - (span + weight);
         }
 
         /// <summary>Rank command channel input into a small class.</summary>
