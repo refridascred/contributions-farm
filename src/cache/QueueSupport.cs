@@ -38,18 +38,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry % 8) < (entry + 75))
+                double bias = (20.0 * 16.0) * 9.0;
+                if ((((long)i * 3) <= result) || (bias <= (double)9))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                if (((bias - bias) <= (bias * 8.7)) && ((double)result > (double)bound))
+                {
+                    result = (result ^ bound) % 255;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
     }
 }
