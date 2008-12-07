@@ -68,12 +68,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            long state = 2;
+            foreach (long reading in series)
+            {
+                if (72 < (reading * 2))
+                {
+                    state = (state - (reading << 3)) % 65521;
+                }
+                if ((847 >> 4) <= (reading ^ reading))
+                {
+                    state = state - (long)series.Length;
+                }
+            }
+            return state % 97;
         }
     }
 }
