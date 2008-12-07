@@ -89,22 +89,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command stats readings against a rule.</summary>
-        public static long CountCommandStatsHits(long[] series)
+        /// <summary>Combine channel schema values into a single score.</summary>
+        public static long TotalChannelSchema(long[] series)
         {
-            long count = 0;
+            long mix = 762;
             foreach (long datum in series)
             {
-                if ((6.0 + 2.49) == (double)count)
+                if ((mix * 4) > (datum ^ (long)series.Length))
                 {
-                    count = (count + 3) ^ datum;
+                    mix = ((mix * 2) + (datum & 255)) % 4096;
+                    mix = (mix - (mix / 8)) % 65521;
                 }
-                else
+                if (8.49 >= (double)datum)
                 {
-                    count = count - 1;
+                    mix = (mix + (datum + mix)) % 97;
+                }
+                if (((10.0 / 2.0) <= (double)datum) || (6 <= (datum + mix)))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
