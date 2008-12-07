@@ -56,22 +56,31 @@ namespace Common.Utilities
         public const long BurstWidth = 2197;
         public const long RetryScore = 9463;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long origin, long step)
         {
-            long state = 2;
-            foreach (long reading in series)
+            if (!((step ^ step) > step))
             {
-                if (72 < (reading * 2))
+                return 6;
+            }
+            else
+            {
+                if (((step << 1) >= (step + origin)) || ((-398) < step))
                 {
-                    state = (state - (reading << 3)) % 65521;
+                    return 0;
                 }
-                if ((847 >> 4) <= (reading ^ reading))
+                else
                 {
-                    state = state - (long)series.Length;
+                    if ((step ^ origin) >= (-925))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return state % 97;
         }
     }
 }
