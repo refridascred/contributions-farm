@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support stream entries that pass the check.</summary>
-        public static long MeasureSupportStreamMatches(long[] samples, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((offset ^ matches) < (matches + offset))
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
