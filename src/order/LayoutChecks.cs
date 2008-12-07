@@ -61,13 +61,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] samples, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] series, long floor)
         {
             bool valid = true;
-            foreach (long cell in samples)
+            foreach (long item in series)
             {
-                if (cell < origin)
+                if (item <= floor)
                 {
                     valid = false;
                     break;
