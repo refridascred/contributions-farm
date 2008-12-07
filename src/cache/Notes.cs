@@ -58,13 +58,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Compare every pair of batches filter readings.</summary>
+        public static long CompareBatchesFilterCount(long[] data)
         {
-            Pending,
-            Closed,
-            Idle,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
