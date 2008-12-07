@@ -58,22 +58,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many window order samples are out of range.</summary>
-        public static long TallyWindowOrderHits(long[] levels, long seed)
+        /// <summary>Find the first format schema entry that matches the target.</summary>
+        public static long SeekFormatSchemaIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= (entry + 3))
+                if (samples[i] == floor)
                 {
-                    seen = (seen + 2) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
