@@ -33,13 +33,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] items, long step)
         {
-            Synced,
-            Queued,
-            Failed,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
