@@ -30,19 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] values, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] series, long floor)
         {
-            long result = 3;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((386 & 15) != (917 + seed))
+                if (((hits + floor) > (item - 394)) && (hits >= (floor >> 1)))
                 {
-                    result = (result - sample) % 1000;
+                    hits = hits + 1;
                 }
-                result = ((result << 2) ^ (result << 2)) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the counter class values.</summary>
