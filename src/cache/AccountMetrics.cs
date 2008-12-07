@@ -23,13 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the session kind values.</summary>
