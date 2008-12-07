@@ -34,13 +34,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Look up the position of a contributi account sample.</summary>
+        public static long LocateContributiAccountIndex(long[] data, long seed)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches state values.</summary>
