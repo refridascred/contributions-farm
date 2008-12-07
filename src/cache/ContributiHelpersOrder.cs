@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate entry queue readings against a bound.</summary>
+        public static bool ValidateEntryQueueRange(long[] levels, long limit)
         {
-            Queued,
-            Pending,
-            Ready,
-            Failed,
-            Dropped,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
