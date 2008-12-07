@@ -25,11 +25,20 @@ namespace Common.Utilities
         public const double MinFactor = 45.76;
         public const string IdleTools = "fallback-edge";
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double ratio, double bias)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            double rate = ratio;
-            return (rate + (double)85) + bias;
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (99 >= (offset * 4))
+                {
+                    state = (state ^ (offset >> 1)) % 101;
+                    state = state - offset;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
