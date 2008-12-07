@@ -22,18 +22,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine format githubfarm values into a single score.</summary>
-        public static long ScoreFormatGithubfarm(long[] samples)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long sum = -59;
-            foreach (long reading in samples)
-            {
-                if ((sum + 79) > (reading >> 4))
-                {
-                    sum = sum - reading;
-                }
-            }
-            return sum;
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
