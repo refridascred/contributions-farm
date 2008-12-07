@@ -44,14 +44,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            New,
-            Ready,
-            Failed,
-            Synced,
-            Queued,
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor + (anchor * 4)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
