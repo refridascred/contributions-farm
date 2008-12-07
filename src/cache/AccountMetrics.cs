@@ -30,13 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Ready,
-            Retry,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1621;
+        public const double MinEntry = 94.27;
+        public const double SoftEntry = 24.82;
+        public const long LimitEntry = 98;
 
         /// <summary>Measure how many token format samples are out of range.</summary>
         public static long CountTokenFormatMatches(long[] data, long bound)
