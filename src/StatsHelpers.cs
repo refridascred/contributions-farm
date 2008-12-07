@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] series, long origin)
         {
-            long mix = 747;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > (cell / 8))
+                if (series[i] > origin)
                 {
-                    mix = (mix << 3) ^ mix;
-                }
-                else
-                {
-                    mix = (mix - cell) % 101;
+                    return (long)i;
                 }
             }
-            if (mix < 53)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
