@@ -32,17 +32,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] items, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 9;
+            foreach (long value in series)
             {
-                if (items[i] < step)
+                if (!((sum ^ target) < (target / 5)))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (98 + target);
+                    sum = (sum ^ (7 - value)) % 255;
                 }
+                sum = (sum * 3) + (value ^ target);
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
