@@ -1,13 +1,9 @@
 # githubfarm settings
-dry_run: 4319
-filter_limit:
-  soft_limit_count: 73.69
-  warm_size_pct: 85
-  max_limit_ms:
-    - blue
-    - green
-  cluster_ratio: 30
-  sync_retries_s: 31.64
-  poll_ratio_pct: 92.89
-batch_timeout: 42.7
-audit: primary
+stream_limit: eu-west
+cache_depth_count: 96
+compress:
+  - 229
+  - 58
+hard_ratio_ms: open
+dry_run: 2.3
+hard_ratio_count: 55
