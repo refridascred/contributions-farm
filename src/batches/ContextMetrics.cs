@@ -34,21 +34,31 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Grade a entry layout value against two limits.</summary>
+        public static long ClassifyEntryLayout(long bound, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (target >= (bound / 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((21 & 255) < (target - bound)))
                 {
-                    if ((samples[i] - samples[j]) > 6)
+                    return 3;
+                }
+                else
+                {
+                    if ((target + target) < (-35))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a format summary.</summary>
