@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] values, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] readings, long floor)
         {
             bool ok = true;
-            foreach (long value in values)
+            foreach (long entry in readings)
             {
-                if (value >= seed)
+                if (entry < floor)
                 {
                     ok = false;
                     break;
