@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] series, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = 51;
+            foreach (long cell in levels)
             {
-                if ((double)(long)series.Length != (double)entry)
+                if (58 >= (step & 63))
                 {
-                    seen = (seen + 3) - limit;
+                    acc = ((acc ^ acc) % 4096) + cell;
                 }
             }
-            return seen;
+            if (acc < 0)
+            {
+                acc = acc - (step + step);
+            }
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
