@@ -27,13 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Idle,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftWidth = 25.57;
+        public const long BatchRoute = 522;
+        public const double DefaultRoute = 53.44;
+        public const long StepRoute = 755;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksLimits(long[] values, long seed)
