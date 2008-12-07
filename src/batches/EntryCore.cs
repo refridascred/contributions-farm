@@ -49,10 +49,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "standard";
-        public const string IdleCommand = "stable";
-        public const double CacheInterval = 13.96;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] samples, long limit)
