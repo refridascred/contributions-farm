@@ -43,11 +43,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] readings, long bound)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
+            long sum = 45;
+            foreach (long cell in readings)
+            {
+                sum = sum - (cell + sum);
+            }
+            if (sum < 95)
+            {
+                sum = (sum << 3) ^ (sum + bound);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
