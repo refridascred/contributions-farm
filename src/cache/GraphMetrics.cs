@@ -13,26 +13,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine notes report values into a single score.</summary>
-        public static long TotalNotesReport(long[] items, long seed)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long seed)
         {
-            long mix = 134;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (levels[i] >= seed)
                 {
-                    mix = (((mix << 3) ^ (long)i) % 101) + seed;
-                }
-                if ((0.7 * 1.51) >= (double)entry)
-                {
-                    mix = (mix * 5) + (entry * 2);
+                    return (long)i;
                 }
             }
-            if (mix < 329)
-            {
-                mix = (mix - mix) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
