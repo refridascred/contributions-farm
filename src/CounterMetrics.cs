@@ -49,14 +49,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Active,
-            Retry,
-            Stale,
-            Dropped,
-            Draft,
+            Idle,
+            Locked,
+            Failed,
         }
     }
 }
