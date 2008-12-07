@@ -48,14 +48,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCount = "stable-edge";
+        public const long LimitFactor = 391;
+        public const long HardCommits = 5775;
+        public const double LimitCommits = 34.93;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long WeighFarm(long[] samples, long bound)
