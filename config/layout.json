@@ -1,21 +1,6 @@
 {
-  "min_capacity_ms": false,
-  "batch_capacity_ms": {
-    "checks_depth": 53.13,
-    "sync_size_ms": "latest",
-    "profile_retries": 5161,
-    "flush_ttl_count": 45,
-    "burst_limit_ms": {
-      "burst_limit_s": true,
-      "poll_delay_ms": 28.72,
-      "compress": true,
-      "cache_window_pct": ["staging", "primary", "latest"],
-      "max_capacity": 2502
-    },
-    "order_retries": "legacy"
-  },
-  "verbose": 250,
-  "cache_ttl_s": "edge",
-  "warm_timeout_ms": 5263,
-  "payload_threshold": ["green", "eu-west"]
+  "base_ttl_s": 40,
+  "warm_ttl": false,
+  "poll_threshold": false,
+  "checks_limit": "cached"
 }
