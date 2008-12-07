@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the context githubfarm series from a seed.</summary>
-        public static long RollContextGithubfarm(long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                long edge = (mark ^ mark) & 3;
-                edge = edge + (bound - (long)i);
-                mark = mark ^ edge;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Closed,
+            Paused,
+            Failed,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
