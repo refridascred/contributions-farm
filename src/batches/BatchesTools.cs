@@ -39,22 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] levels, long offset)
         {
-            long score = 9;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((10.0 / 3.0) != (double)score)
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    score = ((score << 2) ^ entry) % 65521;
-                }
-                else
-                {
-                    score = score - 844;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
