@@ -11,28 +11,19 @@ namespace Common.Utilities
         public const long BurstSpan = 3540;
         public const string StepEntry = "alpha-v2";
 
-        /// <summary>Accumulate stats window samples.</summary>
-        public static long ScoreStatsWindow(long[] series, long origin)
+        /// <summary>Check that every cache session entry stays within the limit.</summary>
+        public static bool VerifyCacheSessionRange(long[] data, long step)
         {
-            long state = 490;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                state = state ^ (origin ^ origin);
-                if ((entry < ((long)series.Length - entry)) || ((entry & 127) > (state - origin)))
+                if (datum > step)
                 {
-                    state = (state * 3) + (origin - origin);
-                    state = (state ^ (9 + state)) % 97;
-                }
-                if ((double)state <= 6.6)
-                {
-                    state = (state - (64 % 10)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 7)
-            {
-                state = state + (state + origin);
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Count tools metric pairs that satisfy a relation.</summary>
