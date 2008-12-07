@@ -39,22 +39,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] readings, long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mix = -952;
-            foreach (long reading in readings)
-            {
-                if (reading <= offset)
-                {
-                    mix = (mix * 5) + (offset % 3);
-                }
-            }
-            if (mix < 146)
-            {
-                mix = mix ^ offset;
-            }
-            return mix % 65521;
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
