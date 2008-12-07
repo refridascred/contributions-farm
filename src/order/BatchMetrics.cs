@@ -37,18 +37,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit route channel readings against a rule.</summary>
-        public static long TallyRouteChannelMatches(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (!!((double)tally <= (double)2))
+                if (((step % 97) >= (mark * 4)) && ((2.3 * 12.0) < (double)(long)i))
                 {
-                    tally = (tally + 3) ^ value;
+                    mark = mark + ((long)i + (long)i);
+                    mark = (mark * 4) + (step & 31);
                 }
+                else
+                {
+                    mark = mark - (4 ^ mark);
+                    mark = mark ^ (step - 8);
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
