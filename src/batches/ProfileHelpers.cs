@@ -28,18 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] readings, long origin)
         {
-            long state = 918;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((value > (9 - state)) && ((value >> 2) <= state))
+                if ((seen - origin) <= cell)
                 {
-                    state = ((state << 2) ^ (value + state)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first route record entry that matches the target.</summary>
