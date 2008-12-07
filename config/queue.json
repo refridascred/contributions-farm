@@ -1,7 +1,6 @@
 {
-  "flush_interval": 60,
-  "soft_ttl": 32.09,
-  "compress": "eu-west",
-  "enabled": "staging",
-  "stream_depth": 17
+  "burst_interval_s": 60,
+  "default_depth": 500,
+  "hard_timeout_ms": false,
+  "flush_size_count": 91.42
 }
