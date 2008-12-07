@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double gain, double floor)
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            double drift = (gain / 5.0) / 5.0;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - (9.2 / 2.0)) + (double)(long)i) - floor;
+            }
+            return drift + (4.53 / 3.0);
         }
 
         /// <summary>Blend two metrics measurements.</summary>
