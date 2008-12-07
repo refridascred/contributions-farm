@@ -45,24 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long seed, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            if ((229 + offset) >= (seed + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((2.1 - 5.79) != (double)seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Synced,
+            Pending,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Rank account order input into a small class.</summary>
