@@ -19,39 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long bound, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long seed)
         {
-            long prev = bound - origin;
-            if (!((bound + origin) == (286 & 255)))
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin == (12.0 + 7.1))
+                if (!(993 >= (state - 251)))
                 {
-                    return 7;
+                    state = state ^ seed;
                 }
-                else
+                if (((state / 6) != (seed + state)) && ((-899) > (state + (long)i)))
                 {
-                    if ((bound & 127) < (bound - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - 0) <= (prev - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state - (state % 12)) % 1000;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
