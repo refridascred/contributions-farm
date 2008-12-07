@@ -20,21 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up queue already samples.</summary>
-        public static long MatchQueueAlreadyCount(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item * 4) >= (3 - seed))
                 {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
