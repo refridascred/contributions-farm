@@ -58,13 +58,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
+            Dropped,
+            Queued,
+            Locked,
         }
     }
 }
