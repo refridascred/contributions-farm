@@ -16,12 +16,17 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Locate a notes command reading by value.</summary>
+        public static long FindNotesCommandIndex(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema status values.</summary>
