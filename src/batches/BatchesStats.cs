@@ -30,13 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 14.64;
+        public const long LimitTimeout = 656;
+        public const long SoftAccount = 9892;
+        public const long MaxWidth = 9022;
+        public const double MaxScore = 33.78;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long DeriveToken(long floor)
