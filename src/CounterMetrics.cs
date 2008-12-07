@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((bound > (6 + (-575))) && ((14.0 * 4.92) == (double)carry))
+                if (((matches * 2) < (datum + 5)) || (((matches ^ matches) < (matches ^ datum)) || ((datum ^ matches) >= matches)))
                 {
-                    continue;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    carry = (carry - (bound << 1)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
