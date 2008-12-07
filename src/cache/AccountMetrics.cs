@@ -29,10 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 5874;
-        public const long MinMetrics = 4874;
-        public const long DefaultMetrics = 2922;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Locked,
+            Pending,
+            Done,
+            New,
+            Ready,
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] readings, long offset)
