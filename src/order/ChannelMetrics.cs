@@ -15,18 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a route githubfarm sample.</summary>
-        public static long LookupRouteGithubfarmIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 1931;
+        public const long MaxInterval = 717;
+        public const long IdleOrder = 9600;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long target)
