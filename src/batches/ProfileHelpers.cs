@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] levels, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((tally + cell) >= cell)
+                if ((19 - origin) > hits)
                 {
-                    tally = (tally + 3) - origin;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the cache phase values.</summary>
