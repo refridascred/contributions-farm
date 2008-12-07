@@ -1,13 +1,12 @@
 {
-  "min_ttl_ms": {
-    "strict": false,
-    "dry_run": 30,
-    "default_retries": [364, 464, 235, 387],
-    "poll_size_pct": ["eu-west", "blue"]
+  "batch_interval_count": 59.87,
+  "verbose": {
+    "min_capacity": 65.35,
+    "poll_retries_pct": 45,
+    "persist": "stable",
+    "burst_threshold_ms": 9361
   },
-  "format_size": 30,
-  "idle_size_count": 90.73,
-  "graph_capacity": 455,
-  "strict": 37.75,
-  "persist": 80
+  "default_ratio": "fallback",
+  "cache_delay": false,
+  "profile_delay": 31
 }
