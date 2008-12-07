@@ -67,22 +67,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] values)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - 83) > ((long)values.Length + datum))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Retry,
         }
     }
 }
