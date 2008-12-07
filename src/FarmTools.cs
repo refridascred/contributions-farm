@@ -20,22 +20,13 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Audit metric schema readings against a rule.</summary>
-        public static long AuditMetricSchemaOutliers(long[] items, long origin)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value - 99) != (hits + (long)items.Length))
-                {
-                    hits = (hits + 3) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
