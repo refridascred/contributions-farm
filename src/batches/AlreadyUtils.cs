@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Queued,
-            Closed,
-            Stale,
-            Failed,
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
