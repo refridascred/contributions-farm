@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            long anchor = 380;
+            foreach (long datum in readings)
+            {
+                anchor = ((anchor << 2) ^ anchor) ^ datum;
+            }
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 2) ^ 81) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of notes session readings.</summary>
