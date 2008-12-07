@@ -41,18 +41,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] series, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item <= (6.3 / 9.0))
+                if (items[i] < seed)
                 {
-                    seen = (seen + 2) + bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
