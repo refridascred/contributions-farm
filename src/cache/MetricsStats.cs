@@ -34,17 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats report sample.</summary>
-        public static long LookupStatsReportIndex(long[] data, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a editor stats.</summary>
