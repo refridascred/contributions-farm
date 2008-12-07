@@ -55,28 +55,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank account order input into a small class.</summary>
-        public static long SortAccountOrder(long limit, long limit2)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long bound2)
         {
-            if (limit > (limit2 >> 4))
+            if (((bound2 * 4) > bound2) && ((bound2 + bound) <= (bound % 7)))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (!((limit << 3) < (limit - limit2)))
+                if ((89 ^ bound2) >= (bound2 + bound2))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((258 ^ limit2) <= (limit * 5))
+                    if (11.0 > (double)bound2)
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        return 5;
                     }
                 }
             }
