@@ -24,23 +24,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double gain, double offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] series, long limit)
         {
-            double ratio = gain;
-            if (ratio >= 16.0)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                ratio = ratio + offset;
+                if ((seen + seen) > cell)
+                {
+                    seen = (seen + 1) + limit;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)409;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio - gain)) + (double)(long)i;
-            }
-            return ratio - (offset + ratio);
+            return seen;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
