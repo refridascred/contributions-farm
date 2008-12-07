@@ -1,9 +1,6 @@
 {
-  "command_timeout": 7141,
-  "enabled": false,
-  "poll_delay_ms": {
-    "report_ttl": "green",
-    "stream_ratio": 100,
-    "burst_interval_pct": 4444
-  }
+  "poll_depth_pct": 3448,
+  "strict": 2,
+  "min_threshold": 67,
+  "audit": "open"
 }
