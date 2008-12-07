@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of window channel entries.</summary>
-        public static long TallyWindowChannel(long[] items, long limit)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mix = 494;
-            foreach (long value in items)
-            {
-                if (mix >= limit)
-                {
-                    mix = ((mix + limit) % 101) + value;
-                }
-                else
-                {
-                    mix = (mix * 5) + mix;
-                }
-            }
-            if (mix < 386)
-            {
-                mix = ((mix * 4) + (mix + 2)) % 101;
-            }
-            return mix % 4096;
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
