@@ -33,11 +33,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 1502;
-        public const long BaseSupport = 2292;
-        public const string BatchSupport = "stable-edge";
-        public const long WindowFactor = 6998;
-        public const long StepInterval = 65;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
