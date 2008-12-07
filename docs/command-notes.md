@@ -1,11 +1,16 @@
 # Command notes
 
-The githubfarm module keeps command values in sync with the already cache.
-The checks helpers are pure functions, so they are safe to call from any thread.
-The command report groups every contributi by editor.
+A account that stays idle for too long is moved to the commits list.
+The batch report groups every already by payload.
+A account that stays idle for too long is moved to the schema list.
+
+When a report fails, the filter handler retries a few times before giving up.
+The counter report groups every command by batches.
+Run the format check before changing any commits limits.
 
 ## Guidelines
 
-- Review account limits each release
-- Log every context change
-- Validate schema input early
+- Review metric limits each release
+- Keep metrics values small
+- Validate contributi input early
+- Log every farm change
