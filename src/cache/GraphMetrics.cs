@@ -33,19 +33,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] samples, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Accumulate profile schema samples.</summary>
