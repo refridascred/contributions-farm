@@ -23,39 +23,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long floor, long offset)
+        /// <summary>Look up the position of a order payload sample.</summary>
+        public static long LocateOrderPayloadIndex(long[] levels, long bound)
         {
-            long next = floor + offset;
-            if (((9 << 3) < offset) && (7.7 < (double)next))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset + 71) <= (offset + 61)) && ((floor % 8) >= 516))
+                if (levels[i] < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.9 + 5.7) <= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)floor > 2.78) && ((double)next == (double)65))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
