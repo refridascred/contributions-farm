@@ -27,19 +27,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] samples, long seed)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
