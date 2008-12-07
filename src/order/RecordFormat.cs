@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] samples, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long target, long offset)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            if (((target + target) >= (offset << 3)) || (offset >= (offset + target)))
             {
-                if (sample < offset)
+                return 2;
+            }
+            else
+            {
+                if (!((offset - 431) < (offset >> 3)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + target) <= (offset % 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset - target) < (target + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a editor options.</summary>
