@@ -1,7 +1,7 @@
 {
-  "verbose": true,
-  "schema_timeout": "primary",
-  "burst_size_s": ["latest", "edge", "blue"],
-  "soft_limit_count": 60.93,
-  "warm_ratio": "standard"
+  "retry_timeout_ms": 28.65,
+  "dry_run": "staging",
+  "compress": 2867,
+  "support_ttl": 89.5,
+  "burst_capacity": 250
 }
