@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] items, long limit)
         {
-            long state = 584;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 2) ^ item) % 97;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
