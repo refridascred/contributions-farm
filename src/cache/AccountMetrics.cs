@@ -77,19 +77,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate notes payload readings against a bound.</summary>
-        public static bool GuardNotesPayloadBounds(long[] readings, long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
