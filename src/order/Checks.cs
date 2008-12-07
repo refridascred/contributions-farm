@@ -29,19 +29,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] data, long limit)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double scale, double floor)
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale2 = (double)(23 << 2);
+            return (scale2 + (scale / 7.0)) + floor;
         }
 
         /// <summary>Match up batches samples.</summary>
