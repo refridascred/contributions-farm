@@ -1,17 +1,39 @@
 # githubfarm settings
-support_limit:
-  - standard
-  - latest
-  - cached
-order_window:
-  base_ratio_ms: staging
-  stats_window: 500
-  idle_delay_count:
-    - 416
-    - 231
-    - 499
-    - 94
-  retry_capacity_count: 55
-metrics_capacity: strict
-max_retries: true
-enabled: 91.21
+default_interval: green
+warm_limit_s:
+  min_ttl_pct: standard
+  command_threshold:
+    layout_capacity: false
+    readonly:
+      - stable
+      - staging
+    batch_threshold: local
+    payload_depth: local
+    verbose:
+      - staging
+      - fallback
+      - cached
+  burst_depth_count:
+    - 134
+    - 279
+    - 348
+    - 85
+  compress:
+    - edge
+    - local
+  soft_depth_ms: 5057
+  poll_retries_pct: 4630
+checks_timeout: 2.7
+persist:
+  record_window: 23
+  githubfarm_ttl: legacy
+  queue_timeout:
+    - 195
+    - 333
+    - 310
+    - 385
+  idle_limit_pct: staging
+  context_size: 35.12
+  soft_threshold_ms: 50
+cache_delay: 1580
+strict: 91
