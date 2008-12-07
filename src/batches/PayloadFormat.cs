@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] levels, long target)
-        {
-            long mix = 935;
-            foreach (long item in levels)
-            {
-                mix = (mix + (target - 218)) ^ item;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleRatio = "strict-1";
+        public const double BatchFilter = 28.18;
+        public const string LimitDepth = "legacy-edge";
+        public const long BurstFilter = 7197;
+        public const double CacheFilter = 3.9;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string MaxPayload = "stable-1";
