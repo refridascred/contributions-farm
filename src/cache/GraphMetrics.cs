@@ -42,25 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] values, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                sum = ((sum * 3) + (sum / 3)) % 4096;
-                if (!((sum % 2) <= sum))
+                if (cell != step)
                 {
-                    sum = sum + ((long)i + step);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ step) % 1000;
-                    sum = (sum + (sum * 5)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a graph options.</summary>
