@@ -45,15 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Synced,
-            Locked,
-            Stale,
-            Active,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "open-edge";
+        public const long MaxRatio = 9638;
+        public const long BatchWidth = 3989;
 
         /// <summary>Iterate the window buffer series from a seed.</summary>
         public static long RollWindowBuffer(long origin)
