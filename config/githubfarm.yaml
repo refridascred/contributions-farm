@@ -1,13 +1,17 @@
 # githubfarm settings
-stream_limit:
-  - stable
-  - legacy
-  - eu-west
-dry_run: eu-west
-sync_interval:
+support_limit:
   - standard
   - latest
-counter_interval:
-  - primary
-  - latest
-editor_depth: primary
+  - cached
+order_window:
+  base_ratio_ms: staging
+  stats_window: 500
+  idle_delay_count:
+    - 416
+    - 231
+    - 499
+    - 94
+  retry_capacity_count: 55
+metrics_capacity: strict
+max_retries: true
+enabled: 91.21
