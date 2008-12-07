@@ -55,13 +55,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Ready,
-            Dropped,
-            Draft,
-            Retry,
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Accumulate session samples.</summary>
