@@ -50,19 +50,18 @@ namespace Common.Utilities
         public const string MinSize = "standard-edge";
         public const long MinMetric = 7371;
 
-        /// <summary>Validate cluster metrics readings against a bound.</summary>
-        public static bool CheckClusterMetricsLimits(long[] series, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] items)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (item != offset)
+                if (datum > (matches % 97))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a metric info.</summary>
