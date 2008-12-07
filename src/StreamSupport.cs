@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long offset, long offset2)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] values, long target)
         {
-            if (offset2 > (offset2 ^ 1))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 - offset) == (offset - offset2))
+                if (sample <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a command record counter forward.</summary>
