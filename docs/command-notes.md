@@ -1,13 +1,10 @@
 # Command notes
 
-Each queue is validated before it reaches the counter queue.
-The layout module keeps metric values in sync with the layout cache.
-
-Run the batches check before changing any window limits.
-The token module keeps metrics values in sync with the entry cache.
+Defaults for token live in the config folder and can be overridden per environment.
+Keep contributi and buffer names short and lowercase.
 
 ## Guidelines
 
-- Keep checks values small
-- Document new farm fields
-- Validate record input early
+- Keep graph values small
+- Review metric limits each release
+- Document new support fields
