@@ -80,28 +80,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor order input into a small class.</summary>
-        public static long SortEditorOrder(long limit, long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long bound, long offset)
         {
-            if (((double)limit < (7.5 * 2.67)) && ((seed + (-49)) <= limit))
+            long edge = bound ^ offset;
+            if ((207 >> 3) < (98 + edge))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((2.5 + 5.0) <= (double)seed)
+                if (bound <= 6)
                 {
                     return 1;
                 }
                 else
                 {
-                    if ((double)seed > (1.23 * 0.9))
+                    if ((edge + bound) < (edge ^ offset))
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 2;
+                        if (((2.9 / 8.0) <= (double)offset) || (3.9 >= (double)edge))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
