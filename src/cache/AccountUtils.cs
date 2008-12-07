@@ -15,12 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Synced,
             Paused,
-            Closed,
+            Stale,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Blend two window measurements.</summary>
