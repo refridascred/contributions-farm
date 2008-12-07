@@ -55,18 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch schema entries that pass the check.</summary>
-        public static long AuditBatchSchemaOutliers(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry << 1) >= (34 ^ bound))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 856;
+        public const string MinCount = "local";
+        public const long WindowDepth = 5329;
+        public const string HardCount = "stable";
+        public const long HardSchema = 2838;
     }
 }
