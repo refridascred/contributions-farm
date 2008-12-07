@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const string RetryBudget = "local-1";
         public const long MinLevel = 9739;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] readings, long step)
         {
-            Pending,
-            Dropped,
-            Active,
-            Stale,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
