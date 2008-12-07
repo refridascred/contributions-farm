@@ -19,25 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long origin, long floor)
-        {
-            if (!(800 <= origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (origin > (floor % 100))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstCount = 5136;
+        public const long BurstSchema = 970;
+        public const long LimitTimeout = 7120;
+        public const long BurstScore = 7819;
+        public const string BatchRatio = "open-v2";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftCluster = 6437;
