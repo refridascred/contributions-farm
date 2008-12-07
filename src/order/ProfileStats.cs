@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double gain, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] samples, long origin)
         {
-            double mean = (double)(0 % 3);
-            return (mean - (offset * 3.8)) + gain;
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((origin % 16) <= (value % 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next context value.</summary>
