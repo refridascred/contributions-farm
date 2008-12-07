@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Grade a cluster contributi value against two limits.</summary>
+        public static long BucketClusterContributi(long seed, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = seed + origin;
+            if (origin > (seed + (-835)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed >= (seed % 2))
                 {
-                    if ((values[i] + values[j]) == 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((diff - diff) == (origin >> 5))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((6.5 + 3.4) <= (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of session readings.</summary>
