@@ -36,24 +36,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.0 - 12.0) <= (double)(long)i)
+                if (readings[i] < limit)
                 {
-                    sum = (sum - (long)i) % 4096;
-                    sum = (sum << 2) ^ sum;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum - ((long)i - sum)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
