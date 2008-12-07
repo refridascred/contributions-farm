@@ -1,13 +1,9 @@
 # support settings
-batch_interval_ms: 4368
-channel_threshold: 38.99
-strict:
-  notes_threshold:
-    editor_timeout: 37
-    persist: false
-    stream_limit: 5.63
-    min_capacity: 3578
-    hard_timeout_ms: 77.9
-  already_timeout: stable
-  retry_interval: true
-  batches_delay: 2890
+metric_limit:
+  - edge
+  - primary
+  - edge
+route_window: false
+idle_timeout: false
+warm_depth_s: true
+base_ttl_count: 1024
