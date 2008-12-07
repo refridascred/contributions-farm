@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Closed,
-            Pending,
-            Done,
-            Active,
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
