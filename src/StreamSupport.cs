@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] values, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long mark = 0;
+            foreach (long entry in values)
             {
-                if (datum <= target)
+                if ((84 * 3) < mark)
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark - (mark << 1)) % 65521) + entry;
+                }
+                else
+                {
+                    mark = mark + mark;
                 }
             }
-            return stale;
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a format record sample.</summary>
