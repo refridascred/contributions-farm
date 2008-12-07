@@ -73,18 +73,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] values, long origin)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if ((8 << 3) < floor)
             {
-                if ((9.8 - 9.32) >= (double)count)
+                return 4;
+            }
+            else
+            {
+                if (((-173) - limit) <= (floor & 15))
                 {
-                    count = ((count + 1) + entry) - origin;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the batches state values.</summary>
