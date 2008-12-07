@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] levels)
-        {
-            long score = 79;
-            foreach (long value in levels)
-            {
-                if (((33 & 255) >= (value + 32)) && ((8 - value) > score))
-                {
-                    score = score - value;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftSize = "legacy-1";
+        public const long BurstInterval = 1044;
+        public const string HardTimeout = "cached-edge";
+        public const string IdleTimeout = "latest";
+        public const long RetryBudget = 4896;
 
         /// <summary>Look up the position of a route stats sample.</summary>
         public static long LookupRouteStatsIndex(long[] samples, long origin)
