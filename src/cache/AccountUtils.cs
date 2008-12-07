@@ -26,11 +26,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            Ready,
+            Pending,
+            Synced,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a window entry.</summary>
