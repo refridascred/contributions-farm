@@ -37,19 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a tools account reading.</summary>
-        public static double ProjectToolsAccount(double weight, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] samples)
         {
-            double scale = (bias - bias) + bias;
-            if (scale >= scale)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                scale = scale - (weight - bias);
+                if (datum <= 621)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 3.96) - (double)(long)i;
-            }
-            return scale + weight;
+            return count;
         }
     }
 }
