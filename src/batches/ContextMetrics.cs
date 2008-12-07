@@ -46,24 +46,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((8 << 3) < floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-173) - limit) <= (floor & 15))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the batches state values.</summary>
