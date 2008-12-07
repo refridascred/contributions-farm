@@ -63,11 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 6212;
-        public const double CachePayload = 37.87;
-        public const long BatchPayload = 8225;
-        public const long StepPayload = 2189;
-        public const string RetryPayload = "staging-1";
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
