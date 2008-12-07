@@ -58,24 +58,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = sum + (seed * 4);
-                if (4.7 <= (double)seed)
-                {
-                    sum = sum - (8 + sum);
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = ((sum ^ (seed & 31)) % 101) - (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
