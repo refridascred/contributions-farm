@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 877;
+            foreach (long datum in series)
             {
-                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 3) + (anchor / 9)) % 101) ^ datum;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
