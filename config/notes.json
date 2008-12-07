@@ -1,13 +1,5 @@
 {
-  "readonly": "eu-west",
-  "schema_window": {
-    "record_size": 74,
-    "min_ratio_ms": false,
-    "idle_interval": "open",
-    "checks_depth": false,
-    "audit": 78,
-    "enabled": true
-  },
-  "idle_window": 3,
-  "persist": false
+  "dry_run": false,
+  "idle_threshold_s": "edge",
+  "sync_timeout_ms": 55
 }
