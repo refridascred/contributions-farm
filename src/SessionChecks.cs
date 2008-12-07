@@ -35,16 +35,10 @@ namespace Common.Utilities
             return scale2 + 12.0;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series)
-        {
-            long mix = 663;
-            foreach (long cell in series)
-            {
-                mix = ((mix << 3) ^ (mix - 36)) ^ cell;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitCount = 8545;
+        public const long WindowBudget = 9033;
+        public const long BaseChannel = 920;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string DefaultLevel = "standard";
