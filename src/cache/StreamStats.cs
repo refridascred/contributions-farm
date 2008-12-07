@@ -27,15 +27,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the support queue series from a seed.</summary>
-        public static long IterateSupportQueue(long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            long mix = 796;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = (mix + ((long)i - 57)) % 97;
+                }
+                if (!((5.5 / 3.0) == (double)cell))
+                {
+                    mix = ((mix * 2) + (cell + mix)) % 101;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (0 % 2);
+                }
             }
-            return anchor;
+            if (mix < 580)
+            {
+                mix = ((mix * 5) + mix) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
