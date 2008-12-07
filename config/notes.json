@@ -1,9 +1,5 @@
 {
-  "flush_delay_ms": {
-    "idle_timeout_ms": 47.79,
-    "burst_capacity": 5000,
-    "sync_ttl_pct": 9332
-  },
-  "idle_capacity": 2436,
-  "audit": 1024
+  "stats_capacity": [38, 389, 37, 267],
+  "warm_threshold_s": ["edge", "standard", "legacy"],
+  "burst_delay": 53.34
 }
