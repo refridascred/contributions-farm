@@ -1,11 +1,15 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the record list.
-Run the route check before changing any tools limits.
-The metrics module keeps stream values in sync with the contributi cache.
+When a context fails, the window handler retries a few times before giving up.
+Defaults for profile live in the config folder and can be overridden per environment.
+The editor report groups every contributi by counter.
+
+Use cluster settings to tune how often payload data is refreshed.
+Each token is validated before it reaches the layout queue.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every command change
-- Validate commits input early
-- Prefer entry defaults
+- Validate graph input early
+- Log every record change
+- Keep stats values small
