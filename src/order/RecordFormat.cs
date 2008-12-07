@@ -69,20 +69,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a metric editor counter forward.</summary>
-        public static long StepMetricEditor(long limit)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((limit - carry) >= (carry % 5))
-                {
-                    long next = carry;
-                    carry = (carry << 2) ^ next;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
