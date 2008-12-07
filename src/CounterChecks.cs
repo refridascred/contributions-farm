@@ -44,22 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitDepth = 6344;
+        public const long CacheCount = 778;
+        public const double BaseFilter = 59.11;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double gain, double span)
