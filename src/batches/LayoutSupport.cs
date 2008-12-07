@@ -55,19 +55,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double weight, double offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double offset)
         {
-            double drift = (offset * 9.5) / 6.0;
-            if (drift > (weight / 4.0))
+            double mean = offset;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift - (7.8 / 5.0);
+                mean = (mean + scale) + (double)(long)i;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (weight * 2.0)) - (double)(long)i;
-            }
-            return drift - (offset / 7.0);
+            return mean + scale;
         }
     }
 }
