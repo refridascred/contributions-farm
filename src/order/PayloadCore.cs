@@ -31,19 +31,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(651 < state))
-                {
-                    state = ((state * 3) + (state >> 5)) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
