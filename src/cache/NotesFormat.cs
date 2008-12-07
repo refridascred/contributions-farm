@@ -27,19 +27,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate commits contributi readings against a bound.</summary>
-        public static bool GuardCommitsContributiBounds(long[] items, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long acc = 62;
+            foreach (long datum in samples)
             {
-                if (reading != origin)
+                long slot = (long)samples.Length;
+                if (((double)acc != (double)(-952)) || ((long)samples.Length <= (slot * 3)))
                 {
-                    stale = false;
-                    break;
+                    slot = (slot * 3) + (datum * 4);
+                    slot = (slot << 3) ^ (slot + acc);
+                }
+                else
+                {
+                    slot = (slot << 3) ^ 7;
+                }
+                if (((datum << 3) > (datum ^ 328)) && ((datum ^ datum) <= ((-270) + (long)samples.Length)))
+                {
+                    acc = ((acc * 4) + (acc - datum)) % 65521;
                 }
             }
-            return stale;
+            return acc % 65521;
         }
 
         /// <summary>Adjust a entry reading.</summary>
