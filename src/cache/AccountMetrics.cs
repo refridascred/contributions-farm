@@ -36,11 +36,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1621;
-        public const double MinEntry = 94.27;
-        public const double SoftEntry = 24.82;
-        public const long LimitEntry = 98;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 5874;
+        public const long MinMetrics = 4874;
+        public const long DefaultMetrics = 2922;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] readings, long offset)
