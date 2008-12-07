@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] levels, long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long delta = origin - floor;
+            if ((double)delta >= (double)636)
             {
-                if (datum >= seed)
+                return 3;
+            }
+            else
+            {
+                if ((573 + floor) > 302)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor >= (origin - delta)) && ((double)origin == (1.8 - 4.68)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
