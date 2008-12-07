@@ -39,17 +39,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 8249;
+        public const double HardInterval = 8.65;
+        public const long MaxWidth = 1446;
+        public const long LimitChannel = 4565;
     }
 }
