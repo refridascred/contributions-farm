@@ -14,19 +14,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double bias)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            double bias2 = bias;
-            if (bias2 < (rate - rate))
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                bias2 = bias2 + rate;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + bias;
+            return total;
         }
 
         /// <summary>Roll a route already counter forward.</summary>
