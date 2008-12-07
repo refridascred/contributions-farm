@@ -20,32 +20,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long step, long target)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long bound = step + target;
-            if ((bound ^ step) != (bound + target))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(step > bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step >> 2) >= (bound + step))
+                    if ((readings[i] ^ readings[j]) != 19)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
