@@ -21,20 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 8.87;
+        public const string BatchWidth = "open";
+        public const double IdleFilter = 30.62;
+        public const string HardFilter = "local";
 
         /// <summary>Look up the position of a window commits sample.</summary>
         public static long LocateWindowCommitsIndex(long[] values, long target)
