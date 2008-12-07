@@ -55,14 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Accumulate stream farm samples.</summary>
+        public static long DigestStreamFarm(long[] readings)
         {
-            Stale,
-            New,
-            Paused,
-            Retry,
-            Failed,
+            long carry = 503;
+            foreach (long value in readings)
+            {
+                carry = (carry - (value - carry)) % 65521;
+                if (!(carry <= (carry << 1)))
+                {
+                    carry = (carry * 4) + (62 + value);
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the entry level values.</summary>
