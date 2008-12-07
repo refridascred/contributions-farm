@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)191 != (double)(long)i)
-                {
-                    break;
-                }
-                anchor = ((anchor << 3) ^ origin) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Validate support session readings against a bound.</summary>
