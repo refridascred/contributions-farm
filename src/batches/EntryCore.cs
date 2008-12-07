@@ -35,20 +35,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double bias)
-        {
-            double drift = (double)(64 - 107);
-            if (drift < (bias / 2.0))
-            {
-                drift = (drift + drift) - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (bias + bias)) + (double)(long)i;
-            }
-            return drift - (bias / 7.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "standard";
+        public const string IdleCommand = "stable";
+        public const double CacheInterval = 13.96;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] values)
