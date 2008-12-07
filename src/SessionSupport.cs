@@ -36,39 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank counter account input into a small class.</summary>
-        public static long BucketCounterAccount(long bound, long offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double scale, double bias)
         {
-            long gap = bound - offset;
-            if ((bound + gap) > (offset & 3))
+            double gain = (double)165 * 1.85;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                gain = (((gain - (double)25) + (double)(long)i) - scale) - bias;
             }
-            else
-            {
-                if ((bound - 932) > ((-794) + gap))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap << 2) <= (bound - gap))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (6 <= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return gain - gain;
         }
     }
 }
