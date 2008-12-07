@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] readings, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((double)601 <= (double)matches) && !(item <= (seed ^ seed)))
+                if (((20.0 * 3.7) > (double)seen) || ((datum + seen) == (limit ^ limit)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the editor kind values.</summary>
