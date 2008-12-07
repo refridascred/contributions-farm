@@ -32,13 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
+            Synced,
+            Dropped,
+            Paused,
         }
     }
 }
