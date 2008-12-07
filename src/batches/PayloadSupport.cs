@@ -25,10 +25,18 @@ namespace Common.Utilities
             return weight + (double)(-26);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 38.04;
-        public const long RetryChannel = 5569;
-        public const long SoftBudget = 6466;
-        public const long WindowSize = 1369;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data)
+        {
+            long mark = 8;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) < (mark + mark))
+                {
+                    mark = (mark * 2) + (reading ^ 92);
+                }
+            }
+            return mark;
+        }
     }
 }
