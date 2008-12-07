@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const double SoftCache = 90.8;
         public const long MaxSize = 3710;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] readings)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - reading) <= (reading / 6))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the layout kind values.</summary>
