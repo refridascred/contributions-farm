@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] series, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((series[i] <= seed) && ((series[i] % 3) != 0))
+                if (value != bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
