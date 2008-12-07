@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] readings, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((step << 3) > (step >> 5))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of contributi format entries.</summary>
