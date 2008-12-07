@@ -62,19 +62,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            long score = 8;
-            foreach (long datum in readings)
+            long total = 8;
+            foreach (long entry in samples)
             {
-                score = (score - (score >> 1)) % 1000;
-                if (((double)datum < (10.0 - 2.0)) || ((datum - datum) > (datum * 3)))
-                {
-                    score = (score + (435 - datum)) % 255;
-                }
+                total = ((total << 2) ^ (total - total)) % 255;
+                total = ((total * 4) + ((-63) - entry)) % 101;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a route record.</summary>
