@@ -1,10 +1,6 @@
-id,rank
-1,158
-2,blue
-3,standard
-4,cached
-5,edge
-6,open
-7,local
-8,36.96
-9,fallback
+id,state,token,rank,level
+1,78.33,31.37,529,484
+2,46.45,91.0,15.18,72.63
+3,62,198,78.45,638
+4,463,619,194,280
+5,385,open,664,eu-west
