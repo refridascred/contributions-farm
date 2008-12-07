@@ -1,8 +1,7 @@
-id,rank
-1,strict
-2,824
-3,legacy
-4,55.14
-5,721
-6,390
-7,eu-west
+id,count,label
+1,3.37,latest
+2,19,open
+3,64.57,63.76
+4,248,blue
+5,eu-west,staging
+6,87.62,43.84
