@@ -49,18 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] readings)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (2.3 <= (double)value)
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
