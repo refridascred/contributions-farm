@@ -11,32 +11,12 @@ namespace Common.Utilities
         public const long StepLevel = 8556;
         public const long HardReport = 6365;
 
-        /// <summary>Rank commits graph input into a small class.</summary>
-        public static long SortCommitsGraph(long offset, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long bound2 = offset - bound;
-            if ((bound2 ^ bound) < (bound2 - bound2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 4) <= bound2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound2 ^ 14) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
