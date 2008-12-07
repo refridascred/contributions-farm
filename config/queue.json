@@ -1,16 +1,5 @@
 {
-  "strict": "legacy",
-  "idle_capacity_ms": {
-    "poll_depth_pct": {
-      "cache_depth": "primary",
-      "max_timeout": 4963,
-      "max_depth_pct": [138, 219, 147, 64],
-      "warm_threshold_ms": "local"
-    },
-    "hard_retries_count": false,
-    "profile_delay": "edge"
-  },
-  "min_limit": 91.41,
-  "tools_ttl": 5781,
-  "min_delay": 70.41
+  "sync_depth_pct": "strict",
+  "contributi_threshold": false,
+  "min_threshold_ms": 1024
 }
