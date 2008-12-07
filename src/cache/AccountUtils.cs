@@ -32,12 +32,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Look up the position of a cluster stream sample.</summary>
+        public static long FindClusterStreamIndex(long[] values, long seed)
         {
-            Synced,
-            Dropped,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
