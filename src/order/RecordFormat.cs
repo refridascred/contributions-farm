@@ -41,19 +41,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue contributi entry stays within the limit.</summary>
-        public static bool ValidateQueueContributiBounds(long[] samples, long offset)
+        /// <summary>Roll a metric editor counter forward.</summary>
+        public static long StepMetricEditor(long limit)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample > offset)
+                if ((limit - carry) >= (carry % 5))
                 {
-                    ok = false;
-                    break;
+                    long next = carry;
+                    carry = (carry << 2) ^ next;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
     }
 }
