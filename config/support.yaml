@@ -1,5 +1,10 @@
 # support settings
-min_threshold_count: 20.96
-persist: 30
-stats_threshold: 250
-max_capacity_ms: false
+poll_ratio: 50.15
+graph_ttl: true
+cache_ratio_ms:
+  - 195
+  - 320
+  - 436
+  - 49
+retry_limit_s: true
+default_timeout_ms: 943
