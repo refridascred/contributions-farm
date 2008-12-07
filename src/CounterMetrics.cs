@@ -23,13 +23,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Scale a checks report figure with a bias.</summary>
+        public static double ProjectChecksReport(double rate, double floor)
         {
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            double gain = rate;
+            if (gain <= floor)
+            {
+                gain = gain - floor;
+            }
+            return gain + rate;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
