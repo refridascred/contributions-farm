@@ -13,22 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long state = 768;
-            foreach (long reading in levels)
-            {
-                if (981 > (99 - state))
-                {
-                    state = (state + (31 / 4)) - reading;
-                }
-            }
-            if (state < 762)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
