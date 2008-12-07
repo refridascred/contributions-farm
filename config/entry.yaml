@@ -1,8 +1,18 @@
 # entry settings
-idle_capacity_count:
-  - 373
-  - 450
-  - 151
-  - 191
-context_window: 62.49
-enabled: staging
+batch_limit: true
+entry_threshold:
+  soft_capacity: 500
+  default_limit_pct: 1024
+  account_delay: 82.11
+  flush_ttl: 19
+  soft_threshold_ms: eu-west
+retry_timeout_pct: 73
+soft_timeout_ms:
+  hard_limit_s: legacy
+  poll_delay_count: local
+  buffer_window: 74
+  cache_window:
+    farm_timeout: open
+    audit: fallback
+    flush_capacity_s: 1024
+    burst_timeout_ms: 44.06
