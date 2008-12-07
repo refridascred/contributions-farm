@@ -54,14 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] samples, long target)
         {
-            Queued,
-            New,
-            Active,
-            Ready,
-            Done,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((260 - target) != (target - matches))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
