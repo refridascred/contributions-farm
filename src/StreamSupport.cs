@@ -19,13 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Synced,
-            New,
-            Queued,
             Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the filter mode values.</summary>
