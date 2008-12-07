@@ -13,15 +13,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long mix = 99;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix << 2) ^ (5 * 2)) ^ item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Adjust a account reading.</summary>
