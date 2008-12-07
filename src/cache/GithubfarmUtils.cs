@@ -27,15 +27,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double ratio, double bias)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long seed)
         {
-            double ratio2 = (double)(5 % 97);
-            for (int i = 0; i < 6; i++)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                ratio2 = ((ratio2 + ratio2) + (double)(long)i) + ratio;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return ratio2 + (bias + bias);
+            return mark;
         }
 
         /// <summary>Digest a series of account entries.</summary>
