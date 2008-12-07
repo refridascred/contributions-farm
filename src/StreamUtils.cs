@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] data)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((tally - cell) == (cell << 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
