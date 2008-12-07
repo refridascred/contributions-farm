@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Validate support session readings against a bound.</summary>
+        public static bool GuardSupportSessionLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((datum / 3) < (datum % 7))
+                if (sample >= target)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
