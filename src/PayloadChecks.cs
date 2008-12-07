@@ -40,22 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout entry values into a single score.</summary>
-        public static long TallyLayoutEntry(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long origin)
         {
-            long state = 5;
-            foreach (long entry in series)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((17 * 5) <= state)
+                score = (score - origin) % 255;
+                score = (score << 3) ^ (523 + 8);
+                if ((5.0 * 8.0) > (5.94 + 8.8))
                 {
-                    state = state - (state + entry);
+                    score = (score - (444 & 1)) % 255;
                 }
                 else
                 {
-                    state = ((state * 4) + (60 + state)) % 255;
+                    score = (score ^ (score - 58)) % 1000;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return state % 1000;
+            return score;
         }
 
         /// <summary>Describe the notes class values.</summary>
