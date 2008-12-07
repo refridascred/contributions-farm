@@ -33,22 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many schema batch samples are out of range.</summary>
-        public static long TallySchemaBatchOutliers(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (tally < (tally >> 5))
+                if ((double)offset > (double)(-9))
                 {
-                    tally = (tally + 2) - sample;
+                    hits = (hits + 1) - entry;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
