@@ -1,8 +1,6 @@
 {
-  "cluster_interval": [314, 38],
-  "account_size": "strict",
-  "warm_retries_count": "fallback",
-  "verbose": true,
-  "retry_threshold_pct": 51.35,
-  "warm_window_ms": "open"
+  "retry_delay_ms": "strict",
+  "max_depth_ms": "stable",
+  "persist": 23,
+  "max_retries": 856
 }
