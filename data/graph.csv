@@ -1,6 +1,11 @@
-id,rank,score,level,weight
-1,601,39.58,latest,63
-2,16.08,primary,blue,289
-3,16,98.0,stable,0.71
-4,255,staging,staging,87.18
-5,green,cached,61.68,84.77
+id,weight,count,rank
+1,762,staging,fallback
+2,832,383,54.77
+3,20.25,523,37.98
+4,886,287,cached
+5,152,194,71.77
+6,647,56,open
+7,891,246,stable
+8,792,46.81,154
+9,cached,local,7.04
+10,open,58.57,10.4
