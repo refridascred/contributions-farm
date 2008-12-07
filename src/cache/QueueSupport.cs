@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
             public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
