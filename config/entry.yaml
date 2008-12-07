@@ -1,6 +1,19 @@
 # entry settings
-sync_window: fallback
-burst_delay: open
-graph_capacity: false
-enabled: 52.72
-sync_threshold_pct: 5192
+command_window: fallback
+verbose: 21
+soft_window_pct: false
+base_ratio_pct:
+  metric_window: 1842
+  burst_retries_count: legacy
+  support_capacity:
+    graph_capacity: true
+    hard_size:
+      - strict
+      - staging
+      - green
+      - latest
+    notes_window: legacy
+  warm_delay_pct: 97
+  contributi_limit: true
+  readonly: 39
+soft_limit_count: 25.07
