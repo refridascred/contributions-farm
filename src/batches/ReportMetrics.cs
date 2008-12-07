@@ -38,18 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items, long offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long carry = 1;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (offset <= carry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry ^ (carry * 3)) % 97) - reading;
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
