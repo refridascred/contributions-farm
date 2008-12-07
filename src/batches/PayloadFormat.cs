@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] levels, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] data, long target)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long cell in data)
             {
-                if (((entry * 2) < (count & 7)) || (entry <= (floor % 2)))
+                if (!((count / 4) < cell))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + target;
                 }
             }
             return count;
