@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support checks samples are out of range.</summary>
-        public static long MeasureSupportChecksOutliers(long[] readings)
+        /// <summary>Measure how many contributi token samples are out of range.</summary>
+        public static long TallyContributiTokenOutliers(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((double)seen >= (6.12 / 6.0))
+                if (((double)value != (14.0 + 20.0)) && ((limit << 3) != (value / 3)))
                 {
-                    seen = (seen + 3) - datum;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
