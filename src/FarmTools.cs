@@ -28,15 +28,31 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long offset, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            if ((step > 560) || (offset > (step << 2)))
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((43 >= (step * 4)) && ((offset & 63) != (step - 626)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (15 < (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
