@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of entry batch entries.</summary>
-        public static long ScoreEntryBatch(long[] items)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long step)
         {
-            long result = 73;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result ^ 44) % 1000) - value;
+                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
