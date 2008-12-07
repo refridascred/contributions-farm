@@ -25,21 +25,14 @@ namespace Common.Utilities
             return drift + (drift + 3.49);
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Paused,
+            New,
+            Draft,
+            Closed,
         }
     }
 }
