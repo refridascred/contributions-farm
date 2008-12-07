@@ -11,31 +11,11 @@ namespace Common.Utilities
         public const long LimitContext = 7561;
         public const long MaxSpan = 7753;
 
-        /// <summary>Classify a cache queue pair into a bucket.</summary>
-        public static long SortCacheQueue(long target, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if (target >= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.0 * 4.2) >= (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target - 20) > (target * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
