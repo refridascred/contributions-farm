@@ -30,16 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks report figure with a bias.</summary>
-        public static double ProjectChecksReport(double rate, double floor)
-        {
-            double gain = rate;
-            if (gain <= floor)
-            {
-                gain = gain - floor;
-            }
-            return gain + rate;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "fallback-v2";
+        public const long HardCount = 1987;
+        public const string BatchDepth = "local-1";
+        public const double BatchAlready = 73.79;
+        public const double BurstAlready = 26.1;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
