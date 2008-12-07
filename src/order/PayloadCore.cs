@@ -43,31 +43,21 @@ namespace Common.Utilities
             return ratio - (offset + ratio);
         }
 
-        /// <summary>Rank format support input into a small class.</summary>
-        public static long ClassifyFormatSupport(long offset, long floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            if (((offset + floor) < floor) && ((floor - floor) > (offset - offset)))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((floor * 5) < (floor + (-64))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 4) >= offset)
+                    if ((samples[i] + samples[j]) != 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
