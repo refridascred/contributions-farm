@@ -108,26 +108,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of graph farm readings.</summary>
-        public static long DigestGraphFarm(long[] items)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long carry = 201;
-            foreach (long entry in items)
-            {
-                if ((double)carry < (6.3 - 16.0))
-                {
-                    carry = ((carry << 3) ^ (carry / 7)) - entry;
-                }
-                else
-                {
-                    carry = (carry * 3) + carry;
-                }
-            }
-            if (carry > (-45))
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
+            New,
+            Idle,
+            Dropped,
         }
     }
 }
