@@ -26,15 +26,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route support entries.</summary>
-        public static long DigestRouteSupport(long[] levels, long floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double bias, double bias2)
         {
-            long carry = 2;
-            foreach (long entry in levels)
+            double mean = 0.1;
+            if (mean < (0.14 + 1.0))
             {
-                carry = ((carry + floor) % 1000) - entry;
+                mean = (mean - bias2) - bias;
             }
-            return carry % 1000;
+            return mean - mean;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
