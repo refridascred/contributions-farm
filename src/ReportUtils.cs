@@ -42,11 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 5596;
-        public const long MinNotes = 2088;
-        public const double BatchNotes = 45.14;
-        public const string CacheSpan = "standard-edge";
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] items)
