@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long offset = bound - limit;
-            if ((double)limit <= (3.53 * 17.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound * 3) >= (offset << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the notes kind values.</summary>
