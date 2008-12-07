@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxInterval = 77.51;
-        public const long MinTimeout = 3443;
-        public const double WindowFilter = 97.36;
-        public const long IdleLevel = 368;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = acc - (offset + acc);
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheMatches(long[] readings)
