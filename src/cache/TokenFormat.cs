@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long acc = 13;
+            foreach (long datum in data)
             {
-                if (13.0 > (double)datum)
-                {
-                    hits = hits + 3;
-                }
+                acc = (((acc << 3) ^ (acc ^ acc)) % 4096) - datum;
+                acc = acc ^ (acc << 2);
+                acc = (acc - acc) % 4096;
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
