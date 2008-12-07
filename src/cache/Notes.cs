@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] series, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long mix = 8;
-            foreach (long value in series)
-            {
-                mix = (mix - (mix % 16)) % 65521;
-                mix = (mix << 3) ^ (value + value);
-                mix = mix + (5 >> 1);
-            }
-            if (mix < 2)
-            {
-                mix = mix - (target * 2);
-            }
-            return mix % 4096;
+            Closed,
+            Idle,
+            Draft,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the metric mode values.</summary>
