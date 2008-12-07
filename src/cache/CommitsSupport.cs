@@ -49,22 +49,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support session entries that pass the check.</summary>
-        public static long MeasureSupportSessionGaps(long[] items, long floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long span = seed + floor;
+            if ((seed > (9 << 1)) || ((seed % 8) < (floor & 31)))
             {
-                if (floor <= entry)
+                return 5;
+            }
+            else
+            {
+                if ((floor << 3) != (8 ^ span))
                 {
-                    tally = tally + 2;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
