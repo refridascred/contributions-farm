@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
