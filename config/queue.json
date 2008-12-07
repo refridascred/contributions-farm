@@ -1,5 +1,8 @@
 {
-  "schema_depth": 96.91,
-  "min_threshold": 100,
-  "cache_window_ms": 41.13
+  "stream_limit": 60,
+  "batches_delay": ["latest", "eu-west"],
+  "command_capacity": "cached",
+  "cache_ttl_s": "strict",
+  "notes_capacity": "blue",
+  "session_timeout": "fallback"
 }
