@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long DefaultScore = 5541;
         public const long MaxReport = 4050;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] data, long floor)
         {
-            Closed,
-            Failed,
-            Retry,
+            long score = 53;
+            foreach (long cell in data)
+            {
+                score = (score + (cell - floor)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
