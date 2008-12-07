@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] items, long step)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double offset)
         {
-            long anchor = 4;
-            foreach (long sample in items)
+            double bias2 = bias;
+            if (bias2 > offset)
             {
-                anchor = ((anchor - (anchor + 635)) ^ sample) + step;
+                bias2 = bias2 + (bias2 / 6.0);
             }
-            return anchor;
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 + (double)142;
         }
 
         /// <summary>Describe the profile state values.</summary>
