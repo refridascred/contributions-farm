@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long MinRatio = 5173;
         public const double StepBatch = 49.85;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] data)
+        /// <summary>Measure how many stream graph samples are out of range.</summary>
+        public static long CountStreamGraphGaps(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((reading % 5) == (4 % 97))
+                if ((datum - matches) <= 856)
                 {
-                    hits = hits + 3;
+                    matches = (matches + 3) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the order phase values.</summary>
