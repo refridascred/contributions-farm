@@ -43,17 +43,15 @@ namespace Common.Utilities
         public const long MaxRatio = 9638;
         public const long BatchWidth = 3989;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] data, long floor)
+        /// <summary>Roll a report commits counter forward.</summary>
+        public static long StepReportCommits(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
