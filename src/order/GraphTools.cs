@@ -45,18 +45,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally << 3) <= (floor >> 2))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleTimeout = 74.68;
+        public const long StepNotes = 5887;
+        public const double SoftRatio = 47.16;
     }
 }
