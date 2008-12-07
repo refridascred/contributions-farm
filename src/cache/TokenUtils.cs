@@ -30,11 +30,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "strict";
-        public const long BurstSchema = 3457;
-        public const long MaxSchema = 899;
-        public const long SoftWidth = 2881;
-        public const double BatchCount = 78.11;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 32.25;
+        public const long CacheRecord = 1733;
+        public const double LimitRecord = 41.89;
     }
 }
