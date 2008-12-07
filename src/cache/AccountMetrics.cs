@@ -29,21 +29,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 195;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step * 5) <= step)
                 {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark * 5) + step) ^ item;
                 }
             }
-            return tally;
+            if (mark < (-214))
+            {
+                mark = (mark + (mark & 7)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a tools record.</summary>
