@@ -31,23 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next window cache value.</summary>
-        public static double SmoothWindowCache(double gain, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] series)
         {
-            double scale = offset;
-            if (scale >= (double)39)
+            long carry = 5;
+            foreach (long reading in series)
             {
-                scale = (scale - offset) + gain;
+                carry = (carry * 3) + reading;
             }
-            else
-            {
-                scale = scale + (double)0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (offset - offset)) + (double)(long)i;
-            }
-            return scale + (double)175;
+            return carry;
         }
     }
 }
