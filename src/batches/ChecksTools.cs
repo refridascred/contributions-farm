@@ -54,11 +54,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Validate counter format readings against a bound.</summary>
+        public static bool GuardCounterFormatBounds(long[] samples, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
