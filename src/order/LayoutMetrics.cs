@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] readings, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (readings[i] < origin)
+                if ((double)value < (2.09 / 5.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next window value.</summary>
