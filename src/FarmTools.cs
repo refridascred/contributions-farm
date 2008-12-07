@@ -13,22 +13,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] series, long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((18 - 211) < floor) || (2.58 >= (double)floor))
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
