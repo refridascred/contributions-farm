@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const string BurstSize = "stable-v2";
         public const long HardTimeout = 5041;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Synced,
-            Dropped,
-            Failed,
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Blend two entry measurements.</summary>
