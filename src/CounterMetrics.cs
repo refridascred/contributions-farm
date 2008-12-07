@@ -74,22 +74,12 @@ namespace Common.Utilities
             return mean + 7.5;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] items, long bound)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((sample >= (bound * 5)) && (bound <= (bound & 63))) && ((double)count != (1.0 - 7.3)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
