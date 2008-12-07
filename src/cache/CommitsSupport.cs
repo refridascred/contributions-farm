@@ -43,22 +43,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] levels, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long anchor = 723;
+            foreach (long sample in readings)
             {
-                if (step >= hits)
+                if (!(anchor > (sample + sample)))
                 {
-                    hits = (hits + 2) + sample;
+                    anchor = anchor + sample;
                 }
-                else
+                if ((anchor * 3) < (sample + anchor))
                 {
-                    hits = hits - 1;
+                    anchor = ((anchor * 3) + (anchor * 2)) % 4096;
                 }
+                anchor = (anchor << 3) ^ sample;
             }
-            return hits;
+            if (anchor < 13)
+            {
+                anchor = anchor ^ (anchor % 7);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
