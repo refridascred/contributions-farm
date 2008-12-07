@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double scale, double floor)
-        {
-            double ratio = scale;
-            if (ratio < (ratio + 4.0))
-            {
-                ratio = (ratio + (scale * 1.0)) - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (scale / 2.0)) - (double)(long)i;
-            }
-            return ratio - scale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 7692;
+        public const long IdleTimeout = 6688;
+        public const long HardMetric = 5378;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleDepth = 5450;
