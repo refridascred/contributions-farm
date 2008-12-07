@@ -41,32 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long origin)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long lane = limit + origin;
-            if (origin > (lane - lane))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 3) > 10)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((4 & 63) == (limit + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
