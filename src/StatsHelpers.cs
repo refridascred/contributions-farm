@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] series, long origin)
+        /// <summary>Accumulate window githubfarm samples.</summary>
+        public static long TallyWindowGithubfarm(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 75;
+            foreach (long entry in items)
             {
-                if (series[i] > origin)
+                if (((entry >> 1) < 58) || (acc >= (acc + acc)))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ entry;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Hold a buffer options.</summary>
