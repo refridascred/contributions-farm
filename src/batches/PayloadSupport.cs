@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of payload contributi readings.</summary>
-        public static long FoldPayloadContributi(long[] items, long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long carry = 8;
-            foreach (long datum in items)
-            {
-                if (((double)carry <= (1.0 - 7.0)) || ((datum & 63) <= (datum & 15)))
-                {
-                    carry = (carry ^ (seed & 3)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (seed + 91)) % 1000;
-                }
-            }
-            return carry % 4096;
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a route reading.</summary>
