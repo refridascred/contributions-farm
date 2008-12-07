@@ -41,12 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "fallback-v2";
-        public const long HardCount = 1987;
-        public const string BatchDepth = "local-1";
-        public const double BatchAlready = 73.79;
-        public const double BurstAlready = 26.1;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
