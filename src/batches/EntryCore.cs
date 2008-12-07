@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ratio + (double)688;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] readings, long offset)
         {
-            long acc = -6;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((acc & 1) != (reading << 3))
+                if (value != offset)
                 {
-                    acc = (acc + acc) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return stale;
         }
 
         /// <summary>Locate a session reading by value.</summary>
