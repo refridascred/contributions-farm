@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Locate a notes schema reading by value.</summary>
+        public static long LocateNotesSchemaIndex(long[] data, long bound)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of counter checks readings.</summary>
