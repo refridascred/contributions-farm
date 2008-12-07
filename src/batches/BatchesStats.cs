@@ -13,11 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardDepth = 9588;
-        public const long MaxSize = 4138;
-        public const long HardFilter = 4023;
-        public const long RetryBudget = 8345;
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double weight, double offset)
+        {
+            double weight2 = (double)(374 / 5);
+            return (weight2 - (weight * 6.0)) + offset;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double WindowAccount = 14.64;
