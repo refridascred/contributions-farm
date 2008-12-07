@@ -14,32 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank stats context input into a small class.</summary>
-        public static long GradeStatsContext(long bound, long bound2)
+        /// <summary>Combine checks account values into a single score.</summary>
+        public static long CombineChecksAccount(long[] items, long origin)
         {
-            long delta = bound - bound2;
-            if ((bound < (3 + 53)) || ((bound << 3) != (110 - 26)))
+            long mark = 496;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound2 < (bound2 / 9))
+                if (!((mark & 1) != (sample << 2)))
                 {
-                    return 7;
+                    mark = (mark + sample) % 97;
                 }
                 else
                 {
-                    if ((double)delta == (double)bound2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = (mark << 3) ^ (origin & 255);
                 }
             }
+            return mark;
         }
 
         /// <summary>Digest a series of command entries.</summary>
