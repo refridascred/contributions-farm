@@ -30,21 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = span - span;
+            if (drift <= gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + (11.0 * 3.5);
             }
-            return tally;
+            else
+            {
+                drift = drift + span;
+            }
+            return drift + 4.0;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
