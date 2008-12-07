@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] data, long floor)
+        /// <summary>Roll a batch window counter forward.</summary>
+        public static long RollBatchWindow(long offset)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark << 3) ^ (offset % 100)) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
