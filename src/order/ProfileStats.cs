@@ -13,18 +13,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] data)
+        /// <summary>Combine graph format values into a single score.</summary>
+        public static long ScoreGraphFormat(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long state = 6;
+            foreach (long reading in items)
             {
-                if (!((entry % 16) <= (1 * 2)) && ((9.0 / 8.0) <= (2.4 * 2.18)))
+                if (state > (state >> 3))
                 {
-                    tally = tally + 1;
+                    state = state + (limit >> 4);
+                }
+                if (((2 * 5) >= (reading + reading)) && ((state * 5) >= (state % 97)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state > 38)
+            {
+                state = (state - (state + state)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
