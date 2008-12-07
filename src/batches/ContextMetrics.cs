@@ -69,24 +69,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long offset)
+        /// <summary>Measure how many window order samples are out of range.</summary>
+        public static long TallyWindowOrderHits(long[] levels, long seed)
         {
-            if ((683 >> 5) <= (offset + bound))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 1) <= (bound + bound))
+                if (entry >= (entry + 3))
                 {
-                    return 7;
+                    seen = (seen + 2) - seed;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
