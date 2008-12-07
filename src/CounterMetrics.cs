@@ -48,21 +48,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 5;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (((sum + (1 ^ 60)) % 101) - entry) - offset;
             }
-            return seen;
+            return sum % 4096;
         }
     }
 }
