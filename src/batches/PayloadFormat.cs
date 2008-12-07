@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const long WindowPayload = 2009;
         public const double DefaultLevel = 45.14;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (entry < step)
+                if ((cell - cell) > count)
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Project the next notes batches value.</summary>
