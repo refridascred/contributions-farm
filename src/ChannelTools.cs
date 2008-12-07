@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "staging-edge";
-        public const string LimitEntry = "stable";
-        public const long BurstSpan = 3540;
-        public const string StepEntry = "alpha-v2";
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Ready,
+            Pending,
+            Locked,
+            Closed,
+            New,
+        }
 
         /// <summary>Check that every cache session entry stays within the limit.</summary>
         public static bool VerifyCacheSessionRange(long[] data, long step)
