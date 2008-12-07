@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] values, long step)
+        /// <summary>Validate cluster tools readings against a bound.</summary>
+        public static bool CheckClusterToolsBounds(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((matches >> 3) <= (step - step))
+                if (value > target)
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
