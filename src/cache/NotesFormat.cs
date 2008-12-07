@@ -20,15 +20,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Accumulate contributi filter samples.</summary>
-        public static long CombineContributiFilter(long[] values, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] items)
         {
-            long anchor = 1;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                anchor = (((anchor * 2) + (limit & 1)) % 97) - datum;
+                if ((double)item >= (3.3 - 17.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
