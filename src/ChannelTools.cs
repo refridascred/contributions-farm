@@ -13,18 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] levels)
         {
-            long score = 115;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)datum <= (2.8 / 6.0))
+                if ((matches ^ matches) < (matches - matches))
                 {
-                    score = score ^ (datum + 0);
+                    matches = (matches + 3) + reading;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
