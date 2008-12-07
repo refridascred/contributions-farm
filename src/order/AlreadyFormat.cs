@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstLevel = 9266;
-        public const long BaseWidth = 3574;
-        public const string HardSupport = "strict-edge";
-        public const string BatchSpan = "staging";
+        /// <summary>Locate a metrics order reading by value.</summary>
+        public static long LookupMetricsOrderIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long CompareSchemaCount(long[] data)
