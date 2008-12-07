@@ -51,12 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "primary-1";
-        public const long MinBudget = 5265;
-        public const long BatchFactor = 5373;
-        public const string BatchDepth = "strict";
-        public const long IdleStats = 5834;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((3.35 + 1.3) >= (double)item) || (seen <= ((long)series.Length % 24)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
