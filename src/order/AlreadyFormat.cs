@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Accumulate tools entry samples.</summary>
+        public static long CombineToolsEntry(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 8;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = state - (datum ^ datum);
+                state = (state - (datum >> 3)) % 97;
+                if ((double)state <= 6.84)
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (state < 310)
+            {
+                state = (state + 88) % 255;
+            }
+            return state;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
