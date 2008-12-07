@@ -25,13 +25,21 @@ namespace Common.Utilities
         public const long MinLevel = 8923;
         public const long MaxBuffer = 7901;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            Dropped,
-            Pending,
-            Draft,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits entry.</summary>
