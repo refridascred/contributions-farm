@@ -48,13 +48,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            Pending,
-            Stale,
-            Retry,
-            Ready,
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((2.0 - 12.0) <= (double)(long)i)
+                {
+                    sum = (sum - (long)i) % 4096;
+                    sum = (sum << 2) ^ sum;
+                }
+                else
+                {
+                    sum = (sum - ((long)i - sum)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
