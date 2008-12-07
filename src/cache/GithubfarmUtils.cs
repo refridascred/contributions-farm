@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftSize = "legacy-1";
-        public const long BurstInterval = 1044;
-        public const string HardTimeout = "cached-edge";
-        public const string IdleTimeout = "latest";
-        public const long RetryBudget = 4896;
+        /// <summary>Find the first contributi batches entry that matches the target.</summary>
+        public static long SeekContributiBatchesIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a route stats sample.</summary>
         public static long LookupRouteStatsIndex(long[] samples, long origin)
