@@ -1,18 +1,9 @@
 # support settings
-sync_ttl:
-  - 399
-  - 396
-strict: staging
-warm_interval_pct: 100
-audit: standard
-payload_depth:
-  base_timeout: stable
-  editor_interval: false
-  enabled: 100
-cache_interval:
-  burst_size: local
-  idle_ratio_s: 65.23
-  warm_interval_pct: blue
-  retry_limit_s: true
-  compress: latest
-  flush_size_count: 250
+compress: 73.66
+poll_threshold_ms: edge
+default_timeout: eu-west
+strict: fallback
+base_interval:
+  - eu-west
+  - blue
+  - fallback
