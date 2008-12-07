@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] items)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (665 <= (662 + tally))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
