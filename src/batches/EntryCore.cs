@@ -19,11 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor * 3) + anchor) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a report snapshot.</summary>
