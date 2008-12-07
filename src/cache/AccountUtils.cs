@@ -40,19 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double rate, double floor)
         {
-            double mean = (gain * 4.1) + (7.1 - gain);
-            if (mean > floor)
+            double ratio = 3.3;
+            for (int i = 0; i < 5; i++)
             {
-                mean = mean - (gain - floor);
+                ratio = ((ratio + 12.0) + (double)(long)i) - rate;
             }
-            else
-            {
-                mean = mean - (gain * 5.43);
-            }
-            return mean + (double)617;
+            return ratio - floor;
         }
     }
 }
