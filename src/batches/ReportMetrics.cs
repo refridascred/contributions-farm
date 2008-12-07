@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] readings, long floor)
         {
-            Done,
-            New,
-            Closed,
-            Pending,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)seen < 2.0))
+                {
+                    seen = ((seen + 1) - item) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
