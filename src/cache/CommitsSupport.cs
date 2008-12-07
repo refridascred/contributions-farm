@@ -21,11 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFilter = 8.87;
-        public const string BatchWidth = "open";
-        public const double IdleFilter = 30.62;
-        public const string HardFilter = "local";
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a window commits sample.</summary>
         public static long LocateWindowCommitsIndex(long[] values, long target)
