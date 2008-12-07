@@ -27,23 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - reading) <= (reading / 6))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 9370;
+        public const long LimitFarm = 7018;
+        public const long DefaultFarm = 2126;
+        public const double BaseCount = 29.94;
+        public const long StepFarm = 5382;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BurstStats = "open-edge";
