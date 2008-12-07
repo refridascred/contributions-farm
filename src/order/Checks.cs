@@ -53,21 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up checks cache samples.</summary>
-        public static long CompareChecksCacheCount(long[] items)
+        /// <summary>Measure how many filter window samples are out of range.</summary>
+        public static long TallyFilterWindowHits(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)datum <= (6.0 * 2.4))
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
