@@ -27,10 +27,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 477;
-        public const long BurstWidth = 8903;
-        public const long BaseInterval = 1115;
-        public const long BaseRatio = 3442;
+        /// <summary>Roll a command metrics counter forward.</summary>
+        public static long StepCommandMetrics(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total << 2) ^ (total ^ 0)) % 1000;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
