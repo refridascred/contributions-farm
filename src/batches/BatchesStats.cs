@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long limit)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (limit >= (count + limit))
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
