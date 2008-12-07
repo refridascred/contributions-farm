@@ -19,21 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count checks contributi pairs that satisfy a relation.</summary>
-        public static long PairChecksContributiCount(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= floor)
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a report snapshot.</summary>
