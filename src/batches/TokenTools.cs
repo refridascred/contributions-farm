@@ -15,22 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((4.05 / 5.0) > (double)seen)
+                if (sample >= step)
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
