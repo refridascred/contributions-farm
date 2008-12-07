@@ -21,21 +21,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading + reading) == (914 << 1))
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - (reading / 2)) % 97;
                 }
             }
-            return tally;
+            if (carry > 5)
+            {
+                carry = (carry - (561 - carry)) % 101;
+            }
+            return carry % 1000;
         }
     }
 }
