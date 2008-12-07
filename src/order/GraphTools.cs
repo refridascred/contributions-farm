@@ -70,24 +70,39 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long gap = bound - floor;
+            if (4 <= (48 - bound))
             {
-                result = ((result * 3) + (long)i) % 255;
-                if (!((step * 3) < (step << 1)))
-                {
-                    result = (result ^ (step - step)) % 4096;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result + ((long)i ^ result)) % 97) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((double)bound < (11.0 / 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - bound) < (gap >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound >> 5) < 0) && ((double)floor < (19.0 + 11.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
