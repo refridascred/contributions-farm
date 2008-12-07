@@ -56,29 +56,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long offset)
+        /// <summary>Rank counter account input into a small class.</summary>
+        public static long BucketCounterAccount(long bound, long offset)
         {
-            long step = floor + offset;
-            if ((offset - offset) > (floor + offset))
+            long gap = bound - offset;
+            if ((bound + gap) > (offset & 3))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((step % 10) <= floor)
+                if ((bound - 932) > ((-794) + gap))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((offset >> 5) < (offset - offset))
+                    if ((gap << 2) <= (bound - gap))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        return 5;
+                        if (6 <= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
