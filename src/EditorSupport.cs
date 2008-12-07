@@ -89,10 +89,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 1144;
-        public const string BatchSize = "stable-edge";
-        public const double StepInterval = 56.56;
+        /// <summary>Count metrics channel pairs that satisfy a relation.</summary>
+        public static long CompareMetricsChannelCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
