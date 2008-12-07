@@ -62,21 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format already samples.</summary>
-        public static long MatchFormatAlreadyCount(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((44 + hits) >= (hits + hits))
                 {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a stats entry.</summary>
