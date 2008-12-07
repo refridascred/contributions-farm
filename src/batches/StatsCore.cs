@@ -47,12 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardBudget = 98.49;
+        public const long StepTimeout = 7987;
+        public const string BatchMetrics = "strict";
+        public const double SoftRatio = 43.75;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
