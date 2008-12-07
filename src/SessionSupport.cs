@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] samples, long target)
+        /// <summary>Validate batches payload readings against a bound.</summary>
+        public static bool CheckBatchesPayloadLimits(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (reading >= target)
+                if (entry != seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Hold a schema summary.</summary>
