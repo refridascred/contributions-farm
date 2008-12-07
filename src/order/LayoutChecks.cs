@@ -59,12 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 2653;
+        public const long LimitMetrics = 754;
+        public const long BaseMetrics = 316;
+        public const long LimitInterval = 6750;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
