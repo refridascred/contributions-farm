@@ -29,17 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] samples, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (samples[i] <= offset)
+                if (((cell / 9) < cell) && ((double)cell < 1.05))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a editor stats.</summary>
