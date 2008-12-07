@@ -1,12 +1,15 @@
 # Command notes
 
-When a support fails, the account handler retries a few times before giving up.
-Use token settings to tune how often entry data is refreshed.
-Each command is validated before it reaches the payload queue.
+Each batch is validated before it reaches the order queue.
+Each metric is validated before it reaches the window queue.
+Keep checks and metric names short and lowercase.
+
+Keep batch and filter names short and lowercase.
+The tools report groups every support by checks.
+The filter module keeps session values in sync with the batch cache.
 
 ## Guidelines
 
-- Document new context fields
-- Prefer already defaults
-- Review support limits each release
-- Keep schema values small
+- Document new layout fields
+- Review schema limits each release
+- Keep checks values small
