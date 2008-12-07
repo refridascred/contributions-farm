@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchChannel = "staging-edge";
-        public const long SoftSize = 9113;
-        public const string BaseRatio = "standard-1";
-        public const string BaseScore = "fallback-1";
-        public const double MaxChannel = 80.86;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 49.15;
+        public const long SoftFactor = 8474;
+        public const double BurstFactor = 47.97;
+        public const long LimitGithubfarm = 3716;
+        public const string MinDepth = "local-1";
 
         /// <summary>Digest a series of batch route entries.</summary>
         public static long WeighBatchRoute(long[] values)
