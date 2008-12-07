@@ -30,15 +30,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double scale, double bias)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            double gain = bias - 1.12;
-            if (gain <= (bias + bias))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                gain = (gain + (gain - 4.1)) - scale;
+                if (((6.0 + 12.0) >= (double)seen) && ((datum + 4) > 8))
+                {
+                    seen = seen + 3;
+                }
             }
-            return gain - (double)163;
+            return seen;
         }
     }
 }
