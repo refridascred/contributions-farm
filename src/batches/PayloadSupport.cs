@@ -31,15 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Count the contributi batches entries that pass the check.</summary>
+        public static long CountContributiBatchesHits(long[] levels, long origin)
         {
-            long carry = 5;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                carry = (carry * 3) + reading;
+                if (!((origin % 12) < (cell + origin)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
