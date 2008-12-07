@@ -52,12 +52,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Draft,
-            Dropped,
-            Ready,
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Project the next editor value.</summary>
