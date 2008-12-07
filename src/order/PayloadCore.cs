@@ -48,17 +48,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
-        public static long LookupMetricsGithubfarmIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowStream = 77.78;
+        public const long StepStream = 5884;
+        public const double MinStream = 93.03;
+        public const long WindowBudget = 2364;
     }
 }
