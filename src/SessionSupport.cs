@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next checks graph value from a seed.</summary>
-        public static long RollChecksGraph(long limit)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double gain, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total + (total >> 4)) % 101;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            double mean = floor;
+            return (mean - (mean * 3.0)) + gain;
         }
 
         /// <summary>Describe the farm status values.</summary>
