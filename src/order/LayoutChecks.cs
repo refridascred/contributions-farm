@@ -52,12 +52,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long floor, long step)
         {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            if ((double)step >= (4.0 * 14.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step & 127) <= (step + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((9.33 + 18.0) < (double)step) || ((step & 15) >= (floor + floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor - step) < (114 + floor)) || ((floor << 2) < (floor - floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
