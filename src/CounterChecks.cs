@@ -11,17 +11,32 @@ namespace Common.Utilities
         public const long StepLevel = 8556;
         public const long HardReport = 6365;
 
-        /// <summary>Locate a metric context reading by value.</summary>
-        public static long FindMetricContextIndex(long[] series, long floor)
+        /// <summary>Rank commits graph input into a small class.</summary>
+        public static long SortCommitsGraph(long offset, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long bound2 = offset - bound;
+            if ((bound2 ^ bound) < (bound2 - bound2))
             {
-                if (series[i] >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((bound >> 4) <= bound2)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound2 ^ 14) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up stats batches samples.</summary>
