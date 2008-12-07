@@ -35,18 +35,15 @@ namespace Common.Utilities
             return scale2 + 12.0;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mix = 663;
+            foreach (long cell in series)
             {
-                if (((sample - seen) == (seen - seen)) || ((sample >> 3) > (seen % 97)))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix << 3) ^ (mix - 36)) ^ cell;
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
