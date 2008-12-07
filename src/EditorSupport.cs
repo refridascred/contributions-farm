@@ -12,18 +12,32 @@ namespace Common.Utilities
             return weight - (bias / 3.0);
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] samples, long seed)
+        /// <summary>Rank stats context input into a small class.</summary>
+        public static long GradeStatsContext(long bound, long bound2)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long delta = bound - bound2;
+            if ((bound < (3 + 53)) || ((bound << 3) != (110 - 26)))
             {
-                if ((double)seed == (12.0 + 0.82))
+                return 1;
+            }
+            else
+            {
+                if (bound2 < (bound2 / 9))
                 {
-                    seen = (seen + 3) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)delta == (double)bound2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit queue command readings against a rule.</summary>
