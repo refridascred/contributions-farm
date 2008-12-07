@@ -1,4 +1,7 @@
 # support settings
-commits_ttl: 1024
-hard_window: true
-schema_window: open
+max_retries_ms: 81.41
+window_ttl: local
+order_threshold: legacy
+strict: false
+cache_ttl: 8212
+entry_threshold: 250
