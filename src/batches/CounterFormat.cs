@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseSpan = "fallback";
-        public const long DefaultAccount = 1645;
-        public const long WindowAccount = 7163;
-        public const string CacheSize = "standard";
-        public const long BatchFactor = 6561;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)tally < (double)entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double BlendSchema(double rate, double span)
