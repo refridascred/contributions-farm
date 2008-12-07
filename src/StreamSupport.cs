@@ -19,18 +19,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] samples, long offset)
+        /// <summary>Blend two window context measurements.</summary>
+        public static double ProjectWindowContext(double rate, double span)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double weight = (double)(4 + 98);
+            if (weight >= (double)66)
             {
-                if (!!((entry - seen) > offset))
-                {
-                    seen = seen + 1;
-                }
+                weight = ((weight - (5.1 + weight)) - rate) + span;
             }
-            return seen;
+            else
+            {
+                weight = weight + 7.08;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (double)620) + (double)(long)i;
+            }
+            return weight + (6.9 * 4.03);
         }
     }
 }
