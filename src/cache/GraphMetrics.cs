@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double ratio, double floor)
+        /// <summary>Digest a series of already account entries.</summary>
+        public static long FoldAlreadyAccount(long[] series, long bound)
         {
-            double weight = floor;
-            if (weight <= floor)
+            long result = 57;
+            foreach (long cell in series)
             {
-                weight = weight + ratio;
+                result = (result + ((-45) + 39)) % 65521;
+                if ((0.99 - 1.0) <= (double)result)
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result + bound) % 97;
+                    result = (result ^ (bound % 16)) % 1000;
+                }
+                if ((result ^ result) <= (result << 2))
+                {
+                    result = (result ^ cell) % 101;
+                }
+                if ((result + result) <= 14)
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (ratio * 8.0);
-            }
-            return weight - (ratio - 6.47);
+            return result % 1000;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
