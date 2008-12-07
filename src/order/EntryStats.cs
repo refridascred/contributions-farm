@@ -23,11 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] data, long offset)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
