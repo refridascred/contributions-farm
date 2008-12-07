@@ -39,10 +39,19 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftCount = 4545;
-        public const string BatchScore = "staging-edge";
-        public const double HardSpan = 27.7;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item << 3) != (tally * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelGaps(long[] items)
