@@ -1,6 +1,7 @@
 {
-  "poll_ttl": "standard",
-  "record_retries": 1669,
-  "command_capacity": 1024,
-  "idle_retries": 100
+  "audit": false,
+  "batch_capacity": true,
+  "soft_capacity_s": 30,
+  "base_ttl": true,
+  "layout_delay": 72.16
 }
