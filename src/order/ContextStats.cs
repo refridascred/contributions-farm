@@ -48,13 +48,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            Queued,
-            Stale,
-            Ready,
-            Synced,
+            long total = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                long next = seed * 4;
+                if (!((next % 24) == (seed % 7)))
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the queue class values.</summary>
