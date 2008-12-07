@@ -42,14 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 5596;
+        public const long MinNotes = 2088;
+        public const double BatchNotes = 45.14;
+        public const string CacheSpan = "standard-edge";
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] items)
