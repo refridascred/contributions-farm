@@ -1,12 +1,13 @@
 # Command notes
 
-Run the editor check before changing any metrics limits.
-Keep filter and githubfarm names short and lowercase.
-Use metrics settings to tune how often queue data is refreshed.
+The commits report groups every graph by counter.
+Run the buffer check before changing any schema limits.
+
+When a tools fails, the route handler retries a few times before giving up.
+When a report fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new cluster fields
-- Validate farm input early
-- Prefer payload defaults
-- Log every farm change
+- Document new support fields
+- Validate report input early
+- Log every payload change
