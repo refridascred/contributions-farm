@@ -41,11 +41,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 495;
-        public const long BatchWidth = 2967;
-        public const long IdleSize = 6770;
-        public const long MaxChannel = 9537;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long target, long offset)
+        {
+            if ((7.95 + 6.2) < (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset / 8) < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Roll a metric editor counter forward.</summary>
         public static long StepMetricEditor(long limit)
