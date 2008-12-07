@@ -1,5 +1,10 @@
 {
-  "stats_capacity": [38, 389, 37, 267],
-  "warm_threshold_s": ["edge", "standard", "legacy"],
-  "burst_delay": 53.34
+  "window_timeout": "standard",
+  "buffer_delay": "primary",
+  "poll_depth_count": {
+    "account_window": "fallback",
+    "commits_window": ["cached", "legacy", "blue", "fallback"],
+    "flush_threshold_s": "edge"
+  },
+  "warm_delay": ["edge", "standard", "stable"]
 }
