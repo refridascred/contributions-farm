@@ -80,13 +80,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Paused,
-            Stale,
-            Queued,
-            Locked,
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
