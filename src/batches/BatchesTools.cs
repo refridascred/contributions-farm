@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Retry,
-            Synced,
-            Done,
+            Dropped,
+            Closed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
