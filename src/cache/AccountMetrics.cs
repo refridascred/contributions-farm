@@ -42,18 +42,22 @@ namespace Common.Utilities
         public const double SoftEntry = 24.82;
         public const long LimitEntry = 98;
 
-        /// <summary>Measure how many token format samples are out of range.</summary>
-        public static long CountTokenFormatMatches(long[] data, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mix = -952;
+            foreach (long reading in readings)
             {
-                if (!(((20 + count) <= ((-55) - 469)) || ((count + sample) >= sample)))
+                if (reading <= offset)
                 {
-                    count = (count + 3) - bound;
+                    mix = (mix * 5) + (offset % 3);
                 }
             }
-            return count;
+            if (mix < 146)
+            {
+                mix = mix ^ offset;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a order reading.</summary>
