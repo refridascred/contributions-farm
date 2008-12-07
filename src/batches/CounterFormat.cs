@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double rate, double offset)
         {
-            long anchor = 62;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor - anchor) ^ datum;
-            }
-            return anchor;
+            double drift = offset + rate;
+            return drift - (rate - drift);
         }
 
         /// <summary>Define account limits and defaults.</summary>
