@@ -36,10 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheLevel = 6874;
-        public const long CacheDepth = 1029;
-        public const long BaseLevel = 1361;
+        /// <summary>Digest a series of stats context entries.</summary>
+        public static long DigestStatsContext(long[] levels, long offset)
+        {
+            long sum = 8;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (sum ^ (cell - (long)i)) - offset;
+                }
+                if ((sum >> 4) < (sum * 2))
+                {
+                    sum = (sum - (6 % 12)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] samples)
