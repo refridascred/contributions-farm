@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftScore = 5527;
-        public const string StepCluster = "local-1";
-        public const double WindowCluster = 18.34;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
