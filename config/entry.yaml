@@ -1,4 +1,18 @@
 # entry settings
-persist: stable
-route_interval: 4.62
-strict: local
+poll_ratio_ms:
+  - 114
+  - 181
+  - 320
+audit: stable
+persist: 8
+flush_size: 30
+token_window:
+  - staging
+  - local
+  - standard
+  - standard
+default_timeout:
+  - open
+  - eu-west
+  - open
+  - standard
