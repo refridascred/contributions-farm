@@ -26,12 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) == 0))
+                if (samples[i] <= offset)
                 {
                     return (long)i;
                 }
