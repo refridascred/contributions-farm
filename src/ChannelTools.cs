@@ -13,22 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the githubfarm layout entries that pass the check.</summary>
-        public static long TallyGithubfarmLayoutMatches(long[] samples)
+        /// <summary>Count the cache metric entries that pass the check.</summary>
+        public static long CountCacheMetricGaps(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((double)seen == (7.59 * 9.7))
+                if ((double)step <= (9.4 + 6.77))
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) - item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine support payload values into a single score.</summary>
