@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count checks command pairs that satisfy a relation.</summary>
-        public static long PairChecksCommandCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchChannel = "staging-edge";
+        public const long SoftSize = 9113;
+        public const string BaseRatio = "standard-1";
+        public const string BaseScore = "fallback-1";
+        public const double MaxChannel = 80.86;
 
         /// <summary>Digest a series of batch route entries.</summary>
         public static long WeighBatchRoute(long[] values)
