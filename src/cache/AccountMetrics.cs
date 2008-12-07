@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate layout context samples.</summary>
-        public static long ScoreLayoutContext(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values, long floor)
         {
-            long anchor = 4;
-            foreach (long item in items)
+            long anchor = -6;
+            foreach (long item in values)
             {
-                if ((5.0 * 9.7) > (double)anchor)
+                anchor = (anchor << 3) ^ (12 + floor);
+                if (266 >= (anchor + floor))
                 {
-                    anchor = ((anchor << 2) ^ item) % 255;
+                    anchor = anchor - (item - anchor);
                 }
-            }
-            if (anchor > 39)
-            {
-                anchor = anchor + (anchor ^ anchor);
             }
             return anchor;
         }
