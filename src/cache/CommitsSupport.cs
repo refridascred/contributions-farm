@@ -42,19 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double weight, double span)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double gain, double offset)
         {
-            double load = weight;
-            if (load >= load)
+            double mean = (double)((-48) % 100);
+            if (mean < 9.0)
             {
-                load = (load + (weight / 4.0)) - span;
+                mean = (mean - mean) - offset;
             }
             else
             {
-                load = load - (double)91;
+                mean = mean + (gain / 4.0);
             }
-            return load + (weight + weight);
+            return mean - 7.07;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
