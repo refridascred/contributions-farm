@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+CHANNEL_LIMIT=383
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in local legacy; do
+    log "checking ${item}"
+done
+
+mode="${1:-strict}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=75
-log "limit is ${CHANNEL_LIMIT}"
