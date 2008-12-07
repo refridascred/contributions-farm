@@ -32,18 +32,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if ((seed + offset) <= offset)
             {
-                if (((item + seen) <= (seen >> 3)) || ((double)item <= (4.0 * 0.63)))
+                return 0;
+            }
+            else
+            {
+                if ((seed * 2) == (offset + offset))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((offset << 1) != (offset + seed)) && ((seed + offset) < (offset >> 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.62 / 9.0) > (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
