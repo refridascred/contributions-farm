@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary blue strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-legacy}"
+COMMAND_LIMIT=52
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=372
-log "limit is ${COMMAND_LIMIT}"
