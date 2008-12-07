@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter record samples are out of range.</summary>
-        public static long MeasureCounterRecordOutliers(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((double)reading < (2.5 + 3.0))
+                if (datum <= origin)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Check that every filter entry entry stays within the limit.</summary>
