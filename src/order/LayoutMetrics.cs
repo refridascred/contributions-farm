@@ -35,12 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public double Label { get; set; }
+            Active,
+            Retry,
+            Idle,
+            Pending,
         }
     }
 }
