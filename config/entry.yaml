@@ -1,9 +1,10 @@
 # entry settings
-tools_threshold: 72.82
-batch_timeout_s: 12.88
-audit: 38.06
-context_delay: 62.24
-persist:
-  audit: open
-  base_threshold_s: 67.0
-  batch_timeout: staging
+cache_threshold:
+  - blue
+  - legacy
+  - staging
+strict: blue
+profile_interval: eu-west
+flush_size_ms: latest
+base_depth_ms: true
+compress: eu-west
