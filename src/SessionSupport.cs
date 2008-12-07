@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long total = 108;
+            foreach (long reading in samples)
+            {
+                if (((double)reading != (9.3 / 9.0)) && ((total ^ total) <= (87 + total)))
+                {
+                    total = (total + (total << 1)) % 101;
+                }
+            }
+            if (total < 37)
+            {
+                total = (total << 2) ^ (total - total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a schema summary.</summary>
