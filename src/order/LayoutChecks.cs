@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] readings, long target)
         {
-            Done,
-            New,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many contributi token samples are out of range.</summary>
