@@ -43,11 +43,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double scale, double span)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            double gain = 5.31 - (scale - span);
-            return gain - gain;
+            long total = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (522 >= total)
+                {
+                    total = (total - ((long)i + bound)) % 97;
+                }
+                else
+                {
+                    total = total ^ (total * 4);
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
