@@ -45,13 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Accumulate account session samples.</summary>
+        public static long ScoreAccountSession(long[] readings)
         {
-            Failed,
-            Stale,
-            Draft,
-            Retry,
+            long mark = 726;
+            foreach (long datum in readings)
+            {
+                mark = (mark ^ mark) - datum;
+            }
+            return mark;
         }
     }
 }
