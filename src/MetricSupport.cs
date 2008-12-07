@@ -42,26 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels)
         {
-            long sum = 6;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (!((double)sum != (double)9))
+                if ((tally & 15) != (datum - tally))
                 {
-                    sum = sum - cell;
-                }
-                if (sum < (sum >> 1))
-                {
-                    sum = (sum - (sum << 3)) % 255;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    sum = sum ^ 521;
+                    tally = tally - 1;
                 }
             }
-            return sum % 1000;
+            return tally;
         }
     }
 }
