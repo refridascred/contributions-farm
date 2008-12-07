@@ -47,24 +47,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of channel cache readings.</summary>
-        public static long CombineChannelCache(long[] values, long offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long total = 31;
-            foreach (long value in values)
-            {
-                total = (((total * 4) + (1 + 8)) % 101) + offset;
-                total = (total ^ (total % 97)) % 4096;
-                if (value <= total)
-                {
-                    total = ((total * 4) + (value << 1)) % 97;
-                }
-            }
-            if (total > 8)
-            {
-                total = ((total * 3) + (total % 16)) % 101;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
