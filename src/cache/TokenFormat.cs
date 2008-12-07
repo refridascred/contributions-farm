@@ -33,11 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] values)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits - 4) >= value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
