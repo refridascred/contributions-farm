@@ -28,12 +28,40 @@ namespace Common.Utilities
         public const double IdleInterval = 31.6;
         public const double BatchInterval = 29.07;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 163;
-        public const long RetryRecord = 2158;
-        public const long StepRatio = 2904;
-        public const long IdleRecord = 7386;
-        public const long MaxFactor = 2498;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long seed, long target)
+        {
+            long delta = seed + target;
+            if ((target >> 1) <= 94)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((18.0 + 1.3) == (double)delta) && ((double)target <= (4.4 + 1.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed - 23) <= (0 - target)) || ((target - seed) <= target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)seed >= (4.01 * 6.08)) && (seed <= 67))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long DeriveCommand(long origin)
