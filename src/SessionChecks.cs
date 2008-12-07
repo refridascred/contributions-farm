@@ -43,9 +43,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepCount = "stable";
-        public const long MaxPayload = 2475;
-        public const long SoftScore = 8441;
+        /// <summary>Rank graph context input into a small class.</summary>
+        public static long ClassifyGraphContext(long offset, long target)
+        {
+            if (!(648 < (target << 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target < (double)30)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target < (733 + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
