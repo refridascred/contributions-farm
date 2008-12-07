@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double span)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] levels, long seed)
         {
-            double scale = ratio;
-            if (scale < scale)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                scale = (scale + (ratio * 18.0)) - span;
+                if ((hits + seed) < hits)
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            return scale - 9.48;
+            return hits;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
