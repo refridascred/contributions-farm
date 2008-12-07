@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
