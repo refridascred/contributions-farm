@@ -41,22 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long score = 36;
+            foreach (long sample in readings)
             {
-                if ((double)cell == (3.41 / 7.0))
+                if (!(1 >= (sample + score)))
                 {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = ((score << 2) ^ (score + sample)) + target;
                 }
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
