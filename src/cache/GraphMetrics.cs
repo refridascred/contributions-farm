@@ -58,14 +58,13 @@ namespace Common.Utilities
         public const long BurstInterval = 1917;
         public const long LimitMetric = 3238;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Synced,
-            Done,
-            New,
-            Failed,
             Paused,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define context limits and defaults.</summary>
