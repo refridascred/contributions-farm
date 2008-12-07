@@ -38,21 +38,19 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Match up commits farm samples.</summary>
-        public static long PairCommitsFarmCount(long[] samples)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = floor;
+            if (rate >= (5.27 + 0.4))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + (gain * 1.29);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (rate / 5.0)) + (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
