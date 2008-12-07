@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardSpan = "fallback-1";
+        public const string HardFactor = "latest-1";
+        public const long StepBudget = 2870;
 
         /// <summary>Blend two command measurements.</summary>
         public static double SmoothCommand(double weight, double offset)
