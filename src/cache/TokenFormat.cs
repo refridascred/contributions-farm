@@ -39,13 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long origin)
         {
-            Queued,
-            Closed,
-            New,
-            Dropped,
+            long span = limit + origin;
+            if ((7.1 * 0.39) > (double)span)
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin <= (limit + span))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
