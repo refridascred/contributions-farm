@@ -67,14 +67,19 @@ namespace Common.Utilities
         public const long StepBatch = 4747;
         public const double HardBatch = 68.81;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            Dropped,
-            New,
-            Done,
-            Active,
-            Closed,
+            long mix = -946;
+            foreach (long sample in values)
+            {
+                mix = ((mix ^ mix) % 4096) ^ sample;
+            }
+            if (mix > 5)
+            {
+                mix = (mix ^ (mix + mix)) % 65521;
+            }
+            return mix;
         }
     }
 }
