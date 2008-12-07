@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate window githubfarm samples.</summary>
-        public static long TallyWindowGithubfarm(long[] items)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] values, long step)
         {
-            long acc = 75;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (((entry >> 1) < 58) || (acc >= (acc + acc)))
+                if (entry > step)
                 {
-                    acc = (acc << 2) ^ entry;
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return ready;
         }
 
         /// <summary>Hold a buffer options.</summary>
