@@ -15,11 +15,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 785;
-        public const double DefaultFactor = 13.05;
-        public const double BurstFormat = 41.42;
-        public const long SoftTimeout = 2495;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double gain, double bias)
+        {
+            double scale = bias;
+            if (scale < bias)
+            {
+                scale = scale + (double)4;
+            }
+            else
+            {
+                scale = scale + (gain - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale + (double)115;
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double ProjectCommand(double ratio, double floor)
