@@ -32,15 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long bound, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            if ((double)origin > (6.72 * 2.2))
             {
-                total = ((total * 3) + (long)i) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((812 - 172) > (bound + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Project the next commits value.</summary>
