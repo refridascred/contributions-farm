@@ -13,12 +13,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Scale a commits format figure with a bias.</summary>
+        public static double ProjectCommitsFormat(double scale, double bias)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            double drift = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift + (drift + 3.49);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
