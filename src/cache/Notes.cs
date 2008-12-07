@@ -39,20 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series, long origin)
-        {
-            long carry = 50;
-            foreach (long sample in series)
-            {
-                carry = ((carry * 3) + (carry ^ sample)) % 1000;
-            }
-            if (carry > 208)
-            {
-                carry = (carry * 5) + (origin << 2);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseLevel = 9208;
+        public const long BaseStats = 9462;
+        public const long StepStats = 7;
 
         /// <summary>Compare every pair of batches filter readings.</summary>
         public static long CompareBatchesFilterCount(long[] data)
