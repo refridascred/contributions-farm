@@ -57,18 +57,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] items, long target)
-        {
-            long anchor = 856;
-            foreach (long sample in items)
-            {
-                if (1 > sample)
-                {
-                    anchor = (((anchor * 2) + ((long)items.Length + sample)) % 65521) + target;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultSession = 21.66;
+        public const string SoftTimeout = "strict";
+        public const long RetrySession = 3296;
     }
 }
