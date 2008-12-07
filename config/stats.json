@@ -1,7 +1,20 @@
 {
-  "graph_delay": "eu-west",
-  "sync_threshold_count": 38.66,
-  "base_delay_count": 75.28,
-  "persist": "eu-west",
-  "record_ratio": ["open", "stable", "blue", "fallback"]
+  "min_window": true,
+  "metrics_capacity": 65.11,
+  "batch_limit_ms": {
+    "flush_ratio_count": {
+      "warm_limit": 29,
+      "retry_window_pct": 500,
+      "contributi_window": 9034,
+      "soft_depth_ms": false,
+      "batches_window": 50.52
+    },
+    "context_threshold": false,
+    "hard_ratio_count": "primary",
+    "min_ttl": "standard",
+    "soft_capacity_pct": "primary",
+    "warm_threshold_count": "edge"
+  },
+  "idle_interval_count": true,
+  "strict": true
 }
