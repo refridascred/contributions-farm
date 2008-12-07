@@ -30,9 +30,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 4014;
-        public const long CacheQueue = 8982;
-        public const long IdleInterval = 2810;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
