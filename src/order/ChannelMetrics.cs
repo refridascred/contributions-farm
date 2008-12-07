@@ -37,17 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 6011;
+        public const long CacheReport = 1149;
+        public const string MinReport = "latest-edge";
+        public const long DefaultDepth = 1198;
     }
 }
