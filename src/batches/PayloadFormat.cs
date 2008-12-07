@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSize = 7316;
-        public const long LimitContext = 8216;
-        public const double WindowBudget = 96.37;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 9282;
+        public const long MinCluster = 2720;
+        public const long CacheWidth = 1098;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] samples, long limit)
