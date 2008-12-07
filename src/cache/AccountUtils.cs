@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double bias, double offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            double gain = offset;
-            for (int i = 0; i < 8; i++)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                gain = ((gain + (offset - offset)) + (double)(long)i) - bias;
+                if (origin < (-88))
+                {
+                    state = ((state << 2) ^ (state - (long)i)) % 255;
+                    state = (state - origin) % 97;
+                }
+                else
+                {
+                    state = (state ^ origin) % 65521;
+                }
+                state = (state << 3) ^ (origin - origin);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return gain + (offset - 0.1);
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
