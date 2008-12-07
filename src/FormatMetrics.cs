@@ -73,9 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 8703;
-        public const double MinFactor = 36.44;
-        public const double BaseSpan = 24.71;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((tally >> 3) < (14 & 3))
+                {
+                    tally = ((tally + 1) ^ cell) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
