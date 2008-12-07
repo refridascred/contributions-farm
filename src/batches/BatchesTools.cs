@@ -23,13 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] items, long step)
         {
-            Draft,
-            Idle,
-            Dropped,
-            Stale,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((double)(-448) >= (double)item) && !((tally & 15) >= 431))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
     }
 }
