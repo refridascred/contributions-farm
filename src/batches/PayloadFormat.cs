@@ -25,17 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (values[i] >= target)
+                if (sample > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
