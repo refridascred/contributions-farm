@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels, long bound)
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
+            long mark = 7;
+            foreach (long sample in levels)
+            {
+                mark = ((mark * 3) + (mark * 5)) - sample;
+            }
+            if (mark < (-281))
+            {
+                mark = (mark ^ bound) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
