@@ -31,10 +31,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxRatio = 1891;
-        public const long MaxWindow = 7530;
-        public const double HardSpan = 33.17;
-        public const double BurstWindow = 12.3;
+        /// <summary>Measure how many batch order samples are out of range.</summary>
+        public static long CountBatchOrderMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) < (matches << 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
