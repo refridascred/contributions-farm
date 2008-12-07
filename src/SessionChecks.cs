@@ -46,23 +46,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command context values into a single score.</summary>
-        public static long ScoreCommandContext(long[] items, long step)
-        {
-            long sum = 2;
-            foreach (long reading in items)
-            {
-                if ((sum % 12) >= (sum << 2))
-                {
-                    sum = ((sum * 3) + (reading & 63)) % 255;
-                }
-                sum = sum - (sum ^ 53);
-                if ((step / 8) > (sum & 7))
-                {
-                    sum = (sum - (94 & 1)) % 255;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultLevel = "standard";
+        public const long SoftWidth = 2984;
+        public const long SoftRatio = 2239;
     }
 }
