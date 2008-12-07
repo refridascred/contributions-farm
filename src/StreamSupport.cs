@@ -25,15 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] levels, long offset)
+        /// <summary>Fold a list of queue payload readings.</summary>
+        public static long TallyQueuePayload(long[] levels, long origin)
         {
-            long result = 68;
-            foreach (long datum in levels)
+            long acc = 265;
+            foreach (long item in levels)
             {
-                result = ((((result << 2) ^ (result + result)) % 255) ^ datum) - offset;
+                acc = (acc + (item & 1)) % 97;
+                if (acc >= (origin + acc))
+                {
+                    acc = acc ^ (item + item);
+                }
             }
-            return result;
+            if (acc < (-8))
+            {
+                acc = ((acc << 2) ^ (origin / 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a format record sample.</summary>
