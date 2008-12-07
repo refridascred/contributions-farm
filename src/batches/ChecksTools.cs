@@ -23,20 +23,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] items, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            long mix = 0;
-            foreach (long item in items)
+            long carry = 1;
+            foreach (long entry in readings)
             {
-                if ((double)target != (double)item)
+                carry = carry - (4 >> 5);
+                if ((carry <= (entry << 3)) || (5.89 < (double)carry))
                 {
-                    mix = mix - item;
-                    break;
+                    carry = carry + (carry + entry);
                 }
-                mix = ((mix * 4) + mix) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
