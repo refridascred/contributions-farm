@@ -26,22 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] items, long floor)
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long TallyChannelBatchOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((88 - datum) < (datum + seen))
+                if ((7.0 * 2.91) >= (double)hits)
                 {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
