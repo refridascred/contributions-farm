@@ -1,29 +1,24 @@
 # entry settings
-account_retries:
-  min_timeout_s: 83
-  enabled: staging
-  batch_capacity_ms:
-    flush_ttl_s: 44.48
-    audit:
-      - 306
-      - 357
-      - 494
-      - 196
-    poll_ratio_s: 100
-    command_threshold:
-      - 188
-      - 97
-    cache_window: 11.09
-  hard_interval_pct: 1024
-  batch_threshold_count: true
-audit: 60
-retry_ttl_pct:
-  poll_capacity_pct: 40.18
-  min_interval_s: 42
-  stream_window: green
-  warm_timeout_pct: stable
-  min_interval_pct: 49
-  poll_threshold_ms: 86.7
-poll_window_s:
-  - 295
-  - 273
+max_ratio: 42
+persist: local
+verbose: edge
+soft_window: 36.51
+idle_size_count: 1981
+sync_retries:
+  base_limit_count:
+    strict:
+      - 227
+      - 150
+    compress: 5615
+    stats_depth: 4555
+    min_ttl: false
+    verbose: local
+  retry_delay_s: 250
+  retry_window: true
+  channel_timeout: true
+  hard_interval: 500
+  session_depth:
+    - blue
+    - blue
+    - green
+    - staging
