@@ -65,19 +65,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double bias, double bias2)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double gain = (double)(0 % 3);
-            if (gain > (double)54)
-            {
-                gain = gain - (gain - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + bias2) + (double)(long)i;
-            }
-            return gain - (double)133;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
