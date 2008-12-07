@@ -23,18 +23,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long next = floor + offset;
+            if (((9 << 3) < offset) && (7.7 < (double)next))
             {
-                if ((matches <= (matches + 484)) && !(sample <= (sample & 255)))
+                return 6;
+            }
+            else
+            {
+                if (((offset + 71) <= (offset + 61)) && ((floor % 8) >= 516))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((3.9 + 5.7) <= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)floor > 2.78) && ((double)next == (double)65))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
