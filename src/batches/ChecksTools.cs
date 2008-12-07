@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] items, long step)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)104 * 0.76;
+            if (rate <= span)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                rate = rate - ratio;
             }
-            return -1;
+            else
+            {
+                rate = rate - span;
+            }
+            return rate + rate;
         }
 
         /// <summary>Scale a window editor figure with a bias.</summary>
