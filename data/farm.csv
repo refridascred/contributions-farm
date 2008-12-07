@@ -1,8 +1,6 @@
-id,rank,token,score,owner
-1,639,latest,754,598
-2,531,74,33.37,395
-3,171,831,blue,19.16
-4,188,standard,72,93.98
-5,545,latest,91,10.01
-6,staging,local,local,stable
-7,325,eu-west,201,edge
+id,count,label
+1,open,198
+2,341,local
+3,14.93,41.64
+4,strict,340
+5,82.23,strict
