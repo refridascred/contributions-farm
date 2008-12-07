@@ -47,23 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)floor > (6.71 / 8.0)) && ((double)carry != (0.6 + 1.72)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry + (5 + carry)) % 1000;
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    carry = ((carry * 3) + (floor - 396)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
