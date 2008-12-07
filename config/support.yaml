@@ -1,15 +1,12 @@
 # support settings
-entry_capacity:
-  verbose:
-    - 374
-    - 210
-    - 487
-    - 407
-  compress: open
-  poll_ttl_ms: 60.94
-batch_threshold: standard
-batch_capacity_pct:
-  - 286
-  - 93
-poll_interval_count: 39
-hard_capacity_count: open
+metrics_depth: 53
+enabled:
+  layout_delay: 85.0
+  checks_limit:
+    - 69
+    - 410
+    - 414
+    - 291
+  max_interval: edge
+poll_delay_pct: eu-west
+batches_timeout: 30
