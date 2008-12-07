@@ -18,23 +18,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two window context measurements.</summary>
-        public static double ProjectWindowContext(double rate, double span)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double weight = (double)(4 + 98);
-            if (weight >= (double)66)
-            {
-                weight = ((weight - (5.1 + weight)) - rate) + span;
-            }
-            else
-            {
-                weight = weight + 7.08;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (double)620) + (double)(long)i;
-            }
-            return weight + (6.9 * 4.03);
+            Idle,
+            Ready,
+            Dropped,
+            Retry,
         }
     }
 }
