@@ -46,18 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue command readings against a rule.</summary>
-        public static long MeasureQueueCommandGaps(long[] data)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally >= ((-839) >> 1))
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
                 {
-                    tally = (tally + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
