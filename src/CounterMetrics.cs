@@ -73,18 +73,23 @@ namespace Common.Utilities
             return mean + 7.5;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] values, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (hits >= (long)values.Length)
+                if (((long)i ^ 9) == (anchor << 3))
                 {
-                    hits = ((hits + 1) ^ cell) + seed;
+                    anchor = anchor + (step - anchor);
                 }
+                if ((anchor / 5) > anchor)
+                {
+                    anchor = (anchor << 2) ^ (step ^ step);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
