@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "strict";
-        public const double BurstFormat = 25.18;
-        public const long DefaultBudget = 634;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public bool Score { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long FindBufferIndex(long[] values, long floor)
