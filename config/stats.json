@@ -1,7 +1,7 @@
 {
-  "schema_threshold": 3099,
-  "poll_depth_s": [248, 104, 441, 75],
-  "audit": 5015,
-  "batch_limit_count": "latest",
-  "max_timeout_s": false
+  "burst_retries_count": [152, 416],
+  "flush_capacity_ms": 84.05,
+  "hard_window_pct": ["strict", "staging", "fallback", "fallback"],
+  "hard_capacity_pct": "local",
+  "idle_timeout_pct": 1852
 }
