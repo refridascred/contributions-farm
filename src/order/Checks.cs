@@ -55,22 +55,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many filter window samples are out of range.</summary>
-        public static long TallyFilterWindowHits(long[] data, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum <= (6.0 * 2.4))
-                {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
