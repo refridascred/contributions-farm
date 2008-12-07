@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] items, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)value < (2.09 / 5.0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    hits = (hits + 2) - floor;
+                    mix = ((mix + (mix / 5)) % 65521) - (long)i2;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
