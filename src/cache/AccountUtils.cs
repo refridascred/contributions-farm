@@ -22,26 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings, long floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long total = 775;
-            foreach (long reading in readings)
-            {
-                if (((2.0 * 2.4) != (double)floor) || ((2.0 + 6.4) == (double)reading))
-                {
-                    total = total ^ (reading - floor);
-                }
-                else
-                {
-                    total = ((total * 2) + (reading / 7)) % 4096;
-                }
-            }
-            if (total < 5)
-            {
-                total = (total * 5) + (8 << 3);
-            }
-            return total;
+            Ready,
+            Dropped,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a cache entry.</summary>
