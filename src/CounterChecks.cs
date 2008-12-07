@@ -27,18 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] items, long step)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((476 % 5) != (value & 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) - step;
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
