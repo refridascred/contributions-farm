@@ -34,13 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            Done,
-            Pending,
-            Failed,
-            Retry,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((411 * 3) <= seen)
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
