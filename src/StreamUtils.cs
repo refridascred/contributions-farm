@@ -118,18 +118,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long carry = 377;
-            foreach (long datum in samples)
-            {
-                if ((datum / 7) >= datum)
-                {
-                    carry = (carry - datum) % 4096;
-                }
-            }
-            return carry;
+            Done,
+            Failed,
+            Active,
         }
     }
 }
