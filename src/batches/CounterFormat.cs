@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] data, long bound)
+        /// <summary>Derive the next tools session value from a seed.</summary>
+        public static long SeriesToolsSession(long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Locate a format reading by value.</summary>
