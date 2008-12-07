@@ -28,11 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleDepth = 8490;
-        public const long MaxCounter = 757;
-        public const string IdleCounter = "alpha";
-        public const string MinCounter = "staging-edge";
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long CompareMetricsCount(long[] values)
