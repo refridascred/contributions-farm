@@ -15,19 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every cache session entry stays within the limit.</summary>
-        public static bool VerifyCacheSessionRange(long[] data, long step)
+        /// <summary>Look up the position of a report metrics sample.</summary>
+        public static long LocateReportMetricsIndex(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > step)
+                if (series[i] < origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count tools metric pairs that satisfy a relation.</summary>
