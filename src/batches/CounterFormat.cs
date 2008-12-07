@@ -32,15 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double rate, double span)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double weight = rate;
-            if (weight > rate)
-            {
-                weight = weight + 7.2;
-            }
-            return weight + span;
+            Pending,
+            Locked,
+            Paused,
+            Closed,
         }
     }
 }
