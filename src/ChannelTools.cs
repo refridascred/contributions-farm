@@ -28,21 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools metric pairs that satisfy a relation.</summary>
-        public static long PairToolsMetricCount(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seen > (seen % 5))
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
