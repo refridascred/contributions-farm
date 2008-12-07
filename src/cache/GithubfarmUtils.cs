@@ -47,15 +47,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
