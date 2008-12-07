@@ -69,23 +69,17 @@ namespace Common.Utilities
             return mean + 7.5;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] items, long bound)
         {
-            long mark = 42;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + ((long)items.Length >> 5)) % 97;
-                if ((mark > (mark + mark)) && ((entry + entry) != (834 / 5)))
+                if (items[i] <= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 50)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark % 1000;
+            return -1;
         }
     }
 }
