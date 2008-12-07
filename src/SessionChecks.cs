@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleSpan = 72.71;
-        public const string IdleEditor = "primary-v2";
-        public const long WindowLevel = 8602;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a window order reading by value.</summary>
         public static long LookupWindowOrderIndex(long[] readings, long target)
