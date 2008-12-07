@@ -38,13 +38,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long limit)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a stream stats.</summary>
