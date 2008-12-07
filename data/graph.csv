@@ -1,6 +1,8 @@
-id,region,score,count
-1,493,open,blue
-2,827,465,650
-3,71.04,green,764
-4,48.4,18.72,437
-5,923,41.97,69
+id,level,ratio,state
+1,latest,746,legacy
+2,stable,594,73.32
+3,56.51,627,97.09
+4,52,staging,39.05
+5,strict,66.74,227
+6,812,5.3,970
+7,940,blue,64.99
