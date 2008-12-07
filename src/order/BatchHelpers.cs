@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
