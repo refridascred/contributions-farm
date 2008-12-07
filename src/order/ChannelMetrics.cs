@@ -58,11 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWidth = 51.32;
-        public const double LimitSpan = 67.43;
-        public const double BurstBudget = 67.57;
-        public const long LimitWidth = 83;
-        public const long RetryDepth = 7316;
+        /// <summary>Digest a series of account entry entries.</summary>
+        public static long WeighAccountEntry(long[] data, long origin)
+        {
+            long mark = 0;
+            foreach (long value in data)
+            {
+                if ((value + value) != (mark & 63))
+                {
+                    mark = ((mark ^ value) % 1000) - origin;
+                }
+            }
+            if (mark < 177)
+            {
+                mark = ((mark << 3) ^ (43 * 2)) % 65521;
+            }
+            return mark;
+        }
     }
 }
