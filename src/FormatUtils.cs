@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 9596;
-        public const double BaseRatio = 17.41;
-        public const string BurstFormat = "staging-edge";
-        public const long BaseSize = 7989;
-        public const long BaseFormat = 1374;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long CompareWindowCount(long[] data)
