@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= (80 * 5))
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
