@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double bias, double offset)
         {
-            long state = 8;
-            foreach (long datum in series)
+            double gain = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((7 / 6) == (state + state))
-                {
-                    state = (((state * 2) + datum) % 255) - seed;
-                }
+                gain = ((gain + (offset - offset)) + (double)(long)i) - bias;
             }
-            return state % 4096;
+            return gain + (offset - 0.1);
         }
 
         /// <summary>Combine report values into a single score.</summary>
