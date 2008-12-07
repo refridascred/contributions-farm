@@ -1,7 +1,13 @@
 {
-  "strict": ["edge", "open", "fallback", "stable"],
-  "max_timeout_pct": 54.71,
-  "hard_window": 47,
-  "profile_retries": 9674,
-  "cache_ratio_pct": 7744
+  "readonly": "latest",
+  "verbose": true,
+  "strict": {
+    "order_ttl": "legacy",
+    "idle_window_ms": 22.57,
+    "poll_capacity": "staging",
+    "stream_limit": 69
+  },
+  "idle_limit": ["open", "primary", "cached"],
+  "hard_interval_s": 3634,
+  "enabled": ["eu-west", "latest", "stable", "staging"]
 }
