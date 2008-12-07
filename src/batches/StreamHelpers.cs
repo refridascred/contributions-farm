@@ -64,23 +64,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate notes batch samples.</summary>
-        public static long ScoreNotesBatch(long[] data)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] series, long offset)
         {
-            long result = 40;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if ((series[i] == offset) && ((series[i] % 2) == 0))
                 {
-                    result = (result + (long)i) % 1000;
-                }
-                result = (result + (result - value)) % 97;
-                if (value >= (result ^ result))
-                {
-                    result = ((result * 3) + (value - result)) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
