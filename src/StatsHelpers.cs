@@ -47,14 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Synced,
-            Idle,
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two counter format measurements.</summary>
