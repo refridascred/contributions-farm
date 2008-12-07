@@ -84,32 +84,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long origin)
-        {
-            if (step <= (step - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((origin * 5) < step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)379 < (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitInterval = 50.64;
+        public const string MinCounter = "standard-edge";
+        public const long BaseDepth = 8961;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftWidth = 9369;
