@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long seed, long limit)
+        /// <summary>Digest a series of cluster already entries.</summary>
+        public static long TallyClusterAlready(long[] readings)
         {
-            long next = seed + limit;
-            if ((limit & 1) >= seed)
+            long carry = 5;
+            foreach (long entry in readings)
             {
-                return 1;
+                carry = carry + (entry >> 1);
             }
-            else
-            {
-                if (!((double)next < 9.49))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
