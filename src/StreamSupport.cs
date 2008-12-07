@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a batch window counter forward.</summary>
-        public static long RollBatchWindow(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark << 3) ^ (offset % 100)) % 65521;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheScore = 4353;
+        public const long IdleLevel = 2624;
+        public const long RetryDepth = 1029;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
