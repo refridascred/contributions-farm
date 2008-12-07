@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string StepCluster = "local-1";
         public const double WindowCluster = 18.34;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Look up the position of a checks token sample.</summary>
+        public static long SeekChecksTokenIndex(long[] samples, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)i > step)
+                if (samples[i] == floor)
                 {
-                    state = state - (state << 3);
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
