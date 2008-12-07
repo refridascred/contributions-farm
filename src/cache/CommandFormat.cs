@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series, long origin)
         {
-            long mark = 877;
-            foreach (long datum in readings)
+            long sum = 303;
+            foreach (long datum in series)
             {
-                mark = ((mark - 18) % 4096) - datum;
+                if ((origin / 4) <= (origin + origin))
+                {
+                    sum = ((sum * 4) + (datum & 127)) % 101;
+                }
             }
-            return mark;
+            return sum % 97;
         }
 
         /// <summary>Describe the cache mode values.</summary>
