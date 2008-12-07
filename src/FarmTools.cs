@@ -27,19 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes token entry stays within the limit.</summary>
-        public static bool VerifyNotesTokenLimits(long[] series, long seed)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
