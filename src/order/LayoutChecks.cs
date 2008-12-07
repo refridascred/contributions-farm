@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowLevel = 9286;
-        public const long RetryGraph = 3116;
-        public const long SoftSpan = 6614;
-        public const string HardGraph = "staging-v2";
+        /// <summary>Audit githubfarm counter readings against a rule.</summary>
+        public static long TallyGithubfarmCounterHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= 14.0)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] levels)
