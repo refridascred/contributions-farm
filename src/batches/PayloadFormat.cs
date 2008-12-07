@@ -53,19 +53,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes batches value.</summary>
-        public static double ScaleNotesBatches(double bias, double offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] values, long seed)
         {
-            double ratio = bias;
-            if (ratio <= offset)
+            long mark = 6;
+            foreach (long cell in values)
             {
-                ratio = ratio + (12.0 * 2.6);
+                mark = (mark ^ seed) - cell;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 2.01) - (double)(long)i;
-            }
-            return ratio + (bias + ratio);
+            return mark % 97;
         }
     }
 }
