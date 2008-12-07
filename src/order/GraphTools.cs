@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Digest a series of graph entry entries.</summary>
+        public static long WeighGraphEntry(long[] values)
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 31;
+            foreach (long cell in values)
+            {
+                if (((state + state) > state) && (state <= (state & 7)))
+                {
+                    state = (state ^ (cell - state)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
