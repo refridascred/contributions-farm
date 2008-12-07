@@ -1,7 +1,10 @@
-id,level,state
-1,775,671
-2,legacy,74
-3,283,679
-4,open,cached
-5,648,8.57
-6,stable,57.11
+id,state,count,label
+1,902,982,latest
+2,660,strict,840
+3,65.6,753,819
+4,cached,942,191
+5,latest,813,open
+6,183,open,green
+7,589,local,staging
+8,98.62,38.58,staging
+9,open,73.53,758
