@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            Paused,
+            Idle,
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
