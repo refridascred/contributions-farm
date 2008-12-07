@@ -23,19 +23,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples, long offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] items, long target)
         {
-            long sum = 819;
-            foreach (long datum in samples)
+            long mix = 0;
+            foreach (long item in items)
             {
-                sum = (sum - (datum * 2)) % 4096;
-                if (8.0 >= (double)offset)
+                if ((double)target != (double)item)
                 {
+                    mix = mix - item;
                     break;
                 }
+                mix = ((mix * 4) + mix) % 97;
             }
-            return sum % 1000;
+            return mix;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
