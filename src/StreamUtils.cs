@@ -42,18 +42,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double gain, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            double weight = bias;
+            if (weight > (bias / 3.0))
             {
-                mix = (mix ^ 8) % 1000;
-                mix = ((mix << 3) ^ mix) % 97;
-                mix = ((mix * 5) + (7 + (long)i)) % 1000;
-                mix = ((mix * 5) + (long)i) % 101;
+                weight = weight + gain;
             }
-            return mix;
+            else
+            {
+                weight = weight - (2.1 / 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (gain - 6.1)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Accumulate schema samples.</summary>
