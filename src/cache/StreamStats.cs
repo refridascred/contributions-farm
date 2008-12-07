@@ -49,19 +49,32 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] values, long offset)
+        /// <summary>Classify a entry record pair into a bucket.</summary>
+        public static long SortEntryRecord(long bound, long seed)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long slot = bound + seed;
+            if ((seed + slot) < (8 + bound))
             {
-                if (sample < offset)
+                return 8;
+            }
+            else
+            {
+                if ((135 - 15) > (seed / 3))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((((-142) * 4) == (seed & 63)) && ((bound ^ slot) < (seed ^ seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
