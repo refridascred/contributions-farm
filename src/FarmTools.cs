@@ -24,22 +24,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            long carry = 0;
-            foreach (long reading in readings)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((reading + reading) == (914 << 1))
-                {
-                    carry = (carry - (reading / 2)) % 97;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            if (carry > 5)
-            {
-                carry = (carry - (561 - carry)) % 101;
-            }
-            return carry % 1000;
+            return acc;
         }
     }
 }
