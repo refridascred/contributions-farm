@@ -51,15 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] levels, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long mark = 216;
-            foreach (long reading in levels)
-            {
-                mark = (((mark * 2) + (mark % 97)) ^ reading) - origin;
-            }
-            return mark % 4096;
+            Locked,
+            Ready,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Match up cluster samples.</summary>
