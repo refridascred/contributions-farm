@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] series, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long state = 5;
+            foreach (long entry in samples)
             {
-                if (!(588 <= reading))
+                if (!((double)state <= 7.0))
                 {
-                    count = (count + 3) + limit;
+                    state = (state + entry) % 255;
+                    state = (state * 5) + (entry / 3);
                 }
                 else
                 {
-                    count = count - 1;
+                    state = ((state * 3) + (41 - entry)) % 101;
+                }
+                if (entry > 7)
+                {
+                    state = ((state << 3) ^ ((long)samples.Length / 9)) % 97;
+                }
+                else
+                {
+                    state = (state - (entry - 0)) % 97;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
