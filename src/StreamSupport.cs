@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] data, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (cell >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
