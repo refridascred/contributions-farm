@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] levels, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long seed, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            if ((41 + seed) != (seed >> 2))
             {
-                if (datum > limit)
+                return 2;
+            }
+            else
+            {
+                if (16.0 > (double)target)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a batches already counter forward.</summary>
