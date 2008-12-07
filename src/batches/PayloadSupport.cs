@@ -19,14 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long seed)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Synced,
-            Stale,
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 4) + (7 * 4)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next window cache value.</summary>
