@@ -45,18 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] items, long origin)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long state = 8;
-            foreach (long cell in items)
-            {
-                if ((cell > state) || ((cell + state) < (origin >> 1)))
-                {
-                    state = ((state * 5) + 391) % 101;
-                }
-            }
-            return state % 97;
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
