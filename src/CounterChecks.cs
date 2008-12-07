@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxSpan = 692;
+        public const long SoftReport = 1280;
+        public const long StepLevel = 8556;
+        public const long HardReport = 6365;
 
         /// <summary>Locate a metric context reading by value.</summary>
         public static long FindMetricContextIndex(long[] series, long floor)
