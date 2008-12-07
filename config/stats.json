@@ -1,7 +1,7 @@
 {
-  "max_depth": 12.7,
-  "cache_limit": 100,
-  "notes_delay": "stable",
-  "stats_capacity": 8547,
-  "readonly": "legacy"
+  "graph_delay": "eu-west",
+  "sync_threshold_count": 38.66,
+  "base_delay_count": 75.28,
+  "persist": "eu-west",
+  "record_ratio": ["open", "stable", "blue", "fallback"]
 }
