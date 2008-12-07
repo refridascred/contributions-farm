@@ -48,19 +48,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double span)
+        /// <summary>Find the first metrics githubfarm entry that matches the target.</summary>
+        public static long LookupMetricsGithubfarmIndex(long[] samples, long limit)
         {
-            double weight = span;
-            if (weight > span)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight - span) + ratio;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (span - weight);
-            }
-            return weight - span;
+            return -1;
         }
     }
 }
