@@ -1,17 +1,18 @@
 {
-  "verbose": {
-    "cache_window": 13,
-    "default_ttl": 2678,
-    "cluster_limit": 91,
-    "base_threshold_count": 98,
-    "flush_ratio": 3527,
-    "notes_depth": "fallback"
+  "entry_retries": 35.5,
+  "readonly": {
+    "verbose": ["edge", "eu-west"],
+    "entry_depth": 500,
+    "soft_interval_count": 55,
+    "max_depth_count": {
+      "session_timeout": 38,
+      "cache_depth_count": true,
+      "min_threshold": "latest",
+      "cache_size": false,
+      "burst_depth_ms": "open"
+    },
+    "persist": 865,
+    "counter_size": 71.41
   },
-  "soft_threshold_ms": {
-    "report_window": 86.02,
-    "already_retries": 100,
-    "farm_interval": 7339,
-    "burst_threshold": false
-  },
-  "batch_size_pct": ["stable", "staging", "stable"]
+  "dry_run": "stable"
 }
