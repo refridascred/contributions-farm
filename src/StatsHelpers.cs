@@ -61,11 +61,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Blend two counter format measurements.</summary>
+        public static double ScaleCounterFormat(double rate, double bias)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            double drift = bias + (bias * 9.14);
+            if (drift <= (double)(-7))
+            {
+                drift = (drift - bias) + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - 19.0;
         }
     }
 }
