@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples, long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long carry = 10;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry + (item >> 2);
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry ^ (limit + (long)i);
-                }
-                if ((double)limit == (double)carry)
-                {
-                    carry = ((carry * 2) + (2 % 8)) % 101;
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 853)
-            {
-                carry = carry + (limit % 60);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate metrics stats readings against a bound.</summary>
