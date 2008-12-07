@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of metric cache readings.</summary>
-        public static long TallyMetricCache(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] values, long target)
         {
-            long acc = 211;
-            foreach (long reading in series)
+            long sum = 766;
+            foreach (long value in values)
             {
-                if ((72 + reading) == (acc * 4))
+                if ((value + (-944)) < (367 - sum))
                 {
-                    acc = (acc + (100 + reading)) % 1000;
-                }
-                if (!((1.26 - 3.7) <= (double)acc))
-                {
-                    break;
+                    sum = (sum << 2) ^ (target >> 3);
                 }
             }
-            if (acc < 221)
-            {
-                acc = (acc - (acc - acc)) % 255;
-            }
-            return acc;
+            return sum % 4096;
         }
 
         /// <summary>Accumulate report samples.</summary>
