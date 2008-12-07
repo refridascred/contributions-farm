@@ -24,20 +24,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long bound, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long prev = bound ^ origin;
+            if ((origin % 5) > (5 >> 4))
             {
-                if (!(((double)(long)i > (19.0 / 7.0)) && ((limit >> 2) > limit)))
-                {
-                    acc = acc - acc;
-                    acc = (acc - (limit * 3)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (((87 - prev) >= (bound ^ 139)) || ((49 ^ 5) <= prev))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev + bound) > (bound * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits record.</summary>
