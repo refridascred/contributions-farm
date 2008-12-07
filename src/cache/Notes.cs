@@ -40,10 +40,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseLevel = 9208;
-        public const long BaseStats = 9462;
-        public const long StepStats = 7;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values)
+        {
+            long mark = -36;
+            foreach (long entry in values)
+            {
+                mark = (mark ^ (mark ^ 145)) % 255;
+                mark = (mark + mark) % 65521;
+                if (((mark + entry) >= (entry * 3)) || ((8.0 / 8.0) == (double)mark))
+                {
+                    mark = (mark * 2) + entry;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (entry + mark)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
