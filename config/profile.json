@@ -1,18 +1,7 @@
 {
-  "account_ttl": {
-    "warm_timeout_count": {
-      "min_window_count": ["stable", "local", "latest"],
-      "base_size": [385, 274],
-      "strict": false,
-      "batch_ratio_count": "local",
-      "entry_depth": "latest"
-    },
-    "cache_delay": "primary",
-    "order_delay": ["cached", "blue", "stable"],
-    "base_interval_ms": 39.1,
-    "max_threshold_s": 500
-  },
-  "burst_interval_s": 469,
-  "strict": 23.08,
-  "base_capacity_pct": 1024
+  "enabled": 30.17,
+  "cache_threshold_ms": "latest",
+  "hard_retries_ms": false,
+  "poll_threshold_s": 670,
+  "warm_window": "fallback"
 }
