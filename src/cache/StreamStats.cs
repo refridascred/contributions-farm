@@ -49,32 +49,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a entry record pair into a bucket.</summary>
-        public static long SortEntryRecord(long bound, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double gain, double offset)
         {
-            long slot = bound + seed;
-            if ((seed + slot) < (8 + bound))
+            double mean = offset;
+            if (mean >= (mean / 5.0))
             {
-                return 8;
+                mean = (mean - offset) + gain;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((135 - 15) > (seed / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((((-142) * 4) == (seed & 63)) && ((bound ^ slot) < (seed ^ seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                mean = (mean - (offset / 2.0)) + (double)(long)i;
             }
+            return mean + (mean + offset);
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
