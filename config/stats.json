@@ -1,5 +1,8 @@
 {
-  "warm_ttl_pct": "standard",
-  "poll_threshold_count": 60,
-  "verbose": "edge"
+  "persist": "legacy",
+  "idle_threshold_s": 1024,
+  "base_window_ms": [429, 325],
+  "warm_limit_s": "latest",
+  "cache_window_pct": 4685,
+  "retry_threshold_pct": [337, 93, 334, 120]
 }
