@@ -59,12 +59,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] data, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long sum = -69;
+            foreach (long item in data)
+            {
+                if (floor >= (item & 15))
+                {
+                    sum = (sum - (floor & 127)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the buffer level values.</summary>
