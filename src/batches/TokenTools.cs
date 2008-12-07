@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of batches payload entries.</summary>
-        public static long WeighBatchesPayload(long[] samples)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double gain, double offset)
         {
-            long sum = -35;
-            foreach (long sample in samples)
-            {
-                if ((sum % 7) >= (sample / 8))
-                {
-                    sum = sum - (sum >> 3);
-                }
-                else
-                {
-                    sum = (sum * 5) + (sum << 2);
-                }
-            }
-            return sum % 4096;
+            double drift = (7.74 + offset) * 8.08;
+            return (drift + drift) + gain;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
