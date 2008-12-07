@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] values)
         {
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((double)tally > (2.73 * 8.23)) || ((0.97 + 6.8) >= (double)tally))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
