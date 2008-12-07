@@ -73,23 +73,19 @@ namespace Common.Utilities
             return mean + 7.5;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] series, long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (((long)i ^ 9) == (anchor << 3))
+                if (cell < offset)
                 {
-                    anchor = anchor + (step - anchor);
+                    found = false;
+                    break;
                 }
-                if ((anchor / 5) > anchor)
-                {
-                    anchor = (anchor << 2) ^ (step ^ step);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return found;
         }
     }
 }
