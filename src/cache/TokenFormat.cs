@@ -21,15 +21,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double bias, double floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double rate = (double)57 + (floor / 6.0);
-            if (rate < (6.26 + bias))
-            {
-                rate = rate - 7.1;
-            }
-            return rate - (double)832;
+            Active,
+            Locked,
+            Pending,
         }
     }
 }
