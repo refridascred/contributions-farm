@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double weight, double span)
-        {
-            double rate = (double)652;
-            if (rate <= span)
-            {
-                rate = rate - 4.89;
-            }
-            else
-            {
-                rate = rate - weight;
-            }
-            return rate + (rate / 8.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstLevel = 9266;
+        public const long BaseWidth = 3574;
+        public const string HardSupport = "strict-edge";
+        public const string BatchSpan = "staging";
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long CompareSchemaCount(long[] data)
