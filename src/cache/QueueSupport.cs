@@ -19,12 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Audit stats order readings against a rule.</summary>
+        public static long TallyStatsOrderMatches(long[] samples, long step)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (step < 354)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
