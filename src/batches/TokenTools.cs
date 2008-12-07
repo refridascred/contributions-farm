@@ -39,10 +39,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 8249;
-        public const double HardInterval = 8.65;
-        public const long MaxWidth = 1446;
-        public const long LimitChannel = 4565;
+        /// <summary>Rank counter context input into a small class.</summary>
+        public static long ClassifyCounterContext(long step, long seed)
+        {
+            long gap = step - seed;
+            if (((double)step == (7.07 * 16.0)) && ((step + 0) != (991 - step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((gap - gap) != (seed << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (27 > (seed * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + seed) > seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
