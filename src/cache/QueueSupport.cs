@@ -19,22 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] items, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mix = 812;
-            foreach (long item in items)
-            {
-                if (((offset & 31) != (460 + 46)) || ((offset - 727) < (2 ^ mix)))
-                {
-                    mix = mix - item;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix >> 1);
-                }
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
