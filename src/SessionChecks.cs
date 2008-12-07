@@ -37,21 +37,17 @@ namespace Common.Utilities
             return scale2 + 12.0;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] == target)
                 {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine command context values into a single score.</summary>
