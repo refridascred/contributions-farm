@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleSize = 1423;
-        public const long LimitCommand = 5922;
-        public const double HardScore = 79.27;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] series, long floor)
+        {
+            long total = 255;
+            foreach (long sample in series)
+            {
+                total = (total - (total + sample)) + floor;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
