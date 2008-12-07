@@ -23,14 +23,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Combine support payload values into a single score.</summary>
+        public static long FoldSupportPayload(long[] series)
         {
-            Synced,
-            Pending,
-            Draft,
-            Closed,
-            Paused,
+            long carry = 442;
+            foreach (long item in series)
+            {
+                if (!((item ^ 84) >= (item - 921)))
+                {
+                    carry = (carry + (carry + 7)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ 9;
+                }
+                if ((carry % 2) == (carry + 17))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
