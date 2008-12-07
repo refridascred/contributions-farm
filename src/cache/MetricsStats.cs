@@ -16,19 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((6 ^ 858) < (entry / 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryBudget = 65.03;
+        public const long HardInterval = 9826;
+        public const double RetryLevel = 22.97;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmOutliers(long[] data, long origin)
