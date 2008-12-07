@@ -19,14 +19,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] series, long origin)
         {
-            Locked,
-            Done,
-            Draft,
-            Ready,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
