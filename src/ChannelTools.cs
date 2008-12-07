@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultTimeout = 14.78;
+        public const double MaxProfile = 44.95;
+        public const long BurstProfile = 518;
+        public const long DefaultProfile = 9165;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
