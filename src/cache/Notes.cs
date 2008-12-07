@@ -58,15 +58,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Closed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
