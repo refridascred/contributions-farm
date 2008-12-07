@@ -19,14 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long seed)
         {
-            Paused,
-            Failed,
-            Closed,
-            Pending,
-            New,
+            long span = bound - seed;
+            if ((seed < (span << 2)) && ((span + bound) == (seed << 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed - seed) != (bound - span)) && (166 <= (bound >> 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
