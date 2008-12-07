@@ -73,12 +73,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data, long bound)
         {
-            Pending,
-            Queued,
-            Retry,
+            long mark = 95;
+            foreach (long value in data)
+            {
+                mark = (mark + bound) ^ value;
+            }
+            if (mark > 743)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
         }
     }
 }
