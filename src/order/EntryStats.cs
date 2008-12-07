@@ -37,12 +37,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "cached-v2";
-        public const string LimitCount = "fallback-edge";
-        public const string LimitInterval = "stable-1";
-        public const string HardContributi = "standard";
-        public const double DefaultContributi = 88.79;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long offset, long limit)
+        {
+            if ((limit >> 2) > limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (9 >= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit > (8 % 10))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many checks report samples are out of range.</summary>
         public static long AuditChecksReportMatches(long[] items)
