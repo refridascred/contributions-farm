@@ -1,30 +1,4 @@
 # support settings
-persist: latest
-default_interval: 93
-min_delay_ms:
-  enabled: legacy
-  idle_interval_pct: false
-  filter_size: edge
-  poll_threshold_count:
-    - stable
-    - eu-west
-flush_capacity:
-  - 343
-  - 290
-  - 43
-  - 73
-soft_depth_ms:
-  cache_capacity_count: green
-  stats_size: primary
-  dry_run: true
-  verbose: 8344
-  cache_delay_ms: true
-  filter_interval:
-    flush_interval_s: true
-    schema_window: 250
-    persist:
-      - 204
-      - 429
-      - 185
-      - 127
-    max_depth_pct: true
+default_ratio_pct: 1024
+account_threshold: latest
+max_depth: edge
