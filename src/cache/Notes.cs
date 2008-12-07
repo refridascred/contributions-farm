@@ -69,21 +69,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "cached";
+        public const long LimitReport = 8024;
+        public const long BaseReport = 8789;
+        public const string BatchTimeout = "primary";
+        public const string LimitSpan = "latest-edge";
     }
 }
