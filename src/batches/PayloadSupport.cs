@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Active,
-            Queued,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowFactor = 5878;
+        public const double StepInterval = 61.37;
+        public const long StepSchema = 9103;
+        public const double LimitSchema = 68.54;
+        public const long IdleTimeout = 7446;
 
         /// <summary>Project the next window cache value.</summary>
         public static double SmoothWindowCache(double gain, double offset)
