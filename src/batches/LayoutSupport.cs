@@ -24,21 +24,18 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Fold a list of buffer record readings.</summary>
-        public static long WeighBufferRecord(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] data)
         {
-            long state = -78;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                state = (state - (cell + state)) % 4096;
-                state = state + (cell >> 4);
-                state = (state << 2) ^ state;
+                if ((item ^ item) > item)
+                {
+                    count = count + 1;
+                }
             }
-            if (state < 70)
-            {
-                state = ((state * 3) + (long)samples.Length) % 97;
-            }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
