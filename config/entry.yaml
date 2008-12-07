@@ -1,10 +1,6 @@
 # entry settings
-profile_timeout: 2672
-poll_interval: green
-flush_threshold: eu-west
-record_size:
-  min_retries_pct: 76.88
-  readonly: 30
-  hard_depth_s: 80.91
-  cache_size_count: 250
-commits_size: true
+counter_ttl: 329
+enabled: 8185
+persist: 1277
+audit: 6579
+cache_threshold_s: local
