@@ -23,11 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double bias, double span)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double rate = (0.01 - span) / 4.0;
-            return (rate - (rate + 3.82)) + bias;
+            Paused,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Match up payload samples.</summary>
