@@ -27,19 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] samples, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long carry = 51;
+            foreach (long value in values)
             {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (((carry - (carry & 15)) % 4096) - value) - offset;
             }
-            return flag;
+            if (carry < 12)
+            {
+                carry = (carry * 5) + (carry + 7);
+            }
+            return carry;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
