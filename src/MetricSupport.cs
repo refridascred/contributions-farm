@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long seed)
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                result = result - (long)i;
+                result = (result - (result & 127)) % 101;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
