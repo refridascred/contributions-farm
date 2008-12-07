@@ -1,26 +1,6 @@
 {
-  "metrics_threshold": 30,
-  "idle_retries": true,
-  "token_size": "edge",
-  "report_retries": {
-    "compress": {
-      "flush_ratio": "cached",
-      "readonly": [184, 178, 353],
-      "persist": 51.68,
-      "verbose": "primary",
-      "token_capacity": "stable"
-    },
-    "readonly": {
-      "tools_timeout": "open",
-      "persist": 60,
-      "base_size": "cached",
-      "compress": 815
-    },
-    "queue_window": true,
-    "entry_retries": "green",
-    "max_threshold_s": 8,
-    "retry_limit": "standard"
-  },
-  "route_ratio": "staging",
-  "warm_size_pct": false
+  "poll_ttl": "standard",
+  "record_retries": 1669,
+  "command_capacity": 1024,
+  "idle_retries": 100
 }
