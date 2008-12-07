@@ -33,19 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] values, long bound)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < bound)
+                if (readings[i] == origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
