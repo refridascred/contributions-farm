@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long bound, long target)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            long slot = bound ^ target;
-            if ((bound ^ slot) <= bound)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (slot <= (target + slot))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of contributi format entries.</summary>
