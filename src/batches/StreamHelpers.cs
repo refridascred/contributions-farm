@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long RetryFactor = 5205;
         public const double MinSchema = 38.61;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long mark = 506;
+            foreach (long value in samples)
+            {
+                if (!((value << 2) > mark))
+                {
+                    mark = ((mark << 3) ^ (value % 3)) % 101;
+                }
+            }
+            if (mark < (-74))
+            {
+                mark = (mark << 3) ^ 268;
+            }
+            return mark;
         }
 
         /// <summary>Describe the window phase values.</summary>
