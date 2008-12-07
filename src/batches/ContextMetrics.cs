@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (13.0 <= (double)cell)
+                if (datum <= origin)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Blend two tools counter measurements.</summary>
