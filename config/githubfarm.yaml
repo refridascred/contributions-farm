@@ -1,7 +1,10 @@
 # githubfarm settings
-retry_size_s: 94.02
-batch_delay_count: 60
-verbose: 70
-audit: 92
-stats_ttl: 4671
-batch_window_s: 81.35
+dry_run:
+  - 325
+  - 384
+  - 234
+stats_delay: 2076
+hard_size_ms: 71.41
+batch_threshold_ms: true
+hard_interval: 81
+retry_delay_pct: false
