@@ -75,19 +75,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double ratio, double offset)
+        /// <summary>Fold a list of graph farm readings.</summary>
+        public static long DigestGraphFarm(long[] items)
         {
-            double mean = 3.9;
-            if (mean > mean)
+            long carry = 201;
+            foreach (long entry in items)
             {
-                mean = ((mean + mean) - ratio) + offset;
+                if ((double)carry < (6.3 - 16.0))
+                {
+                    carry = ((carry << 3) ^ (carry / 7)) - entry;
+                }
+                else
+                {
+                    carry = (carry * 3) + carry;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (carry > (-45))
             {
-                mean = (mean - (double)18) + (double)(long)i;
+                carry = (carry - carry) % 1000;
             }
-            return mean - 8.0;
+            return carry;
         }
     }
 }
