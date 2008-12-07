@@ -44,11 +44,13 @@ namespace Common.Utilities
             return rate - (span + weight);
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double ratio, double span)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double weight = 1.4 + (ratio / 8.0);
-            return (weight - weight) + span;
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
