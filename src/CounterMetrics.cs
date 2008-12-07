@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((bound > (6 + (-575))) && ((14.0 * 4.92) == (double)carry))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry - (bound << 1)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
