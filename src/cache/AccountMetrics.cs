@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long DefaultScore = 5541;
         public const long MaxReport = 4050;
 
-        /// <summary>Find the first entry counter entry that matches the target.</summary>
-        public static long SeekEntryCounterIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 4013;
+        public const long StepLevel = 7624;
+        public const long HardSpan = 8991;
+        public const double MaxFarm = 70.82;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long offset)
