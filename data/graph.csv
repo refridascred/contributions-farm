@@ -1,6 +1,11 @@
-id,label,rank,count,score
-1,primary,94.36,staging,299
-2,81.95,green,17,edge
-3,727,77.75,1,72.47
-4,594,77.64,primary,863
-5,standard,94.11,edge,24.88
+id,ratio,owner,count
+1,711,25.76,304
+2,stable,green,557
+3,75.04,732,209
+4,983,cached,local
+5,6.85,71,790
+6,419,30,599
+7,54.41,open,53.78
+8,strict,eu-west,164
+9,fallback,5.85,legacy
+10,193,162,651
