@@ -1,6 +1,7 @@
 {
-  "poll_limit_count": 7.06,
-  "audit": true,
-  "sync_depth_count": true,
-  "idle_interval": "local"
+  "strict": ["edge", "open", "fallback", "stable"],
+  "max_timeout_pct": 54.71,
+  "hard_window": 47,
+  "profile_retries": 9674,
+  "cache_ratio_pct": 7744
 }
