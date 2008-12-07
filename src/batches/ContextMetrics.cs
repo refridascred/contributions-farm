@@ -34,17 +34,15 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Look up the position of a contributi account sample.</summary>
-        public static long LocateContributiAccountIndex(long[] data, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 4;
+            foreach (long cell in data)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (cell + sum)) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the batches state values.</summary>
