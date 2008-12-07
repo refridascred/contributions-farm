@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a queue editor reading.</summary>
-        public static double BlendQueueEditor(double weight, double floor)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double ratio = (floor + floor) + floor;
-            if (ratio <= (weight + floor))
-            {
-                ratio = ratio + (weight / 9.0);
-            }
-            else
-            {
-                ratio = ratio + 6.16;
-            }
-            return ratio + (16.0 + 9.83);
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
