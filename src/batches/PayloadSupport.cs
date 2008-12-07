@@ -23,17 +23,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] samples, long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = gain;
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)(long)i) - offset;
             }
-            return -1;
+            return weight + (double)(-26);
         }
 
         /// <summary>Describe the checks status values.</summary>
