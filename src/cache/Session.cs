@@ -14,21 +14,32 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = limit + step;
+            if ((double)gap < 18.0)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) == (step * 2))
                 {
-                    if ((series[i] ^ series[j]) > 12)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)gap != (7.55 + 1.43))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of stream buffer entries.</summary>
