@@ -49,15 +49,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a metric layout reading.</summary>
-        public static double ProjectMetricLayout(double bias, double span)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long offset)
         {
-            double load = span;
-            for (int i = 0; i < 4; i++)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                load = ((load - load) - (double)(long)i) - bias;
+                carry = carry + (offset ^ carry);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return load - load;
+            return carry;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
