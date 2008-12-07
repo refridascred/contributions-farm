@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batches commits reading by value.</summary>
-        public static long LookupBatchesCommitsIndex(long[] samples, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 64;
+            foreach (long reading in levels)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                if ((double)reading > (1.9 / 5.0))
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ anchor) % 101) + limit;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
