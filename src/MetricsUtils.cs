@@ -51,24 +51,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long offset, long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            if (!(bound <= (bound * 3)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound << 3) >= (offset + offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
