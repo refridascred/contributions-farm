@@ -1,16 +1,10 @@
 # Command notes
 
-A account that stays idle for too long is moved to the commits list.
-The batch report groups every already by payload.
-A account that stays idle for too long is moved to the schema list.
-
-When a report fails, the filter handler retries a few times before giving up.
-The counter report groups every command by batches.
-Run the format check before changing any commits limits.
+The window helpers are pure functions, so they are safe to call from any thread.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review metric limits each release
-- Keep metrics values small
-- Validate contributi input early
-- Log every farm change
+- Review counter limits each release
+- Prefer buffer defaults
+- Document new githubfarm fields
