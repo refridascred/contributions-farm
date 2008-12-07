@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] levels, long origin)
         {
-            Done,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((origin ^ value) <= 2) && ((value * 5) < count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
