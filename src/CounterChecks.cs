@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxSpan = 692;
-        public const long SoftReport = 1280;
-        public const long StepLevel = 8556;
-        public const long HardReport = 6365;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Dropped,
+            Ready,
+            New,
+            Stale,
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
