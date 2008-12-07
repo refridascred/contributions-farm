@@ -54,31 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long target, long target2)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] items)
         {
-            if ((double)target2 != (9.0 * 0.58))
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target2 - 180) < target2)
+                if (!(((matches + 764) <= (matches + matches)) || ((1.81 - 8.0) != (double)reading)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (7.95 > (double)target2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
