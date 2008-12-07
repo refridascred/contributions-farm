@@ -1,15 +1,12 @@
 {
-  "persist": "stable",
-  "soft_size_pct": [242, 316, 323],
-  "base_delay": 53,
-  "strict": {
-    "warm_threshold": 52,
-    "warm_ttl": [497, 413],
-    "base_threshold": true,
-    "soft_capacity_ms": 250,
-    "flush_threshold_s": [352, 275, 413],
-    "readonly": true
+  "default_window": "legacy",
+  "payload_depth": false,
+  "warm_window_pct": {
+    "commits_interval": "green",
+    "metric_capacity": 66.83,
+    "batches_retries": [405, 98, 33, 488],
+    "editor_depth": 30,
+    "readonly": 957
   },
-  "profile_capacity": "fallback",
-  "batch_retries": ["open", "open", "green"]
+  "max_depth_pct": 51.64
 }
