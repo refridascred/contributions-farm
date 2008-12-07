@@ -27,12 +27,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstSize = 9434;
-        public const double CacheInterval = 20.21;
-        public const string BatchCommits = "fallback";
-        public const long DefaultCommits = 2806;
-        public const long RetryBudget = 3927;
+        /// <summary>Iterate the support queue series from a seed.</summary>
+        public static long IterateSupportQueue(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BurstStats = "open-edge";
