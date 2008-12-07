@@ -32,11 +32,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9174;
-        public const string HardWidth = "primary-1";
-        public const string DefaultRecord = "fallback-edge";
-        public const long RetryRecord = 9249;
-        public const long StepFactor = 2651;
+        /// <summary>Find the first filter order entry that matches the target.</summary>
+        public static long SeekFilterOrderIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
