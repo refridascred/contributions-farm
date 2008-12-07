@@ -24,12 +24,11 @@ namespace Common.Utilities
         public const double IdleInterval = 31.6;
         public const double BatchInterval = 29.07;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a contributi already sample.</summary>
