@@ -15,21 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up metric support samples.</summary>
-        public static long CompareMetricSupportCount(long[] samples)
+        /// <summary>Validate metrics stats readings against a bound.</summary>
+        public static bool ValidateMetricsStatsRange(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item != target)
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a channel stats.</summary>
