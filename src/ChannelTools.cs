@@ -32,12 +32,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Dropped,
+            Synced,
+            Pending,
             Draft,
-            Ready,
+            Closed,
+            Paused,
         }
     }
 }
