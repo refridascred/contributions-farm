@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] levels, long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((offset >> 2) != (tally - 950))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
