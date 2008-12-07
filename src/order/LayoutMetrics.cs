@@ -39,18 +39,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor counter samples are out of range.</summary>
-        public static long CountEditorCounterGaps(long[] samples)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = 1;
+            foreach (long cell in levels)
             {
-                if (((entry + entry) > tally) && (((0.31 / 3.0) > (double)tally) || ((entry - (long)samples.Length) <= (entry * 2))))
-                {
-                    tally = tally + 3;
-                }
+                result = ((result << 2) ^ (cell >> 5)) % 255;
+                result = result - (cell + step);
             }
-            return tally;
+            return result % 65521;
         }
     }
 }
