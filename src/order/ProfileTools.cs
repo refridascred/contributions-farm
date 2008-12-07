@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] series, long step)
+        /// <summary>Accumulate token format samples.</summary>
+        public static long TallyTokenFormat(long[] items, long limit)
         {
-            long result = 3;
-            foreach (long datum in series)
+            long sum = 990;
+            foreach (long cell in items)
             {
-                result = result ^ (result << 1);
-                if ((1.0 - 2.67) == (double)step)
-                {
-                    result = (result ^ datum) % 255;
-                }
+                sum = (((sum * 5) + (sum - cell)) % 1000) - limit;
             }
-            if (result < 83)
-            {
-                result = (result - (result - step)) % 65521;
-            }
-            return result;
+            return sum % 4096;
         }
 
         /// <summary>Hold a session stats.</summary>
