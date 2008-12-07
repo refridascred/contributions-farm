@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] series, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (series[i] == seed)
+                if ((tally * 3) <= 13)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
