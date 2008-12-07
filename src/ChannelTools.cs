@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BurstSpan = 3540;
         public const string StepEntry = "alpha-v2";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((3.3 / 2.0) > (double)sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count tools metric pairs that satisfy a relation.</summary>
