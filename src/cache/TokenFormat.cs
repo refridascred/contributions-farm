@@ -32,18 +32,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] values)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((hits - 4) >= value)
+                if (item < seed)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
