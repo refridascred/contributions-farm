@@ -40,15 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double rate, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] levels, long limit)
         {
-            double ratio = 3.3;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                ratio = ((ratio + 12.0) + (double)(long)i) - rate;
+                if (((limit + 41) < matches) && ((matches << 3) > (reading + reading)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio - floor;
+            return matches;
         }
     }
 }
