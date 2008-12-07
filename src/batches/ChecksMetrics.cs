@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] series, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((-94) >> 4) >= (sample - tally))
+                if ((double)191 != (double)(long)i)
                 {
-                    tally = (tally + 2) + limit;
+                    break;
                 }
+                anchor = ((anchor << 3) ^ origin) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Validate support session readings against a bound.</summary>
