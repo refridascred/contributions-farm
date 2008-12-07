@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long origin, long origin2)
+        /// <summary>Iterate the payload filter series from a seed.</summary>
+        public static long StepPayloadFilter(long step)
         {
-            long diff = origin ^ origin2;
-            if (origin >= (diff & 255))
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((diff % 10) >= (diff - diff)) && ((43 + diff) > (1 + origin)))
+                result = (result + (long)i) % 255;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 8;
+                    result = (result + (result % 3)) + (long)i2;
                 }
-                else
-                {
-                    if (((double)diff != (16.0 - 6.6)) || ((diff - origin) >= origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
