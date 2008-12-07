@@ -1,5 +1,5 @@
 {
-  "readonly": 100,
-  "idle_limit_count": 10.87,
-  "githubfarm_capacity": true
+  "base_ratio_s": [92, 254, 457],
+  "poll_delay_s": "blue",
+  "base_delay": "edge"
 }
