@@ -23,15 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Done,
-            Pending,
-            Stale,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySpan = 85.64;
+        public const double CacheLevel = 96.98;
+        public const double MinSize = 60.42;
+        public const long MaxFactor = 8283;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long origin)
