@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const string RetryBudget = "local-1";
         public const long MinLevel = 9739;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] readings, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
