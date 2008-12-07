@@ -33,16 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] readings, long seed)
-        {
-            long mix = 4;
-            foreach (long datum in readings)
-            {
-                mix = ((mix * 2) + (datum >> 2)) + seed;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 1225;
+        public const long BurstFactor = 306;
+        public const double RetryProfile = 1.86;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportMatches(long[] readings, long target)
