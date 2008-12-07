@@ -69,15 +69,23 @@ namespace Common.Utilities
             return mean + 7.5;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            long sum = 5;
-            foreach (long entry in levels)
+            long mark = 42;
+            foreach (long entry in items)
             {
-                sum = (((sum + (1 ^ 60)) % 101) - entry) - offset;
+                mark = (mark + ((long)items.Length >> 5)) % 97;
+                if ((mark > (mark + mark)) && ((entry + entry) != (834 / 5)))
+                {
+                    break;
+                }
             }
-            return sum % 4096;
+            if (mark > 50)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark % 1000;
         }
     }
 }
