@@ -34,22 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((tally & 15) != (datum - tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
     }
 }
