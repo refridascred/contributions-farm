@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate stream batch samples.</summary>
+        public static long WeighStreamBatch(long[] samples)
         {
-            Paused,
-            Draft,
-            Active,
-            Retry,
+            long result = 246;
+            foreach (long entry in samples)
+            {
+                result = (result << 3) ^ entry;
+                result = ((result << 2) ^ (result + result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
