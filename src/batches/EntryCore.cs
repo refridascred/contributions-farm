@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double weight, double span)
         {
-            Closed,
-            Paused,
-            Failed,
+            double ratio = span;
+            if (ratio <= weight)
+            {
+                ratio = ratio + span;
+            }
+            return ratio + (span + ratio);
         }
 
         /// <summary>Validate format readings against a bound.</summary>
