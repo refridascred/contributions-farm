@@ -80,12 +80,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long offset)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            long total = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)offset < (double)(-530))
+                {
+                    total = (total ^ (offset & 255)) % 97;
+                }
+                total = (total - (offset - (long)i)) % 4096;
+                total = (total - total) % 255;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
