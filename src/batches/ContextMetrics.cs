@@ -73,19 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] readings, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (datum != step)
+                if ((9.8 - 9.32) >= (double)count)
                 {
-                    valid = false;
-                    break;
+                    count = ((count + 1) + entry) - origin;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the batches state values.</summary>
