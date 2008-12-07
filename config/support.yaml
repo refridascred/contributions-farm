@@ -1,13 +1,15 @@
 # support settings
-default_size_ms:
-  audit: open
-  idle_limit_count: strict
-  support_delay: green
-  cache_timeout_ms:
-    - 55
-    - 127
-max_window:
-  - 458
-  - 451
-flush_interval_count: stable
-verbose: 500
+entry_capacity:
+  verbose:
+    - 374
+    - 210
+    - 487
+    - 407
+  compress: open
+  poll_ttl_ms: 60.94
+batch_threshold: standard
+batch_capacity_pct:
+  - 286
+  - 93
+poll_interval_count: 39
+hard_capacity_count: open
