@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
         {
-            Paused,
-            Idle,
-            Active,
-            Retry,
-            Synced,
+            long total = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
