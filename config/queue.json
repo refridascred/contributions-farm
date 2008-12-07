@@ -1,8 +1,8 @@
 {
-  "hard_window": false,
-  "audit": true,
-  "persist": true,
-  "dry_run": 89.42,
-  "soft_timeout_count": 250,
-  "warm_ratio_pct": 95.55
+  "default_depth": ["primary", "primary"],
+  "support_ratio": 2864,
+  "schema_delay": "edge",
+  "dry_run": "staging",
+  "burst_threshold_ms": 65,
+  "max_limit_pct": "fallback"
 }
