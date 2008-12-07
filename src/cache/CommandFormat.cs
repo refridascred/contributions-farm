@@ -34,14 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Dropped,
-            Idle,
-            Retry,
-            New,
-            Done,
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a buffer batch pair into a bucket.</summary>
