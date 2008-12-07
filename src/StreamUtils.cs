@@ -77,13 +77,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit command stats readings against a rule.</summary>
+        public static long CountCommandStatsHits(long[] series)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((6.0 + 2.49) == (double)count)
+                {
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
