@@ -16,12 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            Done,
+            Failed,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
