@@ -75,13 +75,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] readings)
         {
-            Closed,
-            Queued,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((413 >> 1) <= (hits + 3))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
