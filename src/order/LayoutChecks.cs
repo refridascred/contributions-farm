@@ -37,22 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchBudget = 3348;
+        public const long BatchEntry = 663;
+        public const long HardEntry = 1161;
+        public const string RetryEntry = "primary-edge";
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
