@@ -1,7 +1,11 @@
 {
-  "token_size": "edge",
-  "audit": 100,
-  "compress": 61.68,
-  "support_interval": "eu-west",
-  "default_timeout_s": 60
+  "min_window_count": "edge",
+  "channel_capacity": false,
+  "poll_threshold_count": "open",
+  "sync_threshold_s": {
+    "soft_size_ms": 18.42,
+    "contributi_limit": 95.99,
+    "idle_ttl_ms": true,
+    "verbose": 50.67
+  }
 }
