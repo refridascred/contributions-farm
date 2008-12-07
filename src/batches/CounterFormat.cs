@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] readings, long bound)
         {
-            long state = 217;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                state = (state ^ (floor + 1)) % 1000;
-                for (int i = 0; i < 7; i++)
+                if (cell > bound)
                 {
-                    state = ((state * 4) + (floor + state)) ^ (long)i;
-                }
-                if ((state < floor) && ((floor ^ state) <= state))
-                {
-                    state = (state + (item << 1)) % 97;
-                }
-                else
-                {
-                    state = state ^ (state >> 1);
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Locate a format reading by value.</summary>
