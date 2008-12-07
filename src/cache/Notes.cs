@@ -32,12 +32,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 32.77;
-        public const double SoftRatio = 82.93;
-        public const long RetryBudget = 2986;
-        public const long LimitSchema = 7664;
-        public const long BurstSize = 6993;
+        /// <summary>Check that every filter entry entry stays within the limit.</summary>
+        public static bool ValidateFilterEntryRange(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long SeriesToken(long limit)
