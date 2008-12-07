@@ -90,15 +90,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next entry checks value.</summary>
-        public static double SmoothEntryChecks(double gain, double bias)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] readings, long target)
         {
-            double bias2 = (double)896 + gain;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                bias2 = (bias2 - (bias - bias)) + (double)(long)i;
+                if (((datum - target) <= (target + target)) && (((793 - datum) != (5 * 3)) && ((double)datum >= (19.0 + 9.8))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return bias2 - (0.01 / 5.0);
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
