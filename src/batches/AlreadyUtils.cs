@@ -42,18 +42,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((datum - 3) == (matches ^ datum))
+                if ((reading - tally) < (tally << 1))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 1) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the stream kind values.</summary>
