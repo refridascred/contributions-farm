@@ -53,15 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] values, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] data, long offset)
         {
-            long mark = 6;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mark = (mark ^ seed) - cell;
+                if (7 > (67 ^ hits))
+                {
+                    hits = ((hits + 3) + cell) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark % 97;
+            return hits;
         }
     }
 }
