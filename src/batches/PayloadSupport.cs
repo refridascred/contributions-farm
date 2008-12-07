@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowFactor = 5878;
-        public const double StepInterval = 61.37;
-        public const long StepSchema = 9103;
-        public const double LimitSchema = 68.54;
-        public const long IdleTimeout = 7446;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Dropped,
+            Queued,
+            Retry,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Project the next window cache value.</summary>
         public static double SmoothWindowCache(double gain, double offset)
