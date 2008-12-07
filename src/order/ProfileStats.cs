@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a account farm reading by value.</summary>
-        public static long FindAccountFarmIndex(long[] series, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = gain;
+            return ratio - offset;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
