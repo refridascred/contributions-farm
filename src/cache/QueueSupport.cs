@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Blend two cache notes measurements.</summary>
+        public static double SmoothCacheNotes(double weight, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            double load = weight + bias;
+            if (load <= (bias + weight))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (mark - (mark * 2)) ^ (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                load = load - load;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (bias - load)) - (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
