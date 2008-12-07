@@ -19,13 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
+            Paused,
+            Failed,
+            Closed,
             Pending,
-            Locked,
-            Synced,
-            Ready,
+            New,
         }
 
         /// <summary>Match up notes samples.</summary>
