@@ -57,13 +57,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] samples, long origin)
         {
-            Closed,
-            Locked,
-            Synced,
-            New,
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
