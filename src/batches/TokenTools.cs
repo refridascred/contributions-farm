@@ -24,11 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double gain, double offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long floor)
         {
-            double drift = (7.74 + offset) * 8.08;
-            return (drift + drift) + gain;
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
