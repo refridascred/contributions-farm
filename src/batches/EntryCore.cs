@@ -28,11 +28,22 @@ namespace Common.Utilities
             return ratio + (double)688;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Count the batches filter entries that pass the check.</summary>
+        public static long CountBatchesFilterGaps(long[] readings, long limit)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)560 > (double)cell)
+                {
+                    count = (count + 1) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
