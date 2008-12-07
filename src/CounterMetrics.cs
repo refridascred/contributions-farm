@@ -24,21 +24,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((double)(long)i > (19.0 / 7.0)) && ((limit >> 2) > limit)))
                 {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc - acc;
+                    acc = (acc - (limit * 3)) % 1000;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a commits record.</summary>
