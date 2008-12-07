@@ -27,15 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long score = 5;
-            foreach (long cell in levels)
-            {
-                score = (score - (17 << 2)) - cell;
-            }
-            return score % 97;
+            Done,
+            Queued,
+            Stale,
+            Pending,
         }
     }
 }
