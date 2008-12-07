@@ -41,22 +41,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] samples, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            long anchor = 6;
-            foreach (long value in samples)
+            double load = rate - (offset + rate);
+            for (int i = 0; i < 6; i++)
             {
-                if ((offset & 3) != (value << 3))
-                {
-                    anchor = (anchor * 2) + anchor;
-                }
-                if ((anchor - value) == (anchor ^ 404))
-                {
-                    break;
-                }
+                load = (load - (load + 5.9)) - (double)(long)i;
             }
-            return anchor;
+            return load + rate;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
