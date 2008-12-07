@@ -26,19 +26,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate buffer layout readings against a bound.</summary>
-        public static bool ValidateBufferLayoutRange(long[] values, long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double mean = (gain * 4.1) + (7.1 - gain);
+            if (mean > floor)
             {
-                if (reading != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - (gain - floor);
             }
-            return ok;
+            else
+            {
+                mean = mean - (gain * 5.43);
+            }
+            return mean + (double)617;
         }
     }
 }
