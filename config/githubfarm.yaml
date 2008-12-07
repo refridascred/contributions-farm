@@ -1,17 +1,5 @@
 # githubfarm settings
-batches_window: 68.24
-readonly: 6.05
-burst_retries_pct: false
-entry_ratio:
-  route_ttl: legacy
-  graph_delay: primary
-  window_depth: 60
-  batch_size_ms: open
-  batches_window: 60
-  max_ttl_s: 500
-verbose: 17.64
-cache_timeout:
-  - eu-west
-  - latest
-  - strict
-  - stable
+dry_run: 9303
+max_retries_count: 1024
+githubfarm_delay: 31
+persist: green
