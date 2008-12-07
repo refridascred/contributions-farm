@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = acc - (offset + acc);
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 2466;
+        public const long CacheDepth = 7583;
+        public const long BatchEntry = 4588;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheMatches(long[] readings)
