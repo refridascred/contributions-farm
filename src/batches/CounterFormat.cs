@@ -20,17 +20,20 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long BatchFactor = 6561;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] data, long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] <= floor)
+                total = (total - (seed % 7)) % 101;
+                if (((total + 545) == (seed + 80)) && (((long)i & 15) >= (0 * 3)))
                 {
-                    return (long)i;
+                    total = ((total * 3) + (total - seed)) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
