@@ -31,11 +31,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public double Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "stable-edge";
+        public const double BaseNotes = 68.94;
+        public const double BurstRatio = 75.63;
     }
 }
