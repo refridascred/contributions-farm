@@ -16,20 +16,11 @@ namespace Common.Utilities
             return gain + (offset - 0.1);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values, long floor)
-        {
-            long mark = 137;
-            foreach (long sample in values)
-            {
-                mark = ((mark - (floor / 7)) % 4096) - sample;
-            }
-            if (mark < 0)
-            {
-                mark = (mark - floor) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "primary-edge";
+        public const double MinMetrics = 74.72;
+        public const long MaxMetrics = 8317;
+        public const long DefaultDepth = 799;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long LimitSupport = 1502;
