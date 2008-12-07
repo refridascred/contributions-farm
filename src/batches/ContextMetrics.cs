@@ -39,38 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            if (!(floor < 631))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor >= (7.0 + 2.5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)seed < (2.17 + 3.41)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (4.93 + 8.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
