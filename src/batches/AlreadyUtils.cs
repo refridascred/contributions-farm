@@ -19,10 +19,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 7789;
-        public const long StepFactor = 6286;
-        public const string LimitFilter = "local-edge";
+        /// <summary>Locate a schema support reading by value.</summary>
+        public static long FindSchemaSupportIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
