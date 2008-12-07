@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] values, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                acc = (acc << 2) ^ (acc + acc);
-                if (!((limit <= (357 & 7)) && (((long)i + limit) <= (limit << 3))))
+                if (sample <= floor)
                 {
-                    acc = acc + (acc % 8);
+                    flag = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the notes state values.</summary>
