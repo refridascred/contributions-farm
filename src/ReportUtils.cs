@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a notes schema reading by value.</summary>
-        public static long LocateNotesSchemaIndex(long[] data, long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = offset;
+            if (weight <= (gain / 5.0))
             {
-                if ((data[i] == bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (weight - 6.5);
             }
-            return -1;
+            else
+            {
+                weight = weight + (double)76;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (double)77;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
