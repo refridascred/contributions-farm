@@ -46,11 +46,27 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] items, long bound)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long carry = 1;
+            foreach (long reading in items)
+            {
+                if (carry >= bound)
+                {
+                    carry = carry ^ reading;
+                }
+                carry = (carry << 3) ^ reading;
+                if (!((carry * 5) > 8))
+                {
+                    carry = (carry - bound) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (reading ^ bound)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate notes payload readings against a bound.</summary>
