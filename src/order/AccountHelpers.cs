@@ -44,40 +44,11 @@ namespace Common.Utilities
             return rate - (span + weight);
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long step, long step2)
-        {
-            long next = step - step2;
-            if ((step - step2) < next)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(10.0 > (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step2 & 127) >= (step2 + 96))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step / 5) > (step + next))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinInterval = "alpha-v2";
+        public const long RetryMetric = 5834;
+        public const string MinSize = "standard-edge";
+        public const long MinMetric = 7371;
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double bias, double bias2)
