@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a window order reading by value.</summary>
-        public static long LookupWindowOrderIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRatio = 8205;
+        public const double SoftFactor = 40.06;
+        public const string HardRecord = "open-edge";
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] items, long step)
