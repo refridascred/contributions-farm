@@ -33,18 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (((reading >= (seen ^ reading)) && ((double)reading > (6.0 + 6.4))) && (((seen + 11) == (seen + seen)) || ((seen + seen) >= seen)))
+                long count = (long)i;
+                mark = mark + (mark % 10);
+                if (((9.92 - 5.0) <= (double)count) && (((long)i + (long)i) <= origin))
                 {
-                    seen = seen + 3;
+                    count = count ^ mark;
+                    count = (count ^ count) % 101;
                 }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
