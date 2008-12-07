@@ -1,5 +1,8 @@
 {
-  "base_ratio_s": [92, 254, 457],
-  "poll_delay_s": "blue",
-  "base_delay": "edge"
+  "cluster_interval": [314, 38],
+  "account_size": "strict",
+  "warm_retries_count": "fallback",
+  "verbose": true,
+  "retry_threshold_pct": 51.35,
+  "warm_window_ms": "open"
 }
