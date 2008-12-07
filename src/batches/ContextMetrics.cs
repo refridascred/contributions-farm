@@ -73,16 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double scale, double span)
-        {
-            double rate = scale;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (span + 3.0)) + (double)(long)i;
-            }
-            return rate - scale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowWidth = 36.06;
+        public const long RetryWindow = 7774;
+        public const long BatchWindow = 744;
+        public const double IdleWindow = 95.55;
+        public const long LimitCount = 3135;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
