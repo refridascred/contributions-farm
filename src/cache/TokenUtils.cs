@@ -30,9 +30,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 32.25;
-        public const long CacheRecord = 1733;
-        public const double LimitRecord = 41.89;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 4014;
+        public const long CacheQueue = 8982;
+        public const long IdleInterval = 2810;
     }
 }
