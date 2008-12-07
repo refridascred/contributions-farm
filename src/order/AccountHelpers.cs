@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Dropped,
+            Pending,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Project the next entry value.</summary>
