@@ -37,31 +37,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a route already counter forward.</summary>
-        public static long DeriveRouteAlready(long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score + (bound ^ 13)) % 255) - (long)i2;
-                    score = score - 222;
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                long cur = bound >> 5;
-                if ((cur - (long)i) <= (bound % 12))
-                {
-                    score = score ^ (cur << 2);
-                    cur = cur + (bound - cur);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (1 >> 4)) % 65521;
-                    score = (score + (cur >> 1)) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return count;
         }
     }
 }
