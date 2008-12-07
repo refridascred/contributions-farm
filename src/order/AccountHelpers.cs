@@ -51,11 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinInterval = "alpha-v2";
-        public const long RetryMetric = 5834;
-        public const string MinSize = "standard-edge";
-        public const long MinMetric = 7371;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitLevel = "stable-v2";
+        public const string RetryCommits = "strict-edge";
+        public const double HardFactor = 9.19;
+        public const double SoftCommits = 46.96;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TallyCounter(long[] readings, long target)
