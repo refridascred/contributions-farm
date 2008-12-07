@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 9409;
+        public const double WindowQueue = 70.77;
+        public const long SoftBudget = 1801;
+        public const long DefaultBudget = 2178;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] levels, long floor)
