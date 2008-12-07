@@ -17,13 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            Done,
+            Failed,
+            Paused,
+            Active,
         }
 
         /// <summary>Digest a series of format layout entries.</summary>
