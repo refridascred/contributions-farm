@@ -100,11 +100,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 1842;
-        public const long HardAccount = 8640;
-        public const double CacheAccount = 95.22;
-        public const double RetrySpan = 2.25;
-        public const long WindowAccount = 6633;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
