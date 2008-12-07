@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long step)
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
