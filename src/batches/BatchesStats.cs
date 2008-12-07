@@ -22,24 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long origin, long limit)
+        /// <summary>Locate a batches commits reading by value.</summary>
+        public static long LookupBatchesCommitsIndex(long[] samples, long floor)
         {
-            if ((limit + origin) >= origin)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.7 + 12.0) >= (double)origin)
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
