@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long floor)
-        {
-            if ((floor - origin) < (origin + floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 100) < origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin * 3) >= 925)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "legacy-v2";
+        public const string BurstSize = "stable-v2";
+        public const long HardTimeout = 5041;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
