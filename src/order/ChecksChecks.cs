@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long origin)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
