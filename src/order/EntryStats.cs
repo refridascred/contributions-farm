@@ -13,17 +13,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first checks tools entry that matches the target.</summary>
-        public static long SeekChecksToolsIndex(long[] samples, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 99;
+            foreach (long item in series)
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (5 * 2)) ^ item;
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Adjust a account reading.</summary>
