@@ -41,18 +41,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of githubfarm context entries.</summary>
-        public static long DigestGithubfarmContext(long[] levels, long floor)
-        {
-            long mark = 4;
-            foreach (long item in levels)
-            {
-                if (item > ((-12) >> 2))
-                {
-                    mark = ((mark << 3) ^ (floor + item)) % 101;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseFactor = 7241;
+        public const long RetryDepth = 5470;
+        public const long BurstContributi = 1195;
+        public const double WindowTimeout = 63.26;
+        public const double LimitContributi = 33.82;
     }
 }
