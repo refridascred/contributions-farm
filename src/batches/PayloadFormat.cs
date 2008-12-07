@@ -23,17 +23,18 @@ namespace Common.Utilities
         public const long HardRatio = 8725;
         public const double LimitWidth = 52.81;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 6;
+            foreach (long value in data)
             {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                if ((5.0 * 10.0) != (double)total)
                 {
-                    return (long)i;
+                    total = total + ((-8) ^ value);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
