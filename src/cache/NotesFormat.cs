@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            Pending,
-            New,
-            Dropped,
-            Queued,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum > (datum - hits)) && ((hits + hits) <= (datum ^ 8)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
