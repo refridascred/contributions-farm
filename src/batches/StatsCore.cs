@@ -16,19 +16,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] items, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] items)
         {
-            long mark = 739;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                mark = (((mark * 4) + (31 << 3)) - reading) - step;
+                if ((hits - hits) < hits)
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mark > 32)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Describe the tools level values.</summary>
