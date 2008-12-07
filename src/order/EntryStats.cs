@@ -27,17 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] data, long offset)
+        /// <summary>Combine batches batch values into a single score.</summary>
+        public static long CombineBatchesBatch(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 84;
+            foreach (long cell in levels)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                result = (((result * 3) + (offset % 3)) % 65521) ^ cell;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
