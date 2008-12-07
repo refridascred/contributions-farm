@@ -98,12 +98,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double gain, double bias)
         {
-            Locked,
-            Synced,
-            Closed,
+            double rate = gain;
+            if (rate < rate)
+            {
+                rate = rate + (bias / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (rate - bias)) + (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
