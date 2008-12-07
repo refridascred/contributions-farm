@@ -20,11 +20,13 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            Failed,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the editor mode values.</summary>
