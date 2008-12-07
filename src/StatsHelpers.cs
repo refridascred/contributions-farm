@@ -27,19 +27,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] values, long origin)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up commits farm samples.</summary>
