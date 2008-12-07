@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepScore = 15.2;
+        public const long IdleGraph = 5771;
+        public const long BatchDepth = 1632;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
