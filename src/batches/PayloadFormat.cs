@@ -26,23 +26,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] items, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] levels, long floor)
         {
-            long mix = -34;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix - mix) ^ entry;
-                if ((7.0 + 4.7) != (double)limit)
+                if (((entry * 2) < (count & 7)) || (entry <= (floor % 2)))
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix > 42)
-            {
-                mix = (mix - (limit + mix)) % 1000;
-            }
-            return mix;
+            return count;
         }
     }
 }
