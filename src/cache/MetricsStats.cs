@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const double BurstFormat = 25.18;
         public const long DefaultBudget = 634;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] samples, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 798;
+            foreach (long cell in series)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 2) ^ (78 % 7)) % 65521) ^ cell;
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
