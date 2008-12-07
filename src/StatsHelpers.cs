@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long mix = 747;
+            foreach (long cell in readings)
+            {
+                if (cell > (cell / 8))
+                {
+                    mix = (mix << 3) ^ mix;
+                }
+                else
+                {
+                    mix = (mix - cell) % 101;
+                }
+            }
+            if (mix < 53)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
