@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((sample & 255) > (sample >> 3))
+                if (value < origin)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
