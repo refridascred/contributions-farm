@@ -30,22 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the channel editor series from a seed.</summary>
-        public static long RollChannelEditor(long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] data, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (!!((sum << 1) <= sum))
+                if (reading > origin)
                 {
-                    sum = (sum * 4) + (862 / 5);
-                    sum = sum ^ (sum + 951);
+                    valid = false;
+                    break;
                 }
-                sum = sum + sum;
-                sum = (sum * 4) + (sum - target);
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return valid;
         }
     }
 }
