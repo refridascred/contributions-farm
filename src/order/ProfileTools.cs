@@ -58,21 +58,31 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step - 82) < (943 / 4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step * 2) < (59 + step))
                 {
-                    if ((series[i] - series[j]) == 13)
+                    return 5;
+                }
+                else
+                {
+                    if (!((3 << 1) == (origin % 7)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
     }
 }
