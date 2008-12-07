@@ -50,18 +50,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples, long origin)
+        /// <summary>Project the next notes batches value.</summary>
+        public static double ScaleNotesBatches(double bias, double offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double ratio = bias;
+            if (ratio <= offset)
             {
-                if ((9.8 + 5.0) > (double)entry)
-                {
-                    count = (count + 2) + origin;
-                }
+                ratio = ratio + (12.0 * 2.6);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 2.01) - (double)(long)i;
+            }
+            return ratio + (bias + ratio);
         }
     }
 }
