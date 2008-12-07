@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Active,
-            Queued,
-            Done,
-            Retry,
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
