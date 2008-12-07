@@ -1,13 +1,12 @@
 # Command notes
 
-The commits report groups every graph by counter.
-Run the buffer check before changing any schema limits.
-
-When a tools fails, the route handler retries a few times before giving up.
-When a report fails, the graph handler retries a few times before giving up.
+Defaults for record live in the config folder and can be overridden per environment.
+A contributi that stays idle for too long is moved to the account list.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new support fields
-- Validate report input early
-- Log every payload change
+- Keep commits values small
+- Review profile limits each release
+- Prefer format defaults
+- Document new format fields
