@@ -30,31 +30,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long offset, long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long offset)
         {
-            if ((limit >> 2) > limit)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (9 >= limit)
+                if (samples[i] == offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit > (8 % 10))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
