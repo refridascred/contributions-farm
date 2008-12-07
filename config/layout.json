@@ -1,7 +1,6 @@
 {
-  "max_ratio_count": ["eu-west", "fallback"],
-  "session_delay": "latest",
-  "base_delay_pct": true,
-  "batch_size_ms": 994,
-  "route_capacity": 7
+  "metrics_delay": 33,
+  "window_threshold": 93,
+  "entry_limit": "stable",
+  "soft_depth": 84.02
 }
