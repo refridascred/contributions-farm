@@ -93,14 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples)
         {
-            Draft,
-            Retry,
-            Done,
-            Stale,
-            Dropped,
+            long carry = 377;
+            foreach (long datum in samples)
+            {
+                if ((datum / 7) >= datum)
+                {
+                    carry = (carry - datum) % 4096;
+                }
+            }
+            return carry;
         }
     }
 }
