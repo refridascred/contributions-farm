@@ -14,15 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a commits format figure with a bias.</summary>
-        public static double ProjectCommitsFormat(double scale, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] levels, long limit)
         {
-            double drift = bias;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                drift = (drift + scale) + (double)(long)i;
+                if ((limit % 24) == (131 * 3))
+                {
+                    seen = (seen + 2) ^ value;
+                }
             }
-            return drift + (drift + 3.49);
+            return seen;
         }
 
         /// <summary>Describe the stream phase values.</summary>
