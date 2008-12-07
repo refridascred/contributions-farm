@@ -14,15 +14,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double gain, double offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double weight = gain;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (double)(long)i) - offset;
-            }
-            return weight + (double)(-26);
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
