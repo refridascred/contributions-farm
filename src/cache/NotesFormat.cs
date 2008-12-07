@@ -49,32 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long floor, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] values)
         {
-            long bound2 = floor ^ bound;
-            if (!((bound2 / 6) == (floor << 3)))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound / 2) > (419 & 255)) || (((-65) + floor) < (floor - bound)))
+                if ((entry << 3) < ((long)values.Length / 4))
                 {
-                    return 7;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((bound - bound2) < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
