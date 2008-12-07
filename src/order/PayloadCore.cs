@@ -36,22 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats context entries.</summary>
-        public static long DigestStatsContext(long[] levels, long offset)
+        /// <summary>Match up batches commits samples.</summary>
+        public static long OverlapBatchesCommitsCount(long[] samples)
         {
-            long sum = 8;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum ^ (cell - (long)i)) - offset;
-                }
-                if ((sum >> 4) < (sum * 2))
-                {
-                    sum = (sum - (6 % 12)) % 4096;
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
