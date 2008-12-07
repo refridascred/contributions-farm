@@ -1,10 +1,7 @@
 # githubfarm settings
-max_ttl: eu-west
-max_delay:
-  - 406
-  - 51
-  - 425
-warm_capacity: edge
-cache_interval: cached
-enabled: 69
-context_delay: stable
+readonly: 7707
+persist: 100
+flush_window: fallback
+warm_capacity: 45.29
+hard_threshold_s: 6.92
+metric_threshold: primary
