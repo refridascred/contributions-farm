@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] levels, long step)
         {
-            Synced,
-            Closed,
-            Ready,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
