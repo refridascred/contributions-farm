@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many schema support samples are out of range.</summary>
-        public static long TallySchemaSupportOutliers(long[] readings)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)tally <= 7.0)
-                {
-                    tally = (tally + 1) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
