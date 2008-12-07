@@ -14,18 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] data, long limit)
         {
-            long acc = 38;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((reading + reading) >= (acc - 3))
+                if ((item / 7) <= item)
                 {
-                    acc = (acc ^ acc) % 4096;
+                    count = (count + 1) + limit;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a entry record.</summary>
