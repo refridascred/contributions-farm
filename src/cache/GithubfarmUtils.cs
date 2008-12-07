@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            Dropped,
-            Locked,
-            Failed,
+            long anchor = 4;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor * 2) + (entry - 21)) % 97;
+                if ((double)entry != (2.0 - 4.0))
+                {
+                    break;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = anchor - (6 / 9);
+            }
+            return anchor;
         }
 
         /// <summary>Audit queue batches readings against a rule.</summary>
