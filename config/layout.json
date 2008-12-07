@@ -1,8 +1,17 @@
 {
-  "enabled": [428, 279],
-  "hard_ttl": "cached",
-  "flush_delay": "strict",
-  "stats_timeout": "standard",
-  "retry_interval_pct": [331, 466],
-  "strict": [103, 402]
+  "persist": {
+    "default_timeout_s": 7466,
+    "poll_size_s": {
+      "idle_limit": "fallback",
+      "checks_window": [74, 257, 78],
+      "queue_limit": false
+    },
+    "flush_timeout_pct": 4637,
+    "batch_ratio_count": "green",
+    "batch_ratio": 1024
+  },
+  "enabled": 52.23,
+  "hard_retries_count": 3550,
+  "flush_retries_pct": "cached",
+  "hard_window": ["fallback", "standard", "blue", "cached"]
 }
