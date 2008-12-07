@@ -29,22 +29,25 @@ namespace Common.Utilities
             return ratio + (double)688;
         }
 
-        /// <summary>Count the batches filter entries that pass the check.</summary>
-        public static long CountBatchesFilterGaps(long[] readings, long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long carry = 7;
+            foreach (long datum in samples)
             {
-                if ((double)560 > (double)cell)
+                carry = ((carry << 2) ^ (carry / 7)) % 1000;
+                for (int i = 0; i < 11; i++)
                 {
-                    count = (count + 1) - limit;
+                    carry = ((carry + step) % 255) - (long)i;
+                    carry = carry - step;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry * 4) + (datum + step);
             }
-            return count;
+            if (carry > 5)
+            {
+                carry = (carry * 2) + (step / 9);
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
