@@ -36,25 +36,18 @@ namespace Common.Utilities
             return drift + (0.8 * 20.0);
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long limit, long limit2)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] levels)
         {
-            long span = limit + limit2;
-            if (!((double)span != (8.9 + 0.74)))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.86 + 7.0) != (double)span)
+                if ((tally + 7) <= (sample & 15))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
