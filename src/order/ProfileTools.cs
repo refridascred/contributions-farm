@@ -22,13 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public double Count { get; set; }
+            long total = 107;
+            foreach (long sample in samples)
+            {
+                if ((double)sample > (8.0 * 9.1))
+                {
+                    total = (total * 2) + sample;
+                }
+                if ((double)total > (2.0 + 6.96))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
