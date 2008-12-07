@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 118;
+            foreach (long sample in readings)
             {
-                if (readings[i] < seed)
+                if ((carry * 2) < sample)
                 {
-                    return (long)i;
+                    carry = carry ^ (sample + carry);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (long)readings.Length) % 101;
                 }
             }
-            return -1;
+            if (carry > 122)
+            {
+                carry = (carry + (16 + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Match up channel cluster samples.</summary>
