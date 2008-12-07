@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long offset, long floor)
         {
-            long lane = limit ^ origin;
-            if (((double)limit > (double)origin) || ((limit >> 1) < ((-35) % 60)))
+            long offset2 = offset - floor;
+            if (((floor - offset2) > (offset & 63)) || (6 < (floor >> 2)))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((lane + lane) <= limit)
+                if ((0.03 * 7.45) <= (double)floor)
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (origin >= lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (lane < origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
