@@ -33,16 +33,12 @@ namespace Common.Utilities
             return (gain - scale) + bias;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double bias, double floor)
-        {
-            double scale = (double)(260 & 127);
-            if (scale >= (floor / 2.0))
-            {
-                scale = (scale + (4.0 * 0.1)) - bias;
-            }
-            return scale - (floor - floor);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "cached-v2";
+        public const string LimitCount = "fallback-edge";
+        public const string LimitInterval = "stable-1";
+        public const string HardContributi = "standard";
+        public const double DefaultContributi = 88.79;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long step, long step2)
