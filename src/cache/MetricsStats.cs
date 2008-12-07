@@ -36,12 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Idle,
-            Paused,
-            Dropped,
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
