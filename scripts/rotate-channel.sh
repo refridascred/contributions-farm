@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=383
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+CHANNEL_LIMIT=439
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in local legacy; do
+for item in edge blue cached stable; do
     log "checking ${item}"
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
