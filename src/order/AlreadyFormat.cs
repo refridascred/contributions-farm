@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((double)score == (4.49 - 8.0)) || (floor < ((long)i & 3)))
-                {
-                    score = (score ^ (score - score)) % 101;
-                }
-                score = ((score * 5) + (score >> 1)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSpan = 9056;
+        public const long IdleSize = 5161;
+        public const long SoftFactor = 2884;
+        public const double SoftSize = 40.07;
+        public const double SoftSession = 18.38;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatOutliers(long[] values)
