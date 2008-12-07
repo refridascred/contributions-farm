@@ -31,13 +31,19 @@ namespace Common.Utilities
             return (drift + drift) + gain;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] values, long bound)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
