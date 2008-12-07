@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cache format samples are out of range.</summary>
-        public static long TallyCacheFormatOutliers(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits <= (entry >> 4)) || ((double)hits >= (17.0 / 4.0)))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchCount = 3240;
+        public const double HardTools = 82.95;
+        public const long MaxTools = 1329;
+        public const double CacheTools = 73.63;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long step, long step2)
