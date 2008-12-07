@@ -1,7 +1,4 @@
 # entry settings
-default_threshold: 65
-githubfarm_window: edge
-warm_limit_s: 1631
-idle_size: edge
-sync_interval_s: 4571
-burst_capacity_ms: 46.05
+persist: stable
+route_interval: 4.62
+strict: local
