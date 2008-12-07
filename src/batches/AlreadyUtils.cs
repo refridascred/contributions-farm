@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            public double Mode { get; set; }
-            public double Label { get; set; }
+            long acc = 388;
+            foreach (long entry in samples)
+            {
+                if ((double)entry >= (4.7 - 2.63))
+                {
+                    acc = (acc << 2) ^ (acc % 2);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
