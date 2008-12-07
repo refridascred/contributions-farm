@@ -1,10 +1,6 @@
-id,weight,ratio,owner
-1,81.53,primary,932
-2,open,324,legacy
-3,37.27,73,strict
-4,open,47,224
-5,519,staging,blue
-6,438,986,green
-7,staging,52.69,482
-8,blue,804,845
-9,86.55,31.28,cached
+id,region
+1,93.21
+2,399
+3,895
+4,stable
+5,fallback
