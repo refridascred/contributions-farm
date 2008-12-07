@@ -51,19 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] values, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long mark = 585;
+            foreach (long cell in readings)
             {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark ^ ((-4) << 1)) % 4096) + cell) - limit;
             }
-            return flag;
+            if (mark > 212)
+            {
+                mark = (mark + (mark + 2)) % 4096;
+            }
+            return mark % 65521;
         }
     }
 }
