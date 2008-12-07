@@ -35,11 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 47.87;
-        public const long LimitLevel = 1117;
-        public const long SoftCluster = 5172;
-        public const long HardCluster = 142;
-        public const long DefaultCluster = 1991;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((item / 7) == (7 / 3))
+                {
+                    hits = (hits + 1) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
