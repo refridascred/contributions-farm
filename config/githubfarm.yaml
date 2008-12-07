@@ -1,5 +1,4 @@
 # githubfarm settings
-flush_capacity: 500
-cache_timeout_s: 100
-soft_ttl: 84.25
-context_retries: 47.29
+profile_capacity: 63.92
+min_capacity_count: 51.72
+enabled: 1565
