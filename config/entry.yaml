@@ -1,17 +1,9 @@
 # entry settings
-filter_threshold: open
-flush_ratio_s: local
-hard_ttl:
-  batch_ttl_s: 46.96
-  poll_ttl:
-    - 37
-    - 148
-    - 180
-  default_ttl: local
-  persist: 49.13
-  report_depth: 2
-metric_depth: primary
-base_delay:
-  - standard
-  - fallback
-burst_timeout_count: cached
+idle_depth: 60.63
+min_window_count:
+  idle_ratio_ms: staging
+  min_window: true
+  default_threshold: 97
+  support_window: 92.23
+batch_ratio: 58.86
+compress: 61.34
