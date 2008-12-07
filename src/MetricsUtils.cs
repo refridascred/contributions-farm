@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                long count = (long)i;
-                mark = mark + (mark % 10);
-                if (((9.92 - 5.0) <= (double)count) && (((long)i + (long)i) <= origin))
-                {
-                    count = count ^ mark;
-                    count = (count ^ count) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 6437;
+        public const long MinInterval = 1555;
+        public const string CacheCluster = "staging-edge";
+        public const long MinSize = 1740;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long CombineBatches(long[] levels)
