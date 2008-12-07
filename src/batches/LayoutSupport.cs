@@ -45,11 +45,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
+            Dropped,
+            Locked,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
