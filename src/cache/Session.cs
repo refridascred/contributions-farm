@@ -16,32 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] readings, long bound)
         {
-            long gap = limit + step;
-            if ((double)gap < 18.0)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) == (step * 2))
+                if (datum != bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)gap != (7.55 + 1.43))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Match up filter samples.</summary>
