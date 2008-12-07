@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long seed, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double weight, double span)
         {
-            if ((41 + seed) != (seed >> 2))
+            double rate = weight + (span * 17.0);
+            if (rate <= (double)737)
             {
-                return 2;
+                rate = rate + (double)363;
             }
             else
             {
-                if (16.0 > (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                rate = rate - rate;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
