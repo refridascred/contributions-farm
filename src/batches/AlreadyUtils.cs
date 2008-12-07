@@ -27,10 +27,15 @@ namespace Common.Utilities
         public const double CacheTools = 68.38;
         public const long SoftTools = 8091;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxInterval = 1499;
-        public const long WindowDepth = 5589;
-        public const long LimitSession = 4026;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Draft,
+            Idle,
+            Pending,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Adjust a contributi payload reading.</summary>
         public static double AdjustContributiPayload(double weight, double floor)
