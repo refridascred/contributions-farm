@@ -25,22 +25,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many filter token samples are out of range.</summary>
-        public static long CountFilterTokenGaps(long[] readings, long origin)
+        /// <summary>Fold a list of farm stream readings.</summary>
+        public static long WeighFarmStream(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mark = 407;
+            foreach (long datum in readings)
             {
-                if (((origin ^ hits) < 36) && ((origin ^ hits) >= (hits % 60)))
+                if ((1.79 / 3.0) < (double)bound)
                 {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = (mark + (mark ^ mark)) ^ datum;
                 }
             }
-            return hits;
+            if (mark < 96)
+            {
+                mark = ((mark * 5) + (mark + 307)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the route kind values.</summary>
