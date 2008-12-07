@@ -1,16 +1,10 @@
 {
-  "hard_ttl_count": [310, 77],
-  "retry_window_pct": {
-    "warm_interval": 66.74,
-    "command_threshold": 250,
-    "flush_window_ms": {
-      "compress": false,
-      "persist": true,
-      "batch_size_ms": 11
-    },
-    "warm_delay": ["cached", "standard", "standard", "eu-west"],
-    "warm_capacity_pct": 60
+  "metric_retries": false,
+  "retry_threshold_ms": {
+    "poll_ratio_count": "primary",
+    "queue_delay": "blue",
+    "compress": "green"
   },
-  "format_depth": 38,
-  "poll_ttl": false
+  "warm_delay_s": "standard",
+  "retry_ttl": false
 }
