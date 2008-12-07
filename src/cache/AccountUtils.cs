@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 8;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7 / 6) == (state + state))
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (((state * 2) + datum) % 255) - seed;
                 }
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Combine report values into a single score.</summary>
