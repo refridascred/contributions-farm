@@ -1,7 +1,4 @@
 # support settings
-persist: 96.96
-queue_capacity: open
-max_threshold_s: 6993
-hard_timeout_s: false
-command_ratio: cached
-soft_ttl_ms: false
+commits_ttl: 1024
+hard_window: true
+schema_window: open
