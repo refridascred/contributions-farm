@@ -33,17 +33,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 3487;
+        public const double BaseInterval = 41.0;
+        public const long MaxSize = 3323;
     }
 }
