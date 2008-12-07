@@ -1,7 +1,6 @@
 {
-  "warm_depth_pct": ["cached", "local", "standard", "edge"],
-  "burst_limit": "local",
-  "persist": 11,
-  "poll_size_s": 1118,
-  "channel_delay": 87.07
+  "base_window_s": 71.67,
+  "strict": ["staging", "legacy", "local", "eu-west"],
+  "flush_retries_ms": "staging",
+  "min_ttl_s": "cached"
 }
