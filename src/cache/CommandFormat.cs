@@ -53,11 +53,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long target)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            long acc = target;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = (((acc * 2) + (acc + acc)) % 4096) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
