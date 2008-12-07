@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Paused,
-            Done,
-            Queued,
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
