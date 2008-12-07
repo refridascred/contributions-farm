@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 4;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor - (anchor + 635)) ^ sample) + step;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
