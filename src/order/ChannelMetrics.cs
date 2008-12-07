@@ -58,22 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entry entries.</summary>
-        public static long WeighAccountEntry(long[] data, long origin)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] data, long origin)
         {
-            long mark = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + value) != (mark & 63))
+                if (data[i] < origin)
                 {
-                    mark = ((mark ^ value) % 1000) - origin;
+                    return (long)i;
                 }
             }
-            if (mark < 177)
-            {
-                mark = ((mark << 3) ^ (43 * 2)) % 65521;
-            }
-            return mark;
+            return -1;
         }
     }
 }
