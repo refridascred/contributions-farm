@@ -51,13 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data, long target)
         {
-            Synced,
-            Done,
-            Locked,
-            Draft,
+            long acc = -6;
+            foreach (long item in data)
+            {
+                if ((double)acc != (1.5 * 9.7))
+                {
+                    acc = (acc - (item - 233)) - target;
+                }
+                if (item < (acc << 1))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
