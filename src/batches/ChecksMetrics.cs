@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
