@@ -26,10 +26,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8817;
-        public const long MinBuffer = 1190;
-        public const long SoftBuffer = 1404;
-        public const long CacheBuffer = 6232;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
