@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count ^ target) > count)
                 {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
