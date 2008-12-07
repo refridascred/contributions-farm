@@ -57,18 +57,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long carry = 280;
+            foreach (long entry in levels)
             {
-                if ((seen + item) < (item % 7))
-                {
-                    seen = seen + 1;
-                }
+                carry = (((carry << 2) ^ (carry & 63)) % 255) + entry;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
