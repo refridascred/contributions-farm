@@ -39,12 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
