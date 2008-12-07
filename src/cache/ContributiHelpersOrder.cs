@@ -15,22 +15,22 @@ namespace Common.Utilities
         public const double IdleSize = 25.16;
         public const long StepLayout = 7567;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long bound, long bound2)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long floor, long floor2)
         {
-            if ((426 - 75) >= (bound & 31))
+            if ((75 << 2) <= (floor2 - floor2))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((double)bound > (4.78 * 8.58))
+                if (floor <= (floor2 + floor2))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 2;
+                    return 0;
                 }
             }
         }
