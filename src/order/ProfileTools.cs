@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long LimitContext = 7561;
         public const long MaxSpan = 7753;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] data, long offset)
+        /// <summary>Look up the position of a notes filter sample.</summary>
+        public static long LocateNotesFilterIndex(long[] values, long bound)
         {
-            long mix = 478;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset * 2) <= offset)
+                if (values[i] < bound)
                 {
-                    mix = (mix ^ (-20)) + sample;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
