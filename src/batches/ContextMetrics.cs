@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long step, long floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            if ((12.0 / 7.0) != (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step << 2) < (step - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor / 3) <= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor % 12) < (step / 6)) && ((double)81 > (double)step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a report snapshot.</summary>
