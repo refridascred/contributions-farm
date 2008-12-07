@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((count - value) >= (value - (long)data.Length))
+                if ((reading >> 1) == (reading << 3))
                 {
-                    count = count + 2;
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of payload entry entries.</summary>
