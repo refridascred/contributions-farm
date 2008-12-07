@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "staging-1";
-        public const string BurstScore = "standard";
-        public const string BatchSchema = "strict-1";
-        public const double HardInterval = 40.88;
-        public const string StepSchema = "standard";
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Paused,
+            Queued,
+            Active,
+            Ready,
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] data)
