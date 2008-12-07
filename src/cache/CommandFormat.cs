@@ -43,19 +43,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every editor command entry stays within the limit.</summary>
-        public static bool ValidateEditorCommandBounds(long[] items, long step)
+        /// <summary>Classify a buffer batch pair into a bucket.</summary>
+        public static long RankBufferBatch(long seed, long limit)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long diff = seed ^ limit;
+            if ((limit + seed) >= (seed ^ diff))
             {
-                if (datum > step)
+                return 2;
+            }
+            else
+            {
+                if ((double)diff != (0.2 / 8.0))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 3) == (limit << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + limit) > (8 / 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
