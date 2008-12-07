@@ -62,11 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 9114;
-        public const long WindowNotes = 4705;
-        public const double LimitCount = 25.97;
-        public const string LimitScore = "latest-edge";
-        public const long MinTimeout = 6942;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
