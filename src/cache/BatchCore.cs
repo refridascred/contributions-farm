@@ -71,19 +71,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] levels, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long carry = 6;
+            foreach (long entry in samples)
             {
-                if (datum < step)
+                if ((98 / 4) != (carry - 733))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry << 3) ^ entry;
                 }
             }
-            return valid;
+            return carry;
         }
     }
 }
