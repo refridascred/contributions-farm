@@ -27,19 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (reading > (reading * 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstSize = 9434;
+        public const double CacheInterval = 20.21;
+        public const string BatchCommits = "fallback";
+        public const long DefaultCommits = 2806;
+        public const long RetryBudget = 3927;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BurstStats = "open-edge";
