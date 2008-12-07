@@ -1,28 +1,5 @@
 # entry settings
-base_size_s:
-  githubfarm_ttl: true
-  max_limit_ms:
-    layout_limit: 500
-    command_window:
-      - blue
-      - staging
-    editor_delay: 10
-    context_ttl:
-      - blue
-      - stable
-    poll_size: false
-    flush_size: 95.4
-  max_timeout_count: 80
-  min_interval: false
-  cache_depth: local
-  base_window:
-    schema_ttl: false
-    profile_ttl: fallback
-    readonly: true
-already_interval: open
-burst_delay_count: strict
-strict:
-  - primary
-  - fallback
-  - standard
-  - blue
+strict: 51.42
+cluster_capacity: false
+max_interval_s: 6969
+window_limit: false
