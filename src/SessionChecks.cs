@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] data, long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (limit > (datum * 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
