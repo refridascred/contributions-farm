@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const long BurstMetrics = 3304;
         public const long BatchMetrics = 9898;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheSpan = 3305;
-        public const string RetryBatch = "strict-1";
-        public const double LimitLevel = 93.28;
-        public const long WindowBatch = 3884;
-        public const long SoftBudget = 2962;
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every queue contributi entry stays within the limit.</summary>
         public static bool ValidateQueueContributiBounds(long[] samples, long offset)
