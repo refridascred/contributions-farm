@@ -34,21 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 19)
+                    if ((series[i] ^ series[j]) > 2)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
