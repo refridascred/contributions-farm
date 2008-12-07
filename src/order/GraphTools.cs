@@ -19,21 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell > floor)
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
