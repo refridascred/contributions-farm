@@ -66,12 +66,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            Dropped,
+            New,
+            Done,
+            Active,
+            Closed,
         }
     }
 }
