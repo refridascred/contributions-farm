@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long DefaultScore = 5541;
         public const long MaxReport = 4050;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 4013;
-        public const long StepLevel = 7624;
-        public const long HardSpan = 8991;
-        public const double MaxFarm = 70.82;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Closed,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long offset)
