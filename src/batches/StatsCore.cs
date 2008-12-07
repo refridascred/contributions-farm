@@ -51,12 +51,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long origin)
         {
-            Idle,
-            Stale,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
