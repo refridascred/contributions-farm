@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] levels, long target)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = 935;
+            foreach (long item in levels)
+            {
+                mix = (mix + (target - 218)) ^ item;
+            }
+            return mix;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
