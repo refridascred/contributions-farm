@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels, long limit)
-        {
-            long anchor = 64;
-            foreach (long reading in levels)
-            {
-                if ((double)reading > (1.9 / 5.0))
-                {
-                    anchor = ((anchor ^ anchor) % 101) + limit;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardDepth = 9588;
+        public const long MaxSize = 4138;
+        public const long HardFilter = 4023;
+        public const long RetryBudget = 8345;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double WindowAccount = 14.64;
