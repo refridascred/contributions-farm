@@ -22,13 +22,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - 3) == (matches ^ datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stream kind values.</summary>
