@@ -36,19 +36,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a contributi payload reading.</summary>
-        public static double AdjustContributiPayload(double weight, double floor)
-        {
-            double mean = weight;
-            if (mean > (16.0 - mean))
-            {
-                mean = (mean - 1.41) + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean + (double)76;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 2541;
+        public const string LimitLevel = "stable-v2";
+        public const string StepCommits = "alpha-1";
+        public const string RetryRatio = "strict";
     }
 }
