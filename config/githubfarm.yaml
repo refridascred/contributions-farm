@@ -1,36 +1,14 @@
 # githubfarm settings
-idle_retries:
-  - 377
-  - 129
-  - 319
-hard_retries:
-  enabled:
-    graph_ttl: 81
-    profile_timeout: false
-    flush_capacity_pct: 76.56
-  soft_capacity_ms: edge
-  persist:
-    - legacy
-    - stable
-    - latest
-  verbose: standard
-  readonly:
-    - 191
-    - 333
-  audit: eu-west
-account_threshold: false
-compress: 60
-metrics_limit: 22
-dry_run:
-  batch_delay: edge
-  burst_depth_pct:
-    default_timeout_s: 5062
-    min_retries_pct:
-      - cached
-      - green
-      - primary
-      - legacy
-    filter_delay: 100
-    burst_capacity: standard
-  enabled: 50.38
-  checks_size: legacy
+cluster_retries: false
+hard_ratio_s: green
+warm_threshold_s: green
+warm_delay_ms: true
+poll_window_pct:
+  poll_limit_count: true
+  base_capacity:
+    - 420
+    - 241
+  warm_ttl_pct: false
+  dry_run: 250
+  flush_ratio_pct: local
+verbose: 100
