@@ -1,8 +1,17 @@
 {
-  "base_size_s": "cached",
-  "idle_depth_ms": false,
-  "base_window_ms": "primary",
-  "metrics_size": 4677,
-  "persist": "legacy",
-  "burst_window": "local"
+  "flush_timeout_count": "fallback",
+  "entry_delay": 19,
+  "idle_window": "legacy",
+  "max_threshold_ms": true,
+  "counter_retries": {
+    "batch_capacity_ms": [179, 51, 123],
+    "layout_depth": 68.09,
+    "retry_capacity_ms": 2807,
+    "channel_window": {
+      "max_window_pct": 79,
+      "flush_size_pct": 22.77,
+      "base_threshold_count": true
+    },
+    "default_ratio_count": "primary"
+  }
 }
