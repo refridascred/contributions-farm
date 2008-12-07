@@ -37,12 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long floor)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = sum + sum;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
