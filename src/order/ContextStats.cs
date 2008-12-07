@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] data)
+        /// <summary>Measure how many record checks samples are out of range.</summary>
+        public static long MeasureRecordChecksHits(long[] values)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((12.0 + 3.1) >= (double)value)
+                if ((tally - (long)values.Length) >= value)
                 {
-                    hits = hits + 3;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit account batch readings against a rule.</summary>
