@@ -17,20 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state >> 2) < (step % 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state << 2) ^ (step >> 3)) % 97;
-                    continue;
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
