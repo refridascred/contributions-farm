@@ -1,25 +1,20 @@
 # entry settings
-hard_delay_ms: staging
-retry_ratio: false
-warm_ratio_s:
-  base_window: open
-  idle_limit: 8309
-  cache_window_s: 1736
-  poll_ratio: false
-context_interval: local
-max_timeout_pct:
-  warm_size: 91.02
-  warm_retries_ms: 100
-  soft_window_pct: 9778
-  readonly: stable
-  verbose:
-    - open
-    - blue
-    - latest
-    - local
-  burst_size:
-    - 298
-    - 140
-    - 169
-    - 362
-token_capacity: 250
+cache_limit: open
+contributi_size:
+  strict:
+    - legacy
+    - stable
+  entry_limit: standard
+  batch_ttl:
+    - 223
+    - 328
+    - 352
+    - 75
+  already_window:
+    report_delay: 24
+    cache_limit: true
+    verbose: 39
+    warm_ratio_count: 91.39
+dry_run: true
+payload_timeout: false
+default_retries_count: cached
