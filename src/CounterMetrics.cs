@@ -23,39 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long offset, long offset2)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long span = offset ^ offset2;
-            if (offset2 > (span + span))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((offset % 60) >= (offset2 & 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset & 31) > (offset2 % 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((3.99 - 1.4) == (double)offset2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two session measurements.</summary>
