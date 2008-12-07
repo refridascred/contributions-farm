@@ -1,12 +1,12 @@
 # Command notes
 
-Keep format and githubfarm names short and lowercase.
-A counter that stays idle for too long is moved to the entry list.
-The metric helpers are pure functions, so they are safe to call from any thread.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Keep route and schema names short and lowercase.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep counter values small
-- Log every notes change
-- Document new batch fields
-- Prefer record defaults
+- Prefer session defaults
+- Document new profile fields
+- Log every record change
+- Validate tools input early
