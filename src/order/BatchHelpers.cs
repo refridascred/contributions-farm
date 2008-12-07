@@ -28,13 +28,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long state = 8;
+            foreach (long value in values)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if ((value + 68) == (992 - state))
+                {
+                    state = ((state << 3) ^ (state % 2)) % 65521;
+                }
+                if ((state + state) == (value * 5))
+                {
+                    state = (state * 2) + 67;
+                }
             }
             return state;
         }
