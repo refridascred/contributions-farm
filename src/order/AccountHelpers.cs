@@ -26,18 +26,11 @@ namespace Common.Utilities
             return rate - (span + weight);
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] data, long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((1 - sample) > (floor % 16)) && (95 > (floor / 5)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double weight = 1.4 + (ratio / 8.0);
+            return (weight - weight) + span;
         }
 
         /// <summary>Blend two window measurements.</summary>
