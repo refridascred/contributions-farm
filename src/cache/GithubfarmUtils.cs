@@ -58,21 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up order metric samples.</summary>
-        public static long CompareOrderMetricCount(long[] samples)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item <= seed)
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
