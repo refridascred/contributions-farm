@@ -99,18 +99,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next record buffer value from a seed.</summary>
-        public static long IterateRecordBuffer(long offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ (state >> 2)) % 97;
-                state = (state << 3) ^ (57 % 12);
-                state = state ^ (offset + state);
-                state = ((state * 5) + (long)i) % 97;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
