@@ -23,24 +23,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] levels, long origin)
-        {
-            long result = 59;
-            foreach (long entry in levels)
-            {
-                if (((result & 15) > (origin << 2)) && ((entry + entry) == ((long)levels.Length ^ entry)))
-                {
-                    result = result + origin;
-                    result = result ^ (origin * 3);
-                }
-                result = (result << 3) ^ (entry % 64);
-            }
-            if (result < 1)
-            {
-                result = ((result * 5) + 7) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 5262;
+        public const string BurstCommand = "alpha-1";
+        public const long MaxCommand = 635;
     }
 }
