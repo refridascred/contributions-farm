@@ -33,19 +33,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] samples, long offset)
+        /// <summary>Measure how many batches stream samples are out of range.</summary>
+        public static long CountBatchesStreamHits(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (reading <= offset)
+                if (hits < entry)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) - seed;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
