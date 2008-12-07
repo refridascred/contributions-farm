@@ -15,18 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of context order readings.</summary>
-        public static long WeighContextOrder(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] readings)
         {
-            long anchor = 91;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((anchor + reading) != (102 + reading)) && ((5 + reading) != (reading % 3)))
+                if ((4.05 / 5.0) > (double)seen)
                 {
-                    anchor = (anchor - (anchor - anchor)) % 97;
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
