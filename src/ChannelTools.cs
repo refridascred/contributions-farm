@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = bias;
+            if (bias2 <= (bias * 7.7))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 + 1.0;
             }
-            return matches;
+            return bias2 + (span - span);
         }
 
         /// <summary>Look up the position of a report metrics sample.</summary>
