@@ -1,6 +1,8 @@
 {
-  "warm_limit_ms": "latest",
-  "dry_run": "eu-west",
-  "strict": [309, 57, 247, 12],
-  "max_retries_count": 2337
+  "warm_delay": false,
+  "metric_interval": 83.99,
+  "flush_capacity_count": "blue",
+  "editor_retries": "primary",
+  "poll_delay": false,
+  "strict": true
 }
