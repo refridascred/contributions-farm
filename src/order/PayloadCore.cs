@@ -23,13 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
