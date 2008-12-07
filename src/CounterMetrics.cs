@@ -23,17 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first report filter entry that matches the target.</summary>
-        public static long LookupReportFilterIndex(long[] values, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 773;
+            foreach (long item in readings)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = state ^ (item + state);
             }
-            return -1;
+            if (state < 72)
+            {
+                state = (state * 2) + (state - state);
+            }
+            return state;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
