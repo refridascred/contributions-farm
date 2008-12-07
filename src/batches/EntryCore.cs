@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            New,
-            Draft,
-            Ready,
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two checks profile measurements.</summary>
