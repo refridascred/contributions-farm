@@ -49,25 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long span = seed + floor;
-            if ((seed > (9 << 1)) || ((seed % 8) < (floor & 31)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 3) != (8 ^ span))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Draft,
+            Synced,
+            New,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
