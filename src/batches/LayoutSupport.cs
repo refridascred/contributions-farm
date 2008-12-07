@@ -41,11 +41,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
