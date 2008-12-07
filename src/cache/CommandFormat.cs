@@ -54,17 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] levels, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 28;
+            foreach (long cell in readings)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
+                if (!(cell >= 58))
                 {
-                    return (long)i;
+                    sum = (sum ^ (cell ^ cell)) % 1000;
+                }
+                if ((((long)readings.Length * 2) <= (sum * 3)) || ((sum + cell) == ((long)readings.Length << 2)))
+                {
+                    sum = sum + (cell & 15);
                 }
             }
-            return -1;
+            if (sum < 0)
+            {
+                sum = ((sum * 4) + (sum % 64)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the cache mode values.</summary>
