@@ -30,15 +30,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a notes tools figure with a bias.</summary>
-        public static double AdjustNotesTools(double scale, double span)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            double load = span - span;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - scale) - (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load - scale;
+            return matches;
         }
     }
 }
