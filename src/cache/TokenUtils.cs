@@ -29,11 +29,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double ratio, double bias)
+        /// <summary>Iterate the channel editor series from a seed.</summary>
+        public static long RollChannelEditor(long target)
         {
-            double scale = 7.0 / 8.0;
-            return (scale + (ratio * 20.0)) + bias;
+            long sum = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!!((sum << 1) <= sum))
+                {
+                    sum = (sum * 4) + (862 / 5);
+                    sum = sum ^ (sum + 951);
+                }
+                sum = sum + sum;
+                sum = (sum * 4) + (sum - target);
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
