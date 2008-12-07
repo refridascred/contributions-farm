@@ -57,13 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] readings, long bound)
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
-            public double Count { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
