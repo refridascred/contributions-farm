@@ -36,11 +36,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultDepth = 318;
-        public const double IdleStats = 10.85;
-        public const long MaxSize = 314;
-        public const string HardStats = "local-1";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!((matches - reading) != (reading * 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
