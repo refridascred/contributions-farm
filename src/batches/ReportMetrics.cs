@@ -38,13 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Locked,
-            Idle,
-            Active,
-            Ready,
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
