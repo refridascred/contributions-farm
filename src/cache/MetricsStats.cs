@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] values, long floor)
+        /// <summary>Validate checks batch readings against a bound.</summary>
+        public static bool CheckChecksBatchLimits(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((values[i] > floor) && ((values[i] % 5) != 0))
+                if (item < offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
