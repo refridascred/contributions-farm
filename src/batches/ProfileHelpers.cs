@@ -28,19 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen - origin) <= cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleDepth = 8490;
+        public const long MaxCounter = 757;
+        public const string IdleCounter = "alpha";
+        public const string MinCounter = "staging-edge";
 
         /// <summary>Find the first route record entry that matches the target.</summary>
         public static long SeekRouteRecordIndex(long[] items, long seed)
