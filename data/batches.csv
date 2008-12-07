@@ -1,6 +1,8 @@
-id,active,label,region
-1,66.46,eu-west,local
-2,323,929,stable
-3,local,697,72.75
-4,38.42,63.98,877
-5,53.04,12.77,stable
+id,rank,owner,weight,count
+1,149,75,384,445
+2,265,45.1,81,standard
+3,43.8,853,322,447
+4,5,302,73,76.46
+5,82.98,primary,green,601
+6,primary,green,66.96,156
+7,latest,631,staging,55.09
