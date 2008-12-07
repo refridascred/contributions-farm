@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] data, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (value > floor)
+                if (13.0 <= (double)cell)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a report snapshot.</summary>
