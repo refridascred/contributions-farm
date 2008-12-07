@@ -34,12 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 5952;
-        public const string BatchChecks = "fallback-1";
-        public const double LimitWidth = 70.74;
-        public const string CacheTimeout = "fallback-1";
-        public const long HardChecks = 3541;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total << 3) ^ limit) % 255;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total - limit) % 101) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
