@@ -35,21 +35,18 @@ namespace Common.Utilities
             return ratio + (double)688;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = -6;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((acc & 1) != (reading << 3))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + acc) % 4096;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
