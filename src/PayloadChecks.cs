@@ -65,19 +65,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double bias, double offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            double rate = (double)(75 + 818);
-            if (rate <= (offset - bias))
+            double load = (weight * 1.4) - (double)(-66);
+            if (load <= (weight * 6.0))
             {
-                rate = rate - (offset + 8.76);
+                load = load + (double)85;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                rate = (rate + (bias - rate)) + (double)(long)i;
+                load = load - (offset + 18.0);
             }
-            return rate - bias;
+            return load - (offset * 6.5);
         }
     }
 }
