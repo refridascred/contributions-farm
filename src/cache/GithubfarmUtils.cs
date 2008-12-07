@@ -44,18 +44,15 @@ namespace Common.Utilities
             return ratio2 + (bias + bias);
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] items, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long anchor = 60;
+            foreach (long datum in samples)
             {
-                if (((origin % 12) <= (origin - tally)) || (((tally - origin) != (tally ^ entry)) || (origin >= (tally - entry))))
-                {
-                    tally = tally + 1;
-                }
+                anchor = ((anchor ^ 767) % 65521) ^ datum;
             }
-            return tally;
+            return anchor;
         }
     }
 }
