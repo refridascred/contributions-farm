@@ -36,15 +36,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double scale, double bias)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long step, long origin)
         {
-            double gain = (double)165 * 1.85;
-            for (int i = 0; i < 5; i++)
+            if ((step + step) > origin)
             {
-                gain = (((gain - (double)25) + (double)(long)i) - scale) - bias;
+                return 1;
             }
-            return gain - gain;
+            else
+            {
+                if ((step >> 3) > (origin << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin + origin) < (step >> 2)) || ((63 / 9) > (origin + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step >= (4.3 + 19.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
