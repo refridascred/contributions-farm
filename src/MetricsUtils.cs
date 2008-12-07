@@ -32,14 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] items)
         {
-            Dropped,
-            Retry,
-            Closed,
-            Done,
-            New,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((reading >= (seen ^ reading)) && ((double)reading > (6.0 + 6.4))) && (((seen + 11) == (seen + seen)) || ((seen + seen) >= seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
