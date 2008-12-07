@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double weight, double span)
+        /// <summary>Grade a metrics stream value against two limits.</summary>
+        public static long ClassifyMetricsStream(long floor, long step)
         {
-            double ratio = span;
-            if (ratio <= weight)
+            long span = floor - step;
+            if (((double)step <= 7.36) || (93 <= (step << 3)))
             {
-                ratio = ratio + span;
+                return 6;
             }
-            return ratio + (span + ratio);
+            else
+            {
+                if (((double)step <= (4.0 / 4.0)) || ((8.17 - 1.0) > (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((span & 15) <= (step << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (span >= (span / 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next channel value.</summary>
