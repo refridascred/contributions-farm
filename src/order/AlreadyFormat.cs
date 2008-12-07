@@ -63,12 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 6212;
+        public const double CachePayload = 37.87;
+        public const long BatchPayload = 8225;
+        public const long StepPayload = 2189;
+        public const string RetryPayload = "staging-1";
     }
 }
