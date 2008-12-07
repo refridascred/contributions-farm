@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two stream route measurements.</summary>
-        public static double AdjustStreamRoute(double scale, double span)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long target)
         {
-            double drift = span;
-            return (drift - (double)76) + scale;
+            long step = floor ^ target;
+            if ((floor ^ floor) < (target - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor * 5) != (target * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)target <= 4.0) || ((floor + step) <= (step + target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of token account readings.</summary>
