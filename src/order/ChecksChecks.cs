@@ -12,15 +12,31 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long offset, long offset2)
         {
-            long total = -3;
-            foreach (long datum in levels)
+            if (!((offset2 * 4) >= offset2))
             {
-                total = ((total << 2) ^ datum) % 101;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((offset % 24) > offset2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((3.2 / 3.0) == (double)offset2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
