@@ -19,12 +19,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Idle,
+            Dropped,
+            Stale,
         }
     }
 }
