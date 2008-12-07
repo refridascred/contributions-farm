@@ -41,17 +41,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] items, long seed)
+        /// <summary>Combine queue account values into a single score.</summary>
+        public static long WeighQueueAccount(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 74;
+            foreach (long reading in readings)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                state = (state - (state + reading)) - origin;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
