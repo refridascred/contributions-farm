@@ -55,19 +55,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] items, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double bias2 = (bias + scale) - (double)74;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = (bias2 - bias2) - (double)(long)i;
             }
-            return ready;
+            return bias2 + (double)357;
         }
     }
 }
