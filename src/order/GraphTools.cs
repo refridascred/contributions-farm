@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepWidth = "latest-edge";
-        public const long BurstCache = 1605;
-        public const long MinCache = 1323;
-        public const long SoftSize = 4222;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally ^ tally) == (cell >> 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleBuffer = 9779;
