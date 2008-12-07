@@ -14,11 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double bias, double bias2)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long floor)
         {
-            double ratio = 3.2 - (double)71;
-            return ((ratio + ratio) + bias) + bias2;
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up already samples.</summary>
