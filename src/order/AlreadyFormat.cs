@@ -28,24 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long seed, long seed2)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if (((seed ^ seed) > (7 * 4)) || ((3.3 + 6.46) <= (8.1 / 6.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 <= seed) || ((seed + seed2) != (384 * 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
