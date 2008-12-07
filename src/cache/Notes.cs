@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] data, long origin)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every filter entry entry stays within the limit.</summary>
