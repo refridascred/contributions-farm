@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string StepCluster = "local-1";
         public const double WindowCluster = 18.34;
 
-        /// <summary>Look up the position of a checks token sample.</summary>
-        public static long SeekChecksTokenIndex(long[] samples, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (samples[i] == floor)
+                if (value < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
