@@ -65,12 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
+            Stale,
+            Retry,
+            Pending,
+            Failed,
         }
     }
 }
