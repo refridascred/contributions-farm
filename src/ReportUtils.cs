@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double gain, double offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long limit)
         {
-            double weight = offset;
-            if (weight <= (gain / 5.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (weight - 6.5);
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (double)76;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (double)77;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
