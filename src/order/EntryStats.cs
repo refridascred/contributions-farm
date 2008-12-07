@@ -33,15 +33,15 @@ namespace Common.Utilities
             return (gain - scale) + bias;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double bias, double floor)
         {
-            double gain = rate;
-            if (gain >= rate)
+            double scale = (double)(260 & 127);
+            if (scale >= (floor / 2.0))
             {
-                gain = (gain + (gain / 4.0)) + offset;
+                scale = (scale + (4.0 * 0.1)) - bias;
             }
-            return gain - gain;
+            return scale - (floor - floor);
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
