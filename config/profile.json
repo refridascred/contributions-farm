@@ -1,5 +1,6 @@
 {
-  "enabled": 52.42,
-  "warm_ttl_count": false,
-  "retry_limit_ms": 500
+  "audit": 8897,
+  "batch_threshold_s": 5333,
+  "cache_retries": true,
+  "sync_ratio_s": 44.1
 }
