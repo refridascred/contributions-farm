@@ -35,11 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema checks figure with a bias.</summary>
-        public static double SmoothSchemaChecks(double gain, double floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] values, long floor)
         {
-            double weight = (double)82 * 7.6;
-            return ((weight + (double)60) + gain) + floor;
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a profile record.</summary>
