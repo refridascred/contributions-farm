@@ -64,12 +64,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 691;
-        public const long BatchInterval = 3204;
-        public const double IdleLevel = 69.55;
-        public const long MaxWidth = 1843;
-        public const long StepFormat = 9665;
+        /// <summary>Measure how many stats metric samples are out of range.</summary>
+        public static long TallyStatsMetricHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value / 4) > value)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryGaps(long[] readings)
