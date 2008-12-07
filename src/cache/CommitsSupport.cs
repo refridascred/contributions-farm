@@ -34,19 +34,13 @@ namespace Common.Utilities
         public const long CacheSize = 2193;
         public const long IdleWidth = 476;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double gain, double offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double mean = (double)((-48) % 100);
-            if (mean < 9.0)
-            {
-                mean = (mean - mean) - offset;
-            }
-            else
-            {
-                mean = mean + (gain / 4.0);
-            }
-            return mean - 7.07;
+            Pending,
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
