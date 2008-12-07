@@ -77,24 +77,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Look up the position of a window githubfarm sample.</summary>
+        public static long SeekWindowGithubfarmIndex(long[] samples, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ 1) % 4096;
-                if ((4.9 <= (double)(long)i) && ((long)i < 5))
+                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
                 {
-                    anchor = (anchor + (seed << 3)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor + seed) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
