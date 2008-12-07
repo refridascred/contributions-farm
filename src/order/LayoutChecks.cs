@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many support checks samples are out of range.</summary>
+        public static long MeasureSupportChecksOutliers(long[] readings)
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seen >= (6.12 / 6.0))
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
