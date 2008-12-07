@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long WindowEditor = 6212;
         public const double RetryEditor = 76.15;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double scale, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] levels)
         {
-            double ratio = (scale - scale) + (double)9;
-            if (ratio < ratio)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                ratio = (ratio + scale) - floor;
+                if (((612 ^ item) >= (tally + item)) || (((double)item <= (10.0 * 10.0)) && ((tally ^ tally) <= (item & 7))))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio / 2.0)) - (double)(long)i;
-            }
-            return ratio + (double)683;
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
