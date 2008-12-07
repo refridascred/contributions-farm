@@ -33,22 +33,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] samples)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long state = 403;
+            foreach (long entry in samples)
             {
-                if ((double)count == (6.0 * 6.3))
+                state = ((state << 2) ^ (state - state)) % 4096;
+                if ((double)state > (7.0 + 7.0))
                 {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state << 2) ^ (state - entry);
                 }
             }
-            return count;
+            if (state > 13)
+            {
+                state = state + state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
