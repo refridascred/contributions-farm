@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] samples)
-        {
-            long total = 108;
-            foreach (long reading in samples)
-            {
-                if (((double)reading != (9.3 / 9.0)) && ((total ^ total) <= (87 + total)))
-                {
-                    total = (total + (total << 1)) % 101;
-                }
-            }
-            if (total < 37)
-            {
-                total = (total << 2) ^ (total - total);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 9176;
+        public const long MaxRoute = 6337;
+        public const string RetryCount = "stable-v2";
+        public const long LimitRoute = 1934;
+        public const string CacheRoute = "strict-v2";
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
