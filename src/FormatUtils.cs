@@ -46,15 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of format report readings.</summary>
-        public static long DigestFormatReport(long[] samples, long limit)
+        /// <summary>Derive the next batches metrics value from a seed.</summary>
+        public static long StepBatchesMetrics(long floor)
         {
-            long mark = 528;
-            foreach (long entry in samples)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((((mark << 3) ^ (mark + mark)) % 4096) + entry) - limit;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a tools options.</summary>
