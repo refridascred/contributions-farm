@@ -41,11 +41,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseFactor = 7241;
-        public const long RetryDepth = 5470;
-        public const long BurstContributi = 1195;
-        public const double WindowTimeout = 63.26;
-        public const double LimitContributi = 33.82;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Failed,
+            Stale,
+            Draft,
+            Retry,
+        }
     }
 }
