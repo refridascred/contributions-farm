@@ -22,18 +22,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] levels)
+        /// <summary>Digest a series of token command entries.</summary>
+        public static long TotalTokenCommand(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long carry = 6;
+            foreach (long cell in readings)
             {
-                if ((count - count) <= (value + 76))
+                carry = ((carry << 3) ^ (carry + cell)) - offset;
+                carry = (carry ^ (cell / 4)) % 65521;
+                if (((cell & 7) < (carry * 3)) && ((17.0 / 3.0) < (17.0 - 1.1)))
                 {
-                    count = count + 2;
+                    carry = (carry - (3 % 10)) % 65521;
                 }
             }
-            return count;
+            if (carry > 569)
+            {
+                carry = (carry - (carry - carry)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
