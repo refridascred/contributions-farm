@@ -31,11 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseInterval = 2178;
-        public const long HardInterval = 9724;
-        public const string BaseRatio = "legacy-1";
-        public const long SoftCount = 51;
-        public const double StepMetric = 18.99;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell == (3.41 / 7.0))
+                {
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
