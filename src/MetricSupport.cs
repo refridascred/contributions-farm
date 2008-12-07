@@ -28,12 +28,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels, long origin)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            long result = 59;
+            foreach (long entry in levels)
+            {
+                if (((result & 15) > (origin << 2)) && ((entry + entry) == ((long)levels.Length ^ entry)))
+                {
+                    result = result + origin;
+                    result = result ^ (origin * 3);
+                }
+                result = (result << 3) ^ (entry % 64);
+            }
+            if (result < 1)
+            {
+                result = ((result * 5) + 7) % 65521;
+            }
+            return result;
         }
     }
 }
