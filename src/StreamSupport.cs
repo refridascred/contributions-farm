@@ -18,13 +18,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] readings, long floor)
         {
-            Idle,
-            Ready,
-            Dropped,
-            Retry,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
