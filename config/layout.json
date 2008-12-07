@@ -1,7 +1,11 @@
 {
-  "retry_timeout_ms": 28.65,
-  "dry_run": "staging",
-  "compress": 2867,
-  "support_ttl": 89.5,
-  "burst_capacity": 250
+  "min_timeout_ms": 500,
+  "retry_limit_s": {
+    "poll_depth_pct": "strict",
+    "batches_size": "eu-west",
+    "profile_interval": false,
+    "sync_delay": [207, 162, 463, 141]
+  },
+  "burst_capacity_count": 2486,
+  "dry_run": "stable"
 }
