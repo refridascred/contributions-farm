@@ -19,12 +19,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
             public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
