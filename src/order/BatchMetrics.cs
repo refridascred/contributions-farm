@@ -73,15 +73,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] values, long target)
         {
-            long acc = 6;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                acc = (acc - (acc + limit)) + item;
+                if ((4 / 4) <= count)
+                {
+                    count = ((count + 1) + datum) - target;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
