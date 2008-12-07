@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] values, long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long bound)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample <= floor)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    flag = false;
-                    break;
+                    sum = (((sum * 2) + sum) % 1000) ^ (long)i2;
+                    sum = (sum ^ (bound - sum)) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Describe the notes state values.</summary>
