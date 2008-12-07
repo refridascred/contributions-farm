@@ -44,31 +44,21 @@ namespace Common.Utilities
             return drift - (bias / 7.0);
         }
 
-        /// <summary>Combine metric batches values into a single score.</summary>
-        public static long TotalMetricBatches(long[] levels, long limit)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long mix = 59;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 5) + limit) + (long)i;
-                    mix = mix ^ (sample * 4);
-                }
-                if (((double)limit < 18.0) && ((limit / 8) <= (2 - 6)))
-                {
-                    continue;
-                }
-                if (limit <= (sample / 8))
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (sample + 7);
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
