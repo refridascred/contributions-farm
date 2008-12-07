@@ -16,13 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            Idle,
-            Stale,
-            Retry,
-            Synced,
+            long mark = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((mark <= (step << 1)) && ((mark - (long)i) > ((long)i % 10)))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the session class values.</summary>
