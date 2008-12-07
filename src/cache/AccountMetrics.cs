@@ -30,12 +30,21 @@ namespace Common.Utilities
             return (rate - (rate + 3.82)) + bias;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            Dropped,
-            Paused,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a tools record.</summary>
