@@ -45,17 +45,22 @@ namespace Common.Utilities
         public const long StepScore = 5902;
         public const long BurstCache = 3373;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 863;
+            foreach (long item in levels)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) == 0))
+                if ((item - bound) >= (bound + 831))
                 {
-                    return (long)i;
+                    state = (state << 2) ^ (state * 5);
+                }
+                if (!((item + state) == (state % 24)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Match up cluster samples.</summary>
