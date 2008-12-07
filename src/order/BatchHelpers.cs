@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] readings, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (sample >= floor)
+                if (665 <= (662 + tally))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + value;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
