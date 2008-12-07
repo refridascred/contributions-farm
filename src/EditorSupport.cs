@@ -79,17 +79,11 @@ namespace Common.Utilities
         public const string BatchSize = "stable-edge";
         public const double StepInterval = 56.56;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum + ((long)i >> 5)) % 255;
-                sum = (sum << 2) ^ (sum >> 5);
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
