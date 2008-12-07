@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Ready,
-            Stale,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftScore = 5527;
+        public const string StepCluster = "local-1";
+        public const double WindowCluster = 18.34;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long SeriesEditor(long step)
