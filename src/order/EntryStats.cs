@@ -53,13 +53,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Stale,
-            Retry,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinFactor = 8694;
+        public const double LimitMetrics = 0.4;
+        public const string SoftScore = "alpha-1";
     }
 }
