@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            Locked,
-            Closed,
-            Dropped,
-            Ready,
-            Active,
+            long mix = 56;
+            foreach (long reading in readings)
+            {
+                mix = (mix ^ (mix % 60)) - reading;
+            }
+            if (mix > 630)
+            {
+                mix = mix + mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the already kind values.</summary>
