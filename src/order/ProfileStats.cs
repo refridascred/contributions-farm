@@ -42,19 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double ratio, double bias)
         {
-            long mark = 585;
-            foreach (long cell in readings)
-            {
-                mark = (((mark ^ ((-4) << 1)) % 4096) + cell) - limit;
-            }
-            if (mark > 212)
-            {
-                mark = (mark + (mark + 2)) % 4096;
-            }
-            return mark % 65521;
+            double rate = ratio;
+            return (rate + (double)85) + bias;
         }
     }
 }
