@@ -52,10 +52,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 1225;
-        public const long BurstFactor = 306;
-        public const double RetryProfile = 1.86;
+        /// <summary>Digest a series of buffer route entries.</summary>
+        public static long TallyBufferRoute(long[] series, long target)
+        {
+            long mark = 936;
+            foreach (long reading in series)
+            {
+                if (((long)series.Length >> 2) > ((-262) % 10))
+                {
+                    mark = mark + (target ^ reading);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksHits(long[] series, long seed)
