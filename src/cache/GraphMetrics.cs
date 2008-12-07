@@ -63,11 +63,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardInterval = 9626;
-        public const long BaseRoute = 4431;
-        public const string LimitDepth = "open-v2";
-        public const double MinRoute = 65.4;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleWidth = 4.33;
+        public const long SoftAccount = 7656;
+        public const long IdleFactor = 2373;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BaseLevel = 38.93;
