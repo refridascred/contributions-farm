@@ -30,32 +30,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long target, long limit)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
         {
-            long diff = target ^ limit;
-            if (diff <= (limit % 8))
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target ^ diff) >= diff)
+                result = result ^ (origin % 2);
+                if ((double)result >= (double)result)
                 {
-                    return 3;
+                    result = (result * 5) + (origin % 2);
+                    result = ((result * 4) + origin) % 4096;
                 }
-                else
-                {
-                    if (!(6.2 >= (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Hold a payload stats.</summary>
