@@ -27,13 +27,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] readings)
         {
-            Paused,
-            Failed,
-            Draft,
-            Synced,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches <= (matches + 484)) && !(sample <= (sample & 255)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
