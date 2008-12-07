@@ -34,22 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] series, long seed)
+        /// <summary>Look up the position of a stats report sample.</summary>
+        public static long LookupStatsReportIndex(long[] data, long offset)
         {
-            long anchor = 98;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.8 * 5.33) >= (double)seed)
+                if (data[i] > offset)
                 {
-                    anchor = (anchor - (74 >> 2)) - value;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (seed + 9)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Hold a editor stats.</summary>
