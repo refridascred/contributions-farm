@@ -28,12 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate payload already readings against a bound.</summary>
+        public static bool CheckPayloadAlreadyRange(long[] levels, long offset)
         {
-            Closed,
-            Draft,
-            Synced,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next context value.</summary>
