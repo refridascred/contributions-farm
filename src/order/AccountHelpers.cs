@@ -94,17 +94,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] samples, long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 2;
+            foreach (long item in values)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                if (9 >= anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor + item) % 1000;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of graph farm readings.</summary>
