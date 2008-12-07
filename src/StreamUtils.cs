@@ -89,27 +89,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel schema values into a single score.</summary>
-        public static long TotalChannelSchema(long[] series)
-        {
-            long mix = 762;
-            foreach (long datum in series)
-            {
-                if ((mix * 4) > (datum ^ (long)series.Length))
-                {
-                    mix = ((mix * 2) + (datum & 255)) % 4096;
-                    mix = (mix - (mix / 8)) % 65521;
-                }
-                if (8.49 >= (double)datum)
-                {
-                    mix = (mix + (datum + mix)) % 97;
-                }
-                if (((10.0 / 2.0) <= (double)datum) || (6 <= (datum + mix)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 1250;
+        public const long MinWidth = 5494;
+        public const long SoftFilter = 604;
+        public const long MinFilter = 6581;
+        public const double IdleFilter = 30.54;
     }
 }
