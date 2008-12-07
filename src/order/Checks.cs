@@ -46,30 +46,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate layout command samples.</summary>
-        public static long TallyLayoutCommand(long[] values, long target)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long anchor = 331;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target << 2) == (75 + anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor - anchor) % 4096) ^ item;
-                }
-                if (((anchor / 6) >= target) || (anchor > (target << 1)))
-                {
-                    anchor = (anchor + (anchor + 14)) % 4096;
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 87)
-            {
-                anchor = (anchor * 5) + (target / 2);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many filter window samples are out of range.</summary>
