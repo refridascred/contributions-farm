@@ -34,21 +34,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 357;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((7 * 4) >= datum)
                 {
-                    if ((values[i] + values[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc * 2) + (376 - 6);
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
