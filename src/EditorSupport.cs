@@ -59,16 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 2675;
+        public const string LimitPayload = "local-v2";
+        public const long BurstPayload = 5388;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 1144;
