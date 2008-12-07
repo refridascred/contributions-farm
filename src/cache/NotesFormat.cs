@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long state = 929;
+            foreach (long datum in data)
+            {
+                state = (state ^ (datum + state)) - floor;
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
