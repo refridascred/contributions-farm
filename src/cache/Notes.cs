@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] readings, long floor)
+        /// <summary>Project the next checks notes value.</summary>
+        public static double ScaleChecksNotes(double scale, double bias)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double bias2 = (scale / 4.0) * 9.2;
+            if (bias2 <= (double)323)
             {
-                if (item >= (80 * 5))
-                {
-                    count = (count + 3) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = bias2 + scale;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + scale) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
