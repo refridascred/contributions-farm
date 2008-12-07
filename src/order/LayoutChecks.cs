@@ -72,22 +72,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate support session samples.</summary>
-        public static long WeighSupportSession(long[] series, long floor)
-        {
-            long score = 3;
-            foreach (long cell in series)
-            {
-                if ((score - score) == (floor - 12))
-                {
-                    score = (score ^ (floor + (-205))) - cell;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (floor / 9)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 9352;
+        public const long BatchInterval = 7951;
+        public const long WindowBudget = 9671;
+        public const double RetryScore = 58.62;
     }
 }
