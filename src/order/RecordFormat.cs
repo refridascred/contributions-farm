@@ -36,30 +36,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Check that every queue contributi entry stays within the limit.</summary>
+        public static bool ValidateQueueContributiBounds(long[] samples, long offset)
         {
-            long score = 6;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((double)reading < (5.5 * 1.21))
+                if (sample > offset)
                 {
-                    score = (score ^ (reading << 1)) % 65521;
-                }
-                if ((reading / 3) > (score >> 5))
-                {
-                    score = (score * 3) + (reading ^ reading);
-                }
-                if ((score % 8) != (score + score))
-                {
-                    score = (score * 2) + (reading - reading);
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 738)
-            {
-                score = (score - (score + score)) % 65521;
-            }
-            return score;
+            return ok;
         }
     }
 }
