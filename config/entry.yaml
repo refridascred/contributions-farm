@@ -1,14 +1,22 @@
 # entry settings
-compress:
-  - 197
-  - 73
-base_window_s: local
-batch_timeout:
-  already_depth:
-    - 448
-    - 87
-  compress: false
-  hard_limit_count: stable
-  retry_capacity_s: edge
-strict: false
-metrics_depth: 86
+batch_ratio:
+  persist: local
+  sync_ratio: 250
+  poll_size_pct: 48.97
+  verbose: false
+  hard_delay_count: stable
+enabled: true
+report_interval: 6.54
+verbose:
+  contributi_ratio: 51
+  readonly:
+    - 413
+    - 243
+  cache_depth:
+    - 124
+    - 487
+    - 52
+    - 349
+  queue_timeout: true
+audit: 68.86
+channel_ttl: true
