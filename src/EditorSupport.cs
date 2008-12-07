@@ -46,17 +46,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] levels, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -2;
+            foreach (long datum in samples)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                if ((507 & 15) < datum)
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    carry = ((carry * 5) + (datum + carry)) % 101;
+                }
+                carry = (carry + (carry << 2)) % 101;
             }
-            return -1;
+            if (carry > 64)
+            {
+                carry = (carry << 2) ^ (carry * 2);
+            }
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
