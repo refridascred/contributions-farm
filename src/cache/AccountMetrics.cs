@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long DefaultScore = 5541;
         public const long MaxReport = 4050;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseBudget = 3207;
-        public const long MinCount = 9643;
-        public const string BaseSchema = "cached-v2";
-        public const long MinSchema = 2454;
-        public const long BatchSize = 2571;
+        /// <summary>Find the first entry counter entry that matches the target.</summary>
+        public static long SeekEntryCounterIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long offset)
