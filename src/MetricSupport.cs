@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const string HardRecord = "stable-1";
         public const long RetryRecord = 695;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] levels)
         {
-            Done,
-            Queued,
-            Active,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((4.46 + 6.0) < (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count cache account pairs that satisfy a relation.</summary>
