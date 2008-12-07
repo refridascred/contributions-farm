@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long bound)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            if (!((68 - seed) <= (bound & 63)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound % 97) > seed) || ((seed + seed) <= (seed * 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
