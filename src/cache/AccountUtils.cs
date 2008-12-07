@@ -34,18 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit session graph readings against a rule.</summary>
-        public static long MeasureSessionGraphMatches(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (count > ((-4) - target))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 1502;
+        public const long BaseSupport = 2292;
+        public const string BatchSupport = "stable-edge";
+        public const long WindowFactor = 6998;
+        public const long StepInterval = 65;
     }
 }
