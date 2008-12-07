@@ -58,10 +58,15 @@ namespace Common.Utilities
         public const long BurstInterval = 1917;
         public const long LimitMetric = 3238;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleWidth = 4.33;
-        public const long SoftAccount = 7656;
-        public const long IdleFactor = 2373;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Synced,
+            Done,
+            New,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BaseLevel = 38.93;
