@@ -20,38 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long limit, long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            if (((limit & 255) > 745) || ((offset << 2) <= (limit + offset)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit & 1) != (offset >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((15.0 - 4.26) > (double)offset) && ((limit - limit) > (limit + offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit >= (limit / 6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
