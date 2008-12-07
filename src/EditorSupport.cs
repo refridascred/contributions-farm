@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] data, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Rank stats context input into a small class.</summary>
