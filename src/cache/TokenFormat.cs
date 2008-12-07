@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings, long floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mark = 99;
-            foreach (long sample in readings)
-            {
-                if ((floor - 4) > (mark + floor))
-                {
-                    mark = ((mark - (mark << 1)) % 4096) - sample;
-                }
-            }
-            return mark;
+            Dropped,
+            Paused,
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
