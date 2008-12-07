@@ -1,6 +1,8 @@
-id,label,ratio,weight
-1,87.48,standard,latest
-2,legacy,907,679
-3,426,281,edge
-4,439,54.94,415
-5,30.75,staging,832
+id,count,label,level
+1,18.68,455,801
+2,local,edge,32.51
+3,primary,latest,708
+4,940,642,fallback
+5,27.05,14.7,582
+6,255,31.53,87.29
+7,507,364,green
