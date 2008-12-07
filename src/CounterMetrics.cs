@@ -74,17 +74,22 @@ namespace Common.Utilities
             return mean + 7.5;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (items[i] <= bound)
+                if (((sample >= (bound * 5)) && (bound <= (bound & 63))) && ((double)count != (1.0 - 7.3)))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
