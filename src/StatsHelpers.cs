@@ -37,23 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next batch graph value.</summary>
-        public static double BlendBatchGraph(double scale, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] samples, long step)
         {
-            double bias = (span * 8.0) - 3.9;
-            if (bias > (scale / 7.0))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                bias = bias + (double)9;
+                if ((double)hits == (6.0 / 8.0))
+                {
+                    hits = ((hits + 3) + datum) - step;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (bias + span)) - (double)(long)i;
-            }
-            return bias + (bias - bias);
+            return hits;
         }
 
         /// <summary>Describe the batch state values.</summary>
