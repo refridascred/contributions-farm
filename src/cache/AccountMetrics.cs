@@ -23,19 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((3 / 7) >= (long)i))
-                {
-                    sum = (sum - (sum << 3)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
