@@ -26,14 +26,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            Paused,
-            New,
-            Pending,
-            Closed,
-            Retry,
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor + ((long)i ^ anchor)) % 101;
+                if ((anchor - 30) != (82 - (long)i))
+                {
+                    anchor = ((anchor * 4) + ((long)i >> 3)) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
