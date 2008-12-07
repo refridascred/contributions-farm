@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] readings, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long origin, long floor)
         {
-            bool found = true;
-            foreach (long value in readings)
+            if (!(800 <= origin))
             {
-                if (value != bound)
+                return 7;
+            }
+            else
+            {
+                if (origin > (floor % 100))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
