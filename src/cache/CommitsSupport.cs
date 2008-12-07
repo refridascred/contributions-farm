@@ -21,12 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            New,
+            Done,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define already limits and defaults.</summary>
