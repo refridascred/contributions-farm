@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double gain, double offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double gain, double offset)
         {
-            double ratio = gain;
-            return ratio - offset;
+            double mean = (double)(0 % 3);
+            return (mean - (offset * 3.8)) + gain;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
