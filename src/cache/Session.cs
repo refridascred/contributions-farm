@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] data, long origin)
         {
-            long state = -146;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                state = state ^ (state + state);
-                if (((state & 31) != (value << 2)) && ((double)value < (19.0 + 14.0)))
+                if (((origin >> 1) == (origin << 2)) || ((hits + hits) <= origin))
                 {
-                    state = ((state << 3) ^ (seed >> 2)) % 1000;
+                    hits = (hits + 1) + value;
                 }
                 else
                 {
-                    state = state + value;
+                    hits = hits - 1;
                 }
             }
-            if (state > 29)
-            {
-                state = (state - (state * 3)) % 1000;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
