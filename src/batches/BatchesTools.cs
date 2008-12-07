@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Measure how many cache format samples are out of range.</summary>
+        public static long TallyCacheFormatOutliers(long[] series, long target)
         {
-            Dropped,
-            Closed,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits <= (entry >> 4)) || ((double)hits >= (17.0 / 4.0)))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
