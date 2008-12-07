@@ -1,6 +1,25 @@
 # entry settings
-counter_ttl: 329
-enabled: 8185
-persist: 1277
-audit: 6579
-cache_threshold_s: local
+hard_delay_ms: staging
+retry_ratio: false
+warm_ratio_s:
+  base_window: open
+  idle_limit: 8309
+  cache_window_s: 1736
+  poll_ratio: false
+context_interval: local
+max_timeout_pct:
+  warm_size: 91.02
+  warm_retries_ms: 100
+  soft_window_pct: 9778
+  readonly: stable
+  verbose:
+    - open
+    - blue
+    - latest
+    - local
+  burst_size:
+    - 298
+    - 140
+    - 169
+    - 362
+token_capacity: 250
