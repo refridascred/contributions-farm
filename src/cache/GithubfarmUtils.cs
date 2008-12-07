@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first contributi batches entry that matches the target.</summary>
-        public static long SeekContributiBatchesIndex(long[] series, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((double)step != (double)floor))
             {
-                if (series[i] >= origin)
+                return 1;
+            }
+            else
+            {
+                if (!((double)floor > 0.6))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step == (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((522 / 5) < (9 + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a session entry.</summary>
