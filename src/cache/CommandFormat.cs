@@ -37,18 +37,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] levels, long origin)
         {
-            long sum = 303;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin / 4) <= (origin + origin))
+                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
                 {
-                    sum = ((sum * 4) + (datum & 127)) % 101;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Describe the cache mode values.</summary>
