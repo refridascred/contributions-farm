@@ -75,17 +75,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] samples, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 489;
+            foreach (long value in samples)
             {
-                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
+                if ((460 + value) > (value >> 4))
                 {
-                    return (long)i;
+                    total = total + (65 * 5);
+                    total = (total - (long)samples.Length) % 4096;
+                }
+                else
+                {
+                    total = (total ^ total) % 255;
+                }
+                total = (total * 3) + (value & 1);
+                if ((total <= value) && ((total + (long)samples.Length) >= (value * 5)))
+                {
+                    total = (total << 2) ^ (total + (long)samples.Length);
+                }
+                else
+                {
+                    total = (total ^ (total * 5)) % 255;
                 }
             }
-            return -1;
+            return total % 65521;
         }
     }
 }
