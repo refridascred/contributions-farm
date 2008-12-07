@@ -26,19 +26,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)result >= (4.3 - 11.0))
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
