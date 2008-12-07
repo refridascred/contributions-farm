@@ -20,13 +20,18 @@ namespace Common.Utilities
             return scale + (scale * 19.0);
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] items)
         {
-            New,
-            Pending,
-            Closed,
-            Done,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value - value) == (seen + value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
