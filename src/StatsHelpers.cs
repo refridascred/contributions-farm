@@ -27,13 +27,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double gain, double offset)
         {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            double mean = (double)87 - (3.3 + offset);
+            if (mean <= gain)
+            {
+                mean = mean + (double)201;
+            }
+            return mean + offset;
         }
 
         /// <summary>Match up commits farm samples.</summary>
