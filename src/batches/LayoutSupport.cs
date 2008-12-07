@@ -52,15 +52,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] values)
         {
-            double mean = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                mean = (mean + scale) + (double)(long)i;
+                if ((datum - 83) > ((long)values.Length + datum))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean + scale;
+            return matches;
         }
     }
 }
