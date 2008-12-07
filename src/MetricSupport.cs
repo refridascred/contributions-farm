@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many layout format samples are out of range.</summary>
+        public static long MeasureLayoutFormatMatches(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!!((double)datum > (0.7 / 9.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
