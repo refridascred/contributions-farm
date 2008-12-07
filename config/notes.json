@@ -1,10 +1,8 @@
 {
-  "window_timeout": "standard",
-  "buffer_delay": "primary",
-  "poll_depth_count": {
-    "account_window": "fallback",
-    "commits_window": ["cached", "legacy", "blue", "fallback"],
-    "flush_threshold_s": "edge"
-  },
-  "warm_delay": ["edge", "standard", "stable"]
+  "base_ratio": 9263,
+  "persist": 3286,
+  "batch_timeout_count": 30,
+  "retry_capacity_count": 86.91,
+  "base_depth": [27, 130],
+  "profile_interval": [133, 72, 87, 348]
 }
