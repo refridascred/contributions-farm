@@ -87,17 +87,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] samples, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = bias * 2.1;
+            return (gain + (double)7) + bias2;
         }
     }
 }
