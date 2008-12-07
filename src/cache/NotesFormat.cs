@@ -33,38 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long offset, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] data, long limit)
         {
-            if (((8.5 / 9.0) <= (double)offset) && ((offset / 5) <= offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step * 2) >= (step + 242))
+                if (data[i] < limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (5 <= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset < (18.0 / 5.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
