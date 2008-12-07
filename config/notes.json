@@ -1,6 +1,6 @@
 {
-  "hard_ratio_count": 43,
-  "warm_retries_count": 27.05,
-  "buffer_ratio": [479, 53],
-  "hard_threshold_s": "strict"
+  "audit": 4359,
+  "poll_retries_count": false,
+  "base_ratio": 30,
+  "queue_timeout": "cached"
 }
