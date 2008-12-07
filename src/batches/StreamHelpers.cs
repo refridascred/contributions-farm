@@ -58,17 +58,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] samples, long floor)
+        /// <summary>Rank editor order input into a small class.</summary>
+        public static long SortEditorOrder(long limit, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)limit < (7.5 * 2.67)) && ((seed + (-49)) <= limit))
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((2.5 + 5.0) <= (double)seed)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed > (1.23 * 0.9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
