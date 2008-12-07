@@ -27,19 +27,11 @@ namespace Common.Utilities
             return scale + (offset / 9.0);
         }
 
-        /// <summary>Validate payload already readings against a bound.</summary>
-        public static bool CheckPayloadAlreadyRange(long[] levels, long offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
