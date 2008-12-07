@@ -23,15 +23,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double scale, double span)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long origin)
         {
-            double weight = 8.0;
-            for (int i = 0; i < 5; i++)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                weight = (((weight - weight) + (double)(long)i) + scale) + span;
+                score = ((score << 3) ^ (score - 6)) % 65521;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return weight - (weight * 5.57);
+            return score;
         }
     }
 }
