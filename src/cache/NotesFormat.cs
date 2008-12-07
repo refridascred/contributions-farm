@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit format graph readings against a rule.</summary>
-        public static long AuditFormatGraphOutliers(long[] data, long offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample >= (6.0 * 16.0))
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
