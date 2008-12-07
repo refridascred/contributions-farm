@@ -14,13 +14,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] data, long seed)
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long anchor = 6;
+            foreach (long sample in data)
+            {
+                if ((sample << 2) != (anchor - sample))
+                {
+                    anchor = (anchor ^ (long)data.Length) % 101;
+                }
+                if ((seed / 3) == (anchor + anchor))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a order payload sample.</summary>
