@@ -46,38 +46,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long floor, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items, long origin)
         {
-            if (17.0 < (double)bound)
+            long mark = 95;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) < (bound % 64))
+                mark = ((mark << 2) ^ (mark + reading)) % 1000;
+                if (((long)items.Length + reading) == (origin * 5))
                 {
-                    return 2;
+                    mark = (mark + (origin / 5)) % 65521;
+                    mark = (mark ^ (origin >> 5)) % 97;
+                    continue;
                 }
-                else
+                if (mark > (6 + reading))
                 {
-                    if ((floor - floor) == (floor + 68))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(((-5) << 1) < (22 + floor)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mark = (mark << 2) ^ origin;
                 }
             }
+            return mark;
         }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
