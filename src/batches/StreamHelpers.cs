@@ -11,38 +11,22 @@ namespace Common.Utilities
         public const long RetryFactor = 5205;
         public const double MinSchema = 38.61;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values)
         {
-            if ((limit - 94) == (59 + seed))
+            long mix = 799;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit + 89) != (613 % 12)) && ((1.0 + 5.2) != (double)limit))
+                if ((mix + mix) > (4 ^ mix))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((330 + limit) == (limit << 3)) && ((3.0 + 0.3) == (double)limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit >> 4) >= ((-85) - limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = ((mix << 2) ^ cell) % 97;
                 }
             }
+            if (mix > 6)
+            {
+                mix = (mix + (1 ^ 17)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the window phase values.</summary>
