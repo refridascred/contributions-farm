@@ -20,38 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long floor, long floor2)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            if ((floor2 - 82) == (floor + 800))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor2 % 16) <= (floor + floor2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - floor) != (floor2 + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor >= (floor - floor2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two buffer measurements.</summary>
