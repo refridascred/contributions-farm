@@ -1,8 +1,18 @@
 {
-  "default_depth": ["primary", "primary"],
-  "support_ratio": 2864,
-  "schema_delay": "edge",
-  "dry_run": "staging",
-  "burst_threshold_ms": 65,
-  "max_limit_pct": "fallback"
+  "flush_retries_count": {
+    "idle_window": 250,
+    "hard_depth_count": {
+      "persist": false,
+      "batch_window": 7.63,
+      "compress": ["local", "green", "eu-west", "stable"],
+      "retry_retries_count": [385, 331],
+      "cache_ratio_pct": true
+    },
+    "default_capacity_count": "staging"
+  },
+  "warm_ttl": [320, 402],
+  "default_capacity_pct": true,
+  "readonly": 96,
+  "poll_depth": true,
+  "max_retries_pct": "primary"
 }
