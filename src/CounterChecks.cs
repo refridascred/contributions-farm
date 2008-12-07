@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats batches samples.</summary>
-        public static long CompareStatsBatchesCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "fallback-v2";
+        public const string HardCache = "fallback-edge";
+        public const long StepScore = 5902;
+        public const long BurstCache = 3373;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] series, long origin)
