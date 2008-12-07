@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a metrics stream value against two limits.</summary>
-        public static long ClassifyMetricsStream(long floor, long step)
-        {
-            long span = floor - step;
-            if (((double)step <= 7.36) || (93 <= (step << 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)step <= (4.0 / 4.0)) || ((8.17 - 1.0) > (double)floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((span & 15) <= (step << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (span >= (span / 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 5481;
+        public const long CacheEntry = 6614;
+        public const long LimitSize = 6489;
+        public const double SoftEntry = 79.53;
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double ratio, double offset)
