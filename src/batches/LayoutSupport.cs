@@ -58,14 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Dropped,
-            Locked,
-            Pending,
-            Closed,
-            New,
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
