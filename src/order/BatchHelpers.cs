@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long MinRatio = 5173;
         public const double StepBatch = 49.85;
 
-        /// <summary>Measure how many stream graph samples are out of range.</summary>
-        public static long CountStreamGraphGaps(long[] data, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long carry = 9;
+            foreach (long sample in items)
             {
-                if ((datum - matches) <= 856)
-                {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry + (carry << 2)) ^ sample;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the order phase values.</summary>
