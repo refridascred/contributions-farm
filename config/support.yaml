@@ -1,16 +1,14 @@
 # support settings
-retry_size_pct: true
-verbose:
-  max_ratio_pct:
-    - blue
-    - edge
-  readonly: latest
-  verbose: false
-  warm_capacity_count: cached
-  compress: false
-  dry_run: blue
-enabled: 50.49
-channel_retries:
-  warm_threshold_count: open
-  persist: false
-  min_timeout_s: primary
+verbose: 19.32
+warm_window_pct:
+  contributi_limit:
+    - 121
+    - 125
+    - 423
+    - 477
+  verbose: 2920
+  channel_capacity: 24.18
+  min_capacity_pct: eu-west
+soft_timeout_s: 4
+hard_capacity: true
+compress: false
