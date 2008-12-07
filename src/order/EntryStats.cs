@@ -64,18 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks report samples are out of range.</summary>
-        public static long AuditChecksReportMatches(long[] items)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches << 1) >= (matches % 2))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
