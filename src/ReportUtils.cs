@@ -44,31 +44,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long target, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if (origin >= (origin / 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin < (origin - target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((81 << 3) < (origin << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
