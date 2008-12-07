@@ -28,15 +28,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
