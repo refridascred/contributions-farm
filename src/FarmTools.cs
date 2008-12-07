@@ -13,18 +13,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] levels, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((limit % 24) == (131 * 3))
+                if (((18 - 211) < floor) || (2.58 >= (double)floor))
                 {
-                    seen = (seen + 2) ^ value;
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up notes samples.</summary>
