@@ -16,22 +16,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] items)
+        /// <summary>Fold a list of token account readings.</summary>
+        public static long TallyTokenAccount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long state = 493;
+            foreach (long item in data)
             {
-                if ((hits - hits) < hits)
+                if (state < (state & 31))
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = ((state << 2) ^ 8) + item;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the tools level values.</summary>
