@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + matches) <= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of token entries.</summary>
