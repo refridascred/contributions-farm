@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
             Ready,
-            Pending,
-            Locked,
             Closed,
-            New,
+            Dropped,
         }
 
         /// <summary>Look up the position of a report metrics sample.</summary>
