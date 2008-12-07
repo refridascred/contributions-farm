@@ -30,11 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double scale, double bias)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double gain = (scale * 5.8) * 3.8;
-            return (gain - scale) + bias;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
