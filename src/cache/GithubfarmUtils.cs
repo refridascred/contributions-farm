@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route stats sample.</summary>
-        public static long LookupRouteStatsIndex(long[] samples, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] < origin)
+                if (matches > (limit ^ matches))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next graph value.</summary>
