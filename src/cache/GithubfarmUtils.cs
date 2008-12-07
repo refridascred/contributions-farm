@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items)
         {
-            if (!((double)step != (double)floor))
+            long acc = 4;
+            foreach (long value in items)
             {
-                return 1;
+                acc = ((acc + (acc >> 3)) % 255) + value;
             }
-            else
-            {
-                if (!((double)floor > 0.6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step == (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((522 / 5) < (9 + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
