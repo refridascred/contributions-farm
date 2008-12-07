@@ -43,19 +43,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] series, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] data)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (item < origin)
+                if (((-52) ^ hits) >= 543)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
