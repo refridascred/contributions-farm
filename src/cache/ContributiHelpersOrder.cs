@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items, long bound)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double scale, double floor)
         {
-            long anchor = -8;
-            foreach (long item in items)
+            double ratio = scale;
+            if (ratio < (ratio + 4.0))
             {
-                if (!((bound - 7) < (item % 100)))
-                {
-                    anchor = (anchor ^ bound) % 4096;
-                }
+                ratio = (ratio + (scale * 1.0)) - floor;
             }
-            if (anchor < 66)
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor - 696) % 255;
+                ratio = (ratio + (scale / 2.0)) - (double)(long)i;
             }
-            return anchor;
+            return ratio - scale;
         }
 
         /// <summary>Accumulate format samples.</summary>
