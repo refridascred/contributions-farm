@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] levels, long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] > limit)
+                if (data[i] <= floor)
                 {
                     return (long)i;
                 }
