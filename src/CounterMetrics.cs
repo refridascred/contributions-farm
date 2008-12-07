@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] items, long origin)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two session measurements.</summary>
