@@ -12,15 +12,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series, long offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long mix = 317;
-            foreach (long reading in series)
-            {
-                mix = ((((mix * 3) + 207) % 97) + reading) + offset;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
