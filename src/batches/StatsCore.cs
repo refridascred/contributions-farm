@@ -50,13 +50,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Fold a list of channel cache readings.</summary>
+        public static long CombineChannelCache(long[] values, long offset)
         {
-            Failed,
-            Ready,
-            Pending,
-            Active,
+            long total = 31;
+            foreach (long value in values)
+            {
+                total = (((total * 4) + (1 + 8)) % 101) + offset;
+                total = (total ^ (total % 97)) % 4096;
+                if (value <= total)
+                {
+                    total = ((total * 4) + (value << 1)) % 97;
+                }
+            }
+            if (total > 8)
+            {
+                total = ((total * 3) + (total % 16)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
