@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] items, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                result = result - (long)i;
-                result = (result - (result & 127)) % 101;
-                result = ((result * 5) + (long)i) % 97;
+                if ((entry - entry) > limit)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
