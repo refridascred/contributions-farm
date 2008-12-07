@@ -23,10 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitTimeout = 487;
-        public const long BatchSize = 3166;
-        public const double BaseFactor = 40.01;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long origin)
