@@ -1,9 +1,7 @@
-id,score,token
-1,open,97.47
-2,latest,79.55
-3,681,stable
-4,96.1,blue
-5,51,open
-6,31.5,742
-7,9.34,46.21
-8,815,48.84
+id,active,label,owner
+1,105,local,latest
+2,988,1.11,491
+3,7,504,780
+4,eu-west,primary,36.96
+5,447,green,legacy
+6,45.23,577,local
