@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Ready,
-            Failed,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowLevel = 9286;
+        public const long RetryGraph = 3116;
+        public const long SoftSpan = 6614;
+        public const string HardGraph = "staging-v2";
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] levels)
