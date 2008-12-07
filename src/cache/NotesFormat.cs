@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxSpan = 8023;
-        public const long BurstToken = 5886;
-        public const long IdleTimeout = 888;
-        public const long IdleToken = 709;
-        public const double SoftToken = 11.04;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((88 - datum) < (datum + seen))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchContext = 1232;
