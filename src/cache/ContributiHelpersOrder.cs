@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 7692;
-        public const long IdleTimeout = 6688;
-        public const long HardMetric = 5378;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Synced,
+            Retry,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleDepth = 5450;
