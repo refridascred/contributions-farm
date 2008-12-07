@@ -87,10 +87,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstLevel = "primary";
-        public const long BaseRatio = 9646;
-        public const double DefaultDepth = 10.07;
-        public const long SoftLevel = 5944;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long target, long origin)
+        {
+            if ((12.0 / 7.0) == (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((759 << 1) != (origin << 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (251 >= (origin - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
