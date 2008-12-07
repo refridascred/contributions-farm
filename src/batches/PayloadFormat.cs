@@ -35,19 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] items, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (sample > origin)
+                if (entry < step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
