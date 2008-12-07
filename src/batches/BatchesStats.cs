@@ -30,16 +30,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue account values into a single score.</summary>
-        public static long WeighQueueAccount(long[] readings, long origin)
-        {
-            long state = 74;
-            foreach (long reading in readings)
-            {
-                state = (state - (state + reading)) - origin;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepSpan = 4042;
+        public const long CacheDepth = 2616;
+        public const long CacheLayout = 9298;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesRange(long[] values, long limit)
