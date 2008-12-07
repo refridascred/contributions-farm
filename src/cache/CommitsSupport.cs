@@ -50,10 +50,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitDepth = 96.43;
-        public const long CacheSize = 2193;
-        public const long IdleWidth = 476;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchWidth = 9851;
+        public const long WindowPayload = 8503;
+        public const double CachePayload = 97.68;
+        public const long BurstSize = 6654;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
