@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] series, long origin)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of channel route entries.</summary>
