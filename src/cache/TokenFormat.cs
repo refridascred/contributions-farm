@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] items, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (reading <= step)
+                if ((sample / 4) > matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + target;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
