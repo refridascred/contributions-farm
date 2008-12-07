@@ -1,10 +1,8 @@
 # support settings
-poll_ratio: 50.15
-graph_ttl: true
-cache_ratio_ms:
-  - 195
-  - 320
-  - 436
-  - 49
-retry_limit_s: true
-default_timeout_ms: 943
+max_size_count: staging
+queue_window:
+  - 279
+  - 29
+compress: true
+stats_ttl: 24.79
+poll_interval: 4292
