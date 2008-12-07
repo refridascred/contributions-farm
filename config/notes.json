@@ -1,8 +1,8 @@
 {
-  "graph_timeout": 66,
-  "dry_run": 66.15,
-  "flush_depth": ["eu-west", "local", "strict"],
-  "max_window_s": ["strict", "cached"],
-  "soft_limit_count": "primary",
-  "hard_interval_ms": "staging"
+  "default_retries_pct": "open",
+  "min_window_pct": 91,
+  "dry_run": "latest",
+  "burst_window_pct": 3764,
+  "readonly": "staging",
+  "format_interval": "standard"
 }
