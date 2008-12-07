@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Idle,
-            Retry,
-            Active,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftSpan = 9277;
+        public const long SoftEditor = 3279;
+        public const double DefaultSize = 79.02;
+        public const long WindowEditor = 6212;
+        public const double RetryEditor = 76.15;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double scale, double floor)
