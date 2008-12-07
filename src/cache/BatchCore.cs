@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultSpan = 3430;
-        public const long BurstEditor = 1751;
-        public const long LimitEditor = 108;
-        public const double CacheEditor = 40.76;
-        public const long HardWidth = 492;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double AdjustCommits(double bias, double floor)
