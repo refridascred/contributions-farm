@@ -77,14 +77,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Locked,
-            Active,
-            Queued,
-            Closed,
-            Pending,
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the account mode values.</summary>
