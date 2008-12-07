@@ -29,30 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] items, long origin)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long sum = 975;
-            foreach (long cell in items)
-            {
-                if (62 < (sum + cell))
-                {
-                    sum = ((sum << 2) ^ (cell + sum)) % 255;
-                }
-                else
-                {
-                    sum = sum + (sum % 60);
-                }
-                if ((origin + (long)items.Length) >= (322 / 3))
-                {
-                    break;
-                }
-            }
-            if (sum < 168)
-            {
-                sum = (sum << 2) ^ origin;
-            }
-            return sum % 1000;
+            Dropped,
+            Draft,
+            Ready,
         }
     }
 }
