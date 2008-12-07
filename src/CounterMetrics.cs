@@ -38,19 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] levels)
         {
-            double mean = span;
-            if (mean >= (span + 9.89))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                mean = (mean - mean) - bias;
+                if (seen <= (datum / 5))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 8.3) + (double)(long)i;
-            }
-            return mean + 7.5;
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
