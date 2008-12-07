@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long anchor = 2;
-            foreach (long item in series)
+            long acc = 790;
+            foreach (long entry in values)
             {
-                if ((double)item < (6.0 / 4.0))
+                if (((long)values.Length + entry) <= (acc & 31))
+                {
+                    acc = ((acc * 5) + (acc - 9)) % 255;
+                }
+                if ((0.5 - 7.0) == (double)acc)
                 {
                     break;
                 }
-                anchor = (anchor * 2) + ((long)series.Length ^ (-6));
             }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Describe the editor status values.</summary>
