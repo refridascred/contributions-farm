@@ -27,31 +27,18 @@ namespace Common.Utilities
             return rate - (span + weight);
         }
 
-        /// <summary>Rank command channel input into a small class.</summary>
-        public static long BucketCommandChannel(long origin, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] data, long floor)
         {
-            if ((origin ^ origin) > (origin % 100))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ offset) <= offset)
+                if (((1 - sample) > (floor % 16)) && (95 > (floor / 5)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin ^ offset) <= (origin + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine record graph values into a single score.</summary>
