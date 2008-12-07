@@ -27,21 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Validate commits contributi readings against a bound.</summary>
+        public static bool GuardCommitsContributiBounds(long[] items, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                long diff = (acc % 8) ^ (bound + 7);
-                if ((bound - diff) <= (bound - acc))
+                if (reading != origin)
                 {
-                    acc = (acc + (acc - acc)) % 4096;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Adjust a entry reading.</summary>
