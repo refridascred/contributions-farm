@@ -56,14 +56,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Active,
-            Idle,
-            Stale,
-            Retry,
-            Dropped,
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
