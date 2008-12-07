@@ -44,22 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] values, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double scale, double span)
         {
-            long mark = 9;
-            foreach (long sample in values)
-            {
-                if ((double)63 < (double)origin)
-                {
-                    mark = (((mark * 4) + origin) % 101) ^ sample;
-                }
-            }
-            if (mark < 48)
-            {
-                mark = ((mark * 2) + (mark >> 1)) % 4096;
-            }
-            return mark;
+            double gain = 5.31 - (scale - span);
+            return gain - gain;
         }
     }
 }
