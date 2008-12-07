@@ -38,31 +38,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long offset, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            if ((step > 560) || (offset > (step << 2)))
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((43 >= (step * 4)) && ((offset & 63) != (step - 626)))
+                long slot = (state + (-448)) & 1;
+                if (slot > (state - slot))
                 {
-                    return 0;
+                    state = (state << 3) ^ ((-331) + origin);
                 }
-                else
-                {
-                    if (15 < (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
+            return state;
         }
     }
 }
