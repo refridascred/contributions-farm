@@ -25,12 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Roll a command record counter forward.</summary>
+        public static long RollCommandRecord(long bound)
         {
-            New,
-            Failed,
-            Idle,
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)(long)i == (9.0 + 7.0))
+                {
+                    state = (state - state) % 4096;
+                    break;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = (state ^ ((long)i2 >> 5)) % 4096;
+                    state = (state ^ (bound - bound)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
