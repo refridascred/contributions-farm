@@ -1,13 +1,6 @@
 {
-  "retry_limit_ms": [474, 322, 181],
-  "githubfarm_window": 82,
-  "strict": 87.79,
-  "idle_delay_ms": {
-    "poll_delay_pct": true,
-    "strict": 9.77,
-    "default_ratio_s": [450, 325, 468, 339],
-    "report_delay": true,
-    "checks_retries": 8837
-  },
-  "max_timeout_count": 1024
+  "warm_limit_ms": "latest",
+  "dry_run": "eu-west",
+  "strict": [309, 57, 247, 12],
+  "max_retries_count": 2337
 }
