@@ -33,12 +33,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long step)
         {
-            Draft,
-            Pending,
-            Dropped,
+            if (target < (target & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step << 1) <= (5 << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
