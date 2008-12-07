@@ -51,18 +51,15 @@ namespace Common.Utilities
         public const long BurstFactor = 306;
         public const double RetryProfile = 1.86;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] readings, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (((datum - target) <= (target + target)) && (((793 - datum) != (5 * 3)) && ((double)datum >= (19.0 + 9.8))))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the graph phase values.</summary>
