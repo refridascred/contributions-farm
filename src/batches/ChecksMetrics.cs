@@ -33,18 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] series, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(item < (935 & 255)) && ((62 + item) <= (floor * 3)))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of command entries.</summary>
