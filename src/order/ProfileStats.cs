@@ -25,20 +25,18 @@ namespace Common.Utilities
         public const double MinFactor = 45.76;
         public const string IdleTools = "fallback-edge";
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long mix = 180;
+            foreach (long item in items)
             {
-                if (99 >= (offset * 4))
+                if (!(mix < (target & 31)))
                 {
-                    state = (state ^ (offset >> 1)) % 101;
-                    state = state - offset;
+                    mix = mix - (item & 31);
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return mix % 4096;
         }
     }
 }
