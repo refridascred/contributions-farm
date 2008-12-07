@@ -47,19 +47,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (reading > origin)
+                if (datum < step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
