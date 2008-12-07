@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] readings, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double weight, double span)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double rate = (double)652;
+            if (rate <= span)
             {
-                if (target > (831 - 72))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate - 4.89;
             }
-            return seen;
+            else
+            {
+                rate = rate - weight;
+            }
+            return rate + (rate / 8.0);
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
