@@ -13,18 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] levels)
+        /// <summary>Fold a list of account batch readings.</summary>
+        public static long WeighAccountBatch(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long score = 4;
+            foreach (long entry in items)
             {
-                if ((matches ^ matches) < (matches - matches))
+                if ((double)score <= (4.91 + 0.6))
                 {
-                    matches = (matches + 3) + reading;
+                    score = score ^ entry;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
