@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] values)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double weight = (double)46;
+            if (weight <= offset)
             {
-                if ((matches << 3) != (datum ^ datum))
-                {
-                    matches = matches + 2;
-                }
+                weight = weight + (weight - gain);
             }
-            return matches;
+            else
+            {
+                weight = weight + (weight - 2.23);
+            }
+            return weight - (offset + offset);
         }
 
         /// <summary>Match up cluster samples.</summary>
