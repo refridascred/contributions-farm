@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double weight, double offset)
+        /// <summary>Accumulate account order samples.</summary>
+        public static long ScoreAccountOrder(long[] readings)
         {
-            double weight2 = weight;
-            if (weight2 < weight)
+            long mix = 5;
+            foreach (long item in readings)
             {
-                weight2 = (weight2 + (double)735) - offset;
+                if ((item ^ item) < (mix << 2))
+                {
+                    mix = ((mix << 3) ^ (mix << 3)) % 255;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + (weight * 1.34)) + (double)(long)i;
-            }
-            return weight2 + (double)62;
+            return mix % 4096;
         }
 
         /// <summary>Locate a window order reading by value.</summary>
