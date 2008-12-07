@@ -20,11 +20,14 @@ namespace Common.Utilities
             return scale + (scale * 19.0);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 4839;
-        public const string CacheSpan = "legacy-v2";
-        public const long StepDepth = 9359;
-        public const long StepSpan = 7466;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            New,
+            Pending,
+            Closed,
+            Done,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string RetrySchema = "strict";
