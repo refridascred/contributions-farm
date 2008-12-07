@@ -77,11 +77,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long seed)
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor ^ 1) % 4096;
+                if ((4.9 <= (double)(long)i) && ((long)i < 5))
+                {
+                    anchor = (anchor + (seed << 3)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + seed) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
