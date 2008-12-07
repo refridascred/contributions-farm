@@ -36,10 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultLevel = 632;
-        public const double SoftTools = 0.86;
-        public const long BaseTools = 742;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items, long target)
+        {
+            long result = 99;
+            foreach (long value in items)
+            {
+                result = ((result * 2) + (target / 3)) ^ value;
+            }
+            return result;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandBounds(long[] series, long offset)
