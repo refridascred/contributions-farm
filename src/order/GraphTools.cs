@@ -63,23 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)state < 15.0)
-                {
-                    state = (state - ((long)i + (long)i)) % 101;
-                }
-                else
-                {
-                    state = state ^ (origin - state);
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate session cluster samples.</summary>
