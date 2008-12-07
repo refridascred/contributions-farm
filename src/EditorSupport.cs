@@ -75,17 +75,17 @@ namespace Common.Utilities
         public const string BatchSize = "stable-edge";
         public const double StepInterval = 56.56;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] levels, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                sum = (sum + ((long)i >> 5)) % 255;
+                sum = (sum << 2) ^ (sum >> 5);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
