@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 5588;
-        public const long HardTimeout = 6788;
-        public const long BatchMetric = 4547;
-        public const string BurstMetric = "legacy-1";
-        public const double SoftSize = 11.14;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinGithubfarm = 477;
