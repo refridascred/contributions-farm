@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long origin)
         {
-            long carry = 118;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((carry * 2) < sample)
+                if (datum > origin)
                 {
-                    carry = carry ^ (sample + carry);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (long)readings.Length) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 122)
-            {
-                carry = (carry + (16 + carry)) % 65521;
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
