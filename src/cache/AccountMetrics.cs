@@ -23,12 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double bias, double span)
         {
-            Failed,
-            Stale,
-            Draft,
+            double rate = (0.01 - span) / 4.0;
+            return (rate - (rate + 3.82)) + bias;
         }
 
         /// <summary>Describe the schema level values.</summary>
