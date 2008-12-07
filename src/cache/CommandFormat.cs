@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples, long origin)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((double)value != (double)origin) || ((double)origin >= (3.8 / 8.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache header.</summary>
