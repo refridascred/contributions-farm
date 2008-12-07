@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "stable";
-        public const string BatchGithubfarm = "open-edge";
-        public const long LimitGithubfarm = 8059;
-        public const string IdleSize = "legacy-1";
-        public const string HardSize = "local";
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a contributi farm pair into a bucket.</summary>
         public static long GradeContributiFarm(long limit, long floor)
