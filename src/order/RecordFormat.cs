@@ -56,17 +56,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] readings, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                sum = (sum - origin) % 101;
-                sum = (sum * 2) + origin;
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((value - target) > target)
+                {
+                    hits = hits + 3;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a context header.</summary>
