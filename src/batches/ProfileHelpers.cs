@@ -55,16 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema token values into a single score.</summary>
-        public static long FoldSchemaToken(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] levels, long floor)
         {
-            long carry = 4;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                carry = (carry + carry) % 1000;
-                carry = (carry ^ (entry + entry)) % 4096;
+                if ((double)floor >= (19.0 + 4.9))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a editor header.</summary>
