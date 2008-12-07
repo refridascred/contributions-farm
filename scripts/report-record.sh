@@ -7,11 +7,21 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in cached blue primary latest; do
+for item in fallback strict edge green; do
     log "checking ${item}"
 done
+
+mode="${1:-stable}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
