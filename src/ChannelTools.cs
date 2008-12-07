@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a report metrics sample.</summary>
