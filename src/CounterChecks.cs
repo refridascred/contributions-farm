@@ -56,14 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long origin)
         {
-            Locked,
-            Ready,
-            Failed,
-            Draft,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
