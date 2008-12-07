@@ -38,22 +38,10 @@ namespace Common.Utilities
             return (scale2 + (scale / 7.0)) + floor;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "latest";
+        public const long SoftChecks = 4061;
+        public const double LimitDepth = 97.69;
 
         /// <summary>Measure how many filter window samples are out of range.</summary>
         public static long TallyFilterWindowHits(long[] data, long bound)
