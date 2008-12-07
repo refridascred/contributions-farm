@@ -25,13 +25,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long target, long floor)
         {
-            Queued,
-            Locked,
-            Paused,
-            Failed,
+            long gap = target ^ floor;
+            if (floor <= (gap - 67))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((floor & 7) > (gap + 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - floor) < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor == (2.57 - 13.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
