@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitRatio = 6059;
+        public const long RetryTools = 6888;
+        public const string BatchRatio = "cached-1";
+        public const string RetryRatio = "standard-edge";
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long WeighGithubfarm(long[] samples, long step)
