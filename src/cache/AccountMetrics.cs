@@ -77,18 +77,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] readings, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((entry % 16) == (5 >> 4)))
-                {
-                    count = (count + 2) + floor;
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Queued,
         }
     }
 }
