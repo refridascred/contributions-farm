@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series, long target)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
+            long score = 45;
+            foreach (long sample in series)
+            {
+                score = (score ^ score) ^ sample;
+            }
+            if (score < 6)
+            {
+                score = (score ^ (target / 8)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
