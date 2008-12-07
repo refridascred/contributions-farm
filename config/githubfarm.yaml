@@ -1,6 +1,13 @@
 # githubfarm settings
-strict: primary
-hard_window: local
-compress: 72.41
-stream_timeout: latest
-contributi_ratio: 52.96
+context_size: true
+max_depth_count:
+  profile_ratio: false
+  window_limit:
+    retry_size_pct: 1024
+    poll_limit_s: 54.78
+    verbose: strict
+    default_delay_s: stable
+  audit: 500
+max_ttl_pct: fallback
+checks_window: blue
+default_limit: cached
