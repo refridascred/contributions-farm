@@ -20,10 +20,20 @@ namespace Common.Utilities
             return weight - (ratio - 6.47);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 5959;
-        public const long MinLevel = 8923;
-        public const long MaxBuffer = 7901;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricMatches(long[] items)
