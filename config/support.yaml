@@ -1,17 +1,4 @@
 # support settings
-idle_ratio_ms: 100
-warm_retries: 5955
-idle_ttl:
-  compress:
-    - 339
-    - 127
-    - 173
-    - 92
-  default_depth_s: 60
-  strict: legacy
-batch_ratio:
-  - edge
-  - latest
-  - edge
-  - staging
-cache_ttl_count: latest
+filter_threshold: 10
+sync_ttl_count: 1024
+retry_capacity_ms: false
