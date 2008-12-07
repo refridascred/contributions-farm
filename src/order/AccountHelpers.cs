@@ -16,18 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] levels)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (0.7 < (double)seen)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Rank command channel input into a small class.</summary>
