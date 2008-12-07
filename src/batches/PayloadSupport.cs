@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 5848;
+        public const long CacheWidth = 4136;
+        public const long BaseChannel = 6173;
+        public const long HardSize = 8168;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
