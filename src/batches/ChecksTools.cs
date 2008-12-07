@@ -20,15 +20,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Scale a window editor figure with a bias.</summary>
-        public static double BlendWindowEditor(double bias, double span)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double ratio = span;
-            if (ratio < bias)
-            {
-                ratio = ratio + (ratio * 4.3);
-            }
-            return ratio - (ratio - bias);
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Derive the next format batches value from a seed.</summary>
