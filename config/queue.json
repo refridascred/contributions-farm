@@ -1,21 +1,7 @@
 {
-  "farm_retries": "latest",
-  "dry_run": {
-    "token_ttl": {
-      "persist": ["local", "eu-west", "cached", "edge"],
-      "burst_depth_pct": 13,
-      "base_ratio_pct": "open",
-      "soft_limit": false,
-      "tools_retries": false
-    },
-    "poll_timeout_count": "staging",
-    "default_depth": [441, 72],
-    "audit": "edge",
-    "payload_delay": 60,
-    "hard_capacity_ms": "eu-west"
-  },
-  "warm_timeout_ms": "legacy",
-  "soft_depth": "fallback",
-  "strict": false,
-  "cache_ttl": "legacy"
+  "flush_interval": 60,
+  "soft_ttl": 32.09,
+  "compress": "eu-west",
+  "enabled": "staging",
+  "stream_depth": 17
 }
