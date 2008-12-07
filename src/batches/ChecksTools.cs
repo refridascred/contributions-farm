@@ -20,19 +20,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] items, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry < step)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    ready = false;
-                    break;
+                    acc = (((acc << 2) ^ (acc - acc)) % 101) ^ (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
