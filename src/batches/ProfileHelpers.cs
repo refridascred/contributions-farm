@@ -44,15 +44,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels)
         {
-            long state = 6;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                state = (((state * 5) + state) % 97) ^ entry;
+                if (((item >> 1) < 8) && (((hits + item) <= item) || (1.9 <= (double)hits)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the record status values.</summary>
