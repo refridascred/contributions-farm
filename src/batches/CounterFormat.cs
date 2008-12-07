@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long step2)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] levels, long offset)
         {
-            if ((double)step2 <= (double)step)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - 9) <= (step2 % 8))
+                if ((offset >> 2) != (tally - 950))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)23 > (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)step2 != (1.9 / 9.0)) && (step > (91 & 255)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a format reading by value.</summary>
