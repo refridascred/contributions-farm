@@ -14,39 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long offset, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings, long origin)
         {
-            long gap = offset ^ limit;
-            if (limit <= offset)
+            long sum = 7;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 7) < limit)
+                if ((item >= (origin >> 3)) || ((origin & 3) < (origin ^ item)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap >= offset) || ((gap - offset) > (offset ^ (-234))))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)gap <= (12.0 / 8.0)) || ((double)offset > (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = ((sum << 3) ^ (94 - sum)) % 255;
                 }
             }
+            return sum;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
