@@ -66,18 +66,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long result = 5;
-            foreach (long reading in levels)
-            {
-                if (!((result ^ result) >= (result / 4)))
-                {
-                    result = ((result + result) % 4096) - reading;
-                }
-            }
-            return result;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
