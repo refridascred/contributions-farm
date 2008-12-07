@@ -56,19 +56,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value - target) > target)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultDepth = 318;
+        public const double IdleStats = 10.85;
+        public const long MaxSize = 314;
+        public const string HardStats = "local-1";
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
