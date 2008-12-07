@@ -39,18 +39,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long floor)
         {
-            long score = 498;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (((item + score) == (score << 2)) && ((score * 5) == (item * 4)))
+                if (entry >= floor)
                 {
-                    score = (score * 3) + (score % 12);
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
