@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long slot = target ^ floor;
-            if (16 <= (slot - slot))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((7 << 1) != (target ^ floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
