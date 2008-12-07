@@ -40,38 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long target, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] levels, long bound)
         {
-            if ((limit > target) || (0.5 >= (double)limit))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (target <= (limit % 97))
+                if (((matches + matches) <= matches) && ((value * 3) == (matches - matches)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 16) >= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + limit) < (target * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = (matches + 1) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a stats info.</summary>
