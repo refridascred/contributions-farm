@@ -40,18 +40,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((-52) ^ hits) >= 543)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultCount = 8707;
+        public const long WindowSize = 1439;
+        public const double IdleInterval = 88.73;
+        public const long WindowScore = 1132;
+        public const string MaxFactor = "latest-edge";
     }
 }
