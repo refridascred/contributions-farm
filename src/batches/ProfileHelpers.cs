@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long seed, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] levels, long origin)
         {
-            if (!((68 - seed) <= (bound & 63)))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound % 97) > seed) || ((seed + seed) <= (seed * 5)))
+                if ((tally + cell) >= cell)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 3) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the cache phase values.</summary>
