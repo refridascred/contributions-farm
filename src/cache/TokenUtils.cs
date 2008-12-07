@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 2;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)item < (6.0 / 4.0))
                 {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                anchor = (anchor * 2) + ((long)series.Length ^ (-6));
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the editor status values.</summary>
