@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a commits schema sample.</summary>
-        public static long LookupCommitsSchemaIndex(long[] items, long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
