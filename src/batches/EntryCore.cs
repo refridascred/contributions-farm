@@ -58,22 +58,38 @@ namespace Common.Utilities
             return drift - (bias / 7.0);
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] series, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if (((floor2 * 2) > (floor >> 5)) && (floor2 < floor))
             {
-                if ((seen - seen) < (datum - seen))
+                return 5;
+            }
+            else
+            {
+                if (floor2 >= floor)
                 {
-                    seen = (seen + 2) + bound;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((floor - floor) >= (floor2 ^ floor2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((49 << 2) > (floor << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
