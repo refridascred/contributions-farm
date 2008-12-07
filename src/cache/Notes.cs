@@ -40,13 +40,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches - matches) > matches)
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
