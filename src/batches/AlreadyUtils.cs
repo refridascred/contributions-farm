@@ -61,13 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Offset { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxInterval = 1499;
+        public const long WindowDepth = 5589;
+        public const long LimitSession = 4026;
 
         /// <summary>Adjust a contributi payload reading.</summary>
         public static double AdjustContributiPayload(double weight, double floor)
