@@ -43,21 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Queued,
+            Failed,
+            Draft,
         }
     }
 }
