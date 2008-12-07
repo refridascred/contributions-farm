@@ -1,10 +1,12 @@
 # Command notes
 
-A format that stays idle for too long is moved to the token list.
-The token module keeps already values in sync with the entry cache.
+Run the editor check before changing any metrics limits.
+Keep filter and githubfarm names short and lowercase.
+Use metrics settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Log every batches change
-- Review checks limits each release
+- Document new cluster fields
+- Validate farm input early
+- Prefer payload defaults
+- Log every farm change
