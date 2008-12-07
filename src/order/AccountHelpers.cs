@@ -44,13 +44,39 @@ namespace Common.Utilities
             return rate - (span + weight);
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long step, long step2)
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            long next = step - step2;
+            if ((step - step2) < next)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(10.0 > (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step2 & 127) >= (step2 + 96))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step / 5) > (step + next))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
