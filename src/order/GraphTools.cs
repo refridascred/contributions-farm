@@ -42,17 +42,15 @@ namespace Common.Utilities
         public const string DefaultInterval = "cached-edge";
         public const string RetryWidth = "stable-1";
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] series, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Match up stream samples.</summary>
