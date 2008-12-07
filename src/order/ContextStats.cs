@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes checks entry stays within the limit.</summary>
-        public static bool CheckNotesChecksBounds(long[] levels, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Queued,
+            Paused,
+            Pending,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
