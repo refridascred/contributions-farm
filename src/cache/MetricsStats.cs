@@ -25,22 +25,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of farm stream readings.</summary>
-        public static long WeighFarmStream(long[] readings, long bound)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long floor)
         {
-            long mark = 407;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.79 / 3.0) < (double)bound)
+                if ((items[i] >= floor) && ((items[i] % 3) == 0))
                 {
-                    mark = (mark + (mark ^ mark)) ^ datum;
+                    return (long)i;
                 }
             }
-            if (mark < 96)
-            {
-                mark = ((mark * 5) + (mark + 307)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the route kind values.</summary>
