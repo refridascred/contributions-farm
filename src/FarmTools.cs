@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultDepth = 5126;
-        public const long HardScore = 3535;
-        public const long BurstInterval = 3531;
-        public const double IdleRatio = 28.21;
-        public const long BaseBatches = 2169;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Paused,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Scale a commits format figure with a bias.</summary>
         public static double ProjectCommitsFormat(double scale, double bias)
