@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 6955;
-        public const long LimitQueue = 2349;
-        public const long DefaultQueue = 4471;
-        public const double MaxSize = 45.45;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Mode { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long StepFilter = 7789;
