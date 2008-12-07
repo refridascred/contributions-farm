@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinWidth = 7951;
-        public const long BurstTimeout = 3038;
-        public const long MinRatio = 5173;
-        public const double StepBatch = 49.85;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] data, long seed)
