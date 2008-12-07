@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "strict-v2";
-        public const double WindowFarm = 36.41;
-        public const long CacheFarm = 8094;
-        public const long MinFarm = 6389;
+        /// <summary>Digest a series of entry support entries.</summary>
+        public static long CombineEntrySupport(long[] series, long origin)
+        {
+            long total = 359;
+            foreach (long sample in series)
+            {
+                if ((11 * 3) < (total ^ origin))
+                {
+                    total = ((total << 3) ^ total) % 97;
+                }
+                else
+                {
+                    total = total ^ (sample >> 3);
+                    total = (total - (334 % 100)) % 4096;
+                }
+                if (origin < (sample - origin))
+                {
+                    total = total ^ sample;
+                }
+                total = ((total * 5) + (total % 5)) % 255;
+            }
+            if (total < 20)
+            {
+                total = (total - (862 - origin)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
