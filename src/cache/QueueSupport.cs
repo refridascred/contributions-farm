@@ -38,12 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double gain, double floor)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            double rate = (floor / 3.0) / 4.0;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (double)(long)i) - gain;
+            }
+            return rate - rate;
         }
     }
 }
