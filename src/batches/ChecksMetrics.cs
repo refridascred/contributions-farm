@@ -80,15 +80,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Measure how many context metric samples are out of range.</summary>
+        public static long AuditContextMetricOutliers(long[] readings)
         {
-            long acc = 340;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc - (acc % 16)) % 97) + value;
+                if ((double)entry != (1.0 + 5.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
