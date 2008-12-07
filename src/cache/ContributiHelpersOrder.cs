@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const long HardLayout = 1313;
         public const double StepLayout = 98.18;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] items)
         {
-            Draft,
-            Failed,
-            Queued,
+            long state = 943;
+            foreach (long datum in items)
+            {
+                if ((state <= (datum * 4)) || ((datum - 307) < (datum >> 4)))
+                {
+                    state = (state + (94 % 5)) % 4096;
+                }
+            }
+            return state;
         }
     }
 }
