@@ -36,11 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
+            Draft,
+            Paused,
+            Pending,
         }
 
         /// <summary>Combine layout entry values into a single score.</summary>
