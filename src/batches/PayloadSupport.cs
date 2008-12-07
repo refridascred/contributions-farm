@@ -34,21 +34,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Project the next window cache value.</summary>
+        public static double SmoothWindowCache(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = offset;
+            if (scale >= (double)39)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - offset) + gain;
             }
-            return matches;
+            else
+            {
+                scale = scale + (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (offset - offset)) + (double)(long)i;
+            }
+            return scale + (double)175;
         }
     }
 }
