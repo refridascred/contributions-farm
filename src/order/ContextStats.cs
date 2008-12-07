@@ -41,17 +41,12 @@ namespace Common.Utilities
         public const string CacheTimeout = "fallback-1";
         public const long HardChecks = 3541;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Draft,
         }
     }
 }
