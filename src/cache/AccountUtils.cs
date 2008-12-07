@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up route schema samples.</summary>
-        public static long OverlapRouteSchemaCount(long[] series)
+        /// <summary>Find the first buffer session entry that matches the target.</summary>
+        public static long FindBufferSessionIndex(long[] series, long step)
         {
-            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] <= step) && ((series[i] % 2) == 0))
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
