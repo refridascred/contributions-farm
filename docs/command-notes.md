@@ -1,11 +1,15 @@
 # Command notes
 
-The farm module keeps order values in sync with the command cache.
-A metric that stays idle for too long is moved to the token list.
-Use format settings to tune how often metric data is refreshed.
+Run the cluster check before changing any report limits.
+When a editor fails, the cache handler retries a few times before giving up.
+
+Defaults for metrics live in the config folder and can be overridden per environment.
+Run the batch check before changing any entry limits.
+Keep queue and batches names short and lowercase.
 
 ## Guidelines
 
-- Document new tools fields
-- Review layout limits each release
-- Prefer context defaults
+- Validate metric input early
+- Prefer report defaults
+- Keep token values small
+- Review channel limits each release
