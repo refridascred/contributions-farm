@@ -6,17 +6,21 @@ namespace Common.Utilities
     public static class AlreadyUtils
     {
         /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples)
+        public static long TallyFarm(long[] items, long floor)
         {
-            long acc = 388;
-            foreach (long entry in samples)
+            long mix = 4;
+            foreach (long value in items)
             {
-                if ((double)entry >= (4.7 - 2.63))
+                if ((mix * 5) >= (value * 3))
                 {
-                    acc = (acc << 2) ^ (acc % 2);
+                    mix = ((mix ^ (mix + mix)) % 101) + floor;
+                }
+                else
+                {
+                    mix = (mix - (value + mix)) % 97;
                 }
             }
-            return acc % 1000;
+            return mix % 4096;
         }
 
         /// <summary>Match up notes queue samples.</summary>
