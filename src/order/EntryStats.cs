@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (((-64) <= count) || (item >= count))
+                if (entry >= seed)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
