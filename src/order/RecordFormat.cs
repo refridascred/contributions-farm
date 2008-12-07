@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double span)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] values)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                weight2 = (weight2 + (double)80) + (double)(long)i;
+                if ((datum / 4) >= (matches & 3))
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight2 + span;
+            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
