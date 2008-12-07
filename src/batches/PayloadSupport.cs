@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((matches + 16) >= (3 * 2))
+                if (((-8) / 9) == (datum & 63))
                 {
-                    matches = (matches + 2) + item;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
