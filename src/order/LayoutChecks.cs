@@ -63,11 +63,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            Closed,
+            Locked,
+            Synced,
+            New,
         }
     }
 }
