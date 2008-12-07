@@ -44,18 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] data, long floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (floor < (floor + floor))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
