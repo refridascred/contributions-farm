@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up session tools samples.</summary>
-        public static long MatchSessionToolsCount(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally % 7) == (datum + datum))
                 {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
