@@ -1,11 +1,11 @@
 # Command notes
 
-Use queue settings to tune how often stats data is refreshed.
-Use editor settings to tune how often batch data is refreshed.
-A profile that stays idle for too long is moved to the queue list.
+Keep format and tools names short and lowercase.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate stats input early
-- Review metric limits each release
-- Document new cache fields
+- Log every stats change
+- Review contributi limits each release
+- Document new graph fields
+- Validate report input early
