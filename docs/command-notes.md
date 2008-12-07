@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-Keep contributi and buffer names short and lowercase.
+Keep farm and already names short and lowercase.
+Each stream is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Keep graph values small
-- Review metric limits each release
-- Document new support fields
+- Validate graph input early
+- Log every payload change
+- Keep layout values small
+- Document new cache fields
