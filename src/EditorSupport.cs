@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double scale, double bias)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long step)
         {
-            double weight = (scale * 1.1) / 4.0;
-            return weight - (bias / 3.0);
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank stats context input into a small class.</summary>
