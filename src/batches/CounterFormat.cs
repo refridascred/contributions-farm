@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            public double Rank { get; set; }
-            public double Size { get; set; }
-            public double Total { get; set; }
+            long anchor = 62;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor - anchor) ^ datum;
+            }
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
