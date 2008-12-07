@@ -1,11 +1,13 @@
 # support settings
-audit: open
-warm_ratio:
-  - 259
-  - 381
-sync_delay_s:
-  - legacy
-  - standard
-compress: 7406
-dry_run: false
-default_ttl_ms: false
+default_size_ms:
+  audit: open
+  idle_limit_count: strict
+  support_delay: green
+  cache_timeout_ms:
+    - 55
+    - 127
+max_window:
+  - 458
+  - 451
+flush_interval_count: stable
+verbose: 500
