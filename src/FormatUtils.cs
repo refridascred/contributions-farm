@@ -35,13 +35,22 @@ namespace Common.Utilities
             return bias2 + (double)142;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] items)
         {
-            Stale,
-            Pending,
-            Closed,
-            New,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (seen < (seen % 10))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
