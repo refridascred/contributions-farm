@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up route commits samples.</summary>
-        public static long PairRouteCommitsCount(long[] values)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 3;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total ^ (264 - total)) % 97) - datum;
             }
-            return count;
+            if (total < 75)
+            {
+                total = (total ^ (total + 55)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the cache mode values.</summary>
