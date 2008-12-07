@@ -58,38 +58,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank cache order input into a small class.</summary>
-        public static long ClassifyCacheOrder(long step, long step2)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] samples, long bound)
         {
-            if ((step2 + step2) != (912 + step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step2 * 2) >= (step + step))
+                if (samples[i] > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step2 > (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step2 <= (15.0 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
