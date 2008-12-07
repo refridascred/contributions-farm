@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every contributi channel entry stays within the limit.</summary>
-        public static bool GuardContributiChannelLimits(long[] series, long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (datum < bound)
+                if ((step << 3) > (step >> 5))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Digest a series of contributi format entries.</summary>
