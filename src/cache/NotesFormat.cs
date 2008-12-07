@@ -27,31 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            if ((step - step) >= (seed >> 2))
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step + seed) != (seed << 1)) || ((seed << 1) < (seed + seed)))
+                long diff = (acc % 8) ^ (bound + 7);
+                if ((bound - diff) <= (bound - acc))
                 {
-                    return 3;
+                    acc = (acc + (acc - acc)) % 4096;
+                    continue;
                 }
-                else
-                {
-                    if (step <= (-9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
