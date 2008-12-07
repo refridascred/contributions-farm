@@ -25,20 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches already counter forward.</summary>
-        public static long StepBatchesAlready(long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i3 = 0; i3 < 12; i3++)
-                {
-                    carry = ((carry << 2) ^ carry) % 101;
-                    carry = (carry + (step + (long)i3)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Locked,
+            Stale,
+            Done,
+            Closed,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
