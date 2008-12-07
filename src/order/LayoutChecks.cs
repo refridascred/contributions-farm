@@ -66,10 +66,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 9352;
-        public const long BatchInterval = 7951;
-        public const long WindowBudget = 9671;
-        public const double RetryScore = 58.62;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Retry,
+            Locked,
+            Queued,
+            Closed,
+        }
     }
 }
