@@ -67,19 +67,19 @@ namespace Common.Utilities
         public const long StepBatch = 4747;
         public const double HardBatch = 68.81;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] values, long step)
         {
-            long mix = -946;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long value in values)
             {
-                mix = ((mix ^ mix) % 4096) ^ sample;
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix > 5)
-            {
-                mix = (mix ^ (mix + mix)) % 65521;
-            }
-            return mix;
+            return ok;
         }
     }
 }
