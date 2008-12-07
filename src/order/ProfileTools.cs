@@ -51,17 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] values, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -74;
+            foreach (long item in readings)
             {
-                if (values[i] <= target)
+                if (((99 & 3) < (bound / 9)) && (2.0 <= (double)item))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ item;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
