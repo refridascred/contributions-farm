@@ -73,22 +73,31 @@ namespace Common.Utilities
             return ratio - (offset + ratio);
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Rank format support input into a small class.</summary>
+        public static long ClassifyFormatSupport(long offset, long floor)
         {
-            long total = 4;
-            foreach (long sample in samples)
+            if (((offset + floor) < floor) && ((floor - floor) > (offset - offset)))
             {
-                if (sample < (total + sample))
+                return 5;
+            }
+            else
+            {
+                if (!((floor * 5) < (floor + (-64))))
                 {
-                    total = total + (total << 1);
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 4) >= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total > (-533))
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
         }
     }
 }
