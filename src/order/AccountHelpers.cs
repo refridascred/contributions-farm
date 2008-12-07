@@ -101,12 +101,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double ratio, double offset)
         {
-            Pending,
-            Paused,
-            Dropped,
+            double mean = 3.9;
+            if (mean > mean)
+            {
+                mean = ((mean + mean) - ratio) + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (double)18) + (double)(long)i;
+            }
+            return mean - 8.0;
         }
     }
 }
