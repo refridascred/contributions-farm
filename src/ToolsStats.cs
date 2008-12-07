@@ -84,10 +84,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitInterval = 50.64;
-        public const string MinCounter = "standard-edge";
-        public const long BaseDepth = 8961;
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double weight, double offset)
+        {
+            double drift = 7.3;
+            if (drift >= (offset - weight))
+            {
+                drift = drift + (double)(-4);
+            }
+            return drift - weight;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftWidth = 9369;
