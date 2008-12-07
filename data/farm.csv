@@ -1,6 +1,11 @@
-id,active,owner
-1,32,12.14
-2,31.67,blue
-3,edge,7.25
-4,726,365
-5,653,216
+id,rank,score
+1,5.78,26.19
+2,cached,local
+3,62.79,strict
+4,5.9,eu-west
+5,109,229
+6,85,open
+7,strict,818
+8,blue,625
+9,staging,68.92
+10,97.61,370
