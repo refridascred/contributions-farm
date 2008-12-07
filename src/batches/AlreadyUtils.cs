@@ -63,31 +63,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long origin, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if (((seed >> 2) == (701 ^ seed)) && ((seed - seed) != (origin / 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0.1 - 19.0) == (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            New,
+            Retry,
         }
     }
 }
