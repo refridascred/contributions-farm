@@ -64,17 +64,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] samples)
-        {
-            long total = 8;
-            foreach (long entry in samples)
-            {
-                total = ((total << 2) ^ (total - total)) % 255;
-                total = ((total * 4) + ((-63) - entry)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstWidth = 964;
+        public const long BaseDepth = 7424;
+        public const string BurstOrder = "strict-v2";
+        public const double SoftOrder = 75.55;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
