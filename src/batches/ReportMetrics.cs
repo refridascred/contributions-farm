@@ -15,22 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of contributi metric readings.</summary>
-        public static long CompareContributiMetricCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 58.67;
+        public const long MinScore = 9490;
+        public const long WindowLevel = 5078;
+        public const long CacheEditor = 1590;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseInterval = 2178;
