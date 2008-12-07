@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((double)tally > (2.73 * 8.23)) || ((0.97 + 6.8) >= (double)tally))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 6955;
+        public const long LimitQueue = 2349;
+        public const long DefaultQueue = 4471;
+        public const double MaxSize = 45.45;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long StepFilter = 7789;
