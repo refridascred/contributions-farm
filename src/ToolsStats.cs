@@ -36,12 +36,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Scale a order route figure with a bias.</summary>
+        public static double ScaleOrderRoute(double bias, double bias2)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
+            double drift = bias2 + (bias / 6.0);
+            if (drift < drift)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - (double)35;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
