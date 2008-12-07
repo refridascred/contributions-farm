@@ -1,28 +1,12 @@
 # entry settings
-profile_depth: 69.22
-entry_retries:
-  flush_capacity_pct:
-    - standard
-    - staging
-    - fallback
-    - local
-  strict: 85.81
-  editor_interval: latest
-  batch_size:
-    soft_limit_ms: green
-    support_ttl: 12.73
-    default_window: 100
-    retry_depth: true
-    payload_limit: 54.25
-    hard_ttl_pct: 60
-  persist: false
-  tools_ttl: latest
-enabled:
-  - cached
-  - blue
-  - green
-strict:
-  - 286
-  - 344
-  - 250
-burst_ttl_s: true
+flush_threshold: 4688
+schema_capacity: false
+dry_run:
+  account_interval: true
+  graph_limit: edge
+  min_delay_s: green
+enabled: cached
+min_window:
+  - stable
+  - fallback
+buffer_ttl: 67.46
