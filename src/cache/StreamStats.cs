@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 65.8;
+        public const long MaxCache = 6293;
+        public const double SoftCache = 90.8;
+        public const long MaxSize = 3710;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
