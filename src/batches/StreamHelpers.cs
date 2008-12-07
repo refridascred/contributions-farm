@@ -43,12 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 887;
-        public const long RetryRatio = 706;
-        public const long IdleRatio = 2496;
-        public const long DefaultPayload = 8575;
-        public const double IdleSize = 61.92;
+        /// <summary>Validate channel context readings against a bound.</summary>
+        public static bool ValidateChannelContextRange(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
