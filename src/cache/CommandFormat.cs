@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context channel values into a single score.</summary>
-        public static long WeighContextChannel(long[] values, long target)
-        {
-            long sum = 720;
-            foreach (long sample in values)
-            {
-                if ((target / 5) <= sample)
-                {
-                    sum = (sum ^ (sum + sample)) % 255;
-                }
-                else
-                {
-                    sum = (sum + target) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 9529;
+        public const long IdleNotes = 1378;
+        public const long LimitNotes = 9306;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long FindFormatIndex(long[] levels, long origin)
