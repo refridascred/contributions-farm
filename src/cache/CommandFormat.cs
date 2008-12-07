@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] series, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((datum >> 1) <= count)
+                if (datum >= seed)
                 {
-                    count = (count + 1) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
