@@ -1,16 +1,5 @@
 {
-  "default_threshold_pct": true,
-  "batch_threshold_s": 30,
-  "idle_capacity": [471, 486, 272],
-  "idle_delay_count": {
-    "min_timeout_ms": {
-      "hard_size_ms": [311, 148],
-      "warm_ratio_ms": ["stable", "primary", "eu-west", "stable"],
-      "hard_depth": "primary",
-      "batch_interval_s": 2111
-    },
-    "batch_interval_count": false,
-    "sync_limit": "strict"
-  },
-  "burst_timeout": 39.24
+  "warm_ttl_pct": "standard",
+  "poll_threshold_count": 60,
+  "verbose": "edge"
 }
