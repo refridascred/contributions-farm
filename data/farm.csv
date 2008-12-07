@@ -1,8 +1,7 @@
-id,score,state
-1,10.94,201
-2,65.37,stable
-3,44.76,96.01
-4,strict,fallback
-5,91.76,128
-6,12.97,62.38
-7,540,19.57
+id,state,active,ratio
+1,470,stable,legacy
+2,621,631,16.44
+3,green,standard,486
+4,latest,173,703
+5,cached,20.96,57.66
+6,30.84,cached,33.46
