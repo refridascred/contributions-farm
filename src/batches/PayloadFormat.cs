@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Score { get; set; }
+            Paused,
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
