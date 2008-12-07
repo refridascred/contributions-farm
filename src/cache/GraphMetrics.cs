@@ -42,11 +42,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 3) + (sum / 3)) % 4096;
+                if (!((sum % 2) <= sum))
+                {
+                    sum = sum + ((long)i + step);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ step) % 1000;
+                    sum = (sum + (sum * 5)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph options.</summary>
