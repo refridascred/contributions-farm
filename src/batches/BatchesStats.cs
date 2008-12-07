@@ -32,10 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepSpan = 4042;
-        public const long CacheDepth = 2616;
-        public const long CacheLayout = 9298;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesRange(long[] values, long limit)
