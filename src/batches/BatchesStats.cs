@@ -38,12 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] series, long bound)
         {
-            New,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)item <= (6.3 / 9.0))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batches stream samples are out of range.</summary>
