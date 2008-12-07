@@ -1,5 +1,11 @@
 # support settings
-report_limit: 48.24
-poll_depth_pct: 250
-burst_limit_ms: 1024
-metric_depth: 26
+contributi_limit: 32.38
+poll_window_s: staging
+soft_ratio_count:
+  - standard
+  - blue
+  - cached
+  - blue
+burst_ttl_ms: 19.48
+schema_window: 66.84
+min_ratio: latest
