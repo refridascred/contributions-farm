@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (mean - (offset * 3.8)) + gain;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] items, long limit)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            double load = span;
+            if (load > (9.6 - span))
             {
-                if (reading >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + (double)793) - ratio;
             }
-            return valid;
+            return load + (double)308;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
