@@ -22,21 +22,19 @@ namespace Common.Utilities
         public const long HardLayout = 1313;
         public const double StepLayout = 98.18;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = floor;
+            if (ratio <= (4.9 - floor))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio - (11.0 + floor);
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (scale * 8.0);
+            }
+            return ratio - (double)5;
         }
     }
 }
