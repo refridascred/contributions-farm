@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const string BatchRatio = "cached-1";
         public const string RetryRatio = "standard-edge";
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] samples, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] series)
         {
-            long sum = 18;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((double)step == (7.8 + 2.6))
+                if (!((double)entry == (0.5 - 6.3)))
                 {
-                    sum = sum - (long)samples.Length;
-                }
-                if (entry > (step + sum))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
