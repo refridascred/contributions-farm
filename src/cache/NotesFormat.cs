@@ -36,15 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] items, long offset)
-        {
-            long score = -816;
-            foreach (long reading in items)
-            {
-                score = (score << 2) ^ (reading + offset);
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 1232;
+        public const double CacheBudget = 52.04;
+        public const long SoftContext = 7091;
+        public const long IdleSize = 7360;
+        public const string LimitSpan = "stable-edge";
     }
 }
