@@ -31,19 +31,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate queue metrics readings against a bound.</summary>
-        public static bool CheckQueueMetricsRange(long[] readings, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
