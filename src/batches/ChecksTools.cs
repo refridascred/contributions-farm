@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultScore = 989;
-        public const long MaxSpan = 1046;
-        public const long IdleMetrics = 4127;
-        public const long BaseMetrics = 7446;
-        public const long RetryRatio = 5599;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a window editor figure with a bias.</summary>
         public static double BlendWindowEditor(double bias, double span)
