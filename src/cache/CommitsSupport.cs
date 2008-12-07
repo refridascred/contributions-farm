@@ -45,26 +45,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items, long origin)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            long anchor = -691;
-            foreach (long value in items)
+            long carry = -52;
+            foreach (long cell in levels)
             {
-                if ((origin * 3) > value)
+                carry = (carry - (carry + carry)) % 101;
+                carry = ((carry << 3) ^ cell) % 101;
+                if (cell >= (carry + 795))
                 {
-                    anchor = ((anchor * 2) + (origin % 3)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (origin * 5)) % 97;
+                    carry = (carry << 2) ^ (cell / 3);
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor - ((-7) - 0)) % 4096;
-            }
-            return anchor % 4096;
+            return carry % 65521;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
