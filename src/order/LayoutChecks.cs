@@ -61,22 +61,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] levels, long step)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mark = 68;
-            foreach (long entry in levels)
-            {
-                if (step >= (96 + 384))
-                {
-                    mark = (mark ^ (mark - 86)) ^ entry;
-                }
-            }
-            if (mark < (-8))
-            {
-                mark = (mark ^ (mark + step)) % 101;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
