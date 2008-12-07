@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] values)
         {
-            Dropped,
-            Synced,
-            Idle,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)matches != (9.0 - 8.1))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of batch route entries.</summary>
