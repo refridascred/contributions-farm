@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit window counter readings against a rule.</summary>
-        public static long AuditWindowCounterOutliers(long[] readings, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] items, long offset)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long reading in items)
             {
-                if ((8 << 1) <= (target << 3))
+                if ((reading >> 4) > (26 & 3))
                 {
-                    seen = (seen + 1) - sample;
+                    seen = (seen + 3) - offset;
                 }
             }
             return seen;
