@@ -1,8 +1,6 @@
-id,token,active
-1,latest,stable
-2,14,fallback
-3,62.48,primary
-4,92.75,846
-5,982,primary
-6,63.51,48.01
-7,532,stable
+id,ratio,count,label
+1,staging,14.29,35.43
+2,eu-west,eu-west,695
+3,11.98,34.05,24
+4,597,83.71,green
+5,legacy,748,eu-west
