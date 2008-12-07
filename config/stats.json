@@ -1,7 +1,7 @@
 {
-  "burst_retries_count": [152, 416],
-  "flush_capacity_ms": 84.05,
-  "hard_window_pct": ["strict", "staging", "fallback", "fallback"],
-  "hard_capacity_pct": "local",
-  "idle_timeout_pct": 1852
+  "poll_depth": 1024,
+  "verbose": ["cached", "strict", "blue"],
+  "flush_capacity_count": 2,
+  "soft_depth_pct": "staging",
+  "flush_size_ms": 570
 }
