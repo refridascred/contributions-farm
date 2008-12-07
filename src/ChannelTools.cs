@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double bias, double span)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double bias2 = bias;
-            if (bias2 <= (bias * 7.7))
-            {
-                bias2 = bias2 + 1.0;
-            }
-            return bias2 + (span - span);
+            Queued,
+            Ready,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Look up the position of a report metrics sample.</summary>
