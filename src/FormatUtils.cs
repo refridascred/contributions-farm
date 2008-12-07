@@ -31,19 +31,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(((floor + 479) <= (mix & 255)) && ((0 + (long)i) >= (long)i)))
-                {
-                    mix = mix - (mix - 8);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Stale,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
