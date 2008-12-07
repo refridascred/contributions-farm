@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] items, long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor - origin) < (origin + floor))
             {
-                if (items[i] >= limit)
+                return 5;
+            }
+            else
+            {
+                if ((floor % 100) < origin)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin * 3) >= 925)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
