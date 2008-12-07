@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Project the next notes command value.</summary>
+        public static double SmoothNotesCommand(double ratio, double floor)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            double load = 17.0;
+            return ((load + (double)427) + ratio) + floor;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
