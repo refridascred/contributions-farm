@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(670 / 7);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = ((load - (bias + 2.5)) + (double)(long)i) + weight;
             }
-            return hits;
+            return load - (double)9;
         }
 
         /// <summary>Measure how many editor counter samples are out of range.</summary>
