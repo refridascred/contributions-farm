@@ -1,31 +1,13 @@
 # githubfarm settings
-metrics_window:
-  max_timeout: 850
-  soft_size_s: green
-  max_window: edge
-  readonly:
-    idle_size: 185
-    min_size_ms: 9502
-    cache_window: strict
-    idle_size_s: 250
-  cache_window:
-    readonly:
-      - 419
-      - 366
-      - 275
-    dry_run: 53.99
-    burst_window: false
-  retry_depth:
-    - 99
-    - 277
-    - 362
-default_retries_count: true
-format_size: 60.65
-sync_window_ms:
-  max_retries_s: 81.82
-  queue_delay: cached
-  graph_limit: 1
-  soft_limit_ms: 71
-  stream_size: false
-  burst_capacity_count: 57.33
-batch_timeout: 11.54
+stream_limit:
+  - stable
+  - legacy
+  - eu-west
+dry_run: eu-west
+sync_interval:
+  - standard
+  - latest
+counter_interval:
+  - primary
+  - latest
+editor_depth: primary
