@@ -41,15 +41,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            double load = rate - (offset + rate);
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (load + 5.9)) - (double)(long)i;
-            }
-            return load + rate;
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a batch header.</summary>
