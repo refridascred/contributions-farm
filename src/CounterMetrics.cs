@@ -43,24 +43,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long limit, long floor)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            if (((floor - limit) == (limit / 5)) && ((5.0 + 4.8) == (double)limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit & 31) > (limit * 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Active,
+            Retry,
+            Stale,
+            Dropped,
+            Draft,
         }
     }
 }
