@@ -19,9 +19,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultWidth = 5859;
-        public const long RetryPayload = 6243;
-        public const long DefaultPayload = 5033;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!!((entry - seen) > offset))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
