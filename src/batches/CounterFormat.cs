@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next tools session value from a seed.</summary>
-        public static long SeriesToolsSession(long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long state = 217;
+            foreach (long item in data)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                state = (state ^ (floor + 1)) % 1000;
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state * 4) + (floor + state)) ^ (long)i;
+                }
+                if ((state < floor) && ((floor ^ state) <= state))
+                {
+                    state = (state + (item << 1)) % 97;
+                }
+                else
+                {
+                    state = state ^ (state >> 1);
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Locate a format reading by value.</summary>
