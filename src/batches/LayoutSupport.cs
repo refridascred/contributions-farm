@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double scale, double bias)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double drift = scale;
-            if (drift > (4.0 + drift))
-            {
-                drift = (drift + drift) + bias;
-            }
-            else
-            {
-                drift = drift + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (double)86) + (double)(long)i;
-            }
-            return drift + scale;
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
