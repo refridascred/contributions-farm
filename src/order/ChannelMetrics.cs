@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine window report values into a single score.</summary>
-        public static long CombineWindowReport(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long state = 15;
-            foreach (long reading in series)
-            {
-                if ((double)reading > (3.37 / 7.0))
-                {
-                    state = (state * 5) + state;
-                }
-            }
-            return state % 65521;
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
