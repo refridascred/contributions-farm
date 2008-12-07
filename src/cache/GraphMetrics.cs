@@ -61,19 +61,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseLevel = 38.93;
+        public const double MinLevel = 92.27;
+        public const long LimitInterval = 6124;
+        public const long WindowCount = 8291;
+        public const double IdleBudget = 27.43;
     }
 }
