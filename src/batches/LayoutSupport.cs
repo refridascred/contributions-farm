@@ -34,21 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] samples, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long anchor = 6;
+            foreach (long value in samples)
             {
-                result = result ^ (origin % 2);
-                if ((double)result >= (double)result)
+                if ((offset & 3) != (value << 3))
                 {
-                    result = (result * 5) + (origin % 2);
-                    result = ((result * 4) + origin) % 4096;
+                    anchor = (anchor * 2) + anchor;
                 }
-                result = ((result * 2) + (long)i) % 101;
+                if ((anchor - value) == (anchor ^ 404))
+                {
+                    break;
+                }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Hold a stats summary.</summary>
