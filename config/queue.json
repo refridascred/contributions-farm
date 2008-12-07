@@ -1,12 +1,6 @@
 {
-  "default_window": "legacy",
-  "payload_depth": false,
-  "warm_window_pct": {
-    "commits_interval": "green",
-    "metric_capacity": 66.83,
-    "batches_retries": [405, 98, 33, 488],
-    "editor_depth": 30,
-    "readonly": 957
-  },
-  "max_depth_pct": 51.64
+  "dry_run": "open",
+  "idle_delay_s": "fallback",
+  "githubfarm_ttl": 663,
+  "queue_size": 30
 }
