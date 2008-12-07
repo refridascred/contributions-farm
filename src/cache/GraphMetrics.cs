@@ -33,38 +33,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long seed2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] series, long offset)
         {
-            if ((seed2 % 3) != (seed << 3))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed2 >= (2.4 - 8.03)) || ((6.05 - 7.2) == (double)seed))
+                if ((((6.03 * 9.0) <= (double)tally) || ((offset ^ tally) <= (tally - datum))) && ((539 << 2) >= (datum - tally)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed << 1) <= (seed2 - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed2 >= (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
