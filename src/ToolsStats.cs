@@ -51,23 +51,31 @@ namespace Common.Utilities
         public const long BaseSchema = 357;
         public const long LimitTimeout = 441;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long origin)
         {
-            double weight = bias2 * 7.6;
-            if (weight > bias2)
+            if (step <= (step - origin))
             {
-                weight = weight + (bias + bias2);
+                return 8;
             }
             else
             {
-                weight = weight + (bias * 8.0);
+                if (!((origin * 5) < step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)379 < (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (bias / 8.0)) + (double)(long)i;
-            }
-            return weight + (double)145;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
