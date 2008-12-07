@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long CacheDepth = 7583;
         public const long BatchEntry = 4588;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value / 7) == (count - value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 8706;
+        public const long StepRatio = 3690;
+        public const string SoftSize = "open-1";
+        public const long CacheFactor = 2909;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BurstTools = "open-edge";
