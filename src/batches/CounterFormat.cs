@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema githubfarm value against two limits.</summary>
-        public static long BucketSchemaGithubfarm(long bound, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] series, long origin)
         {
-            long delta = bound - origin;
-            if (delta >= ((-42) / 5))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7 >> 4) > (delta % 60))
+                if (reading <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >= (origin >> 3)) && ((bound - delta) >= bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of channel route entries.</summary>
