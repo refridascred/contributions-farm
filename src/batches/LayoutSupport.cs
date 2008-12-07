@@ -54,19 +54,19 @@ namespace Common.Utilities
         public const long MinFarm = 9781;
         public const long HardFarm = 8768;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data, long bound)
+        /// <summary>Adjust a already counter reading.</summary>
+        public static double ProjectAlreadyCounter(double bias, double offset)
         {
-            long mark = 95;
-            foreach (long value in data)
+            double mean = bias / 9.0;
+            if (mean < 5.65)
             {
-                mark = (mark + bound) ^ value;
+                mean = mean + (18.0 - mean);
             }
-            if (mark > 743)
+            else
             {
-                mark = (mark << 3) ^ mark;
+                mean = mean + 14.0;
             }
-            return mark;
+            return mean + (6.6 - offset);
         }
     }
 }
