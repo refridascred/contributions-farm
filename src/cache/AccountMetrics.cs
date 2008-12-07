@@ -54,22 +54,19 @@ namespace Common.Utilities
         public const long HardCommits = 5775;
         public const double LimitCommits = 34.93;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] samples, long bound)
+        /// <summary>Validate notes payload readings against a bound.</summary>
+        public static bool GuardNotesPayloadBounds(long[] readings, long target)
         {
-            long score = 33;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (582 > (item - (long)samples.Length))
+                if (datum >= target)
                 {
-                    score = score + (bound + bound);
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 8)
-            {
-                score = (score - (score << 3)) % 101;
-            }
-            return score % 65521;
+            return stale;
         }
     }
 }
