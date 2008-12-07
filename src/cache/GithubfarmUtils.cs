@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] series, long limit)
         {
-            long acc = 4;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                acc = ((acc + (acc >> 3)) % 255) + value;
+                if ((double)(long)series.Length != (double)entry)
+                {
+                    seen = (seen + 3) - limit;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the queue state values.</summary>
