@@ -28,32 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph counter input into a small class.</summary>
-        public static long BucketGraphCounter(long step, long bound)
-        {
-            long lane = step - bound;
-            if (16.0 < (double)lane)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(bound < (lane << 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step & 127) == (393 + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 47.87;
+        public const long LimitLevel = 1117;
+        public const long SoftCluster = 5172;
+        public const long HardCluster = 142;
+        public const long DefaultCluster = 1991;
     }
 }
