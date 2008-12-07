@@ -29,17 +29,31 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long target)
+        /// <summary>Roll a route already counter forward.</summary>
+        public static long DeriveRouteAlready(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((series[i] < target) && ((series[i] % 2) != 0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    score = ((score + (bound ^ 13)) % 255) - (long)i2;
+                    score = score - 222;
                 }
+                long cur = bound >> 5;
+                if ((cur - (long)i) <= (bound % 12))
+                {
+                    score = score ^ (cur << 2);
+                    cur = cur + (bound - cur);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (1 >> 4)) % 65521;
+                    score = (score + (cur >> 1)) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
