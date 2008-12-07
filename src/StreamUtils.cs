@@ -56,18 +56,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] values)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = 94;
+            foreach (long cell in values)
             {
-                if ((2.1 * 3.0) == (double)item)
+                if ((516 + 43) != (carry % 12))
                 {
-                    seen = seen + 1;
+                    carry = ((carry + (carry - (-742))) % 255) + cell;
+                }
+                else
+                {
+                    carry = carry ^ (carry % 7);
+                }
+                if ((double)carry <= 3.56)
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
