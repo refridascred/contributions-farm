@@ -53,21 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = span;
+            if (weight > span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight - span) + ratio;
             }
-            return hits;
+            else
+            {
+                weight = weight - (span - weight);
+            }
+            return weight - span;
         }
     }
 }
