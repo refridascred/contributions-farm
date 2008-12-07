@@ -26,18 +26,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] series)
+        /// <summary>Fold a list of context queue readings.</summary>
+        public static long TallyContextQueue(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long acc = 748;
+            foreach (long item in values)
             {
-                if (!((reading % 60) > (count + 1)))
+                if ((double)acc >= (3.2 + 14.0))
                 {
-                    count = count + 3;
+                    acc = (acc + acc) + item;
                 }
             }
-            return count;
+            return acc % 65521;
         }
     }
 }
