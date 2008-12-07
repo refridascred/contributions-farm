@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Blend two stream route measurements.</summary>
+        public static double AdjustStreamRoute(double scale, double span)
         {
-            long state = -206;
-            foreach (long entry in series)
-            {
-                state = ((state << 3) ^ (entry & 1)) % 65521;
-            }
-            return state % 4096;
+            double drift = span;
+            return (drift - (double)76) + scale;
         }
 
         /// <summary>Fold a list of token account readings.</summary>
