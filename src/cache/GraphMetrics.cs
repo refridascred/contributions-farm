@@ -63,20 +63,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardInterval = 9626;
+        public const long BaseRoute = 4431;
+        public const string LimitDepth = "open-v2";
+        public const double MinRoute = 65.4;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BaseLevel = 38.93;
