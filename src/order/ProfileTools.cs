@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 56;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((3.42 + 3.76) != (double)reading)
                 {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry ^ (carry + (-206))) % 255) + bound;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
