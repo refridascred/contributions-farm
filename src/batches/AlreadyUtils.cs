@@ -36,30 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long origin, long target)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long offset, long origin)
         {
-            long step = origin ^ target;
-            if ((origin & 127) >= target)
+            long slot = offset + origin;
+            if (offset <= (slot + origin))
             {
                 return 7;
             }
             else
             {
-                if ((origin * 2) >= step)
+                if (((double)origin >= (7.9 / 4.0)) && ((double)offset >= (4.0 * 1.53)))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if (step >= (step >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 2;
                 }
             }
         }
