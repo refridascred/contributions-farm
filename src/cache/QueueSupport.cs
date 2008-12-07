@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally % 2) <= (item + tally))
                 {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
