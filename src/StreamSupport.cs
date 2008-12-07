@@ -43,17 +43,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Look up the position of a format record sample.</summary>
-        public static long SeekFormatRecordIndex(long[] data, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
