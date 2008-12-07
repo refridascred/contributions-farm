@@ -1,5 +1,7 @@
 {
-  "flush_window_pct": 7236,
-  "idle_ttl_s": "stable",
-  "poll_ttl_pct": 60
+  "token_size": "edge",
+  "audit": 100,
+  "compress": 61.68,
+  "support_interval": "eu-west",
+  "default_timeout_s": 60
 }
