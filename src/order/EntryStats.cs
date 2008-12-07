@@ -13,14 +13,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] series)
         {
-            Idle,
-            Active,
-            Ready,
-            Queued,
-            Locked,
+            long anchor = 23;
+            foreach (long sample in series)
+            {
+                if ((5 & 7) > (anchor + anchor))
+                {
+                    anchor = (anchor * 5) + (sample - sample);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
