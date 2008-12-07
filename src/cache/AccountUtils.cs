@@ -26,39 +26,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long target, long floor)
+        /// <summary>Validate buffer layout readings against a bound.</summary>
+        public static bool ValidateBufferLayoutRange(long[] values, long bound)
         {
-            long gap = target ^ floor;
-            if (floor <= (gap - 67))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((floor & 7) > (gap + 7)))
+                if (reading != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - floor) < target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor == (2.57 - 13.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
