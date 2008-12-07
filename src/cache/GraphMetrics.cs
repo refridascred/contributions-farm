@@ -67,11 +67,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseLevel = 38.93;
-        public const double MinLevel = 92.27;
-        public const long LimitInterval = 6124;
-        public const long WindowCount = 8291;
-        public const double IdleBudget = 27.43;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Score { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
