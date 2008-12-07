@@ -35,18 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] items)
+        /// <summary>Accumulate profile schema samples.</summary>
+        public static long FoldProfileSchema(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = 801;
+            foreach (long reading in samples)
             {
-                if ((item >> 1) < (item - 6))
-                {
-                    seen = seen + 1;
-                }
+                carry = ((carry - (long)samples.Length) % 4096) ^ reading;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
