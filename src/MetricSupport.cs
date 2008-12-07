@@ -23,9 +23,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 5262;
-        public const string BurstCommand = "alpha-1";
-        public const long MaxCommand = 635;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
