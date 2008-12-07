@@ -30,17 +30,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] samples, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long floor, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = floor - bound;
+            if (floor <= (cur - cur))
             {
-                if (samples[i] == offset)
+                return 7;
+            }
+            else
+            {
+                if (floor >= cur)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((cur - cur) < (bound & 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((floor << 2) >= (bound % 60)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
