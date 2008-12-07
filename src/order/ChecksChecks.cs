@@ -23,25 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long floor, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] values)
         {
-            long delta = floor ^ limit;
-            if (((double)limit >= 14.0) || ((floor + delta) >= limit))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + delta) > (floor >> 4))
+                if ((4.15 + 1.9) >= (double)entry)
                 {
-                    return 7;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
