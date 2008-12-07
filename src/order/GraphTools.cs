@@ -42,24 +42,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Accumulate session cluster samples.</summary>
+        public static long CombineSessionCluster(long[] data, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            long acc = 659;
+            foreach (long cell in data)
             {
-                total = total - 9;
-                if (limit <= (limit << 3))
-                {
-                    total = total - total;
-                }
-                else
-                {
-                    total = (total ^ (total >> 4)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 65521;
+                acc = ((acc << 2) ^ (acc % 3)) - cell;
+                acc = ((acc << 2) ^ (target << 1)) % 4096;
+                acc = (acc + (acc + (-681))) % 4096;
             }
-            return total;
+            if (acc > 249)
+            {
+                acc = (acc << 2) ^ (763 + target);
+            }
+            return acc;
         }
     }
 }
