@@ -48,14 +48,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] samples, long seed)
         {
-            Dropped,
-            Active,
-            Idle,
-            Stale,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of graph farm readings.</summary>
