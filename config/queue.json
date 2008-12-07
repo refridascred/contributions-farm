@@ -1,8 +1,26 @@
 {
-  "stream_limit": 60,
-  "batches_delay": ["latest", "eu-west"],
-  "command_capacity": "cached",
-  "cache_ttl_s": "strict",
-  "notes_capacity": "blue",
-  "session_timeout": "fallback"
+  "metrics_threshold": 30,
+  "idle_retries": true,
+  "token_size": "edge",
+  "report_retries": {
+    "compress": {
+      "flush_ratio": "cached",
+      "readonly": [184, 178, 353],
+      "persist": 51.68,
+      "verbose": "primary",
+      "token_capacity": "stable"
+    },
+    "readonly": {
+      "tools_timeout": "open",
+      "persist": 60,
+      "base_size": "cached",
+      "compress": 815
+    },
+    "queue_window": true,
+    "entry_retries": "green",
+    "max_threshold_s": 8,
+    "retry_limit": "standard"
+  },
+  "route_ratio": "staging",
+  "warm_size_pct": false
 }
