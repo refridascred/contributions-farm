@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi format entries.</summary>
-        public static long DigestContributiFormat(long[] items, long offset)
+        /// <summary>Check that every notes checks entry stays within the limit.</summary>
+        public static bool CheckNotesChecksBounds(long[] levels, long origin)
         {
-            long anchor = 92;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                anchor = (((anchor * 5) + 1) % 65521) ^ reading;
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor < 27)
-            {
-                anchor = anchor - (offset * 4);
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
