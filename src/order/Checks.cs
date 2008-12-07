@@ -22,23 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double rate, double bias)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double weight = 3.0 + 0.2;
-            if (weight < weight)
-            {
-                weight = (weight - weight) - bias;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - rate;
+            Active,
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
