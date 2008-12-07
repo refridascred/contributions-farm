@@ -19,22 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] data, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] levels, long floor)
         {
-            long anchor = 6;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample << 2) != (anchor - sample))
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
                 {
-                    anchor = (anchor ^ (long)data.Length) % 101;
-                }
-                if ((seed / 3) == (anchor + anchor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
