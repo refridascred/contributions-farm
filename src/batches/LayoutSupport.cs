@@ -24,21 +24,13 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Compare every pair of report commits readings.</summary>
-        public static long OverlapReportCommitsCount(long[] readings)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the route status values.</summary>
