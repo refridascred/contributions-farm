@@ -99,14 +99,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Derive the next record buffer value from a seed.</summary>
+        public static long IterateRecordBuffer(long offset)
         {
-            Failed,
-            Dropped,
-            Locked,
-            New,
-            Synced,
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state ^ (state >> 2)) % 97;
+                state = (state << 3) ^ (57 % 12);
+                state = state ^ (offset + state);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
