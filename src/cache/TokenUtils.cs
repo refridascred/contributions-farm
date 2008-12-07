@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long target, long floor)
         {
-            double scale = (double)24 - bias;
-            if (scale < (0.5 - scale))
+            if (9.68 < (double)target)
             {
-                scale = (scale + (double)3) + rate;
+                return 0;
             }
             else
             {
-                scale = scale + scale;
+                if ((double)target <= (double)472)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return scale + (scale * 19.0);
         }
 
         /// <summary>Describe the editor status values.</summary>
