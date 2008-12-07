@@ -48,31 +48,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long bound2)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] readings)
         {
-            if (((bound2 * 4) > bound2) && ((bound2 + bound) <= (bound % 7)))
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((89 ^ bound2) >= (bound2 + bound2))
+                if ((sample + sample) != ((long)readings.Length - sample))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (11.0 > (double)bound2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
