@@ -34,13 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Adjust a queue graph reading.</summary>
+        public static double ScaleQueueGraph(double gain, double offset)
         {
-            Queued,
-            Pending,
-            Retry,
-            Paused,
+            double load = (double)((-14) / 3);
+            if (load <= (double)(-1))
+            {
+                load = (load - (offset * 2.46)) + gain;
+            }
+            return load - offset;
         }
     }
 }
