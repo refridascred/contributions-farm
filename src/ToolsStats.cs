@@ -38,22 +38,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "legacy";
+        public const long MaxSchema = 8911;
+        public const string RetryScore = "open-edge";
+        public const long BaseSchema = 357;
+        public const long LimitTimeout = 441;
 
         /// <summary>Accumulate stream farm samples.</summary>
         public static long DigestStreamFarm(long[] readings)
