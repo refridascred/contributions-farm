@@ -83,9 +83,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 3975;
-        public const string CacheEntry = "local-edge";
-        public const double RetryWidth = 0.61;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Retry,
+            Queued,
+            Idle,
+        }
     }
 }
