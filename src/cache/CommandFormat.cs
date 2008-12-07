@@ -33,13 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            Dropped,
+            Idle,
+            Retry,
+            New,
+            Done,
         }
 
         /// <summary>Check that every editor command entry stays within the limit.</summary>
