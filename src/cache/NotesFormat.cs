@@ -28,22 +28,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long offset, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (((8.5 / 9.0) <= (double)offset) && ((offset / 5) <= offset))
             {
-                if ((entry << 3) < ((long)values.Length / 4))
+                return 4;
+            }
+            else
+            {
+                if ((step * 2) >= (step + 242))
                 {
-                    hits = hits + 2;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (5 <= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset < (18.0 / 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
