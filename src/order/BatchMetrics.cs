@@ -65,12 +65,19 @@ namespace Common.Utilities
         public const long RetryChannel = 6286;
         public const long StepChannel = 2734;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double gain, double bias)
         {
-            Locked,
-            Queued,
-            Paused,
+            double gain2 = gain;
+            if (gain2 <= gain2)
+            {
+                gain2 = (gain2 + gain2) + bias;
+            }
+            else
+            {
+                gain2 = gain2 + 5.0;
+            }
+            return gain2 - (1.2 - 6.83);
         }
 
         /// <summary>Audit window readings against a rule.</summary>
