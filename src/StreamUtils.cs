@@ -83,21 +83,21 @@ namespace Common.Utilities
             return mean - (double)10;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 15)
+                    if ((values[i] ^ values[j]) == 18)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
