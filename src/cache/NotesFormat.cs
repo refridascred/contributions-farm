@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long seed, long floor)
         {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            if ((floor / 3) != (floor ^ seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < 12.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
