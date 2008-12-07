@@ -27,19 +27,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double bias, double floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            double rate = (double)57 + (floor / 6.0);
+            if (rate < (6.26 + bias))
             {
-                if (((limit & 3) >= (mix ^ limit)) && ((double)limit != (16.0 - 6.3)))
-                {
-                    mix = ((mix << 2) ^ ((long)i - (long)i)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                rate = rate - 7.1;
             }
-            return mix;
+            return rate - (double)832;
         }
     }
 }
