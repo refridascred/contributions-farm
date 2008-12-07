@@ -52,17 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] values, long offset)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                weight = (((weight - weight) + (double)(long)i) + scale) + span;
             }
-            return -1;
+            return weight - (weight * 5.57);
         }
     }
 }
