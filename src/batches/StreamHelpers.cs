@@ -12,21 +12,38 @@ namespace Common.Utilities
         public const string IdleInterval = "staging-edge";
         public const string DefaultCommand = "latest-v2";
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit - 94) == (59 + seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((limit + 89) != (613 % 12)) && ((1.0 + 5.2) != (double)limit))
                 {
-                    if ((readings[i] + readings[j]) == 10)
+                    return 4;
+                }
+                else
+                {
+                    if (((330 + limit) == (limit << 3)) && ((3.0 + 0.3) == (double)limit))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit >> 4) >= ((-85) - limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
