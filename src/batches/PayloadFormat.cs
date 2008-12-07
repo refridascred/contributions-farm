@@ -40,24 +40,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long limit, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples, long origin)
         {
-            if ((double)limit <= (4.9 / 5.0))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 5) >= (floor ^ limit))
+                if ((9.8 + 5.0) > (double)entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 2) + origin;
                 }
             }
+            return count;
         }
     }
 }
