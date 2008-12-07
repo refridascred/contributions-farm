@@ -1,10 +1,5 @@
 {
-  "metric_retries": false,
-  "retry_threshold_ms": {
-    "poll_ratio_count": "primary",
-    "queue_delay": "blue",
-    "compress": "green"
-  },
-  "warm_delay_s": "standard",
-  "retry_ttl": false
+  "readonly": 100,
+  "idle_limit_count": 10.87,
+  "githubfarm_capacity": true
 }
