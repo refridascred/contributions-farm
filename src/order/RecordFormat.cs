@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string StepCluster = "local-1";
         public const double WindowCluster = 18.34;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
