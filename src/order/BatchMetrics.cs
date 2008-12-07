@@ -52,11 +52,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultWidth = 50.42;
-        public const string BurstCommits = "open-edge";
-        public const string BatchCommits = "standard-1";
-        public const double WindowInterval = 88.71;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Ready,
+            Idle,
+            New,
+            Active,
+            Stale,
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
