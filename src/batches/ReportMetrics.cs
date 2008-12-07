@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] levels, long limit)
         {
-            Done,
-            Stale,
-            Pending,
-            Queued,
-            Ready,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a batches already counter forward.</summary>
