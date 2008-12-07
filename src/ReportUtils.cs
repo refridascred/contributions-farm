@@ -39,19 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes entry entry stays within the limit.</summary>
-        public static bool VerifyNotesEntryLimits(long[] data, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long total = 5;
+            foreach (long entry in series)
             {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total - ((-33) - entry)) - origin;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
