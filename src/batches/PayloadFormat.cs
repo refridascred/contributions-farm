@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] data, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!((count / 4) < cell))
+                if ((3.08 + 7.1) < (double)matches)
                 {
-                    count = (count + 3) + target;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
