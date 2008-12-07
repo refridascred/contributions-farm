@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Retry,
-            Closed,
-            Locked,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepFactor = 56.91;
+        public const long BatchSpan = 9843;
+        public const double BurstSize = 62.82;
+        public const string IdleRecord = "strict-v2";
+        public const long HardTimeout = 861;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long seed)
