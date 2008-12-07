@@ -96,10 +96,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowSize = 9878;
-        public const string DefaultWidth = "fallback";
-        public const long DefaultTimeout = 9015;
-        public const double MinSize = 45.84;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long step, long limit)
+        {
+            if (step > (step - limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)step >= 0.73) || (limit <= (limit % 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (6.8 <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
