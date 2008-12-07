@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] data, long offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
