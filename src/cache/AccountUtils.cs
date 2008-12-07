@@ -15,14 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] values, long step)
         {
-            Paused,
-            Stale,
-            Idle,
-            Dropped,
-            Draft,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((matches >> 3) <= (step - step))
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two window measurements.</summary>
