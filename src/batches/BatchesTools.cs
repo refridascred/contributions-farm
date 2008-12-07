@@ -57,12 +57,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
