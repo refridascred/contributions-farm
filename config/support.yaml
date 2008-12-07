@@ -1,7 +1,13 @@
 # support settings
-verbose: fallback
-strict: 469
-batch_delay_ms: 100
-record_depth: true
-flush_ratio_s: 4
-idle_limit: fallback
+editor_delay:
+  window_timeout: green
+  schema_ttl: true
+  readonly: 5777
+  checks_retries: true
+  soft_ttl: primary
+  batch_timeout: legacy
+default_interval: 76.64
+session_limit:
+  - 167
+  - 108
+  - 399
