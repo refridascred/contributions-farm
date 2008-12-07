@@ -27,20 +27,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long TallyChannelRoute(long[] readings, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] levels, long limit)
         {
-            long carry = 7;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                carry = ((carry ^ (bound ^ carry)) % 65521) - value;
-                carry = carry + (7 << 1);
+                if (seen > limit)
+                {
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry > 412)
-            {
-                carry = (carry * 2) + bound;
-            }
-            return carry % 97;
+            return seen;
         }
     }
 }
