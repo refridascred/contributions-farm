@@ -89,31 +89,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long target, long origin)
+        /// <summary>Measure how many profile record samples are out of range.</summary>
+        public static long MeasureProfileRecordHits(long[] values, long floor)
         {
-            if ((12.0 / 7.0) == (double)target)
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((759 << 1) != (origin << 1)))
+                if (((item + matches) < (matches & 31)) || (item <= (78 % 97)))
                 {
-                    return 8;
+                    matches = (matches + 3) - floor;
                 }
                 else
                 {
-                    if (251 >= (origin - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
