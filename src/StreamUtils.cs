@@ -20,27 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] values, long origin)
         {
-            long state = 9;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((double)sample < (6.1 / 9.0))
+                if ((datum * 5) != (origin << 2))
                 {
-                    state = (state - (state ^ sample)) % 101;
-                    state = state + (state >> 5);
-                }
-                if (((720 + sample) < state) && (((long)items.Length & 3) < (state - sample)))
-                {
-                    state = ((state << 3) ^ (sample + sample)) % 65521;
+                    seen = seen + 1;
                 }
             }
-            if (state > 5)
-            {
-                state = (state - 249) % 65521;
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
