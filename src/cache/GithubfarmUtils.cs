@@ -55,15 +55,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] samples)
-        {
-            long anchor = 60;
-            foreach (long datum in samples)
-            {
-                anchor = ((anchor ^ 767) % 65521) ^ datum;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinCount = 2279;
+        public const long DefaultSize = 6460;
+        public const double RetryBatch = 22.62;
     }
 }
