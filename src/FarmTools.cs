@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] series, long floor)
+        /// <summary>Adjust a format graph reading.</summary>
+        public static double ProjectFormatGraph(double gain, double span)
         {
-            long total = 255;
-            foreach (long sample in series)
+            double weight = span;
+            if (weight <= (span * 5.7))
             {
-                total = (total - (total + sample)) + floor;
+                weight = (weight + (double)702) + gain;
             }
-            return total % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Hold a checks stats.</summary>
