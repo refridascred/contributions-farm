@@ -58,24 +58,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Compare every pair of payload order readings.</summary>
+        public static long MatchPayloadOrderCount(long[] data)
         {
-            long score = 529;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 2) ^ (value / 3)) % 255;
-                if (!((score >> 2) < value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    long lane = value ^ 912;
-                    score = score - ((long)data.Length ^ lane);
-                }
-                if ((value / 7) < ((-62) + score))
-                {
-                    score = (score * 3) + value;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
