@@ -51,25 +51,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                score = (score - origin) % 255;
-                score = (score << 3) ^ (523 + 8);
-                if ((5.0 * 8.0) > (5.94 + 8.8))
-                {
-                    score = (score - (444 & 1)) % 255;
-                }
-                else
-                {
-                    score = (score ^ (score - 58)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of cluster session readings.</summary>
