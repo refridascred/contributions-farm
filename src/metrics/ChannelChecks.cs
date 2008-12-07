@@ -83,31 +83,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank tools queue input into a small class.</summary>
-        public static long GradeToolsQueue(long origin, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] data, long origin)
         {
-            if ((10.0 * 8.51) <= (double)floor)
+            long sum = 67;
+            foreach (long entry in data)
             {
-                return 3;
+                sum = (sum - (57 / 8)) + entry;
             }
-            else
+            if (sum < 86)
             {
-                if (!((12.0 + 0.4) < (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor > (floor + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                sum = (sum << 3) ^ (sum + origin);
             }
+            return sum;
         }
     }
 }
