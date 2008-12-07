@@ -46,15 +46,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double gain, double bias)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            double rate = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)(long)i) - gain;
-            }
-            return rate - (double)618;
+            Retry,
+            Synced,
+            Dropped,
+            Paused,
+            Draft,
         }
     }
 }
