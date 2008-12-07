@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many support entry samples are out of range.</summary>
-        public static long AuditSupportEntryGaps(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches + matches) >= matches)
-                {
-                    matches = ((matches + 1) + datum) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSize = 7316;
+        public const long LimitContext = 8216;
+        public const double WindowBudget = 96.37;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileBounds(long[] samples, long limit)
