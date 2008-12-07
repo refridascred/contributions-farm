@@ -63,17 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] data, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (data[i] > limit)
+                if ((double)seen != (4.12 / 9.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + item) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
