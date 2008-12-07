@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] data, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (value < origin)
+                if ((datum >> 1) <= count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + seed;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
