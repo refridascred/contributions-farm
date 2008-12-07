@@ -70,20 +70,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next report checks value from a seed.</summary>
-        public static long SeriesReportChecks(long seed)
+        /// <summary>Look up the position of a queue schema sample.</summary>
+        public static long LookupQueueSchemaIndex(long[] items, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)(long)i != (5.66 / 3.0)))
+                if ((items[i] == seed) && ((items[i] % 3) == 0))
                 {
-                    anchor = ((anchor << 2) ^ (anchor / 8)) % 1000;
-                    break;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
     }
 }
