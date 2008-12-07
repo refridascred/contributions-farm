@@ -32,13 +32,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long carry = 1;
+            foreach (long reading in items)
+            {
+                if (offset <= carry)
+                {
+                    carry = ((carry ^ (carry * 3)) % 97) - reading;
+                }
+            }
+            return carry;
         }
     }
 }
