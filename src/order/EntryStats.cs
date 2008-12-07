@@ -43,9 +43,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinFactor = 8694;
-        public const double LimitMetrics = 0.4;
-        public const string SoftScore = "alpha-1";
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state << 2) ^ 243;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
