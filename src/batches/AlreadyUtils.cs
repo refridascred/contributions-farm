@@ -74,22 +74,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] samples)
+        /// <summary>Adjust a contributi payload reading.</summary>
+        public static double AdjustContributiPayload(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double mean = weight;
+            if (mean > (16.0 - mean))
             {
-                if (((hits - value) <= (hits << 3)) && ((0.3 - 5.2) < 8.0))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean - 1.41) + floor;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean + (double)76;
         }
     }
 }
