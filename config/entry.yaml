@@ -1,15 +1,14 @@
 # entry settings
-default_depth_count:
-  - 150
-  - 226
-  - 3
-  - 410
-burst_size_s:
-  hard_ratio: 58.4
-  flush_threshold_pct: 100
-  already_threshold: 21.36
-  context_window: true
-default_delay_s: open
-sync_capacity: green
-sync_capacity_count: edge
-cache_depth_s: standard
+compress:
+  - 197
+  - 73
+base_window_s: local
+batch_timeout:
+  already_depth:
+    - 448
+    - 87
+  compress: false
+  hard_limit_count: stable
+  retry_capacity_s: edge
+strict: false
+metrics_depth: 86
