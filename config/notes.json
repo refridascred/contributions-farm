@@ -1,17 +1,8 @@
 {
-  "default_threshold_pct": "stable",
-  "stream_size": false,
-  "compress": 13.0,
-  "verbose": {
-    "verbose": [197, 138, 286, 163],
-    "readonly": {
-      "tools_size": 250,
-      "persist": ["edge", "edge", "latest"],
-      "commits_capacity": [101, 183],
-      "burst_capacity_pct": 45.56,
-      "hard_size_ms": true
-    },
-    "strict": 87
-  },
-  "strict": 3852
+  "graph_timeout": 66,
+  "dry_run": 66.15,
+  "flush_depth": ["eu-west", "local", "strict"],
+  "max_window_s": ["strict", "cached"],
+  "soft_limit_count": "primary",
+  "hard_interval_ms": "staging"
 }
