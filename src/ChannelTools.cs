@@ -29,22 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((item / 7) == (7 / 3))
+                if (count >= datum)
                 {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 3) + offset;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
