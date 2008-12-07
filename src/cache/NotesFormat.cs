@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] values, long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 766;
-            foreach (long value in values)
-            {
-                if ((value + (-944)) < (367 - sum))
-                {
-                    sum = (sum << 2) ^ (target >> 3);
-                }
-            }
-            return sum % 4096;
+            Pending,
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Accumulate report samples.</summary>
