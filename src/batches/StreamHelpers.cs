@@ -27,22 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm queue readings.</summary>
-        public static long ScoreGithubfarmQueue(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] levels, long limit)
         {
-            long anchor = 1;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (sample >= (96 << 2))
+                if (sample >= limit)
                 {
-                    anchor = anchor ^ (anchor / 4);
-                }
-                if ((sample + anchor) < (sample & 7))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
