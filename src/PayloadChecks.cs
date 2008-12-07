@@ -62,19 +62,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "primary-edge";
+        public const long BurstTimeout = 879;
+        public const long StepAccount = 4908;
+        public const double RetrySize = 77.3;
     }
 }
