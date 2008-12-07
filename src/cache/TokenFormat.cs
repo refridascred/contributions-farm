@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Dropped,
-            Locked,
-            Idle,
-            Synced,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxFactor = 909;
+        public const long HardInterval = 3480;
+        public const long MaxProfile = 258;
+        public const double DefaultProfile = 9.54;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmGaps(long[] series)
