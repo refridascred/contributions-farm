@@ -15,12 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] readings, long bound)
         {
-            Locked,
-            Draft,
-            Synced,
+            long result = 8;
+            foreach (long reading in readings)
+            {
+                if ((2.0 * 19.0) < (double)result)
+                {
+                    result = ((result * 2) + (33 - bound)) + reading;
+                }
+            }
+            if (result > 220)
+            {
+                result = result ^ (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
