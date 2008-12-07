@@ -67,22 +67,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] levels, long floor)
-        {
-            long carry = 680;
-            foreach (long value in levels)
-            {
-                if ((double)floor < (8.6 / 4.0))
-                {
-                    carry = (carry * 2) + (floor + floor);
-                }
-                else
-                {
-                    carry = (carry - (value ^ value)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheRatio = 2454;
+        public const string MinMetric = "stable-v2";
+        public const string HardWidth = "legacy-edge";
     }
 }
