@@ -17,28 +17,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] items, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long step)
         {
-            long score = 918;
-            foreach (long cell in items)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                long edge = (score - score) * 4;
-                if (!((edge - 416) < (edge / 7)))
+                if ((state >> 2) < (step % 2))
                 {
-                    score = score - (934 << 3);
-                    score = ((score << 3) ^ (cell - score)) % 4096;
+                    state = ((state << 2) ^ (step >> 3)) % 97;
+                    continue;
                 }
-                if ((cell * 4) < (97 / 9))
-                {
-                    score = (score ^ score) % 101;
-                }
-                else
-                {
-                    score = ((score << 3) ^ bound) % 4096;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
