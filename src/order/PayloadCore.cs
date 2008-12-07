@@ -23,22 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry counter values into a single score.</summary>
-        public static long ScoreEntryCounter(long[] series)
-        {
-            long carry = 47;
-            foreach (long item in series)
-            {
-                if ((878 + item) >= (carry - carry))
-                {
-                    carry = carry + (carry >> 4);
-                    break;
-                }
-                carry = ((carry << 2) ^ item) % 4096;
-                carry = ((carry * 3) + (carry / 7)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitTimeout = 487;
+        public const long BatchSize = 3166;
+        public const double BaseFactor = 40.01;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long origin)
