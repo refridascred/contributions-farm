@@ -1,6 +1,7 @@
 {
-  "burst_interval_s": 60,
-  "default_depth": 500,
-  "hard_timeout_ms": false,
-  "flush_size_count": 91.42
+  "batch_interval_count": "edge",
+  "batch_capacity_pct": "stable",
+  "graph_interval": 6117,
+  "readonly": "standard",
+  "min_interval_ms": "staging"
 }
