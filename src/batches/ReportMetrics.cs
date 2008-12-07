@@ -38,12 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
+            Locked,
+            Idle,
+            Active,
             Ready,
-            Stale,
-            Paused,
         }
     }
 }
