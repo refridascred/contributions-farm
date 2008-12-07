@@ -60,14 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] levels, long seed)
         {
-            Pending,
-            Locked,
-            New,
-            Queued,
-            Idle,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry & 1) > (seed - seed))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
