@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long seed, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data, long bound)
         {
-            if (!((bound * 3) >= (seed + seed)))
+            long sum = 36;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound <= (seed + bound))
+                if (22 < (8 + bound))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed >= 8.8)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound / 9) <= (2 << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = sum - sample;
                 }
             }
+            return sum;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
