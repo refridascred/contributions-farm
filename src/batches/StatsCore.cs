@@ -47,11 +47,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardBudget = 98.49;
-        public const long StepTimeout = 7987;
-        public const string BatchMetrics = "strict";
-        public const double SoftRatio = 43.75;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] levels)
+        {
+            long state = 4;
+            foreach (long reading in levels)
+            {
+                if ((state + reading) >= (reading ^ reading))
+                {
+                    state = state - reading;
+                }
+                else
+                {
+                    state = state ^ (reading & 127);
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
