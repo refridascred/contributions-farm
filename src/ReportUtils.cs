@@ -29,17 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] levels, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 92;
+            foreach (long entry in items)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mark = (((mark - (mark * 2)) % 255) ^ entry) - offset;
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Hold a support header.</summary>
