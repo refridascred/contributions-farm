@@ -1,8 +1,9 @@
-id,count,label,level
-1,18.68,455,801
-2,local,edge,32.51
-3,primary,latest,708
-4,940,642,fallback
-5,27.05,14.7,582
-6,255,31.53,87.29
-7,507,364,green
+id,score,token
+1,open,97.47
+2,latest,79.55
+3,681,stable
+4,96.1,blue
+5,51,open
+6,31.5,742
+7,9.34,46.21
+8,815,48.84
