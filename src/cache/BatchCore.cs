@@ -71,18 +71,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Audit channel contributi readings against a rule.</summary>
+        public static long CountChannelContributiOutliers(long[] series)
         {
-            long carry = 6;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((98 / 4) != (carry - 733))
+                if ((reading * 5) >= (6 - 4))
                 {
-                    carry = (carry << 3) ^ entry;
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
