@@ -45,21 +45,14 @@ namespace Common.Utilities
         public const long BaseStats = 9462;
         public const long StepStats = 7;
 
-        /// <summary>Compare every pair of batches filter readings.</summary>
-        public static long CompareBatchesFilterCount(long[] data)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Locked,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
