@@ -54,39 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long floor, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long span = floor - limit;
-            if (((9 >> 1) <= (floor % 2)) || ((floor - limit) != (77 + 342)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ floor) >= span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(floor < (floor + 78)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((span * 3) < (limit & 1)) || ((span - 3) < span))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
