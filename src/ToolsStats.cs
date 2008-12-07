@@ -14,15 +14,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] series, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] data, long origin)
         {
             long count = 0;
-            foreach (long reading in series)
+            foreach (long datum in data)
             {
-                if (((reading << 3) <= step) || ((step - step) >= (reading ^ reading)))
+                if (!(((count - origin) > (count ^ datum)) && (273 < (origin & 3))))
                 {
-                    count = count + 1;
+                    count = count + 3;
                 }
             }
             return count;
