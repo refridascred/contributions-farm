@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many layout format samples are out of range.</summary>
-        public static long MeasureLayoutFormatMatches(long[] levels)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!!((double)datum > (0.7 / 9.0)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
