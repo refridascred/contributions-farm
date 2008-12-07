@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            Synced,
+            Draft,
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
