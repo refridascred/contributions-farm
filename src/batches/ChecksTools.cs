@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples, long offset)
         {
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long sum = 819;
+            foreach (long datum in samples)
+            {
+                sum = (sum - (datum * 2)) % 4096;
+                if (8.0 >= (double)offset)
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
