@@ -51,38 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile metrics pair into a bucket.</summary>
-        public static long GradeProfileMetrics(long step, long offset)
+        /// <summary>Combine record graph values into a single score.</summary>
+        public static long CombineRecordGraph(long[] items)
         {
-            if ((step - step) == (offset + step))
+            long result = 714;
+            foreach (long reading in items)
             {
-                return 5;
+                result = result + (result - reading);
             }
-            else
-            {
-                if ((step + step) >= (step ^ step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset * 3) >= (21 << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((step + offset) > (offset - step)) || ((double)step <= 4.9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the editor kind values.</summary>
