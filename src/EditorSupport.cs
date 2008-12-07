@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of buffer contributi readings.</summary>
-        public static long PairBufferContributiCount(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 905;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry * 2) + entry;
+                if ((6.4 - 8.7) <= (double)carry)
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry + (544 / 2);
                 }
             }
-            return matches;
+            if (carry > (-9))
+            {
+                carry = (carry + (carry >> 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Combine checks account values into a single score.</summary>
