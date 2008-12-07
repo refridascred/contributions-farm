@@ -18,14 +18,18 @@ namespace Common.Utilities
         public const string LimitDepth = "primary-1";
         public const double CacheDepth = 70.94;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Derive the next checks order value from a seed.</summary>
+        public static long StepChecksOrder(long origin)
         {
-            New,
-            Closed,
-            Paused,
-            Done,
-            Draft,
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 5) + mix) % 255;
+                mix = mix - (mix - origin);
+                mix = ((mix * 3) + ((long)i - (-4))) % 4096;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
