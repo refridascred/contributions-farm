@@ -1,9 +1,5 @@
 # support settings
-metric_limit:
-  - edge
-  - primary
-  - edge
-route_window: false
-idle_timeout: false
-warm_depth_s: true
-base_ttl_count: 1024
+persist: eu-west
+max_timeout_ms: cached
+dry_run: local
+session_depth: 99
