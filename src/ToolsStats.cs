@@ -55,12 +55,14 @@ namespace Common.Utilities
             return drift - (double)35;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "legacy";
-        public const long MaxSchema = 8911;
-        public const string RetryScore = "open-edge";
-        public const long BaseSchema = 357;
-        public const long LimitTimeout = 441;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long GradeSession(long step, long origin)
