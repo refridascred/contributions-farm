@@ -49,12 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double weight, double span)
         {
-            Draft,
-            Synced,
-            New,
+            double load = weight;
+            if (load >= load)
+            {
+                load = (load + (weight / 4.0)) - span;
+            }
+            else
+            {
+                load = load - (double)91;
+            }
+            return load + (weight + weight);
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
