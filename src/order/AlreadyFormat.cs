@@ -58,14 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Queued,
-            Locked,
-            Active,
-            Idle,
-            Done,
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
