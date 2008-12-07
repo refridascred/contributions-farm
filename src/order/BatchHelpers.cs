@@ -32,17 +32,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] items, long origin)
+        /// <summary>Combine schema githubfarm values into a single score.</summary>
+        public static long TotalSchemaGithubfarm(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 935;
+            foreach (long item in data)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) == 0))
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    anchor = anchor ^ (long)i;
                 }
+                anchor = anchor + (limit >> 4);
+                anchor = anchor - (item >> 3);
             }
-            return -1;
+            return anchor;
         }
     }
 }
