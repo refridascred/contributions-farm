@@ -20,18 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] data, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long limit, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long slot = limit + offset;
+            if (!(slot >= 31))
             {
-                if ((count ^ target) > count)
+                return 7;
+            }
+            else
+            {
+                if (((double)offset < (6.0 * 6.4)) || ((slot & 3) > (slot << 2)))
                 {
-                    count = (count + 2) + sample;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
