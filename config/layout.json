@@ -1,12 +1,17 @@
 {
-  "batch_interval_count": 59.87,
   "verbose": {
-    "min_capacity": 65.35,
-    "poll_retries_pct": 45,
-    "persist": "stable",
-    "burst_threshold_ms": 9361
+    "cache_window": 13,
+    "default_ttl": 2678,
+    "cluster_limit": 91,
+    "base_threshold_count": 98,
+    "flush_ratio": 3527,
+    "notes_depth": "fallback"
   },
-  "default_ratio": "fallback",
-  "cache_delay": false,
-  "profile_delay": 31
+  "soft_threshold_ms": {
+    "report_window": 86.02,
+    "already_retries": 100,
+    "farm_interval": 7339,
+    "burst_threshold": false
+  },
+  "batch_size_pct": ["stable", "staging", "stable"]
 }
