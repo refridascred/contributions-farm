@@ -1,5 +1,10 @@
 # support settings
-persist: eu-west
-max_timeout_ms: cached
-dry_run: local
-session_depth: 99
+retry_delay_count: 1041
+soft_depth_count: false
+hard_size_s: true
+retry_timeout_pct:
+  - fallback
+  - legacy
+  - staging
+  - standard
+default_delay_count: 66.04
