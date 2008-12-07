@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRatio = 8205;
-        public const double SoftFactor = 40.06;
-        public const string HardRecord = "open-edge";
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (limit > (datum * 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] series)
