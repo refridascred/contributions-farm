@@ -20,15 +20,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] items, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] values)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long value in values)
             {
-                if (!((5.0 / 4.0) > (double)tally))
+                if (((long)values.Length - tally) != (tally % 16))
                 {
-                    tally = ((tally + 2) - sample) - step;
+                    tally = (tally + 1) ^ value;
                 }
                 else
                 {
