@@ -42,18 +42,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long sum = 6;
+            foreach (long cell in series)
             {
-                if (reading >= (hits >> 1))
+                if (!((double)sum != (double)9))
                 {
-                    hits = hits + 3;
+                    sum = sum - cell;
+                }
+                if (sum < (sum >> 1))
+                {
+                    sum = (sum - (sum << 3)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ 521;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
     }
 }
