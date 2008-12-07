@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Synced,
-            Dropped,
-            Retry,
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
