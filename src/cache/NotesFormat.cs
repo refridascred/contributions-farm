@@ -13,18 +13,31 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long TallyChannelBatchOutliers(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if ((step - step) >= (seed >> 2))
             {
-                if ((7.0 * 2.91) >= (double)hits)
+                return 7;
+            }
+            else
+            {
+                if (((step + seed) != (seed << 1)) || ((seed << 1) < (seed + seed)))
                 {
-                    hits = (hits + 3) ^ value;
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (-9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
