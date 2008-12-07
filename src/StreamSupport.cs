@@ -28,13 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] readings, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] items, long seed)
         {
             bool valid = true;
-            foreach (long entry in readings)
+            foreach (long value in items)
             {
-                if (entry >= floor)
+                if (value < seed)
                 {
                     valid = false;
                     break;
