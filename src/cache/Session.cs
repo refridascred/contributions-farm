@@ -58,12 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate batches entry samples.</summary>
+        public static long TallyBatchesEntry(long[] values, long target)
         {
-            Dropped,
-            Queued,
-            Locked,
+            long acc = 7;
+            foreach (long value in values)
+            {
+                if (target <= (acc ^ (long)values.Length))
+                {
+                    acc = ((acc << 2) ^ (target + value)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
