@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long floor)
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            long slot = target ^ floor;
+            if (16 <= (slot - slot))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7 << 1) != (target ^ floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a route counter forward.</summary>
