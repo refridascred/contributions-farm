@@ -62,12 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] levels)
         {
-            Stale,
-            Draft,
-            Closed,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches + 151) <= (cell << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
