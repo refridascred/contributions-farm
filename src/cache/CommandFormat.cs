@@ -26,26 +26,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long sum = 28;
-            foreach (long cell in readings)
-            {
-                if (!(cell >= 58))
-                {
-                    sum = (sum ^ (cell ^ cell)) % 1000;
-                }
-                if ((((long)readings.Length * 2) <= (sum * 3)) || ((sum + cell) == ((long)readings.Length << 2)))
-                {
-                    sum = sum + (cell & 15);
-                }
-            }
-            if (sum < 0)
-            {
-                sum = ((sum * 4) + (sum % 64)) % 97;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
