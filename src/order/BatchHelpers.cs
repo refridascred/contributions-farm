@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long limit)
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((limit / 7) <= (mark & 31))
+                {
+                    mark = (mark + (934 & 7)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
