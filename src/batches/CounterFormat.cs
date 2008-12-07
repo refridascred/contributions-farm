@@ -32,16 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics githubfarm samples.</summary>
-        public static long CombineMetricsGithubfarm(long[] items)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] levels, long limit)
         {
-            long state = 4;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state + (value - state);
-                state = (state + (value + state)) % 1000;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
