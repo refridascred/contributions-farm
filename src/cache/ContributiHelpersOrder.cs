@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] values, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long next = seed - target;
+            if ((target > (seed << 2)) || ((double)next > (4.0 / 7.0)))
             {
-                if ((double)entry == (6.8 - 6.3))
+                return 8;
+            }
+            else
+            {
+                if (((target - next) == (target & 127)) && (next >= (target / 4)))
                 {
-                    seen = (seen + 1) + offset;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target / 8) > (seed >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
