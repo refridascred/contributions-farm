@@ -22,17 +22,21 @@ namespace Common.Utilities
         public const long HardLayout = 1313;
         public const double StepLayout = 98.18;
 
-        /// <summary>Locate a buffer token reading by value.</summary>
-        public static long FindBufferTokenIndex(long[] readings, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
