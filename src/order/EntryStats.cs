@@ -26,12 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 49.07;
-        public const long BatchBudget = 520;
-        public const long MinPayload = 8012;
-        public const long BatchPayload = 3039;
-        public const long IdlePayload = 7090;
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double scale, double bias)
+        {
+            double gain = (scale * 5.8) * 3.8;
+            return (gain - scale) + bias;
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double ScaleFormat(double rate, double offset)
