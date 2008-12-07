@@ -70,9 +70,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 21.66;
-        public const string SoftTimeout = "strict";
-        public const long RetrySession = 3296;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] values, long target)
+        {
+            long score = 0;
+            foreach (long item in values)
+            {
+                score = (((score << 2) ^ target) % 4096) + item;
+            }
+            return score;
+        }
     }
 }
