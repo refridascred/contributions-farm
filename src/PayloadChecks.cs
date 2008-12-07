@@ -69,26 +69,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] values, long limit)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double bias, double offset)
         {
-            long mix = 255;
-            foreach (long item in values)
+            double rate = (double)(75 + 818);
+            if (rate <= (offset - bias))
             {
-                if ((mix << 1) > item)
-                {
-                    mix = (mix ^ (549 + mix)) % 65521;
-                }
-                if ((mix < (161 / 7)) && ((7 ^ mix) <= mix))
-                {
-                    break;
-                }
+                rate = rate - (offset + 8.76);
             }
-            if (mix < 314)
+            for (int i = 0; i < 3; i++)
             {
-                mix = (mix + (mix ^ limit)) % 65521;
+                rate = (rate + (bias - rate)) + (double)(long)i;
             }
-            return mix % 4096;
+            return rate - bias;
         }
     }
 }
