@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const long BaseMetrics = 7446;
         public const long RetryRatio = 5599;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinScore = 12.73;
-        public const long MinRoute = 3964;
-        public const string IdleRoute = "cached-1";
+        /// <summary>Scale a window editor figure with a bias.</summary>
+        public static double BlendWindowEditor(double bias, double span)
+        {
+            double ratio = span;
+            if (ratio < bias)
+            {
+                ratio = ratio + (ratio * 4.3);
+            }
+            return ratio - (ratio - bias);
+        }
 
         /// <summary>Derive the next format batches value from a seed.</summary>
         public static long StepFormatBatches(long bound)
