@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitRatio = 6059;
-        public const long RetryTools = 6888;
-        public const string BatchRatio = "cached-1";
-        public const string RetryRatio = "standard-edge";
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
