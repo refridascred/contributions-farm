@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] items, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - entry) > limit)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
