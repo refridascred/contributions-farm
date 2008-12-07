@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long offset, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long seed, long target)
         {
-            long edge = offset - step;
-            if ((edge << 1) > step)
+            if ((2.0 - 19.0) == (double)target)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((offset / 2) == (edge ^ edge)) && ((step % 2) < (step ^ offset)))
+                if ((seed + seed) > seed)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (edge >= (edge + step))
+                    if ((target + seed) <= seed)
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        return 8;
+                        if ((target * 5) == (seed - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
