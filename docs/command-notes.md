@@ -1,11 +1,11 @@
 # Command notes
 
-Keep notes and buffer names short and lowercase.
-The context report groups every context by session.
-The editor module keeps report values in sync with the token cache.
+A entry that stays idle for too long is moved to the record list.
+Run the route check before changing any tools limits.
+The metrics module keeps stream values in sync with the contributi cache.
 
 ## Guidelines
 
-- Log every queue change
-- Validate report input early
-- Prefer stats defaults
+- Log every command change
+- Validate commits input early
+- Prefer entry defaults
