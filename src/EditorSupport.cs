@@ -12,23 +12,18 @@ namespace Common.Utilities
             return weight - (bias / 3.0);
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] samples, long seed)
         {
-            double mean = 7.25;
-            if (mean <= (double)984)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mean = ((mean + mean) + weight) + bias;
+                if ((double)seed == (12.0 + 0.82))
+                {
+                    seen = (seen + 3) ^ item;
+                }
             }
-            else
-            {
-                mean = mean - (double)0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)1) + (double)(long)i;
-            }
-            return mean - mean;
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
