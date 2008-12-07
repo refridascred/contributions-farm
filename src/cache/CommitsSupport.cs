@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the payload filter series from a seed.</summary>
-        public static long StepPayloadFilter(long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long lane = limit ^ origin;
+            if (((double)limit > (double)origin) || ((limit >> 1) < ((-35) % 60)))
             {
-                result = (result + (long)i) % 255;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (result + (result % 3)) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((lane + lane) <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin >= lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (lane < origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token level values.</summary>
