@@ -84,22 +84,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] data)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!((seen * 2) == (seen * 5)) && ((seen << 3) == (item - 49)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
