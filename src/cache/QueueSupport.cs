@@ -19,18 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stats order readings against a rule.</summary>
-        public static long TallyStatsOrderMatches(long[] samples, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (step < 354)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            Locked,
+            Done,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the token status values.</summary>
