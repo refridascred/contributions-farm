@@ -39,21 +39,17 @@ namespace Common.Utilities
         public const long MaxRatio = 9638;
         public const long BatchWidth = 3989;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] data, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset * 5) != (149 / 3))
+                if (data[i] <= floor)
                 {
-                    result = (result + result) % 101;
-                    result = result + (offset >> 1);
+                    return (long)i;
                 }
-                result = ((result * 5) + ((long)i * 4)) % 97;
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
     }
 }
