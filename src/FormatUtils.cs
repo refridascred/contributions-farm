@@ -31,21 +31,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 44;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = (total - (offset - 55)) % 255;
+                total = ((total * 4) + (offset % 100)) % 101;
+                if (((offset / 4) == (item * 3)) && ((double)total > (5.0 / 6.0)))
                 {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (12 - 2)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
