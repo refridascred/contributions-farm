@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] items)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (entry >= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
