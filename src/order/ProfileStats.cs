@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine graph format values into a single score.</summary>
