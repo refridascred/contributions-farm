@@ -1,5 +1,5 @@
 # support settings
-strict: false
-verbose: open
-commits_interval: green
-audit: 1024
+min_threshold_count: 20.96
+persist: 30
+stats_threshold: 250
+max_capacity_ms: false
