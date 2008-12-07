@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Fold a list of payload contributi readings.</summary>
+        public static long FoldPayloadContributi(long[] items, long seed)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            long carry = 8;
+            foreach (long datum in items)
+            {
+                if (((double)carry <= (1.0 - 7.0)) || ((datum & 63) <= (datum & 15)))
+                {
+                    carry = (carry ^ (seed & 3)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (seed + 91)) % 1000;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
