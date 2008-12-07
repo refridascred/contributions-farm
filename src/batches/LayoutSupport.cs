@@ -51,11 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
