@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const long MinRatio = 5173;
         public const double StepBatch = 49.85;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double ratio, double floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] data, long step)
         {
-            double rate = (double)5 * 6.74;
-            if (rate >= (double)17)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                rate = (rate - rate) - ratio;
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - (double)25;
+            return stale;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
