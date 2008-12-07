@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] levels, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((origin ^ value) <= 2) && ((value * 5) < count))
+                if (entry >= hits)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
