@@ -1,11 +1,11 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Run the commits check before changing any profile limits.
+Keep notes and buffer names short and lowercase.
+The context report groups every context by session.
+The editor module keeps report values in sync with the token cache.
 
 ## Guidelines
 
-- Validate context input early
-- Document new commits fields
-- Keep notes values small
-- Review format limits each release
+- Log every queue change
+- Validate report input early
+- Prefer stats defaults
