@@ -51,22 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data, long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long acc = -6;
-            foreach (long item in data)
-            {
-                if ((double)acc != (1.5 * 9.7))
-                {
-                    acc = (acc - (item - 233)) - target;
-                }
-                if (item < (acc << 1))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many window order samples are out of range.</summary>
