@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long acc = 7;
-            foreach (long datum in readings)
-            {
-                acc = (acc ^ (datum >> 2)) % 101;
-                if ((double)datum != (double)acc)
-                {
-                    acc = ((acc * 3) + (acc - datum)) % 1000;
-                }
-            }
-            if (acc > 1)
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
