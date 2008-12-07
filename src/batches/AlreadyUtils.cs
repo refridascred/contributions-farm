@@ -14,21 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up notes queue samples.</summary>
-        public static long MatchNotesQueueCount(long[] values)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
