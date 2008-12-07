@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series, long offset)
         {
-            Paused,
-            Retry,
-            Draft,
-            Ready,
-            Dropped,
+            long mix = 317;
+            foreach (long reading in series)
+            {
+                mix = ((((mix * 3) + 207) % 97) + reading) + offset;
+            }
+            return mix;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
