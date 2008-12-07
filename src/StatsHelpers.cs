@@ -43,11 +43,18 @@ namespace Common.Utilities
         public const string BatchScore = "staging-edge";
         public const double HardSpan = 27.7;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 856;
-        public const string MinCount = "local";
-        public const long WindowDepth = 5329;
-        public const string HardCount = "stable";
-        public const long HardSchema = 2838;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((reading * 3) < 9) || ((double)seen >= 13.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
