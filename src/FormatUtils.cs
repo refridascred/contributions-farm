@@ -20,19 +20,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double bias, double offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] items, long bound)
         {
-            double bias2 = bias;
-            if (bias2 > offset)
+            long score = 918;
+            foreach (long cell in items)
             {
-                bias2 = bias2 + (bias2 / 6.0);
+                long edge = (score - score) * 4;
+                if (!((edge - 416) < (edge / 7)))
+                {
+                    score = score - (934 << 3);
+                    score = ((score << 3) ^ (cell - score)) % 4096;
+                }
+                if ((cell * 4) < (97 / 9))
+                {
+                    score = (score ^ score) % 101;
+                }
+                else
+                {
+                    score = ((score << 3) ^ bound) % 4096;
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 + (double)142;
+            return score;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
