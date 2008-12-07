@@ -33,18 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
-        public static long TallyGithubfarmProfileMatches(long[] values)
+        /// <summary>Accumulate metrics githubfarm samples.</summary>
+        public static long CombineMetricsGithubfarm(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long state = 4;
+            foreach (long value in items)
             {
-                if (!((sample + 1) > (2 >> 2)))
-                {
-                    hits = hits + 2;
-                }
+                state = state + (value - state);
+                state = (state + (value + state)) % 1000;
             }
-            return hits;
+            return state;
         }
     }
 }
