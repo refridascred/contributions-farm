@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const double IdleInterval = 31.6;
         public const double BatchInterval = 29.07;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] data)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum <= (3.0 + 8.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a layout entry.</summary>
