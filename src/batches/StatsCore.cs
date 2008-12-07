@@ -41,12 +41,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long step, long seed)
         {
-            Retry,
-            Pending,
-            Queued,
+            if ((double)step < (7.79 * 6.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed > (6.4 + 5.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the cache mode values.</summary>
