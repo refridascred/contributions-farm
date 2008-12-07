@@ -51,15 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the filter class values.</summary>
