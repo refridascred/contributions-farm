@@ -49,15 +49,15 @@ namespace Common.Utilities
         public const long CacheCount = 778;
         public const double BaseFilter = 59.11;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double gain, double span)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] levels, long origin)
         {
-            double ratio = 0.97 - gain;
-            for (int i = 0; i < 7; i++)
+            long mark = 216;
+            foreach (long reading in levels)
             {
-                ratio = (ratio + (12.0 + span)) + (double)(long)i;
+                mark = (((mark * 2) + (mark % 97)) ^ reading) - origin;
             }
-            return ratio + gain;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
