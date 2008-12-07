@@ -23,15 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double weight, double bias)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            double load = (double)(670 / 7);
-            for (int i = 0; i < 6; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                load = ((load - (bias + 2.5)) + (double)(long)i) + weight;
+                if (((137 + state) <= state) && (state > (state * 5)))
+                {
+                    state = (state + (state / 3)) % 101;
+                }
+                else
+                {
+                    state = (state - seed) % 255;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return load - (double)9;
+            return state;
         }
 
         /// <summary>Measure how many editor counter samples are out of range.</summary>
