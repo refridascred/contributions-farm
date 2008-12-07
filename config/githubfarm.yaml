@@ -1,9 +1,5 @@
 # githubfarm settings
-batch_timeout_s: 6
-base_ratio:
-  - 367
-  - 339
-  - 87
-enabled: 30
-batch_timeout_pct: edge
-burst_delay: 250
+stream_retries: true
+cache_interval_s: latest
+idle_ratio: 250
+default_retries: strict
