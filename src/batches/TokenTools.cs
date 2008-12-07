@@ -15,21 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Fold a list of context order readings.</summary>
+        public static long WeighContextOrder(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 91;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((anchor + reading) != (102 + reading)) && ((5 + reading) != (reading % 3)))
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - (anchor - anchor)) % 97;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
