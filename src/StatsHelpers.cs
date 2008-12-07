@@ -53,18 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] items)
+        /// <summary>Check that every already editor entry stays within the limit.</summary>
+        public static bool GuardAlreadyEditorLimits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (((reading * 3) < 9) || ((double)seen >= 13.0))
+                if (item <= seed)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
