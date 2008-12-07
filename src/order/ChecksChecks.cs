@@ -23,22 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] values)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((4.15 + 1.9) >= (double)entry)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
