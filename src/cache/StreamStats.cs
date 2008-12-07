@@ -27,12 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 9370;
-        public const long LimitFarm = 7018;
-        public const long DefaultFarm = 2126;
-        public const double BaseCount = 29.94;
-        public const long StepFarm = 5382;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (reading > (reading * 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BurstStats = "open-edge";
