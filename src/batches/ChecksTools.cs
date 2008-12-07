@@ -39,16 +39,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + (mark >> 4)) % 65521;
-                mark = ((mark * 3) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
