@@ -19,18 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] levels)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((-8) / 9) == (datum & 63))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
