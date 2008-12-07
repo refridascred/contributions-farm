@@ -21,19 +21,39 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] samples, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long seed, long offset)
         {
-            long mark = 82;
-            foreach (long sample in samples)
+            long gap = seed - offset;
+            if (seed > (614 >> 2))
             {
-                mark = ((mark ^ (sample << 2)) % 65521) + floor;
+                return 7;
             }
-            if (mark < 79)
+            else
             {
-                mark = (mark + (long)samples.Length) % 4096;
+                if ((gap << 1) <= gap)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset <= (65 << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset / 4) != (seed / 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mark % 97;
         }
 
         /// <summary>Scale a order route figure with a bias.</summary>
