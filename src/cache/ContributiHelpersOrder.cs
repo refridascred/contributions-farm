@@ -14,10 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleDepth = 5450;
-        public const double IdleSize = 25.16;
-        public const long StepLayout = 7567;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long SortCluster(long floor, long floor2)
