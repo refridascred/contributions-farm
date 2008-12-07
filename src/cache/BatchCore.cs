@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank contributi schema input into a small class.</summary>
-        public static long RankContributiSchema(long seed, long seed2)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            if ((double)seed == (3.0 + 5.0))
+            long carry = 76;
+            foreach (long sample in readings)
             {
-                return 1;
+                carry = (carry ^ sample) % 1000;
             }
-            else
-            {
-                if ((seed2 & 63) < (seed2 + seed2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + seed2) <= seed2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + seed2) > (seed2 + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
