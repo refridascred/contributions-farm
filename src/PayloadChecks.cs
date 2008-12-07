@@ -43,18 +43,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] series, long step)
+        /// <summary>Combine layout entry values into a single score.</summary>
+        public static long TallyLayoutEntry(long[] series)
         {
-            long seen = 0;
+            long state = 5;
             foreach (long entry in series)
             {
-                if (seen < (entry >> 1))
+                if ((17 * 5) <= state)
                 {
-                    seen = (seen + 3) - step;
+                    state = state - (state + entry);
+                }
+                else
+                {
+                    state = ((state * 4) + (60 + state)) % 255;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Describe the notes class values.</summary>
