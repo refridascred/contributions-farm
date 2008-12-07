@@ -52,22 +52,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many filter profile samples are out of range.</summary>
-        public static long TallyFilterProfileGaps(long[] items, long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((-7) - seed) <= tally)
-                {
-                    tally = (tally + 2) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Synced,
         }
     }
 }
