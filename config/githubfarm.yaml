@@ -1,22 +1,30 @@
 # githubfarm settings
-route_depth:
-  default_size_count: staging
-  strict: staging
-  command_ratio: primary
-  audit:
-    editor_retries: 41.07
-    cache_threshold: 55.22
-    batch_delay_ms: true
-  retry_threshold: strict
-flush_delay_ms:
-  strict: 2591
-  soft_timeout_count:
-    - eu-west
-    - cached
-    - edge
-  max_threshold_pct: 23.8
-  idle_limit_ms: 60
-dry_run: eu-west
-min_threshold: 80.6
-base_capacity_ms: cached
-max_interval: strict
+warm_ttl_count: 100
+max_capacity: cached
+audit: primary
+flush_window_s: 100
+default_window: 7792
+warm_interval_s:
+  poll_depth: 3439
+  dry_run: fallback
+  stream_ttl:
+    - 208
+    - 243
+    - 134
+    - 80
+  enabled:
+    soft_timeout_count: standard
+    poll_capacity_ms: 39.16
+    notes_ttl: 84.03
+    channel_delay: 82
+  support_retries:
+    dry_run:
+      - eu-west
+      - blue
+      - blue
+    poll_delay_ms: 12
+    idle_delay:
+      - staging
+      - blue
+      - strict
+      - fallback
