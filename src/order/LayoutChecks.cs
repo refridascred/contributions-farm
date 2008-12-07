@@ -61,13 +61,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] levels, long step)
         {
-            Retry,
-            Locked,
-            Queued,
-            Closed,
+            long mark = 68;
+            foreach (long entry in levels)
+            {
+                if (step >= (96 + 384))
+                {
+                    mark = (mark ^ (mark - 86)) ^ entry;
+                }
+            }
+            if (mark < (-8))
+            {
+                mark = (mark ^ (mark + step)) % 101;
+            }
+            return mark;
         }
     }
 }
