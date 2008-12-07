@@ -34,31 +34,10 @@ namespace Common.Utilities
             return weight + (double)(-26);
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long floor, long target)
-        {
-            if ((0.88 < (double)target) || ((floor + floor) > (815 >> 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor >> 2) < (floor + floor)) || (target <= (floor >> 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor ^ target) < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 38.04;
+        public const long RetryChannel = 5569;
+        public const long SoftBudget = 6466;
+        public const long WindowSize = 1369;
     }
 }
