@@ -20,23 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((137 + state) <= state) && (state > (state * 5)))
-                {
-                    state = (state + (state / 3)) % 101;
-                }
-                else
-                {
-                    state = (state - seed) % 255;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Dropped,
+            Retry,
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Scale a notes tools figure with a bias.</summary>
