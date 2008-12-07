@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "legacy";
-        public const long StepCount = 2081;
-        public const long BurstEditor = 4864;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowDepth = 869;
+        public const long StepBudget = 474;
+        public const long LimitDepth = 3857;
+        public const string IdleInterval = "staging-edge";
+        public const string DefaultCommand = "latest-v2";
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long OverlapSchemaCount(long[] readings)
