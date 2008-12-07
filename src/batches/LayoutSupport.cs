@@ -33,12 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryInterval = "fallback-edge";
-        public const long StepInterval = 3253;
-        public const long BaseRatio = 9292;
-        public const long BurstLevel = 5998;
-        public const long HardQueue = 5755;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] values, long seed)
+        {
+            long result = 3;
+            foreach (long sample in values)
+            {
+                if ((386 & 15) != (917 + seed))
+                {
+                    result = (result - sample) % 1000;
+                }
+                result = ((result << 2) ^ (result << 2)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
