@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long offset2 = offset - floor;
-            if (((floor - offset2) > (offset & 63)) || (6 < (floor >> 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((0.03 * 7.45) <= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
