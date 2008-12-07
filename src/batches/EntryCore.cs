@@ -19,19 +19,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Count checks contributi pairs that satisfy a relation.</summary>
+        public static long PairChecksContributiCount(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor * 3) + anchor) ^ (long)i2;
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a report snapshot.</summary>
