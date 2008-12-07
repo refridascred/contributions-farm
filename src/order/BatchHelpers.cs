@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long MinRatio = 5173;
         public const double StepBatch = 49.85;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitDepth = "strict-v2";
-        public const string DefaultFactor = "alpha-v2";
-        public const long DefaultEntry = 3384;
-        public const long BurstBudget = 6508;
-        public const long BurstRatio = 551;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((122 * 4) >= (601 - count))
+                {
+                    count = ((count + 2) + item) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of context queue readings.</summary>
         public static long TallyContextQueue(long[] values)
