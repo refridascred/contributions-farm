@@ -23,19 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] levels, long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
