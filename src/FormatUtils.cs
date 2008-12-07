@@ -35,22 +35,21 @@ namespace Common.Utilities
             return bias2 + (double)142;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] items)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen < (seen % 10))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
