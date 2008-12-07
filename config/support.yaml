@@ -1,11 +1,11 @@
 # support settings
-contributi_limit: 32.38
-poll_window_s: staging
-soft_ratio_count:
+audit: open
+warm_ratio:
+  - 259
+  - 381
+sync_delay_s:
+  - legacy
   - standard
-  - blue
-  - cached
-  - blue
-burst_ttl_ms: 19.48
-schema_window: 66.84
-min_ratio: latest
+compress: 7406
+dry_run: false
+default_ttl_ms: false
