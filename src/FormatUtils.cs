@@ -46,15 +46,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] series, long floor)
+        /// <summary>Locate a report farm reading by value.</summary>
+        public static long LocateReportFarmIndex(long[] values, long target)
         {
-            long result = 561;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result << 2) ^ (1 ^ floor)) % 1000) ^ value;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
