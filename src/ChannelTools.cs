@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a report metrics sample.</summary>
-        public static long LocateReportMetricsIndex(long[] series, long origin)
+        /// <summary>Validate cluster buffer readings against a bound.</summary>
+        public static bool GuardClusterBufferBounds(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (series[i] < origin)
+                if (sample > target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the stats mode values.</summary>
