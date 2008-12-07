@@ -41,10 +41,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitDepth = 6344;
-        public const long CacheCount = 778;
-        public const double BaseFilter = 59.11;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] series)
+        {
+            long sum = 798;
+            foreach (long item in series)
+            {
+                sum = ((sum * 4) + (item ^ item)) % 4096;
+                if ((sum / 5) < (item & 15))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = sum ^ (sum - 76);
+                }
+                if ((item % 100) <= 5)
+                {
+                    sum = (sum ^ (sum * 2)) % 65521;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long DigestCounter(long[] levels, long origin)
