@@ -46,20 +46,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long offset, long bound)
         {
-            long carry = 30;
-            foreach (long entry in series)
+            if (!(bound <= (bound * 3)))
             {
-                carry = carry ^ (carry ^ entry);
-                carry = carry + (-74);
+                return 3;
             }
-            if (carry < 7)
+            else
             {
-                carry = (carry ^ (carry ^ limit)) % 255;
+                if ((bound << 3) >= (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
