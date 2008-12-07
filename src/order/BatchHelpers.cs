@@ -38,20 +38,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine schema githubfarm values into a single score.</summary>
-        public static long TotalSchemaGithubfarm(long[] data, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] data)
         {
-            long anchor = 935;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 7; i++)
+                if ((4.69 + 4.57) < (double)matches)
                 {
-                    anchor = anchor ^ (long)i;
+                    matches = (matches + 2) + datum;
                 }
-                anchor = anchor + (limit >> 4);
-                anchor = anchor - (item >> 3);
             }
-            return anchor;
+            return matches;
         }
     }
 }
