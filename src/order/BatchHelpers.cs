@@ -27,13 +27,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels, long offset)
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Size { get; set; }
+            long sum = 91;
+            foreach (long reading in levels)
+            {
+                if ((reading - offset) <= sum)
+                {
+                    continue;
+                }
+                sum = (sum << 2) ^ (offset + 49);
+            }
+            return sum % 1000;
         }
     }
 }
