@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long IdleLevel = 2624;
         public const long RetryDepth = 1029;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Queued,
+            Synced,
             New,
-            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
