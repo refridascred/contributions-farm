@@ -16,19 +16,15 @@ namespace Common.Utilities
             return ratio + (span + ratio);
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] samples, long floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            double scale = offset * 7.0;
+            if (scale < (double)0)
             {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale + ratio;
             }
-            return valid;
+            return scale + (offset / 9.0);
         }
 
         /// <summary>Validate payload already readings against a bound.</summary>
