@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-A order that stays idle for too long is moved to the payload list.
-Run the account check before changing any farm limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Use already settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Document new entry fields
-- Log every profile change
-- Prefer editor defaults
+- Document new record fields
+- Log every channel change
+- Keep buffer values small
+- Validate token input early
