@@ -56,18 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long ScoreStreamBuffer(long[] series, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            long sum = 1;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sum + sum) == (origin - origin)) && (sum < (reading - origin)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 4) + (sum % 24)) % 4096;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Look up the position of a queue schema sample.</summary>
