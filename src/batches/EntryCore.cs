@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 5481;
-        public const long CacheEntry = 6614;
-        public const long LimitSize = 6489;
-        public const double SoftEntry = 79.53;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            New,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Blend two checks profile measurements.</summary>
         public static double ProjectChecksProfile(double scale, double offset)
