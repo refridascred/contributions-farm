@@ -46,13 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long TallyChannelRoute(long[] readings, long bound)
         {
-            Pending,
-            Locked,
-            Paused,
-            Closed,
+            long carry = 7;
+            foreach (long value in readings)
+            {
+                carry = ((carry ^ (bound ^ carry)) % 65521) - value;
+                carry = carry + (7 << 1);
+            }
+            if (carry > 412)
+            {
+                carry = (carry * 2) + bound;
+            }
+            return carry % 97;
         }
     }
 }
