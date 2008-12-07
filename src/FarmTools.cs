@@ -24,19 +24,21 @@ namespace Common.Utilities
             return drift + (drift + 3.49);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] levels, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
