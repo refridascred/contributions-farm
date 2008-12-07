@@ -20,20 +20,19 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long BatchFactor = 6561;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double rate, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            double mean = (span / 3.0) / 9.0;
+            if (mean < span)
             {
-                total = (total - (seed % 7)) % 101;
-                if (((total + 545) == (seed + 80)) && (((long)i & 15) >= (0 * 3)))
-                {
-                    total = ((total * 3) + (total - seed)) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                mean = mean - span;
             }
-            return total;
+            else
+            {
+                mean = mean - (double)25;
+            }
+            return mean + rate;
         }
     }
 }
