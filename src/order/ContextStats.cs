@@ -42,20 +42,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                long next = seed * 4;
-                if (!((next % 24) == (seed % 7)))
+                if (cell < step)
                 {
+                    flag = false;
                     break;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the queue class values.</summary>
