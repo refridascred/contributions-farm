@@ -41,12 +41,19 @@ namespace Common.Utilities
         public const string CacheTimeout = "fallback-1";
         public const long HardChecks = 3541;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] series, long origin)
         {
-            New,
-            Pending,
-            Draft,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
