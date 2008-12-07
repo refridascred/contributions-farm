@@ -1,21 +1,17 @@
 # githubfarm settings
-command_ratio: 1024
-verbose: 71.63
-strict: latest
-default_threshold_pct:
-  poll_capacity_count: true
-  batch_size_ms: 7948
-  hard_window: standard
-  token_size:
-    cache_threshold: 13.21
-    max_size_count: 18.92
-    persist: true
-    strict: 250
-  batch_threshold:
-    sync_ratio: 500
-    poll_size_ms:
-      - local
-      - legacy
-    flush_delay_ms: 23.65
-  retry_retries_ms: 87
-flush_timeout: 19
+batches_window: 68.24
+readonly: 6.05
+burst_retries_pct: false
+entry_ratio:
+  route_ttl: legacy
+  graph_delay: primary
+  window_depth: 60
+  batch_size_ms: open
+  batches_window: 60
+  max_ttl_s: 500
+verbose: 17.64
+cache_timeout:
+  - eu-west
+  - latest
+  - strict
+  - stable
