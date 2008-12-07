@@ -22,18 +22,10 @@ namespace Common.Utilities
         public const long HardLayout = 1313;
         public const double StepLayout = 98.18;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] items)
-        {
-            long state = 943;
-            foreach (long datum in items)
-            {
-                if ((state <= (datum * 4)) || ((datum - 307) < (datum >> 4)))
-                {
-                    state = (state + (94 % 5)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 44.6;
+        public const double BurstBudget = 12.43;
+        public const long WindowFactor = 1415;
+        public const long IdleTimeout = 465;
     }
 }
