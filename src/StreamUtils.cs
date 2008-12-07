@@ -87,11 +87,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double bias2)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double gain = bias * 2.1;
-            return (gain + (double)7) + bias2;
+            Draft,
+            Retry,
+            Done,
+            Stale,
+            Dropped,
         }
     }
 }
