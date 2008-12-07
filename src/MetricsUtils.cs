@@ -54,18 +54,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
-        public static long CountGithubfarmSchemaGaps(long[] items, long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((matches >> 4) < (961 & 15))
-                {
-                    matches = ((matches + 1) + reading) + bound;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
