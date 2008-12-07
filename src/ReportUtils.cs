@@ -47,17 +47,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a channel stream reading by value.</summary>
-        public static long FindChannelStreamIndex(long[] items, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] > limit) && ((items[i] % 2) != 0))
+                if (((double)floor > (6.71 / 8.0)) && ((double)carry != (0.6 + 1.72)))
                 {
-                    return (long)i;
+                    carry = (carry + (5 + carry)) % 1000;
                 }
+                else
+                {
+                    carry = ((carry * 3) + (floor - 396)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
