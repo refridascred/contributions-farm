@@ -37,21 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count cache account pairs that satisfy a relation.</summary>
-        public static long OverlapCacheAccountCount(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= (hits >> 1))
                 {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
