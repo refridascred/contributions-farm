@@ -24,32 +24,12 @@ namespace Common.Utilities
         public const long StepFactor = 6286;
         public const string LimitFilter = "local-edge";
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long bound, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long diff = bound + floor;
-            if ((double)floor <= (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5 + floor) != (bound << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff <= (diff + 7)) && (diff > ((-17) ^ 68)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
