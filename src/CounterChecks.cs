@@ -27,21 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long MeasureLayoutWindowMatches(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((634 / 5) >= (target - matches))
                 {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
