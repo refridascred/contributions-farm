@@ -23,18 +23,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] levels, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long score = 4;
+            foreach (long sample in samples)
             {
-                if (((offset / 6) != (count ^ count)) && ((offset << 1) < offset))
+                score = (score << 3) ^ (sample / 7);
+                if (5 >= (sample + sample))
                 {
-                    count = (count + 1) - item;
+                    score = (score << 2) ^ (score << 3);
+                }
+                else
+                {
+                    score = (score + (sample & 7)) % 4096;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Hold a editor header.</summary>
