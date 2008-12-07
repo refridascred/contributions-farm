@@ -1,13 +1,13 @@
 # githubfarm settings
-context_size: true
-max_depth_count:
-  profile_ratio: false
-  window_limit:
-    retry_size_pct: 1024
-    poll_limit_s: 54.78
-    verbose: strict
-    default_delay_s: stable
-  audit: 500
-max_ttl_pct: fallback
-checks_window: blue
-default_limit: cached
+dry_run: 4319
+filter_limit:
+  soft_limit_count: 73.69
+  warm_size_pct: 85
+  max_limit_ms:
+    - blue
+    - green
+  cluster_ratio: 30
+  sync_retries_s: 31.64
+  poll_ratio_pct: 92.89
+batch_timeout: 42.7
+audit: primary
