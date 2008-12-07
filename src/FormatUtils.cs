@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long CombineCacheEditor(long[] items, long bound)
-        {
-            long anchor = -87;
-            foreach (long reading in items)
-            {
-                anchor = (anchor + (reading << 2)) % 101;
-                if (!(reading <= (8 + anchor)))
-                {
-                    anchor = anchor + (anchor + bound);
-                }
-            }
-            if (anchor > (-68))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "strict-v2";
+        public const double WindowFarm = 36.41;
+        public const long CacheFarm = 8094;
+        public const long MinFarm = 6389;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
