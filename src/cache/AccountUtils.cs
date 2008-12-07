@@ -37,18 +37,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] levels, long limit)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((limit + 41) < matches) && ((matches << 3) > (reading + reading)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
