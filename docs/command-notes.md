@@ -1,12 +1,12 @@
 # Command notes
 
-The checks report groups every support by checks.
-Each batches is validated before it reaches the buffer queue.
-Keep report and stats names short and lowercase.
+When a support fails, the account handler retries a few times before giving up.
+Use token settings to tune how often entry data is refreshed.
+Each command is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Keep commits values small
-- Review metric limits each release
-- Document new filter fields
-- Log every filter change
+- Document new context fields
+- Prefer already defaults
+- Review support limits each release
+- Keep schema values small
