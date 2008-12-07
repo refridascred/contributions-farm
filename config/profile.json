@@ -1,8 +1,17 @@
 {
-  "warm_delay": false,
-  "metric_interval": 83.99,
-  "flush_capacity_count": "blue",
-  "editor_retries": "primary",
-  "poll_delay": false,
-  "strict": true
+  "hard_depth_ms": [465, 109, 18, 178],
+  "token_capacity": {
+    "default_delay_s": 1171,
+    "cache_ratio": 35,
+    "warm_window_pct": {
+      "compress": 92.05,
+      "burst_threshold": 1024,
+      "base_ttl_s": [147, 213, 277],
+      "payload_size": ["green", "open", "local"]
+    },
+    "record_window": "stable"
+  },
+  "readonly": [28, 424, 146, 319],
+  "token_limit": "stable",
+  "audit": 46.77
 }
