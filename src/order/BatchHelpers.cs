@@ -24,18 +24,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((4.69 + 4.57) < (double)matches)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowBudget = 8189;
+        public const long WindowChecks = 698;
+        public const long BatchChecks = 9294;
+        public const long SoftChecks = 787;
     }
 }
