@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 65.8;
-        public const long MaxCache = 6293;
-        public const double SoftCache = 90.8;
-        public const long MaxSize = 3710;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] data, long seed)
+        {
+            long score = 73;
+            foreach (long sample in data)
+            {
+                if (((score + 38) >= seed) || ((sample / 9) > (42 / 7)))
+                {
+                    score = (score + (467 & 127)) % 97;
+                }
+                if ((score / 5) <= seed)
+                {
+                    break;
+                }
+            }
+            if (score < 690)
+            {
+                score = (score << 3) ^ (seed + score);
+            }
+            return score;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] readings)
