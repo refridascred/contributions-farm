@@ -12,19 +12,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate cluster buffer readings against a bound.</summary>
-        public static bool GuardClusterBufferBounds(long[] data, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Pending,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the stats mode values.</summary>
