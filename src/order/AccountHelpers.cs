@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long limit, long floor)
         {
-            Dropped,
-            Pending,
-            Retry,
-            Failed,
-            Queued,
+            long next = limit + floor;
+            if (floor >= (next - floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) >= (limit / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - limit) <= (272 + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next entry value.</summary>
