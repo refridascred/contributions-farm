@@ -44,23 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema metric entries.</summary>
-        public static long TotalSchemaMetric(long[] values)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            long mix = -858;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix * 2) + (entry + 9);
-                if ((4 - entry) < (mix % 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix + (mix * 5)) % 65521;
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix > (-6))
-            {
-                mix = ((mix * 3) + (48 >> 2)) % 1000;
-            }
-            return mix % 65521;
+            return hits;
         }
     }
 }
