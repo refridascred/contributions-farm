@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double scale, double bias)
         {
-            long anchor = 0;
-            foreach (long item in values)
+            double weight = (scale / 9.0) / 7.0;
+            if (weight >= (double)90)
             {
-                anchor = (anchor + (item >> 1)) % 1000;
-                if (((-8) > (37 ^ anchor)) && ((anchor << 1) >= anchor))
-                {
-                    break;
-                }
+                weight = weight - weight;
             }
-            return anchor % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (double)(-6)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Fold a list of buffer record readings.</summary>
