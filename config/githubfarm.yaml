@@ -1,9 +1,13 @@
 # githubfarm settings
-batch_window_s: strict
-layout_threshold: 93
-tools_limit:
-  - 456
-  - 296
-  - 287
-  - 367
-cache_depth_count: 250
+order_retries: 100
+warm_capacity_pct:
+  payload_interval: 85
+  min_ttl_s: 5670
+  base_limit_ms: 50.82
+  sync_interval_pct:
+    - latest
+    - standard
+profile_limit: legacy
+window_retries:
+  - 221
+  - 412
