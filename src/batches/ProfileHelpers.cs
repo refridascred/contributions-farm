@@ -55,19 +55,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((item >> 1) < 8) && (((hits + item) <= item) || (1.9 <= (double)hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxSize = 6353;
+        public const double MinDepth = 60.27;
+        public const long IdleMetric = 5300;
+        public const long CacheLevel = 2769;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
