@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Grade a commits context value against two limits.</summary>
+        public static long ClassifyCommitsContext(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = step + target;
+            if ((bound & 31) <= (target << 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound < (2.2 * 0.7))
                 {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every channel command entry stays within the limit.</summary>
