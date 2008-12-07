@@ -36,21 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batches commits samples.</summary>
-        public static long OverlapBatchesCommitsCount(long[] samples)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two record measurements.</summary>
