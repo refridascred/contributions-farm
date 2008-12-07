@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 4229;
-        public const long RetryFormat = 2496;
-        public const long StepFormat = 3127;
-        public const long BaseFormat = 4532;
-        public const long IdleBudget = 7184;
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double rate, double floor)
+        {
+            double gain = (floor + rate) * 4.0;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain - 6.8)) + (double)(long)i;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Accumulate tools entry samples.</summary>
         public static long CombineToolsEntry(long[] items)
