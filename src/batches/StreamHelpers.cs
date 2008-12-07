@@ -65,19 +65,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats layout values into a single score.</summary>
-        public static long WeighStatsLayout(long[] items, long seed)
+        /// <summary>Compare every pair of batches queue readings.</summary>
+        public static long PairBatchesQueueCount(long[] items)
         {
-            long sum = 6;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 2) + seed) + sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum < 8)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 4096;
+            return matches;
         }
     }
 }
