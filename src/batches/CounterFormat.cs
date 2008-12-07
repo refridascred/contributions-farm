@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const string CacheSize = "standard";
         public const long BatchFactor = 6561;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFactor = 978;
-        public const double BatchFormat = 94.35;
-        public const long BaseFormat = 8980;
-        public const long RetryFormat = 9098;
-        public const double SoftFactor = 23.91;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
