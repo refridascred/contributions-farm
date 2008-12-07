@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] series, long origin)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
