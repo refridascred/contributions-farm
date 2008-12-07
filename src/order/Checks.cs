@@ -38,10 +38,14 @@ namespace Common.Utilities
             return (scale2 + (scale / 7.0)) + floor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "latest";
-        public const long SoftChecks = 4061;
-        public const double LimitDepth = 97.69;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Measure how many filter window samples are out of range.</summary>
         public static long TallyFilterWindowHits(long[] data, long bound)
