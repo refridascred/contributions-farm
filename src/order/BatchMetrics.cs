@@ -73,18 +73,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] values, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((4 / 4) <= count)
+                if ((cell - cell) >= (905 + seen))
                 {
-                    count = ((count + 1) + datum) - target;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
