@@ -25,18 +25,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] samples)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((411 * 3) <= seen)
+                if (values[i] >= target)
                 {
-                    seen = (seen + 2) - cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
