@@ -64,11 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Locate a order batches reading by value.</summary>
+        public static long LocateOrderBatchesIndex(long[] levels, long origin)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
