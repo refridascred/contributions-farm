@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((mark <= (step << 1)) && ((mark - (long)i) > ((long)i % 10)))
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
