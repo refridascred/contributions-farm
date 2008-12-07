@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] readings, long target)
+        /// <summary>Digest a series of contributi command entries.</summary>
+        public static long CombineContributiCommand(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 9;
+            foreach (long value in values)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
+                if ((value & 31) == (anchor - value))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + value) % 101;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Audit githubfarm counter readings against a rule.</summary>
