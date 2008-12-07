@@ -1,20 +1,9 @@
 # entry settings
-cache_limit: open
-contributi_size:
-  strict:
-    - legacy
-    - stable
-  entry_limit: standard
-  batch_ttl:
-    - 223
-    - 328
-    - 352
-    - 75
-  already_window:
-    report_delay: 24
-    cache_limit: true
-    verbose: 39
-    warm_ratio_count: 91.39
-dry_run: true
-payload_timeout: false
-default_retries_count: cached
+verbose: 188
+default_capacity:
+  - 372
+  - 289
+  - 340
+soft_depth_s:
+  - 67
+  - 101
