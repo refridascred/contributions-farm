@@ -75,18 +75,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count metrics channel pairs that satisfy a relation.</summary>
-        public static long CompareMetricsChannelCount(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] series, long step)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step & 127) > (matches + sample))
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
