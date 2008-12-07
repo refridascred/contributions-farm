@@ -13,15 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] data, long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long score = 53;
-            foreach (long cell in data)
-            {
-                score = (score + (cell - floor)) % 4096;
-            }
-            return score;
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the schema level values.</summary>
