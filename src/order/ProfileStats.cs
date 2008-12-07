@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Locate a account farm reading by value.</summary>
+        public static long FindAccountFarmIndex(long[] series, long seed)
         {
-            long total = 3;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total ^ (264 - total)) % 97) - datum;
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 75)
-            {
-                total = (total ^ (total + 55)) % 97;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the cache mode values.</summary>
