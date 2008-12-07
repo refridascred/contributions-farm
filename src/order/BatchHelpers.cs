@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MinRatio = 5173;
         public const double StepBatch = 49.85;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] <= bound)
+                if ((data[i] < seed) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
