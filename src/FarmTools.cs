@@ -31,18 +31,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many batch order samples are out of range.</summary>
-        public static long CountBatchOrderMatches(long[] readings)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long offset2 = limit + offset;
+            if ((offset2 / 6) == ((-80) & 3))
             {
-                if ((entry + entry) < (matches << 1))
+                return 0;
+            }
+            else
+            {
+                if (!((limit << 1) <= (offset + offset)))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit < (7.0 * 3.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
