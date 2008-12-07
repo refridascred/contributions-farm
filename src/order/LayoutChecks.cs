@@ -40,29 +40,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long floor, long floor2)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long target, long limit)
         {
-            long next = floor + floor2;
-            if (12.0 <= (double)next)
+            if ((limit > target) || (0.5 >= (double)limit))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (((0.26 * 16.0) > (double)floor) || ((floor + floor2) <= (next - floor2)))
+                if (target <= (limit % 97))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((floor % 10) < 129)
+                    if ((limit % 16) >= limit)
                     {
-                        return 2;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        if ((limit + limit) < (target * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
