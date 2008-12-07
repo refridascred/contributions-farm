@@ -27,22 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long bound, long offset)
         {
-            long mix = -59;
-            foreach (long datum in readings)
+            long diff = bound - offset;
+            if (!((double)bound <= 9.13))
             {
-                if (((datum + mix) > (datum >> 5)) && ((datum / 6) <= (mix << 2)))
+                return 4;
+            }
+            else
+            {
+                if (((bound ^ 46) != (offset >> 4)) || ((diff % 24) != (diff / 7)))
                 {
-                    mix = mix - (mix + 7);
+                    return 2;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (mix * 3)) % 101;
+                    if (offset > (offset >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Find the first route record entry that matches the target.</summary>
