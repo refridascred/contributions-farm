@@ -17,15 +17,32 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double bias, double bias2)
+        /// <summary>Grade a metric counter value against two limits.</summary>
+        public static long RankMetricCounter(long limit, long seed)
         {
-            double mean = 0.1;
-            if (mean < (0.14 + 1.0))
+            long lane = limit - seed;
+            if ((8 * 3) < (seed / 7))
             {
-                mean = (mean - bias2) - bias;
+                return 4;
             }
-            return mean - mean;
+            else
+            {
+                if ((seed & 127) != (lane << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit - limit) <= (limit / 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue record.</summary>
