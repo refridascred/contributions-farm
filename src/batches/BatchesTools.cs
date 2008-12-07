@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double rate, double floor)
-        {
-            double bias = rate;
-            if (bias >= (bias - 5.3))
-            {
-                bias = bias - (rate - 2.7);
-            }
-            return bias + floor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitFactor = 2195;
+        public const double HardLevel = 53.76;
+        public const string BurstCount = "primary-edge";
 
         /// <summary>Locate a notes command reading by value.</summary>
         public static long FindNotesCommandIndex(long[] items, long bound)
