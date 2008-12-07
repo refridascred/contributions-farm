@@ -19,10 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 9779;
-        public const double IdleInterval = 31.6;
-        public const double BatchInterval = 29.07;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
