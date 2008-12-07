@@ -47,22 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] levels, long seed)
         {
-            long sum = 460;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value + value) < (sum / 5)))
+                if (levels[i] < seed)
                 {
-                    sum = (sum - (26 / 7)) % 97;
-                }
-                if (9.89 < (double)value)
-                {
-                    sum = (sum << 3) ^ (sum & 127);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a stats info.</summary>
