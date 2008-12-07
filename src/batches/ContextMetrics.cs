@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] data, long floor)
         {
-            Paused,
-            Done,
-            Stale,
-            Locked,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a report snapshot.</summary>
