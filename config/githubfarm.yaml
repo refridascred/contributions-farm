@@ -1,10 +1,6 @@
 # githubfarm settings
-dry_run:
-  - 325
-  - 384
-  - 234
-stats_delay: 2076
-hard_size_ms: 71.41
-batch_threshold_ms: true
-hard_interval: 81
-retry_delay_pct: false
+strict: primary
+hard_window: local
+compress: 72.41
+stream_timeout: latest
+contributi_ratio: 52.96
