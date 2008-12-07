@@ -34,19 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account batch readings against a rule.</summary>
-        public static long CountAccountBatchGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((6.45 * 18.0) > (double)count)
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 5952;
+        public const string BatchChecks = "fallback-1";
+        public const double LimitWidth = 70.74;
+        public const string CacheTimeout = "fallback-1";
+        public const long HardChecks = 3541;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] samples, long bound)
