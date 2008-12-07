@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Paused,
-            Active,
-            Draft,
-            Pending,
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
