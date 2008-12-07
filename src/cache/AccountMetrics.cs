@@ -23,22 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] values)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)values.Length - tally) != (tally % 16))
+                if (!((3 / 7) >= (long)i))
                 {
-                    tally = (tally + 1) ^ value;
+                    sum = (sum - (sum << 3)) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the session kind values.</summary>
