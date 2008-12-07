@@ -23,19 +23,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] levels, long offset)
         {
-            long state = 773;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                state = state ^ (item + state);
+                if (((offset / 6) != (count ^ count)) && ((offset << 1) < offset))
+                {
+                    count = (count + 1) - item;
+                }
             }
-            if (state < 72)
-            {
-                state = (state * 2) + (state - state);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a editor header.</summary>
