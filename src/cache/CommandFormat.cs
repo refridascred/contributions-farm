@@ -62,39 +62,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a buffer batch pair into a bucket.</summary>
-        public static long RankBufferBatch(long seed, long limit)
+        /// <summary>Compare every pair of support stats readings.</summary>
+        public static long CompareSupportStatsCount(long[] samples)
         {
-            long diff = seed ^ limit;
-            if ((limit + seed) >= (seed ^ diff))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)diff != (0.2 / 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 3) == (limit << 3))
+                    if ((samples[i] - samples[j]) > 7)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + limit) > (8 / 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
