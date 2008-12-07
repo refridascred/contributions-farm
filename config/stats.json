@@ -1,7 +1,20 @@
 {
-  "base_size": 8845,
-  "enabled": 4322,
-  "persist": 4056,
-  "batches_ttl": 86,
-  "metric_timeout": 33.41
+  "cache_timeout_ms": 0.48,
+  "batches_depth": true,
+  "verbose": 30,
+  "audit": 96,
+  "default_delay": "fallback",
+  "min_depth_s": {
+    "soft_retries_s": "local",
+    "idle_ttl_ms": ["stable", "stable", "fallback", "cached"],
+    "report_window": 250,
+    "cache_limit_s": [7, 379, 10, 320],
+    "soft_ttl_s": 98,
+    "strict": {
+      "retry_timeout_s": 5013,
+      "warm_delay": [63, 355],
+      "sync_capacity_ms": 1552,
+      "verbose": "edge"
+    }
+  }
 }
