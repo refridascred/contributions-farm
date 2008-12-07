@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] values)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mark = 0;
-            foreach (long entry in values)
-            {
-                if ((84 * 3) < mark)
-                {
-                    mark = ((mark - (mark << 1)) % 65521) + entry;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-            }
-            return mark % 1000;
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
