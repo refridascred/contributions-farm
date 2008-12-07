@@ -53,22 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] values)
         {
-            long state = 863;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((item - bound) >= (bound + 831))
+                if ((3.66 * 7.17) > (double)entry)
                 {
-                    state = (state << 2) ^ (state * 5);
-                }
-                if (!((item + state) == (state % 24)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Match up cluster samples.</summary>
