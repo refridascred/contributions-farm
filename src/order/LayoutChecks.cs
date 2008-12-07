@@ -27,10 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepScore = 7505;
-        public const long DefaultBatches = 8637;
-        public const string CacheBatches = "strict-edge";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((8.29 + 7.0) != (double)count)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsMatches(long[] data, long floor)
