@@ -38,13 +38,30 @@ namespace Common.Utilities
             return (scale2 + (scale / 7.0)) + floor;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Accumulate layout command samples.</summary>
+        public static long TallyLayoutCommand(long[] values, long target)
         {
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
+            long anchor = 331;
+            foreach (long item in values)
+            {
+                if ((target << 2) == (75 + anchor))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor - anchor) % 4096) ^ item;
+                }
+                if (((anchor / 6) >= target) || (anchor > (target << 1)))
+                {
+                    anchor = (anchor + (anchor + 14)) % 4096;
+                }
+            }
+            if (anchor > 87)
+            {
+                anchor = (anchor * 5) + (target / 2);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many filter window samples are out of range.</summary>
