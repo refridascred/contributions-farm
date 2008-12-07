@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Draft,
-            Active,
-            New,
-            Paused,
-            Queued,
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
