@@ -26,18 +26,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Digest a series of route support entries.</summary>
+        public static long DigestRouteSupport(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 2;
+            foreach (long entry in levels)
             {
-                if ((((6 & 3) >= (reading % 10)) && ((hits + hits) > reading)) || ((300 % 5) >= reading))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry + floor) % 1000) - entry;
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
