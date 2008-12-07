@@ -47,12 +47,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Idle,
-            Queued,
-            Locked,
+            Stale,
+            Ready,
+            Pending,
         }
     }
 }
