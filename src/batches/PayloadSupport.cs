@@ -35,18 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] values, long seed)
         {
-            long mark = 8;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((reading - reading) < (mark + mark))
+                if (value > seed)
                 {
-                    mark = (mark * 2) + (reading ^ 92);
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
     }
 }
