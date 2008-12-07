@@ -38,24 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long floor, long floor2)
-        {
-            if ((75 << 2) <= (floor2 - floor2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor <= (floor2 + floor2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9174;
+        public const string HardWidth = "primary-1";
+        public const string DefaultRecord = "fallback-edge";
+        public const long RetryRecord = 9249;
+        public const long StepFactor = 2651;
     }
 }
