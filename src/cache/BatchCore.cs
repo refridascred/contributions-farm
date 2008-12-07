@@ -47,19 +47,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every cache editor entry stays within the limit.</summary>
-        public static bool CheckCacheEditorLimits(long[] data, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (sample <= origin)
+                if (reading > origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
