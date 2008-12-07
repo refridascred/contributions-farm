@@ -1,14 +1,37 @@
 # support settings
-verbose: 19.32
-warm_window_pct:
-  contributi_limit:
-    - 121
-    - 125
-    - 423
-    - 477
-  verbose: 2920
-  channel_capacity: 24.18
-  min_capacity_pct: eu-west
-soft_timeout_s: 4
-hard_capacity: true
-compress: false
+flush_depth: true
+warm_size: latest
+metric_delay:
+  base_delay: legacy
+  tools_capacity:
+    burst_size: latest
+    batch_capacity_s: blue
+    persist: true
+    min_ttl_count: 66
+    dry_run:
+      - latest
+      - open
+      - green
+  enabled:
+    persist: 60
+    report_retries: 8511
+    default_size_s: 11.84
+    max_threshold:
+      - stable
+      - edge
+      - stable
+      - stable
+    base_timeout_count: standard
+    window_size: 1384
+  persist: false
+  readonly: false
+  default_delay_ms:
+    readonly: 48.62
+    cache_timeout_pct: strict
+    warm_depth: 82.1
+    warm_capacity_count:
+      - 235
+      - 106
+      - 473
+dry_run: legacy
+window_capacity: 43.27
