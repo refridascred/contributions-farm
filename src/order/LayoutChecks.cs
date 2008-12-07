@@ -40,18 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile already readings against a rule.</summary>
-        public static long CountProfileAlreadyHits(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((double)matches == (10.0 / 4.0))
+                if (floor < (floor + floor))
                 {
-                    matches = (matches + 2) ^ reading;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a contributi record.</summary>
