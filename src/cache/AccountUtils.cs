@@ -26,11 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "primary-edge";
-        public const double MinMetrics = 74.72;
-        public const long MaxMetrics = 8317;
-        public const long DefaultDepth = 799;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((bound + tally) <= bound)
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long LimitSupport = 1502;
