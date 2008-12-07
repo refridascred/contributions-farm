@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "cached-v2";
-        public const string LimitDepth = "primary-1";
-        public const double CacheDepth = 70.94;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public double Rank { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long target)
