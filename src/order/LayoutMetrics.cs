@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long total = 395;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!((9.0 / 8.0) >= (double)item))
                 {
-                    mix = ((mix + (mix / 5)) % 65521) - (long)i2;
+                    total = (total ^ (total + 3)) % 65521;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((766 - item) <= (bound >> 5))
+                {
+                    total = (total ^ total) % 1000;
+                }
+                else
+                {
+                    total = (total - bound) % 97;
+                }
             }
-            return mix;
+            return total % 4096;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
