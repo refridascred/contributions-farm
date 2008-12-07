@@ -43,19 +43,23 @@ namespace Common.Utilities
         public const long BaseSchema = 357;
         public const long LimitTimeout = 441;
 
-        /// <summary>Accumulate stream farm samples.</summary>
-        public static long DigestStreamFarm(long[] readings)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double bias, double bias2)
         {
-            long carry = 503;
-            foreach (long value in readings)
+            double weight = bias2 * 7.6;
+            if (weight > bias2)
             {
-                carry = (carry - (value - carry)) % 65521;
-                if (!(carry <= (carry << 1)))
-                {
-                    carry = (carry * 4) + (62 + value);
-                }
+                weight = weight + (bias + bias2);
             }
-            return carry % 1000;
+            else
+            {
+                weight = weight + (bias * 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (bias / 8.0)) + (double)(long)i;
+            }
+            return weight + (double)145;
         }
 
         /// <summary>Describe the entry level values.</summary>
