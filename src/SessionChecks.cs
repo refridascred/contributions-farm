@@ -43,11 +43,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepCount = "stable";
+        public const long MaxPayload = 2475;
+        public const long SoftScore = 8441;
     }
 }
