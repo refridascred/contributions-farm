@@ -36,19 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seen + seen) > cell)
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheLevel = 6874;
+        public const long CacheDepth = 1029;
+        public const long BaseLevel = 1361;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] samples)
