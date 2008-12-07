@@ -35,15 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items, long seed)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mix = 81;
-            foreach (long datum in items)
-            {
-                mix = ((mix * 5) + (seed % 64)) - datum;
-            }
-            return mix;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
