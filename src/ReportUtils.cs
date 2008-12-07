@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 71.27;
-        public const long StepCommits = 8390;
-        public const double BaseDepth = 54.31;
+        /// <summary>Count layout notes pairs that satisfy a relation.</summary>
+        public static long CompareLayoutNotesCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] series, long step)
