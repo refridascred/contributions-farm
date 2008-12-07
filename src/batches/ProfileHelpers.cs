@@ -93,19 +93,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double gain, double bias)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double rate = gain;
-            if (rate < rate)
-            {
-                rate = rate + (bias / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (rate - bias)) + (double)(long)i;
-            }
-            return rate + bias;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
