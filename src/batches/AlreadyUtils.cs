@@ -62,14 +62,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Match up format already samples.</summary>
+        public static long MatchFormatAlreadyCount(long[] levels)
         {
-            Draft,
-            Idle,
-            Pending,
-            Closed,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats entry.</summary>
