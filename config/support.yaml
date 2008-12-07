@@ -1,12 +1,5 @@
 # support settings
-audit: 7350
-burst_delay_ms:
-  - eu-west
-  - eu-west
-  - open
-  - staging
-counter_ratio:
-  layout_threshold: blue
-  compress: latest
-  min_retries_s: 71.34
-  batch_size: green
+report_limit: 48.24
+poll_depth_pct: 250
+burst_limit_ms: 1024
+metric_depth: 26
