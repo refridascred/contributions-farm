@@ -22,11 +22,17 @@ namespace Common.Utilities
         public const long HardLayout = 1313;
         public const double StepLayout = 98.18;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Locate a buffer token reading by value.</summary>
+        public static long FindBufferTokenIndex(long[] readings, long limit)
         {
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
