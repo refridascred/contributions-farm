@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double floor)
-        {
-            double weight = (rate - floor) / 5.0;
-            if (weight >= (floor / 4.0))
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (9.0 * 18.0)) + (double)(long)i;
-            }
-            return weight + 6.39;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultSpan = 3430;
+        public const long BurstEditor = 1751;
+        public const long LimitEditor = 108;
+        public const double CacheEditor = 40.76;
+        public const long HardWidth = 492;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double AdjustCommits(double bias, double floor)
