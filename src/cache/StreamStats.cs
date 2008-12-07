@@ -29,21 +29,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of contributi account readings.</summary>
-        public static long PairContributiAccountCount(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
