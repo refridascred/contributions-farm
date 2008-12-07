@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] series, long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
