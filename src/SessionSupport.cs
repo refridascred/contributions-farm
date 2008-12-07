@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long LimitRoute = 1934;
         public const string CacheRoute = "strict-v2";
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a command metrics counter forward.</summary>
