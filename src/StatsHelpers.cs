@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] values, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long next = seed + limit;
+            if ((limit & 1) >= seed)
             {
-                if (entry > step)
+                return 1;
+            }
+            else
+            {
+                if (!((double)next < 9.49))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
