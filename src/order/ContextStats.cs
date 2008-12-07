@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Classify a batches payload pair into a bucket.</summary>
+        public static long BucketBatchesPayload(long target, long target2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = target - target2;
+            if ((double)target <= (1.3 - 17.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target ^ prev) != (target + target2))
                 {
-                    if ((samples[i] - samples[j]) > 10)
+                    return 8;
+                }
+                else
+                {
+                    if ((target2 % 8) >= (6 - 682))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of contributi format entries.</summary>
