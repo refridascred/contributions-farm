@@ -27,13 +27,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((limit & 3) >= (mix ^ limit)) && ((double)limit != (16.0 - 6.3)))
+                {
+                    mix = ((mix << 2) ^ ((long)i - (long)i)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
