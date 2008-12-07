@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long acc = 293;
-            foreach (long item in series)
-            {
-                if (acc >= (acc >> 3))
-                {
-                    acc = ((acc - (-583)) % 1000) ^ item;
-                }
-            }
-            return acc;
+            public double Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
