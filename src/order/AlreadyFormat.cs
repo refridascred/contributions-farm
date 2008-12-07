@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a metrics order reading by value.</summary>
-        public static long LookupMetricsOrderIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 4229;
+        public const long RetryFormat = 2496;
+        public const long StepFormat = 3127;
+        public const long BaseFormat = 4532;
+        public const long IdleBudget = 7184;
 
         /// <summary>Accumulate tools entry samples.</summary>
         public static long CombineToolsEntry(long[] items)
