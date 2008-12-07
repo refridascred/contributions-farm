@@ -1,8 +1,6 @@
-id,score,count,active
-1,blue,local,237
-2,187,425,318
-3,63.0,39.85,850
-4,338,54.05,76.1
-5,fallback,979,stable
-6,36.55,491,520
-7,770,23.35,63.17
+id,active,label,region
+1,66.46,eu-west,local
+2,323,929,stable
+3,local,697,72.75
+4,38.42,63.98,877
+5,53.04,12.77,stable
