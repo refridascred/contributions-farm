@@ -58,19 +58,12 @@ namespace Common.Utilities
         public const string BatchCommits = "standard-1";
         public const double WindowInterval = 88.71;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] values, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Queued,
+            Paused,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
