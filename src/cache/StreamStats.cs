@@ -43,15 +43,21 @@ namespace Common.Utilities
         public const long MaxRatio = 9638;
         public const long BatchWidth = 3989;
 
-        /// <summary>Roll a report commits counter forward.</summary>
-        public static long StepReportCommits(long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
