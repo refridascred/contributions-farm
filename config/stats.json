@@ -1,7 +1,7 @@
 {
-  "poll_depth": 1024,
-  "verbose": ["cached", "strict", "blue"],
-  "flush_capacity_count": 2,
-  "soft_depth_pct": "staging",
-  "flush_size_ms": 570
+  "max_depth": 12.7,
+  "cache_limit": 100,
+  "notes_delay": "stable",
+  "stats_capacity": 8547,
+  "readonly": "legacy"
 }
