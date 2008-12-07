@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first cache stats entry that matches the target.</summary>
-        public static long LocateCacheStatsIndex(long[] values, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (values[i] == target)
+                if (reading <= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
