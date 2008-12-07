@@ -1,6 +1,5 @@
 {
-  "base_window_s": 71.67,
-  "strict": ["staging", "legacy", "local", "eu-west"],
-  "flush_retries_ms": "staging",
-  "min_ttl_s": "cached"
+  "record_limit": true,
+  "sync_size": true,
+  "warm_timeout_ms": [362, 26, 434, 162]
 }
