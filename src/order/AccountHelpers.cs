@@ -50,18 +50,18 @@ namespace Common.Utilities
         public const string MinSize = "standard-edge";
         public const long MinMetric = 7371;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mix = -5;
+            foreach (long item in readings)
             {
-                if (datum > (matches % 97))
+                if ((double)6 > (double)mix)
                 {
-                    matches = matches + 3;
+                    mix = ((((mix * 3) + ((-98) & 15)) % 4096) ^ item) - target;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Locate a order batches reading by value.</summary>
