@@ -34,31 +34,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long floor, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values)
         {
-            if ((offset << 1) <= offset)
+            long total = 271;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((5.1 - 3.18) <= (double)offset))
+                if ((total > 303) && ((535 + entry) <= (total - entry)))
                 {
-                    return 5;
+                    total = (total * 4) + (total / 6);
                 }
-                else
+                if (total >= (total - entry))
                 {
-                    if (!((floor * 3) < offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    continue;
                 }
+                total = (total * 4) + (entry ^ total);
             }
+            return total % 1000;
         }
 
         /// <summary>Classify a buffer batch pair into a bucket.</summary>
