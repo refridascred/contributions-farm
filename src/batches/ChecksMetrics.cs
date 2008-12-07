@@ -47,26 +47,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] readings, long seed)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long anchor = 3;
-            foreach (long entry in readings)
-            {
-                if ((double)anchor >= (double)seed)
-                {
-                    anchor = (anchor << 3) ^ (entry + entry);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor % 60)) % 1000;
-                }
-            }
-            if (anchor > 15)
-            {
-                anchor = (anchor - (seed ^ seed)) % 4096;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit report readings against a rule.</summary>
