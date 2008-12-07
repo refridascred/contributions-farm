@@ -41,27 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Match up stats batches samples.</summary>
+        public static long CompareStatsBatchesCount(long[] levels)
         {
-            long sum = 798;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 4) + (item ^ item)) % 4096;
-                if ((sum / 5) < (item & 15))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    sum = sum ^ (sum - 76);
-                }
-                if ((item % 100) <= 5)
-                {
-                    sum = (sum ^ (sum * 2)) % 65521;
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
