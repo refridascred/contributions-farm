@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Pending,
-            Locked,
-            Stale,
-            Closed,
             Active,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Project the next profile value.</summary>
