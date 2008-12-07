@@ -16,10 +16,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryBudget = 65.03;
-        public const long HardInterval = 9826;
-        public const double RetryLevel = 22.97;
+        /// <summary>Adjust a record token reading.</summary>
+        public static double ScaleRecordToken(double gain, double span)
+        {
+            double load = (gain * 7.37) - gain;
+            if (load >= (load * 9.0))
+            {
+                load = (load - load) - span;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load - load;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
