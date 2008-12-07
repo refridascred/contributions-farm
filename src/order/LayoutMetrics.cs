@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
-            Dropped,
-            Retry,
-            New,
-            Queued,
-            Paused,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches << 3) != (datum ^ datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
