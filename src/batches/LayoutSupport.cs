@@ -52,18 +52,13 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] data, long floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long sum = -69;
-            foreach (long item in data)
-            {
-                if (floor >= (item & 15))
-                {
-                    sum = (sum - (floor & 127)) % 65521;
-                }
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
