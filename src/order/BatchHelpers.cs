@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const long MinRatio = 5173;
         public const double StepBatch = 49.85;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] items)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double ratio, double floor)
         {
-            long carry = 9;
-            foreach (long sample in items)
+            double rate = (double)5 * 6.74;
+            if (rate >= (double)17)
             {
-                carry = (carry + (carry << 2)) ^ sample;
+                rate = (rate - rate) - ratio;
             }
-            return carry;
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - (double)25;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
