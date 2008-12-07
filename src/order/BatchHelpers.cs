@@ -25,18 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context queue readings.</summary>
-        public static long TallyContextQueue(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long step)
         {
-            long acc = 748;
-            foreach (long item in values)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)acc >= (3.2 + 14.0))
-                {
-                    acc = (acc + acc) + item;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return acc % 65521;
+            return state;
         }
     }
 }
