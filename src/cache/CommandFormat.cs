@@ -20,10 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 9529;
-        public const long IdleNotes = 1378;
-        public const long LimitNotes = 9306;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long limit, long offset)
+        {
+            if (((limit & 255) > 745) || ((offset << 2) <= (limit + offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit & 1) != (offset >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((15.0 - 4.26) > (double)offset) && ((limit - limit) > (limit + offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit >= (limit / 6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long FindFormatIndex(long[] levels, long origin)
