@@ -34,11 +34,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long floor, long offset)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            if ((offset << 1) <= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((5.1 - 3.18) <= (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor * 3) < offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a buffer batch pair into a bucket.</summary>
