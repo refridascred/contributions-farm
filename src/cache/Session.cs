@@ -45,19 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double gain, double span)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double scale = (double)(54 / 2);
-            if (scale < span)
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (span * 8.3)) + (double)(long)i;
-            }
-            return scale + (double)75;
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
