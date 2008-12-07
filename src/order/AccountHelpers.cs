@@ -40,11 +40,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 5940;
-        public const string BatchReport = "standard";
-        public const long HardTimeout = 6748;
-        public const long SoftSize = 3810;
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double bias2)
+        {
+            double load = bias;
+            if (load <= 5.22)
+            {
+                load = (load + (load - load)) + bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
