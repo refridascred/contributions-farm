@@ -24,18 +24,21 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] data)
+        /// <summary>Compare every pair of report commits readings.</summary>
+        public static long OverlapReportCommitsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item ^ item) > item)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
