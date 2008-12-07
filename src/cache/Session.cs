@@ -31,22 +31,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 911;
+        public const long BurstFarm = 5707;
+        public const long SoftScore = 4219;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricOutliers(long[] readings, long bound)
