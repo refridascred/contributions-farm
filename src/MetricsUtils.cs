@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] data, long target)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
