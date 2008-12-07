@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Locked,
             Done,
+            Active,
             Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
