@@ -34,15 +34,21 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            long sum = 4;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum + (cell + sum)) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the batches state values.</summary>
