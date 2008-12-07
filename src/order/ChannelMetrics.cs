@@ -20,11 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next notes command value.</summary>
-        public static double SmoothNotesCommand(double ratio, double floor)
+        /// <summary>Look up the position of a route githubfarm sample.</summary>
+        public static long LookupRouteGithubfarmIndex(long[] series, long bound)
         {
-            double load = 17.0;
-            return ((load + (double)427) + ratio) + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
