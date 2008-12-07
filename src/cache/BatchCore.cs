@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] readings, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Stale,
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
