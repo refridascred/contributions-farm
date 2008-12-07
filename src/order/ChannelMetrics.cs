@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "stable";
+        public const string BatchGithubfarm = "open-edge";
+        public const long LimitGithubfarm = 8059;
+        public const string IdleSize = "legacy-1";
+        public const string HardSize = "local";
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
