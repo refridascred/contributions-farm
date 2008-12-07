@@ -38,19 +38,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (seen <= (datum / 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultLevel = 632;
+        public const double SoftTools = 0.86;
+        public const long BaseTools = 742;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandBounds(long[] series, long offset)
