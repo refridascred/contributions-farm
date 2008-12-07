@@ -70,39 +70,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long bound, long floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] levels)
         {
-            long gap = bound - floor;
-            if (4 <= (48 - bound))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound < (11.0 / 9.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - bound) < (gap >> 3))
+                    if ((levels[i] ^ levels[j]) > 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound >> 5) < 0) && ((double)floor < (19.0 + 11.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
