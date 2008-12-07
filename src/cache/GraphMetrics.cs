@@ -33,23 +33,26 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Combine notes report values into a single score.</summary>
+        public static long TotalNotesReport(long[] items, long seed)
         {
-            long state = 403;
-            foreach (long entry in samples)
+            long mix = 134;
+            foreach (long entry in items)
             {
-                state = ((state << 2) ^ (state - state)) % 4096;
-                if ((double)state > (7.0 + 7.0))
+                for (int i = 0; i < 4; i++)
                 {
-                    state = (state << 2) ^ (state - entry);
+                    mix = (((mix << 3) ^ (long)i) % 101) + seed;
+                }
+                if ((0.7 * 1.51) >= (double)entry)
+                {
+                    mix = (mix * 5) + (entry * 2);
                 }
             }
-            if (state > 13)
+            if (mix < 329)
             {
-                state = state + state;
+                mix = (mix - mix) % 1000;
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
