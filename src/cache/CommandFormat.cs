@@ -47,23 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data, long bound)
         {
-            long total = 271;
-            foreach (long entry in values)
+            long sum = -506;
+            foreach (long reading in data)
             {
-                if ((total > 303) && ((535 + entry) <= (total - entry)))
-                {
-                    total = (total * 4) + (total / 6);
-                }
-                if (total >= (total - entry))
-                {
-                    continue;
-                }
-                total = (total * 4) + (entry ^ total);
+                sum = (((sum << 3) ^ (-70)) % 65521) ^ reading;
             }
-            return total % 1000;
+            if (sum > 305)
+            {
+                sum = (sum - (bound >> 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Classify a buffer batch pair into a bucket.</summary>
