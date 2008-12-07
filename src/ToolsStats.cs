@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] readings, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] series, long step)
         {
-            long state = 786;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)state >= (double)921)
+                if (((reading << 3) <= step) || ((step - step) >= (reading ^ reading)))
                 {
-                    state = ((state * 2) + (220 + reading)) - offset;
-                }
-                else
-                {
-                    state = (state - state) % 255;
+                    count = count + 1;
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Describe the notes mode values.</summary>
