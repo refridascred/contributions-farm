@@ -38,39 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long floor, long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double gain, double floor)
         {
-            long cur = floor - bound;
-            if (floor <= (cur - cur))
+            double bias = 19.0;
+            if (bias < floor)
             {
-                return 7;
+                bias = bias + gain;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (floor >= cur)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur - cur) < (bound & 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((floor << 2) >= (bound % 60)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                bias = (bias - (floor - floor)) + (double)(long)i;
             }
+            return bias + gain;
         }
 
         /// <summary>Describe the window level values.</summary>
