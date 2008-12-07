@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
-        public static long CountGithubfarmCommandGaps(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((seen <= (datum - datum)) || (2.0 <= (double)seen))
+                if (value <= target)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
