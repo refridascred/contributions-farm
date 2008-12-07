@@ -28,15 +28,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double gain, double offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] levels, long step)
         {
-            double mean = (double)87 - (3.3 + offset);
-            if (mean <= gain)
+            long carry = 9;
+            foreach (long cell in levels)
             {
-                mean = mean + (double)201;
+                carry = ((carry ^ carry) + cell) + step;
             }
-            return mean + offset;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
