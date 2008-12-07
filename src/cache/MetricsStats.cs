@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Draft,
-            Queued,
-            Failed,
-            Ready,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "strict";
+        public const double BurstFormat = 25.18;
+        public const long DefaultBudget = 634;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyBounds(long[] readings, long origin)
