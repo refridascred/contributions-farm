@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] samples, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long step, long offset)
         {
-            long state = 2;
-            foreach (long datum in samples)
+            if ((803 + offset) < (371 % 5))
             {
-                if ((datum * 4) <= datum)
+                return 2;
+            }
+            else
+            {
+                if ((step < (step - offset)) || ((1.98 / 4.0) >= (double)offset))
                 {
-                    state = (state ^ bound) % 255;
+                    return 8;
                 }
-                if ((state ^ (long)samples.Length) <= (datum + datum))
+                else
                 {
-                    break;
+                    return 5;
                 }
             }
-            if (state < 5)
-            {
-                state = (state - (bound % 2)) % 1000;
-            }
-            return state;
         }
 
         /// <summary>Count the support stream entries that pass the check.</summary>
