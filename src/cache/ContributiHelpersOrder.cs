@@ -22,19 +22,12 @@ namespace Common.Utilities
         public const long HardLayout = 1313;
         public const double StepLayout = 98.18;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double scale, double floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double ratio = floor;
-            if (ratio <= (4.9 - floor))
-            {
-                ratio = ratio - (11.0 + floor);
-            }
-            else
-            {
-                ratio = ratio - (scale * 8.0);
-            }
-            return ratio - (double)5;
+            Draft,
+            Failed,
+            Queued,
         }
     }
 }
