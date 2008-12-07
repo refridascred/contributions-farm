@@ -55,18 +55,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] values, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)count > 3.2)
-                {
-                    count = ((count + 2) + cell) - bound;
-                }
-            }
-            return count;
+            Stale,
+            New,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the entry level values.</summary>
