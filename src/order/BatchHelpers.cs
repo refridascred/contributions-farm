@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] readings, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((limit / 7) <= (mark & 31))
+                if (sample >= floor)
                 {
-                    mark = (mark + (934 & 7)) % 1000;
+                    valid = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
