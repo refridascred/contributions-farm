@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleRatio = "strict-1";
-        public const double BatchFilter = 28.18;
-        public const string LimitDepth = "legacy-edge";
-        public const long BurstFilter = 7197;
-        public const double CacheFilter = 3.9;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string RetrySchema = "alpha";
