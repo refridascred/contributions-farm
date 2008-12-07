@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double BurstFormat = 25.18;
         public const long DefaultBudget = 634;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] readings, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= origin)
+                if ((samples[i] >= seed) && ((samples[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
