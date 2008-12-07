@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Blend two tools counter measurements.</summary>
+        public static double AdjustToolsCounter(double weight, double span)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            double rate = (double)(166 >> 3);
+            if (rate > (double)0)
+            {
+                rate = (rate - weight) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + weight) - (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a entry stats.</summary>
