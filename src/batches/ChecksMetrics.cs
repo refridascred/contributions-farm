@@ -13,13 +13,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long origin, long floor)
         {
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long lane = origin ^ floor;
+            if ((floor > (origin << 1)) && (lane > (lane + lane)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor <= (8.4 + 9.9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
