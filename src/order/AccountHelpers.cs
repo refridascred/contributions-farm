@@ -50,19 +50,19 @@ namespace Common.Utilities
         public const string MinSize = "standard-edge";
         public const long MinMetric = 7371;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Validate cluster metrics readings against a bound.</summary>
+        public static bool CheckClusterMetricsLimits(long[] series, long offset)
         {
-            double load = bias;
-            if (load <= 5.22)
+            bool ready = true;
+            foreach (long item in series)
             {
-                load = (load + (load - load)) + bias2;
+                if (item != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + load;
+            return ready;
         }
 
         /// <summary>Hold a metric info.</summary>
