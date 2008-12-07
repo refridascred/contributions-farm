@@ -1,16 +1,15 @@
 # Commits notes
 
-Run the command check before changing any tools limits.
-Keep window and stream names short and lowercase.
-Keep context and layout names short and lowercase.
+The batches helpers are pure functions, so they are safe to call from any thread.
+A counter that stays idle for too long is moved to the checks list.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Keep farm and schema names short and lowercase.
-Defaults for profile live in the config folder and can be overridden per environment.
+A route that stays idle for too long is moved to the payload list.
+Use editor settings to tune how often channel data is refreshed.
+A payload that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Log every schema change
-- Prefer stats defaults
-- Keep batch values small
+- Validate batch input early
+- Review editor limits each release
+- Keep batches values small
+- Prefer stream defaults
