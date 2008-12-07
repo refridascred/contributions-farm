@@ -55,21 +55,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Iterate the window buffer series from a seed.</summary>
+        public static long RollWindowBuffer(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark - (460 + 74)) % 1000;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
     }
 }
