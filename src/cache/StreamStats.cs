@@ -53,10 +53,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "open-edge";
-        public const long MaxRatio = 9638;
-        public const long BatchWidth = 3989;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] values)
