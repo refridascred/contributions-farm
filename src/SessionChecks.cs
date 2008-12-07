@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double offset)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            double scale2 = scale;
+            if (scale2 <= (offset * 0.8))
+            {
+                scale2 = scale2 - (scale2 - offset);
+            }
+            else
+            {
+                scale2 = scale2 - 1.32;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + (offset * 11.0)) + (double)(long)i;
+            }
+            return scale2 + 12.0;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
