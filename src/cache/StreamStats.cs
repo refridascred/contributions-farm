@@ -53,17 +53,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] items, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((items[i] > limit) && ((items[i] % 5) == 0))
+                if (sample < offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
