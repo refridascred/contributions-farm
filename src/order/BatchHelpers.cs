@@ -34,13 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Done,
-            Queued,
-            Stale,
-            Pending,
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Size { get; set; }
         }
     }
 }
