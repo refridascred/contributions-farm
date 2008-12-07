@@ -40,21 +40,21 @@ namespace Common.Utilities
         public const string IdleCommand = "stable";
         public const double CacheInterval = 13.96;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Match up record filter samples.</summary>
+        public static long MatchRecordFilterCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 13)
+                    if ((samples[i] + samples[j]) > 11)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
