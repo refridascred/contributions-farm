@@ -12,11 +12,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            double bias = (double)80;
+            if (bias <= floor)
+            {
+                bias = (bias + 9.49) - gain;
+            }
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - 8.61) + (double)(long)i;
+            }
+            return bias - (floor / 2.0);
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
