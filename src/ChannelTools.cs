@@ -27,26 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support payload values into a single score.</summary>
-        public static long FoldSupportPayload(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] data, long limit)
         {
-            long carry = 442;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (!((item ^ 84) >= (item - 921)))
+                if (sample > limit)
                 {
-                    carry = (carry + (carry + 7)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ 9;
-                }
-                if ((carry % 2) == (carry + 17))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry;
+            return stale;
         }
     }
 }
