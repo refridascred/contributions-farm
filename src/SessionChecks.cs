@@ -54,31 +54,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph context input into a small class.</summary>
-        public static long ClassifyGraphContext(long offset, long target)
+        /// <summary>Combine command context values into a single score.</summary>
+        public static long ScoreCommandContext(long[] items, long step)
         {
-            if (!(648 < (target << 1)))
+            long sum = 2;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target < (double)30)
+                if ((sum % 12) >= (sum << 2))
                 {
-                    return 5;
+                    sum = ((sum * 3) + (reading & 63)) % 255;
                 }
-                else
+                sum = sum - (sum ^ 53);
+                if ((step / 8) > (sum & 7))
                 {
-                    if (target < (733 + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = (sum - (94 & 1)) % 255;
                 }
             }
+            return sum % 4096;
         }
     }
 }
