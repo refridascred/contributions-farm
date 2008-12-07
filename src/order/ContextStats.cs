@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long bound, long target)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long slot = bound ^ target;
+            if ((bound ^ slot) <= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (slot <= (target + slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi format entries.</summary>
