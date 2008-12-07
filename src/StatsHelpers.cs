@@ -57,19 +57,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every already editor entry stays within the limit.</summary>
-        public static bool GuardAlreadyEditorLimits(long[] items, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long result = 5;
+            foreach (long reading in levels)
             {
-                if (item <= seed)
+                if (!((result ^ result) >= (result / 4)))
                 {
-                    valid = false;
-                    break;
+                    result = ((result + result) % 4096) - reading;
                 }
             }
-            return valid;
+            return result;
         }
     }
 }
