@@ -72,17 +72,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] samples, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (samples[i] < target)
+                if (!((seen * 2) == (seen * 5)) && ((seen << 3) == (item - 49)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
