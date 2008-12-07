@@ -97,13 +97,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            Closed,
+            Queued,
+            Retry,
+            Locked,
         }
     }
 }
