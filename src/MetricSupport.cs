@@ -13,22 +13,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] readings, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long bound, long origin)
         {
-            long score = 121;
-            foreach (long sample in readings)
+            long prev = bound - origin;
+            if (!((bound + origin) == (286 & 255)))
             {
-                if ((double)46 < (double)score)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin == (12.0 + 7.1))
                 {
-                    score = (((score * 3) + (target / 2)) % 1000) - sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound & 127) < (bound - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound - 0) <= (prev - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (score < 522)
-            {
-                score = ((score << 2) ^ (score + target)) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
