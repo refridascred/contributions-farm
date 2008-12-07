@@ -1,5 +1,19 @@
 {
-  "contributi_size": 4102,
-  "batch_window_pct": 500,
-  "flush_interval_ms": ["legacy", "legacy", "fallback", "open"]
+  "max_limit_ms": {
+    "batch_timeout": 232,
+    "checks_retries": false,
+    "contributi_capacity": 78.9,
+    "persist": [124, 274, 155, 67],
+    "enabled": {
+      "persist": 76.75,
+      "retry_interval": 76.64,
+      "readonly": 500,
+      "buffer_ratio": 17.9,
+      "poll_depth": "latest"
+    },
+    "burst_capacity_count": ["stable", "cached", "open", "blue"]
+  },
+  "base_ttl_count": "staging",
+  "default_depth_count": "eu-west",
+  "max_window_s": "local"
 }
