@@ -23,39 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long step, long step2)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] levels, long step)
         {
-            long step3 = step ^ step2;
-            if (32 < (step3 & 1))
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step2 > (17.0 - 6.9))
+                if (reading <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.32 * 3.6) == (double)step3)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step / 8) > (step2 ^ step3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
