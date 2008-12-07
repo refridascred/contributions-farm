@@ -31,26 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long offset, long origin)
-        {
-            long slot = offset + origin;
-            if (offset <= (slot + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)origin >= (7.9 / 4.0)) && ((double)offset >= (4.0 * 1.53)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinCount = 4867;
+        public const long MaxTools = 1204;
+        public const double CacheTools = 68.38;
+        public const long SoftTools = 8091;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxInterval = 1499;
