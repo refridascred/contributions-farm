@@ -23,23 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits >= (8.68 - 13.0))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepInterval = "strict";
+        public const long RetryCommits = 3372;
+        public const long BaseCount = 239;
+        public const double IdleCommits = 5.43;
+        public const long WindowTimeout = 8420;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
