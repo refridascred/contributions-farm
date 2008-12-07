@@ -50,11 +50,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            Retry,
+            Draft,
+            Ready,
+            Active,
         }
     }
 }
