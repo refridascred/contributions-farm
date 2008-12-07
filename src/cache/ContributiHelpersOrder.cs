@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long IdleGraph = 5771;
         public const long BatchDepth = 1632;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
+            Pending,
+            Active,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
