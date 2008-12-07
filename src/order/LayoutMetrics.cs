@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            long anchor = 8;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ (anchor + anchor)) + entry;
-                if (((anchor / 9) > limit) || ((1 ^ anchor) >= limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (limit >> 3)) % 4096;
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
