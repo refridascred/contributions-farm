@@ -33,13 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
+        public static long TallyGithubfarmProfileMatches(long[] values)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample + 1) > (2 >> 2)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
