@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((((long)i >> 5) <= bound) && ((bound >> 5) >= result))
+                if ((sample & 255) > (sample >> 3))
                 {
-                    result = (result ^ (bound >> 5)) % 97;
-                    result = result - (bound >> 3);
+                    count = count + 3;
                 }
-                else
-                {
-                    result = result + (9 << 3);
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
