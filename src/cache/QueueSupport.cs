@@ -19,21 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 1)
+                    if ((readings[i] ^ readings[j]) == 1)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
