@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardSize = 8293;
+        public const long LimitLevel = 2823;
+        public const long BatchContributi = 3571;
+        public const long HardSpan = 7597;
+        public const double IdleLevel = 75.51;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long ScoreChannel(long[] items, long offset)
