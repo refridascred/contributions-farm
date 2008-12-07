@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const double IdleInterval = 31.6;
         public const double BatchInterval = 29.07;
 
-        /// <summary>Count contributi counter pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCounterCount(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)datum <= (3.0 + 8.0))
                 {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
