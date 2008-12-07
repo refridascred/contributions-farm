@@ -33,23 +33,38 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double ratio, double bias)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long seed2)
         {
-            double drift = bias;
-            if (drift >= (double)659)
+            if ((seed2 % 3) != (seed << 3))
             {
-                drift = (drift - bias) + ratio;
+                return 0;
             }
             else
             {
-                drift = drift - drift;
+                if (((double)seed2 >= (2.4 - 8.03)) || ((6.05 - 7.2) == (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed << 1) <= (seed2 - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed2 >= (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)(-268)) + (double)(long)i;
-            }
-            return drift - bias;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
