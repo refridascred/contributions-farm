@@ -12,32 +12,11 @@ namespace Common.Utilities
         public const long BurstFilter = 7197;
         public const double CacheFilter = 3.9;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] data, long limit)
-        {
-            long anchor = 241;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor * 5) + (anchor + 48)) % 1000;
-                if ((58 % 24) <= (limit / 7))
-                {
-                    anchor = ((anchor * 2) + (72 / 2)) % 101;
-                }
-                else
-                {
-                    anchor = anchor - (-68);
-                }
-                if (((anchor ^ 69) <= limit) || (limit < entry))
-                {
-                    break;
-                }
-            }
-            if (anchor > 98)
-            {
-                anchor = anchor - ((long)data.Length - limit);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "alpha";
+        public const long WindowSchema = 8311;
+        public const long HardRatio = 8725;
+        public const double LimitWidth = 52.81;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
