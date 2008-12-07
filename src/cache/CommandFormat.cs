@@ -42,19 +42,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] samples, long floor)
+        /// <summary>Check that every editor command entry stays within the limit.</summary>
+        public static bool ValidateEditorCommandBounds(long[] items, long step)
         {
-            long mark = 44;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long datum in items)
             {
-                mark = (mark << 3) ^ (datum + datum);
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mark < 720)
-            {
-                mark = ((mark * 5) + (floor & 3)) % 101;
-            }
-            return mark;
+            return found;
         }
     }
 }
