@@ -28,17 +28,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] levels, long offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = 7.0 / 8.0;
+            return (scale + (ratio * 20.0)) + bias;
         }
     }
 }
