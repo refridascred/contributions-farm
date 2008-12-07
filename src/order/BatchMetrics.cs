@@ -52,20 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] samples, long limit)
-        {
-            long acc = 74;
-            foreach (long value in samples)
-            {
-                acc = (((acc << 3) ^ (limit + limit)) % 255) - value;
-            }
-            if (acc < (-47))
-            {
-                acc = (acc * 3) + limit;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultWidth = 50.42;
+        public const string BurstCommits = "open-edge";
+        public const string BatchCommits = "standard-1";
+        public const double WindowInterval = 88.71;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileLimits(long[] values, long floor)
