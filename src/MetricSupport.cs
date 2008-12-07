@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long score = 121;
+            foreach (long sample in readings)
             {
-                if ((4.46 + 6.0) < (double)entry)
+                if ((double)46 < (double)score)
                 {
-                    matches = matches + 3;
+                    score = (((score * 3) + (target / 2)) % 1000) - sample;
                 }
             }
-            return matches;
+            if (score < 522)
+            {
+                score = ((score << 2) ^ (score + target)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count cache account pairs that satisfy a relation.</summary>
