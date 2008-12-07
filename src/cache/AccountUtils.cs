@@ -26,18 +26,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] items, long bound)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((bound + tally) <= bound)
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            Paused,
+            New,
+            Pending,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define support limits and defaults.</summary>
