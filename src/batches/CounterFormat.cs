@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] readings)
+        /// <summary>Grade a schema githubfarm value against two limits.</summary>
+        public static long BucketSchemaGithubfarm(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long delta = bound - origin;
+            if (delta >= ((-42) / 5))
             {
-                if ((double)tally < (double)entry)
+                return 7;
+            }
+            else
+            {
+                if ((7 >> 4) > (delta % 60))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >= (origin >> 3)) && ((bound - delta) >= bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the schema kind values.</summary>
