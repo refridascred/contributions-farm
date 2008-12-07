@@ -1,4 +1,9 @@
 # githubfarm settings
-profile_capacity: 63.92
-min_capacity_count: 51.72
-enabled: 1565
+batch_window_s: strict
+layout_threshold: 93
+tools_limit:
+  - 456
+  - 296
+  - 287
+  - 367
+cache_depth_count: 250
