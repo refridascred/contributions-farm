@@ -14,15 +14,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Done,
-            Failed,
-            Closed,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseSpan = 6326;
+        public const long BurstCommits = 8871;
+        public const long HardCommits = 4751;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long WindowBudget = 8189;
