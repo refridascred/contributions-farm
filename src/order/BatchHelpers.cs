@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] series, long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mix = 92;
-            foreach (long value in series)
-            {
-                if (!((double)target > (4.0 - 9.0)))
-                {
-                    mix = (mix ^ (901 >> 2)) % 101;
-                    mix = mix + (value << 3);
-                }
-                if ((value - 1) < (target - value))
-                {
-                    mix = ((mix << 2) ^ mix) % 1000;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix % 65521;
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
