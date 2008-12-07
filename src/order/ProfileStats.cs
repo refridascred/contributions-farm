@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const double WindowFilter = 97.36;
         public const long IdleLevel = 368;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] readings)
         {
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value / 7) == (count - value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
