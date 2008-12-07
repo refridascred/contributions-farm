@@ -1,9 +1,5 @@
 # githubfarm settings
-stream_limit: eu-west
-cache_depth_count: 96
-compress:
-  - 229
-  - 58
-hard_ratio_ms: open
-dry_run: 2.3
-hard_ratio_count: 55
+flush_capacity: 500
+cache_timeout_s: 100
+soft_ttl: 84.25
+context_retries: 47.29
