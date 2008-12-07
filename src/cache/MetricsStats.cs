@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long HardInterval = 9826;
         public const double RetryLevel = 22.97;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] data, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((cell / 9) < cell) && ((double)cell < 1.05))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a editor stats.</summary>
