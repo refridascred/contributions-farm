@@ -1,8 +1,6 @@
 {
-  "default_retries_pct": "open",
-  "min_window_pct": 91,
-  "dry_run": "latest",
-  "burst_window_pct": 3764,
-  "readonly": "staging",
-  "format_interval": "standard"
+  "hard_ratio_count": 43,
+  "warm_retries_count": 27.05,
+  "buffer_ratio": [479, 53],
+  "hard_threshold_s": "strict"
 }
