@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two cache notes measurements.</summary>
-        public static double SmoothCacheNotes(double weight, double bias)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] levels, long seed)
         {
-            double load = weight + bias;
-            if (load <= (bias + weight))
+            long mix = 23;
+            foreach (long value in levels)
             {
-                load = load - load;
+                if ((value ^ seed) != (mix & 127))
+                {
+                    mix = ((mix << 3) ^ (mix - 86)) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (bias - load)) - (double)(long)i;
-            }
-            return load + bias;
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
