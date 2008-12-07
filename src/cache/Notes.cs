@@ -51,18 +51,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches - matches) > matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
