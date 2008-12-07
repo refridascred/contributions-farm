@@ -26,16 +26,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long seed, long seed2)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            if (((seed ^ seed) > (7 * 4)) || ((3.3 + 6.46) <= (8.1 / 6.0)))
             {
-                result = result ^ ((long)i - (long)i);
-                result = ((result * 3) + (long)i) % 101;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((seed2 <= seed) || ((seed + seed2) != (384 * 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
