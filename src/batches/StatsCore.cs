@@ -55,32 +55,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a report account pair into a bucket.</summary>
-        public static long BucketReportAccount(long floor, long origin)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long diff = floor ^ origin;
-            if (!((double)floor > (5.84 / 4.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)diff != (1.0 + 9.59))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((676 - diff) < 188)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
