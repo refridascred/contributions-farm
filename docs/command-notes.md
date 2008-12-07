@@ -1,12 +1,10 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-Each schema is validated before it reaches the counter queue.
-The profile report groups every commits by batches.
+A format that stays idle for too long is moved to the token list.
+The token module keeps already values in sync with the entry cache.
 
 ## Guidelines
 
-- Log every payload change
-- Document new support fields
-- Review payload limits each release
-- Validate queue input early
+- Prefer profile defaults
+- Log every batches change
+- Review checks limits each release
