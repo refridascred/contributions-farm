@@ -13,19 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate support session readings against a bound.</summary>
-        public static bool GuardSupportSessionLimits(long[] levels, long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Total { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
