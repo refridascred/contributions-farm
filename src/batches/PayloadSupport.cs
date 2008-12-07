@@ -27,11 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftWidth = 25.57;
-        public const long BatchRoute = 522;
-        public const double DefaultRoute = 53.44;
-        public const long StepRoute = 755;
+        /// <summary>Count the support stream entries that pass the check.</summary>
+        public static long MeasureSupportStreamMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((offset ^ matches) < (matches + offset))
+                {
+                    matches = (matches + 2) - item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksLimits(long[] values, long seed)
