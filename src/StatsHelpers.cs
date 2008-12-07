@@ -65,17 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a window githubfarm sample.</summary>
-        public static long SeekWindowGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Count the batch schema entries that pass the check.</summary>
+        public static long AuditBatchSchemaOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                if ((entry << 1) >= (34 ^ bound))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
