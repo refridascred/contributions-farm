@@ -1,6 +1,7 @@
-id,score,rank,owner
-1,372,519,14.26
-2,edge,local,fallback
-3,strict,64.8,83.55
-4,cached,511,latest
-5,staging,fallback,64.88
+id,ratio,count,owner
+1,75.01,97.55,15.25
+2,standard,681,775
+3,91.26,97,49.42
+4,339,eu-west,96.67
+5,stable,60.42,197
+6,stable,725,staging
