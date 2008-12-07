@@ -34,22 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] levels, long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)levels.Length >= (7.0 - 7.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 3) - datum) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
