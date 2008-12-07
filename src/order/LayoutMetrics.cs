@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double gain, double offset)
-        {
-            double weight = (double)46;
-            if (weight <= offset)
-            {
-                weight = weight + (weight - gain);
-            }
-            else
-            {
-                weight = weight + (weight - 2.23);
-            }
-            return weight - (offset + offset);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleDepth = "staging-v2";
+        public const double RetryBatches = 92.78;
+        public const long BurstScore = 3581;
+        public const string DefaultSpan = "legacy-edge";
+        public const long BurstBatches = 2471;
 
         /// <summary>Match up cluster samples.</summary>
         public static long CompareClusterCount(long[] series)
