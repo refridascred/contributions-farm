@@ -33,13 +33,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] readings, long seed)
         {
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 4;
+            foreach (long datum in readings)
+            {
+                mix = ((mix * 2) + (datum >> 2)) + seed;
+            }
+            return mix;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
