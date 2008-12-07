@@ -1,22 +1,7 @@
 # githubfarm settings
-sync_capacity: false
-cluster_timeout: 96
-dry_run:
-  farm_limit: 56.14
-  compress: false
-  cache_window_count:
-    enabled: open
-    audit: true
-    warm_size_s: 250
-    burst_ttl: 8517
-    max_depth: 10.51
-  max_window_s: 7454
-  stream_capacity: 100
-min_interval_ms:
-  dry_run:
-    - blue
-    - edge
-  base_threshold_pct: 3341
-  soft_interval: open
-  enabled: local
-base_interval_pct: 100
+compress: false
+cache_window_ms: 50
+sync_limit_pct: local
+cache_ratio_ms:
+  - eu-west
+  - stable
