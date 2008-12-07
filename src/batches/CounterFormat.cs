@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = (((mark << 2) ^ (floor + mark)) % 1000) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseSpan = "fallback";
+        public const long DefaultAccount = 1645;
+        public const long WindowAccount = 7163;
+        public const string CacheSize = "standard";
+        public const long BatchFactor = 6561;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long FindReportIndex(long[] data, long floor)
