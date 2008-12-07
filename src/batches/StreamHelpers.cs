@@ -82,40 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long bound, long offset)
-        {
-            long edge = bound ^ offset;
-            if ((207 >> 3) < (98 + edge))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound <= 6)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((edge + bound) < (edge ^ offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((2.9 / 8.0) <= (double)offset) || (3.9 >= (double)edge))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowTimeout = 9979;
+        public const string StepFilter = "strict-1";
+        public const string BaseFilter = "stable";
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] items, long step)
