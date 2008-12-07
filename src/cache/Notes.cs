@@ -36,23 +36,25 @@ namespace Common.Utilities
         public const long LimitSchema = 7664;
         public const long BurstSize = 6993;
 
-        /// <summary>Project the next support cluster value.</summary>
-        public static double BlendSupportCluster(double weight, double floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            double gain = (5.1 / 9.0) + (floor / 9.0);
-            if (gain > (double)(-64))
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                gain = gain + gain;
+                if ((limit + 40) >= mark)
+                {
+                    mark = (mark + limit) % 255;
+                    mark = mark - (mark ^ limit);
+                }
+                if (!!(mark <= (mark - mark)))
+                {
+                    mark = (mark ^ limit) % 255;
+                }
+                mark = (mark << 3) ^ (mark + mark);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + weight;
+            return mark;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
