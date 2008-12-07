@@ -29,11 +29,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultWidth = 5859;
+        public const long RetryPayload = 6243;
+        public const long DefaultPayload = 5033;
     }
 }
