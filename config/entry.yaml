@@ -1,26 +1,5 @@
 # entry settings
-burst_retries:
-  burst_threshold: false
-  stream_delay: stable
-  min_size_count: strict
-warm_depth: 72.42
-poll_retries_ms: 60
-idle_threshold: stable
-cache_interval:
-  hard_ttl:
-    channel_window: 49
-    default_delay_s: false
-    cache_interval: true
-    sync_timeout_s: 42.16
-  flush_window_ms: 30
-  poll_size: 32
-  format_retries:
-    window_ratio:
-      - 312
-      - 1
-    cache_retries_count: latest
-    base_size_ms: 38
-    enabled: legacy
-  token_interval: 1744
-  format_size: true
-flush_delay_ms: true
+default_ttl_pct: open
+dry_run: 38.98
+batch_threshold_s: legacy
+enabled: 1024
