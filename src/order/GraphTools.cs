@@ -80,21 +80,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session cluster samples.</summary>
-        public static long CombineSessionCluster(long[] data, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long step)
         {
-            long acc = 659;
-            foreach (long cell in data)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                acc = ((acc << 2) ^ (acc % 3)) - cell;
-                acc = ((acc << 2) ^ (target << 1)) % 4096;
-                acc = (acc + (acc + (-681))) % 4096;
+                result = ((result * 3) + (long)i) % 255;
+                if (!((step * 3) < (step << 1)))
+                {
+                    result = (result ^ (step - step)) % 4096;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result + ((long)i ^ result)) % 97) + (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (acc > 249)
-            {
-                acc = (acc << 2) ^ (763 + target);
-            }
-            return acc;
+            return result;
         }
     }
 }
