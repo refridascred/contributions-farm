@@ -80,38 +80,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long step, long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            if (step > (step - limit))
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                result = ((result << 2) ^ (result * 4)) % 97;
+                result = ((result * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((double)step >= 0.73) || (limit <= (limit % 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (6.8 <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
