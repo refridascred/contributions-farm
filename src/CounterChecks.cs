@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long MeasureLayoutWindowMatches(long[] series, long target)
+        /// <summary>Locate a metric context reading by value.</summary>
+        public static long FindMetricContextIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((634 / 5) >= (target - matches))
+                if (series[i] >= floor)
                 {
-                    matches = (matches + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up stats batches samples.</summary>
