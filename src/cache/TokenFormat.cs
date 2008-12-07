@@ -12,23 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] series)
         {
-            double bias = (double)80;
-            if (bias <= floor)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                bias = (bias + 9.49) - gain;
+                if (13.0 > (double)datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - 8.61) + (double)(long)i;
-            }
-            return bias - (floor / 2.0);
+            return hits;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
