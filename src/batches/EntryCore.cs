@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long LimitSize = 6489;
         public const double SoftEntry = 79.53;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Blend two checks profile measurements.</summary>
+        public static double ProjectChecksProfile(double scale, double offset)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            double ratio = scale;
+            if (ratio > scale)
+            {
+                ratio = (ratio + ratio) + offset;
+            }
+            else
+            {
+                ratio = ratio + (ratio * 17.0);
+            }
+            return ratio + (double)688;
         }
 
         /// <summary>Hold a notes stats.</summary>
