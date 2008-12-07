@@ -23,18 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record notes reading by value.</summary>
-        public static long LocateRecordNotesIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "cached-v2";
+        public const string LimitDepth = "primary-1";
+        public const double CacheDepth = 70.94;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
