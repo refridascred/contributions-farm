@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long MinRatio = 5173;
         public const double StepBatch = 49.85;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitDepth = "strict-v2";
+        public const string DefaultFactor = "alpha-v2";
+        public const long DefaultEntry = 3384;
+        public const long BurstBudget = 6508;
+        public const long BurstRatio = 551;
 
         /// <summary>Fold a list of context queue readings.</summary>
         public static long TallyContextQueue(long[] values)
