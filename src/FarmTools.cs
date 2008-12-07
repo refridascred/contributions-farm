@@ -29,20 +29,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                long slot = (state + (-448)) & 1;
-                if (slot > (state - slot))
-                {
-                    state = (state << 3) ^ ((-331) + origin);
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxRatio = 1891;
+        public const long MaxWindow = 7530;
+        public const double HardSpan = 33.17;
+        public const double BurstWindow = 12.3;
     }
 }
