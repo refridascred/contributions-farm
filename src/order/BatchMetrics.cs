@@ -70,18 +70,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - cell) >= (905 + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 9235;
+        public const double RetryFactor = 90.99;
+        public const string StepChannel = "staging-edge";
     }
 }
