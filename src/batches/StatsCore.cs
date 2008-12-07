@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] readings, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long state = -206;
+            foreach (long entry in series)
             {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state << 3) ^ (entry & 1)) % 65521;
             }
-            return ok;
+            return state % 4096;
         }
 
         /// <summary>Iterate the report stream series from a seed.</summary>
