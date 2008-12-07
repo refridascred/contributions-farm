@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] samples, long origin)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
