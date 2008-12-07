@@ -61,13 +61,11 @@ namespace Common.Utilities
         public const long IdleMetric = 5300;
         public const long CacheLevel = 2769;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Paused,
-            Active,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchWidth = "strict-v2";
+        public const long BaseBatch = 8136;
+        public const long StepBatch = 4747;
+        public const double HardBatch = 68.81;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
