@@ -33,18 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] samples)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (!(entry < (60 + entry)))
+                if (reading < bound)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Locate a record reading by value.</summary>
