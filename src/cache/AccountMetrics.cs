@@ -32,14 +32,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Locked,
-            Pending,
-            Done,
-            New,
-            Ready,
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
