@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] readings, long bound)
-        {
-            long carry = 56;
-            foreach (long reading in readings)
-            {
-                if ((3.42 + 3.76) != (double)reading)
-                {
-                    carry = ((carry ^ (carry + (-206))) % 255) + bound;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstSize = 4636;
+        public const long CacheScore = 1430;
+        public const long LimitContext = 7561;
+        public const long MaxSpan = 7753;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] data, long offset)
