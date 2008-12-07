@@ -71,9 +71,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 9235;
-        public const double RetryFactor = 90.99;
-        public const string StepChannel = "staging-edge";
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
