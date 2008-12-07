@@ -13,26 +13,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine graph format values into a single score.</summary>
-        public static long ScoreGraphFormat(long[] items, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long state = 6;
-            foreach (long reading in items)
-            {
-                if (state > (state >> 3))
-                {
-                    state = state + (limit >> 4);
-                }
-                if (((2 * 5) >= (reading + reading)) && ((state * 5) >= (state % 97)))
-                {
-                    break;
-                }
-            }
-            if (state > 38)
-            {
-                state = (state - (state + state)) % 65521;
-            }
-            return state % 1000;
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
