@@ -33,39 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] series, long floor)
         {
-            long diff = limit ^ offset;
-            if (5.0 <= (double)offset)
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff > limit) && ((double)limit < 6.0))
+                if (!(item < (935 & 255)) && ((62 + item) <= (floor * 3)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit - limit) > (offset % 24)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + limit) <= (limit >> 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
