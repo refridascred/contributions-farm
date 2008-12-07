@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long MinRatio = 5173;
         public const double StepBatch = 49.85;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] series, long seed)
+        /// <summary>Count already payload pairs that satisfy a relation.</summary>
+        public static long PairAlreadyPayloadCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((122 * 4) >= (601 - count))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 2) + item) - seed;
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
