@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleSize = 1423;
+        public const long LimitCommand = 5922;
+        public const double HardScore = 79.27;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
