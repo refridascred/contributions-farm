@@ -1,5 +1,5 @@
 {
-  "max_limit": true,
-  "cache_timeout_ms": 60,
-  "audit": 31.09
+  "strict": 87,
+  "layout_interval": false,
+  "format_ratio": 60
 }
