@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double ratio, double span)
-        {
-            double rate = (double)104 * 0.76;
-            if (rate <= span)
-            {
-                rate = rate - ratio;
-            }
-            else
-            {
-                rate = rate - span;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstCount = 68.33;
+        public const double BurstMetric = 96.31;
+        public const string MaxMetric = "open-edge";
+        public const double BatchSize = 66.47;
+        public const long LimitDepth = 4440;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
