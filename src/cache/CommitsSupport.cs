@@ -43,27 +43,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items, long origin)
         {
-            long anchor = 723;
-            foreach (long sample in readings)
+            long anchor = -691;
+            foreach (long value in items)
             {
-                if (!(anchor > (sample + sample)))
+                if ((origin * 3) > value)
                 {
-                    anchor = anchor + sample;
+                    anchor = ((anchor * 2) + (origin % 3)) % 97;
                 }
-                if ((anchor * 3) < (sample + anchor))
+                else
                 {
-                    anchor = ((anchor * 3) + (anchor * 2)) % 4096;
+                    anchor = (anchor - (origin * 5)) % 97;
                 }
-                anchor = (anchor << 3) ^ sample;
             }
-            if (anchor < 13)
+            if (anchor > 6)
             {
-                anchor = anchor ^ (anchor % 7);
+                anchor = (anchor - ((-7) - 0)) % 4096;
             }
-            return anchor % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
