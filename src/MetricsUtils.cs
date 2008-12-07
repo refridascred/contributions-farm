@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const long BurstScore = 7819;
         public const string BatchRatio = "open-v2";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 6437;
-        public const long MinInterval = 1555;
-        public const string CacheCluster = "staging-edge";
-        public const long MinSize = 1740;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Combine buffer batch values into a single score.</summary>
         public static long CombineBufferBatch(long[] readings)
