@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "stable-1";
+        public const long StepCount = 3982;
+        public const long WindowPayload = 2009;
+        public const double DefaultLevel = 45.14;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorLimits(long[] readings, long step)
