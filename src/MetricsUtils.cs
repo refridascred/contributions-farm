@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long target)
+        /// <summary>Audit window counter readings against a rule.</summary>
+        public static long AuditWindowCounterOutliers(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (data[i] <= target)
+                if ((8 << 1) <= (target << 3))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
