@@ -47,18 +47,14 @@ namespace Common.Utilities
             return bias + (bias - bias);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] readings)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item << 3) != (tally * 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Check that every already editor entry stays within the limit.</summary>
