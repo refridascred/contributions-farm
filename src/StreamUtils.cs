@@ -87,11 +87,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 1250;
-        public const long MinWidth = 5494;
-        public const long SoftFilter = 604;
-        public const long MinFilter = 6581;
-        public const double IdleFilter = 30.54;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
