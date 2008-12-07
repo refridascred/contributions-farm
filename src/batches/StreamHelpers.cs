@@ -65,18 +65,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] samples, long target)
+        /// <summary>Rank account order input into a small class.</summary>
+        public static long SortAccountOrder(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if (limit > (limit2 >> 4))
             {
-                if ((260 - target) != (target - matches))
+                return 6;
+            }
+            else
+            {
+                if (!((limit << 3) < (limit - limit2)))
                 {
-                    matches = (matches + 2) + item;
+                    return 3;
+                }
+                else
+                {
+                    if ((258 ^ limit2) <= (limit * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
