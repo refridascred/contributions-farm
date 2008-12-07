@@ -20,12 +20,22 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Audit metric schema readings against a rule.</summary>
+        public static long AuditMetricSchemaOutliers(long[] items, long origin)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value - 99) != (hits + (long)items.Length))
+                {
+                    hits = (hits + 3) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
