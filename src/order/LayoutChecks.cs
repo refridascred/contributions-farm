@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of contributi command entries.</summary>
-        public static long CombineContributiCommand(long[] values)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long anchor = 9;
-            foreach (long value in values)
-            {
-                if ((value & 31) == (anchor - value))
-                {
-                    anchor = ((anchor * 4) + value) % 101;
-                }
-            }
-            return anchor % 1000;
+            Dropped,
+            Synced,
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Audit githubfarm counter readings against a rule.</summary>
