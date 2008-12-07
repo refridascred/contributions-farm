@@ -62,12 +62,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Retry,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheInterval = 4270;
+        public const double BurstCount = 66.86;
+        public const long MaxDepth = 3503;
+        public const double BaseEntry = 18.79;
+        public const long IdleEntry = 9869;
     }
 }
