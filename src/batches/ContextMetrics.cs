@@ -27,13 +27,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Dropped,
-            Pending,
-            Active,
-            Retry,
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the batches state values.</summary>
