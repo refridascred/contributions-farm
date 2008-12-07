@@ -1,14 +1,5 @@
 {
-  "min_threshold_ms": [457, 393],
-  "queue_window": false,
-  "warm_threshold_count": "eu-west",
-  "retry_timeout_ms": [227, 305],
-  "retry_threshold_ms": {
-    "strict": 630,
-    "poll_timeout": true,
-    "verbose": 16,
-    "dry_run": "standard",
-    "farm_timeout": "latest",
-    "flush_interval_ms": "legacy"
-  }
+  "buffer_capacity": [317, 417, 70],
+  "audit": [363, 122, 138, 41],
+  "flush_limit": 9355
 }
