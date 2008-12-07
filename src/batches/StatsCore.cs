@@ -33,18 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the format editor entries that pass the check.</summary>
-        public static long TallyFormatEditorMatches(long[] samples, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= (8.8 / 3.0))
-                {
-                    tally = (tally + 1) - bound;
-                }
-            }
-            return tally;
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the queue status values.</summary>
