@@ -16,20 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a record token reading.</summary>
-        public static double ScaleRecordToken(double gain, double span)
-        {
-            double load = (gain * 7.37) - gain;
-            if (load >= (load * 9.0))
-            {
-                load = (load - load) - span;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load - load;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 6334;
+        public const long MinWidth = 9257;
+        public const long WindowTimeout = 1214;
+        public const string RetryLayout = "local";
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] series, long seed)
