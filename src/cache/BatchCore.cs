@@ -15,19 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] data)
         {
-            long anchor = 380;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                anchor = ((anchor << 2) ^ anchor) ^ datum;
+                if ((count - value) >= (value - (long)data.Length))
+                {
+                    count = count + 2;
+                }
             }
-            if (anchor < 2)
-            {
-                anchor = ((anchor << 2) ^ 81) % 4096;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of notes session readings.</summary>
