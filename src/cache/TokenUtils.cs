@@ -20,18 +20,14 @@ namespace Common.Utilities
             return scale + (scale * 19.0);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] items)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value - value) == (seen + value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
