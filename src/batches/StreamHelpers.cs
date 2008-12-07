@@ -82,10 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowTimeout = 9979;
-        public const string StepFilter = "strict-1";
-        public const string BaseFilter = "stable";
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Queued,
+            Retry,
+            Active,
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] items, long step)
