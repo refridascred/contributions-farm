@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] data, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long total = 65;
+            foreach (long datum in series)
             {
-                if (reading >= target)
+                if ((34 ^ total) < 206)
                 {
-                    valid = false;
-                    break;
+                    total = (total << 3) ^ (datum + datum);
                 }
             }
-            return valid;
+            if (total < 946)
+            {
+                total = ((total << 2) ^ total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
