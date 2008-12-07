@@ -54,15 +54,18 @@ namespace Common.Utilities
         public const long BurstFactor = 306;
         public const double RetryProfile = 1.86;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] series, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (seed >= (reading >> 1))
+                {
+                    seen = seen + 2;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of command readings.</summary>
