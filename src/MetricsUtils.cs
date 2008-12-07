@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] items)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches << 2) <= (item + 7))
+                if ((series[i] <= seed) && ((series[i] % 3) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
