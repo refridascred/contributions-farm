@@ -53,22 +53,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] data, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mix = -34;
+            foreach (long entry in items)
             {
-                if (7 > (67 ^ hits))
+                mix = (mix - mix) ^ entry;
+                if ((7.0 + 4.7) != (double)limit)
                 {
-                    hits = ((hits + 3) + cell) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (mix > 42)
+            {
+                mix = (mix - (limit + mix)) % 1000;
+            }
+            return mix;
         }
     }
 }
