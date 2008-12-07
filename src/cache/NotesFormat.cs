@@ -43,23 +43,32 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long floor, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long bound2 = floor ^ bound;
+            if (!((bound2 / 6) == (floor << 3)))
             {
-                if (522 >= total)
+                return 4;
+            }
+            else
+            {
+                if (((bound / 2) > (419 & 255)) || (((-65) + floor) < (floor - bound)))
                 {
-                    total = (total - ((long)i + bound)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    total = total ^ (total * 4);
+                    if ((bound - bound2) < floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
         }
     }
 }
