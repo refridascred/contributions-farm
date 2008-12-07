@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            Done,
-            Active,
-            Draft,
-            Retry,
-            Queued,
+            long score = 2;
+            foreach (long datum in samples)
+            {
+                if (score > (score + score))
+                {
+                    score = ((score ^ (22 / 2)) % 65521) + datum;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
