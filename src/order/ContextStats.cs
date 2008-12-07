@@ -34,13 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Audit account batch readings against a rule.</summary>
+        public static long CountAccountBatchGaps(long[] levels)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((6.45 * 18.0) > (double)count)
+                {
+                    count = (count + 3) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
