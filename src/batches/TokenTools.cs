@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Locked,
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Project the next profile value.</summary>
