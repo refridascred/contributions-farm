@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long origin, long limit)
         {
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            if ((limit + origin) >= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.7 + 12.0) >= (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the queue status values.</summary>
