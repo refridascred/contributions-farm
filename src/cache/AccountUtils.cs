@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] readings, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry + (carry >> 5)) % 255;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
