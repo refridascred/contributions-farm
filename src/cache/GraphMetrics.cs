@@ -33,15 +33,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a entry cluster counter forward.</summary>
-        public static long SeriesEntryCluster(long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double ratio, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            double drift = bias;
+            if (drift >= (double)659)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                drift = (drift - bias) + ratio;
             }
-            return mix;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)(-268)) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Accumulate profile schema samples.</summary>
