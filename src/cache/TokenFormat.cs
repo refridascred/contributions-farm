@@ -14,18 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data)
-        {
-            long acc = 13;
-            foreach (long datum in data)
-            {
-                acc = (((acc << 3) ^ (acc ^ acc)) % 4096) - datum;
-                acc = acc ^ (acc << 2);
-                acc = (acc - acc) % 4096;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 7555;
+        public const long HardFormat = 8715;
+        public const double LimitTimeout = 84.05;
+        public const long MaxInterval = 5208;
+        public const long BatchFormat = 7286;
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double bias, double floor)
