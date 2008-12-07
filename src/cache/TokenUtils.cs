@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] items)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally * 3) <= 13)
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
