@@ -35,17 +35,18 @@ namespace Common.Utilities
             return scale2 + 12.0;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] items, long target)
+        /// <summary>Count the command route entries that pass the check.</summary>
+        public static long CountCommandRouteGaps(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (items[i] == target)
+                if ((item << 1) >= item)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
