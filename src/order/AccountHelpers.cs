@@ -91,14 +91,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
+            Dropped,
             Active,
-            Done,
-            Draft,
-            Queued,
-            Retry,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
