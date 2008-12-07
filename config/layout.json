@@ -1,22 +1,7 @@
 {
-  "graph_delay": "local",
-  "base_threshold_pct": {
-    "readonly": 3731,
-    "strict": true,
-    "retry_capacity_ms": 56.04,
-    "layout_window": 47,
-    "dry_run": "legacy"
-  },
-  "min_depth": [184, 394],
-  "format_capacity": {
-    "burst_delay_pct": {
-      "filter_interval": "open",
-      "soft_threshold_count": 35,
-      "batch_window_ms": [65, 55, 269, 328],
-      "batch_timeout": ["stable", "blue", "open"],
-      "batch_retries_pct": "open"
-    },
-    "poll_threshold_ms": "stable",
-    "githubfarm_ttl": 250
-  }
+  "readonly": ["stable", "standard", "stable"],
+  "poll_ratio_ms": 484,
+  "batch_retries_s": 28,
+  "compress": 97.36,
+  "payload_size": 34.24
 }
