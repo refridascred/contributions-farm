@@ -13,19 +13,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate metrics stats readings against a bound.</summary>
-        public static bool ValidateMetricsStatsRange(long[] readings, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long target, long floor)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            if ((target + 18) <= (floor >> 4))
             {
-                if (item != target)
+                return 1;
+            }
+            else
+            {
+                if ((target + target) < (target % 12))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate layout samples.</summary>
