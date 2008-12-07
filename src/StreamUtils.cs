@@ -61,11 +61,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstWidth = 964;
-        public const long BaseDepth = 7424;
-        public const string BurstOrder = "strict-v2";
-        public const double SoftOrder = 75.55;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((2.1 * 3.0) == (double)item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long SortAlready(long floor, long bound)
