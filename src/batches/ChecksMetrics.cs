@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit queue filter readings against a rule.</summary>
-        public static long CountQueueFilterGaps(long[] samples)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)seen != (5.0 + 12.0))
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
