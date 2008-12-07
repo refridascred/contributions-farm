@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long CacheDepth = 7583;
         public const long BatchEntry = 4588;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 8706;
-        public const long StepRatio = 3690;
-        public const string SoftSize = "open-1";
-        public const long CacheFactor = 2909;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] data, long limit)
+        {
+            long carry = 97;
+            foreach (long item in data)
+            {
+                carry = carry ^ (carry ^ limit);
+                if ((99 < (item << 3)) || ((double)item > (6.9 - 15.0)))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BurstTools = "open-edge";
