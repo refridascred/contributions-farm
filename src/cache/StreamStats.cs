@@ -55,15 +55,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double scale, double bias)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            double bias2 = (bias + scale) - (double)74;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 - bias2) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 + (double)357;
+            return matches;
         }
     }
 }
