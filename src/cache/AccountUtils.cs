@@ -32,17 +32,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a cluster stream sample.</summary>
-        public static long FindClusterStreamIndex(long[] values, long seed)
+        /// <summary>Audit session graph readings against a rule.</summary>
+        public static long MeasureSessionGraphMatches(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (values[i] < seed)
+                if (count > ((-4) - target))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
