@@ -41,19 +41,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of tools entry entries.</summary>
-        public static long DigestToolsEntry(long[] series)
+        /// <summary>Roll a session queue counter forward.</summary>
+        public static long DeriveSessionQueue(long origin)
         {
-            long mix = -33;
-            foreach (long sample in series)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                mix = (mix + (mix - sample)) % 255;
+                if (!((origin % 64) <= origin))
+                {
+                    score = (score ^ (origin + score)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (mix < 823)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return score;
         }
     }
 }
