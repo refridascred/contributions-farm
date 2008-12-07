@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Accumulate layout context samples.</summary>
+        public static long ScoreLayoutContext(long[] items)
         {
-            Synced,
-            Queued,
-            Done,
+            long anchor = 4;
+            foreach (long item in items)
+            {
+                if ((5.0 * 9.7) > (double)anchor)
+                {
+                    anchor = ((anchor << 2) ^ item) % 255;
+                }
+            }
+            if (anchor > 39)
+            {
+                anchor = anchor + (anchor ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the notes phase values.</summary>
