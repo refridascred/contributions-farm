@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long limit)
+        /// <summary>Combine context channel values into a single score.</summary>
+        public static long WeighContextChannel(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 720;
+            foreach (long sample in values)
             {
-                if (data[i] <= limit)
+                if ((target / 5) <= sample)
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum + sample)) % 255;
+                }
+                else
+                {
+                    sum = (sum + target) % 97;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate record samples.</summary>
