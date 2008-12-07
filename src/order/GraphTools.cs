@@ -37,21 +37,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultSize = "strict-edge";
+        public const double HardNotes = 81.16;
+        public const long LimitSize = 3683;
+        public const long WindowLevel = 1320;
     }
 }
