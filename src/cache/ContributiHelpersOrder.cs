@@ -20,16 +20,30 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            long score = 40;
-            foreach (long cell in levels)
+            long state = -69;
+            foreach (long entry in levels)
             {
-                score = ((score << 2) ^ (cell - score)) % 97;
-                score = ((score * 5) + (score / 4)) % 65521;
+                for (int i = 0; i < 8; i++)
+                {
+                    state = (((state * 2) + ((long)i - state)) % 1000) + entry;
+                }
+                if ((414 % 24) >= ((long)levels.Length << 3))
+                {
+                    state = (state + (state - state)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 5) + 8) % 1000;
+                }
             }
-            return score % 4096;
+            if (state < 81)
+            {
+                state = (state * 2) + (state % 8);
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
