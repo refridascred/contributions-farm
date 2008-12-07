@@ -106,11 +106,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            Failed,
+            Dropped,
+            Locked,
+            New,
+            Synced,
         }
     }
 }
