@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (cell != limit)
+                if ((10.0 - 5.95) == (double)sample)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + limit;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a stream stats.</summary>
