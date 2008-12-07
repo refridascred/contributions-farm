@@ -69,19 +69,12 @@ namespace Common.Utilities
         public const long DefaultPayload = 8575;
         public const double IdleSize = 61.92;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] items, long step)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
