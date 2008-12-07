@@ -36,11 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(651 < state))
+                {
+                    state = ((state * 3) + (state >> 5)) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Blend two record measurements.</summary>
