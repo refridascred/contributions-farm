@@ -44,31 +44,18 @@ namespace Common.Utilities
         public const string HardContributi = "standard";
         public const double DefaultContributi = 88.79;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long step2)
+        /// <summary>Measure how many checks report samples are out of range.</summary>
+        public static long AuditChecksReportMatches(long[] items)
         {
-            if ((step2 % 16) <= 339)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (step2 < (step2 - step2))
+                if ((matches << 1) >= (matches % 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (step2 < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 3) + reading;
                 }
             }
+            return matches;
         }
     }
 }
