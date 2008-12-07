@@ -47,9 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "stable-edge";
-        public const double BaseNotes = 68.94;
-        public const double BurstRatio = 75.63;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((mix << 2) <= mix)
+                {
+                    mix = (mix + (mix + mix)) % 65521;
+                    mix = mix - (mix % 3);
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
