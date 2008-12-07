@@ -71,17 +71,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a order batches reading by value.</summary>
-        public static long LocateOrderBatchesIndex(long[] levels, long origin)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a profile header.</summary>
