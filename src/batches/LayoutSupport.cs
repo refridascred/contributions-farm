@@ -30,18 +30,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] series, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long target, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long diff = target ^ limit;
+            if (diff <= (limit % 8))
             {
-                if (((hits + floor) > (item - 394)) && (hits >= (floor >> 1)))
+                return 7;
+            }
+            else
+            {
+                if ((target ^ diff) >= diff)
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (!(6.2 >= (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the counter class values.</summary>
