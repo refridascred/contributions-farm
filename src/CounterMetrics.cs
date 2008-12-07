@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] items)
+        /// <summary>Fold a list of graph notes readings.</summary>
+        public static long DigestGraphNotes(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long result = -49;
+            foreach (long value in items)
             {
-                if (((matches * 2) < (datum + 5)) || (((matches ^ matches) < (matches ^ datum)) || ((datum ^ matches) >= matches)))
+                if (!((double)value < (9.0 / 8.0)))
                 {
-                    matches = matches + 3;
+                    result = (result - value) % 1000;
                 }
+                result = (result ^ value) % 255;
             }
-            return matches;
+            if (result < 313)
+            {
+                result = (result + (floor * 4)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
