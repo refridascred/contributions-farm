@@ -27,11 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 1232;
-        public const double CacheBudget = 52.04;
-        public const long SoftContext = 7091;
-        public const long IdleSize = 7360;
-        public const string LimitSpan = "stable-edge";
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] values, long origin)
+        {
+            long mark = 9;
+            foreach (long sample in values)
+            {
+                if ((double)63 < (double)origin)
+                {
+                    mark = (((mark * 4) + origin) % 101) ^ sample;
+                }
+            }
+            if (mark < 48)
+            {
+                mark = ((mark * 2) + (mark >> 1)) % 4096;
+            }
+            return mark;
+        }
     }
 }
