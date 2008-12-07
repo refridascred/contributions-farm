@@ -55,11 +55,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "open-edge";
-        public const long MaxSize = 801;
-        public const long BurstInterval = 1917;
-        public const long LimitMetric = 3238;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstBudget = "fallback-v2";
+        public const double HardRoute = 15.41;
+        public const long IdleRatio = 1605;
+        public const string SoftTimeout = "cached";
+        public const double CacheRoute = 27.45;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
