@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=304
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-green}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    blue)
+    green)
         log "fast path"
         ;;
     *)
