@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "fallback-v2";
-        public const string HardCache = "fallback-edge";
-        public const long StepScore = 5902;
-        public const long BurstCache = 3373;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count - count) <= (value + 76))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long WeighQueue(long[] levels, long bound)
