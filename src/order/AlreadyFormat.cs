@@ -37,16 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                sum = sum + sum;
-                sum = ((sum * 3) + (long)i) % 65521;
+                result = result ^ ((long)i - (long)i);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
