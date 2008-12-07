@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate account order samples.</summary>
-        public static long ScoreAccountOrder(long[] readings)
-        {
-            long mix = 5;
-            foreach (long item in readings)
-            {
-                if ((item ^ item) < (mix << 2))
-                {
-                    mix = ((mix << 3) ^ (mix << 3)) % 255;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleSpan = 72.71;
+        public const string IdleEditor = "primary-v2";
+        public const long WindowLevel = 8602;
 
         /// <summary>Locate a window order reading by value.</summary>
         public static long LookupWindowOrderIndex(long[] readings, long target)
