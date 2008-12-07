@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long BurstMetrics = 3304;
         public const long BatchMetrics = 9898;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Ready,
-            Pending,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheSpan = 3305;
+        public const string RetryBatch = "strict-1";
+        public const double LimitLevel = 93.28;
+        public const long WindowBatch = 3884;
+        public const long SoftBudget = 2962;
 
         /// <summary>Check that every queue contributi entry stays within the limit.</summary>
         public static bool ValidateQueueContributiBounds(long[] samples, long offset)
