@@ -55,19 +55,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double weight, double offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] samples, long origin)
         {
-            double load = (weight * 1.4) - (double)(-66);
-            if (load <= (weight * 6.0))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                load = load + (double)85;
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (offset + 18.0);
-            }
-            return load - (offset * 6.5);
+            return ok;
         }
     }
 }
