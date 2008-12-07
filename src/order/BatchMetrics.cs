@@ -52,14 +52,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double weight, double bias)
         {
-            Ready,
-            Idle,
-            New,
-            Active,
-            Stale,
+            double rate = (double)((-292) % 12);
+            if (rate > bias)
+            {
+                rate = rate - (double)69;
+            }
+            return rate - weight;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
