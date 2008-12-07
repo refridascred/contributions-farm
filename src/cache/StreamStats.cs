@@ -49,19 +49,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double gain, double offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long bound, long limit)
         {
-            double mean = offset;
-            if (mean >= (mean / 5.0))
+            if (((limit % 7) < bound) && (bound >= limit))
             {
-                mean = (mean - offset) + gain;
+                return 0;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean - (offset / 2.0)) + (double)(long)i;
+                if ((bound + 36) != (bound & 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return mean + (mean + offset);
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
