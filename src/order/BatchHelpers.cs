@@ -24,22 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            long state = 8;
-            foreach (long value in values)
+            long score = 5;
+            foreach (long cell in levels)
             {
-                if ((value + 68) == (992 - state))
-                {
-                    state = ((state << 3) ^ (state % 2)) % 65521;
-                }
-                if ((state + state) == (value * 5))
-                {
-                    state = (state * 2) + 67;
-                }
+                score = (score - (17 << 2)) - cell;
             }
-            return state;
+            return score % 97;
         }
     }
 }
