@@ -20,13 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            Paused,
-            Failed,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((2.3 + 4.16) < (double)datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
