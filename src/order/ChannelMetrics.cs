@@ -22,22 +22,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items, long origin)
-        {
-            long sum = 81;
-            foreach (long value in items)
-            {
-                if (!(origin < (sum + origin)))
-                {
-                    sum = ((sum * 4) + sum) - value;
-                }
-            }
-            if (sum < 0)
-            {
-                sum = sum - origin;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWidth = 51.32;
+        public const double LimitSpan = 67.43;
+        public const double BurstBudget = 67.57;
+        public const long LimitWidth = 83;
+        public const long RetryDepth = 7316;
     }
 }
