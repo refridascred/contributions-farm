@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double BatchSize = 66.47;
         public const long LimitDepth = 4440;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] items, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((double)bound > (8.4 + 4.19))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
