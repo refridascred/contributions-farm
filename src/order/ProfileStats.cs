@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] data)
         {
-            double load = span;
-            if (load > (9.6 - span))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                load = (load + (double)793) - ratio;
+                if (!((entry % 16) <= (1 * 2)) && ((9.0 / 8.0) <= (2.4 * 2.18)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return load + (double)308;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
