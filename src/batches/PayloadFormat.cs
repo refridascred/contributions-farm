@@ -40,11 +40,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultCount = 8707;
-        public const long WindowSize = 1439;
-        public const double IdleInterval = 88.73;
-        public const long WindowScore = 1132;
-        public const string MaxFactor = "latest-edge";
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long limit, long floor)
+        {
+            if ((double)limit <= (4.9 / 5.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor / 5) >= (floor ^ limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
