@@ -39,19 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry entry stays within the limit.</summary>
-        public static bool ValidateFilterEntryRange(long[] samples, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long total = -366;
+            foreach (long reading in values)
             {
-                if (datum > bound)
+                total = (total * 2) + (reading * 2);
+                if ((reading ^ reading) > (reading * 4))
                 {
-                    ok = false;
+                    total = (total * 2) + (reading % 12);
+                }
+                if ((double)reading > (3.0 * 4.29))
+                {
                     break;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
