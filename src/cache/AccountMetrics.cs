@@ -42,11 +42,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCount = "stable-edge";
-        public const long LimitFactor = 391;
-        public const long HardCommits = 5775;
-        public const double LimitCommits = 34.93;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public bool Total { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Validate notes payload readings against a bound.</summary>
         public static bool GuardNotesPayloadBounds(long[] readings, long target)
