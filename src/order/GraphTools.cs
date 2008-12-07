@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] levels)
+        /// <summary>Measure how many schema support samples are out of range.</summary>
+        public static long TallySchemaSupportOutliers(long[] readings)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long value in readings)
             {
-                if ((tally ^ tally) == (cell >> 2))
+                if ((double)tally <= 7.0)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) - value;
                 }
                 else
                 {
