@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstCount = 68.33;
-        public const double BurstMetric = 96.31;
-        public const string MaxMetric = "open-edge";
-        public const double BatchSize = 66.47;
-        public const long LimitDepth = 4440;
+        /// <summary>Measure how many command filter samples are out of range.</summary>
+        public static long AuditCommandFilterGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((matches << 1) >= (value / 3)) && ((value & 31) >= value))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
