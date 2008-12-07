@@ -27,38 +27,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long offset, long step)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if ((step + step) > offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((411 / 5) > offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.6 < (double)step) || ((double)offset < (double)891))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((529 % 3) <= (step - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Draft,
+            Synced,
         }
     }
 }
