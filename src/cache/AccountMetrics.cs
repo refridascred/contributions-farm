@@ -57,15 +57,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double scale, double span)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] samples, long bound)
         {
-            double load = (double)(429 & 1);
-            if (load >= scale)
+            long score = 33;
+            foreach (long item in samples)
             {
-                load = load + span;
+                if (582 > (item - (long)samples.Length))
+                {
+                    score = score + (bound + bound);
+                }
             }
-            return load + 14.0;
+            if (score < 8)
+            {
+                score = (score - (score << 3)) % 101;
+            }
+            return score % 65521;
         }
     }
 }
