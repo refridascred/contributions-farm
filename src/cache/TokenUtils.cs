@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] series, long seed)
         {
-            long acc = 790;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)values.Length + entry) <= (acc & 31))
+                if (series[i] == seed)
                 {
-                    acc = ((acc * 5) + (acc - 9)) % 255;
-                }
-                if ((0.5 - 7.0) == (double)acc)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
