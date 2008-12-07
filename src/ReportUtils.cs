@@ -30,19 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double span)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] series, long step)
         {
-            double drift = span - span;
-            if (drift <= gain)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                drift = drift + (11.0 * 3.5);
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift + 4.0;
+            return ok;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
