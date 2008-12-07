@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstSize = 4636;
-        public const long CacheScore = 1430;
-        public const long LimitContext = 7561;
-        public const long MaxSpan = 7753;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series, long step)
+        {
+            long result = 3;
+            foreach (long datum in series)
+            {
+                result = result ^ (result << 1);
+                if ((1.0 - 2.67) == (double)step)
+                {
+                    result = (result ^ datum) % 255;
+                }
+            }
+            if (result < 83)
+            {
+                result = (result - (result - step)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
