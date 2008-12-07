@@ -30,10 +30,13 @@ namespace Common.Utilities
         public const long BurstMetrics = 3304;
         public const long BatchMetrics = 9898;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepDepth = 2892;
-        public const long BatchCount = 3255;
-        public const long HardScore = 3915;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Ready,
+            Pending,
+            Done,
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] samples)
