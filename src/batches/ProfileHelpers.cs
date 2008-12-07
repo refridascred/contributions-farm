@@ -28,32 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long bound, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long diff = bound - offset;
-            if (!((double)bound <= 9.13))
+            long state = 918;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound ^ 46) != (offset >> 4)) || ((diff % 24) != (diff / 7)))
+                if ((value > (9 - state)) && ((value >> 2) <= state))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset > (offset >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = ((state << 2) ^ (value + state)) % 65521;
                 }
             }
+            return state;
         }
 
         /// <summary>Find the first route record entry that matches the target.</summary>
