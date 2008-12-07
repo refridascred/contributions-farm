@@ -46,14 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            New,
-            Draft,
-            Closed,
-            Idle,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
