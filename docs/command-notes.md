@@ -1,11 +1,12 @@
 # Command notes
 
-Keep farm and already names short and lowercase.
-Each stream is validated before it reaches the queue queue.
+Defaults for format live in the config folder and can be overridden per environment.
+Each schema is validated before it reaches the counter queue.
+The profile report groups every commits by batches.
 
 ## Guidelines
 
-- Validate graph input early
 - Log every payload change
-- Keep layout values small
-- Document new cache fields
+- Document new support fields
+- Review payload limits each release
+- Validate queue input early
