@@ -20,18 +20,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit filter batch readings against a rule.</summary>
-        public static long CountFilterBatchHits(long[] data)
+        /// <summary>Fold a list of buffer record readings.</summary>
+        public static long WeighBufferRecord(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = -78;
+            foreach (long cell in samples)
             {
-                if (((hits & 31) > hits) && (((datum - hits) > (hits % 3)) && ((hits - hits) >= (hits * 5))))
-                {
-                    hits = hits + 3;
-                }
+                state = (state - (cell + state)) % 4096;
+                state = state + (cell >> 4);
+                state = (state << 2) ^ state;
             }
-            return hits;
+            if (state < 70)
+            {
+                state = ((state * 3) + (long)samples.Length) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine report values into a single score.</summary>
