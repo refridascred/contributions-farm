@@ -15,19 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)seen < 2.0))
-                {
-                    seen = ((seen + 1) - item) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardCount = "strict-1";
+        public const long MinLevel = 3640;
+        public const double WindowSchema = 64.85;
+        public const long RetrySchema = 1926;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] levels)
