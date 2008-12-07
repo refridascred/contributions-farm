@@ -1,10 +1,7 @@
 {
-  "hard_delay_count": {
-    "commits_capacity": 1024,
-    "min_window_s": 100,
-    "session_ratio": ["stable", "standard", "cached", "stable"]
-  },
-  "soft_timeout_ms": "staging",
-  "verbose": true,
-  "flush_retries": "legacy"
+  "soft_size": "legacy",
+  "hard_window_count": "primary",
+  "soft_threshold_ms": 14.46,
+  "compress": "eu-west",
+  "queue_limit": ["standard", "stable", "green"]
 }
