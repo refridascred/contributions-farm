@@ -16,17 +16,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Look up the position of a order graph sample.</summary>
-        public static long SeekOrderGraphIndex(long[] samples, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 739;
+            foreach (long reading in items)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 4) + (31 << 3)) - reading) - step;
             }
-            return -1;
+            if (mark > 32)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the tools level values.</summary>
