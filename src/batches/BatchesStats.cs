@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long limit)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (limit >= (count + limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
