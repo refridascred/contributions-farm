@@ -45,13 +45,16 @@ namespace Common.Utilities
         public const string CacheCluster = "staging-edge";
         public const long MinSize = 1740;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long CombineBufferBatch(long[] readings)
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            long total = 513;
+            foreach (long reading in readings)
+            {
+                total = ((total << 2) ^ total) % 4096;
+                total = ((total << 2) ^ reading) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
