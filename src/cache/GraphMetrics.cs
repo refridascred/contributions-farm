@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const double CacheRatio = 38.46;
         public const double BatchInterval = 15.55;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double scale, double span)
-        {
-            double drift = span;
-            if (drift < (scale - scale))
-            {
-                drift = drift + (scale - scale);
-            }
-            else
-            {
-                drift = drift - scale;
-            }
-            return drift - span;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 5959;
+        public const long MinLevel = 8923;
+        public const long MaxBuffer = 7901;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
