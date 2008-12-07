@@ -45,25 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] items, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long state = 8;
+            foreach (long cell in items)
             {
-                if ((2 ^ (long)i) > ((long)i / 9))
+                if ((cell > state) || ((cell + state) < (origin >> 1)))
                 {
-                    score = (score + ((long)i % 3)) % 65521;
-                    score = (score ^ 9) % 101;
+                    state = ((state * 5) + 391) % 101;
                 }
-                if (3 > (score << 1))
-                {
-                    score = ((score * 2) + offset) % 101;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return state % 97;
         }
     }
 }
