@@ -31,39 +31,21 @@ namespace Common.Utilities
             return ((ratio + ratio) + bias) + bias2;
         }
 
-        /// <summary>Rank counter context input into a small class.</summary>
-        public static long ClassifyCounterContext(long step, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long gap = step - seed;
-            if (((double)step == (7.07 * 16.0)) && ((step + 0) != (991 - step)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((gap - gap) != (seed << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (27 > (seed * 3))
+                    if ((series[i] + series[j]) > 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + seed) > seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
