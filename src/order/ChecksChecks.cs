@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples)
         {
-            long mark = 7;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 3) + (mark * 5)) - sample;
+                if ((4.7 * 6.91) == (double)count)
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mark < (-281))
-            {
-                mark = (mark ^ bound) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
