@@ -39,15 +39,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] samples, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
