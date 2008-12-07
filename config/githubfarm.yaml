@@ -1,13 +1,9 @@
 # githubfarm settings
-order_retries: 100
-warm_capacity_pct:
-  payload_interval: 85
-  min_ttl_s: 5670
-  base_limit_ms: 50.82
-  sync_interval_pct:
-    - latest
-    - standard
-profile_limit: legacy
-window_retries:
-  - 221
-  - 412
+enabled: 781
+hard_capacity_pct: false
+retry_threshold_count:
+  - 181
+  - 180
+  - 163
+soft_timeout_pct: green
+already_capacity: cached
