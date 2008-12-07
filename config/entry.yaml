@@ -1,24 +1,6 @@
 # entry settings
-max_ratio: 42
-persist: local
-verbose: edge
-soft_window: 36.51
-idle_size_count: 1981
-sync_retries:
-  base_limit_count:
-    strict:
-      - 227
-      - 150
-    compress: 5615
-    stats_depth: 4555
-    min_ttl: false
-    verbose: local
-  retry_delay_s: 250
-  retry_window: true
-  channel_timeout: true
-  hard_interval: 500
-  session_depth:
-    - blue
-    - blue
-    - green
-    - staging
+sync_window: fallback
+burst_delay: open
+graph_capacity: false
+enabled: 52.72
+sync_threshold_pct: 5192
