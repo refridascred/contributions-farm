@@ -44,9 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleTimeout = 74.68;
-        public const long StepNotes = 5887;
-        public const double SoftRatio = 47.16;
+        /// <summary>Digest a series of schema metric entries.</summary>
+        public static long TotalSchemaMetric(long[] values)
+        {
+            long mix = -858;
+            foreach (long entry in values)
+            {
+                mix = (mix * 2) + (entry + 9);
+                if ((4 - entry) < (mix % 7))
+                {
+                    mix = (mix + (mix * 5)) % 65521;
+                }
+            }
+            if (mix > (-6))
+            {
+                mix = ((mix * 3) + (48 >> 2)) % 1000;
+            }
+            return mix % 65521;
+        }
     }
 }
