@@ -49,12 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] samples, long floor)
         {
-            Pending,
-            Queued,
-            Closed,
+            long mark = 44;
+            foreach (long datum in samples)
+            {
+                mark = (mark << 3) ^ (datum + datum);
+            }
+            if (mark < 720)
+            {
+                mark = ((mark * 5) + (floor & 3)) % 101;
+            }
+            return mark;
         }
     }
 }
