@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "alpha-edge";
-        public const long DefaultBudget = 8069;
-        public const string StepWidth = "stable-1";
-        public const long HardLayout = 1313;
-        public const double StepLayout = 98.18;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double LimitChannel = 44.6;
