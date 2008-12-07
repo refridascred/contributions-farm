@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] readings, long limit)
         {
-            Ready,
-            Closed,
-            Dropped,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a report metrics sample.</summary>
