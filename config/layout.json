@@ -1,6 +1,5 @@
 {
-  "base_ttl_s": 40,
-  "warm_ttl": false,
-  "poll_threshold": false,
-  "checks_limit": "cached"
+  "contributi_size": 4102,
+  "batch_window_pct": 500,
+  "flush_interval_ms": ["legacy", "legacy", "fallback", "open"]
 }
