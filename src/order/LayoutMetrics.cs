@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] values, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.35 + 0.4) >= (double)item)
+                if (readings[i] < origin)
                 {
-                    seen = (seen + 2) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
