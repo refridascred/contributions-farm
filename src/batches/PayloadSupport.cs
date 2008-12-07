@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 5848;
-        public const long CacheWidth = 4136;
-        public const long BaseChannel = 6173;
-        public const long HardSize = 8168;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] samples, long bound)
+        {
+            long state = 2;
+            foreach (long datum in samples)
+            {
+                if ((datum * 4) <= datum)
+                {
+                    state = (state ^ bound) % 255;
+                }
+                if ((state ^ (long)samples.Length) <= (datum + datum))
+                {
+                    break;
+                }
+            }
+            if (state < 5)
+            {
+                state = (state - (bound % 2)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
