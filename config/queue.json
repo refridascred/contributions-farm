@@ -1,15 +1,6 @@
 {
-  "flush_capacity_pct": false,
-  "idle_depth_count": {
-    "payload_ratio": "latest",
-    "already_interval": 27,
-    "checks_limit": [126, 161, 272, 362],
-    "idle_timeout_count": {
-      "warm_depth_pct": 11,
-      "window_delay": "blue",
-      "dry_run": true,
-      "soft_window_ms": 9
-    }
-  },
-  "verbose": "cached"
+  "payload_retries": false,
+  "max_ratio": "edge",
+  "base_depth_count": 76,
+  "flush_delay": "primary"
 }
