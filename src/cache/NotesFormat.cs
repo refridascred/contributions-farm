@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel command entry stays within the limit.</summary>
-        public static bool CheckChannelCommandRange(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSpan = 8023;
+        public const long BurstToken = 5886;
+        public const long IdleTimeout = 888;
+        public const long IdleToken = 709;
+        public const double SoftToken = 11.04;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchContext = 1232;
