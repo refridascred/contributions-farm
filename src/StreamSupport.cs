@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine payload profile values into a single score.</summary>
-        public static long CombinePayloadProfile(long[] items, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long result = 87;
-            foreach (long cell in items)
-            {
-                if ((result + seed) > result)
-                {
-                    result = (result + result) ^ cell;
-                }
-            }
-            return result;
+            Stale,
+            New,
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
