@@ -1,4 +1,27 @@
 # support settings
-filter_threshold: 10
-sync_ttl_count: 1024
-retry_capacity_ms: false
+sync_interval_pct:
+  entry_limit: 7473
+  dry_run: 500
+  payload_delay:
+    batch_depth_pct: 27
+    retry_retries: 96
+    poll_delay: 1024
+    persist: true
+    audit: 1024
+  batch_threshold_count: 58
+  payload_size:
+    audit: 47
+    tools_window: standard
+    commits_depth:
+      - standard
+      - strict
+      - open
+    default_interval_count:
+      - 278
+      - 246
+      - 273
+  poll_ratio_s: green
+burst_delay: blue
+retry_window_s:
+  - local
+  - edge
