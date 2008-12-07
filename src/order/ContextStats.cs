@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many record checks samples are out of range.</summary>
-        public static long MeasureRecordChecksHits(long[] values)
+        /// <summary>Digest a series of contributi format entries.</summary>
+        public static long DigestContributiFormat(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long anchor = 92;
+            foreach (long reading in items)
             {
-                if ((tally - (long)values.Length) >= value)
-                {
-                    tally = tally + 2;
-                }
+                anchor = (((anchor * 5) + 1) % 65521) ^ reading;
             }
-            return tally;
+            if (anchor < 27)
+            {
+                anchor = anchor - (offset * 4);
+            }
+            return anchor;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
