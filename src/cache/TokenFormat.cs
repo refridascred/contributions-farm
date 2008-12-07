@@ -32,25 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long limit, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] samples)
         {
-            long span = limit + origin;
-            if ((7.1 * 0.39) > (double)span)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin <= (limit + span))
+                if (((item + seen) <= (seen >> 3)) || ((double)item <= (4.0 * 0.63)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
