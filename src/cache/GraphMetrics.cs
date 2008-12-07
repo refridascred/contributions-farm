@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const long MinLevel = 8923;
         public const long MaxBuffer = 7901;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item >> 1) < (item - 6))
                 {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
