@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] values, long limit)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((20.0 * 3.7) > (double)seen) || ((datum + seen) == (limit ^ limit)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the editor kind values.</summary>
