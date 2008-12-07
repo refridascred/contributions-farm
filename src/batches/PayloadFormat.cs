@@ -39,18 +39,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] values)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - cell) > count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
