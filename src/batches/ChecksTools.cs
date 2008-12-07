@@ -12,16 +12,21 @@ namespace Common.Utilities
         public const double BatchSize = 66.47;
         public const long LimitDepth = 4440;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 3) + ((-46) + score)) % 65521;
-                score = ((score * 5) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the editor mode values.</summary>
