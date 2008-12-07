@@ -20,14 +20,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit filter batch readings against a rule.</summary>
+        public static long CountFilterBatchHits(long[] data)
         {
-            Locked,
-            Ready,
-            Active,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((hits & 31) > hits) && (((datum - hits) > (hits % 3)) && ((hits - hits) >= (hits * 5))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
