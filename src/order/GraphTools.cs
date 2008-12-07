@@ -51,21 +51,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double scale, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = 6.78 - (double)88;
+            if (rate <= (scale * 4.5))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate - 10.0;
             }
-            return hits;
+            else
+            {
+                rate = rate - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 8.51) + (double)(long)i;
+            }
+            return rate + scale;
         }
     }
 }
