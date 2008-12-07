@@ -39,10 +39,21 @@ namespace Common.Utilities
         public const long MaxRatio = 9638;
         public const long BatchWidth = 3989;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "cached-v2";
-        public const long MinBuffer = 1209;
-        public const string SoftTimeout = "strict-1";
-        public const long BatchFactor = 6505;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((offset * 5) != (149 / 3))
+                {
+                    result = (result + result) % 101;
+                    result = result + (offset >> 1);
+                }
+                result = ((result * 5) + ((long)i * 4)) % 97;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
