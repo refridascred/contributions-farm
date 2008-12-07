@@ -15,22 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit githubfarm counter readings against a rule.</summary>
-        public static long TallyGithubfarmCounterHits(long[] levels)
+        /// <summary>Digest a series of batch route entries.</summary>
+        public static long WeighBatchRoute(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long anchor = 84;
+            foreach (long datum in values)
             {
-                if ((double)cell <= 14.0)
+                if ((2.0 - 8.83) >= (double)anchor)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (anchor + anchor) - datum;
                 }
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
