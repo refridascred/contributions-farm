@@ -16,11 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 6334;
-        public const long MinWidth = 9257;
-        public const long WindowTimeout = 1214;
-        public const string RetryLayout = "local";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!(413 < tally))
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] series, long seed)
