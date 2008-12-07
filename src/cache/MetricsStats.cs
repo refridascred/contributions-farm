@@ -48,12 +48,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Iterate the contributi metric series from a seed.</summary>
+        public static long StepContributiMetric(long offset)
         {
-            Stale,
-            Ready,
-            Pending,
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
