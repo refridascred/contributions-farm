@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] items, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((datum + hits) < (hits & 31))
+                if (datum <= target)
                 {
-                    hits = (hits + 2) + target;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Look up the position of a format record sample.</summary>
