@@ -27,14 +27,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            Retry,
-            Synced,
-            Done,
-            Stale,
-            Draft,
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
