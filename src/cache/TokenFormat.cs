@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] readings, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Project the next schema value.</summary>
