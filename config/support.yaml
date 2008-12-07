@@ -1,7 +1,15 @@
 # support settings
-max_retries_ms: 81.41
-window_ttl: local
-order_threshold: legacy
-strict: false
-cache_ttl: 8212
-entry_threshold: 250
+batch_timeout_s: latest
+enabled:
+  - 333
+  - 436
+warm_delay_ms:
+  compress: strict
+  context_delay:
+    - 356
+    - 252
+    - 182
+  flush_timeout: legacy
+  persist: true
+  retry_depth_pct: 7513
+hard_timeout_count: blue
