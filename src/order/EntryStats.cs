@@ -38,19 +38,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double gain, double floor)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            double bias = 19.0;
-            if (bias < floor)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (floor - floor)) + (double)(long)i;
-            }
-            return bias + gain;
+            return seen;
         }
 
         /// <summary>Describe the window level values.</summary>
