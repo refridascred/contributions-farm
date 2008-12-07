@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first token counter entry that matches the target.</summary>
-        public static long FindTokenCounterIndex(long[] readings, long limit)
+        /// <summary>Locate a counter channel reading by value.</summary>
+        public static long LocateCounterChannelIndex(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
+                if (items[i] <= limit)
                 {
                     return (long)i;
                 }
