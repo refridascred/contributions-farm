@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] levels, long step)
         {
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 163;
+            foreach (long value in levels)
+            {
+                if ((step & 63) < (step - total))
+                {
+                    total = ((total + ((long)levels.Length >> 3)) % 65521) ^ value;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a record info.</summary>
