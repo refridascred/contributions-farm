@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] readings, long limit)
+        /// <summary>Digest a series of entry batch entries.</summary>
+        public static long ScoreEntryBatch(long[] items)
         {
-            long carry = 971;
-            foreach (long item in readings)
+            long result = 73;
+            foreach (long value in items)
             {
-                if ((limit * 4) <= limit)
-                {
-                    carry = carry ^ (item / 3);
-                }
-                else
-                {
-                    carry = (carry ^ item) % 65521;
-                }
-                if ((3.64 - 13.0) < (double)item)
-                {
-                    break;
-                }
+                result = ((result ^ 44) % 1000) - value;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Fold a list of session readings.</summary>
