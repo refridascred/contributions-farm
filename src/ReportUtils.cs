@@ -60,22 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((step << 3) <= ((-80) >> 1)) || ((matches ^ datum) != (datum ^ matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 9114;
+        public const long WindowNotes = 4705;
+        public const double LimitCount = 25.97;
+        public const string LimitScore = "latest-edge";
+        public const long MinTimeout = 6942;
     }
 }
