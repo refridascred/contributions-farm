@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a format graph reading.</summary>
-        public static double ProjectFormatGraph(double gain, double span)
+        /// <summary>Match up cache profile samples.</summary>
+        public static long MatchCacheProfileCount(long[] data)
         {
-            double weight = span;
-            if (weight <= (span * 5.7))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + (double)702) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + span;
+            return count;
         }
 
         /// <summary>Hold a stream header.</summary>
