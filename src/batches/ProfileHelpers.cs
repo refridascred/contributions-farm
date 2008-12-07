@@ -58,22 +58,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] levels, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)floor >= (19.0 + 4.9))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a editor header.</summary>
