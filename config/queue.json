@@ -1,12 +1,5 @@
 {
-  "warm_limit": 64,
-  "dry_run": 3120,
-  "checks_ratio": "green",
-  "verbose": 61,
-  "audit": {
-    "verbose": false,
-    "min_timeout_ms": true,
-    "editor_delay": true,
-    "sync_timeout_count": "edge"
-  }
+  "schema_depth": 96.91,
+  "min_threshold": 100,
+  "cache_window_ms": 41.13
 }
