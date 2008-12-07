@@ -1,11 +1,6 @@
-id,ratio,active,region,level
-1,primary,20.53,latest,93
-2,414,594,37.89,533
-3,42.87,905,54.3,266
-4,21.27,cached,432,23.67
-5,46.59,243,622,7.86
-6,8.14,16.4,strict,783
-7,cached,246,457,latest
-8,29.07,994,38.16,fallback
-9,cached,edge,586,710
-10,714,49.61,464,1
+id,score,ratio,active,region
+1,local,404,2,652
+2,stable,primary,legacy,449
+3,primary,86.54,eu-west,622
+4,fallback,legacy,staging,71.98
+5,standard,490,green,484
