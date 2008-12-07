@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double rate, double offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double rate2 = (rate / 8.0) - (double)460;
-            if (rate2 >= (7.72 * 1.54))
-            {
-                rate2 = rate2 - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + rate2) - (double)(long)i;
-            }
-            return rate2 + (19.0 - rate2);
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
