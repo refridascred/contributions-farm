@@ -11,17 +11,31 @@ namespace Common.Utilities
         public const long LimitContext = 7561;
         public const long MaxSpan = 7753;
 
-        /// <summary>Look up the position of a notes filter sample.</summary>
-        public static long LocateNotesFilterIndex(long[] values, long bound)
+        /// <summary>Classify a cache queue pair into a bucket.</summary>
+        public static long SortCacheQueue(long target, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (target >= origin)
             {
-                if (values[i] < bound)
+                return 3;
+            }
+            else
+            {
+                if ((8.0 * 4.2) >= (double)origin)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target - 20) > (target * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
