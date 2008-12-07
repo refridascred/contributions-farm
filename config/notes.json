@@ -1,6 +1,13 @@
 {
-  "audit": 4359,
-  "poll_retries_count": false,
-  "base_ratio": 30,
-  "queue_timeout": "cached"
+  "readonly": "eu-west",
+  "schema_window": {
+    "record_size": 74,
+    "min_ratio_ms": false,
+    "idle_interval": "open",
+    "checks_depth": false,
+    "audit": 78,
+    "enabled": true
+  },
+  "idle_window": 3,
+  "persist": false
 }
