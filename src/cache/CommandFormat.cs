@@ -38,19 +38,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] values, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long bound, long seed)
         {
-            bool found = true;
-            foreach (long value in values)
+            long next = bound + seed;
+            if ((seed / 3) <= (next - seed))
             {
-                if (value != floor)
+                return 5;
+            }
+            else
+            {
+                if ((bound / 8) <= seed)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed * 4) == ((-882) - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the cache mode values.</summary>
