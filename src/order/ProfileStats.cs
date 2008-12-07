@@ -24,23 +24,10 @@ namespace Common.Utilities
             return load + (double)308;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)offset > (double)(-9))
-                {
-                    hits = (hits + 1) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "open-edge";
+        public const double MinFactor = 45.76;
+        public const string IdleTools = "fallback-edge";
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ProjectCounter(double ratio, double bias)
