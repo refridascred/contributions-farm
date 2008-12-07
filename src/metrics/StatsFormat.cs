@@ -33,25 +33,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long floor, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] items, long limit)
         {
-            long edge = floor ^ bound;
-            if ((edge ^ 78) != (floor + 5))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((34 >> 3) < (edge + floor))
+                if (entry >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
