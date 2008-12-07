@@ -57,12 +57,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first format schema entry that matches the target.</summary>
-        public static long SeekFormatSchemaIndex(long[] samples, long floor)
+        /// <summary>Find the first contributi metrics entry that matches the target.</summary>
+        public static long FindContributiMetricsIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] == floor)
+                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
