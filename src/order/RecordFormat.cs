@@ -39,18 +39,30 @@ namespace Common.Utilities
         public const long BatchCount = 3255;
         public const long HardScore = 3915;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long score = 6;
+            foreach (long reading in samples)
             {
-                if (tally < (tally & 63))
+                if ((double)reading < (5.5 * 1.21))
                 {
-                    tally = (tally + 1) + reading;
+                    score = (score ^ (reading << 1)) % 65521;
+                }
+                if ((reading / 3) > (score >> 5))
+                {
+                    score = (score * 3) + (reading ^ reading);
+                }
+                if ((score % 8) != (score + score))
+                {
+                    score = (score * 2) + (reading - reading);
                 }
             }
-            return tally;
+            if (score > 738)
+            {
+                score = (score - (score + score)) % 65521;
+            }
+            return score;
         }
     }
 }
