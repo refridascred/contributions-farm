@@ -1,11 +1,12 @@
 # Command notes
 
-Use schema settings to tune how often profile data is refreshed.
-The support report groups every stream by commits.
-Use layout settings to tune how often profile data is refreshed.
+Keep format and githubfarm names short and lowercase.
+A counter that stays idle for too long is moved to the entry list.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review layout limits each release
-- Validate profile input early
-- Keep account values small
+- Keep counter values small
+- Log every notes change
+- Document new batch fields
+- Prefer record defaults
