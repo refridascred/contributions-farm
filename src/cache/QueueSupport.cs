@@ -32,17 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a order payload sample.</summary>
-        public static long LocateOrderPayloadIndex(long[] levels, long bound)
+        /// <summary>Adjust a tools account reading.</summary>
+        public static double ProjectToolsAccount(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (bias - bias) + bias;
+            if (scale >= scale)
             {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - (weight - bias);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 3.96) - (double)(long)i;
+            }
+            return scale + weight;
         }
     }
 }
