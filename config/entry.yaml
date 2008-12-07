@@ -1,8 +1,7 @@
 # entry settings
-base_limit_ms: strict
-cluster_threshold: primary
-audit:
-  - 349
-  - 457
-compress: cached
-flush_ttl_count: 30
+strict:
+  - cached
+  - cached
+poll_limit_count: 10.39
+idle_threshold_ms: 60
+audit: false
