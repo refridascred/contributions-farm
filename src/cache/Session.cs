@@ -36,10 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 911;
-        public const long BurstFarm = 5707;
-        public const long SoftScore = 4219;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double gain, double span)
+        {
+            double scale = (double)(54 / 2);
+            if (scale < span)
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (span * 8.3)) + (double)(long)i;
+            }
+            return scale + (double)75;
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long SeekGithubfarmIndex(long[] data, long limit)
