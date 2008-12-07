@@ -69,17 +69,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] >= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
