@@ -1,20 +1,10 @@
 # githubfarm settings
-payload_interval:
-  batch_delay_ms: 93
-  min_timeout: false
-  audit: true
-token_window:
-  - 70
-  - 298
-max_retries_ms: green
-idle_interval:
-  flush_interval_ms:
-    window_delay: 9713
-    format_size: edge
-    max_size_s: open
-    poll_retries_s: 9989
-    schema_delay: 693
-    burst_window_s: 8416
-  burst_size_ms: true
-  report_window: 500
-  verbose: 500
+idle_limit_s: false
+filter_retries: 95
+readonly:
+  - 195
+  - 313
+flush_size:
+  - cached
+  - staging
+  - cached
