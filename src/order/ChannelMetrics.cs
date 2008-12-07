@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] items, long limit)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a metric stats.</summary>
