@@ -31,22 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 495;
+        public const long BatchWidth = 2967;
+        public const long IdleSize = 6770;
+        public const long MaxChannel = 9537;
 
         /// <summary>Roll a metric editor counter forward.</summary>
         public static long StepMetricEditor(long limit)
