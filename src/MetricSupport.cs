@@ -23,12 +23,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count cache account pairs that satisfy a relation.</summary>
+        public static long OverlapCacheAccountCount(long[] items)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
