@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long state = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state * 3) + limit;
+                if (((-202) ^ state) > 5)
+                {
+                    state = state + (limit << 2);
+                }
+                state = (state << 3) ^ (long)i;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Project the next batch graph value.</summary>
