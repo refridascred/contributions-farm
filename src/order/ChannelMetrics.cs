@@ -12,21 +12,22 @@ namespace Common.Utilities
             return scale + (double)10;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 22;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((721 >= (cell & 63)) || ((double)cell < 9.8))
                 {
-                    if ((readings[i] - readings[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state - (cell + state);
+                }
+                else
+                {
+                    state = ((state << 3) ^ 978) % 4096;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Audit entry counter readings against a rule.</summary>
