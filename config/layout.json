@@ -1,6 +1,14 @@
 {
-  "payload_capacity": 27,
-  "layout_ratio": "fallback",
-  "soft_timeout_s": 8414,
-  "checks_interval": "legacy"
+  "soft_threshold_pct": {
+    "idle_threshold": {
+      "entry_window": 1184,
+      "metrics_timeout": "standard",
+      "flush_delay_s": 31.31,
+      "verbose": true
+    },
+    "dry_run": "staging",
+    "enabled": [401, 307, 74, 469]
+  },
+  "persist": 500,
+  "tools_depth": 100
 }
