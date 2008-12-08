@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 48.51;
-        public const long SoftSupport = 3324;
-        public const string MinCount = "open";
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
