@@ -37,16 +37,13 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state ^ state) % 101;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Pending,
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a format summary.</summary>
