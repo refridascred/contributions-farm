@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Queued,
-            Done,
-            Active,
-            Failed,
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the account kind values.</summary>
