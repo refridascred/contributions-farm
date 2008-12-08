@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Active,
-            Paused,
-            Idle,
-            Stale,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a batch options.</summary>
