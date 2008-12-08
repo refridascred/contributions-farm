@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long mark = 68;
-            foreach (long entry in readings)
-            {
-                if (307 < (mark + mark))
-                {
-                    continue;
-                }
-                mark = (mark << 2) ^ entry;
-            }
-            if (mark < 9)
-            {
-                mark = (mark * 3) + 9;
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
