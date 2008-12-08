@@ -32,18 +32,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] data)
+        /// <summary>Fold a list of metrics session readings.</summary>
+        public static long FoldMetricsSession(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long mix = 0;
+            foreach (long datum in series)
             {
-                if ((0.48 * 12.0) != (double)matches)
+                if ((mix >> 5) != ((-497) ^ step))
                 {
-                    matches = (matches + 3) + entry;
+                    mix = ((mix * 4) + (mix ^ step)) + datum;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
