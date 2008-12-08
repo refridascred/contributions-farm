@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Measure how many filter tools samples are out of range.</summary>
+        public static long TallyFilterToolsHits(long[] levels, long offset)
         {
-            long result = 68;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                result = (result ^ (reading + (-634))) % 65521;
-                for (int i = 0; i < 10; i++)
+                if (((18.0 <= (0.8 - 5.0)) || (reading >= offset)) || ((reading + offset) > (2 + 21)))
                 {
-                    result = ((result - ((long)series.Length + reading)) % 97) ^ (long)i;
+                    count = count + 3;
                 }
-                result = (result + (result + result)) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (result > 96)
-            {
-                result = (result ^ (result + result)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Audit metrics layout readings against a rule.</summary>
