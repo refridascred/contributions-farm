@@ -58,19 +58,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next tools metric value.</summary>
-        public static double BlendToolsMetric(double gain, double floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long step)
         {
-            double bias = (double)(6 & 15);
-            if (bias <= gain)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - floor;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (floor * 7.0)) + (double)(long)i;
-            }
-            return bias - (double)8;
+            return -1;
         }
     }
 }
