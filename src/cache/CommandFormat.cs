@@ -52,22 +52,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items)
         {
-            long mark = 6;
-            foreach (long datum in series)
+            long sum = 40;
+            foreach (long value in items)
             {
-                if (((double)datum <= 6.4) && (mark >= (72 & 1)))
-                {
-                    mark = (mark + (mark + mark)) % 255;
-                }
-                else
-                {
-                    mark = mark - datum;
-                }
+                sum = (sum << 3) ^ (5 + value);
             }
-            return mark;
+            return sum;
         }
     }
 }
