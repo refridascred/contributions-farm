@@ -44,20 +44,12 @@ namespace Common.Utilities
         public const long CacheCount = 3253;
         public const string DefaultLevel = "strict-edge";
 
-        /// <summary>Check that every window farm entry stays within the limit.</summary>
-        public static bool ValidateWindowFarmLimits(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 52.47;
+        public const double MaxLevel = 90.78;
+        public const long MinRecord = 6344;
+        public const long SoftRecord = 1264;
+        public const long BatchRecord = 7352;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsHits(long[] levels)
