@@ -60,14 +60,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] levels, long target)
         {
-            Synced,
-            New,
-            Idle,
-            Draft,
-            Locked,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)215 <= (double)(long)levels.Length)
+                {
+                    seen = ((seen + 2) - reading) - target;
+                }
+            }
+            return seen;
         }
     }
 }
