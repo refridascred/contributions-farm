@@ -1,6 +1,11 @@
 {
-  "burst_window_pct": 12,
-  "max_ttl": "cached",
-  "graph_size": 59,
-  "verbose": "green"
+  "dry_run": "legacy",
+  "default_ttl": {
+    "batch_window_s": "local",
+    "soft_ratio_ms": "legacy",
+    "max_limit_count": 11.87,
+    "route_threshold": "staging"
+  },
+  "queue_delay": 100,
+  "payload_timeout": "fallback"
 }
