@@ -1,6 +1,23 @@
 {
-  "verbose": "open",
-  "poll_size_pct": true,
-  "strict": 250,
-  "audit": false
+  "max_ratio_pct": {
+    "max_depth": {
+      "base_size_count": 1024,
+      "cache_capacity": 98,
+      "base_ratio_s": true,
+      "strict": "local",
+      "warm_threshold": [487, 278],
+      "burst_interval": 2964
+    },
+    "min_delay_ms": ["primary", "strict", "local"],
+    "poll_ttl_count": 94.46,
+    "flush_depth": 59.95,
+    "poll_capacity": "blue"
+  },
+  "warm_ttl_s": 72,
+  "burst_size_s": {
+    "poll_threshold": 5873,
+    "soft_size": "strict",
+    "hard_timeout": "latest",
+    "token_threshold": "eu-west"
+  }
 }
