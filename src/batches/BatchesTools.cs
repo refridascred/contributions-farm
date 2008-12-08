@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long offset, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] items)
         {
-            long slot = offset ^ target;
-            if ((slot / 4) == (slot % 7))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target / 8) >= (offset % 8))
+                if (tally > (item - 97))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (20.0 < (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)slot >= (10.0 * 1.69))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a order header.</summary>
