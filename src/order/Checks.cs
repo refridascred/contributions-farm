@@ -36,22 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] levels, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell >> 3) != (step / 2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the checks mode values.</summary>
