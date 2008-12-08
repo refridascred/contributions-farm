@@ -1,7 +1,16 @@
 # githubfarm settings
-soft_limit: false
-command_size: 53.04
-min_ttl: staging
-command_threshold: strict
-poll_retries_s: 94.34
-enabled: 42
+batch_window_s: 7838
+strict:
+  - cached
+  - cached
+  - eu-west
+verbose: false
+metrics_size:
+  base_threshold_ms: legacy
+  persist: fallback
+  idle_threshold_ms: standard
+  graph_ttl: 57.33
+  tools_depth: 46.26
+  checks_delay: staging
+audit: false
+max_window: 88.28
