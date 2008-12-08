@@ -29,10 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstTimeout = 9020;
-        public const string BatchWidth = "staging-1";
-        public const long DefaultProfile = 2546;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of session cluster readings.</summary>
         public static long CompareSessionClusterCount(long[] samples)
