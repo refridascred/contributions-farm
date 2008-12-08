@@ -90,14 +90,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] items, long origin)
         {
-            Idle,
-            Done,
-            Stale,
-            Synced,
-            Locked,
+            long mark = 43;
+            foreach (long cell in items)
+            {
+                if ((origin << 1) < 50)
+                {
+                    mark = (mark ^ (origin & 31)) + cell;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
