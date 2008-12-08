@@ -47,13 +47,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            New,
-            Paused,
-            Active,
+            Done,
+            Locked,
+            Ready,
             Draft,
+            Retry,
         }
     }
 }
