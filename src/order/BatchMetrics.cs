@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            Draft,
+            New,
+            Done,
+            Ready,
         }
 
         /// <summary>Combine token values into a single score.</summary>
