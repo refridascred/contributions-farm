@@ -40,25 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double bias, double offset)
         {
-            long offset = floor - seed;
-            if ((double)offset >= 1.0)
+            double load = bias * 5.6;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                load = ((load + (double)(-42)) + (double)(long)i) - offset;
             }
-            else
-            {
-                if (seed <= (seed - 93))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return load + 7.58;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
