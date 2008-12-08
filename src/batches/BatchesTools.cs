@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token payload entries.</summary>
-        public static long FoldTokenPayload(long[] samples)
-        {
-            long mark = 5;
-            foreach (long sample in samples)
-            {
-                mark = ((mark * 4) + sample) % 97;
-            }
-            if (mark < 478)
-            {
-                mark = mark ^ (mark & 63);
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheDepth = "standard-1";
+        public const string BaseFactor = "standard-edge";
+        public const long MinMetric = 2296;
+        public const double WindowMetric = 82.61;
+        public const long LimitScore = 9179;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] readings, long floor)
