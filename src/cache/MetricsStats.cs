@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long mark = 166;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (9 < (datum & 31))
                 {
-                    carry = ((carry * 3) + (long)i) ^ (long)i2;
+                    mark = mark + datum;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            if (mark > (-15))
+            {
+                mark = (mark * 2) + (mark << 2);
+            }
+            return mark;
         }
 
         /// <summary>Combine farm buffer values into a single score.</summary>
