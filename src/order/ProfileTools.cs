@@ -68,11 +68,15 @@ namespace Common.Utilities
             return gain2 - (double)83;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "latest-edge";
-        public const string BaseBatches = "stable-v2";
-        public const long SoftBatches = 1806;
-        public const long CacheInterval = 369;
-        public const double BatchBatches = 44.24;
+        /// <summary>Digest a series of route stats entries.</summary>
+        public static long FoldRouteStats(long[] readings, long seed)
+        {
+            long mark = 616;
+            foreach (long item in readings)
+            {
+                mark = ((((mark << 3) ^ (mark / 4)) % 4096) - item) + seed;
+            }
+            return mark % 1000;
+        }
     }
 }
