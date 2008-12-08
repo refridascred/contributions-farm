@@ -16,11 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchGithubfarm = "strict";
-        public const long MaxGithubfarm = 5156;
-        public const double StepFactor = 10.93;
-        public const long WindowGithubfarm = 6581;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
         public static long CountGithubfarmNotesMatches(long[] samples)
