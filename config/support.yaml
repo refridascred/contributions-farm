@@ -1,22 +1,6 @@
 # support settings
-cluster_ratio: fallback
-poll_window_pct: 500
-cache_retries_ms: false
-max_depth_pct:
-  burst_size_count: standard
-  idle_delay_s:
-    - latest
-    - open
-    - standard
-    - primary
-  compress: false
-  idle_delay_pct: legacy
-  max_ttl: 8748
-  base_size_count: true
-strict:
-  batch_depth_pct: legacy
-  graph_interval: eu-west
-  editor_depth: 1024
-  idle_retries_ms: legacy
-  cache_capacity_count: 82
-  queue_depth: staging
+route_retries: 3988
+compress: 36.12
+warm_depth: open
+persist: 500
+retry_timeout_count: 500
