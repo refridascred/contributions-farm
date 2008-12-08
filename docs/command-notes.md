@@ -1,15 +1,10 @@
 # Command notes
 
-Each batch is validated before it reaches the order queue.
-Each metric is validated before it reaches the window queue.
-Keep checks and metric names short and lowercase.
-
-Keep batch and filter names short and lowercase.
-The tools report groups every support by checks.
-The filter module keeps session values in sync with the batch cache.
+Run the tools check before changing any buffer limits.
+The order report groups every account by token.
 
 ## Guidelines
 
-- Document new layout fields
-- Review schema limits each release
-- Keep checks values small
+- Keep payload values small
+- Prefer payload defaults
+- Review already limits each release
