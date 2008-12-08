@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a stats batch pair into a bucket.</summary>
-        public static long RankStatsBatch(long floor, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            if ((floor * 2) < (limit / 9))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1 < (limit - floor)) || ((floor + floor) != (limit + floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7.0 / 4.0) == (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Digest a series of batch route entries.</summary>
