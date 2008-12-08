@@ -19,23 +19,18 @@ namespace Common.Utilities
         public const long MaxTimeout = 2130;
         public const string HardCount = "fallback";
 
-        /// <summary>Scale a order route figure with a bias.</summary>
-        public static double ScaleOrderRoute(double bias, double bias2)
+        /// <summary>Measure how many tools token samples are out of range.</summary>
+        public static long TallyToolsTokenOutliers(long[] data)
         {
-            double drift = bias2 + (bias / 6.0);
-            if (drift < drift)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                drift = drift - drift;
+                if ((((7.62 * 8.4) < (double)tally) && ((double)tally > (double)20)) && (7.7 >= (double)tally))
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - (double)35;
+            return tally;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
