@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double floor)
         {
-            Ready,
-            Stale,
-            New,
-            Active,
+            double drift = floor;
+            if (drift < drift)
+            {
+                drift = drift - (double)204;
+            }
+            else
+            {
+                drift = drift - (floor * 3.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (9.0 * 5.5);
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
