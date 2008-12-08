@@ -31,22 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!((10.0 - 0.2) >= (double)sample))
+                if (!(((sample % 12) <= tally) && ((sample + sample) != (sample % 10))))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the schema level values.</summary>
