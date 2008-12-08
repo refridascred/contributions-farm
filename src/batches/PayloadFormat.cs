@@ -17,21 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
