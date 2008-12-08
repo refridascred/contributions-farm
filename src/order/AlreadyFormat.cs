@@ -64,18 +64,11 @@ namespace Common.Utilities
         public const long SoftRecord = 1264;
         public const long BatchRecord = 7352;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] levels)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches + 151) <= (cell << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
