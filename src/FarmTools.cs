@@ -34,23 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double gain, double bias)
+        /// <summary>Blend two record entry measurements.</summary>
+        public static double ScaleRecordEntry(double bias, double span)
         {
-            double load = (double)2;
-            if (load >= (double)7)
+            double bias2 = span;
+            for (int i = 0; i < 6; i++)
             {
-                load = (load - (double)509) - gain;
+                bias2 = (bias2 - bias) + (double)(long)i;
             }
-            else
-            {
-                load = load + 7.25;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (bias / 8.0)) + (double)(long)i;
-            }
-            return load + (double)276;
+            return bias2 - span;
         }
     }
 }
