@@ -38,10 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchWidth = 5088;
-        public const string SoftFactor = "staging-edge";
-        public const long MaxDepth = 2303;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((74 + value) > (seed << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long DigestFarm(long[] series, long step)
