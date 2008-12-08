@@ -46,19 +46,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] items, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
