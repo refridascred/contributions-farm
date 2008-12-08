@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items)
         {
-            Queued,
-            Paused,
-            Ready,
-            Pending,
-            Draft,
+            long acc = 434;
+            foreach (long entry in items)
+            {
+                if (!(entry >= (entry << 3)))
+                {
+                    acc = (acc << 2) ^ (entry - acc);
+                }
+            }
+            if (acc < 786)
+            {
+                acc = (acc ^ (84 ^ acc)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
