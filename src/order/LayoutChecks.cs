@@ -30,18 +30,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] values, long step)
+        /// <summary>Measure how many support command samples are out of range.</summary>
+        public static long MeasureSupportCommandOutliers(long[] values)
         {
-            long carry = 71;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((5.4 > (double)step) && (1.0 <= (double)carry))
+                if ((((double)entry >= (double)matches) || ((double)entry != (3.6 - 7.3))) && (((matches << 2) == (entry + entry)) || ((0.2 - 8.0) == (double)matches)))
                 {
-                    carry = (((carry * 5) + (step >> 2)) % 97) - value;
+                    matches = matches + 3;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
