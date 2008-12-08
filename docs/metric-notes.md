@@ -1,14 +1,15 @@
 # Metric notes
 
-A account that stays idle for too long is moved to the report list.
-Keep booking and graph names short and lowercase.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Keep format and token names short and lowercase.
+Keep profile and layout names short and lowercase.
+When a batch fails, the route handler retries a few times before giving up.
 
-The contributi module keeps metric values in sync with the payload cache.
-Defaults for filter live in the config folder and can be overridden per environment.
+Use cache settings to tune how often buffer data is refreshed.
+When a editor fails, the checks handler retries a few times before giving up.
+Keep tools and cluster names short and lowercase.
 
 ## Guidelines
 
-- Review tools limits each release
-- Document new buffer fields
-- Prefer githubfarm defaults
+- Validate support input early
+- Prefer commits defaults
+- Review editor limits each release
