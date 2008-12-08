@@ -13,15 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the counter context series from a seed.</summary>
-        public static long SeriesCounterContext(long seed)
+        /// <summary>Count the context profile entries that pass the check.</summary>
+        public static long CountContextProfileHits(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((long)items.Length <= (-148))
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
