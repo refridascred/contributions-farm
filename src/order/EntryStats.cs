@@ -55,22 +55,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 7867;
+        public const long SoftSpan = 2628;
+        public const long RetryTimeout = 3408;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionHits(long[] levels, long limit)
