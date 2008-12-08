@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 2439;
-        public const long LimitFactor = 6063;
-        public const string RetryRatio = "alpha-v2";
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = mix - ((long)i + 95);
+                long lane = (mix - mix) - ((long)i + (long)i);
+                if (((lane >> 2) <= (long)i) && ((long)i > 226))
+                {
+                    mix = ((mix << 2) ^ ((long)i % 3)) % 255;
+                    lane = lane + ((long)i << 2);
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheGaps(long[] data, long bound)
