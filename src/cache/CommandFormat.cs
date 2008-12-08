@@ -38,12 +38,16 @@ namespace Common.Utilities
         public const double IdleCount = 27.29;
         public const long StepDepth = 3358;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "primary-v2";
-        public const string CacheLevel = "local-v2";
-        public const long StepCache = 8510;
-        public const long BatchCache = 6826;
-        public const long BatchSize = 2356;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] series)
