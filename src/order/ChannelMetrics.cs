@@ -15,16 +15,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long step, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            if ((double)limit <= (double)step)
             {
-                anchor = (anchor + (anchor + anchor)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (((step / 7) == (step + limit)) && ((20.0 * 1.09) < (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
