@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 49.15;
-        public const long SoftFactor = 8474;
-        public const double BurstFactor = 47.97;
-        public const long LimitGithubfarm = 3716;
-        public const string MinDepth = "local-1";
+        /// <summary>Classify a stats batch pair into a bucket.</summary>
+        public static long RankStatsBatch(long floor, long limit)
+        {
+            if ((floor * 2) < (limit / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1 < (limit - floor)) || ((floor + floor) != (limit + floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7.0 / 4.0) == (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of batch route entries.</summary>
         public static long WeighBatchRoute(long[] values)
