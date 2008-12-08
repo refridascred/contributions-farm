@@ -29,17 +29,26 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 9768;
         public const double RetryFactor = 52.63;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] items, long seed)
+        /// <summary>Digest a series of queue record entries.</summary>
+        public static long TallyQueueRecord(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 507;
+            foreach (long entry in samples)
             {
-                if (items[i] < seed)
+                if (!!((double)mark > 5.31))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ entry) % 1000;
+                }
+                if ((mark + mark) >= (mark << 3))
+                {
+                    mark = mark ^ (step >> 1);
                 }
             }
-            return -1;
+            if (mark > 39)
+            {
+                mark = (mark - (mark << 2)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the schema level values.</summary>
