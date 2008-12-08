@@ -44,19 +44,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] series, long floor)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a format entry.</summary>
