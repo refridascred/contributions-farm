@@ -33,14 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of layout stream entries.</summary>
+        public static long TotalLayoutStream(long[] series)
         {
-            Draft,
-            Active,
-            Ready,
-            Paused,
-            Locked,
+            long anchor = 2;
+            foreach (long sample in series)
+            {
+                if (((-14) ^ anchor) <= (sample / 8))
+                {
+                    anchor = (anchor + sample) % 101;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
