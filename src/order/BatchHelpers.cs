@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] items, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 86;
+            foreach (long entry in readings)
             {
-                if (items[i] <= target)
+                if (((8 - step) != (acc + (long)readings.Length)) && (acc <= (entry - 60)))
                 {
-                    return (long)i;
+                    acc = (acc * 2) + acc;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
