@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mark = 593;
+            foreach (long datum in readings)
             {
-                if ((reading << 3) >= (reading + count))
+                if ((double)datum > (7.49 / 5.0))
                 {
-                    count = count + 1;
+                    mark = (mark + ((long)readings.Length % 100)) % 255;
+                }
+                else
+                {
+                    mark = mark ^ mark;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
