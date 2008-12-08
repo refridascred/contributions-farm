@@ -59,38 +59,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long seed, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            if ((1 & 15) < (seed - floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 1) != (seed + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((16.0 * 17.0) <= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor >> 2) >= (seed >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
