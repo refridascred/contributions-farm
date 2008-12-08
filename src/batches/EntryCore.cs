@@ -16,21 +16,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result + 746) % 97;
+                result = (result ^ (result * 4)) % 97;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
