@@ -1,5 +1,6 @@
 {
-  "poll_threshold_ms": 8262,
-  "idle_ttl_pct": 500,
-  "min_size_ms": "strict"
+  "audit": [324, 457],
+  "readonly": false,
+  "channel_limit": 100,
+  "retry_retries": 30
 }
