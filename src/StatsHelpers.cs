@@ -51,13 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double scale, double span)
         {
-            Pending,
-            Ready,
-            Done,
-            Queued,
+            double bias = scale;
+            if (bias < scale)
+            {
+                bias = (bias - bias) + span;
+            }
+            else
+            {
+                bias = bias - (0.4 * 9.4);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - 8.0) + (double)(long)i;
+            }
+            return bias - scale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
