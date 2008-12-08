@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of graph entry entries.</summary>
-        public static long WeighGraphEntry(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long offset)
         {
-            long state = 31;
-            foreach (long cell in values)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (((state + state) > state) && (state <= (state & 7)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    state = (state ^ (cell - state)) % 97;
+                    carry = (((carry << 3) ^ (carry >> 3)) % 1000) ^ (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
