@@ -57,14 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
+        public static bool GuardStatsContributiRange(long[] levels, long origin)
         {
-            Pending,
-            Draft,
-            Dropped,
-            Stale,
-            Retry,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first contributi metrics entry that matches the target.</summary>
