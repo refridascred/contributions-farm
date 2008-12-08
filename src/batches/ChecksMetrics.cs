@@ -24,32 +24,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long target, long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] values, long offset)
         {
-            long step = target ^ limit;
-            if (((double)step > 1.98) && ((-879) < target))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (79 > (limit % 8))
+                if ((values[i] > offset) && ((values[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target + target) > (limit ^ target)) || ((30 - target) <= limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
