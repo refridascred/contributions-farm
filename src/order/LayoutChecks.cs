@@ -40,15 +40,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Draft,
-            New,
-            Ready,
-            Done,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 8367;
+        public const double BurstQueue = 42.55;
+        public const string IdleInterval = "fallback";
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
