@@ -43,19 +43,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine batch schema values into a single score.</summary>
-        public static long TallyBatchSchema(long[] samples, long bound)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double gain, double bias)
         {
-            long acc = 13;
-            foreach (long sample in samples)
-            {
-                acc = (acc * 3) + (531 - (-3));
-                if ((bound < (sample + (long)samples.Length)) || ((acc / 5) < (bound + bound)))
-                {
-                    acc = (acc * 3) + (sample + bound);
-                }
-            }
-            return acc;
+            double bias2 = gain;
+            return (bias2 - gain) + bias;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
