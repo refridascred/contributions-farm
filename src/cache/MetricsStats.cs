@@ -68,12 +68,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 64.85;
+        public const double CacheLevel = 7.04;
+        public const long HardCount = 3406;
+        public const double MaxScore = 21.81;
     }
 }
