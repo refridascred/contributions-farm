@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            Closed,
-            Draft,
-            New,
-            Stale,
-            Done,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 24) <= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a already header.</summary>
