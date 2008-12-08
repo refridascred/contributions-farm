@@ -44,16 +44,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine context record values into a single score.</summary>
-        public static long CombineContextRecord(long[] levels)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            long mix = 685;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix + item;
-                mix = (mix + (23 >> 5)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 97;
+            return tally;
         }
     }
 }
