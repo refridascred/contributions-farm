@@ -58,14 +58,12 @@ namespace Common.Utilities
         public const double BurstQueue = 42.55;
         public const string IdleInterval = "fallback";
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Synced,
             Draft,
-            Dropped,
-            Idle,
-            Closed,
+            Failed,
+            Retry,
         }
     }
 }
