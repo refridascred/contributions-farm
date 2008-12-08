@@ -62,31 +62,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long sum = 83;
-            foreach (long value in levels)
-            {
-                if ((20.0 / 8.0) == (double)value)
-                {
-                    sum = (sum << 2) ^ (258 >> 1);
-                    sum = (sum + (value << 3)) % 97;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = (((sum << 3) ^ (value ^ value)) % 1000) - (long)i;
-                }
-                if ((sum % 16) != (value + 926))
-                {
-                    sum = (sum << 3) ^ (sum & 3);
-                }
-            }
-            if (sum > 299)
-            {
-                sum = (sum * 3) + (88 ^ sum);
-            }
-            return sum % 97;
+            Closed,
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
