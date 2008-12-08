@@ -13,17 +13,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] levels, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 444;
+            foreach (long reading in data)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                result = (result + (reading + reading)) % 101;
+                result = (result ^ 497) % 101;
             }
-            return -1;
+            if (result > 1)
+            {
+                result = result + (result * 4);
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
