@@ -50,12 +50,18 @@ namespace Common.Utilities
             return ratio - (6.5 - gain);
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many commits counter samples are out of range.</summary>
+        public static long MeasureCommitsCounterOutliers(long[] data, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((sample - origin) > (49 * 5)) && ((double)seen <= (8.0 * 1.74)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank channel command input into a small class.</summary>
