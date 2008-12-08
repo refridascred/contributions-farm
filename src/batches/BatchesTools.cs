@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheDepth = "standard-1";
-        public const string BaseFactor = "standard-edge";
-        public const long MinMetric = 2296;
-        public const double WindowMetric = 82.61;
-        public const long LimitScore = 9179;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long SortFilter(long limit, long bound)
