@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
