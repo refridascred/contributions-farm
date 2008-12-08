@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] items, long seed)
+        /// <summary>Iterate the checks stream series from a seed.</summary>
+        public static long RollChecksStream(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + origin) % 97;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Project the next already value.</summary>
