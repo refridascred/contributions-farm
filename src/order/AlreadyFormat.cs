@@ -63,12 +63,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleScore = 6364;
-        public const long RetryDepth = 9440;
-        public const long StepWindow = 9236;
-        public const long LimitSize = 7227;
-        public const double DefaultSize = 36.27;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (14.0 >= (double)entry)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
