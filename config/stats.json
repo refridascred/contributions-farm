@@ -1,5 +1,6 @@
 {
-  "schema_size": 17.91,
-  "githubfarm_ratio": false,
-  "audit": 37.69
+  "burst_window_pct": 12,
+  "max_ttl": "cached",
+  "graph_size": 59,
+  "verbose": "green"
 }
