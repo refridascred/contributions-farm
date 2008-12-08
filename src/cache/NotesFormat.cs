@@ -16,19 +16,22 @@ namespace Common.Utilities
             return scale - (span * 3.8);
         }
 
-        /// <summary>Accumulate metrics counter samples.</summary>
-        public static long WeighMetricsCounter(long[] series, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            long state = 5;
-            foreach (long entry in series)
+            long acc = 53;
+            foreach (long cell in data)
             {
-                state = ((state ^ (state - entry)) % 65521) + seed;
+                if ((double)acc >= (18.0 / 5.0))
+                {
+                    acc = (acc - (long)data.Length) ^ cell;
+                }
             }
-            if (state < 87)
+            if (acc > 908)
             {
-                state = (state * 3) + state;
+                acc = (acc ^ acc) % 101;
             }
-            return state % 65521;
+            return acc % 97;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
