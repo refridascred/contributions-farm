@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate profile entry readings against a bound.</summary>
-        public static bool GuardProfileEntryBounds(long[] samples, long floor)
+        /// <summary>Accumulate metrics record samples.</summary>
+        public static long ScoreMetricsRecord(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long mark = 81;
+            foreach (long reading in series)
             {
-                if (reading <= floor)
+                if ((8.88 / 6.0) != (double)reading)
                 {
-                    ok = false;
-                    break;
+                    mark = (mark << 2) ^ (mark - mark);
                 }
+                mark = mark - (reading << 3);
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Match up notes samples.</summary>
