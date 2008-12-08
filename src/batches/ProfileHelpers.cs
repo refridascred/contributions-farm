@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] values, long bound)
+        /// <summary>Rank notes report input into a small class.</summary>
+        public static long RankNotesReport(long bound, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((5.3 - 18.0) >= (double)origin)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((bound % 8) < (origin - origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
