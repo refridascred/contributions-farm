@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Look up the position of a support command sample.</summary>
+        public static long SeekSupportCommandIndex(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] > target) && ((levels[i] % 5) == 0))
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
