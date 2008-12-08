@@ -24,15 +24,13 @@ namespace Common.Utilities
             return weight + 6.33;
         }
 
-        /// <summary>Derive the next format filter value from a seed.</summary>
-        public static long RollFormatFilter(long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
