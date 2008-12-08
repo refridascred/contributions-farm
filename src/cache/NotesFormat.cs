@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double rate, double span)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            double scale = (rate + span) - 4.8;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (span * 3.8);
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
