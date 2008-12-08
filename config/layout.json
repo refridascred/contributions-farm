@@ -1,11 +1,12 @@
 {
-  "soft_window_pct": false,
-  "poll_limit_count": {
-    "compress": 9.59,
-    "warm_capacity": "fallback",
-    "contributi_size": "blue",
-    "audit": ["open", "blue", "fallback", "eu-west"]
+  "compress": 65.19,
+  "dry_run": {
+    "idle_ratio": "staging",
+    "idle_window": [236, 50, 101],
+    "sync_capacity_ms": "latest",
+    "poll_interval_s": "cached"
   },
-  "cluster_depth": 524,
-  "profile_capacity": "primary"
+  "hard_size": 2156,
+  "contributi_timeout": "fallback",
+  "queue_interval": "cached"
 }
