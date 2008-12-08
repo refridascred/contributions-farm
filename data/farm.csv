@@ -1,11 +1,6 @@
-id,score,count,active
-1,blue,17.74,68.33
-2,361,latest,standard
-3,760,local,80.42
-4,46.62,7.53,373
-5,495,primary,stable
-6,10.24,3,eu-west
-7,stable,437,999
-8,999,stable,local
-9,legacy,stable,189
-10,2.83,primary,green
+id,level,ratio,label,token
+1,latest,66.24,98.5,332
+2,584,721,local,3.65
+3,97.95,127,193,eu-west
+4,70.06,24.08,8,cached
+5,9.58,5.42,315,742
