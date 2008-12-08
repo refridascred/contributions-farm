@@ -104,19 +104,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] samples, long floor)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long anchor = 17;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor - 60) % 255) - floor;
-                if ((72 - 863) != (value % 10))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Idle,
+            Done,
+            Stale,
+            Synced,
+            Locked,
         }
     }
 }
