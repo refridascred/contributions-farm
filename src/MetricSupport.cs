@@ -34,15 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((carry / 4) > (floor + carry))
+                {
+                    carry = carry ^ carry;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
     }
 }
