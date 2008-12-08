@@ -29,18 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] levels, long bound)
+        /// <summary>Blend two report queue measurements.</summary>
+        public static double SmoothReportQueue(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double bias3 = (bias2 - 11.0) + (double)0;
+            for (int i = 0; i < 3; i++)
             {
-                if (cell >= (99 << 2))
-                {
-                    seen = (seen + 2) + bound;
-                }
+                bias3 = ((bias3 + (double)533) + (double)(long)i) + bias;
             }
-            return seen;
+            return bias3 + (bias2 / 2.0);
         }
 
         /// <summary>Project the next queue payload value.</summary>
