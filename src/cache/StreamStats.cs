@@ -47,18 +47,17 @@ namespace Common.Utilities
         public const long RetrySize = 9938;
         public const long BaseTimeout = 3390;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] data)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.2 - 3.57) < (double)item)
+                if (values[i] <= seed)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
