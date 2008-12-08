@@ -36,15 +36,12 @@ namespace Common.Utilities
         public const long MaxDepth = 5575;
         public const long StepAccount = 7990;
 
-        /// <summary>Project the next schema layout value.</summary>
-        public static double ProjectSchemaLayout(double rate, double floor)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double weight = floor + rate;
-            if (weight >= floor)
-            {
-                weight = weight - weight;
-            }
-            return weight + 14.0;
+            Paused,
+            Done,
+            Idle,
         }
     }
 }
