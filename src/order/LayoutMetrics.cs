@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 751;
-        public const string DefaultWidth = "staging-1";
-        public const long MaxScore = 6366;
-        public const string BatchProfile = "standard-v2";
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Ready,
+            Dropped,
+            Closed,
+            New,
+            Queued,
+        }
 
         /// <summary>Grade a format tools value against two limits.</summary>
         public static long SortFormatTools(long target, long step)
