@@ -1,4 +1,26 @@
 # entry settings
-stats_interval: true
-idle_retries_ms: 6.06
-hard_depth_pct: fallback
+strict: 100
+cache_size: true
+persist:
+  default_threshold_pct: stable
+  hard_delay_pct:
+    strict: green
+    min_delay_ms:
+      - 187
+      - 165
+      - 412
+    flush_depth_s: 60
+  soft_limit_pct: true
+  soft_ratio_ms: 4573
+  persist: strict
+  hard_retries_ms:
+    verbose: 89.04
+    batch_size: fallback
+    report_ratio: 91
+base_delay:
+  counter_retries: 25.52
+  support_limit: stable
+  soft_ratio_s: 250
+  burst_interval_ms: 55.8
+cache_limit_ms: cached
+base_ratio: 53
