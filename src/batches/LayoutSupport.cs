@@ -12,10 +12,10 @@ namespace Common.Utilities
         public const long HardCache = 1315;
         public const long RetryInterval = 6415;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxWidth = "legacy-1";
-        public const string BaseContext = "stable-edge";
-        public const double HardLevel = 43.6;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchWidth = 6962;
+        public const string BatchOrder = "standard";
+        public const double BurstOrder = 50.67;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandMatches(long[] data, long offset)
