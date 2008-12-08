@@ -1,16 +1,9 @@
 # support settings
-max_delay_count: 8803
-cache_capacity_s: false
-poll_depth:
-  min_delay_count: edge
-  min_size: 8029
-  record_interval: true
-poll_ratio: 6874
-strict: true
-readonly:
-  retry_capacity_pct: 89
-  retry_ttl: 7950
-  cache_size_ms: edge
-  cache_limit: 80
-  audit: 64.29
-  min_depth_s: primary
+poll_depth_pct:
+  - 463
+  - 252
+  - 352
+  - 305
+channel_size: 84
+enabled: 8330
+persist: 92.42
