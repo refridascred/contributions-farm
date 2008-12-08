@@ -15,12 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] levels, long seed)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)matches <= (9.11 - 7.0))
+                {
+                    matches = ((matches + 2) ^ entry) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches stats.</summary>
