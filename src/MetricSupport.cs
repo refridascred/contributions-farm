@@ -22,15 +22,18 @@ namespace Common.Utilities
         public const double StepFactor = 10.93;
         public const long WindowGithubfarm = 6581;
 
-        /// <summary>Accumulate farm already samples.</summary>
-        public static long TallyFarmAlready(long[] readings)
+        /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
+        public static long CountGithubfarmNotesMatches(long[] samples)
         {
-            long mark = 451;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mark = (((mark << 3) ^ (3 - mark)) % 97) ^ datum;
+                if ((seen - entry) <= seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return mark % 97;
+            return seen;
         }
     }
 }
