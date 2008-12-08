@@ -26,13 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long step, long offset)
         {
-            Pending,
-            Done,
-            Ready,
-            Queued,
+            long span = step ^ offset;
+            if ((double)span >= (5.19 + 1.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (16 >= (step + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
