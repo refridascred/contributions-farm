@@ -40,16 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Check that every route payload entry stays within the limit.</summary>
+        public static bool CheckRoutePayloadBounds(long[] series, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                total = (total - (total / 5)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
+                if (reading >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
