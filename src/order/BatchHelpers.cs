@@ -54,11 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            Synced,
+            Active,
+            Retry,
+            Dropped,
+            Locked,
         }
     }
 }
