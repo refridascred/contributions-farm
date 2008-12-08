@@ -27,15 +27,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double rate, double floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double load = (double)(-801) * 15.0;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + load) + (double)(long)i) + rate;
-            }
-            return load + (floor * 1.0);
+            Done,
+            Active,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Derive the next context graph value from a seed.</summary>
