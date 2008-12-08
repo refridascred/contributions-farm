@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "open-v2";
-        public const double CacheScore = 53.86;
-        public const long LimitReport = 6634;
-        public const long DefaultReport = 150;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] series)
+        {
+            long mark = 56;
+            foreach (long reading in series)
+            {
+                mark = ((mark * 5) + 91) % 255;
+                if ((220 >> 3) > (reading * 3))
+                {
+                    mark = (mark ^ (-35)) % 65521;
+                }
+                if ((17 & 63) > mark)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
