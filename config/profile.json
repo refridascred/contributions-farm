@@ -1,7 +1,5 @@
 {
-  "batch_interval": "open",
-  "record_window": 64,
-  "stream_timeout": [73, 268, 472, 460],
-  "order_window": 3799,
-  "payload_delay": 23.86
+  "retry_threshold": 75.46,
+  "enabled": ["standard", "local"],
+  "channel_interval": 10.25
 }
