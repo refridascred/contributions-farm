@@ -63,22 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (14.0 >= (double)entry)
+                if ((hits / 2) >= reading)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the metrics state values.</summary>
