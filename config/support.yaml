@@ -1,9 +1,12 @@
 # support settings
-filter_ttl: 22.34
-burst_size_ms: false
-strict: 29.52
-cache_interval_count:
+enabled: true
+editor_delay:
+  - staging
+  - blue
+  - standard
   - eu-west
-  - green
-  - eu-west
-min_interval_count: 100
+warm_ratio_ms: 39
+warm_retries_ms:
+  - 296
+  - 45
+  - 167
