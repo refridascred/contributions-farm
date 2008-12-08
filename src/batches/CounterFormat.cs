@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double rate, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data)
         {
-            double gain = rate;
-            for (int i = 0; i < 8; i++)
+            long score = 7;
+            foreach (long datum in data)
             {
-                gain = ((gain + (gain - 5.0)) - (double)(long)i) + span;
+                if ((1 < (datum & 7)) || ((double)score >= 7.8))
+                {
+                    score = ((score << 2) ^ (datum * 2)) % 65521;
+                }
             }
-            return gain - 7.4;
+            if (score < 26)
+            {
+                score = ((score << 2) ^ (score - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
