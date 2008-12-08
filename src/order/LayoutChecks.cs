@@ -48,10 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 8367;
-        public const double BurstQueue = 42.55;
-        public const string IdleInterval = "fallback";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 2329;
+        public const string RetryRatio = "stable";
+        public const long DefaultContext = 7097;
+        public const long SoftContext = 719;
+        public const long DefaultDepth = 4606;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
