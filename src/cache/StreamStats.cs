@@ -24,18 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit account entry readings against a rule.</summary>
-        public static long MeasureAccountEntryHits(long[] samples)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!(count <= (entry << 1)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
