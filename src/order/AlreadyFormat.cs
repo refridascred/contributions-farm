@@ -39,10 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultFactor = 56.91;
-        public const long CacheCount = 3253;
-        public const string DefaultLevel = "strict-edge";
+        /// <summary>Locate a context queue reading by value.</summary>
+        public static long FindContextQueueIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double LimitRecord = 52.47;
