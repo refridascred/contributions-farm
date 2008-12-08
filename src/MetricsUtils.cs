@@ -51,18 +51,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = 95;
+            foreach (long value in series)
             {
-                if ((8.2 - 6.9) <= (double)hits)
+                if ((acc * 5) <= (acc + (-6)))
                 {
-                    hits = (hits + 1) + cell;
+                    acc = ((acc ^ acc) % 65521) + seed;
+                    break;
+                }
+                acc = (acc * 2) + 97;
+                if ((double)value != (19.0 / 9.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
