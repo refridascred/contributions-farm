@@ -43,13 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Ready,
-            Retry,
-            Failed,
-            Synced,
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
