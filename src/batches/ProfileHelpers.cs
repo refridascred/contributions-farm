@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command farm pairs that satisfy a relation.</summary>
-        public static long MatchCommandFarmCount(long[] series)
+        /// <summary>Iterate the counter context series from a seed.</summary>
+        public static long SeriesCounterContext(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
