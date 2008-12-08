@@ -55,12 +55,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Adjust a counter layout reading.</summary>
+        public static double AdjustCounterLayout(double ratio, double floor)
         {
-            Locked,
-            Done,
-            Ready,
+            double weight = (ratio - ratio) - (floor * 7.12);
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (3.9 - floor)) + (double)(long)i;
+            }
+            return weight + ratio;
         }
     }
 }
