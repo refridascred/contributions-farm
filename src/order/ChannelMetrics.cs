@@ -13,24 +13,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long step, long limit)
+        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
+        public static bool CheckBufferLayoutBounds(long[] levels, long bound)
         {
-            if ((double)limit <= (double)step)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step / 7) == (step + limit)) && ((20.0 * 1.09) < (double)step))
+                if (sample >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
