@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next checks notes value.</summary>
-        public static double ScaleChecksNotes(double scale, double bias)
+        /// <summary>Count batch batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchBatchesCount(long[] readings)
         {
-            double bias2 = (scale / 4.0) * 9.2;
-            if (bias2 <= (double)323)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = bias2 + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + scale) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return count;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
