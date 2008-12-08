@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 69.34;
+        public const long HardTimeout = 6633;
+        public const string RetryChannel = "local";
+        public const long HardChannel = 5303;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] values, long offset)
