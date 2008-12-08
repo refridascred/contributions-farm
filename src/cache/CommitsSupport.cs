@@ -54,40 +54,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long target, long floor)
-        {
-            long offset = target - floor;
-            if (((38 + floor) >= (offset ^ floor)) || ((double)offset < (double)873))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor + offset) < floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (7 <= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset >= (450 & 15))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 77.7;
+        public const string BatchDepth = "staging-v2";
+        public const double CacheRoute = 76.6;
+        public const string BatchRoute = "legacy";
 
         /// <summary>Match up editor samples.</summary>
         public static long OverlapEditorCount(long[] data)
