@@ -1,8 +1,11 @@
 {
-  "sync_size_count": 4291,
-  "default_interval_count": "legacy",
-  "retry_threshold_s": "staging",
-  "default_ratio": 40.32,
-  "strict": 34.63,
-  "batches_delay": "edge"
+  "counter_interval": {
+    "sync_ttl_pct": "blue",
+    "graph_timeout": 3168,
+    "readonly": [207, 305, 428],
+    "cache_depth_s": "strict"
+  },
+  "audit": "strict",
+  "window_delay": ["fallback", "primary"],
+  "retry_limit_ms": 30
 }
