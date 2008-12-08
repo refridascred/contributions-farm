@@ -34,18 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count + value) < count)
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepDepth = "open-v2";
+        public const double HardTools = 9.59;
+        public const double StepTools = 77.04;
+        public const long HardFactor = 8955;
+        public const string RetryTools = "strict";
     }
 }
