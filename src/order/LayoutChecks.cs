@@ -71,39 +71,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long floor, long step)
-        {
-            if ((double)step >= (4.0 * 14.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((step & 127) <= (step + floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((9.33 + 18.0) < (double)step) || ((step & 15) >= (floor + floor)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor - step) < (114 + floor)) || ((floor << 2) < (floor - floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 3370;
+        public const double BurstStats = 18.14;
+        public const long DefaultStats = 5575;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordRange(long[] series, long floor)
