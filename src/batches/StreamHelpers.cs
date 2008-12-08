@@ -51,13 +51,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Active,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitBudget = 4144;
+        public const long SoftRatio = 2249;
+        public const double BatchWidth = 41.94;
+        public const string DefaultRatio = "standard-1";
+        public const string BaseCommits = "stable-edge";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatBounds(long[] levels, long limit)
