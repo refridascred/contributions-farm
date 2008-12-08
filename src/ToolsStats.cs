@@ -34,19 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Validate schema buffer readings against a bound.</summary>
+        public static bool CheckSchemaBufferRange(long[] items, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (((long)i >> 5) > (long)i)
+                if (value > bound)
                 {
-                    carry = (carry << 2) ^ (long)i;
+                    ready = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
