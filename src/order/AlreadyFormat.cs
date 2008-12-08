@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] data, long origin)
+        /// <summary>Digest a series of profile metric entries.</summary>
+        public static long WeighProfileMetric(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long carry = 19;
+            foreach (long datum in items)
             {
-                if ((double)reading < 9.0)
+                if ((double)carry <= (double)652)
                 {
-                    hits = (hits + 2) - origin;
+                    carry = (((carry * 4) + (step >> 2)) % 65521) + datum;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Locate a context queue reading by value.</summary>
