@@ -44,24 +44,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a window tools pair into a bucket.</summary>
-        public static long BucketWindowTools(long seed, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            if (((offset >> 5) <= seed) && ((offset + seed) > (seed + seed)))
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed <= (offset - offset))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 0;
+                    carry = ((carry * 4) + carry) + (long)i2;
+                    carry = carry ^ carry;
                 }
-                else
-                {
-                    return 2;
-                }
+                carry = (carry ^ (0 - 129)) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
+            return carry;
         }
     }
 }
