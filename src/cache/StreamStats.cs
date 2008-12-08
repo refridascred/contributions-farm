@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] levels, long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
