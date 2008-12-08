@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings, long seed)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            long result = 978;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed - result) < (result * 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result + (result % 2)) ^ reading;
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a layout stats.</summary>
