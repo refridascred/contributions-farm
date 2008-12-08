@@ -51,12 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 52.47;
-        public const double MaxLevel = 90.78;
-        public const long MinRecord = 6344;
-        public const long SoftRecord = 1264;
-        public const long BatchRecord = 7352;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleScore = 6364;
+        public const long RetryDepth = 9440;
+        public const long StepWindow = 9236;
+        public const long LimitSize = 7227;
+        public const double DefaultSize = 36.27;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
