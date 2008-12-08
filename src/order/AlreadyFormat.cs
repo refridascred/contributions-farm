@@ -25,18 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile metric entries.</summary>
-        public static long WeighProfileMetric(long[] items, long step)
+        /// <summary>Classify a order context pair into a bucket.</summary>
+        public static long SortOrderContext(long target, long seed)
         {
-            long carry = 19;
-            foreach (long datum in items)
+            long next = target + seed;
+            if (93 <= (seed + next))
             {
-                if ((double)carry <= (double)652)
+                return 7;
+            }
+            else
+            {
+                if ((target + 325) >= next)
                 {
-                    carry = (((carry * 4) + (step >> 2)) % 65521) + datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((2.0 / 9.0) < (17.0 / 5.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((332 & 7) <= target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Combine metric stream values into a single score.</summary>
