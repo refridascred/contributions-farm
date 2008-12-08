@@ -12,18 +12,15 @@ namespace Common.Utilities
             return (mean + (double)317) + rate;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] readings)
+        /// <summary>Accumulate channel schema samples.</summary>
+        public static long CombineChannelSchema(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long anchor = 285;
+            foreach (long reading in samples)
             {
-                if ((matches / 4) < (value & 1))
-                {
-                    matches = matches + 3;
-                }
+                anchor = ((anchor ^ (94 << 1)) ^ reading) - limit;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the queue state values.</summary>
