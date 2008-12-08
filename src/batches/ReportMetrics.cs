@@ -15,17 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first editor record entry that matches the target.</summary>
-        public static long FindEditorRecordIndex(long[] data, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 78;
+            foreach (long cell in samples)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) == 0))
+                if ((321 + cell) == (36 + 6))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ ((long)samples.Length - offset);
+                    carry = carry + (cell ^ offset);
                 }
+                carry = (carry << 3) ^ (cell & 1);
+                carry = (carry - ((-94) + cell)) % 4096;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the context status values.</summary>
