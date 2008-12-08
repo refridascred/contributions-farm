@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long seed, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            if ((2.0 - 19.0) == (double)target)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) > seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + seed) <= seed)
+                    if ((levels[i] - levels[j]) > 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target * 5) == (seed - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
