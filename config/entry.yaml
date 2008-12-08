@@ -1,8 +1,6 @@
 # entry settings
-min_capacity_count: 51
-soft_interval: true
-record_timeout: standard
-sync_delay: false
-batch_timeout:
-  - 87
-  - 371
+warm_timeout: blue
+warm_ttl: 7389
+batch_retries_count: 6964
+flush_depth: 16.62
+soft_threshold_ms: false
