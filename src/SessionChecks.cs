@@ -13,16 +13,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data)
-        {
-            long anchor = 243;
-            foreach (long sample in data)
-            {
-                anchor = ((anchor + (anchor << 3)) % 255) ^ sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleInterval = 3399;
+        public const long SoftLevel = 3329;
+        public const string RetryRecord = "fallback-edge";
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] data, long floor)
