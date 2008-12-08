@@ -1,14 +1,11 @@
 {
-  "soft_threshold_pct": {
-    "idle_threshold": {
-      "entry_window": 1184,
-      "metrics_timeout": "standard",
-      "flush_delay_s": 31.31,
-      "verbose": true
-    },
-    "dry_run": "staging",
-    "enabled": [401, 307, 74, 469]
+  "soft_window_pct": false,
+  "poll_limit_count": {
+    "compress": 9.59,
+    "warm_capacity": "fallback",
+    "contributi_size": "blue",
+    "audit": ["open", "blue", "fallback", "eu-west"]
   },
-  "persist": 500,
-  "tools_depth": 100
+  "cluster_depth": 524,
+  "profile_capacity": "primary"
 }
