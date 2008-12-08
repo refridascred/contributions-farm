@@ -12,17 +12,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] readings, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = bias;
+            if (drift <= (ratio / 4.0))
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                drift = drift - bias;
             }
-            return -1;
+            else
+            {
+                drift = drift - (double)8;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - 3.2) + (double)(long)i;
+            }
+            return drift - (double)49;
         }
 
         /// <summary>Blend two entry measurements.</summary>
