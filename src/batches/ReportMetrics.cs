@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            Ready,
-            Stale,
-            Locked,
-            Failed,
-            New,
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((floor ^ 497) >= floor)
+                {
+                    carry = (carry << 3) ^ ((long)i - floor);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the metrics state values.</summary>
