@@ -1,11 +1,5 @@
 {
-  "counter_interval": {
-    "sync_ttl_pct": "blue",
-    "graph_timeout": 3168,
-    "readonly": [207, 305, 428],
-    "cache_depth_s": "strict"
-  },
-  "audit": "strict",
-  "window_delay": ["fallback", "primary"],
-  "retry_limit_ms": 30
+  "default_retries": false,
+  "warm_capacity_pct": ["fallback", "stable", "standard"],
+  "already_ratio": "strict"
 }
