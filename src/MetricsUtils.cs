@@ -55,15 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            New,
+            Paused,
+            Active,
+            Draft,
         }
     }
 }
