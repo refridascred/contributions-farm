@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long target, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = target - offset;
+            if ((next / 3) <= (next * 2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((4 - next) <= offset)
                 {
-                    if ((data[i] - data[j]) != 18)
+                    return 0;
+                }
+                else
+                {
+                    if ((target - next) <= (offset % 64))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
