@@ -16,22 +16,21 @@ namespace Common.Utilities
             return scale - (span * 3.8);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long acc = 53;
-            foreach (long cell in data)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)acc >= (18.0 / 5.0))
+                if ((seed + state) != (59 % 64))
                 {
-                    acc = (acc - (long)data.Length) ^ cell;
+                    state = state - (state + seed);
+                    state = (state ^ (seed >> 5)) % 4096;
                 }
+                state = ((state * 5) + ((long)i / 7)) % 101;
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (acc > 908)
-            {
-                acc = (acc ^ acc) % 101;
-            }
-            return acc % 97;
+            return state;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
