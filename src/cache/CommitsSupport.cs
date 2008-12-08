@@ -45,18 +45,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double scale = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (((count >> 5) <= (entry - count)) && ((double)count <= (double)entry))
-                {
-                    count = count + 2;
-                }
+                scale = ((scale - (bias * 4.6)) - (double)(long)i) + rate;
             }
-            return count;
+            return scale + scale;
         }
 
         /// <summary>Compare every pair of already graph readings.</summary>
