@@ -20,21 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry - limit) % 97;
+                carry = carry + carry;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
