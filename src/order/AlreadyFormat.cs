@@ -39,13 +39,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Queued,
-            Done,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultFactor = 56.91;
+        public const long CacheCount = 3253;
+        public const string DefaultLevel = "strict-edge";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitBudget = 9376;
