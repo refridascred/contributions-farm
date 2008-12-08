@@ -33,16 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long CombineBufferBatch(long[] readings)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long total = 513;
-            foreach (long reading in readings)
-            {
-                total = ((total << 2) ^ total) % 4096;
-                total = ((total << 2) ^ reading) % 65521;
-            }
-            return total % 65521;
+            Draft,
+            Active,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
