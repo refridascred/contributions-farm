@@ -19,17 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] levels, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((8.0 * 5.8) <= (double)origin)
             {
-                if (levels[i] > target)
+                return 0;
+            }
+            else
+            {
+                if (origin < (limit + limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit < (2.29 + 8.95))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
