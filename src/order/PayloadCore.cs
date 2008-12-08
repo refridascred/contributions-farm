@@ -22,25 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks metric value against two limits.</summary>
-        public static long ClassifyChecksMetric(long offset, long step)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long next = offset + step;
-            if ((next - step) > (next * 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next << 3) >= 306)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the support status values.</summary>
