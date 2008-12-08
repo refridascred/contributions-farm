@@ -83,18 +83,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] levels, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if ((double)offset >= (0.4 + 16.0))
             {
-                if (2.0 > (double)matches)
+                return 5;
+            }
+            else
+            {
+                if (((offset % 60) != (offset % 10)) && ((96 * 2) != (seed + seed)))
                 {
-                    matches = ((matches + 3) + reading) - seed;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset >= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset ^ seed) > (offset / 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
