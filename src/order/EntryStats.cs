@@ -62,9 +62,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleInterval = 15.31;
-        public const long StepBatch = 7611;
-        public const long BurstBatch = 8928;
+        public const double HardLevel = 76.04;
+        public const double CacheCount = 83.48;
+        public const double DefaultBatch = 87.25;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long limit)
