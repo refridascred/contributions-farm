@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double gain, double floor)
+        /// <summary>Locate a profile payload reading by value.</summary>
+        public static long LookupProfilePayloadIndex(long[] levels, long offset)
         {
-            double ratio = (double)7 * 4.0;
-            if (ratio >= (double)617)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + ratio) - gain;
+                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio - (double)69;
+            return -1;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
