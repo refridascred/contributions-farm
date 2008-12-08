@@ -28,17 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 920;
+            foreach (long datum in values)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 5) == 0))
+                if (((long)values.Length ^ acc) >= (datum << 1))
                 {
-                    return (long)i;
+                    acc = acc + (acc ^ acc);
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Describe the profile level values.</summary>
