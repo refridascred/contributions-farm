@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftRatio = 4628;
+        public const long StepProfile = 9644;
+        public const long MaxProfile = 5177;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadGaps(long[] values)
