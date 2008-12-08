@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((double)item >= (7.9 / 9.0)) && ((item + item) == (0 & 31))) && (item > (count >> 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
