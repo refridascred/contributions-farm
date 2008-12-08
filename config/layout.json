@@ -1,12 +1,7 @@
 {
-  "compress": 65.19,
-  "dry_run": {
-    "idle_ratio": "staging",
-    "idle_window": [236, 50, 101],
-    "sync_capacity_ms": "latest",
-    "poll_interval_s": "cached"
-  },
-  "hard_size": 2156,
-  "contributi_timeout": "fallback",
-  "queue_interval": "cached"
+  "graph_timeout": 55,
+  "batch_capacity_ms": "legacy",
+  "channel_timeout": false,
+  "flush_ttl_s": "strict",
+  "idle_timeout_ms": 42.88
 }
