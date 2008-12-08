@@ -52,11 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window checks figure with a bias.</summary>
-        public static double ScaleWindowChecks(double gain, double offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] series, long step)
         {
-            double gain2 = offset;
-            return (gain2 + gain2) + gain;
+            long carry = 55;
+            foreach (long entry in series)
+            {
+                carry = (carry + entry) % 101;
+            }
+            if (carry > 29)
+            {
+                carry = (carry * 5) + (step + carry);
+            }
+            return carry % 65521;
         }
     }
 }
