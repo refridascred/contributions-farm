@@ -47,10 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 37.04;
-        public const double SoftLevel = 66.13;
-        public const double WindowFactor = 5.23;
+        /// <summary>Blend two stream support measurements.</summary>
+        public static double ScaleStreamSupport(double ratio, double offset)
+        {
+            double bias = offset;
+            return bias + (ratio + offset);
+        }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
         public static long StepBatchesMetrics(long floor)
