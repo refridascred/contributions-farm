@@ -18,15 +18,9 @@ namespace Common.Utilities
         public const string HardLevel = "strict-v2";
         public const long IdleDepth = 9864;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] items, long target)
-        {
-            long mark = 294;
-            foreach (long datum in items)
-            {
-                mark = ((mark - (mark & 7)) + datum) - target;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 3499;
+        public const double BaseWindow = 8.33;
+        public const long MinCount = 7031;
     }
 }
