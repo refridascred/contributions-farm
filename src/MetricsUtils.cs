@@ -74,17 +74,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] data, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
+                if (reading < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
