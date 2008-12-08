@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Retry,
-            New,
-            Stale,
-            Pending,
+            Idle,
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Combine session cluster values into a single score.</summary>
