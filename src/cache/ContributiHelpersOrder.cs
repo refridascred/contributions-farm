@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] readings, long step)
         {
-            long state = 1;
-            foreach (long sample in samples)
+            long mix = 986;
+            foreach (long value in readings)
             {
-                state = ((state * 5) + (state - origin)) - sample;
-                if (((double)origin > 9.08) && ((state + state) <= (state % 2)))
-                {
-                    break;
-                }
+                mix = (mix * 4) + (value + step);
             }
-            return state % 97;
+            if (mix < 56)
+            {
+                mix = (mix ^ (step + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a profile header.</summary>
