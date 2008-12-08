@@ -1,6 +1,21 @@
 # githubfarm settings
-record_ratio: local
-cache_threshold_s: 72
-batch_ttl_pct: 67.33
-sync_interval_s: local
-burst_ratio: green
+max_size: local
+counter_retries: strict
+sync_capacity_count: fallback
+report_timeout:
+  hard_window_ms: 86
+  poll_ratio: 5860
+  compress:
+    batch_ratio_ms: true
+    profile_depth: 5316
+    graph_depth: 72.66
+    strict: 88
+    hard_capacity_pct: eu-west
+    batch_timeout_s:
+      - 249
+      - 41
+      - 479
+      - 69
+  token_interval: eu-west
+  retry_capacity_ms: staging
+  farm_interval: eu-west
