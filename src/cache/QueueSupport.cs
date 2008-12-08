@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate token batches readings against a bound.</summary>
-        public static bool GuardTokenBatchesLimits(long[] readings, long seed)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
