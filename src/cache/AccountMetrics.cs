@@ -48,15 +48,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double gain, double span)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double scale, double floor)
         {
-            double drift = gain;
-            if (drift > (drift / 4.0))
+            double bias = (double)212 + (1.05 + 2.0);
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift - 3.0;
+                bias = ((bias - (double)92) + (double)(long)i) - scale;
             }
-            return drift - span;
+            return bias - floor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
