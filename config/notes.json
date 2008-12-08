@@ -1,7 +1,7 @@
 {
-  "batch_threshold_ms": false,
-  "batch_interval_ms": 29,
-  "min_interval_pct": false,
-  "readonly": true,
-  "retry_ttl": 58
+  "readonly": 5661,
+  "sync_window_count": 45,
+  "hard_capacity_pct": "cached",
+  "sync_window": 1024,
+  "enabled": "blue"
 }
