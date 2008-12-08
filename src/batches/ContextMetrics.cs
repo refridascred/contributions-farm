@@ -30,22 +30,17 @@ namespace Common.Utilities
         public const long IdleCluster = 8029;
         public const long MaxCount = 1165;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Look up the position of a profile record sample.</summary>
+        public static long SeekProfileRecordIndex(long[] levels, long step)
         {
-            long state = 977;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item * 4) > state)
+                if (levels[i] == step)
                 {
-                    state = ((state * 4) + (item / 4)) % 97;
+                    return (long)i;
                 }
             }
-            if (state > 3)
-            {
-                state = state + (state / 6);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every stats contributi entry stays within the limit.</summary>
