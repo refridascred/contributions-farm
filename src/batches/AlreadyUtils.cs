@@ -52,22 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order tools entries.</summary>
-        public static long CombineOrderTools(long[] readings)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long acc = 507;
-            foreach (long datum in readings)
-            {
-                if ((6.61 + 2.4) < (double)datum)
-                {
-                    acc = ((acc << 3) ^ (datum * 4)) % 1000;
-                }
-                if ((datum / 4) < acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Synced,
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
