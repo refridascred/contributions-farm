@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] samples, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long anchor = 994;
+            foreach (long reading in levels)
             {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ (reading & 1);
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Hold a command options.</summary>
