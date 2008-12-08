@@ -21,23 +21,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count << 3) >= reading)
-                {
-                    count = (count + 2) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 4562;
+        public const long MaxTimeout = 2130;
+        public const string HardCount = "fallback";
 
         /// <summary>Scale a order route figure with a bias.</summary>
         public static double ScaleOrderRoute(double bias, double bias2)
