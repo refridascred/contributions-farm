@@ -29,21 +29,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 331;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix - (cell ^ mix)) - step;
             }
-            return matches;
+            if (mix < 2)
+            {
+                mix = (mix ^ (mix ^ mix)) % 4096;
+            }
+            return mix;
         }
     }
 }
