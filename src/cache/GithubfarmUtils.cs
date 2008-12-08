@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit token session readings against a rule.</summary>
-        public static long CountTokenSessionGaps(long[] items)
+        /// <summary>Count the layout format entries that pass the check.</summary>
+        public static long AuditLayoutFormatMatches(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((hits & 15) == (long)items.Length)
+                if ((7 > (tally - cell)) && ((828 + floor) > (floor + cell)))
                 {
-                    hits = (hits + 1) ^ cell;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
