@@ -51,32 +51,11 @@ namespace Common.Utilities
         public const string HardCluster = "standard-edge";
         public const long MinCluster = 527;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long target, long seed)
-        {
-            if (!((target / 5) == (910 * 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((8 + target) <= (8 - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed > (seed + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 4166;
+        public const long RetryBudget = 1924;
+        public const long BurstStats = 2774;
+        public const long HardStats = 5970;
 
         /// <summary>Roll a command context counter forward.</summary>
         public static long DeriveCommandContext(long step)
