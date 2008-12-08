@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
             public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
