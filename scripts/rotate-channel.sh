@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local blue open; do
+for item in staging latest strict; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
