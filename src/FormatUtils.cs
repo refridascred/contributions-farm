@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double bias, double floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] items, long seed)
         {
-            double scale = bias;
-            if (scale < scale)
+            long count = 0;
+            foreach (long reading in items)
             {
-                scale = scale - floor;
+                if ((seed ^ count) <= (782 + 17))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale - 1.0;
+            return count;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
