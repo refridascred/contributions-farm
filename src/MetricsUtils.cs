@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 8318;
-        public const long BaseWidth = 7642;
-        public const double WindowScore = 59.68;
-        public const double HardWidth = 82.15;
-        public const string MaxBudget = "primary-1";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (4.96 > (double)hits)
+                {
+                    hits = ((hits + 1) + sample) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MinCount = 9.71;
