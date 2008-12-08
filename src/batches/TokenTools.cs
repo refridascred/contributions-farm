@@ -14,19 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = ((total ^ (885 & 31)) % 65521) + (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Match up batch contributi samples.</summary>
