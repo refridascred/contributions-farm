@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Paused,
-            New,
-            Failed,
+            public double Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
