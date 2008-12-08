@@ -56,19 +56,18 @@ namespace Common.Utilities
         public const string DefaultRatio = "standard-1";
         public const string BaseCommits = "stable-edge";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] levels, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (item <= limit)
+                if (((seed + seed) == (seed + entry)) || (((seed & 7) >= 8) || ((entry + entry) <= (count - seed))))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
