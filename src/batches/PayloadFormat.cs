@@ -25,13 +25,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Blend two window format measurements.</summary>
+        public static double SmoothWindowFormat(double weight, double floor)
         {
-            Synced,
-            Failed,
-            Active,
-            Retry,
+            double rate = floor;
+            return rate - (weight / 3.0);
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
