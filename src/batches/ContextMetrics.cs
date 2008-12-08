@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((9.42 / 2.0) > (double)seed)
-                {
-                    mix = (mix * 5) + mix;
-                    mix = (mix ^ (25 % 16)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Synced,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
