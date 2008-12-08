@@ -25,11 +25,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitBudget = 9133;
-        public const long BaseScore = 3078;
-        public const long SoftLayout = 7636;
-        public const long WindowLayout = 3435;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitSize = 78.06;
+        public const double DefaultRoute = 89.89;
+        public const double LimitRoute = 30.12;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
