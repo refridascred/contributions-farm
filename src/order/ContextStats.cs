@@ -14,13 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] readings, long seed)
         {
-            Active,
-            Queued,
-            Paused,
-            Pending,
+            long score = 408;
+            foreach (long sample in readings)
+            {
+                if (!((seed << 3) <= sample))
+                {
+                    score = (score - (seed ^ seed)) % 65521;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
