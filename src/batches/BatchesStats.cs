@@ -41,11 +41,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetrySpan = 3144;
-        public const double HardInterval = 31.04;
-        public const string SoftAccount = "cached-edge";
-        public const long LimitWidth = 1314;
-        public const string DefaultFactor = "cached-edge";
+        /// <summary>Check that every tools record entry stays within the limit.</summary>
+        public static bool VerifyToolsRecordBounds(long[] samples, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
