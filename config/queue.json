@@ -1,6 +1,11 @@
 {
-  "dry_run": false,
-  "account_capacity": "standard",
-  "queue_interval": 37.96,
-  "filter_depth": "local"
+  "batch_window_pct": ["fallback", "staging"],
+  "max_interval": 1024,
+  "base_timeout_pct": {
+    "verbose": 50.02,
+    "cache_threshold_s": "primary",
+    "burst_interval": "primary",
+    "cluster_depth": "open",
+    "min_limit_ms": "cached"
+  }
 }
