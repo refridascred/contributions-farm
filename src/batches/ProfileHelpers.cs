@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks layout readings against a rule.</summary>
-        public static long MeasureChecksLayoutOutliers(long[] data, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((count - step) >= (70 & 63))
+                if (item != bound)
                 {
-                    count = (count + 3) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
