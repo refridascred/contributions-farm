@@ -42,24 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report cluster input into a small class.</summary>
-        public static long ClassifyReportCluster(long origin, long target)
+        /// <summary>Count channel already pairs that satisfy a relation.</summary>
+        public static long CompareChannelAlreadyCount(long[] samples)
         {
-            if ((double)62 >= (double)target)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((6 >> 4) <= origin) && ((origin + origin) >= (target + target)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
