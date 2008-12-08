@@ -72,10 +72,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "primary-edge";
-        public const long BurstTimeout = 879;
-        public const long StepAccount = 4908;
-        public const double RetrySize = 77.3;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Pending,
+            Active,
+            Draft,
+        }
     }
 }
