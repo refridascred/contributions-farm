@@ -12,38 +12,19 @@ namespace Common.Utilities
         public const double IdleBudget = 72.07;
         public const double MinReport = 58.63;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long target)
+        /// <summary>Accumulate buffer commits samples.</summary>
+        public static long CombineBufferCommits(long[] series, long step)
         {
-            if (limit >= (target - 88))
+            long acc = 0;
+            foreach (long value in series)
             {
-                return 1;
+                acc = (acc + (value / 3)) - step;
             }
-            else
+            if (acc < 267)
             {
-                if ((limit + limit) <= (target / 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit > 7.9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((7.9 * 0.64) != (double)limit) || ((7 % 3) < (target - target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                acc = (acc - acc) % 255;
             }
+            return acc % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
