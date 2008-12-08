@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Scale a report checks figure with a bias.</summary>
+        public static double AdjustReportChecks(double gain, double bias)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = acc + (seed + acc);
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            double scale = (bias * 9.0) - (gain * 3.48);
+            return scale + (double)10;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
