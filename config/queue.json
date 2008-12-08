@@ -1,20 +1,7 @@
 {
-  "default_timeout": {
-    "schema_threshold": false,
-    "cache_threshold_s": false,
-    "context_capacity": true,
-    "sync_depth_ms": "cached"
-  },
-  "soft_depth": ["edge", "eu-west", "open"],
-  "metrics_size": {
-    "graph_retries": 61,
-    "githubfarm_window": "edge",
-    "notes_window": 5259,
-    "entry_size": {
-      "cache_ttl_count": "latest",
-      "warm_depth_s": false,
-      "default_interval_ms": "blue"
-    }
-  },
-  "default_depth_s": ["edge", "latest"]
+  "enabled": "fallback",
+  "min_depth_count": "primary",
+  "warm_capacity_ms": "strict",
+  "warm_delay_count": 80.64,
+  "githubfarm_depth": [143, 98, 328]
 }
