@@ -76,15 +76,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items, long floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long acc = 79;
-            foreach (long cell in items)
-            {
-                acc = (((acc - (0 * 2)) % 97) + cell) + floor;
-            }
-            return acc % 4096;
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
