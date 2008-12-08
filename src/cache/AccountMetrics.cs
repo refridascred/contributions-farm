@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] values, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long target)
         {
-            long anchor = -6;
-            foreach (long item in values)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor << 3) ^ (12 + floor);
-                if (266 >= (anchor + floor))
+                if ((double)(long)i < (double)target)
                 {
-                    anchor = anchor - (item - anchor);
+                    carry = (carry * 4) + carry;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
