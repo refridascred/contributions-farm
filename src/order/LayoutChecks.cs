@@ -20,12 +20,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Derive the next layout cache value from a seed.</summary>
+        public static long DeriveLayoutCache(long bound)
         {
-            public double Rank { get; set; }
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((anchor + bound) > (761 ^ anchor)))
+                {
+                    anchor = ((anchor * 3) + (anchor << 2)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
