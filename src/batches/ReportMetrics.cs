@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Dropped,
-            Paused,
-            Closed,
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
