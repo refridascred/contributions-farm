@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema cache reading.</summary>
-        public static double ScaleSchemaCache(double bias, double floor)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double scale = (floor - floor) + (floor * 7.75);
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (bias * 7.1)) + (double)(long)i;
-            }
-            return scale + (bias / 4.0);
+            Draft,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
