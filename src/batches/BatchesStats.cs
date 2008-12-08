@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Failed,
-            Active,
-            Paused,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 8202;
+        public const long CacheInterval = 7833;
+        public const string WindowTimeout = "open-1";
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long StepEntry(long offset)
