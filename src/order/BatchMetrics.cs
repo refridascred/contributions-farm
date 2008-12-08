@@ -53,10 +53,12 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchBudget = 4259;
-        public const long SoftGithubfarm = 8387;
-        public const long DefaultGithubfarm = 790;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public bool Region { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
