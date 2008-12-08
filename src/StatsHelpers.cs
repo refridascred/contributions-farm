@@ -37,24 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long seed, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if (offset < seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((19.0 + 6.0) != (double)seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
