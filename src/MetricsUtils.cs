@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Stale,
-            New,
-            Retry,
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
