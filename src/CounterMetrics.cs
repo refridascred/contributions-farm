@@ -25,11 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit metrics layout readings against a rule.</summary>
+        public static long AuditMetricsLayoutMatches(long[] data, long step)
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen + step) < (sample & 127))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
