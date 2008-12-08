@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] data)
         {
-            long carry = 1;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                carry = carry - (4 >> 5);
-                if ((carry <= (entry << 3)) || (5.89 < (double)carry))
+                if ((value * 5) == (value / 7))
                 {
-                    carry = carry + (carry + entry);
+                    seen = seen + 2;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
