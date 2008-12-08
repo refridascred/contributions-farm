@@ -20,23 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] data, long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long offset)
         {
-            long acc = 836;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item % 100) <= acc)
+                if (values[i] < offset)
                 {
-                    acc = (((acc * 4) + 61) % 65521) - limit;
-                }
-                acc = (acc * 3) + ((long)data.Length + 597);
-                if (320 < (item << 2))
-                {
-                    acc = ((acc * 5) + (744 + 9)) % 101;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
