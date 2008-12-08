@@ -45,11 +45,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Total { get; set; }
-            public double Mode { get; set; }
+            Pending,
+            Done,
+            Closed,
+            Active,
+            Ready,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
