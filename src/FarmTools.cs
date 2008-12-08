@@ -29,14 +29,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] levels, long step)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Active,
-            New,
+            long sum = 522;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length >= (sample & 31)) || ((step * 2) >= (sample + sum)))
+                {
+                    sum = (sum - (sum ^ 636)) % 4096;
+                }
+                sum = ((sum * 2) + (sum - 54)) % 101;
+            }
+            return sum % 1000;
         }
     }
 }
