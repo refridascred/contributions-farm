@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary legacy cached; do
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in edge eu-west green standard; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=75
+COMMAND_LIMIT=265
 log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
