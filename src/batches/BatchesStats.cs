@@ -29,19 +29,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((mark - mark) >= (offset + offset)))
-                {
-                    mark = (mark - (offset - mark)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Locked,
+            Dropped,
+            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Match up order samples.</summary>
