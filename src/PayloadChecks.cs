@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Adjust a farm format reading.</summary>
+        public static double SmoothFarmFormat(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = 3.39;
+            if (ratio >= (double)1)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio + (offset / 5.0)) + rate;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (ratio + 9.9);
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
