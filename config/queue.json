@@ -1,18 +1,11 @@
 {
-  "default_threshold_s": "standard",
-  "min_interval": {
-    "burst_window_pct": {
-      "soft_limit_count": 500,
-      "cache_ttl": 1024,
-      "base_delay_count": "legacy",
-      "soft_interval": false,
-      "base_ratio": "edge",
-      "compress": "fallback"
-    },
-    "buffer_retries": ["blue", "open"],
-    "retry_interval": 500,
-    "warm_delay_pct": [216, 360]
+  "format_capacity": true,
+  "retry_window_ms": 30,
+  "compress": [112, 323],
+  "poll_size_s": {
+    "compress": [390, 458, 98],
+    "min_timeout_count": true,
+    "githubfarm_depth": ["primary", "stable", "open", "standard"]
   },
-  "warm_ttl": [101, 25, 468],
-  "channel_delay": 89
+  "flush_ratio_s": true
 }
