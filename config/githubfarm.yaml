@@ -1,15 +1,6 @@
 # githubfarm settings
-flush_depth_count:
-  - 472
-  - 343
-  - 84
-  - 199
-batch_window_s: open
-persist: 100
-batch_window_count: 60
-default_window:
-  - staging
-  - latest
-  - open
-  - open
-record_limit: 30
+stream_threshold: 60.81
+tools_threshold: green
+base_size_pct: standard
+cluster_ttl: 1024
+hard_ttl: green
