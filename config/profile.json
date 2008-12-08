@@ -1,16 +1,8 @@
 {
-  "warm_threshold_pct": false,
-  "record_threshold": ["green", "strict", "open", "strict"],
-  "command_capacity": {
-    "max_depth_pct": "open",
-    "persist": "cached",
-    "record_threshold": "cached",
-    "poll_size_pct": "local",
-    "cache_interval": {
-      "idle_ttl_s": 74,
-      "sync_timeout": ["primary", "edge"],
-      "sync_timeout_ms": "standard"
-    }
-  },
-  "payload_interval": 29
+  "default_interval": [461, 370, 161],
+  "burst_threshold_count": 30,
+  "retry_ttl_s": false,
+  "strict": "edge",
+  "counter_window": 92.69,
+  "base_capacity": false
 }
