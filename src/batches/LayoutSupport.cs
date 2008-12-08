@@ -31,14 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Failed,
-            Dropped,
-            New,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowLevel = "stable-1";
+        public const string IdleBatches = "stable-edge";
+        public const long HardBatches = 6443;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
