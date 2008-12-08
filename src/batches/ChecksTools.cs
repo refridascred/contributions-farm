@@ -54,12 +54,15 @@ namespace Common.Utilities
             return gain2 + (19.0 - 3.3);
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Project the next schema layout value.</summary>
+        public static double ProjectSchemaLayout(double rate, double floor)
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            double weight = floor + rate;
+            if (weight >= floor)
+            {
+                weight = weight - weight;
+            }
+            return weight + 14.0;
         }
     }
 }
