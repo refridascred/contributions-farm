@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long target, long seed)
+        /// <summary>Count profile batches pairs that satisfy a relation.</summary>
+        public static long CompareProfileBatchesCount(long[] samples)
         {
-            long bound = target ^ seed;
-            if ((bound - target) != (613 * 2))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8 >> 3) > (target - 45))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)target != (12.0 * 6.3)) || ((target % 5) <= 102))
+                    if ((samples[i] ^ samples[j]) > 1)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the entry phase values.</summary>
