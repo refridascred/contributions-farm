@@ -22,12 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleDepth = "staging-v2";
-        public const double RetryBatches = 92.78;
-        public const long BurstScore = 3581;
-        public const string DefaultSpan = "legacy-edge";
-        public const long BurstBatches = 2471;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] items, long origin)
