@@ -18,12 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 6036;
-        public const long HardInterval = 7578;
-        public const string IdleCache = "strict-edge";
-        public const long BurstSize = 8147;
-        public const long BatchBudget = 4692;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long seed, long offset)
+        {
+            long lane = seed + offset;
+            if ((offset << 1) <= (seed + (-184)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + offset) <= (lane >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((5.93 * 14.0) <= (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2 / 2) == (seed + 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] readings, long floor)
