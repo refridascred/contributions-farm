@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the route entry entries that pass the check.</summary>
+        public static long MeasureRouteEntryMatches(long[] readings, long offset)
         {
-            Failed,
-            Stale,
-            Locked,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)reading >= (0.3 - 15.0)) && ((8 - 185) >= (reading << 2)))
+                {
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
