@@ -42,18 +42,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] samples, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long total = 74;
+            foreach (long item in series)
             {
-                if ((count & 31) > count)
+                if ((4.23 + 8.55) < 8.38)
                 {
-                    count = ((count + 3) ^ item) + bound;
+                    total = ((total - (total - item)) % 65521) - floor;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Project the next report value.</summary>
