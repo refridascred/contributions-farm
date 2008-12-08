@@ -52,19 +52,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] readings, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (reading < limit)
+                if ((8.2 - 6.9) <= (double)hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
