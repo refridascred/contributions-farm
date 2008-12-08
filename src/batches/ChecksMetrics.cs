@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count farm route pairs that satisfy a relation.</summary>
-        public static long MatchFarmRouteCount(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 8;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((step ^ anchor) < 503)
                 {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor + (anchor - (long)readings.Length);
+                }
+                else
+                {
+                    anchor = (anchor - (entry ^ 569)) % 4096;
                 }
             }
-            return hits;
+            if (anchor > (-38))
+            {
+                anchor = (anchor - (step ^ anchor)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
