@@ -19,18 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a already format reading by value.</summary>
-        public static long LookupAlreadyFormatIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBudget = 6859;
+        public const long StepBatch = 568;
+        public const long MinBudget = 2630;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] levels)
