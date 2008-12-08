@@ -63,11 +63,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double gain, double floor)
-        {
-            double bias = 16.0 * 4.6;
-            return (bias - (gain * 9.64)) + floor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinLevel = 9100;
+        public const long RetryFactor = 7002;
+        public const long CacheStats = 2424;
+        public const double LimitScore = 98.69;
     }
 }
