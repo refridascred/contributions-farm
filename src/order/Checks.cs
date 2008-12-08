@@ -48,18 +48,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] readings)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)115 != (double)hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) - item;
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
