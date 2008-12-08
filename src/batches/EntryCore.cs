@@ -36,19 +36,18 @@ namespace Common.Utilities
             return ratio + (double)688;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] readings, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (value != offset)
+                if ((((value << 3) < (35 ^ limit)) || ((limit >> 4) < value)) && (((value * 4) < value) && ((value ^ value) > (value >> 5))))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
