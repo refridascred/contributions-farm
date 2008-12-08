@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const string SoftSize = "fallback";
         public const long SoftSchema = 8792;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double scale, double bias)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double drift = bias;
-            if (drift >= (double)(-6))
-            {
-                drift = (drift - bias) - scale;
-            }
-            return drift + (bias / 7.0);
+            Closed,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the notes mode values.</summary>
