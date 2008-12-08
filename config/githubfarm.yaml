@@ -1,7 +1,30 @@
 # githubfarm settings
-flush_size_ms: staging
-verbose: local
-context_limit: fallback
-cache_delay_count: strict
-default_threshold_s: 3836
-schema_depth: stable
+counter_retries:
+  retry_size_ms: true
+  idle_threshold:
+    - 441
+    - 97
+  soft_depth:
+    max_timeout: 94
+    verbose: 60
+    max_window: true
+    soft_limit_ms:
+      - 439
+      - 160
+  flush_interval_ms: 42
+  default_size_ms: 86.5
+  base_limit_count: 250
+account_size: 500
+max_window:
+  base_limit_count:
+    tools_timeout: blue
+    min_depth_ms: 70.01
+    max_timeout_s: 45.0
+    hard_size_pct: 100
+    max_interval_s: 75
+    report_window: 5298
+  idle_retries_count: 29.75
+  route_capacity: 60
+  checks_retries: 30
+  compress: open
+  contributi_depth: 65
