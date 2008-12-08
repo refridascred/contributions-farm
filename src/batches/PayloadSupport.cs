@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Audit format command readings against a rule.</summary>
+        public static long AuditFormatCommandGaps(long[] data)
         {
-            long mark = 593;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((double)datum > (7.49 / 5.0))
+                if (!(((datum + 52) >= datum) && ((double)(long)data.Length == (1.45 + 5.0))))
                 {
-                    mark = (mark + ((long)readings.Length % 100)) % 255;
-                }
-                else
-                {
-                    mark = mark ^ mark;
+                    matches = matches + 1;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
