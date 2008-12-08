@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double weight, double floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double mean = weight;
-            return (mean + (8.8 - 7.4)) + floor;
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the support batch entries that pass the check.</summary>
