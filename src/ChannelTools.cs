@@ -13,14 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Closed,
-            New,
-            Failed,
-            Dropped,
-            Idle,
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank route contributi input into a small class.</summary>
