@@ -25,17 +25,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first window checks entry that matches the target.</summary>
-        public static long LookupWindowChecksIndex(long[] levels, long target)
+        /// <summary>Grade a tools already value against two limits.</summary>
+        public static long SortToolsAlready(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = floor - floor2;
+            if (((floor & 1) <= 878) || ((5.5 - 6.56) != (double)edge))
             {
-                if (levels[i] >= target)
+                return 6;
+            }
+            else
+            {
+                if ((double)edge >= (6.0 - 1.62))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
