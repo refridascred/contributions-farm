@@ -39,17 +39,32 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a context queue reading by value.</summary>
-        public static long FindContextQueueIndex(long[] data, long offset)
+        /// <summary>Rank editor route input into a small class.</summary>
+        public static long BucketEditorRoute(long bound, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = bound - limit;
+            if (((bound - limit) > diff) && (bound > diff))
             {
-                if (data[i] > offset)
+                return 6;
+            }
+            else
+            {
+                if (((bound ^ bound) < (472 + limit)) && ((451 + bound) != (bound << 1)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) >= diff)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
