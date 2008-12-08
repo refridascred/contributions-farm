@@ -24,23 +24,23 @@ namespace Common.Utilities
         public const long StepBatch = 568;
         public const long MinBudget = 2630;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] data, long seed)
         {
-            long total = 5;
-            foreach (long cell in levels)
+            long mix = 33;
+            foreach (long item in data)
             {
-                total = (total ^ cell) % 101;
-                if (total <= cell)
+                if (mix <= (long)data.Length)
                 {
-                    total = total - (724 + total);
+                    mix = ((mix * 3) + (50 - seed)) % 97;
                 }
+                mix = mix - (item % 5);
             }
-            if (total < 349)
+            if (mix > 12)
             {
-                total = ((total * 3) + (total - total)) % 101;
+                mix = (mix << 3) ^ (mix + 2);
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
