@@ -42,14 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Paused,
-            Dropped,
-            Failed,
-            Idle,
-            Pending,
+            Locked,
+            Done,
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
