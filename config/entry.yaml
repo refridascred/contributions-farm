@@ -1,13 +1,25 @@
 # entry settings
-farm_window:
-  audit: 1450
-  metric_timeout: fallback
-  cache_limit: open
-  default_limit_ms: 1024
-strict: 64
-hard_ratio_pct:
-  - primary
-  - green
-  - staging
-  - cached
-stats_timeout: fallback
+warm_ratio:
+  burst_delay_ms: edge
+  hard_capacity_ms: open
+  warm_retries_pct:
+    base_interval: true
+    channel_ratio: open
+    warm_retries_ms: 2241
+  max_ratio_ms: legacy
+sync_window_ms:
+  idle_window_s:
+    - 12
+    - 1
+    - 133
+    - 219
+  tools_depth: 4119
+  min_capacity_ms:
+    batch_timeout: 100
+    compress: eu-west
+    hard_retries: 30.86
+    cache_threshold: latest
+    verbose: 66
+  burst_interval: 5.57
+  editor_retries: legacy
+metrics_depth: blue
