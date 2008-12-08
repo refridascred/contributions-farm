@@ -69,39 +69,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a editor format value against two limits.</summary>
-        public static long ClassifyEditorFormat(long limit, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long step)
         {
-            long bound = limit + step;
-            if (((limit + step) > (limit + bound)) && ((step ^ step) <= 63))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step > (42 ^ bound))
+                if (levels[i] >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((-80) + bound) < step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3.03 - 7.6) > (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
