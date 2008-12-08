@@ -48,19 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data, long bound)
+        /// <summary>Check that every route batch entry stays within the limit.</summary>
+        public static bool VerifyRouteBatchRange(long[] readings, long step)
         {
-            long sum = -506;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                sum = (((sum << 3) ^ (-70)) % 65521) ^ reading;
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (sum > 305)
-            {
-                sum = (sum - (bound >> 3)) % 255;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the channel phase values.</summary>
