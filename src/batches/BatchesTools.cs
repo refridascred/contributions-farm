@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of token payload entries.</summary>
+        public static long FoldTokenPayload(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            long mark = 5;
+            foreach (long sample in samples)
+            {
+                mark = ((mark * 4) + sample) % 97;
+            }
+            if (mark < 478)
+            {
+                mark = mark ^ (mark & 63);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
