@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine cluster githubfarm values into a single score.</summary>
-        public static long ScoreClusterGithubfarm(long[] levels)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long origin)
         {
-            long carry = 380;
-            foreach (long reading in levels)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry + (carry + reading)) % 1000;
-                carry = (carry << 3) ^ (reading + carry);
+                if ((double)(long)i <= 12.0)
+                {
+                    anchor = anchor - (origin ^ anchor);
+                    anchor = (anchor - 761) % 65521;
+                }
+                anchor = (anchor << 2) ^ ((long)i >> 1);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            if (carry < 73)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
