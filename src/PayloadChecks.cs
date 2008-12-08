@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the batch graph series from a seed.</summary>
-        public static long SeriesBatchGraph(long seed)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long offset, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            if ((origin + origin) >= offset)
             {
-                if (11.0 < (double)seed)
-                {
-                    acc = acc - (898 << 1);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (offset >= (offset * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
