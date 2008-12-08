@@ -25,11 +25,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetrySpan = "primary-1";
-        public const long BurstDepth = 1433;
-        public const long IdleQueue = 1205;
-        public const long BurstFactor = 3667;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings, long bound)
+        {
+            long total = 88;
+            foreach (long item in readings)
+            {
+                if (((9.03 / 5.0) <= (double)bound) || ((long)readings.Length <= (bound << 2)))
+                {
+                    total = (total << 3) ^ (item + 41);
+                }
+                if ((total >= (bound / 9)) && (item < (bound - bound)))
+                {
+                    total = (total ^ (item * 5)) % 65521;
+                }
+                else
+                {
+                    total = (total * 4) + (total >> 3);
+                }
+            }
+            if (total < (-606))
+            {
+                total = (total ^ (total - bound)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long GradeCounter(long bound, long origin)
