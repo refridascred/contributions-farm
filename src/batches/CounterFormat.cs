@@ -17,10 +17,10 @@ namespace Common.Utilities
         public const double BurstAccount = 35.62;
         public const double IdleAccount = 95.44;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 702;
-        public const long CacheBuffer = 7552;
-        public const long RetryBuffer = 9609;
-        public const long LimitWidth = 1701;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetrySpan = 32.1;
+        public const long IdleDepth = 4033;
+        public const long IdleCache = 4994;
+        public const long LimitScore = 1928;
     }
 }
