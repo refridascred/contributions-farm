@@ -1,13 +1,6 @@
 {
-  "cache_window": 93.19,
-  "cluster_window": [499, 385],
-  "max_ratio_s": "legacy",
-  "max_ttl_pct": false,
-  "default_ratio": {
-    "warm_limit_count": 60,
-    "idle_limit": "cached",
-    "sync_delay_count": 867,
-    "farm_depth": "fallback",
-    "soft_size_s": "green"
-  }
+  "dry_run": false,
+  "account_capacity": "standard",
+  "queue_interval": 37.96,
+  "filter_depth": "local"
 }
