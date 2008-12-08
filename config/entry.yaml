@@ -1,10 +1,21 @@
 # entry settings
-burst_interval: legacy
-idle_capacity_pct: local
-retry_threshold_pct: false
-sync_delay:
-  idle_timeout_pct: 92.2
-  readonly: latest
-  dry_run: 50.55
-  strict: cached
-  base_size_s: primary
+hard_limit_ms: edge
+burst_interval_pct:
+  - green
+  - cached
+  - stable
+  - cached
+stream_capacity: primary
+base_depth:
+  - local
+  - cached
+  - open
+flush_depth_pct:
+  warm_interval_ms: edge
+  sync_retries_s: false
+  payload_size: edge
+  cache_ratio_count: 8.88
+  persist:
+    - 334
+    - 479
+  soft_ratio_s: primary
