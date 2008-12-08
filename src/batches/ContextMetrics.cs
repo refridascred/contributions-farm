@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9.42 / 2.0) > (double)seed)
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix * 5) + mix;
+                    mix = (mix ^ (25 % 16)) % 97;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a command entry.</summary>
