@@ -35,15 +35,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next queue farm value.</summary>
-        public static double ScaleQueueFarm(double weight, double bias)
+        /// <summary>Count stream editor pairs that satisfy a relation.</summary>
+        public static long PairStreamEditorCount(long[] samples)
         {
-            double ratio = 7.58;
-            if (ratio < (double)2)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + (4.46 / 6.0)) - weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio + (bias * 8.0);
+            return hits;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
