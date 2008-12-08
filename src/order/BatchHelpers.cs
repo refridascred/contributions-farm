@@ -16,26 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] levels)
         {
-            long carry = 13;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((95 << 2) < carry)
+                if ((((entry + entry) >= (entry / 7)) && ((6.0 + 4.9) >= (double)entry)) && ((4.0 / 9.0) < (double)matches))
                 {
-                    carry = ((carry - ((-1) ^ carry)) % 4096) - item;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    carry = carry - carry;
+                    matches = matches - 1;
                 }
             }
-            if (carry > 46)
-            {
-                carry = (carry - (carry - carry)) % 97;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Rank format input into a small class.</summary>
