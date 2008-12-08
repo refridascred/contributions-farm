@@ -1,4 +1,10 @@
 # githubfarm settings
-tools_limit: latest
-idle_size_s: false
-soft_window_pct: 83.13
+batches_delay: true
+sync_capacity_ms: standard
+batch_timeout_count: false
+sync_threshold_s: staging
+token_limit:
+  - 255
+  - 319
+  - 2
+warm_interval: primary
