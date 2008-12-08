@@ -19,40 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long seed, long offset)
-        {
-            long lane = seed + offset;
-            if ((offset << 1) <= (seed + (-184)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + offset) <= (lane >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.93 * 14.0) <= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2 / 2) == (seed + 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 1706;
+        public const string MaxTimeout = "local-edge";
+        public const long WindowSession = 448;
+        public const long CacheSize = 7191;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long BucketFormat(long offset, long origin)
