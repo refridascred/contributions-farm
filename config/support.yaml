@@ -1,8 +1,13 @@
 # support settings
-poll_ttl_ms:
-  - 427
-  - 207
-  - 125
-batch_ratio: latest
-base_capacity_count: 1598
-min_ratio_count: staging
+flush_size:
+  - 248
+  - 36
+flush_capacity_s:
+  - strict
+  - legacy
+  - eu-west
+  - latest
+default_threshold: open
+persist: eu-west
+min_capacity: true
+audit: blue
