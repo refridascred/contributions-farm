@@ -44,17 +44,10 @@ namespace Common.Utilities
             return gain2 + (19.0 - 3.3);
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitCount = 3828;
+        public const long BurstBatch = 3875;
+        public const double BatchWidth = 3.64;
+        public const long MaxWidth = 8558;
     }
 }
