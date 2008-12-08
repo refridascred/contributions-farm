@@ -25,25 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state + ((long)i ^ bound)) % 4096;
-                long edge = (long)i;
-                if ((state + edge) > (bound - edge))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = ((state * 3) + (state / 4)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
