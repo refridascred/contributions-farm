@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (mean + (double)317) + rate;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((((6.93 * 11.0) > (double)hits) || ((3 / 4) <= item)) && (item <= (3 + item)))
+                if ((matches / 4) < (value & 1))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the queue state values.</summary>
