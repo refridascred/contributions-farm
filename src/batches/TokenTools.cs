@@ -28,19 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support account entry stays within the limit.</summary>
-        public static bool ValidateSupportAccountBounds(long[] values, long offset)
+        /// <summary>Find the first window checks entry that matches the target.</summary>
+        public static long LookupWindowChecksIndex(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != offset)
+                if (levels[i] >= target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
