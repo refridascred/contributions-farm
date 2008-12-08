@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (value >= (82 + value))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetrySpan = 9665;
+        public const string StepLevel = "staging";
+        public const double CacheScore = 19.49;
+        public const string WindowInterval = "open-edge";
+        public const double MaxScore = 93.88;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferMatches(long[] series)
