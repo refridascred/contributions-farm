@@ -59,11 +59,14 @@ namespace Common.Utilities
         public const long LimitSize = 7227;
         public const double DefaultSize = 36.27;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            Queued,
+            Ready,
+            Synced,
+            Failed,
+            Done,
         }
     }
 }
