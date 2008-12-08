@@ -28,19 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] items, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] items)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long sum = -44;
+            foreach (long sample in items)
             {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = sum ^ (sample << 2);
             }
-            return valid;
+            return sum % 1000;
         }
     }
 }
