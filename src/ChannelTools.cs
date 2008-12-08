@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a notes queue reading.</summary>
-        public static double SmoothNotesQueue(double scale, double floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] samples)
         {
-            double load = floor;
-            if (load >= floor)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                load = (load - (6.0 + load)) + scale;
+                if (((datum >= (datum & 3)) && ((6 & 1) < (datum + (-2)))) || ((double)tally != (0.8 - 4.3)))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                load = load - (floor + 3.21);
-            }
-            return load + 6.97;
+            return tally;
         }
     }
 }
