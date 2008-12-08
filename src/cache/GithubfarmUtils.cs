@@ -37,18 +37,31 @@ namespace Common.Utilities
             return gain - (15.0 + scale);
         }
 
-        /// <summary>Audit queue batches readings against a rule.</summary>
-        public static long CountQueueBatchesOutliers(long[] readings)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((seed - seed2) < (seed & 7))
             {
-                if (!((entry ^ entry) <= (matches + 89)) || ((matches / 4) < (26 + matches)))
+                return 0;
+            }
+            else
+            {
+                if (((seed % 8) == (seed2 + seed2)) && ((seed ^ 46) <= (seed + 23)))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((0.09 / 8.0) != (double)seed2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
