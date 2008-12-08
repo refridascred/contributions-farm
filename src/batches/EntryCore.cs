@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] data, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long carry = 1;
+            foreach (long reading in levels)
             {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 2) + (reading - carry)) % 101;
             }
-            return ready;
+            return carry % 65521;
         }
 
         /// <summary>Hold a payload record.</summary>
