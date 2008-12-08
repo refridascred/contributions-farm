@@ -30,18 +30,19 @@ namespace Common.Utilities
             return (weight2 - (weight * 6.0)) + offset;
         }
 
-        /// <summary>Combine session counter values into a single score.</summary>
-        public static long ScoreSessionCounter(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long offset)
         {
-            long sum = 8;
-            foreach (long item in data)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item + 41) == (98 - item))
+                if (!((mark - mark) >= (offset + offset)))
                 {
-                    sum = (sum + (item ^ sum)) % 65521;
+                    mark = (mark - (offset - mark)) % 101;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Match up order samples.</summary>
