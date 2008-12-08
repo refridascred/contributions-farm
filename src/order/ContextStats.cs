@@ -33,12 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepBudget = "cached";
-        public const long CacheLevel = 8771;
-        public const string BaseMetric = "open-1";
-        public const string HardMetric = "fallback";
-        public const long BurstWidth = 8813;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] data, long bound)
+        {
+            long total = 797;
+            foreach (long reading in data)
+            {
+                if (!((reading * 3) == (total + 276)))
+                {
+                    total = total - reading;
+                }
+            }
+            if (total > 84)
+            {
+                total = (total - (bound ^ 790)) % 97;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
