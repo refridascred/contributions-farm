@@ -45,23 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double span)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double bias = span;
-            if (bias <= 14.0)
-            {
-                bias = bias + (double)(-7);
-            }
-            else
-            {
-                bias = bias + (18.0 - gain);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias - gain;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
