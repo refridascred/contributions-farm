@@ -44,19 +44,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer farm samples.</summary>
-        public static long TallyBufferFarm(long[] series)
+        /// <summary>Classify a already report pair into a bucket.</summary>
+        public static long GradeAlreadyReport(long bound, long offset)
         {
-            long anchor = 67;
-            foreach (long item in series)
+            if ((6.6 - 4.0) == (double)bound)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor - anchor) - (long)i) ^ item;
-                }
-                anchor = (anchor << 2) ^ (anchor * 3);
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((bound + bound) <= (offset / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound % 8) >= (offset & 15)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound + bound) >= (bound & 15)) || ((double)offset >= (9.3 + 1.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank account context input into a small class.</summary>
