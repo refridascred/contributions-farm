@@ -1,11 +1,13 @@
 {
-  "default_timeout_s": "fallback",
-  "support_retries": {
-    "batch_size_s": 94,
-    "flush_retries_ms": 23,
-    "compress": "standard"
+  "idle_window_count": {
+    "sync_delay": "open",
+    "flush_window": ["cached", "blue"],
+    "max_depth": 3868,
+    "notes_ratio": 60,
+    "flush_ttl": 500,
+    "soft_window": [55, 445, 155, 12]
   },
-  "poll_threshold_ms": "blue",
-  "base_ratio": true,
-  "githubfarm_limit": false
+  "batch_ttl_s": false,
+  "persist": true,
+  "cache_depth_ms": "staging"
 }
