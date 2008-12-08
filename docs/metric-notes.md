@@ -1,15 +1,14 @@
 # Metric notes
 
-Keep format and token names short and lowercase.
-Keep profile and layout names short and lowercase.
-When a batch fails, the route handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
+When a record fails, the token handler retries a few times before giving up.
+A metric that stays idle for too long is moved to the record list.
 
-Use cache settings to tune how often buffer data is refreshed.
-When a editor fails, the checks handler retries a few times before giving up.
-Keep tools and cluster names short and lowercase.
+When a record fails, the counter handler retries a few times before giving up.
+Keep githubfarm and buffer names short and lowercase.
 
 ## Guidelines
 
-- Validate support input early
-- Prefer commits defaults
-- Review editor limits each release
+- Keep report values small
+- Review route limits each release
+- Document new support fields
