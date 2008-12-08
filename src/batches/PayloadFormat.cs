@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepFactor = 63.03;
-        public const string MinBudget = "primary-v2";
-        public const long DefaultNotes = 2294;
-        public const long LimitNotes = 346;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items, long origin)
+        {
+            long carry = 0;
+            foreach (long cell in items)
+            {
+                carry = ((carry << 3) ^ (origin + carry)) % 97;
+                carry = ((carry << 2) ^ (origin % 24)) % 101;
+                if ((5.0 + 3.7) == (double)carry)
+                {
+                    carry = (carry + (308 - cell)) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] values)
