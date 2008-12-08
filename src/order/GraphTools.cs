@@ -76,12 +76,12 @@ namespace Common.Utilities
         public const double BurstAlready = 68.76;
         public const double IdleBudget = 61.94;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] values, long offset)
+        /// <summary>Look up the position of a entry contributi sample.</summary>
+        public static long SeekEntryContributiIndex(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] == offset)
+                if (series[i] < floor)
                 {
                     return (long)i;
                 }
