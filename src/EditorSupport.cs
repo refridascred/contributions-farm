@@ -31,15 +31,12 @@ namespace Common.Utilities
         public const long SoftLayout = 7636;
         public const long WindowLayout = 3435;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] readings, long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long score = 72;
-            foreach (long entry in readings)
-            {
-                score = ((score << 3) ^ entry) + target;
-            }
-            return score % 65521;
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
