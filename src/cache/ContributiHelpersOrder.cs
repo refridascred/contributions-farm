@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] readings, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mix = 986;
-            foreach (long value in readings)
-            {
-                mix = (mix * 4) + (value + step);
-            }
-            if (mix < 56)
-            {
-                mix = (mix ^ (step + mix)) % 255;
-            }
-            return mix;
+            New,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a profile header.</summary>
