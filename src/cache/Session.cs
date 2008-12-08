@@ -20,11 +20,17 @@ namespace Common.Utilities
             return (scale + scale) + weight;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Find the first command farm entry that matches the target.</summary>
+        public static long SeekCommandFarmIndex(long[] data, long limit)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
