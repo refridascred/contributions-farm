@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the support batch entries that pass the check.</summary>
-        public static long MeasureSupportBatchMatches(long[] items, long step)
+        /// <summary>Validate route cache readings against a bound.</summary>
+        public static bool GuardRouteCacheRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((double)tally <= (18.0 + 4.41))
+                if (sample < offset)
                 {
-                    tally = ((tally + 3) ^ item) - step;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
