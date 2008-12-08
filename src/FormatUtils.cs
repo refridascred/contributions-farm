@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long seed, long floor)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            if (floor >= (776 ^ seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(185 > floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the report status values.</summary>
