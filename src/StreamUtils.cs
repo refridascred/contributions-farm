@@ -51,11 +51,25 @@ namespace Common.Utilities
         public const string HardCluster = "standard-edge";
         public const long MinCluster = 527;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 4166;
-        public const long RetryBudget = 1924;
-        public const long BurstStats = 2774;
-        public const long HardStats = 5970;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long offset, long floor)
+        {
+            if ((offset & 1) != (floor + offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor * 5) < (floor + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Roll a command context counter forward.</summary>
         public static long DeriveCommandContext(long step)
