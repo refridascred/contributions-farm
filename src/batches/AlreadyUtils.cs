@@ -13,14 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Look up the position of a filter account sample.</summary>
+        public static long SeekFilterAccountIndex(long[] series, long floor)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Synced,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit cache payload readings against a rule.</summary>
