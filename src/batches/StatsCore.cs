@@ -27,16 +27,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next context graph value from a seed.</summary>
-        public static long RollContextGraph(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseSize = 1.04;
+        public const double WindowCount = 83.7;
+        public const long WindowContext = 1069;
+        public const long HardContext = 6045;
+        public const long LimitFactor = 6049;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
