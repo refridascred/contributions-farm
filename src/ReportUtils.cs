@@ -57,24 +57,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] items, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long sum = 4;
+            foreach (long value in items)
             {
-                if (((seed - state) > (seed ^ 21)) || (304 <= ((long)i << 3)))
+                if (limit > (value % 5))
                 {
-                    state = state ^ (long)i;
+                    sum = sum - (value / 6);
                 }
-                else
-                {
-                    state = ((state << 3) ^ (state + seed)) % 101;
-                }
-                state = (state ^ (999 ^ seed)) % 65521;
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Scale a batches checks figure with a bias.</summary>
