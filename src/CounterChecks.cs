@@ -13,12 +13,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long bound)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            long cur = limit ^ bound;
+            if ((bound > (7 ^ bound)) && ((limit - limit) < (bound / 4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (cur < (bound * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((4.54 * 0.7) < (double)bound) && ((double)cur == (1.4 / 3.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.0 - 3.73) == (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count window layout pairs that satisfy a relation.</summary>
