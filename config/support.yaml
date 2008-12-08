@@ -1,5 +1,8 @@
 # support settings
-strict: false
-batch_ttl: 90.65
-buffer_window: 4069
-audit: 795
+entry_delay: open
+editor_capacity: green
+compress:
+  - 301
+  - 32
+  - 489
+max_limit: true
