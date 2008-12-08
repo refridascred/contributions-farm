@@ -30,22 +30,15 @@ namespace Common.Utilities
             return load + (floor * 1.0);
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Derive the next context graph value from a seed.</summary>
+        public static long RollContextGraph(long bound)
         {
-            long state = 4;
-            foreach (long reading in levels)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((state + reading) >= (reading ^ reading))
-                {
-                    state = state - reading;
-                }
-                else
-                {
-                    state = state ^ (reading & 127);
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return state % 65521;
+            return state;
         }
 
         /// <summary>Locate a report reading by value.</summary>
