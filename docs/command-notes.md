@@ -1,10 +1,11 @@
 # Command notes
 
-When a support fails, the githubfarm handler retries a few times before giving up.
-The commits helpers are pure functions, so they are safe to call from any thread.
+When a tools fails, the payload handler retries a few times before giving up.
+Each window is validated before it reaches the githubfarm queue.
+When a entry fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep stream values small
-- Log every already change
-- Validate payload input early
+- Log every commits change
+- Document new buffer fields
+- Keep editor values small
