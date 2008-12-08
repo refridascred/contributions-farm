@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] data)
+        /// <summary>Audit report batches readings against a rule.</summary>
+        public static long MeasureReportBatchesMatches(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((value * 5) == (value / 7))
+                if (!((double)count > (double)floor))
                 {
-                    seen = seen + 2;
+                    count = (count + 1) - entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
