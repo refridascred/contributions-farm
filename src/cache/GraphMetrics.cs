@@ -69,12 +69,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data, long bound)
         {
-            Done,
-            Draft,
-            Idle,
+            long result = 8;
+            foreach (long reading in data)
+            {
+                result = result + (bound + reading);
+            }
+            return result;
         }
     }
 }
