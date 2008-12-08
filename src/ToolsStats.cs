@@ -59,13 +59,18 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] samples)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!!((reading ^ seen) >= reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
