@@ -22,25 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long bound, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] series)
         {
-            long slot = bound ^ floor;
-            if ((floor % 24) != (14 + floor))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot * 3) > 17)
+                if (((long)series.Length - tally) <= cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a already snapshot.</summary>
