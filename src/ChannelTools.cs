@@ -28,24 +28,18 @@ namespace Common.Utilities
         public const long RetryWindow = 3344;
         public const long WindowRatio = 9200;
 
-        /// <summary>Rank route contributi input into a small class.</summary>
-        public static long BucketRouteContributi(long limit, long floor)
+        /// <summary>Count the entry filter entries that pass the check.</summary>
+        public static long TallyEntryFilterHits(long[] samples)
         {
-            if ((limit + limit) > floor)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((25 + floor) < 38)
+                if ((value & 31) < (seen * 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
