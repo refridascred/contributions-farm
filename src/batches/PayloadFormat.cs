@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)seen == (7.2 + 5.1))
-                {
-                    seen = ((seen + 3) ^ entry) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepFactor = 63.03;
+        public const string MinBudget = "primary-v2";
+        public const long DefaultNotes = 2294;
+        public const long LimitNotes = 346;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] values)
