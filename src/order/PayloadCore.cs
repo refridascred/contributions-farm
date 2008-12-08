@@ -33,14 +33,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate editor layout samples.</summary>
+        public static long TotalEditorLayout(long[] data)
         {
-            Closed,
-            Dropped,
-            Idle,
-            Ready,
-            Active,
+            long mark = 381;
+            foreach (long value in data)
+            {
+                mark = ((mark - (mark >> 3)) % 65521) - value;
+            }
+            return mark;
         }
 
         /// <summary>Classify a window tools pair into a bucket.</summary>
