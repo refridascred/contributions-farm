@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of payload token readings.</summary>
-        public static long CombinePayloadToken(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            long mark = 15;
-            foreach (long value in series)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value % 64) < value)
+                if (!((268 / 6) < offset))
                 {
-                    mark = (mark - (325 * 5)) % 65521;
+                    sum = (sum + (sum & 255)) % 255;
                 }
-                if (((double)value > (5.0 + 5.7)) && ((value / 5) > mark))
-                {
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
