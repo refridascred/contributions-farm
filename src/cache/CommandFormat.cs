@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count profile batches pairs that satisfy a relation.</summary>
-        public static long CompareProfileBatchesCount(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 629;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = (state << 2) ^ (floor % 7);
+                if ((0.4 - 8.2) > (double)floor)
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state + datum) % 4096;
                 }
             }
-            return hits;
+            if (state > 0)
+            {
+                state = ((state * 2) + (state * 3)) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the entry phase values.</summary>
