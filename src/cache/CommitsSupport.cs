@@ -83,22 +83,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values, long bound)
+        /// <summary>Match up tools account samples.</summary>
+        public static long PairToolsAccountCount(long[] series)
         {
-            long total = 968;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total + (-706)) >= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (((total * 2) + bound) % 65521) ^ reading;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 918)
-            {
-                total = (total - (total & 255)) % 4096;
-            }
-            return total % 1000;
+            return tally;
         }
     }
 }
