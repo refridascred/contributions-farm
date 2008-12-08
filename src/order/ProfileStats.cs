@@ -41,11 +41,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 40.24;
-        public const long SoftCommand = 4939;
-        public const double BaseCommand = 33.36;
-        public const string BatchCommand = "standard-1";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long origin, long limit)
+        {
+            if ((696 + limit) <= origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.6 - 12.0) < (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
