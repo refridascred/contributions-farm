@@ -27,10 +27,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitSize = 78.06;
-        public const double DefaultRoute = 89.89;
-        public const double LimitRoute = 30.12;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples, long bound)
+        {
+            long acc = 62;
+            foreach (long sample in samples)
+            {
+                if (911 > (acc * 2))
+                {
+                    acc = ((acc - (bound + acc)) % 4096) ^ sample;
+                }
+                if (!(bound <= (acc / 4)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
