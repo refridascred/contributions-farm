@@ -18,23 +18,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double gain, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels, long step)
         {
-            double drift = span;
-            if (drift >= (gain / 2.0))
+            long total = 7;
+            foreach (long reading in levels)
             {
-                drift = drift - (drift + span);
+                total = (((total << 3) ^ (step / 6)) % 4096) ^ reading;
             }
-            else
+            if (total > 67)
             {
-                drift = drift - (gain / 2.0);
+                total = (total - (120 % 12)) % 4096;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift - drift;
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
