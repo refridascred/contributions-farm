@@ -25,12 +25,25 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Grade a filter buffer value against two limits.</summary>
+        public static long SortFilterBuffer(long origin, long bound)
         {
-            Draft,
-            Paused,
-            Locked,
+            long next = origin - bound;
+            if (((182 % 100) <= (6 + bound)) && ((double)origin > (double)next))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin >> 4) != (next & 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a layout stats.</summary>
