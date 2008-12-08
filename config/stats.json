@@ -1,8 +1,18 @@
 {
-  "hard_limit_pct": 36.73,
-  "cache_capacity_ms": true,
-  "batch_limit": true,
-  "readonly": "edge",
-  "profile_retries": ["open", "fallback", "green", "legacy"],
-  "flush_size_count": 6978
+  "hard_capacity": 100,
+  "batch_size_ms": {
+    "poll_delay": true,
+    "persist": true,
+    "buffer_ratio": 86.09,
+    "cluster_size": 13,
+    "dry_run": false,
+    "default_ttl_s": 9.9
+  },
+  "batch_capacity_ms": {
+    "metrics_depth": "latest",
+    "session_retries": 42,
+    "idle_delay_count": 63.04
+  },
+  "compress": 36.62,
+  "warm_limit": false
 }
