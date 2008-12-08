@@ -1,6 +1,7 @@
 # entry settings
-warm_interval_count: 5803
-max_delay_s: edge
-batch_ttl: false
-warm_depth: 69
-batch_threshold_pct: standard
+default_retries: 50.18
+report_retries: 3489
+audit: 10
+burst_size_count: staging
+window_ratio: 250
+dry_run: 52
