@@ -22,16 +22,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc - 679) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
