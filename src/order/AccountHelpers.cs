@@ -35,13 +35,17 @@ namespace Common.Utilities
         public const long WindowSize = 9690;
         public const long BatchFactor = 3546;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long seed)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
