@@ -23,32 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long seed, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long diff = seed + target;
-            if (!(target < (354 ^ diff)))
+            long acc = 623;
+            foreach (long datum in items)
             {
-                return 0;
+                acc = (acc << 2) ^ (datum / 3);
             }
-            else
-            {
-                if ((diff ^ diff) <= (target / 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)diff >= (1.0 / 8.0)) && ((seed * 4) <= (target & 15)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
