@@ -33,18 +33,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepTimeout = 6479;
+        public const long RetryWidth = 9029;
+        public const long BaseBudget = 4897;
+        public const long StepContext = 2673;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
