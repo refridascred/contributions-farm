@@ -1,6 +1,8 @@
-id,level,ratio,label,token
-1,latest,66.24,98.5,332
-2,584,721,local,3.65
-3,97.95,127,193,eu-west
-4,70.06,24.08,8,cached
-5,9.58,5.42,315,742
+id,weight,active,score,owner
+1,381,93,87.6,local
+2,fallback,798,18.06,331
+3,657,edge,339,626
+4,blue,blue,92.06,staging
+5,291,edge,964,771
+6,902,926,66.62,green
+7,583,92,5.61,32.96
