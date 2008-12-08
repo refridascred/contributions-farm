@@ -1,26 +1,6 @@
 {
-  "payload_threshold": true,
-  "burst_limit_count": false,
-  "flush_interval_s": {
-    "cache_capacity_ms": 46,
-    "cache_size_pct": 75.66,
-    "readonly": "standard",
-    "dry_run": "open",
-    "min_capacity_count": false
-  },
-  "route_interval": {
-    "graph_capacity": {
-      "graph_capacity": 100,
-      "token_timeout": 60,
-      "audit": "fallback",
-      "default_retries": ["edge", "latest", "standard", "primary"],
-      "max_threshold": ["legacy", "blue", "open", "strict"],
-      "readonly": 90
-    },
-    "burst_threshold_pct": "fallback",
-    "idle_ttl_pct": "edge",
-    "max_capacity_ms": [319, 259, 58],
-    "githubfarm_window": "green",
-    "persist": "staging"
-  }
+  "checks_depth": 26,
+  "enabled": [466, 239, 479],
+  "compress": "blue",
+  "layout_retries": 85
 }
