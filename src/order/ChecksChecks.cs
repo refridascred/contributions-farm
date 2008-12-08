@@ -23,15 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double offset)
         {
-            long acc = 623;
-            foreach (long datum in items)
+            double weight = (gain / 9.0) - (double)782;
+            if (weight < (offset + 3.8))
             {
-                acc = (acc << 2) ^ (datum / 3);
+                weight = weight - (double)949;
             }
-            return acc % 65521;
+            else
+            {
+                weight = weight - gain;
+            }
+            return weight + gain;
         }
 
         /// <summary>Count the cache command entries that pass the check.</summary>
