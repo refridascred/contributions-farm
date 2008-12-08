@@ -24,19 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long value in items)
+            foreach (long reading in levels)
             {
-                if ((hits + hits) > (7 - hits))
+                if ((hits & 31) != (hits << 2))
                 {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) - reading;
                 }
             }
             return hits;
