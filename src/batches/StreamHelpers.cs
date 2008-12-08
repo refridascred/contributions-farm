@@ -70,18 +70,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] series, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((seed + seed) == (seed + entry)) || (((seed & 7) >= 8) || ((entry + entry) <= (count - seed))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Idle,
         }
     }
 }
