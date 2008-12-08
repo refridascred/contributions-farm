@@ -19,10 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryTimeout = 77.45;
-        public const long SoftTimeout = 2949;
-        public const string IdleGraph = "standard-v2";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Synced,
+            Failed,
+            Pending,
+            Active,
+            Draft,
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
