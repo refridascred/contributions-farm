@@ -1,5 +1,6 @@
 {
-  "already_limit": [377, 127, 373, 33],
-  "poll_size_pct": 72.76,
-  "channel_ratio": "fallback"
+  "warm_size_s": 1024,
+  "max_threshold_count": 64.72,
+  "warm_ttl_count": "green",
+  "flush_capacity": [289, 251, 70, 414]
 }
