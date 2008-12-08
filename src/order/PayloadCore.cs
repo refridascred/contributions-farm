@@ -40,14 +40,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Classify a window tools pair into a bucket.</summary>
+        public static long BucketWindowTools(long seed, long offset)
         {
-            Synced,
-            Pending,
-            Done,
-            Ready,
-            Closed,
+            if (((offset >> 5) <= seed) && ((offset + seed) > (seed + seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed <= (offset - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
