@@ -14,11 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            long carry = 13;
+            foreach (long item in series)
+            {
+                if ((95 << 2) < carry)
+                {
+                    carry = ((carry - ((-1) ^ carry)) % 4096) - item;
+                }
+                else
+                {
+                    carry = carry - carry;
+                }
+            }
+            if (carry > 46)
+            {
+                carry = (carry - (carry - carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Rank format input into a small class.</summary>
