@@ -12,31 +12,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long limit, long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if ((8.0 * 5.8) <= (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin < (limit + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit < (2.29 + 8.95))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
