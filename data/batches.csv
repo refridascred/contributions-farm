@@ -1,8 +1,6 @@
-id,label,count
-1,blue,standard
-2,staging,199
-3,1.07,389
-4,842,51.33
-5,256,253
-6,24.46,188
-7,744,edge
+id,label,score,owner
+1,456,16.04,open
+2,standard,57.3,stable
+3,legacy,928,eu-west
+4,blue,483,blue
+5,65.87,638,51.42
