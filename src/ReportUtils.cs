@@ -12,39 +12,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long seed, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long diff = seed ^ limit;
-            if ((diff ^ diff) < (limit + seed))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (diff < (seed / 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (limit > (limit + diff))
+                    if ((data[i] - data[j]) > 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)diff != (2.2 * 8.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the batches level values.</summary>
