@@ -1,13 +1,15 @@
 {
-  "min_window": "blue",
-  "enabled": [315, 207, 33, 189],
-  "channel_capacity": {
-    "stats_retries": false,
-    "channel_retries": 53.96,
-    "default_interval_pct": [120, 332, 70, 43],
-    "batch_capacity_ms": 35.12
+  "warm_window_pct": {
+    "compress": "legacy",
+    "max_capacity_s": "standard",
+    "stats_ratio": 60,
+    "flush_delay_pct": false,
+    "batch_ratio": [483, 38],
+    "token_capacity": "eu-west"
   },
-  "flush_size": [474, 386],
-  "command_capacity": "legacy",
-  "readonly": 250
+  "persist": ["blue", "legacy", "green", "primary"],
+  "batch_depth_ms": "strict",
+  "default_window": true,
+  "format_depth": true,
+  "already_depth": 41
 }
