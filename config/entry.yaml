@@ -1,5 +1,9 @@
 # entry settings
-hard_depth: false
-flush_ttl: stable
-checks_ratio: local
-default_size_s: 70
+idle_retries:
+  - 60
+  - 388
+  - 228
+  - 415
+cache_limit_pct: 42.11
+support_threshold: true
+cache_limit_ms: 9.3
