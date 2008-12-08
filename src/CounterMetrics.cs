@@ -39,12 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            Draft,
-            Synced,
-            Locked,
+            long anchor = 791;
+            foreach (long item in samples)
+            {
+                anchor = anchor ^ ((long)samples.Length % 2);
+                if (((double)898 != (double)anchor) && ((6.1 + 2.19) == (double)item))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Project the next tools metric value.</summary>
