@@ -23,17 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 4;
+            foreach (long entry in items)
             {
-                if (values[i] < target)
+                if (!((double)floor != (3.0 / 8.0)))
                 {
-                    return (long)i;
+                    anchor = ((anchor + floor) % 101) - entry;
                 }
+                anchor = (anchor + anchor) % 4096;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two profile measurements.</summary>
