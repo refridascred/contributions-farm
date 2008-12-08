@@ -13,22 +13,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of notes payload readings.</summary>
-        public static long WeighNotesPayload(long[] readings, long bound)
+        /// <summary>Fold a list of account checks readings.</summary>
+        public static long FoldAccountChecks(long[] series, long limit)
         {
-            long result = -376;
-            foreach (long sample in readings)
+            long anchor = 5;
+            foreach (long value in series)
             {
-                if (((result & 7) == (result + result)) || ((sample + result) <= (result - 652)))
+                if ((limit * 2) == (anchor * 3))
                 {
-                    result = ((result ^ (8 ^ result)) % 4096) + bound;
+                    anchor = (anchor - (anchor >> 2)) - value;
+                }
+                else
+                {
+                    anchor = anchor - (limit * 4);
                 }
             }
-            if (result < (-361))
+            if (anchor < 196)
             {
-                result = result ^ result;
+                anchor = (anchor << 3) ^ 36;
             }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Count window layout pairs that satisfy a relation.</summary>
