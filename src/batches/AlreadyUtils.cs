@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 9768;
         public const double RetryFactor = 52.63;
 
-        /// <summary>Validate already metrics readings against a bound.</summary>
-        public static bool CheckAlreadyMetricsBounds(long[] data, long seed)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the schema level values.</summary>
