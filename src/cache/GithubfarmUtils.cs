@@ -27,13 +27,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Draft,
-            Locked,
-            Closed,
+            New,
+            Done,
             Active,
+            Locked,
         }
     }
 }
