@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 4425;
-        public const double DefaultDepth = 63.55;
-        public const double BatchSession = 14.09;
-        public const long MaxLevel = 2022;
-        public const long IdleTimeout = 4193;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Idle,
+            Closed,
+            New,
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
