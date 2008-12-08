@@ -27,11 +27,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double ratio, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] readings, long target)
         {
-            double load = (double)(83 % 100);
-            return ((load - load) + ratio) + span;
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((91 >= target) || ((seen * 2) > 599)) && ((double)seen >= (double)value))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
