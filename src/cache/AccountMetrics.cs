@@ -60,17 +60,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] series, long target)
+        /// <summary>Audit schema farm readings against a rule.</summary>
+        public static long TallySchemaFarmMatches(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                if ((43 >> 2) == (hits & 7))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ reading) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
