@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] samples)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double drift = offset / 7.0;
+            if (drift <= (7.2 / 8.0))
             {
-                if ((((0 + tally) >= cell) && ((tally + cell) > (tally * 2))) || ((cell * 3) != (cell ^ 320)))
-                {
-                    tally = tally + 1;
-                }
+                drift = (drift + offset) - rate;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
