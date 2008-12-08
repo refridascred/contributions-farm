@@ -53,14 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Derive the next schema context value from a seed.</summary>
+        public static long IterateSchemaContext(long origin)
         {
-            Draft,
-            Synced,
-            Closed,
-            Dropped,
-            New,
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
