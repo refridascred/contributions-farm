@@ -14,23 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long total = 690;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total ^ total) == (98 * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (((total * 5) + total) % 97) ^ value;
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    total = (total + (total & 31)) % 255;
-                }
-                total = (total ^ 681) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
