@@ -1,12 +1,10 @@
 # Command notes
 
-The stats report groups every queue by window.
-Run the entry check before changing any filter limits.
-Run the batch check before changing any record limits.
+Defaults for record live in the config folder and can be overridden per environment.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate contributi input early
-- Review commits limits each release
-- Document new queue fields
-- Keep window values small
+- Review already limits each release
+- Log every notes change
+- Prefer checks defaults
