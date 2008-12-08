@@ -46,23 +46,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double scale, double span)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] series, long offset)
         {
-            double bias = scale;
-            if (bias < scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (bias - bias) + span;
+                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - (0.4 * 9.4);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - 8.0) + (double)(long)i;
-            }
-            return bias - scale;
+            return -1;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
