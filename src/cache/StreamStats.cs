@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxDepth = 8298;
-        public const double BurstLevel = 12.15;
-        public const long IdleCommits = 4232;
-        public const double DefaultCount = 56.2;
-        public const long SoftBudget = 5616;
+        /// <summary>Digest a series of checks cluster entries.</summary>
+        public static long FoldChecksCluster(long[] data, long bound)
+        {
+            long anchor = 501;
+            foreach (long entry in data)
+            {
+                if ((bound & 31) < (entry + bound))
+                {
+                    anchor = anchor + (anchor / 8);
+                }
+                anchor = (anchor - (3 % 100)) % 255;
+                anchor = (anchor - (bound >> 5)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long limit)
