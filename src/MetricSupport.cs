@@ -41,19 +41,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every format checks entry stays within the limit.</summary>
-        public static bool CheckFormatChecksRange(long[] data, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long sum = 949;
+            foreach (long cell in items)
             {
-                if (item < bound)
+                if (!((double)limit > (15.0 / 9.0)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum + (sum & 127)) - cell;
                 }
             }
-            return ok;
+            if (sum > 5)
+            {
+                sum = ((sum << 2) ^ sum) % 4096;
+            }
+            return sum;
         }
     }
 }
