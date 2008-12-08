@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next layout token value from a seed.</summary>
-        public static long DeriveLayoutToken(long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (bound < (8 - 674))
+                if (samples[i] < seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                carry = (carry ^ ((long)i + (long)i)) % 65521;
-                carry = (carry ^ (64 - carry)) % 255;
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
