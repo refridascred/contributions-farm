@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double scale, double floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double gain = (scale + scale) + (double)(-9);
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain + gain) - (double)(long)i) + floor;
-            }
-            return gain + gain;
+            Idle,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
