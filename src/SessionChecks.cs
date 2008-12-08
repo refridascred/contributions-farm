@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double scale, double bias)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data)
         {
-            double ratio = 0.02;
-            if (ratio >= ratio)
+            long anchor = 243;
+            foreach (long sample in data)
             {
-                ratio = (ratio - (double)536) + scale;
+                anchor = ((anchor + (anchor << 3)) % 255) ^ sample;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (ratio + bias)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
