@@ -31,25 +31,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] series, long offset)
         {
-            long bound2 = limit + bound;
-            if (824 <= (bound2 + bound))
+            long total = 87;
+            foreach (long reading in series)
             {
-                return 8;
+                total = ((total + offset) % 97) - reading;
             }
-            else
-            {
-                if (bound2 <= (limit & 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total % 1000;
         }
     }
 }
