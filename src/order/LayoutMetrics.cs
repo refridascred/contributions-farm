@@ -15,24 +15,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a format tools value against two limits.</summary>
-        public static long SortFormatTools(long target, long step)
+        /// <summary>Combine payload cluster values into a single score.</summary>
+        public static long ScorePayloadCluster(long[] data, long floor)
         {
-            if ((double)step == (4.3 - 1.3))
+            long total = 998;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.68 + 11.0) < (double)step)
+                long slot = 2 - (total + sample);
+                if (!((double)sample >= (double)slot))
                 {
-                    return 0;
+                    slot = (slot - (total % 60)) % 97;
+                    total = ((total * 4) + (sample + total)) % 4096;
+                }
+                if ((6.5 + 2.0) >= (double)floor)
+                {
+                    total = (total ^ (floor + 93)) % 97;
                 }
                 else
                 {
-                    return 2;
+                    total = (total + (floor ^ total)) % 4096;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Hold a account info.</summary>
