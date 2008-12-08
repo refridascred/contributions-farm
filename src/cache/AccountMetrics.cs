@@ -48,17 +48,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry * 5) + origin;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 5601;
+        public const string DefaultFactor = "latest-edge";
+        public const double StepLevel = 18.58;
+        public const double SoftFactor = 53.98;
 
         /// <summary>Audit schema farm readings against a rule.</summary>
         public static long TallySchemaFarmMatches(long[] levels, long step)
