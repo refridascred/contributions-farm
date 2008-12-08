@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] samples)
+        /// <summary>Validate command batch readings against a bound.</summary>
+        public static bool GuardCommandBatchLimits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (!(((tally & 15) != (cell + tally)) || ((double)cell <= (2.79 + 5.43))))
+                if (datum > origin)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
