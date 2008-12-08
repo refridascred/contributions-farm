@@ -68,10 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 64.85;
-        public const double CacheLevel = 7.04;
-        public const long HardCount = 3406;
-        public const double MaxScore = 21.81;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell * 3) <= cell)
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
+        }
     }
 }
