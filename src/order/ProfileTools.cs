@@ -25,18 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 7360;
+        public const long BatchStats = 8504;
+        public const string MinStats = "fallback";
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] levels)
