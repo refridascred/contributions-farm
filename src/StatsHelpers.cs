@@ -31,19 +31,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token batch values into a single score.</summary>
-        public static long FoldTokenBatch(long[] data, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long seed, long offset)
         {
-            long total = 947;
-            foreach (long value in data)
+            if (offset < seed)
             {
-                total = ((total << 2) ^ (value + bound)) % 101;
-                if ((total % 2) > (bound >> 5))
+                return 1;
+            }
+            else
+            {
+                if (!((19.0 + 6.0) != (double)seed))
                 {
-                    total = (total + (total & 1)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Describe the schema level values.</summary>
