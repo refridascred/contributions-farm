@@ -1,7 +1,8 @@
 {
-  "strict": [118, 200, 246],
-  "persist": 2,
-  "batch_limit_ms": 30,
-  "farm_limit": false,
-  "default_ratio_count": true
+  "editor_retries": "cached",
+  "readonly": true,
+  "hard_ttl_count": 80,
+  "payload_window": 996,
+  "warm_delay": 832,
+  "batch_depth_s": [151, 395]
 }
