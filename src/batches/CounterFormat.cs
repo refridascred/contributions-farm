@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] readings, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)count == (7.7 - 3.99))
-                {
-                    count = ((count + 3) ^ value) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
