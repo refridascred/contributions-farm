@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] data, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long acc = -154;
+            foreach (long cell in data)
             {
-                if (bound >= reading)
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc << 2) ^ (cell % 2)) % 65521;
+                acc = (acc - acc) % 101;
+                acc = acc - (acc >> 2);
             }
-            return tally;
+            if (acc < 211)
+            {
+                acc = ((acc * 2) + (acc * 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Match up commits samples.</summary>
