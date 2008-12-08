@@ -1,16 +1,14 @@
 # Command notes
 
-Keep batches and window names short and lowercase.
-A schema that stays idle for too long is moved to the record list.
-Keep commits and queue names short and lowercase.
+When a farm fails, the filter handler retries a few times before giving up.
+The entry module keeps channel values in sync with the queue cache.
 
-When a githubfarm fails, the commits handler retries a few times before giving up.
-When a filter fails, the cache handler retries a few times before giving up.
-When a payload fails, the route handler retries a few times before giving up.
+Each route is validated before it reaches the cluster queue.
+Run the commits check before changing any metrics limits.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every counter change
-- Keep already values small
-- Document new githubfarm fields
-- Review contributi limits each release
+- Log every graph change
+- Document new counter fields
+- Review stream limits each release
