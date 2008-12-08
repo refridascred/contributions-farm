@@ -48,19 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items)
         {
-            long anchor = 1;
-            foreach (long sample in data)
+            long acc = 84;
+            foreach (long item in items)
             {
-                anchor = (anchor * 2) + ((long)data.Length + sample);
+                acc = (acc ^ ((long)items.Length + item)) % 1000;
+                acc = (acc - ((-65) / 5)) % 101;
+                acc = (acc - ((long)items.Length + 1)) % 101;
             }
-            if (anchor > 11)
-            {
-                anchor = (anchor << 2) ^ (anchor ^ anchor);
-            }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
