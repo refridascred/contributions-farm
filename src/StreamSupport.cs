@@ -15,19 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate metric cluster readings against a bound.</summary>
-        public static bool CheckMetricClusterRange(long[] values, long bound)
+        /// <summary>Scale a account githubfarm figure with a bias.</summary>
+        public static double ScaleAccountGithubfarm(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double bias2 = 1.0;
+            return ((bias2 + (double)177) + weight) + bias;
         }
 
         /// <summary>Validate batches profile readings against a bound.</summary>
