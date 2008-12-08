@@ -63,15 +63,21 @@ namespace Common.Utilities
             return gain + (double)244;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
