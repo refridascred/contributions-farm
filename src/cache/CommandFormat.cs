@@ -47,13 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the stats profile entries that pass the check.</summary>
+        public static long AuditStatsProfileOutliers(long[] levels)
         {
-            Closed,
-            Idle,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (cell < (cell ^ 807))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
