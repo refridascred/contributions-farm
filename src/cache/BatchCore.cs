@@ -40,22 +40,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long result = 420;
-            foreach (long value in levels)
-            {
-                if (((long)levels.Length >> 2) > result)
-                {
-                    result = (((result << 3) ^ (result % 24)) % 4096) - value;
-                }
-            }
-            if (result > 32)
-            {
-                result = ((result * 2) + result) % 4096;
-            }
-            return result % 1000;
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
