@@ -38,12 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Fold a list of command checks readings.</summary>
+        public static long FoldCommandChecks(long[] samples, long seed)
         {
-            Draft,
-            Dropped,
-            Pending,
+            long total = 876;
+            foreach (long sample in samples)
+            {
+                total = (total + 9) - sample;
+                total = ((total << 3) ^ (seed - seed)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
