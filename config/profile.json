@@ -1,10 +1,13 @@
 {
-  "readonly": 35.04,
-  "stats_window": {
-    "idle_ratio_s": "latest",
-    "contributi_depth": 4758,
-    "persist": 79,
-    "cache_size_pct": "eu-west"
+  "session_ttl": false,
+  "poll_delay_s": "blue",
+  "batch_capacity": {
+    "max_ratio_count": 94,
+    "hard_interval_s": "stable",
+    "enabled": "latest",
+    "flush_retries": false,
+    "warm_size": "standard"
   },
-  "flush_interval_s": [432, 497, 462]
+  "default_ratio": "cached",
+  "batch_size_s": "edge"
 }
