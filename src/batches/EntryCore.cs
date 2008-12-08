@@ -29,15 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two report queue measurements.</summary>
-        public static double SmoothReportQueue(double bias, double bias2)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] samples, long floor)
         {
-            double bias3 = (bias2 - 11.0) + (double)0;
-            for (int i = 0; i < 3; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                bias3 = ((bias3 + (double)533) + (double)(long)i) + bias;
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias3 + (bias2 / 2.0);
+            return stale;
         }
 
         /// <summary>Project the next queue payload value.</summary>
