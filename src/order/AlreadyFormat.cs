@@ -60,18 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric stream values into a single score.</summary>
-        public static long ScoreMetricStream(long[] series, long target)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long score = 9;
-            foreach (long reading in series)
-            {
-                if (!((double)score < (double)437))
-                {
-                    score = (((score - score) % 65521) ^ reading) + target;
-                }
-            }
-            return score;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
