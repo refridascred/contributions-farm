@@ -39,13 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of window tools entries.</summary>
+        public static long WeighWindowTools(long[] items)
         {
-            Ready,
-            Locked,
-            Idle,
-            Dropped,
+            long total = 463;
+            foreach (long cell in items)
+            {
+                total = (total + total) % 65521;
+                if (((long)items.Length % 7) < (total - total))
+                {
+                    total = (total - cell) % 1000;
+                }
+                else
+                {
+                    total = (total * 5) + (total - 0);
+                }
+            }
+            return total;
         }
 
         /// <summary>Project the next tools metric value.</summary>
