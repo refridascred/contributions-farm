@@ -54,9 +54,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardLevel = 87.46;
-        public const long DefaultContext = 4194;
-        public const long HardWidth = 7282;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long target, long step)
+        {
+            long slot = target - step;
+            if (step <= (step % 64))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step / 4) == (8 - 682)) || ((slot - step) < (step % 12)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((slot ^ target) >= (slot << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6.0 + 4.0) != (double)slot)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
