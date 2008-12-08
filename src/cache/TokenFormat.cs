@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] data, long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] levels, long offset)
         {
-            long carry = 2;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry * 2) + (entry + 954)) % 65521) + offset;
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 72)
-            {
-                carry = (carry << 3) ^ ((-58) << 3);
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
