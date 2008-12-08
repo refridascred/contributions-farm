@@ -1,8 +1,7 @@
 {
-  "sync_depth_count": 500,
-  "batch_capacity": 500,
-  "dry_run": 6526,
-  "readonly": ["stable", "legacy", "fallback", "legacy"],
-  "burst_retries_s": 58.92,
-  "base_delay": 92.03
+  "soft_size": 3909,
+  "flush_capacity": 37.28,
+  "context_timeout": 18,
+  "audit": ["primary", "fallback", "latest", "fallback"],
+  "filter_capacity": false
 }
