@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of cluster already entries.</summary>
-        public static long TallyClusterAlready(long[] readings)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long carry = 5;
-            foreach (long entry in readings)
-            {
-                carry = carry + (entry >> 1);
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count token profile pairs that satisfy a relation.</summary>
