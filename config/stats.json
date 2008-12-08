@@ -1,18 +1,12 @@
 {
-  "hard_capacity": 100,
-  "batch_size_ms": {
-    "poll_delay": true,
-    "persist": true,
-    "buffer_ratio": 86.09,
-    "cluster_size": 13,
-    "dry_run": false,
-    "default_ttl_s": 9.9
+  "entry_ratio": {
+    "buffer_capacity": false,
+    "graph_interval": 30,
+    "burst_delay": 23.88,
+    "audit": 8834
   },
-  "batch_capacity_ms": {
-    "metrics_depth": "latest",
-    "session_retries": 42,
-    "idle_delay_count": 63.04
-  },
-  "compress": 36.62,
-  "warm_limit": false
+  "checks_retries": [148, 379],
+  "schema_retries": 500,
+  "cache_interval_ms": 98.68,
+  "strict": "eu-west"
 }
