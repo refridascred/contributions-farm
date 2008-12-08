@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] values)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double ratio = floor;
+            if (ratio <= scale)
             {
-                if ((matches + (-1)) <= matches)
-                {
-                    matches = (matches + 2) ^ sample;
-                }
+                ratio = ratio - ratio;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + floor;
+            }
+            return ratio - (double)4;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
