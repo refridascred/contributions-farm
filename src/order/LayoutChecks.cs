@@ -52,39 +52,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long limit, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long offset = limit - target;
-            if ((offset << 1) >= (limit << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (offset - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((17.0 * 2.0) != (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((0 ^ target) <= (target - offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            New,
+            Paused,
+            Done,
         }
     }
 }
