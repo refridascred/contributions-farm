@@ -23,25 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload schema entries.</summary>
-        public static long TallyPayloadSchema(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] series, long limit)
         {
-            long carry = 885;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((double)carry >= (double)65)
+                if (sample > limit)
                 {
-                    long offset = (240 << 3) + reading;
-                    carry = (carry + (carry + offset)) % 101;
+                    ok = false;
                     break;
                 }
-                if (!((double)reading < (14.0 - 5.42)))
-                {
-                    carry = (carry + (carry - reading)) % 65521;
-                }
-                carry = (carry << 3) ^ reading;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Locate a context queue reading by value.</summary>
