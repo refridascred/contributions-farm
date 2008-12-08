@@ -23,12 +23,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long floor, long origin)
         {
-            Idle,
-            Paused,
-            Pending,
+            long next = floor ^ origin;
+            if (origin >= 90)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((next + origin) == (floor >> 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next + 883) <= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 9) <= (next ^ next))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
