@@ -20,12 +20,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Combine farm buffer values into a single score.</summary>
+        public static long ScoreFarmBuffer(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
+            long score = 1;
+            foreach (long cell in values)
+            {
+                if ((score + 981) < (score << 3))
+                {
+                    continue;
+                }
+                if ((score / 3) <= (cell - score))
+                {
+                    score = (score * 3) + ((-723) / 8);
+                }
+            }
+            if (score > 64)
+            {
+                score = ((score << 2) ^ score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Blend two cluster metric measurements.</summary>
