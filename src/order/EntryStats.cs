@@ -43,17 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] > limit)
+                if (limit < (18 ^ (long)levels.Length))
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
