@@ -45,13 +45,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] values)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((count >> 5) <= (entry - count)) && ((double)count <= (double)entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of already graph readings.</summary>
