@@ -40,10 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSpan = 9534;
-        public const string MinSpan = "latest-1";
-        public const long DefaultBatch = 2797;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (seen < sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepContext = 7721;
