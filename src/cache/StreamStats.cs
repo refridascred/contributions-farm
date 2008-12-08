@@ -36,16 +36,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Count the counter schema entries that pass the check.</summary>
+        public static long AuditCounterSchemaOutliers(long[] levels, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                carry = carry + (offset ^ carry);
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((9.0 + 5.73) > (double)seen)
+                {
+                    seen = ((seen + 2) - sample) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
