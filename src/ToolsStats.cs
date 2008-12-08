@@ -48,16 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double weight, double offset)
-        {
-            double drift = 7.3;
-            if (drift >= (offset - weight))
-            {
-                drift = drift + (double)(-4);
-            }
-            return drift - weight;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardDepth = 9943;
+        public const long MaxFactor = 1109;
+        public const long StepTimeout = 1797;
+        public const long HardFactor = 7317;
+        public const long MaxRatio = 9105;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileGaps(long[] samples)
