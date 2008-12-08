@@ -29,19 +29,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (value != seed)
+                if (((reading + reading) <= (reading - reading)) || (((-487) >> 4) != (50 + (long)readings.Length)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the stream class values.</summary>
