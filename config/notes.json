@@ -1,8 +1,6 @@
 {
-  "checks_threshold": 1409,
-  "hard_limit": 50.05,
-  "max_capacity_ms": ["stable", "legacy", "standard", "local"],
-  "default_ttl_s": "blue",
-  "commits_threshold": "blue",
-  "poll_retries_pct": "open"
+  "retry_interval_count": "eu-west",
+  "readonly": 57.64,
+  "persist": "open",
+  "checks_timeout": 45.33
 }
