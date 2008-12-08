@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] series, long offset)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen / 9) == (seen + seen))
+                {
+                    seen = ((seen + 1) ^ value) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
