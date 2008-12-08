@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double ratio, double floor)
-        {
-            double scale = (5.8 + 7.81) / 3.0;
-            if (scale >= scale)
-            {
-                scale = (scale - scale) - ratio;
-            }
-            else
-            {
-                scale = scale - (floor * 4.42);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 8267;
+        public const string DefaultAlready = "primary-edge";
+        public const long MaxSize = 4620;
+        public const long BurstSize = 2324;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportOutliers(long[] readings)
