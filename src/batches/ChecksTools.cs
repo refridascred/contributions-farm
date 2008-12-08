@@ -43,19 +43,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate counter format readings against a bound.</summary>
-        public static bool GuardCounterFormatBounds(long[] samples, long origin)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return ready;
+            return carry;
         }
     }
 }
