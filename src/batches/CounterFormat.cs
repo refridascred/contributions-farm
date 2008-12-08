@@ -31,19 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((long)i == (seed >> 5))
-                {
-                    acc = (acc * 3) + acc;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheWidth = 3156;
+        public const long StepGithubfarm = 5905;
+        public const long CacheGithubfarm = 417;
+        public const long MinGithubfarm = 6775;
+        public const double DefaultGithubfarm = 93.08;
     }
 }
