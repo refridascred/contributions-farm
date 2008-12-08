@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] readings, long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] values)
         {
-            long acc = 86;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((8 - step) != (acc + (long)readings.Length)) && (acc <= (entry - 60)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc * 2) + acc;
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
