@@ -12,14 +12,12 @@ namespace Common.Utilities
             return scale - (ratio - span);
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinDepth = 1964;
+        public const long HardSize = 5343;
+        public const long RetryTimeout = 1320;
+        public const string HardTimeout = "local";
+        public const long BaseBatches = 7151;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchOutliers(long[] readings)
