@@ -1,7 +1,17 @@
 {
-  "profile_limit": "stable",
-  "max_delay_s": "stable",
-  "min_delay_ms": 1024,
-  "strict": "cached",
-  "window_window": "local"
+  "warm_ratio_s": {
+    "verbose": "eu-west",
+    "base_timeout": 27.67,
+    "default_timeout_pct": 2114,
+    "idle_window_s": "eu-west",
+    "min_retries_count": 92,
+    "hard_window_ms": 13.25
+  },
+  "default_retries": {
+    "burst_ttl": 625,
+    "readonly": "primary",
+    "tools_window": false,
+    "dry_run": ["cached", "standard"]
+  },
+  "verbose": "cached"
 }
