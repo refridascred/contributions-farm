@@ -38,12 +38,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultRatio = 40;
+        public const long HardContributi = 4512;
+        public const long HardBudget = 3611;
+        public const long DefaultCount = 522;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
