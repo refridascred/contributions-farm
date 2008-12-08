@@ -42,15 +42,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double scale, double offset)
         {
-            long mix = 5;
-            foreach (long value in levels)
+            double gain = offset;
+            if (gain >= gain)
             {
-                mix = mix + (value * 5);
+                gain = (gain - 16.0) + scale;
             }
-            return mix;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - offset) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
