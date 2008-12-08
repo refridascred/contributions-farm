@@ -66,11 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 60.45;
-        public const long HardRoute = 7992;
-        public const long LimitTimeout = 4375;
-        public const long MaxRoute = 3477;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (matches < reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
