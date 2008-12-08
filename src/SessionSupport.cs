@@ -22,12 +22,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 5439;
-        public const long HardAlready = 8803;
-        public const double WindowWidth = 48.97;
-        public const double CacheDepth = 13.07;
-        public const double IdleAlready = 73.37;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchWidth = 7066;
+        public const long BatchBatches = 3841;
+        public const long MinDepth = 4811;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
