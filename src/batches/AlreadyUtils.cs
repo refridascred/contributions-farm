@@ -52,14 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Ready,
-            Locked,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 6134;
+        public const long HardBudget = 7525;
+        public const string MinSession = "standard";
+        public const long BurstTimeout = 8483;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LocateReportIndex(long[] levels, long bound)
