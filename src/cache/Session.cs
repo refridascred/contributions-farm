@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a report tools figure with a bias.</summary>
-        public static double ProjectReportTools(double weight, double offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double scale = offset;
-            return (scale + scale) + weight;
+            Failed,
+            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Find the first command farm entry that matches the target.</summary>
