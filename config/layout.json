@@ -1,6 +1,22 @@
 {
-  "route_ttl": "fallback",
-  "batch_timeout_ms": 44,
-  "compress": [161, 24],
-  "persist": 45
+  "max_limit_ms": {
+    "githubfarm_threshold": ["standard", "stable"],
+    "enabled": ["latest", "stable", "legacy", "green"],
+    "stats_ratio": {
+      "strict": 9340,
+      "already_window": 33,
+      "filter_retries": 500
+    },
+    "compress": {
+      "graph_ratio": 1024,
+      "payload_depth": 41,
+      "readonly": 250,
+      "default_retries_pct": ["blue", "staging", "open"],
+      "warm_retries_s": 250
+    }
+  },
+  "compress": 19.03,
+  "max_threshold_pct": [296, 324],
+  "sync_size": 37.24,
+  "contributi_window": 33
 }
