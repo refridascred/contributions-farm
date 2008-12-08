@@ -29,16 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] items, long offset)
-        {
-            long mark = 92;
-            foreach (long entry in items)
-            {
-                mark = (((mark - (mark * 2)) % 255) ^ entry) - offset;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 6633;
+        public const string CacheTools = "fallback-1";
+        public const long MaxInterval = 6341;
+        public const long MinScore = 7513;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
