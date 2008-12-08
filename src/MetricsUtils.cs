@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double ratio, double span)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] series, long step)
         {
-            double scale = ratio - (ratio * 7.6);
-            return scale - (ratio - span);
+            long mark = 690;
+            foreach (long item in series)
+            {
+                if ((step + step) < (item / 5))
+                {
+                    mark = (mark ^ item) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ item) % 255;
+                }
+            }
+            if (mark > (-375))
+            {
+                mark = mark + (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
