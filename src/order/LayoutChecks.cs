@@ -52,14 +52,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Locked,
-            Idle,
-            New,
-            Paused,
+            Queued,
+            Synced,
+            Stale,
             Done,
+            Draft,
         }
     }
 }
