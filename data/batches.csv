@@ -1,6 +1,8 @@
-id,weight
-1,277
-2,primary
-3,59.21
-4,3.36
-5,802
+id,score
+1,open
+2,eu-west
+3,79
+4,68.93
+5,12.31
+6,blue
+7,local
