@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank payload report input into a small class.</summary>
-        public static long BucketPayloadReport(long limit, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] readings, long step)
         {
-            if ((double)limit != (8.0 + 9.0))
+            long sum = 364;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (16.0 <= (double)limit)
+                if ((item + 550) >= step)
                 {
-                    return 2;
+                    sum = ((sum << 3) ^ (step + sum)) % 1000;
                 }
                 else
                 {
-                    return 0;
+                    sum = ((sum * 4) + (step - item)) % 1000;
                 }
             }
+            return sum;
         }
 
         /// <summary>Look up the position of a profile token sample.</summary>
