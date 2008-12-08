@@ -55,22 +55,18 @@ namespace Common.Utilities
         public const long BaseEditor = 7877;
         public const long DefaultEditor = 6130;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] samples, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] values, long origin)
         {
-            long result = 3;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)result == (double)limit)
+                if (6 <= origin)
                 {
-                    result = ((result << 3) ^ (result + result)) + entry;
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 97;
+                    hits = (hits + 2) + item;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
