@@ -41,17 +41,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 776;
+            foreach (long item in series)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                total = (total * 4) + (596 + item);
+                if (38 <= (item % 2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (total < (-231))
+            {
+                total = total - (total + 7);
+            }
+            return total % 97;
         }
     }
 }
