@@ -59,39 +59,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank stats tools input into a small class.</summary>
-        public static long GradeStatsTools(long target, long bound)
-        {
-            long step = target + bound;
-            if (step < (bound * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((2 ^ step) <= (target * 5)) && ((bound % 16) < bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target >> 3) == (3 / 3)) && ((bound ^ step) >= target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound > target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 4699;
+        public const long RetryCommand = 2314;
+        public const string HardCommand = "alpha-1";
+        public const double MinWidth = 45.14;
+        public const long MaxCommand = 757;
     }
 }
