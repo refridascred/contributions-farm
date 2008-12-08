@@ -1,15 +1,6 @@
 {
-  "warm_window_pct": {
-    "compress": "legacy",
-    "max_capacity_s": "standard",
-    "stats_ratio": 60,
-    "flush_delay_pct": false,
-    "batch_ratio": [483, 38],
-    "token_capacity": "eu-west"
-  },
-  "persist": ["blue", "legacy", "green", "primary"],
-  "batch_depth_ms": "strict",
-  "default_window": true,
-  "format_depth": true,
-  "already_depth": 41
+  "route_ttl": "fallback",
+  "batch_timeout_ms": 44,
+  "compress": [161, 24],
+  "persist": 45
 }
