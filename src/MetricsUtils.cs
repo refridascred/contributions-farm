@@ -41,38 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a already report pair into a bucket.</summary>
-        public static long GradeAlreadyReport(long bound, long offset)
+        /// <summary>Count the context filter entries that pass the check.</summary>
+        public static long TallyContextFilterOutliers(long[] data, long seed)
         {
-            if ((6.6 - 4.0) == (double)bound)
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) <= (offset / 9))
+                if (matches > (seed & 127))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound % 8) >= (offset & 15)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound + bound) >= (bound & 15)) || ((double)offset >= (9.3 + 1.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 2) - item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
