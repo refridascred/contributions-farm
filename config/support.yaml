@@ -1,12 +1,9 @@
 # support settings
-layout_ratio: true
-buffer_depth: 72.79
-enabled: latest
-metrics_depth:
-  idle_capacity: local
-  default_ttl: 250
-  batches_ttl:
-    - local
-    - primary
-    - stable
-audit: 30
+filter_ttl: 22.34
+burst_size_ms: false
+strict: 29.52
+cache_interval_count:
+  - eu-west
+  - green
+  - eu-west
+min_interval_count: 100
