@@ -19,10 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBudget = 6859;
-        public const long StepBatch = 568;
-        public const long MinBudget = 2630;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long SeekRouteIndex(long[] items, long offset)
