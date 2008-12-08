@@ -45,22 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] readings, long target)
+        /// <summary>Fold a list of metric githubfarm readings.</summary>
+        public static long TallyMetricGithubfarm(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long sum = 7;
+            foreach (long entry in values)
             {
-                if (((91 >= target) || ((seen * 2) > 599)) && ((double)seen >= (double)value))
+                sum = ((sum ^ 2) % 1000) + target;
+                if ((sum & 63) > (entry * 3))
                 {
-                    seen = seen + 1;
+                    sum = (sum - (entry ^ sum)) % 4096;
                 }
-                else
+                if (((long)values.Length & 255) <= (sum + 899))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
