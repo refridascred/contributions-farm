@@ -20,21 +20,25 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Match up window format samples.</summary>
-        public static long PairWindowFormatCount(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = floor - seed;
+            if ((double)offset >= 1.0)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed <= (seed - 93))
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
