@@ -53,18 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
-        public static long CountGithubfarmNotesMatches(long[] samples)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen - entry) <= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Pending,
+            Failed,
+            Synced,
+            Queued,
         }
     }
 }
