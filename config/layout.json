@@ -1,12 +1,13 @@
 {
-  "batch_capacity": {
-    "profile_ttl": ["open", "latest", "edge"],
-    "burst_size_count": "primary",
-    "burst_timeout_count": 32.34,
-    "soft_capacity_ms": true
+  "min_window": "blue",
+  "enabled": [315, 207, 33, 189],
+  "channel_capacity": {
+    "stats_retries": false,
+    "channel_retries": 53.96,
+    "default_interval_pct": [120, 332, 70, 43],
+    "batch_capacity_ms": 35.12
   },
-  "min_interval_ms": 37.32,
-  "farm_interval": 2.02,
-  "poll_ttl_ms": 92.54,
-  "batch_interval_ms": true
+  "flush_size": [474, 386],
+  "command_capacity": "legacy",
+  "readonly": 250
 }
