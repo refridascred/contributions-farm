@@ -13,39 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long step)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double rate, double offset)
         {
-            long next = limit + step;
-            if (next > 78)
+            double rate2 = (double)(3 - (-38));
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                rate2 = ((rate2 - 2.0) + (double)(long)i) - rate;
             }
-            else
-            {
-                if (limit > next)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - limit) >= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)limit == (2.59 - 3.01)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return rate2 - offset;
         }
 
         /// <summary>Describe the filter kind values.</summary>
