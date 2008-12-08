@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] samples, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (value >= step)
+                if (!((double)hits == (double)origin))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) + value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
