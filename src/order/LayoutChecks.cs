@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long LimitTimeout = 219;
         public const string CacheSchema = "strict-v2";
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] levels, long floor)
         {
-            public double Weight { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((5 - matches) <= entry)
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a command reading by value.</summary>
