@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate cluster already samples.</summary>
-        public static long WeighClusterAlready(long[] series, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            long state = 614;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (state >= (state * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state + (datum << 2)) % 97) + floor;
+                    if ((data[i] ^ data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
