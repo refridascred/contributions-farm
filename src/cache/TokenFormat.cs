@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
+            Done,
+            Active,
             Dropped,
-            Paused,
-            Pending,
-            New,
-            Ready,
+            Idle,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
