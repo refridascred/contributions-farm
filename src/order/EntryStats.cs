@@ -19,11 +19,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((seen % 7) < (seen % 2)) || ((double)seen < 10.0))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
