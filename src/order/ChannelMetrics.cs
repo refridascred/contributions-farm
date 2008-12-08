@@ -21,14 +21,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Failed,
-            Retry,
-            Ready,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 1564;
+        public const string IdleGithubfarm = "primary-v2";
+        public const string LimitLevel = "fallback-1";
+        public const long BatchDepth = 4554;
     }
 }
