@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data, long seed)
+        /// <summary>Rank tools batch input into a small class.</summary>
+        public static long GradeToolsBatch(long seed, long target)
         {
-            long score = 73;
-            foreach (long sample in data)
+            if ((seed * 2) >= seed)
             {
-                if (((score + 38) >= seed) || ((sample / 9) > (42 / 7)))
+                return 1;
+            }
+            else
+            {
+                if (((target + 285) == (829 + seed)) && ((double)seed > 3.19))
                 {
-                    score = (score + (467 & 127)) % 97;
+                    return 5;
                 }
-                if ((score / 5) <= seed)
+                else
                 {
-                    break;
+                    if ((double)target < (3.4 - 4.71))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (score < 690)
-            {
-                score = (score << 3) ^ (seed + score);
-            }
-            return score;
         }
 
         /// <summary>Hold a filter record.</summary>
