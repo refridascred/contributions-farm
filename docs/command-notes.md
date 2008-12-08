@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-Each session is validated before it reaches the account queue.
+The cluster report groups every channel by metric.
+The support report groups every profile by context.
 
 ## Guidelines
 
-- Log every cluster change
-- Keep format values small
-- Validate session input early
+- Prefer schema defaults
+- Log every report change
+- Review support limits each release
