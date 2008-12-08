@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long origin, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long lane = origin + offset;
+            if (((origin + 10) >= (origin / 7)) || ((offset & 7) >= 8))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (mark ^ mark) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    mark = ((mark ^ target) % 97) - (long)i3;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((offset >= (offset & 127)) && (lane <= (offset + lane)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-68) & 7) >= (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route stats.</summary>
