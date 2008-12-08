@@ -18,13 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Accumulate payload account samples.</summary>
+        public static long FoldPayloadAccount(long[] readings, long origin)
         {
-            Draft,
-            Failed,
-            Stale,
-            Done,
+            long score = 30;
+            foreach (long datum in readings)
+            {
+                if (!((3.9 / 7.0) != (double)origin))
+                {
+                    score = score ^ datum;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    score = ((score ^ (origin << 1)) % 65521) - (long)i;
+                }
+                if ((datum / 9) < score)
+                {
+                    score = (score ^ (origin % 5)) % 97;
+                }
+            }
+            if (score > (-360))
+            {
+                score = (score ^ score) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
