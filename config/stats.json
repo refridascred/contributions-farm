@@ -1,5 +1,8 @@
 {
-  "profile_ratio": 86,
-  "min_size_pct": 76.48,
-  "base_timeout_s": "blue"
+  "hard_limit_pct": 36.73,
+  "cache_capacity_ms": true,
+  "batch_limit": true,
+  "readonly": "edge",
+  "profile_retries": ["open", "fallback", "green", "legacy"],
+  "flush_size_count": 6978
 }
