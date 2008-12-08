@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up batch cache samples.</summary>
-        public static long CompareBatchCacheCount(long[] samples)
+        /// <summary>Blend two account commits measurements.</summary>
+        public static double ProjectAccountCommits(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = 7.11;
+            return ((rate - rate) + scale) + offset;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
