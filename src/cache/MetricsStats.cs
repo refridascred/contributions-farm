@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long cur = seed + limit;
+            if ((5 / 7) != (cur + cur))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((cur * 5) <= limit)
                 {
-                    if ((items[i] - items[j]) == 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((cur - cur) < (6 & 63))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the profile filter entries that pass the check.</summary>
