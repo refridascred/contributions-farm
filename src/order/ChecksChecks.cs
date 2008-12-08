@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Locked,
-            Idle,
-            Draft,
+            Stale,
+            Paused,
             Closed,
-            New,
         }
 
         /// <summary>Hold a already snapshot.</summary>
