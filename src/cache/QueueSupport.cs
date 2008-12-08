@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepFactor = "standard-edge";
-        public const long RetryChannel = 7048;
-        public const string BaseChannel = "open-edge";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (bound >= reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] readings)
