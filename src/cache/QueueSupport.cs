@@ -13,20 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepFactor = "standard-edge";
+        public const long RetryChannel = 7048;
+        public const string BaseChannel = "open-edge";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double MaxTools = 8.43;
