@@ -29,19 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long total = 879;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total << 3) ^ (datum & 63);
-                if (44 < (707 - datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total ^ datum;
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 97;
+            return hits;
         }
     }
 }
