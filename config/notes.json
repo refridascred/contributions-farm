@@ -1,6 +1,12 @@
 {
-  "retry_depth_ms": [153, 415, 403, 412],
-  "route_retries": "open",
-  "retry_ratio_count": "standard",
-  "session_capacity": "cached"
+  "enabled": 6634,
+  "route_limit": {
+    "batch_window": false,
+    "batches_timeout": [228, 476, 258, 115],
+    "warm_window_pct": true,
+    "base_window_ms": 37,
+    "burst_interval_count": "primary"
+  },
+  "persist": [87, 430, 41],
+  "warm_capacity_s": 100
 }
