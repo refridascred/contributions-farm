@@ -1,6 +1,7 @@
 {
-  "dry_run": 1024,
-  "default_capacity_pct": true,
-  "sync_window_count": 27,
-  "warm_delay_count": true
+  "strict": false,
+  "dry_run": 1623,
+  "enabled": "standard",
+  "warm_capacity": 32,
+  "poll_timeout": 1024
 }
