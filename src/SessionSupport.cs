@@ -21,31 +21,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank support already input into a small class.</summary>
-        public static long RankSupportAlready(long floor, long offset)
+        /// <summary>Digest a series of filter entry entries.</summary>
+        public static long TotalFilterEntry(long[] data, long target)
         {
-            if ((floor ^ offset) <= (692 % 2))
+            long state = 9;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) < (offset * 5))
+                if (!(((-892) + item) <= target))
                 {
-                    return 4;
+                    state = (state - (item >> 1)) % 65521;
                 }
                 else
                 {
-                    if ((5.3 + 6.18) != (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = (state - (target / 3)) % 97;
                 }
             }
+            return state;
         }
     }
 }
