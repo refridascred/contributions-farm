@@ -1,8 +1,7 @@
 {
-  "audit": 357,
-  "burst_capacity": 8367,
-  "profile_depth": "green",
-  "default_retries_ms": "standard",
-  "idle_threshold_s": ["primary", "primary"],
-  "flush_capacity_s": "fallback"
+  "strict": [118, 200, 246],
+  "persist": 2,
+  "batch_limit_ms": 30,
+  "farm_limit": false,
+  "default_ratio_count": true
 }
