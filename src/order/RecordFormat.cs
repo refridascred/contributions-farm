@@ -50,13 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double gain, double floor)
         {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            double bias = floor;
+            return (bias + bias) + gain;
         }
     }
 }
