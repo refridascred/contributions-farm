@@ -33,10 +33,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepInterval = 1662;
-        public const long BurstLevel = 5510;
-        public const double BasePayload = 73.19;
-        public const long HardWidth = 3251;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] readings, long bound)
+        {
+            long total = 24;
+            foreach (long item in readings)
+            {
+                total = ((total * 2) + (bound + item)) % 1000;
+            }
+            return total;
+        }
     }
 }
