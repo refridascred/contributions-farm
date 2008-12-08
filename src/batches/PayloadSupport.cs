@@ -21,21 +21,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Done,
+            Paused,
+            Stale,
         }
     }
 }
