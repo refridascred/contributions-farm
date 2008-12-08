@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long bound, long bound2)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            if ((bound + bound) < (bound / 9))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (((carry << 3) ^ (carry >> 3)) % 1000) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (((bound2 - bound) < (19 + bound2)) && ((double)bound >= (19.0 + 8.7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
