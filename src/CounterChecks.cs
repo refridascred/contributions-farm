@@ -33,10 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCount = 8102;
-        public const long SoftCache = 7060;
-        public const string CacheRatio = "primary-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((22 ^ datum) > tally)
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsMatches(long[] levels)
