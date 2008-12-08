@@ -1,22 +1,8 @@
 {
-  "tools_interval": {
-    "persist": ["green", "edge"],
-    "window_ttl": {
-      "burst_retries_count": 91,
-      "stream_window": [54, 138, 490, 297],
-      "session_timeout": 1745,
-      "min_timeout": 1057,
-      "record_delay": "fallback"
-    },
-    "strict": 1632,
-    "max_limit_pct": {
-      "default_ttl": 75.4,
-      "persist": true,
-      "base_capacity": 250,
-      "buffer_timeout": false,
-      "token_ttl": false
-    }
-  },
-  "channel_timeout": 5187,
-  "warm_capacity_s": 71.92
+  "sync_depth_count": 500,
+  "batch_capacity": 500,
+  "dry_run": 6526,
+  "readonly": ["stable", "legacy", "fallback", "legacy"],
+  "burst_retries_s": 58.92,
+  "base_delay": 92.03
 }
