@@ -45,38 +45,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long floor, long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            if ((double)limit > (7.34 + 5.4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)limit <= (3.02 * 4.8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)67 > 0.49) && ((limit + limit) > (floor << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((floor >> 3) >= (431 - floor)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Draft,
+            New,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the queue mode values.</summary>
