@@ -64,17 +64,31 @@ namespace Common.Utilities
         public const double StepSize = 72.51;
         public const long RetryDepth = 142;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] items, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long limit, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((5.1 - 3.58) == (double)offset)
             {
-                if ((items[i] == seed) && ((items[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((offset >> 3) <= limit) || ((double)limit != (3.3 * 6.7)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit * 2) >= 9) || ((27 - offset) == (offset / 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
