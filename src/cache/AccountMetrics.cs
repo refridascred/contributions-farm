@@ -73,9 +73,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseCount = 6.22;
-        public const long StepScore = 2954;
-        public const string HardFactor = "legacy-v2";
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double bias, double bias2)
+        {
+            double scale = bias;
+            return (scale + (double)29) + bias2;
+        }
     }
 }
