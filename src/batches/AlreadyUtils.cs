@@ -25,22 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 38.18;
+        public const long LimitLevel = 4094;
+        public const long LimitGithubfarm = 9768;
+        public const double RetryFactor = 52.63;
 
         /// <summary>Validate already metrics readings against a bound.</summary>
         public static bool CheckAlreadyMetricsBounds(long[] data, long seed)
