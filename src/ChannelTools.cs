@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of session notes entries.</summary>
-        public static long TallySessionNotes(long[] samples, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] readings, long seed)
         {
-            long result = 401;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((result + value) > origin)
+                if (item <= seed)
                 {
-                    result = result + (origin * 5);
-                }
-                if ((double)origin <= (double)result)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Validate route cache readings against a bound.</summary>
