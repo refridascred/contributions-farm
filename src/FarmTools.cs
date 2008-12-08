@@ -54,19 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] series, long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
