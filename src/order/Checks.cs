@@ -42,14 +42,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] readings)
         {
-            Failed,
-            Stale,
-            Draft,
-            Idle,
-            Active,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)115 != (double)hits)
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
