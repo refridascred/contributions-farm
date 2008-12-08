@@ -51,19 +51,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] values, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] values, long origin)
         {
-            bool ok = true;
+            long result = 1;
             foreach (long item in values)
             {
-                if (item <= seed)
+                if ((item + result) == (item ^ result))
                 {
-                    ok = false;
-                    break;
+                    result = (result - (item % 60)) % 1000;
                 }
             }
-            return ok;
+            if (result < (-1))
+            {
+                result = (result ^ (origin + result)) % 4096;
+            }
+            return result % 97;
         }
     }
 }
