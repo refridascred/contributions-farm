@@ -1,6 +1,4 @@
 # entry settings
-warm_timeout: blue
-warm_ttl: 7389
-batch_retries_count: 6964
-flush_depth: 16.62
-soft_threshold_ms: false
+graph_ttl: 10.6
+counter_ratio: 77.77
+retry_depth: 100
