@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] data, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long offset, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long slot = offset ^ target;
+            if ((slot / 4) == (slot % 7))
             {
-                if (((double)sample == (3.0 + 6.3)) && ((seen >> 3) == (seen >> 2)))
+                return 4;
+            }
+            else
+            {
+                if ((target / 8) >= (offset % 8))
                 {
-                    seen = (seen + 1) - limit;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (20.0 < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)slot >= (10.0 * 1.69))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a payload entry.</summary>
