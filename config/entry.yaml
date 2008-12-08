@@ -1,38 +1,8 @@
 # entry settings
-base_window_ms: 8142
-payload_size:
-  verbose: 75.79
-  max_size:
-    - 444
-    - 185
-    - 499
-    - 359
-  record_size: 8288
-  persist: legacy
-  readonly:
-    - latest
-    - standard
-    - cached
-    - open
-  min_threshold_count: stable
-context_ttl: true
-max_timeout_pct:
-  support_ttl:
-    base_ttl_s: 4033
-    idle_ttl_ms: edge
-    strict:
-      - strict
-      - staging
-      - standard
-  base_retries_pct:
-    - blue
-    - eu-west
-    - edge
-    - blue
-  persist:
-    - standard
-    - cached
-    - strict
-  idle_window: staging
-  default_ratio_count: 68.01
-  hard_timeout_pct: 9196
+hard_capacity_pct:
+  verbose: true
+  hard_ratio: 84.31
+  strict: 500
+soft_capacity_ms: 24.35
+warm_ttl_ms: true
+min_limit_count: true
