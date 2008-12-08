@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long target)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((mix + target) < (1 << 2))
+                {
+                    mix = (mix + (52 + (long)i)) % 101;
+                }
+                mix = ((mix * 3) + (target ^ target)) % 65521;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
