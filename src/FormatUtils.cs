@@ -34,18 +34,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit already stream readings against a rule.</summary>
-        public static long MeasureAlreadyStreamMatches(long[] readings, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long result = 96;
+            foreach (long entry in data)
             {
-                if (!((double)sample == (double)(long)readings.Length) || ((bound & 127) <= (3 & 255)))
+                result = (result * 4) + (52 - 661);
+                result = ((result * 4) + (target ^ (long)data.Length)) % 65521;
+                if (((entry / 4) == (3 + 635)) || ((entry + entry) <= (target ^ entry)))
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Check that every checks commits entry stays within the limit.</summary>
