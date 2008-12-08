@@ -32,31 +32,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long origin, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] data, long origin)
         {
-            if ((731 + origin) == (step + origin))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step + step) <= (origin * 4)) && ((39 >> 3) != (step % 97)))
+                if (item < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin != (0.8 - 13.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate format cluster readings against a bound.</summary>
