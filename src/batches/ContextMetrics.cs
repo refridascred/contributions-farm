@@ -25,20 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats editor entry stays within the limit.</summary>
-        public static bool ValidateStatsEditorRange(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 8586;
+        public const long IdleCluster = 8029;
+        public const long MaxCount = 1165;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long WeighRecord(long[] readings)
