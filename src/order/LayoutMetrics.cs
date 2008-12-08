@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long total = 65;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((34 ^ total) < 206)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total << 3) ^ (datum + datum);
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < 946)
-            {
-                total = ((total << 2) ^ total) % 255;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
