@@ -20,17 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a githubfarm route sample.</summary>
-        public static long FindGithubfarmRouteIndex(long[] series, long bound)
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long MeasureFarmStatsOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (series[i] == bound)
+                if (((long)levels.Length + item) > item)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a counter summary.</summary>
