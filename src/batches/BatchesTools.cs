@@ -23,16 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cache format series from a seed.</summary>
-        public static long DeriveCacheFormat(long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result + ((long)i ^ seed)) % 101;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
