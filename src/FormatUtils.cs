@@ -47,11 +47,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two stream support measurements.</summary>
-        public static double ScaleStreamSupport(double ratio, double offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double bias = offset;
-            return bias + (ratio + offset);
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
