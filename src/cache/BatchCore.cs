@@ -27,32 +27,16 @@ namespace Common.Utilities
         public const string CacheSpan = "fallback-1";
         public const long WindowMetric = 1056;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long limit, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            long bound = limit + seed;
-            if (0 >= bound)
+            long score = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
+                score = (score << 2) ^ (score * 5);
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit + limit) == (bound / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound + seed) > 9) || ((seed - (-734)) == (45 ^ bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
