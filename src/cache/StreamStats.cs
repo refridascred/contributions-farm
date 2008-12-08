@@ -53,18 +53,18 @@ namespace Common.Utilities
         public const long RetrySize = 9938;
         public const long BaseTimeout = 3390;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((801 ^ seen) <= (value ^ seen))
+                if ((8.2 - 3.57) < (double)item)
                 {
-                    seen = seen + 2;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
