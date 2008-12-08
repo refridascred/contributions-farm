@@ -12,13 +12,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long step)
         {
-            Idle,
-            Closed,
-            Dropped,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
