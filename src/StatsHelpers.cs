@@ -51,12 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Locked,
-            Failed,
+            Pending,
+            Ready,
             Done,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
