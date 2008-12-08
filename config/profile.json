@@ -1,12 +1,8 @@
 {
-  "burst_limit_pct": 24.19,
-  "hard_ttl": "latest",
-  "batch_capacity_s": "local",
-  "flush_depth": "blue",
-  "cluster_threshold": true,
-  "max_ttl": {
-    "compress": 5394,
-    "idle_ttl_s": "strict",
-    "dry_run": 5895
-  }
+  "hard_delay_pct": 31.14,
+  "sync_timeout_count": "stable",
+  "warm_threshold_pct": 3039,
+  "base_limit": "local",
+  "enabled": 64,
+  "flush_retries": 40
 }
