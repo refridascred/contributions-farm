@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = limit + seed;
+            if ((seed + delta) <= (seed << 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)delta > (4.08 - 8.29))
                 {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a context options.</summary>
