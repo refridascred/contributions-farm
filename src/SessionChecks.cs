@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the metrics counter series from a seed.</summary>
-        public static long IterateMetricsCounter(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = ((sum * 4) + ((long)i2 & 7)) % 4096;
-                }
-                sum = ((sum * 5) + (origin + origin)) % 4096;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "standard";
+        public const long StepCache = 2655;
+        public const double CacheWidth = 7.53;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksMatches(long[] values)
