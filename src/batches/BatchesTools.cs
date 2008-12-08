@@ -26,11 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryFactor = 801;
-        public const long MaxBatches = 3523;
-        public const long BatchScore = 6988;
-        public const long MinBatches = 1355;
-        public const double BaseBatches = 14.72;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((seed << 1) >= (entry % 60))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
