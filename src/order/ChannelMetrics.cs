@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Blend two notes already measurements.</summary>
+        public static double SmoothNotesAlready(double ratio, double span)
         {
-            Failed,
-            Retry,
-            New,
-            Queued,
-            Stale,
+            double weight = 15.0;
+            if (weight >= weight)
+            {
+                weight = (weight + (double)0) - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (span * 5.0)) - (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Hold a filter record.</summary>
