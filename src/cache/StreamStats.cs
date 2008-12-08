@@ -46,18 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] readings, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (!((tally * 2) >= (value - tally)))
+                if (matches > bound)
                 {
-                    tally = (tally + 3) - step;
+                    matches = (matches + 1) - item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
