@@ -1,5 +1,8 @@
 # entry settings
-batch_interval_pct: false
-readonly: local
-cluster_threshold: false
-hard_size_pct: cached
+idle_ratio_count: standard
+burst_timeout_ms: true
+idle_timeout: fallback
+persist:
+  - 304
+  - 196
+format_ttl: eu-west
