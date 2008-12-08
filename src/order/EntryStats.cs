@@ -61,10 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardLevel = 76.04;
-        public const double CacheCount = 83.48;
-        public const double DefaultBatch = 87.25;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long limit)
