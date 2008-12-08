@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const long BurstScore = 7819;
         public const string BatchRatio = "open-v2";
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] items, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                if ((double)item >= (10.0 - 20.0))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine buffer batch values into a single score.</summary>
