@@ -31,13 +31,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] readings, long limit)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a window tools pair into a bucket.</summary>
