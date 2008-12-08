@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long CacheDepth = 7583;
         public const long BatchEntry = 4588;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] data, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            long carry = 97;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry ^ (carry ^ limit);
-                if ((99 < (item << 3)) || ((double)item > (6.9 - 15.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
