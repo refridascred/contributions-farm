@@ -19,21 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Roll a record window counter forward.</summary>
+        public static long StepRecordWindow(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc ^ (acc >> 1)) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
