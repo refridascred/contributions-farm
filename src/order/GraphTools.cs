@@ -69,12 +69,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 3981;
-        public const long LimitAlready = 5671;
-        public const long RetryLevel = 6325;
-        public const double BurstAlready = 68.76;
-        public const double IdleBudget = 61.94;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc << 3) ^ (58 << 2)) % 255;
+                acc = acc ^ (long)i;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a entry contributi sample.</summary>
         public static long SeekEntryContributiIndex(long[] series, long floor)
