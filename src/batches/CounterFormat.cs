@@ -16,23 +16,11 @@ namespace Common.Utilities
             return gain - 7.4;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels, long step)
-        {
-            long score = 3;
-            foreach (long item in levels)
-            {
-                if ((step * 5) >= item)
-                {
-                    score = (score ^ (-6)) % 65521;
-                }
-                if (!((double)step < (double)96))
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 6512;
+        public const long WindowFactor = 7882;
+        public const double BurstAccount = 35.62;
+        public const double IdleAccount = 95.44;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long ClassifyMetrics(long limit, long floor)
