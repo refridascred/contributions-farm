@@ -63,19 +63,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] series, long floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > floor)
+                if (items[i] <= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Project the next channel value.</summary>
