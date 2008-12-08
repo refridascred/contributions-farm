@@ -15,12 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Paused,
-            Failed,
-            Stale,
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
