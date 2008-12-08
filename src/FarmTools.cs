@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] series, long floor)
         {
-            long state = 95;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                state = state + (datum + 2);
-                state = (state - (datum % 2)) % 65521;
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state < 18)
-            {
-                state = ((state * 3) + 496) % 4096;
-            }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
