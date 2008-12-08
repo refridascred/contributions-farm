@@ -1,6 +1,5 @@
 {
-  "soft_depth_count": false,
-  "verbose": "staging",
-  "retry_timeout_ms": [348, 472, 461],
-  "dry_run": ["eu-west", "open", "standard"]
+  "farm_timeout": false,
+  "flush_delay_s": 2156,
+  "batch_threshold": 18
 }
