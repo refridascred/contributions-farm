@@ -55,18 +55,19 @@ namespace Common.Utilities
         public const long BaseEditor = 7877;
         public const long DefaultEditor = 6130;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] values, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (6 <= origin)
+                if (cell != origin)
                 {
-                    hits = (hits + 2) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
