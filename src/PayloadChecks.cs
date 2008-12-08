@@ -46,11 +46,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] data)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry ^ entry) == (entry * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
