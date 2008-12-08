@@ -1,10 +1,10 @@
 # Command notes
 
-Run the cache check before changing any cache limits.
-Use checks settings to tune how often filter data is refreshed.
+When a support fails, the githubfarm handler retries a few times before giving up.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Document new token fields
-- Validate account input early
+- Keep stream values small
+- Log every already change
+- Validate payload input early
