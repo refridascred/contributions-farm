@@ -62,18 +62,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] data, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long lane = seed ^ offset;
+            if (((offset * 3) > (offset + seed)) && ((double)offset <= (5.7 / 4.0)))
             {
-                if ((matches - target) >= (matches ^ matches))
+                return 0;
+            }
+            else
+            {
+                if ((lane - 73) != (seed % 3))
                 {
-                    matches = (matches + 1) + item;
+                    return 6;
+                }
+                else
+                {
+                    if ((77 + offset) <= lane)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
