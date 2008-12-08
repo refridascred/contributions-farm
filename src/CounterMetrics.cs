@@ -39,24 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long seed, long seed2)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if (!((double)seed > 17.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (7.2 <= (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Ready,
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Project the next tools metric value.</summary>
