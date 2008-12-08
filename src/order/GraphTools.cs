@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] levels, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = 964;
+            foreach (long item in readings)
             {
-                if ((origin >= (origin + 17)) || (((hits << 2) == (hits - 8)) && ((origin + 79) >= (hits - hits))))
+                if ((sum % 7) == (482 + item))
                 {
-                    hits = (hits + 1) ^ sample;
+                    sum = ((sum << 2) ^ ((long)readings.Length + sum)) % 101;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Match up support samples.</summary>
