@@ -60,32 +60,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a support layout value against two limits.</summary>
-        public static long RankSupportLayout(long target, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] series, long target)
         {
-            long bound = target + seed;
-            if (((target % 24) != ((-156) + seed)) && ((double)bound <= 16.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target > (bound + 12)) || ((bound - bound) > (bound >> 4)))
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound - (-312)) < bound) || (((-80) - target) != (target + 0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
