@@ -53,21 +53,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)((-1) >> 5);
+            if (drift <= gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift - (double)488;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (floor + drift)) + (double)(long)i;
+            }
+            return drift - 3.67;
         }
     }
 }
