@@ -44,18 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor commits readings against a rule.</summary>
-        public static long CountEditorCommitsGaps(long[] samples)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (reading >= 333)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Failed,
+            Idle,
+            Pending,
         }
     }
 }
