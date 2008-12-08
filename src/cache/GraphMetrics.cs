@@ -62,15 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] data, long bound)
+        /// <summary>Compare every pair of farm entry readings.</summary>
+        public static long OverlapFarmEntryCount(long[] items)
         {
-            long result = 8;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result + (bound + reading);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
