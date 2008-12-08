@@ -1,13 +1,5 @@
 {
-  "session_ttl": false,
-  "poll_delay_s": "blue",
-  "batch_capacity": {
-    "max_ratio_count": 94,
-    "hard_interval_s": "stable",
-    "enabled": "latest",
-    "flush_retries": false,
-    "warm_size": "standard"
-  },
-  "default_ratio": "cached",
-  "batch_size_s": "edge"
+  "entry_retries": 60,
+  "min_delay_ms": false,
+  "base_retries_ms": 1024
 }
