@@ -16,10 +16,16 @@ namespace Common.Utilities
             return ratio - (double)3;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "primary-edge";
-        public const long BatchCount = 1666;
-        public const double MinStats = 64.35;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
+        {
+            double ratio = (double)(52 + 5);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + 7.6) - (double)(long)i) - offset;
+            }
+            return ratio + (bias * 6.2);
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long target)
