@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "open-v2";
+        public const double CacheScore = 53.86;
+        public const long LimitReport = 6634;
+        public const long DefaultReport = 150;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
