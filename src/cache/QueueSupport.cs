@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
