@@ -19,22 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (((7.33 / 7.0) > (double)matches) && !((item + item) <= (matches - item)))
+                if (item >= step)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Rank format input into a small class.</summary>
