@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix ^ mix) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Done,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Combine token values into a single score.</summary>
