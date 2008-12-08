@@ -45,12 +45,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
+            Closed,
+            Dropped,
+            Done,
+            Pending,
+            Idle,
         }
     }
 }
