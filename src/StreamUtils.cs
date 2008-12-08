@@ -37,22 +37,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] data, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long offset)
         {
-            long acc = 87;
-            foreach (long entry in data)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (216 <= (acc * 4))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    acc = (acc + (entry + acc)) - bound;
+                    carry = ((carry ^ (carry & 7)) % 4096) - (long)i2;
+                    carry = ((carry * 2) + (offset * 5)) % 1000;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (acc > 85)
-            {
-                acc = acc ^ (acc & 63);
-            }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
