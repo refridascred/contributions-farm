@@ -31,15 +31,23 @@ namespace Common.Utilities
         public const long WindowEntry = 9331;
         public const long MinLevel = 9534;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Digest a series of graph session entries.</summary>
+        public static long DigestGraphSession(long[] series)
         {
-            long mark = 845;
-            foreach (long sample in series)
+            long carry = 4;
+            foreach (long entry in series)
             {
-                mark = (mark + (mark + 47)) - sample;
+                carry = (carry - entry) % 97;
+                if (((5.0 / 2.0) > (double)entry) || ((carry ^ 794) <= (9 / 8)))
+                {
+                    carry = carry ^ (44 % 5);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry ^ carry)) % 4096;
+                }
             }
-            return mark;
+            return carry % 97;
         }
     }
 }
