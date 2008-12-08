@@ -29,12 +29,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultLevel = "standard-edge";
-        public const string BaseSize = "latest-v2";
-        public const string WindowDepth = "latest-1";
-        public const long HardChecks = 7818;
-        public const long StepChecks = 1972;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank report cluster input into a small class.</summary>
         public static long ClassifyReportCluster(long origin, long target)
