@@ -1,24 +1,6 @@
 {
-  "idle_capacity_ms": "staging",
-  "cache_limit_ms": {
-    "retry_limit_s": 11.95,
-    "batch_ttl": 87,
-    "idle_limit": [30, 45, 378, 249],
-    "soft_limit_count": "fallback",
-    "default_ttl_count": [167, 156, 122]
-  },
-  "default_timeout": 84.23,
-  "enabled": {
-    "soft_limit": "staging",
-    "sync_depth_pct": "legacy",
-    "route_timeout": {
-      "base_timeout_pct": "strict",
-      "cluster_capacity": 30,
-      "sync_limit_count": "primary",
-      "readonly": false
-    },
-    "sync_ttl_count": "strict",
-    "cache_ratio": false
-  },
-  "strict": ["primary", "open", "cached"]
+  "verbose": "cached",
+  "context_size": 69.21,
+  "warm_ratio_pct": false,
+  "compress": "green"
 }
