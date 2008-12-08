@@ -12,18 +12,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many token order samples are out of range.</summary>
-        public static long CountTokenOrderMatches(long[] readings, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mix = 924;
+            foreach (long cell in samples)
             {
-                if ((origin >> 3) == (6 << 2))
+                if ((mix / 9) >= (cell + cell))
                 {
-                    tally = (tally + 2) + datum;
+                    mix = (mix + cell) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (cell >> 1)) % 1000;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the session kind values.</summary>
