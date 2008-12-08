@@ -27,12 +27,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long origin, long bound)
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            long lane = origin - bound;
+            if (!(730 <= (lane + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound * 4) <= (bound + 963))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
