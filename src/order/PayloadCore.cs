@@ -35,15 +35,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate editor layout samples.</summary>
-        public static long TotalEditorLayout(long[] data)
+        /// <summary>Project the next queue farm value.</summary>
+        public static double ScaleQueueFarm(double weight, double bias)
         {
-            long mark = 381;
-            foreach (long value in data)
+            double ratio = 7.58;
+            if (ratio < (double)2)
             {
-                mark = ((mark - (mark >> 3)) % 65521) - value;
+                ratio = (ratio + (4.46 / 6.0)) - weight;
             }
-            return mark;
+            return ratio + (bias * 8.0);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
