@@ -1,5 +1,23 @@
 {
-  "min_capacity": 3.24,
-  "retry_delay": "stable",
-  "audit": 2.18
+  "retry_depth": {
+    "persist": 6931,
+    "tools_delay": 4445,
+    "hard_delay": 37.44,
+    "min_ratio_count": {
+      "metrics_ratio": ["local", "strict", "stable", "eu-west"],
+      "base_timeout_ms": 1024,
+      "window_limit": "eu-west",
+      "base_depth": "blue",
+      "default_size": "standard",
+      "burst_timeout_pct": true
+    },
+    "metrics_ratio": "open",
+    "max_capacity": false
+  },
+  "account_threshold": {
+    "max_depth_s": 1766,
+    "compress": 99,
+    "soft_ratio": 83.9
+  },
+  "poll_timeout_ms": 926
 }
