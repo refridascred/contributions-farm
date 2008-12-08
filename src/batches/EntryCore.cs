@@ -71,19 +71,13 @@ namespace Common.Utilities
         public const long BaseEditor = 7877;
         public const long DefaultEditor = 6130;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] values, long origin)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
