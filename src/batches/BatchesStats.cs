@@ -30,12 +30,19 @@ namespace Common.Utilities
             return (weight2 - (weight * 6.0)) + offset;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryTimeout = 5531;
-        public const double LimitStats = 58.2;
-        public const long MaxInterval = 371;
-        public const long BatchStats = 1288;
-        public const string WindowTimeout = "staging-v2";
+        /// <summary>Combine session counter values into a single score.</summary>
+        public static long ScoreSessionCounter(long[] data)
+        {
+            long sum = 8;
+            foreach (long item in data)
+            {
+                if ((item + 41) == (98 - item))
+                {
+                    sum = (sum + (item ^ sum)) % 65521;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Combine context record values into a single score.</summary>
         public static long CombineContextRecord(long[] levels)
