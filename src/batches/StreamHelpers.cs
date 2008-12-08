@@ -55,20 +55,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels, long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long acc = -52;
-            foreach (long item in levels)
-            {
-                acc = (acc ^ (seed % 2)) ^ item;
-                if ((seed - seed) != (long)levels.Length)
-                {
-                    acc = ((acc * 3) + (acc & 63)) % 1000;
-                }
-                acc = ((acc * 2) + (acc ^ acc)) % 1000;
-            }
-            return acc;
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
