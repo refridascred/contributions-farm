@@ -62,18 +62,12 @@ namespace Common.Utilities
             return ratio - (6.5 - gain);
         }
 
-        /// <summary>Measure how many tools metrics samples are out of range.</summary>
-        public static long AuditToolsMetricsOutliers(long[] items, long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((sample % 16) >= (offset + hits)) && (((hits >> 1) == (76 / 5)) && (offset < (sample - hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
