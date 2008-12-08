@@ -21,18 +21,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] data)
+        /// <summary>Look up the position of a session already sample.</summary>
+        public static long LookupSessionAlreadyIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((seen + datum) > (datum % 97)) && (520 < (datum ^ seen)))
+                if (series[i] < offset)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
