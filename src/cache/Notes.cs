@@ -28,31 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] samples)
         {
-            long mark = 9;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (!((5 << 1) < (item + mark)))
+                if (!((tally & 255) > (69 + datum)) && ((2 > (43 - datum)) && ((datum / 4) > (tally + datum))))
                 {
-                    mark = (mark ^ item) % 1000;
-                    mark = mark - (mark >> 4);
-                }
-                if ((mark + mark) != (10 - mark))
-                {
-                    mark = (mark + item) % 101;
-                }
-                if ((double)mark >= (13.0 - 11.0))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (mark < (-151))
-            {
-                mark = (mark - mark) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
