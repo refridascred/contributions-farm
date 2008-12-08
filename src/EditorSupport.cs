@@ -47,14 +47,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the counter schema entries that pass the check.</summary>
+        public static long CountCounterSchemaGaps(long[] series, long step)
         {
-            Queued,
-            Dropped,
-            Closed,
-            New,
-            Ready,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count * 4) > (536 % 60))
+                {
+                    count = ((count + 3) - entry) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter info.</summary>
