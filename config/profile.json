@@ -1,5 +1,21 @@
 {
-  "soft_ttl_s": 100,
-  "warm_window_ms": "legacy",
-  "max_capacity_count": 57
+  "readonly": 80,
+  "compress": [77, 24, 113, 61],
+  "cache_threshold_count": {
+    "persist": 1024,
+    "burst_interval": 53.36,
+    "verbose": {
+      "enabled": "local",
+      "persist": 2028,
+      "base_interval": "strict",
+      "verbose": "latest",
+      "batch_window": "staging"
+    }
+  },
+  "retry_ttl_pct": 45.63,
+  "route_limit": {
+    "notes_size": 4903,
+    "soft_interval": true,
+    "compress": 3.94
+  }
 }
