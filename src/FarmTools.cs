@@ -35,12 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double gain, double bias)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
+            double load = (double)2;
+            if (load >= (double)7)
+            {
+                load = (load - (double)509) - gain;
+            }
+            else
+            {
+                load = load + 7.25;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (bias / 8.0)) + (double)(long)i;
+            }
+            return load + (double)276;
         }
     }
 }
