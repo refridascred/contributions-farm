@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double bias, double floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double drift = floor;
-            if (drift < drift)
-            {
-                drift = drift - (double)204;
-            }
-            else
-            {
-                drift = drift - (floor * 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (9.0 * 5.5);
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
