@@ -35,21 +35,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count window layout pairs that satisfy a relation.</summary>
-        public static long OverlapWindowLayoutCount(long[] items)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = carry ^ (carry * 4);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
