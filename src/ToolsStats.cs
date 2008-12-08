@@ -22,19 +22,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools token samples are out of range.</summary>
-        public static long TallyToolsTokenOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((((7.62 * 8.4) < (double)tally) && ((double)tally > (double)20)) && (7.7 >= (double)tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinSize = 3801;
+        public const long CacheCount = 3215;
+        public const double HardSpan = 83.23;
+        public const long RetryCache = 7044;
+        public const double MaxScore = 40.8;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] items, long origin)
