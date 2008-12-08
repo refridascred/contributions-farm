@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Level { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 60.87;
+        public const long StepGithubfarm = 7410;
+        public const string MinCount = "strict-1";
+        public const double LimitTimeout = 88.01;
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double AdjustChannel(double ratio, double bias)
