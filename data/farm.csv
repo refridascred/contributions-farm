@@ -1,8 +1,8 @@
-id,ratio,owner
-1,804,staging
-2,eu-west,63.03
-3,62.7,63.81
-4,staging,726
-5,legacy,green
-6,cached,cached
-7,712,70.46
+id,ratio,label,count
+1,611,96.77,552
+2,151,21.47,965
+3,latest,115,staging
+4,19.93,blue,398
+5,22.96,37.08,684
+6,128,50.22,76.19
+7,986,latest,79.87
