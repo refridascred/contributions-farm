@@ -1,10 +1,9 @@
 # githubfarm settings
-dry_run: false
-tools_retries:
-  batch_size: 30
-  soft_size_ms: 2524
-  soft_timeout_count: 37
-burst_delay_s: true
-githubfarm_timeout: false
-sync_delay_pct: 51.14
-burst_depth_count: 60
+batch_window:
+  base_delay_s: 271
+  min_interval_s: strict
+  flush_ttl_pct: true
+  cache_retries: cached
+compress: 1024
+max_window_s: 30
+default_retries_pct: false
