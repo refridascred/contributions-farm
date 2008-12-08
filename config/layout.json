@@ -1,6 +1,10 @@
 {
-  "idle_window_count": "latest",
-  "compress": 17.46,
-  "burst_timeout": ["strict", "cached"],
-  "filter_threshold": [221, 311]
+  "idle_ttl": {
+    "warm_interval_pct": true,
+    "support_timeout": 93,
+    "default_window": ["fallback", "latest", "fallback", "eu-west"],
+    "base_threshold": 51
+  },
+  "dry_run": 76,
+  "batch_capacity_pct": "stable"
 }
