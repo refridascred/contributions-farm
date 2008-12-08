@@ -32,18 +32,14 @@ namespace Common.Utilities
         public const long BurstSpan = 6007;
         public const long DefaultTimeout = 2765;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] levels)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (4 < (sample ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Pending,
+            Ready,
+            Queued,
+            Failed,
         }
     }
 }
