@@ -1,6 +1,15 @@
 {
-  "retry_interval_count": "eu-west",
-  "readonly": 57.64,
-  "persist": "open",
-  "checks_timeout": 45.33
+  "warm_capacity": [44, 80],
+  "counter_limit": {
+    "poll_ttl_count": 1024,
+    "soft_delay_count": "local",
+    "warm_size_count": "edge",
+    "cache_delay": "blue",
+    "audit": false
+  },
+  "persist": {
+    "record_ttl": 30,
+    "max_interval": false,
+    "cache_delay": 1024
+  }
 }
