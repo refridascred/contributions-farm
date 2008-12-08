@@ -61,15 +61,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a profile layout figure with a bias.</summary>
-        public static double AdjustProfileLayout(double rate, double floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            double rate2 = rate;
-            if (rate2 < rate)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                rate2 = (rate2 - (rate * 3.34)) + floor;
+                score = (score ^ step) % 65521;
+                score = (score + (step + step)) % 255;
+                if (9.55 < (double)score)
+                {
+                    score = (score * 4) + ((long)i + score);
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return rate2 - rate;
+            return score;
         }
     }
 }
