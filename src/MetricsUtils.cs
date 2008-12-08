@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const double WindowFilter = 11.97;
         public const double LimitLevel = 82.45;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultLevel = "standard-edge";
+        public const string BaseSize = "latest-v2";
+        public const string WindowDepth = "latest-1";
+        public const long HardChecks = 7818;
+        public const long StepChecks = 1972;
 
         /// <summary>Count the context filter entries that pass the check.</summary>
         public static long TallyContextFilterOutliers(long[] data, long seed)
