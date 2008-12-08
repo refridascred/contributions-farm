@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] values, long step)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Hold a stream stats.</summary>
