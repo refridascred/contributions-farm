@@ -29,19 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((2.08 / 2.0) < (double)offset)
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchTimeout = 38.06;
+        public const long CacheBatch = 6573;
+        public const string BaseBatch = "cached";
+        public const double SoftSize = 88.04;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long SeekClusterIndex(long[] samples, long seed)
