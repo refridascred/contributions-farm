@@ -27,10 +27,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryBudget = 6719;
-        public const string LimitSupport = "strict-edge";
-        public const string DefaultScore = "legacy";
-        public const double DefaultSupport = 45.93;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                result = result + (result + floor);
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
