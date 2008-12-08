@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] series, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((sample + seen) != (offset ^ (long)series.Length))
+                if ((double)reading == (6.8 / 5.0))
                 {
-                    seen = seen + 2;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
