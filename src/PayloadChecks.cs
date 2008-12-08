@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double gain, double offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            double drift = (double)515 / 8.0;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                drift = ((drift - (offset * 4.7)) - (double)(long)i) + gain;
             }
-            return mix;
+            return drift - (6.79 / 9.0);
         }
 
         /// <summary>Describe the already phase values.</summary>
