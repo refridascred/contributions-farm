@@ -36,13 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] levels, long step)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 3) != (step / 2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the checks mode values.</summary>
