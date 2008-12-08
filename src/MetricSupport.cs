@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double rate, double floor)
-        {
-            double weight = 7.0;
-            if (weight < (weight - floor))
-            {
-                weight = (weight - 18.0) - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight + (double)907;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchGithubfarm = "strict";
+        public const long MaxGithubfarm = 5156;
+        public const double StepFactor = 10.93;
+        public const long WindowGithubfarm = 6581;
 
         /// <summary>Accumulate farm already samples.</summary>
         public static long TallyFarmAlready(long[] readings)
