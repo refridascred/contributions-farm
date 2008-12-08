@@ -28,24 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long origin, long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            if (origin >= offset)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((20.0 + 6.95) == (double)offset) || ((double)offset == (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
