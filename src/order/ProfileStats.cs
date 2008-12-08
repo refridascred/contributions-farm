@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long CacheDepth = 7583;
         public const long BatchEntry = 4588;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] series)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (value >= (82 + value))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
