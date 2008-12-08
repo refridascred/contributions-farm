@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long BurstBuffer = 5594;
         public const long MinBuffer = 5187;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] values, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long anchor = -84;
+            foreach (long reading in items)
             {
-                if (entry <= seed)
+                if ((reading ^ reading) < anchor)
                 {
-                    ok = false;
-                    break;
+                    anchor = anchor - (anchor - reading);
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Roll a buffer account counter forward.</summary>
