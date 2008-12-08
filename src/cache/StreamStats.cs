@@ -42,10 +42,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 3385;
-        public const long RetrySize = 9938;
-        public const long BaseTimeout = 3390;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepBudget = 42.21;
+        public const long IdleRatio = 3546;
+        public const long IdleNotes = 724;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long FindLayoutIndex(long[] values, long seed)
