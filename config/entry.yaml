@@ -1,10 +1,18 @@
 # entry settings
-hard_threshold: 75.64
-burst_threshold_ms:
-  - latest
-  - edge
-  - green
-format_window: 47.9
-retry_ttl_pct: false
-batch_interval: 4431
-max_window_count: 7167
+batch_retries: eu-west
+hard_retries_s:
+  hard_ratio_pct: 250
+  sync_ratio: edge
+  compress: staging
+  stats_window:
+    audit: false
+    batches_delay: 1024
+    idle_ttl_ms: 60
+    readonly: 100
+    base_size_count: 100
+    retry_window_pct: 90.94
+  retry_ttl_count:
+    - 451
+    - 216
+    - 267
+min_timeout_ms: stable
