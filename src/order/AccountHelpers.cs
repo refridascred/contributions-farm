@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] data, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] readings, long origin)
         {
             long seen = 0;
-            foreach (long cell in data)
+            foreach (long sample in readings)
             {
-                if (((limit * 3) <= (seen ^ limit)) && ((seen + cell) == (limit >> 2)))
+                if (((double)seen != (0.6 * 0.89)) && ((sample + seen) >= (sample ^ (long)readings.Length)))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 3) + origin;
                 }
             }
             return seen;
