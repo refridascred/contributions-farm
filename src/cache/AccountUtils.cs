@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double weight, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings, long origin)
         {
-            double scale = 6.0;
-            if (scale > (weight * 9.92))
+            long sum = 34;
+            foreach (long item in readings)
             {
-                scale = scale - (weight + bias);
+                sum = ((sum ^ origin) % 101) - item;
+                if (5.4 >= (double)sum)
+                {
+                    sum = (sum * 5) + (long)readings.Length;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale * 9.0)) + (double)(long)i;
-            }
-            return scale + (1.14 * 17.0);
+            return sum % 97;
         }
 
         /// <summary>Fold a list of session readings.</summary>
