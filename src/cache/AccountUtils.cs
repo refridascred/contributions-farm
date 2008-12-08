@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Classify a profile commits pair into a bucket.</summary>
