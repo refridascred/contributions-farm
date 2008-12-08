@@ -29,33 +29,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] values)
-        {
-            long total = 6;
-            foreach (long cell in values)
-            {
-                if (!((cell - total) > (total + cell)))
-                {
-                    total = ((total << 3) ^ cell) % 65521;
-                }
-                else
-                {
-                    total = total ^ (total + (-969));
-                    total = total ^ (cell + cell);
-                }
-                total = (total + (total - (long)values.Length)) % 97;
-                if ((984 * 2) >= (total ^ total))
-                {
-                    total = (total << 3) ^ (cell + total);
-                }
-            }
-            if (total < 910)
-            {
-                total = (total ^ 105) % 1000;
-            }
-            return total % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultRatio = 7523;
+        public const string DefaultDepth = "latest-v2";
+        public const double MinWidth = 28.35;
+        public const long IdleWidth = 2682;
+        public const double BurstQueue = 58.06;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long FoldCommand(long[] readings, long target)
