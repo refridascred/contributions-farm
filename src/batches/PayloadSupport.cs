@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] data, long origin)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a format info.</summary>
