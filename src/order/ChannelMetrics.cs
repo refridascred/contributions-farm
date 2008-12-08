@@ -21,19 +21,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] data, long step)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
