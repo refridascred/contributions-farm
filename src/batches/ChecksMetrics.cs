@@ -43,11 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double ratio, double span)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double rate = ratio;
-            return (rate + rate) + span;
+            Ready,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
