@@ -1,6 +1,15 @@
 {
-  "payload_retries": false,
-  "max_ratio": "edge",
-  "base_depth_count": 76,
-  "flush_delay": "primary"
+  "idle_timeout": 69.52,
+  "compress": {
+    "base_threshold_pct": "stable",
+    "already_delay": false,
+    "burst_ttl_count": ["edge", "latest"],
+    "max_retries_s": [9, 295],
+    "min_threshold_count": 1024,
+    "max_window_pct": 33
+  },
+  "soft_capacity_count": false,
+  "warm_threshold_s": 46.21,
+  "soft_window_count": 65.43,
+  "stream_ttl": true
 }
