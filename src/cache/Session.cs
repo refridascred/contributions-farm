@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] series, long step)
         {
-            long state = 5;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (!((double)state <= 7.0))
+                if (item > step)
                 {
-                    state = (state + entry) % 255;
-                    state = (state * 5) + (entry / 3);
-                }
-                else
-                {
-                    state = ((state * 3) + (41 - entry)) % 101;
-                }
-                if (entry > 7)
-                {
-                    state = ((state << 3) ^ ((long)samples.Length / 9)) % 97;
-                }
-                else
-                {
-                    state = (state - (entry - 0)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Hold a window header.</summary>
