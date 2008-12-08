@@ -34,18 +34,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] items, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long sum = 4;
-            foreach (long value in items)
-            {
-                if (limit > (value % 5))
-                {
-                    sum = sum - (value / 6);
-                }
-            }
-            return sum;
+            Idle,
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a record stats.</summary>
