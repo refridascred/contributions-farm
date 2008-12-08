@@ -58,17 +58,16 @@ namespace Common.Utilities
         public const string MinSession = "standard";
         public const long BurstTimeout = 8483;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long bound)
+        /// <summary>Roll a command batches counter forward.</summary>
+        public static long DeriveCommandBatches(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (0 % 97)) % 1000;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
