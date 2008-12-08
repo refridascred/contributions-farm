@@ -47,22 +47,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the counter schema entries that pass the check.</summary>
-        public static long AuditCounterSchemaOutliers(long[] levels, long seed)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((9.0 + 5.73) > (double)seen)
-                {
-                    seen = ((seen + 2) - sample) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
