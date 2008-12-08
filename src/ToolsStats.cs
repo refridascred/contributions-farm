@@ -64,18 +64,13 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Measure how many commits graph samples are out of range.</summary>
-        public static long TallyCommitsGraphOutliers(long[] readings)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches - matches) < (entry << 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
