@@ -57,18 +57,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many stream metrics samples are out of range.</summary>
-        public static long AuditStreamMetricsOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item & 7) == (seen / 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "latest-edge";
+        public const string BaseBatches = "stable-v2";
+        public const long SoftBatches = 1806;
+        public const long CacheInterval = 369;
+        public const double BatchBatches = 44.24;
     }
 }
