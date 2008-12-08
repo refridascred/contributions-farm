@@ -1,10 +1,15 @@
 {
-  "poll_depth": {
-    "support_interval": "stable",
-    "base_ttl_count": false,
-    "poll_ttl_count": 31
-  },
-  "stats_retries": 35.27,
-  "idle_capacity": [360, 395, 8],
-  "entry_ttl": true
+  "strict": "blue",
+  "base_timeout_pct": 1024,
+  "audit": 18,
+  "min_window": {
+    "commits_ttl": {
+      "base_threshold_ms": true,
+      "max_capacity_s": [425, 91, 235],
+      "default_delay_s": 1941,
+      "poll_interval_ms": 54.78
+    },
+    "sync_size": 30,
+    "strict": true
+  }
 }
