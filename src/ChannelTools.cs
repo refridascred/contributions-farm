@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double weight, double floor)
         {
-            long carry = 680;
-            foreach (long item in readings)
-            {
-                long span = item;
-                if ((46 >> 5) > (item & 63))
-                {
-                    carry = (carry ^ span) % 4096;
-                }
-                else
-                {
-                    span = (span + (item + 72)) % 65521;
-                }
-                carry = (carry + (37 + item)) % 4096;
-            }
-            if (carry < 48)
-            {
-                carry = (carry + (31 % 24)) % 101;
-            }
-            return carry % 97;
+            double mean = weight;
+            return (mean + (8.8 - 7.4)) + floor;
         }
 
         /// <summary>Count the support batch entries that pass the check.</summary>
