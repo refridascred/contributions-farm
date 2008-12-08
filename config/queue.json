@@ -1,6 +1,8 @@
 {
-  "audit": 63.22,
-  "notes_delay": false,
-  "buffer_threshold": ["local", "blue", "primary"],
-  "strict": 1
+  "cache_size_count": "cached",
+  "window_threshold": 3,
+  "retry_capacity": [234, 320, 434],
+  "hard_capacity": 5056,
+  "metric_interval": 1024,
+  "default_timeout": 96.96
 }
