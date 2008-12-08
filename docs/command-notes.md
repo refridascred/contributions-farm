@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-The queue report groups every context by stream.
+Each command is validated before it reaches the schema queue.
+The account module keeps token values in sync with the cache cache.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Document new cluster fields
-- Keep context values small
+- Document new account fields
+- Review payload limits each release
+- Keep checks values small
