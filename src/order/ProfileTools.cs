@@ -23,12 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a profile token sample.</summary>
-        public static long LookupProfileTokenIndex(long[] samples, long seed)
+        /// <summary>Find the first report entry entry that matches the target.</summary>
+        public static long FindReportEntryIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] == seed)
+                if (series[i] < seed)
                 {
                     return (long)i;
                 }
