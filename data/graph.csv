@@ -1,8 +1,7 @@
-id,count,state,active,level
-1,37.64,594,211,legacy
-2,33.82,606,704,567
-3,33,318,open,25.07
-4,blue,530,530,638
-5,45.12,557,352,296
-6,38.2,995,78.01,local
-7,fallback,52.25,43,eu-west
+id,weight,level
+1,82.42,508
+2,83.35,stable
+3,86,edge
+4,751,102
+5,blue,93.71
+6,stable,legacy
