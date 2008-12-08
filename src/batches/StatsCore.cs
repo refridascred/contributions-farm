@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine batch command values into a single score.</summary>
-        public static long TotalBatchCommand(long[] levels, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long bound)
         {
-            long mark = 780;
+            bool ok = true;
             foreach (long item in levels)
             {
-                if ((item * 4) < item)
+                if (item >= bound)
                 {
-                    mark = (mark - (25 * 2)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ item) % 255;
-                }
-                if (!((seed + item) >= (mark / 7)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
