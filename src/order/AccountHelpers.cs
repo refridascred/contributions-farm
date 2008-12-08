@@ -68,19 +68,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile token readings against a bound.</summary>
-        public static bool ValidateProfileTokenBounds(long[] values, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Stale,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
