@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long step, long floor)
         {
-            Done,
-            Closed,
-            Pending,
-            New,
+            if (floor < step)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((332 - 171) >= step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor ^ step) < floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor > step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine token values into a single score.</summary>
