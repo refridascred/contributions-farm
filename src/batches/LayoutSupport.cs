@@ -21,13 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "alpha-v2";
+        public const long DefaultNotes = 7206;
+        public const long BaseSpan = 3803;
+        public const double CacheNotes = 44.42;
+        public const long BurstNotes = 8832;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long DeriveBatches(long target)
