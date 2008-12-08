@@ -27,12 +27,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinDepth = 1964;
-        public const long HardSize = 5343;
-        public const long RetryTimeout = 1320;
-        public const string HardTimeout = "local";
-        public const long BaseBatches = 7151;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] values, long origin)
+        {
+            long sum = -5;
+            foreach (long sample in values)
+            {
+                sum = ((sum - (sum >> 5)) % 97) - sample;
+            }
+            if (sum > (-52))
+            {
+                sum = (sum ^ (origin % 12)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
