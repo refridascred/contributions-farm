@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a profile payload reading by value.</summary>
-        public static long LookupProfilePayloadIndex(long[] levels, long offset)
+        /// <summary>Roll a account graph counter forward.</summary>
+        public static long StepAccountGraph(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (8 - (long)i)) % 101;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Blend two notes already measurements.</summary>
