@@ -14,38 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] values)
         {
-            if ((double)bound <= 8.0)
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - bound) > bound)
+                if ((matches - value) <= 326)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - bound) == (origin / 6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the command kind values.</summary>
