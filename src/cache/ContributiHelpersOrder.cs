@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long target, long seed)
         {
-            New,
-            Draft,
-            Failed,
+            if (((target & 127) > (seed + target)) && ((target << 2) <= seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target & 3) > seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of graph commits entries.</summary>
