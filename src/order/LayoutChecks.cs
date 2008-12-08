@@ -30,27 +30,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            long anchor = 61;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                anchor = ((anchor * 2) + (anchor * 3)) % 65521;
-                if (sample > (long)values.Length)
+                if ((2 + item) == (item + (long)readings.Length))
                 {
-                    anchor = (anchor * 2) + sample;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ (anchor * 5);
+                    tally = tally - 1;
                 }
             }
-            if (anchor < 433)
-            {
-                anchor = anchor + step;
-            }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
