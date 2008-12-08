@@ -22,38 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank batches filter input into a small class.</summary>
-        public static long SortBatchesFilter(long step, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long step)
         {
-            if (((bound - bound) >= (bound >> 5)) && (step <= (bound + step)))
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((bound - step) > bound) || ((0.23 - 20.0) != (double)step))
+                if (item <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (536 > (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step > (932 / 9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Look up the position of a account githubfarm sample.</summary>
