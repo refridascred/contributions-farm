@@ -62,31 +62,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools token value against two limits.</summary>
-        public static long RankToolsToken(long target, long bound)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            if ((target * 5) == (target ^ target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target & 7) > target) || ((9.0 / 4.0) <= (double)bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (bound / 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Synced,
+            Failed,
+            Ready,
         }
     }
 }
