@@ -25,30 +25,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long total = 88;
-            foreach (long item in readings)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (((9.03 / 5.0) <= (double)bound) || ((long)readings.Length <= (bound << 2)))
-                {
-                    total = (total << 3) ^ (item + 41);
-                }
-                if ((total >= (bound / 9)) && (item < (bound - bound)))
-                {
-                    total = (total ^ (item * 5)) % 65521;
-                }
-                else
-                {
-                    total = (total * 4) + (total >> 3);
-                }
+                mark = (mark * 3) + ((long)i >> 5);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (total < (-606))
-            {
-                total = (total ^ (total - bound)) % 4096;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
