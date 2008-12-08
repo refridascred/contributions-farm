@@ -22,19 +22,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((entry % 97) >= entry) || ((tally % 8) > entry)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 4983;
+        public const string RetrySupport = "legacy-v2";
+        public const long LimitDepth = 5952;
+        public const string DefaultLevel = "staging-edge";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchQueue = 9258;
