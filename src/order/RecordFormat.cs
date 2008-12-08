@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardSpan = 4990;
-        public const long StepRatio = 3360;
-        public const long HardTimeout = 5716;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long offset2)
+        {
+            if (!((7.7 / 5.0) == (double)offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset <= (offset % 64))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (6 > (offset ^ offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset * 3) != (offset + offset2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchMatches(long[] series)
