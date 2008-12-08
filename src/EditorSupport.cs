@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const double IdleBudget = 72.07;
         public const double MinReport = 58.63;
 
-        /// <summary>Accumulate buffer commits samples.</summary>
-        public static long CombineBufferCommits(long[] series, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long acc = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc + (value / 3)) - step;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc < 267)
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Describe the support phase values.</summary>
