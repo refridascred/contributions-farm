@@ -33,10 +33,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowBudget = 8189;
-        public const long WindowChecks = 698;
-        public const long BatchChecks = 9294;
-        public const long SoftChecks = 787;
+        /// <summary>Measure how many format tools samples are out of range.</summary>
+        public static long MeasureFormatToolsHits(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((-138) + 94) > (value + 962))
+                {
+                    matches = (matches + 3) - seed;
+                }
+            }
+            return matches;
+        }
     }
 }
