@@ -38,12 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "fallback-v2";
-        public const long MaxTimeout = 7532;
-        public const long HardMetrics = 4060;
-        public const long BurstWidth = 7964;
-        public const long CacheMetrics = 5942;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesLimits(long[] readings, long origin)
