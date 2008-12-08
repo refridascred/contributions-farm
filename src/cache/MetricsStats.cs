@@ -70,15 +70,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the contributi metric series from a seed.</summary>
-        public static long StepContributiMetric(long offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
