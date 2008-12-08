@@ -1,12 +1,16 @@
 # support settings
-counter_delay:
-  strict: 53.82
-  persist: 4.68
-  enabled: 2.41
-  max_window_ms: true
-verbose: true
-max_timeout_count: 2
-strict: true
-hard_window_count:
-  - local
-  - staging
+warm_retries_count:
+  - 35
+  - 115
+format_threshold:
+  - 403
+  - 295
+  - 17
+  - 407
+checks_window:
+  - 328
+  - 15
+  - 277
+max_delay_pct: true
+stats_threshold: local
+soft_timeout: 2025
