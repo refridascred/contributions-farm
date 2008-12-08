@@ -22,12 +22,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] items, long offset)
         {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
