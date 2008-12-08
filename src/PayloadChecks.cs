@@ -36,13 +36,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
+            Done,
+            Closed,
+            Queued,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a queue record.</summary>
