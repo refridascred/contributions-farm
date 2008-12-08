@@ -38,19 +38,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] series, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long total = 61;
+            foreach (long entry in readings)
             {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total - entry) % 255;
             }
-            return ok;
+            if (total < 544)
+            {
+                total = ((total << 2) ^ ((long)readings.Length / 3)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
