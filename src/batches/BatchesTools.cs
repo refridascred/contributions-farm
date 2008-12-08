@@ -19,12 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double bias, double span)
         {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            double load = span;
+            if (load > 18.0)
+            {
+                load = load + (9.23 / 5.0);
+            }
+            else
+            {
+                load = load + (double)4;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (9.04 + 1.0)) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
