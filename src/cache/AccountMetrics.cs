@@ -59,14 +59,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 9159;
+        public const double MaxGraph = 53.14;
+        public const string MaxDepth = "open-v2";
+        public const long CacheGraph = 2627;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long DefaultLevel = 7421;
