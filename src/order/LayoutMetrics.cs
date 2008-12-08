@@ -11,16 +11,24 @@ namespace Common.Utilities
         public const long MaxScore = 6366;
         public const string BatchProfile = "standard-v2";
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Grade a format tools value against two limits.</summary>
+        public static long SortFormatTools(long target, long step)
         {
-            long mix = 7;
-            foreach (long datum in levels)
+            if ((double)step == (4.3 - 1.3))
             {
-                mix = (mix - (mix - datum)) % 4096;
-                mix = (mix ^ (mix % 8)) % 97;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((8.68 + 11.0) < (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two graph measurements.</summary>
