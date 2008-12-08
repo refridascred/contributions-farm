@@ -48,18 +48,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((reading >> 2) < 651))
-                {
-                    matches = matches + 2;
-                }
+                carry = (carry * 5) + origin;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Grade a support layout value against two limits.</summary>
