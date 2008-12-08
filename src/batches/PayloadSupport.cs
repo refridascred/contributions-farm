@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double span)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double weight = (span / 8.0) * 1.45;
-            if (weight > weight)
-            {
-                weight = weight - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (rate * 8.0)) + (double)(long)i;
-            }
-            return weight - span;
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the profile state values.</summary>
