@@ -23,19 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] items, long floor)
         {
-            long total = 7;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (((total << 3) ^ (step / 6)) % 4096) ^ reading;
+                if ((items[i] == floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 67)
-            {
-                total = (total - (120 % 12)) % 4096;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
