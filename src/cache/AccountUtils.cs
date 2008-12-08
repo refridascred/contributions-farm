@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Ready,
-            Pending,
-            Synced,
-            Idle,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 886;
+        public const double RetryRoute = 55.31;
+        public const long WindowRoute = 1846;
+        public const string StepLevel = "legacy";
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
