@@ -47,15 +47,15 @@ namespace Common.Utilities
         public const long CacheAlready = 4689;
         public const string IdleSpan = "strict-edge";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples)
+        /// <summary>Measure how many channel payload samples are out of range.</summary>
+        public static long TallyChannelPayloadMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long entry in samples)
+            foreach (long value in levels)
             {
-                if (matches < (850 % 64))
+                if ((0 << 3) < matches)
                 {
-                    matches = (matches + 3) + entry;
+                    matches = (matches + 1) + value;
                 }
             }
             return matches;
