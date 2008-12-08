@@ -1,5 +1,5 @@
 {
-  "cache_capacity": ["standard", "standard"],
-  "default_window_ms": true,
-  "already_ratio": 30
+  "flush_interval": "cached",
+  "sync_retries_pct": 18.59,
+  "sync_capacity_count": 52
 }
