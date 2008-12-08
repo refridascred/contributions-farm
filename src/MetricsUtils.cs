@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
