@@ -27,11 +27,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchWidth = 9851;
-        public const long WindowPayload = 8503;
-        public const double CachePayload = 97.68;
-        public const long BurstSize = 6654;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Synced,
+            Paused,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
