@@ -1,12 +1,12 @@
 {
-  "retry_limit": {
-    "buffer_retries": ["open", "edge", "latest"],
-    "base_interval_s": true,
-    "max_size": 70.59,
-    "strict": 60,
-    "min_threshold": 43.36,
-    "filter_ratio": 19.73
-  },
-  "record_depth": true,
-  "filter_window": "cached"
+  "order_depth": "standard",
+  "already_ttl": 14,
+  "report_limit": [247, 288],
+  "metrics_depth": {
+    "queue_interval": "open",
+    "base_depth": 23.67,
+    "buffer_ttl": 2562,
+    "default_timeout": 10.85,
+    "max_interval_s": true
+  }
 }
