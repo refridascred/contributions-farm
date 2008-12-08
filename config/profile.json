@@ -1,6 +1,6 @@
 {
-  "hard_limit": "green",
-  "cache_timeout": true,
-  "cache_size_s": 67.73,
-  "flush_size": true
+  "already_timeout": 59.96,
+  "audit": "cached",
+  "metrics_delay": "blue",
+  "warm_interval_ms": false
 }
