@@ -71,10 +71,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 3370;
-        public const double BurstStats = 18.14;
-        public const long DefaultStats = 5575;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool CheckRecordRange(long[] series, long floor)
