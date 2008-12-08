@@ -1,5 +1,14 @@
 {
-  "hard_depth_count": "blue",
-  "tools_limit": "blue",
-  "metrics_delay": "stable"
+  "counter_delay": 87,
+  "compress": ["edge", "staging"],
+  "dry_run": 1.7,
+  "account_capacity": {
+    "max_limit_ms": 34.44,
+    "already_size": true,
+    "batch_ratio": 5031,
+    "poll_interval_pct": "strict",
+    "idle_capacity": [37, 303, 17, 180],
+    "commits_ttl": "staging"
+  },
+  "layout_delay": "local"
 }
