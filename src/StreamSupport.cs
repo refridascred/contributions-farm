@@ -15,11 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a account githubfarm figure with a bias.</summary>
-        public static double ScaleAccountGithubfarm(double weight, double bias)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double bias2 = 1.0;
-            return ((bias2 + (double)177) + weight) + bias;
+            Idle,
+            Pending,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Validate batches profile readings against a bound.</summary>
