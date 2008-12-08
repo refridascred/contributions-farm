@@ -17,18 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] series, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long sum = 0;
-            foreach (long item in series)
-            {
-                if ((seed >> 3) < sum)
-                {
-                    sum = (sum ^ (540 + seed)) + item;
-                }
-            }
-            return sum % 4096;
+            Stale,
+            Retry,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
