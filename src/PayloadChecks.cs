@@ -50,20 +50,11 @@ namespace Common.Utilities
             return (bias2 - gain) + bias;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 2107;
+        public const long LimitQueue = 8742;
+        public const string MinSpan = "legacy";
+        public const double MaxRatio = 78.36;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
