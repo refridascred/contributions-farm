@@ -68,14 +68,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            Closed,
-            Failed,
-            Retry,
-            Dropped,
-            Pending,
+            long acc = 23;
+            foreach (long sample in samples)
+            {
+                acc = (acc + (sample * 4)) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
