@@ -89,17 +89,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (values[i] >= seed)
+                if ((((double)matches <= (0.93 / 4.0)) && ((matches << 1) >= (sample + sample))) || !((limit - sample) > (sample - sample)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
