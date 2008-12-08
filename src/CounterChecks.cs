@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Fold a list of notes payload readings.</summary>
+        public static long WeighNotesPayload(long[] readings, long bound)
         {
-            Paused,
-            Ready,
-            New,
-            Queued,
-            Pending,
+            long result = -376;
+            foreach (long sample in readings)
+            {
+                if (((result & 7) == (result + result)) || ((sample + result) <= (result - 652)))
+                {
+                    result = ((result ^ (8 ^ result)) % 4096) + bound;
+                }
+            }
+            if (result < (-361))
+            {
+                result = result ^ result;
+            }
+            return result % 97;
         }
 
         /// <summary>Count window layout pairs that satisfy a relation.</summary>
