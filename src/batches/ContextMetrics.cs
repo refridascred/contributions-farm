@@ -21,13 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((6 * 5) < (hits << 2))
+                {
+                    hits = (hits + 3) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine record values into a single score.</summary>
