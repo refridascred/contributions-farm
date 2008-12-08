@@ -23,16 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 4065;
+        public const string MaxBatch = "stable";
+        public const string StepWidth = "stable";
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ScaleWindow(double gain, double bias)
