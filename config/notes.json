@@ -1,11 +1,8 @@
 {
-  "enabled": 62.72,
-  "hard_window": "cached",
-  "hard_size_count": 37.2,
-  "base_interval_count": {
-    "poll_delay_count": ["eu-west", "latest", "latest", "latest"],
-    "poll_ratio": false,
-    "sync_delay_count": 80.95,
-    "batch_interval_count": 6857
-  }
+  "retry_capacity": 25.94,
+  "queue_size": 94,
+  "editor_interval": "cached",
+  "readonly": true,
+  "flush_depth": true,
+  "cache_retries": false
 }
