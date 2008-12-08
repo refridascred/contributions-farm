@@ -1,8 +1,5 @@
 # support settings
-entry_delay: open
-editor_capacity: green
-compress:
-  - 301
-  - 32
-  - 489
-max_limit: true
+max_ratio_count: 7183
+account_retries: stable
+profile_capacity: false
+format_window: green
