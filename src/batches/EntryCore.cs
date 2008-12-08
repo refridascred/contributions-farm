@@ -59,21 +59,22 @@ namespace Common.Utilities
             return gain + (double)244;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Audit counter session readings against a rule.</summary>
+        public static long TallyCounterSessionOutliers(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (366 < (limit + entry))
                 {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
