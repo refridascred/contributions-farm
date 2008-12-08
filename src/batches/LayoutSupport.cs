@@ -29,10 +29,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFactor = 9745;
-        public const long MinFarm = 9781;
-        public const long HardFarm = 8768;
+        /// <summary>Look up the position of a account githubfarm sample.</summary>
+        public static long LocateAccountGithubfarmIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a already counter reading.</summary>
         public static double ProjectAlreadyCounter(double bias, double offset)
