@@ -21,15 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
