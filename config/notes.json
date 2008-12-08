@@ -1,18 +1,6 @@
 {
-  "flush_window": false,
-  "metrics_depth": ["primary", "blue"],
-  "burst_delay": {
-    "channel_capacity": {
-      "metrics_capacity": "legacy",
-      "burst_window_ms": 3698,
-      "min_timeout_count": true,
-      "verbose": ["blue", "primary"],
-      "editor_interval": "green",
-      "farm_window": 45.25
-    },
-    "min_size": 35.33,
-    "soft_delay": 7
-  },
-  "stats_size": [387, 211, 406, 8],
-  "githubfarm_depth": 15.7
+  "hard_depth": 3520,
+  "poll_interval_ms": 100,
+  "cache_depth": false,
+  "soft_depth_ms": 8361
 }
