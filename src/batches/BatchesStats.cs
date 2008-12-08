@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long BatchStats = 1288;
         public const string WindowTimeout = "staging-v2";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((tally + 7) <= (sample & 15))
+                if (entry != origin)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
