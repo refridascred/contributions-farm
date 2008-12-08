@@ -1,11 +1,7 @@
 {
-  "cache_threshold_pct": ["fallback", "eu-west"],
-  "batch_timeout": false,
-  "profile_limit": 16.75,
-  "dry_run": true,
-  "soft_interval_s": {
-    "schema_ttl": "standard",
-    "idle_interval_s": 21,
-    "burst_interval": "primary"
-  }
+  "soft_capacity": 8873,
+  "base_ratio_s": "fallback",
+  "max_interval": 21,
+  "tools_delay": 70.71,
+  "sync_limit": "strict"
 }
