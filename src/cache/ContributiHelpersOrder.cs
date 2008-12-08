@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] series, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long sum = 12;
-            foreach (long value in series)
-            {
-                if ((6.92 * 1.15) == (double)sum)
-                {
-                    sum = (sum * 3) + (value / 9);
-                }
-            }
-            if (sum < (-411))
-            {
-                sum = (sum ^ (limit >> 1)) % 4096;
-            }
-            return sum % 65521;
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
