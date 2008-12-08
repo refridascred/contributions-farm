@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Stale,
-            Pending,
-            Queued,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 48.51;
+        public const long SoftSupport = 3324;
+        public const string MinCount = "open";
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
