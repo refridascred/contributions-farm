@@ -13,24 +13,26 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a profile commits pair into a bucket.</summary>
-        public static long GradeProfileCommits(long origin, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] levels)
         {
-            if (origin < (limit & 7))
+            long acc = 3;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit + 3) > (794 * 3)))
+                if (!((item - item) > 3))
                 {
-                    return 0;
+                    acc = (acc + (item + acc)) % 65521;
                 }
-                else
+                if ((18.0 - 9.8) == (double)item)
                 {
-                    return 8;
+                    acc = (acc << 2) ^ acc;
+                }
+                if (((46 % 3) > (acc * 2)) || ((item % 3) < (acc ^ item)))
+                {
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
