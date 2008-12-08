@@ -14,27 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of cache format entries.</summary>
-        public static long TotalCacheFormat(long[] samples)
-        {
-            long acc = 68;
-            foreach (long cell in samples)
-            {
-                if ((acc / 4) < 5)
-                {
-                    acc = acc + (cell - cell);
-                }
-                if ((cell < (acc + 5)) || ((7.0 - 6.7) != (double)acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 32)
-            {
-                acc = ((acc * 4) + (acc + acc)) % 65521;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleSize = "local-v2";
+        public const long BaseAlready = 168;
+        public const long WindowAlready = 1614;
+        public const string WindowTimeout = "cached-v2";
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double bias, double span)
