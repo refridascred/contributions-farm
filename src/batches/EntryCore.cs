@@ -25,13 +25,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] levels, long bound)
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (cell >= (99 << 2))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next queue payload value.</summary>
