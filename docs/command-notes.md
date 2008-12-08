@@ -1,14 +1,14 @@
 # Command notes
 
-Use stream settings to tune how often contributi data is refreshed.
-Keep schema and support names short and lowercase.
+Defaults for counter live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
 
-The stats report groups every window by batches.
-Use layout settings to tune how often already data is refreshed.
+Each window is validated before it reaches the cluster queue.
+Each report is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Keep support values small
-- Log every profile change
-- Prefer schema defaults
-- Validate stats input early
+- Prefer report defaults
+- Review session limits each release
+- Validate entry input early
+- Keep graph values small
