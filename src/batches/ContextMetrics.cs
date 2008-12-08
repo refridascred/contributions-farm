@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] data, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (entry < offset)
+                if (value <= floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Define token limits and defaults.</summary>
