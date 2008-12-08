@@ -13,18 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of account batch readings.</summary>
-        public static long WeighAccountBatch(long[] items)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long score = 4;
-            foreach (long entry in items)
-            {
-                if ((double)score <= (4.91 + 0.6))
-                {
-                    score = score ^ entry;
-                }
-            }
-            return score % 97;
+            Closed,
+            New,
+            Failed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
