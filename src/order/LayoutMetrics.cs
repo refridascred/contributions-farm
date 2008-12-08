@@ -31,19 +31,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command entry measurements.</summary>
-        public static double ProjectCommandEntry(double rate, double bias)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double scale = 8.54;
-            if (scale <= 3.65)
-            {
-                scale = ((scale + scale) - rate) - bias;
-            }
-            else
-            {
-                scale = scale - 7.7;
-            }
-            return scale - scale;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
