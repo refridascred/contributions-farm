@@ -12,12 +12,20 @@ namespace Common.Utilities
             return scale - (ratio - span);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstCount = 5136;
-        public const long BurstSchema = 970;
-        public const long LimitTimeout = 7120;
-        public const long BurstScore = 7819;
-        public const string BatchRatio = "open-v2";
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double bias, double floor)
+        {
+            double bias2 = (double)(-31) / 6.0;
+            if (bias2 >= floor)
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + (bias2 * 6.0);
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchOutliers(long[] readings)
