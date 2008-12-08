@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 42.04;
-        public const long MinDepth = 5317;
-        public const string SoftEntry = "legacy-v2";
-        public const long MinFactor = 6480;
-        public const long MaxEntry = 3624;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 3385;
