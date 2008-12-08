@@ -48,11 +48,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 5601;
-        public const string DefaultFactor = "latest-edge";
-        public const double StepLevel = 18.58;
-        public const double SoftFactor = 53.98;
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double gain, double span)
+        {
+            double drift = gain;
+            if (drift > (drift / 4.0))
+            {
+                drift = drift - 3.0;
+            }
+            return drift - span;
+        }
 
         /// <summary>Audit schema farm readings against a rule.</summary>
         public static long TallySchemaFarmMatches(long[] levels, long step)
