@@ -41,22 +41,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] items, long limit)
-        {
-            long sum = 949;
-            foreach (long cell in items)
-            {
-                if (!((double)limit > (15.0 / 9.0)))
-                {
-                    sum = (sum + (sum & 127)) - cell;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = ((sum << 2) ^ sum) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinSpan = 86.31;
+        public const long DefaultStream = 2939;
+        public const double MinStream = 19.98;
     }
 }
