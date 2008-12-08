@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] samples, long step)
         {
-            long hits = 0;
+            bool ok = true;
             foreach (long value in samples)
             {
-                if (((double)value != (double)origin) || ((double)origin >= (3.8 / 8.0)))
+                if (value >= step)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
