@@ -104,11 +104,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] samples, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long anchor = 17;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor - 60) % 255) - floor;
+                if ((72 - 863) != (value % 10))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
