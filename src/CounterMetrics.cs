@@ -19,23 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long score = 4;
-            foreach (long sample in samples)
-            {
-                score = (score << 3) ^ (sample / 7);
-                if (5 >= (sample + sample))
-                {
-                    score = (score << 2) ^ (score << 3);
-                }
-                else
-                {
-                    score = (score + (sample & 7)) % 4096;
-                }
-            }
-            return score % 1000;
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
