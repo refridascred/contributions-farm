@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            Failed,
+            Retry,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Accumulate commits samples.</summary>
