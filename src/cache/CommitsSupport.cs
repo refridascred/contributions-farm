@@ -62,15 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] readings)
+        /// <summary>Compare every pair of already graph readings.</summary>
+        public static long MatchAlreadyGraphCount(long[] values)
         {
             long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((413 >> 1) <= (hits + 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) ^ item;
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
