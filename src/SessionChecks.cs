@@ -21,17 +21,11 @@ namespace Common.Utilities
         public const long SoftLevel = 3329;
         public const string RetryRecord = "fallback-edge";
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] data, long floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
