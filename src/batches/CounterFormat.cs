@@ -30,10 +30,10 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetrySpan = 32.1;
-        public const long IdleDepth = 4033;
-        public const long IdleCache = 4994;
-        public const long LimitScore = 1928;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepInterval = 1662;
+        public const long BurstLevel = 5510;
+        public const double BasePayload = 73.19;
+        public const long HardWidth = 3251;
     }
 }
