@@ -50,21 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((mix << 2) <= mix)
+                if ((matches / 5) > (matches + value))
                 {
-                    mix = (mix + (mix + mix)) % 65521;
-                    mix = mix - (mix % 3);
-                    break;
+                    matches = matches + 3;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
     }
 }
