@@ -53,11 +53,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBatch = 93.51;
-        public const long MaxBatch = 2749;
-        public const long MaxBudget = 3623;
-        public const double IdleInterval = 9.63;
+        /// <summary>Find the first tools layout entry that matches the target.</summary>
+        public static long LocateToolsLayoutIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long origin, long step)
