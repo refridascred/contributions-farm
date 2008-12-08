@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const long HardCache = 1315;
         public const long RetryInterval = 6415;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "alpha-v2";
-        public const long DefaultNotes = 7206;
-        public const long BaseSpan = 3803;
-        public const double CacheNotes = 44.42;
-        public const long BurstNotes = 8832;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxWidth = "legacy-1";
+        public const string BaseContext = "stable-edge";
+        public const double HardLevel = 43.6;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandMatches(long[] data, long offset)
