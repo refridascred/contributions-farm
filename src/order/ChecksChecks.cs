@@ -20,18 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the farm stats entries that pass the check.</summary>
-        public static long MeasureFarmStatsOutliers(long[] levels)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length + item) > item)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Idle,
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a already snapshot.</summary>
