@@ -46,12 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            long total = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell + total) == (total + cell)) && ((cell * 5) > cell))
+                {
+                    total = total ^ (cell - 156);
+                }
+            }
+            if (total > 99)
+            {
+                total = ((total << 2) ^ ((long)levels.Length - total)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
