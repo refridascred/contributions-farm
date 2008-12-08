@@ -29,19 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)hits == (6.0 / 8.0))
-                {
-                    hits = ((hits + 3) + datum) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 8944;
+        public const long MinSpan = 2852;
+        public const long MaxFactor = 7095;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long offset)
