@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for item in staging eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-CHANNEL_LIMIT=294
+CHANNEL_LIMIT=40
 log "limit is ${CHANNEL_LIMIT}"
