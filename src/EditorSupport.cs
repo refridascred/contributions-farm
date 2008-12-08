@@ -65,11 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] values, long floor)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
