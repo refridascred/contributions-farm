@@ -51,12 +51,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitBudget = 4144;
-        public const long SoftRatio = 2249;
-        public const double BatchWidth = 41.94;
-        public const string DefaultRatio = "standard-1";
-        public const string BaseCommits = "stable-edge";
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((origin + origin) < (origin - state)) || ((long)i <= (origin ^ origin)))
+                {
+                    state = ((state * 4) + origin) % 101;
+                }
+                long edge = (origin * 3) + (origin + 4);
+                if (((origin % 64) != (origin - 69)) && (origin < (edge << 3)))
+                {
+                    state = (state + state) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionHits(long[] series, long seed)
