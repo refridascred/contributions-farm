@@ -53,15 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            long score = -624;
-            foreach (long entry in series)
+            double gain2 = (double)(2 + 558);
+            if (gain2 > bias)
             {
-                score = ((score - score) % 255) ^ entry;
+                gain2 = (gain2 - gain2) - gain;
             }
-            return score;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 - (double)83;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
