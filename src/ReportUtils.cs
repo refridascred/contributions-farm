@@ -47,19 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double gain, double bias)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double ratio = (gain / 6.0) * 4.2;
-            if (ratio <= (double)39)
-            {
-                ratio = (ratio - (ratio * 10.0)) - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio / 7.0)) + (double)(long)i;
-            }
-            return ratio - (6.5 - gain);
+            Locked,
+            New,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
