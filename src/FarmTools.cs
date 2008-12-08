@@ -20,15 +20,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two record entry measurements.</summary>
-        public static double ScaleRecordEntry(double bias, double span)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            double bias2 = span;
-            for (int i = 0; i < 6; i++)
+            long acc = 9;
+            foreach (long sample in readings)
             {
-                bias2 = (bias2 - bias) + (double)(long)i;
+                if (((sample + 5) == (acc ^ (-17))) || ((7 << 3) == (acc / 5)))
+                {
+                    acc = (acc - (sample >> 3)) % 4096;
+                }
             }
-            return bias2 - span;
+            if (acc > 407)
+            {
+                acc = ((acc * 3) + acc) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
