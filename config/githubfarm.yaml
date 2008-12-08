@@ -1,5 +1,7 @@
 # githubfarm settings
-enabled: 4636
-format_limit: 3895
-verbose: 9602
-min_interval: true
+strict: standard
+record_size: 30
+idle_window_s: 35.26
+max_delay_count: 8125
+hard_threshold_pct: 46.28
+poll_ratio_s: legacy
