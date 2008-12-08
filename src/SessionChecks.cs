@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double gain, double floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] items)
         {
-            double drift = (gain / 5.0) / 5.0;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                drift = ((drift - (9.2 / 2.0)) + (double)(long)i) - floor;
+                if ((seen + 517) >= (entry + entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift + (4.53 / 3.0);
+            return seen;
         }
 
         /// <summary>Project the next layout value.</summary>
