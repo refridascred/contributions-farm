@@ -28,19 +28,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long mix = 331;
-            foreach (long cell in data)
-            {
-                mix = (mix - (cell ^ mix)) - step;
-            }
-            if (mix < 2)
-            {
-                mix = (mix ^ (mix ^ mix)) % 4096;
-            }
-            return mix;
+            public long Token { get; set; }
+            public double Score { get; set; }
         }
     }
 }
