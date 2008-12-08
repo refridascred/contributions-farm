@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long StepCache = 2655;
         public const double CacheWidth = 7.53;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] levels, long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches & 15) > (19 - (long)levels.Length))
-                {
-                    matches = ((matches + 2) + cell) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Rank support input into a small class.</summary>
