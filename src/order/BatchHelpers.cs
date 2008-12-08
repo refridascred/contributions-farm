@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] readings, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long carry = 92;
+            foreach (long sample in readings)
             {
-                if ((count * 3) > (entry + limit))
+                if ((carry + (-6)) < (605 - sample))
                 {
-                    count = count + 1;
+                    carry = (carry - (sample + sample)) + floor;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
