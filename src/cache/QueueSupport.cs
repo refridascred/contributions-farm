@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double ratio, double span)
         {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            double rate = ratio - ratio;
+            return (rate + (ratio / 9.0)) + span;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
