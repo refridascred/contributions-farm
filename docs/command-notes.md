@@ -1,15 +1,11 @@
 # Command notes
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-Run the format check before changing any graph limits.
-When a metric fails, the githubfarm handler retries a few times before giving up.
-
-The filter module keeps contributi values in sync with the token cache.
-The context helpers are pure functions, so they are safe to call from any thread.
-Use window settings to tune how often schema data is refreshed.
+Use token settings to tune how often token data is refreshed.
+The route helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Document new commits fields
-- Log every token change
-- Validate session input early
+- Document new route fields
+- Validate entry input early
+- Prefer channel defaults
