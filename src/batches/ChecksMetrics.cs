@@ -22,19 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double ratio, double bias)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long target, long limit)
         {
-            double load = bias;
-            if (load >= (bias + ratio))
+            long step = target ^ limit;
+            if (((double)step > 1.98) && ((-879) < target))
             {
-                load = load + ratio;
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - ratio) + (double)(long)i;
+                if (79 > (limit % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target + target) > (limit ^ target)) || ((30 - target) <= limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return load + bias;
         }
 
         /// <summary>Hold a already entry.</summary>
