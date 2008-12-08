@@ -39,18 +39,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] levels, long seed)
+        /// <summary>Match up metric schema samples.</summary>
+        public static long MatchMetricSchemaCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry & 1) > (seed - seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
