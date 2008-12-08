@@ -24,32 +24,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long seed, long floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long offset = seed ^ floor;
-            if ((seed & 7) <= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset > (offset % 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.8 / 5.0) != (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every buffer entry entry stays within the limit.</summary>
