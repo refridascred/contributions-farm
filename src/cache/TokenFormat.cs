@@ -25,11 +25,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchRatio = "local-edge";
-        public const long LimitFactor = 4569;
-        public const long RetryCounter = 8668;
-        public const long MinCounter = 9737;
-        public const long SoftDepth = 9837;
+        /// <summary>Audit session graph readings against a rule.</summary>
+        public static long MeasureSessionGraphHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally - tally) != (reading - tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
