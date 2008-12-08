@@ -21,18 +21,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] items)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((reading + count) == ((long)items.Length * 4))
-                {
-                    count = count + 3;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Fold a list of layout farm readings.</summary>
