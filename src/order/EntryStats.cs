@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate buffer profile samples.</summary>
-        public static long TallyBufferProfile(long[] items, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings, long seed)
         {
-            long sum = 79;
-            foreach (long datum in items)
+            long result = 978;
+            foreach (long reading in readings)
             {
-                sum = (((sum ^ (sum << 2)) % 101) ^ datum) - bound;
+                if ((seed - result) < (result * 2))
+                {
+                    result = (result + (result % 2)) ^ reading;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
