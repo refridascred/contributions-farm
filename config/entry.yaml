@@ -1,8 +1,13 @@
 # entry settings
-idle_ratio_count: standard
-burst_timeout_ms: true
-idle_timeout: fallback
-persist:
-  - 304
-  - 196
-format_ttl: eu-west
+farm_window:
+  audit: 1450
+  metric_timeout: fallback
+  cache_limit: open
+  default_limit_ms: 1024
+strict: 64
+hard_ratio_pct:
+  - primary
+  - green
+  - staging
+  - cached
+stats_timeout: fallback
