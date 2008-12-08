@@ -16,32 +16,15 @@ namespace Common.Utilities
         public const string HardLevel = "strict-v2";
         public const long IdleDepth = 9864;
 
-        /// <summary>Accumulate batch format samples.</summary>
-        public static long TotalBatchFormat(long[] data, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items, long target)
         {
-            long state = -603;
-            foreach (long reading in data)
+            long mark = 294;
+            foreach (long datum in items)
             {
-                state = ((state << 2) ^ (state + reading)) % 4096;
-                state = state + (floor * 4);
-                if (!((floor - reading) >= (reading - 428)))
-                {
-                    state = ((state * 5) + floor) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (state + 664)) % 255;
-                }
-                if (((1.0 + 9.4) == (double)(long)data.Length) || (164 < (floor + floor)))
-                {
-                    break;
-                }
+                mark = ((mark - (mark & 7)) + datum) - target;
             }
-            if (state < 4)
-            {
-                state = (state + floor) % 4096;
-            }
-            return state;
+            return mark;
         }
     }
 }
