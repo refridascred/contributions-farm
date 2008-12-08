@@ -1,8 +1,19 @@
 {
-  "default_interval": [461, 370, 161],
-  "burst_threshold_count": 30,
-  "retry_ttl_s": false,
-  "strict": "edge",
-  "counter_window": 92.69,
-  "base_capacity": false
+  "retry_interval_ms": ["latest", "staging", "eu-west", "stable"],
+  "soft_window_pct": false,
+  "base_window": {
+    "sync_timeout_pct": ["open", "cached", "open"],
+    "retry_capacity": {
+      "min_size": 30,
+      "max_ratio_s": true,
+      "retry_interval_ms": 56
+    },
+    "payload_capacity": 60
+  },
+  "poll_retries_pct": {
+    "min_limit_count": 30,
+    "sync_timeout_pct": 6,
+    "enabled": false
+  },
+  "graph_retries": 18.88
 }
