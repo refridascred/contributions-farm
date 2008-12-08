@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] values, long seed)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
