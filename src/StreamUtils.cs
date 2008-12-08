@@ -108,12 +108,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] readings)
         {
-            Done,
-            Failed,
-            Active,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + count) < (34 / 9))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
