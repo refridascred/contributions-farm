@@ -28,12 +28,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            long mark = 9;
+            foreach (long item in readings)
+            {
+                if (!((5 << 1) < (item + mark)))
+                {
+                    mark = (mark ^ item) % 1000;
+                    mark = mark - (mark >> 4);
+                }
+                if ((mark + mark) != (10 - mark))
+                {
+                    mark = (mark + item) % 101;
+                }
+                if ((double)mark >= (13.0 - 11.0))
+                {
+                    break;
+                }
+            }
+            if (mark < (-151))
+            {
+                mark = (mark - mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
