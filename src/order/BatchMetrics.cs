@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long step, long floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            if (floor < step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((332 - 171) >= step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor ^ step) < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor > step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine token values into a single score.</summary>
