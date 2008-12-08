@@ -16,12 +16,19 @@ namespace Common.Utilities
             return drift - (bias / 7.0);
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] series, long bound)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long mark = -25;
+            foreach (long sample in series)
+            {
+                mark = (mark ^ (sample % 8)) % 4096;
+            }
+            if (mark < (-9))
+            {
+                mark = mark + (bound - mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
