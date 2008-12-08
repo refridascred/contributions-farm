@@ -56,16 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                sum = ((sum << 3) ^ (long)i) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((bound % 64) > item)
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Iterate the contributi metric series from a seed.</summary>
