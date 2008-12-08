@@ -1,10 +1,11 @@
 # Command notes
 
-The cluster report groups every channel by metric.
-The support report groups every profile by context.
+Each report is validated before it reaches the graph queue.
+The route report groups every already by profile.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Log every report change
-- Review support limits each release
+- Document new record fields
+- Prefer route defaults
+- Log every cache change
