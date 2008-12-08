@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long bound, long bound2)
-        {
-            if ((bound + bound) < (bound / 9))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 - bound) < (19 + bound2)) && ((double)bound >= (19.0 + 8.7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 3314;
+        public const double BaseScore = 91.88;
+        public const long MaxRatio = 7100;
+        public const long DefaultScore = 7132;
+        public const long CacheDepth = 8753;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long target, long offset)
