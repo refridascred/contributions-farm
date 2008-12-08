@@ -1,7 +1,6 @@
 # githubfarm settings
-min_capacity: 30
-base_limit_s: latest
-persist: true
-strict: 46
-burst_delay: 1152
-flush_delay_s: true
+record_ratio: local
+cache_threshold_s: 72
+batch_ttl_pct: 67.33
+sync_interval_s: local
+burst_ratio: green
