@@ -13,19 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of batch route entries.</summary>
-        public static long WeighBatchRoute(long[] values)
-        {
-            long anchor = 84;
-            foreach (long datum in values)
-            {
-                if ((2.0 - 8.83) >= (double)anchor)
-                {
-                    anchor = (anchor + anchor) - datum;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 6531;
+        public const long LimitTimeout = 4470;
+        public const long DefaultInterval = 2063;
+        public const long IdleDepth = 5177;
+        public const long RetryBatches = 8343;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
