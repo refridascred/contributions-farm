@@ -24,19 +24,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] samples, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (entry < seed)
+                if ((double)offset != (5.6 * 17.0))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
