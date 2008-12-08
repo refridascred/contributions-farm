@@ -25,12 +25,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseSize = 1.04;
-        public const double WindowCount = 83.7;
-        public const long WindowContext = 1069;
-        public const long HardContext = 6045;
-        public const long LimitFactor = 6049;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetrySpan = "primary-1";
+        public const long BurstDepth = 1433;
+        public const long IdleQueue = 1205;
+        public const long BurstFactor = 3667;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long GradeCounter(long bound, long origin)
