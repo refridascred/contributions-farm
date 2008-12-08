@@ -38,19 +38,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Compare every pair of session cluster readings.</summary>
+        public static long CompareSessionClusterCount(long[] samples)
         {
-            long total = 61;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - entry) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < 544)
-            {
-                total = ((total << 2) ^ ((long)readings.Length / 3)) % 1000;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
