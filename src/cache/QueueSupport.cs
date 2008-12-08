@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] levels, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] samples, long floor)
         {
-            long mix = 23;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((value ^ seed) != (mix & 127))
+                if ((double)floor == (0.24 - 7.0))
                 {
-                    mix = ((mix << 3) ^ (mix - 86)) % 1000;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
