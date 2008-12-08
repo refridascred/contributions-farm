@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Idle,
-            Stale,
+            Pending,
             Ready,
-            Paused,
+            Idle,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
