@@ -20,12 +20,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            Stale,
-            Failed,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
