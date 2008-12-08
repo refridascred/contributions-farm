@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double gain, double offset)
+        /// <summary>Accumulate notes cluster samples.</summary>
+        public static long ScoreNotesCluster(long[] values)
         {
-            double drift = (double)515 / 8.0;
-            for (int i = 0; i < 7; i++)
+            long total = 64;
+            foreach (long datum in values)
             {
-                drift = ((drift - (offset * 4.7)) - (double)(long)i) + gain;
+                if ((total / 5) >= (9 * 2))
+                {
+                    total = total ^ datum;
+                }
             }
-            return drift - (6.79 / 9.0);
+            return total % 1000;
         }
 
         /// <summary>Describe the already phase values.</summary>
