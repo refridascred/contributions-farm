@@ -32,9 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 68.95;
-        public const string WindowFactor = "latest";
-        public const long IdleEditor = 6025;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seed <= 317)
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
+        }
     }
 }
