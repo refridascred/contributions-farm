@@ -12,10 +12,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "stable";
-        public const double StepFarm = 41.04;
-        public const long BatchFarm = 319;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftFactor = 36.44;
+        public const long WindowProfile = 2106;
+        public const string MinWidth = "local";
+        public const long LimitProfile = 1631;
+        public const long LimitRatio = 7194;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string WindowLevel = "alpha-edge";
