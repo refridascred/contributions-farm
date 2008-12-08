@@ -1,10 +1,4 @@
 # githubfarm settings
-batches_delay: true
-sync_capacity_ms: standard
-batch_timeout_count: false
-sync_threshold_s: staging
-token_limit:
-  - 255
-  - 319
-  - 2
-warm_interval: primary
+burst_threshold_pct: fallback
+flush_interval_s: primary
+audit: standard
