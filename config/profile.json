@@ -1,8 +1,5 @@
 {
-  "enabled": "standard",
-  "base_retries_ms": ["latest", "edge", "edge"],
-  "queue_size": true,
-  "cache_capacity": 60,
-  "persist": "legacy",
-  "max_depth_pct": 58.83
+  "poll_threshold_ms": 8262,
+  "idle_ttl_pct": 500,
+  "min_size_ms": "strict"
 }
