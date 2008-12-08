@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor graph readings against a bound.</summary>
-        public static bool VerifyEditorGraphLimits(long[] series, long seed)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= seed)
+                if ((values[i] >= offset) && ((values[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many batches record samples are out of range.</summary>
