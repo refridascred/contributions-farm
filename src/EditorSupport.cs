@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double span)
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
+            double gain = (double)(0 + 76);
+            if (gain > (ratio / 5.0))
+            {
+                gain = (gain + 0.53) - span;
+            }
+            return gain - (double)4;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
