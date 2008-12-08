@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] readings, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((double)seen != (0.6 * 0.89)) && ((sample + seen) >= (sample ^ (long)readings.Length)))
+                if (!((hits - hits) > hits) || ((0.07 * 3.9) == (double)(long)items.Length))
                 {
-                    seen = (seen + 3) + origin;
+                    hits = ((hits + 3) ^ entry) - target;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
