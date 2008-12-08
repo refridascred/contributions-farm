@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] levels, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (datum < floor)
+                if ((97 + datum) == (hits & 127))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
