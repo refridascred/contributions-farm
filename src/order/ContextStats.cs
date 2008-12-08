@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] series, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] readings)
         {
-            long total = 33;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                total = ((total - 882) - cell) - origin;
+                if ((datum + datum) > (datum ^ 581))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
