@@ -1,7 +1,12 @@
 {
-  "counter_interval": "green",
-  "max_retries_s": false,
-  "flush_window_count": false,
-  "dry_run": 7992,
-  "base_ttl": "green"
+  "dry_run": ["green", "eu-west"],
+  "min_timeout_count": {
+    "default_capacity_pct": "fallback",
+    "base_ttl_count": "staging",
+    "record_depth": 35
+  },
+  "record_delay": [200, 331],
+  "poll_threshold": 500,
+  "retry_capacity": [323, 125, 484, 249],
+  "retry_threshold_count": 6.92
 }
