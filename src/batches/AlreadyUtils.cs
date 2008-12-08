@@ -23,11 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 38.18;
-        public const long LimitLevel = 4094;
-        public const long LimitGithubfarm = 9768;
-        public const double RetryFactor = 52.63;
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long AuditCachePayloadOutliers(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((double)floor != (8.78 * 4.3))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of queue record entries.</summary>
         public static long TallyQueueRecord(long[] samples, long step)
