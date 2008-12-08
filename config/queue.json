@@ -1,15 +1,6 @@
 {
-  "base_window_s": 5871,
-  "batches_size": 97,
-  "audit": "eu-west",
-  "strict": "staging",
-  "payload_threshold": 66,
-  "poll_delay_ms": {
-    "poll_depth_count": 1024,
-    "cache_delay_s": 91,
-    "default_interval_ms": 30,
-    "soft_ttl_ms": "blue",
-    "metrics_size": 30,
-    "idle_capacity": "latest"
-  }
+  "audit": 63.22,
+  "notes_delay": false,
+  "buffer_threshold": ["local", "blue", "primary"],
+  "strict": 1
 }
