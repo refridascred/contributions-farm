@@ -1,14 +1,5 @@
 {
-  "hard_interval": 1024,
-  "max_ratio": "edge",
-  "sync_ratio": {
-    "max_ratio_count": "standard",
-    "idle_delay_count": ["cached", "primary", "open"],
-    "max_threshold_ms": true,
-    "audit": false,
-    "hard_ttl_s": ["latest", "primary", "edge"]
-  },
-  "audit": [111, 41],
-  "cache_delay_s": 1024,
-  "channel_depth": false
+  "schema_size": 17.91,
+  "githubfarm_ratio": false,
+  "audit": 37.69
 }
