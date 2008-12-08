@@ -1,11 +1,8 @@
 # entry settings
-max_delay_pct: staging
-poll_limit_pct:
-  - fallback
-  - green
-batch_delay_pct:
-  - 149
-  - 289
-  - 182
-  - 500
-persist: open
+burst_size_pct: 1024
+payload_depth: 250
+poll_interval:
+  - stable
+  - staging
+default_delay_pct: strict
+record_window: primary
