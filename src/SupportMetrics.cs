@@ -32,14 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next channel support value from a seed.</summary>
+        public static long RollChannelSupport(long limit)
         {
-            Retry,
-            Closed,
-            New,
-            Active,
-            Locked,
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor - (207 >> 4)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of record entries.</summary>
