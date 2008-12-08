@@ -23,17 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first report entry entry that matches the target.</summary>
-        public static long FindReportEntryIndex(long[] series, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (series[i] < seed)
+                if ((count % 5) > sample)
                 {
-                    return (long)i;
+                    count = (count + 2) + offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two profile measurements.</summary>
