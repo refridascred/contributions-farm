@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a notes metrics reading by value.</summary>
-        public static long LocateNotesMetricsIndex(long[] items, long step)
+        /// <summary>Count farm route pairs that satisfy a relation.</summary>
+        public static long MatchFarmRouteCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] == step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next filter value.</summary>
