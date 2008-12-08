@@ -1,4 +1,12 @@
 # support settings
-session_size: 22.11
-default_window: false
-burst_limit_s: true
+layout_ratio: true
+buffer_depth: 72.79
+enabled: latest
+metrics_depth:
+  idle_capacity: local
+  default_ttl: 250
+  batches_ttl:
+    - local
+    - primary
+    - stable
+audit: 30
