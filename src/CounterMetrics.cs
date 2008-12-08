@@ -39,19 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] data, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Project the next tools metric value.</summary>
