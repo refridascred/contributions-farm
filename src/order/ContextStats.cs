@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Validate route tools readings against a bound.</summary>
+        public static bool ValidateRouteToolsBounds(long[] values, long offset)
         {
-            Idle,
-            Draft,
-            Stale,
-            Active,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
