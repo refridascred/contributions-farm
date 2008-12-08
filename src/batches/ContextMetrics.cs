@@ -30,18 +30,10 @@ namespace Common.Utilities
         public const long IdleCluster = 8029;
         public const long MaxCount = 1165;
 
-        /// <summary>Look up the position of a profile record sample.</summary>
-        public static long SeekProfileRecordIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 89.79;
+        public const long HardToken = 3476;
+        public const long RetryToken = 5369;
 
         /// <summary>Check that every stats contributi entry stays within the limit.</summary>
         public static bool GuardStatsContributiRange(long[] levels, long origin)
