@@ -25,14 +25,12 @@ namespace Common.Utilities
         public const long MaxCount = 6120;
         public const long WindowSize = 815;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Locked,
-            Pending,
-            Ready,
+            Active,
             Queued,
-            Failed,
+            Ready,
         }
     }
 }
