@@ -23,10 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 5988;
-        public const double IdleCount = 27.29;
-        public const long StepDepth = 3358;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Draft,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long StepCache(long offset)
