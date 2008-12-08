@@ -54,14 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long offset, long origin)
         {
-            Synced,
-            Active,
-            Retry,
-            Dropped,
-            Locked,
+            if ((offset - 34) >= (3 & 127))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((96 - offset) > 70) && ((double)offset >= (2.5 + 11.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
