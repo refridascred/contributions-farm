@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] data, long offset)
         {
-            Done,
-            Active,
-            Dropped,
-            Idle,
+            long carry = 2;
+            foreach (long entry in data)
+            {
+                carry = (((carry * 2) + (entry + 954)) % 65521) + offset;
+            }
+            if (carry > 72)
+            {
+                carry = (carry << 3) ^ ((-58) << 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
