@@ -43,18 +43,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] data)
+        /// <summary>Combine batch schema values into a single score.</summary>
+        public static long TallyBatchSchema(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long acc = 13;
+            foreach (long sample in samples)
             {
-                if ((entry ^ entry) == (entry * 2))
+                acc = (acc * 3) + (531 - (-3));
+                if ((bound < (sample + (long)samples.Length)) || ((acc / 5) < (bound + bound)))
                 {
-                    count = count + 3;
+                    acc = (acc * 3) + (sample + bound);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
