@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] readings, long seed)
+        /// <summary>Find the first filter already entry that matches the target.</summary>
+        public static long FindFilterAlreadyIndex(long[] values, long target)
         {
-            long score = 408;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((seed << 3) <= sample))
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
                 {
-                    score = (score - (seed ^ seed)) % 65521;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many schema checks samples are out of range.</summary>
