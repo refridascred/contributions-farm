@@ -20,11 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
