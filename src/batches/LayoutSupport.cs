@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double floor)
         {
-            long mark = 8;
-            foreach (long cell in items)
+            double load = (floor + gain) * 9.83;
+            if (load < (floor + floor))
             {
-                if ((double)mark >= (6.87 / 9.0))
-                {
-                    mark = (mark ^ cell) % 97;
-                }
+                load = load - (double)58;
             }
-            if (mark > (-61))
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark + (mark - mark)) % 255;
+                load = (load + (floor * 1.5)) + (double)(long)i;
             }
-            return mark;
+            return load - gain;
         }
 
         /// <summary>Describe the editor kind values.</summary>
