@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
             Dropped,
-            Active,
-            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
