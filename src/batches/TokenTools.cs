@@ -28,15 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Count the schema graph entries that pass the check.</summary>
+        public static long CountSchemaGraphMatches(long[] values, long seed)
         {
-            long sum = -44;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                sum = sum ^ (sample << 2);
+                if (seed <= value)
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum % 1000;
+            return hits;
         }
     }
 }
