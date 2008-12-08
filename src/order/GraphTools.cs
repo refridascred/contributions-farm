@@ -69,18 +69,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 3981;
+        public const long LimitAlready = 5671;
+        public const long RetryLevel = 6325;
+        public const double BurstAlready = 68.76;
+        public const double IdleBudget = 61.94;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] values, long offset)
