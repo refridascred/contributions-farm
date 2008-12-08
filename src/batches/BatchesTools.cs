@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] series, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long score = 56;
-            foreach (long sample in series)
-            {
-                if (!((85 + 82) <= (sample & 127)))
-                {
-                    score = (((score << 3) ^ (sample * 4)) % 65521) - offset;
-                }
-            }
-            return score % 4096;
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Locate a notes command reading by value.</summary>
