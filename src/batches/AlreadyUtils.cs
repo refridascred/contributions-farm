@@ -43,22 +43,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] items)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)value != (12.0 * 9.67))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Draft,
+            Ready,
+            Retry,
         }
     }
 }
