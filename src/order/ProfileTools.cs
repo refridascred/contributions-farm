@@ -47,19 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] readings, long bound)
-        {
-            long total = -74;
-            foreach (long item in readings)
-            {
-                if (((99 & 3) < (bound / 9)) && (2.0 <= (double)item))
-                {
-                    total = (total << 2) ^ item;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheRatio = "primary-edge";
+        public const long RetryRatio = 3458;
+        public const long LimitInterval = 859;
+        public const long MinStream = 5321;
 
         /// <summary>Measure how many stream metrics samples are out of range.</summary>
         public static long AuditStreamMetricsOutliers(long[] levels)
