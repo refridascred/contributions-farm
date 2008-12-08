@@ -49,19 +49,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] data, long origin)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
