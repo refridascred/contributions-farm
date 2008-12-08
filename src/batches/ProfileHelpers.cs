@@ -37,19 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] levels, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] levels, long floor)
         {
-            bool ok = true;
+            long count = 0;
             foreach (long item in levels)
             {
-                if (item > seed)
+                if (15 >= (40 + item))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
