@@ -53,16 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema context value from a seed.</summary>
-        public static long IterateSchemaContext(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryLevel = 1832;
+        public const double MinCache = 95.82;
+        public const long RetryCache = 5164;
+        public const long DefaultCache = 9297;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string LimitBatches = "latest-edge";
