@@ -1,6 +1,6 @@
-id,label,level,region,score
-1,88.98,strict,67.54,474
-2,74.39,226,strict,734
-3,326,720,760,72.33
-4,818,open,stable,97.74
-5,23.01,26.46,standard,52
+id,owner,label,state,weight
+1,staging,open,469,519
+2,946,12.99,stable,18.92
+3,18.25,96.9,491,9.23
+4,52.02,77.06,29.74,standard
+5,primary,blue,91.89,550
