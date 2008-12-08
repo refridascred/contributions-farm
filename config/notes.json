@@ -1,12 +1,21 @@
 {
-  "order_depth": "standard",
-  "already_ttl": 14,
-  "report_limit": [247, 288],
-  "metrics_depth": {
-    "queue_interval": "open",
-    "base_depth": 23.67,
-    "buffer_ttl": 2562,
-    "default_timeout": 10.85,
-    "max_interval_s": true
-  }
+  "cache_interval_count": true,
+  "context_limit": {
+    "min_delay_count": 6177,
+    "cache_delay": true,
+    "queue_depth": "local",
+    "token_timeout": "standard",
+    "persist": {
+      "flush_size": 7.73,
+      "warm_size": 83.48,
+      "flush_delay_pct": 82,
+      "persist": "cached",
+      "default_threshold": ["fallback", "edge", "local", "blue"]
+    },
+    "hard_timeout_s": "local"
+  },
+  "warm_depth": 5542,
+  "stats_timeout": 841,
+  "hard_threshold_ms": 84,
+  "cluster_size": 94.15
 }
