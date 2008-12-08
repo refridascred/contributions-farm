@@ -64,14 +64,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Rank account context input into a small class.</summary>
+        public static long RankAccountContext(long floor, long floor2)
         {
-            Done,
-            Locked,
-            Ready,
-            Draft,
-            Retry,
+            long edge = floor - floor2;
+            if ((edge << 2) < edge)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor / 8) < (floor ^ floor2)) && ((1.0 - 13.0) != (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
