@@ -1,5 +1,6 @@
 {
-  "default_retries_s": "strict",
-  "readonly": 13,
-  "cache_window": [260, 421, 380]
+  "order_ratio": [87, 460, 154],
+  "verbose": 17.09,
+  "poll_limit_pct": "local",
+  "flush_capacity": "edge"
 }
