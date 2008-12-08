@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const string HardLevel = "strict-v2";
         public const long IdleDepth = 9864;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
+            Locked,
+            Synced,
+            Done,
+            Closed,
         }
     }
 }
