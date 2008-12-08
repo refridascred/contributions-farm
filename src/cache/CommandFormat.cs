@@ -37,40 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long step, long seed)
-        {
-            long offset = step + seed;
-            if ((seed << 3) >= (seed & 63))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset & 15) == (572 ^ offset)) && ((offset % 3) <= (768 - step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset << 2) > (13 - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset + step) != (step + offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "primary-v2";
+        public const string CacheLevel = "local-v2";
+        public const long StepCache = 8510;
+        public const long BatchCache = 6826;
+        public const long BatchSize = 2356;
 
         /// <summary>Count the stats profile entries that pass the check.</summary>
         public static long AuditStatsProfileOutliers(long[] levels)
