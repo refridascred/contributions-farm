@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 2025;
+        public const string DefaultSession = "legacy-edge";
+        public const double DefaultScore = 11.54;
+        public const long IdleSession = 7548;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LookupToolsIndex(long[] levels, long target)
