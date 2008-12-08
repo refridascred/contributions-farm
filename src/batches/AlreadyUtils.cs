@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long MaxLevel = 2022;
         public const long IdleTimeout = 4193;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix + (mix & 63)) % 255;
-                mix = ((mix * 5) + ((long)i + mix)) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Stale,
+            Failed,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
