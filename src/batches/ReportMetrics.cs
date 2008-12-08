@@ -15,21 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] samples, long offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long carry = 78;
-            foreach (long cell in samples)
-            {
-                if ((321 + cell) == (36 + 6))
-                {
-                    carry = (carry << 2) ^ ((long)samples.Length - offset);
-                    carry = carry + (cell ^ offset);
-                }
-                carry = (carry << 3) ^ (cell & 1);
-                carry = (carry - ((-94) + cell)) % 4096;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
