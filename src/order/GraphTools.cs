@@ -56,23 +56,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Validate commits command readings against a bound.</summary>
+        public static bool CheckCommitsCommandRange(long[] series, long step)
         {
-            double rate = 6.78 - (double)88;
-            if (rate <= (scale * 4.5))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                rate = rate - 10.0;
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 8.51) + (double)(long)i;
-            }
-            return rate + scale;
+            return stale;
         }
     }
 }
