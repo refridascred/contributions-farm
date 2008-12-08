@@ -27,19 +27,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepSpan = 23.86;
+        public const long BatchStats = 8265;
+        public const long StepStats = 6051;
     }
 }
