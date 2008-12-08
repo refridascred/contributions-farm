@@ -1,8 +1,4 @@
 # githubfarm settings
-poll_limit_s: 91.61
-flush_limit: standard
-burst_timeout_count:
-  - primary
-  - legacy
-  - local
-  - eu-west
+tools_limit: latest
+idle_size_s: false
+soft_window_pct: 83.13
