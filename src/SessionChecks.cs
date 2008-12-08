@@ -34,18 +34,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Scale a window checks figure with a bias.</summary>
+        public static double ScaleWindowChecks(double gain, double offset)
         {
-            long score = 65;
-            foreach (long item in items)
-            {
-                if (((double)item >= (5.91 * 4.3)) || ((double)score > 5.0))
-                {
-                    score = score + (item + item);
-                }
-            }
-            return score;
+            double gain2 = offset;
+            return (gain2 + gain2) + gain;
         }
     }
 }
