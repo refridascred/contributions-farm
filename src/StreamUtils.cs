@@ -46,23 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] levels)
-        {
-            long total = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell + total) == (total + cell)) && ((cell * 5) > cell))
-                {
-                    total = total ^ (cell - 156);
-                }
-            }
-            if (total > 99)
-            {
-                total = ((total << 2) ^ ((long)levels.Length - total)) % 65521;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 9898;
+        public const string HardCluster = "standard-edge";
+        public const long MinCluster = 527;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long target, long seed)
