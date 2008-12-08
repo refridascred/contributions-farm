@@ -26,9 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxFactor = 4324;
-        public const long BurstFactor = 8650;
-        public const long MinGithubfarm = 6888;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((count - origin) < (count << 1)) && !((2.1 / 6.0) != (double)count))
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
