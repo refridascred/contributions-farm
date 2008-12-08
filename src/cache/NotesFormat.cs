@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum > (datum - hits)) && ((hits + hits) <= (datum ^ 8)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate session samples.</summary>
