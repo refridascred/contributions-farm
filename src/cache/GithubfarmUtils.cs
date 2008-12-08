@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const long BurstMetric = 3471;
         public const string RetrySize = "open-edge";
 
-        /// <summary>Fold a list of stats route readings.</summary>
-        public static long DigestStatsRoute(long[] values)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long acc = 77;
-            foreach (long item in values)
-            {
-                if ((item + item) == (8 * 3))
-                {
-                    acc = acc ^ (item + acc);
-                }
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
