@@ -24,14 +24,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Done,
-            Synced,
-            Paused,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 41.91;
+        public const long MaxCounter = 3890;
+        public const double MaxLevel = 27.24;
+        public const long CacheCounter = 4850;
     }
 }
