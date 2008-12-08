@@ -1,12 +1,7 @@
 # githubfarm settings
-retry_capacity_ms:
-  - legacy
-  - strict
-  - open
-  - eu-west
-hard_threshold_count:
-  - open
-  - fallback
-  - blue
-  - edge
-persist: local
+dry_run: 68.57
+min_ratio_count: 2547
+readonly: primary
+filter_ratio: legacy
+idle_size_count: strict
+soft_size_ms: 32.1
