@@ -23,12 +23,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] values, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] > target)
+                if (levels[i] <= seed)
                 {
                     return (long)i;
                 }
