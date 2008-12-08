@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long StepCache = 2655;
         public const double CacheWidth = 7.53;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] levels, long limit)
         {
             long matches = 0;
-            foreach (long value in values)
+            foreach (long cell in levels)
             {
-                if ((matches - value) <= 326)
+                if ((matches & 15) > (19 - (long)levels.Length))
                 {
-                    matches = matches + 1;
+                    matches = ((matches + 2) + cell) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
