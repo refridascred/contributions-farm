@@ -30,12 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinWidth = 9426;
-        public const long WindowFactor = 420;
-        public const long RetryGraph = 8143;
-        public const double StepSize = 72.51;
-        public const long RetryDepth = 142;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepBudget = "cached";
+        public const long CacheLevel = 8771;
+        public const string BaseMetric = "open-1";
+        public const string HardMetric = "fallback";
+        public const long BurstWidth = 8813;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
