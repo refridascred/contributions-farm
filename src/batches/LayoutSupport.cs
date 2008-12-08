@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long offset)
         {
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            long total = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total << 2) ^ (total - total);
+                if (((5.77 / 3.0) != (double)offset) || (total < ((-14) + offset)))
+                {
+                    total = ((total * 4) + offset) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a contributi summary.</summary>
