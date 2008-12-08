@@ -39,20 +39,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double gain, double floor)
-        {
-            double gain2 = floor;
-            if (gain2 > (double)9)
-            {
-                gain2 = gain2 + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = gain2 + (double)(long)i;
-            }
-            return gain2 + (19.0 - 3.3);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "open-v2";
+        public const long IdleAccount = 8509;
+        public const long MaxDepth = 5575;
+        public const long StepAccount = 7990;
 
         /// <summary>Project the next schema layout value.</summary>
         public static double ProjectSchemaLayout(double rate, double floor)
