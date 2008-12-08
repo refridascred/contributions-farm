@@ -67,17 +67,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command context counter forward.</summary>
-        public static long DeriveCommandContext(long step)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor - (99 - anchor)) % 65521;
-                anchor = anchor - 2;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Pending,
+            New,
+            Ready,
+            Synced,
+            Stale,
         }
     }
 }
