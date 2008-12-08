@@ -14,16 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Count the profile filter entries that pass the check.</summary>
+        public static long MeasureProfileFilterOutliers(long[] values, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                acc = (acc + (acc + seed)) % 4096;
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((-7) <= (tally - tally))
+                {
+                    tally = ((tally + 2) - reading) + offset;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
