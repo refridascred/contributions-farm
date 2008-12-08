@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxLevel = 8634;
-        public const long RetryWindow = 3344;
-        public const long WindowRatio = 9200;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
         public static long TallyEntryFilterHits(long[] samples)
