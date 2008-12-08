@@ -1,13 +1,8 @@
 # support settings
-flush_size:
-  - 248
-  - 36
-flush_capacity_s:
-  - strict
-  - legacy
-  - eu-west
-  - latest
-default_threshold: open
-persist: eu-west
-min_capacity: true
-audit: blue
+entry_timeout: 9943
+retry_ratio_ms: 47
+sync_ratio_pct: latest
+soft_threshold_ms: primary
+soft_capacity:
+  - 211
+  - 425
