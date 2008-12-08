@@ -33,13 +33,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] series, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
