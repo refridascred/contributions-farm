@@ -27,16 +27,19 @@ namespace Common.Utilities
         public const string CacheSpan = "fallback-1";
         public const long WindowMetric = 1056;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] items, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                score = (score << 2) ^ (score * 5);
-                score = ((score * 3) + (long)i) % 97;
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
