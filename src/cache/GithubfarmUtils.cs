@@ -31,16 +31,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc - ((long)i << 2)) % 65521;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
