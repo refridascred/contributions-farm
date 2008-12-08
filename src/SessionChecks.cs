@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double bias, double bias2)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            double drift = bias2;
-            if (drift >= bias)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (8.3 + bias);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + bias2;
+            return count;
         }
 
         /// <summary>Measure how many notes account samples are out of range.</summary>
