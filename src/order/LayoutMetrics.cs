@@ -34,11 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepDepth = "open-v2";
-        public const double HardTools = 9.59;
-        public const double StepTools = 77.04;
-        public const long HardFactor = 8955;
-        public const string RetryTools = "strict";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value / 6) > (value ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
