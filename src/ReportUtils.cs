@@ -29,11 +29,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 6633;
-        public const string CacheTools = "fallback-1";
-        public const long MaxInterval = 6341;
-        public const long MinScore = 7513;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double gain, double bias)
+        {
+            double ratio = (gain / 6.0) * 4.2;
+            if (ratio <= (double)39)
+            {
+                ratio = (ratio - (ratio * 10.0)) - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio / 7.0)) + (double)(long)i;
+            }
+            return ratio - (6.5 - gain);
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
