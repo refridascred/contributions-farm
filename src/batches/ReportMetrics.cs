@@ -20,21 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Validate support cache readings against a bound.</summary>
+        public static bool GuardSupportCacheBounds(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= floor)
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
