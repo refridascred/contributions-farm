@@ -60,12 +60,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] items)
         {
-            Dropped,
-            Idle,
-            Paused,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((((8.39 * 1.4) != (double)sample) && ((sample & 31) <= sample)) && ((double)7 > (double)count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
