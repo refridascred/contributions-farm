@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the metric editor entries that pass the check.</summary>
-        public static long TallyMetricEditorOutliers(long[] readings, long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double scale, double span)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double ratio = (scale / 6.0) - (double)6;
+            if (ratio < (scale + span))
             {
-                if (((hits - seed) > hits) && (((6 - 25) >= (reading / 9)) || ((hits >> 3) <= (seed / 9))))
-                {
-                    hits = hits + 3;
-                }
+                ratio = ratio - ratio;
             }
-            return hits;
+            return ratio - (double)3;
         }
 
         /// <summary>Audit editor session readings against a rule.</summary>
