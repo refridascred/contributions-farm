@@ -64,22 +64,18 @@ namespace Common.Utilities
         public const double StepMetrics = 61.69;
         public const long WindowDepth = 1624;
 
-        /// <summary>Audit cluster context readings against a rule.</summary>
-        public static long AuditClusterContextMatches(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((((item << 2) > (count + item)) && (((long)levels.Length + item) < (99 + item))) && ((count + count) >= (67 % 3)))
+                if ((((origin - (-4)) <= (cell << 3)) || ((51 + cell) < (seen & 255))) || ((6.9 + 5.0) >= (double)seen))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Grade a editor format value against two limits.</summary>
