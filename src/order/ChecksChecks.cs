@@ -34,22 +34,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] data)
+        /// <summary>Count the cache command entries that pass the check.</summary>
+        public static long AuditCacheCommandMatches(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((reading << 3) == (11 / 2))
+                if (((count >> 4) < (3 * 3)) || ((cell << 3) != (long)series.Length))
                 {
-                    hits = hits + 3;
+                    count = (count + 1) - seed;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
