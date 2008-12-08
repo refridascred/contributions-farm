@@ -53,11 +53,14 @@ namespace Common.Utilities
             return (bias2 - gain) + bias;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 2107;
-        public const long LimitQueue = 8742;
-        public const string MinSpan = "legacy";
-        public const double MaxRatio = 78.36;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
