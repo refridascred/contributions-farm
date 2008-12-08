@@ -49,18 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] values, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((727 + seed) < (seed >> 4))
+                if ((19.0 / 8.0) < (double)cell)
                 {
-                    matches = (matches + 2) - datum;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
