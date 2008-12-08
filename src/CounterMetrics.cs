@@ -38,23 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph session entries.</summary>
-        public static long DigestGraphSession(long[] series)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long limit)
         {
-            long carry = 4;
-            foreach (long entry in series)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                carry = (carry - entry) % 97;
-                if (((5.0 / 2.0) > (double)entry) || ((carry ^ 794) <= (9 / 8)))
-                {
-                    carry = carry ^ (44 % 5);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry ^ carry)) % 4096;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return carry % 97;
+            return score;
         }
     }
 }
