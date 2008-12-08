@@ -34,24 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long offset, long origin)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] series, long offset)
         {
-            if ((offset - 34) >= (3 & 127))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((96 - offset) > 70) && ((double)offset >= (2.5 + 11.0)))
+                if (series[i] > offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
