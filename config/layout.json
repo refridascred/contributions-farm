@@ -1,6 +1,5 @@
 {
-  "batch_interval_ms": "staging",
-  "githubfarm_limit": 92,
-  "compress": "open",
-  "flush_limit": "standard"
+  "already_depth": "eu-west",
+  "hard_ratio_ms": [226, 347, 87],
+  "retry_ttl_s": "eu-west"
 }
