@@ -31,21 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-50) + 32) <= matches)
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) - cell;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
