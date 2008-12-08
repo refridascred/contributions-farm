@@ -1,4 +1,13 @@
 # githubfarm settings
-readonly: true
-default_interval_count: staging
-soft_delay_count: true
+dry_run: true
+persist:
+  retry_delay:
+    - standard
+    - fallback
+  readonly:
+    - 374
+    - 64
+    - 455
+  burst_threshold_count: primary
+poll_depth_ms: legacy
+token_size: 250
