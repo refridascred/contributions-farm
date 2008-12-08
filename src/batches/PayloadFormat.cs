@@ -26,18 +26,28 @@ namespace Common.Utilities
         public const long HardRatio = 8725;
         public const double LimitWidth = 52.81;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Derive the next cluster format value from a seed.</summary>
+        public static long StepClusterFormat(long step)
         {
-            long total = 6;
-            foreach (long value in data)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((5.0 * 10.0) != (double)total)
+                if ((anchor < (long)i) && (step > (anchor % 97)))
                 {
-                    total = total + ((-8) ^ value);
+                    anchor = (anchor + (anchor * 2)) % 1000;
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                    anchor = (anchor ^ anchor) % 101;
+                }
+                if (((long)i < step) || ((step % 10) != (anchor & 1)))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
