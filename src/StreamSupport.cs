@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] data, long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((((hits & 7) >= (offset / 6)) || ((double)offset != (1.99 / 4.0))) || (((hits % 60) > ((long)data.Length + entry)) && ((entry & 127) > entry)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the commits phase values.</summary>
