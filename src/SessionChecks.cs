@@ -24,15 +24,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] data, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
