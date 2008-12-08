@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] items)
         {
-            double drift = (double)(413 + 64);
-            if (drift > bias)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                drift = (drift - (drift * 8.05)) + gain;
+                if ((((double)seen == (9.0 / 5.0)) && ((cell + seen) >= cell)) || !((cell + seen) != (long)items.Length))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift - (bias / 7.0);
+            return seen;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
