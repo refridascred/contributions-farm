@@ -60,12 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
