@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 2466;
-        public const long CacheDepth = 7583;
-        public const long BatchEntry = 4588;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits ^ reading) <= hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutOutliers(long[] series)
