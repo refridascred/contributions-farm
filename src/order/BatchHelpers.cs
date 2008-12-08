@@ -19,11 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 1706;
-        public const string MaxTimeout = "local-edge";
-        public const long WindowSession = 448;
-        public const long CacheSize = 7191;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long BucketFormat(long offset, long origin)
