@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] series, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((19 - origin) > hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Iterate the counter context series from a seed.</summary>
