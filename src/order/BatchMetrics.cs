@@ -64,11 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double scale, double offset)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
+            double drift = (offset - offset) / 2.0;
+            if (drift > scale)
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
