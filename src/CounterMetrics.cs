@@ -47,15 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Validate format cluster readings against a bound.</summary>
+        public static bool VerifyFormatClusterLimits(long[] values, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if (item <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
