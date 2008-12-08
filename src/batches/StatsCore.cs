@@ -48,38 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long origin, long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            if ((double)origin != (4.0 - 20.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((floor / 5) >= 54))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((12.0 * 9.9) == (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((5.0 - 4.31) <= (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
