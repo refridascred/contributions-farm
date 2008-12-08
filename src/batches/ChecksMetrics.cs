@@ -89,19 +89,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] readings, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (item <= origin)
+                if (item <= limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
