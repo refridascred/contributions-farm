@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate metrics record samples.</summary>
-        public static long ScoreMetricsRecord(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] levels, long limit)
         {
-            long mark = 81;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((8.88 / 6.0) != (double)reading)
+                if (cell < (cell - cell))
                 {
-                    mark = (mark << 2) ^ (mark - mark);
+                    tally = (tally + 3) + limit;
                 }
-                mark = mark - (reading << 3);
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Match up notes samples.</summary>
