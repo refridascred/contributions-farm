@@ -20,11 +20,15 @@ namespace Common.Utilities
         public const long WindowAlready = 1614;
         public const string WindowTimeout = "cached-v2";
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double bias, double span)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            double mean = (13.0 - 11.0) + span;
-            return (mean + mean) + bias;
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
