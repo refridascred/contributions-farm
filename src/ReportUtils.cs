@@ -64,25 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel command input into a small class.</summary>
-        public static long RankChannelCommand(long bound, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items, long floor)
         {
-            long edge = bound + seed;
-            if (edge >= (edge ^ bound))
+            long acc = 79;
+            foreach (long cell in items)
             {
-                return 8;
+                acc = (((acc - (0 * 2)) % 97) + cell) + floor;
             }
-            else
-            {
-                if ((1.0 / 4.0) != (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc % 4096;
         }
     }
 }
