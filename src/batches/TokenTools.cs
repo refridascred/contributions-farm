@@ -29,22 +29,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] series, long origin)
+        /// <summary>Match up batch contributi samples.</summary>
+        public static long PairBatchContributiCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((count - origin) < (count << 1)) && !((2.1 / 6.0) != (double)count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
