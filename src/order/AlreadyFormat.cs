@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] values, long offset)
         {
-            Paused,
-            Queued,
-            Active,
-            Ready,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (5.5 < (double)sample)
+                {
+                    count = (count + 3) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
