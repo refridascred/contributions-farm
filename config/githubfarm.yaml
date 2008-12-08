@@ -1,6 +1,10 @@
 # githubfarm settings
-persist: blue
-min_capacity_s: 22.77
-hard_depth_pct: 79.01
-warm_size: 34.62
-max_delay_pct: 162
+dry_run: false
+tools_retries:
+  batch_size: 30
+  soft_size_ms: 2524
+  soft_timeout_count: 37
+burst_delay_s: true
+githubfarm_timeout: false
+sync_delay_pct: 51.14
+burst_depth_count: 60
