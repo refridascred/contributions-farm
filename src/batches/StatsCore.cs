@@ -34,12 +34,25 @@ namespace Common.Utilities
         public const long HardContext = 6045;
         public const long LimitFactor = 6049;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long bound, long origin)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            long diff = bound - origin;
+            if ((bound >= 30) && ((9.5 / 5.0) != (double)diff))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((diff + diff) == (diff - bound)) || ((double)origin > (double)diff))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
