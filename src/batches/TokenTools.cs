@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long state = 0;
+            foreach (long value in data)
             {
-                if ((datum * 2) >= datum)
-                {
-                    tally = tally + 3;
-                }
+                state = (state - state) + value;
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Find the first window checks entry that matches the target.</summary>
