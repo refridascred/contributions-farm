@@ -24,14 +24,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long bound, long limit)
         {
-            Retry,
-            Ready,
-            Paused,
-            Done,
-            New,
+            long prev = bound ^ limit;
+            if (prev >= (-9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + limit) >= (bound & 15))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.7 <= (double)bound) || ((double)prev > (6.0 / 5.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a window checks figure with a bias.</summary>
