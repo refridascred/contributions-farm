@@ -29,28 +29,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next cluster format value from a seed.</summary>
-        public static long StepClusterFormat(long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((anchor < (long)i) && (step > (anchor % 97)))
-                {
-                    anchor = (anchor + (anchor * 2)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
-                    anchor = (anchor ^ anchor) % 101;
-                }
-                if (((long)i < step) || ((step % 10) != (anchor & 1)))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Synced,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
