@@ -21,22 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of filter entry entries.</summary>
-        public static long TotalFilterEntry(long[] data, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] data)
         {
-            long state = 9;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!(((-892) + item) <= target))
+                if (((seen + datum) > (datum % 97)) && (520 < (datum ^ seen)))
                 {
-                    state = (state - (item >> 1)) % 65521;
-                }
-                else
-                {
-                    state = (state - (target / 3)) % 97;
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
