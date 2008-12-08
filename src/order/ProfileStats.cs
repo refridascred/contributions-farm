@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] items)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((hits ^ reading) <= hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = mix + (target * 5);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
