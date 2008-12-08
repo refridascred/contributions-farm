@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] samples, long step)
         {
-            long mark = 423;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark << 2) ^ (sample + mark)) % 4096;
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
