@@ -13,12 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] data, long limit)
         {
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank graph schema input into a small class.</summary>
