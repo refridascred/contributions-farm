@@ -30,17 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark * 3) + ((long)i >> 5);
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "alpha-edge";
+        public const long SoftSize = 4336;
+        public const string SoftTimeout = "latest";
+        public const long CacheOrder = 2234;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
