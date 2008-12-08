@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "legacy-v2";
-        public const string BurstSize = "stable-v2";
-        public const long HardTimeout = 5041;
+        /// <summary>Iterate the batch graph series from a seed.</summary>
+        public static long SeriesBatchGraph(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (11.0 < (double)seed)
+                {
+                    acc = acc - (898 << 1);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long IterateOrder(long bound)
