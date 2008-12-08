@@ -33,11 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSize = 1624;
-        public const long IdleMetrics = 727;
-        public const string DefaultInterval = "cached-edge";
-        public const string RetryWidth = "stable-1";
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
