@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] levels)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((((3 - 57) < (35 - entry)) && ((entry - 6) <= entry)) && (((1.88 + 4.94) > (double)hits) && ((hits * 3) != (hits << 1))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a metric context reading by value.</summary>
