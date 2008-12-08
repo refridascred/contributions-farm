@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Active,
+            long mix = 5;
+            foreach (long cell in series)
+            {
+                if (mix <= (cell * 4))
+                {
+                    continue;
+                }
+                mix = mix - (832 / 4);
+            }
+            if (mix > (-636))
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Hold a record info.</summary>
