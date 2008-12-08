@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] series, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (sample > limit)
+                if ((double)reading < 9.0)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Locate a context queue reading by value.</summary>
