@@ -72,31 +72,13 @@ namespace Common.Utilities
         public const long LimitTimeout = 4375;
         public const long MaxRoute = 3477;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long origin, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            if (!((step ^ step) > step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step << 1) >= (step + origin)) || ((-398) < step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ origin) >= (-925))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Closed,
+            Dropped,
         }
     }
 }
