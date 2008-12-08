@@ -1,17 +1,14 @@
 {
-  "command_interval": 3.43,
-  "hard_window_count": 61.19,
-  "base_threshold_ms": {
-    "session_threshold": "open",
-    "hard_capacity_s": {
-      "audit": 4335,
-      "max_timeout_ms": 63.12,
-      "counter_ratio": ["latest", "standard", "cached"],
-      "dry_run": "legacy"
-    },
-    "soft_limit": 4804
+  "warm_ttl_s": {
+    "dry_run": 51,
+    "account_limit": 86,
+    "compress": "standard",
+    "base_window_count": 60,
+    "soft_window_ms": 83.87,
+    "batch_timeout_ms": "edge"
   },
-  "default_retries": 14,
-  "queue_depth": false,
-  "account_timeout": "green"
+  "max_retries_pct": "eu-west",
+  "readonly": false,
+  "githubfarm_ttl": "latest",
+  "strict": "latest"
 }
