@@ -51,24 +51,14 @@ namespace Common.Utilities
         public const string HardCluster = "standard-edge";
         public const long MinCluster = 527;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long offset, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((offset & 1) != (floor + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 5) < (floor + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Done,
+            Draft,
+            Locked,
+            Synced,
         }
 
         /// <summary>Roll a command context counter forward.</summary>
