@@ -45,39 +45,31 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Rank format payload input into a small class.</summary>
-        public static long BucketFormatPayload(long bound, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples, long bound)
         {
-            long delta = bound + seed;
-            if ((475 + seed) < (delta ^ bound))
+            long mark = 3;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed * 3) > (43 / 5)) && ((double)bound >= 7.0))
+                long next = entry >> 1;
+                if ((next >= (next - next)) && (49 < (next ^ bound)))
                 {
-                    return 4;
+                    next = (next ^ (next / 9)) % 97;
                 }
                 else
                 {
-                    if ((seed - seed) <= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((delta + delta) <= (delta - 834))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = ((mark << 3) ^ (mark + mark)) % 65521;
+                }
+                if ((double)(long)samples.Length > (6.4 + 5.2))
+                {
+                    mark = (mark ^ (mark + (long)samples.Length)) % 1000;
                 }
             }
+            if (mark > 489)
+            {
+                mark = (mark - bound) % 65521;
+            }
+            return mark;
         }
     }
 }
