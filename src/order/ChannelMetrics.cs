@@ -33,25 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long origin, long bound)
-        {
-            long lane = origin - bound;
-            if (!(730 <= (lane + origin)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound * 4) <= (bound + 963))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 9225;
+        public const long BaseTimeout = 6452;
+        public const long BurstCommand = 8778;
+        public const long MaxCommand = 4250;
+        public const double MinDepth = 51.98;
     }
 }
