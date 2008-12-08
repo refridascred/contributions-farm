@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftDepth = 325;
-        public const double BaseTimeout = 48.46;
-        public const double BurstTools = 42.5;
-        public const long LimitInterval = 988;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] readings)
