@@ -55,15 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 2000;
+        public const string CacheCounter = "legacy-1";
+        public const long RetryCounter = 111;
+        public const long HardFactor = 8270;
+        public const long MinBudget = 9718;
     }
 }
