@@ -19,20 +19,18 @@ namespace Common.Utilities
         public const double CacheNotes = 44.42;
         public const long BurstNotes = 8832;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] data, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                result = (result ^ (target - result)) % 101;
-                if ((double)target < 6.2)
+                if (((hits / 9) > (hits << 2)) || ((double)item <= (9.5 - 17.0)))
                 {
-                    result = result + (result - target);
+                    hits = (hits + 3) + offset;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the stream class values.</summary>
