@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long bound)
         {
-            Synced,
-            Stale,
-            Paused,
-            Pending,
+            if ((bound / 4) <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((seed - bound) <= seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
