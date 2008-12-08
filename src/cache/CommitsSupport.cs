@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (cell <= (cell / 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Match up metrics samples.</summary>
