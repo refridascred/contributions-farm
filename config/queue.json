@@ -1,8 +1,15 @@
 {
-  "soft_capacity_pct": 100,
-  "readonly": 97,
-  "enabled": "fallback",
-  "verbose": false,
-  "sync_timeout_s": "strict",
-  "farm_limit": 66
+  "dry_run": 49.33,
+  "order_capacity": 93.36,
+  "poll_capacity_pct": "open",
+  "strict": 21.43,
+  "base_window": {
+    "record_retries": {
+      "base_window_pct": 3565,
+      "burst_limit_count": 56.86,
+      "farm_limit": [287, 46, 156, 42]
+    },
+    "sync_ratio": 39.85,
+    "command_ratio": true
+  }
 }
