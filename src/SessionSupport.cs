@@ -50,19 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] levels, long bound)
+        /// <summary>Measure how many cluster channel samples are out of range.</summary>
+        public static long AuditClusterChannelMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (entry < bound)
+                if (hits < reading)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
