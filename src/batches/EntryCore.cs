@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Find the first payload route entry that matches the target.</summary>
+        public static long LookupPayloadRouteIndex(long[] data, long limit)
         {
-            long carry = 1;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 2) + (reading - carry)) % 101;
+                if ((data[i] < limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
