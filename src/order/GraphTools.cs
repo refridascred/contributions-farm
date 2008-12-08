@@ -51,12 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] series, long limit)
         {
-            Idle,
-            Paused,
-            Retry,
+            long acc = 733;
+            foreach (long entry in series)
+            {
+                acc = ((acc - acc) ^ entry) + limit;
+                if ((222 % 16) >= acc)
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Validate commits command readings against a bound.</summary>
