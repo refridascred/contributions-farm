@@ -61,18 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] series, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((cell * 3) <= cell)
+                if ((count ^ reading) < (count / 5))
                 {
-                    hits = (hits + 3) + floor;
+                    count = (count + 3) + step;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
