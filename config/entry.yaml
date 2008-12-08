@@ -1,26 +1,6 @@
 # entry settings
-window_depth: 1708
-notes_interval: eu-west
-min_ttl:
-  base_window: 39
-  flush_ttl_s: 60
-  min_threshold_count: blue
-idle_limit_s:
-  already_ttl: cached
-  persist:
-    - latest
-    - cached
-    - stable
-  max_window_pct: staging
-  soft_limit_s:
-    dry_run: 85
-    batch_limit_s: 100
-    default_timeout:
-      - 241
-      - 24
-      - 89
-      - 5
-    account_ttl: staging
-    min_threshold: primary
-  support_delay: legacy
-stats_retries: 25
+warm_interval_count: 5803
+max_delay_s: edge
+batch_ttl: false
+warm_depth: 69
+batch_threshold_pct: standard
