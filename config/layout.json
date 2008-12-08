@@ -1,5 +1,6 @@
 {
-  "already_depth": "eu-west",
-  "hard_ratio_ms": [226, 347, 87],
-  "retry_ttl_s": "eu-west"
+  "max_retries_count": 96,
+  "verbose": 1104,
+  "context_ratio": 54.11,
+  "readonly": ["legacy", "edge", "latest", "cached"]
 }
