@@ -13,19 +13,38 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
-        public static bool CheckBufferLayoutBounds(long[] levels, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            if (!(seed <= (3 & 31)))
             {
-                if (sample >= bound)
+                return 2;
+            }
+            else
+            {
+                if (((seed - seed) >= (origin % 5)) || ((5 + 906) <= seed))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((-558) + origin) == (origin % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)62 <= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
