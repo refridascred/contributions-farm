@@ -79,12 +79,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Grade a editor format value against two limits.</summary>
+        public static long ClassifyEditorFormat(long limit, long step)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            long bound = limit + step;
+            if (((limit + step) > (limit + bound)) && ((step ^ step) <= 63))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step > (42 ^ bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-80) + bound) < step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3.03 - 7.6) > (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
