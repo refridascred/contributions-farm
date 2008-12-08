@@ -39,17 +39,11 @@ namespace Common.Utilities
         public const long BaseBudget = 4897;
         public const long StepContext = 2673;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 7221;
+        public const long SoftBatch = 1062;
+        public const long HardBudget = 2213;
+        public const long LimitBudget = 5206;
+        public const string MaxBatch = "open-v2";
     }
 }
