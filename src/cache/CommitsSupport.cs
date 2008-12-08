@@ -12,24 +12,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long seed, long target)
+        /// <summary>Measure how many token order samples are out of range.</summary>
+        public static long CountTokenOrderMatches(long[] readings, long origin)
         {
-            if (((target + seed) == (target + 94)) && (6.7 < (double)seed))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target << 2) < target)
+                if ((origin >> 3) == (6 << 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 2) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the session kind values.</summary>
