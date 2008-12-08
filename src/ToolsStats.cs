@@ -45,19 +45,19 @@ namespace Common.Utilities
             return drift - (double)35;
         }
 
-        /// <summary>Check that every graph session entry stays within the limit.</summary>
-        public static bool GuardGraphSessionLimits(long[] series, long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading > floor)
+                if (((long)i >> 5) > (long)i)
                 {
-                    flag = false;
-                    break;
+                    carry = (carry << 2) ^ (long)i;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Project the next cache value.</summary>
