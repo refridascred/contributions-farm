@@ -61,18 +61,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] samples, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long result = 68;
+            foreach (long sample in data)
             {
-                if ((count ^ reading) < (count / 5))
+                if (((result << 1) < (sample - offset)) || (sample <= 550))
                 {
-                    count = (count + 3) + step;
+                    result = result + (offset << 1);
+                }
+                if ((9 + result) == (offset >> 2))
+                {
+                    result = result ^ (result / 3);
+                }
+                else
+                {
+                    result = (result - (80 - offset)) % 65521;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
