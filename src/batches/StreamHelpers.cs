@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long RetryFactor = 5205;
         public const double MinSchema = 38.61;
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                long next = floor;
+                if (!(((next - sum) > (sum % 5)) || (next < (150 << 3))))
+                {
+                    sum = (sum ^ next) % 101;
+                    sum = (sum * 3) + (32 - sum);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
