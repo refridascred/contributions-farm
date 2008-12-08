@@ -17,10 +17,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "open-edge";
-        public const double MinFactor = 45.76;
-        public const string IdleTools = "fallback-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 40.24;
+        public const long SoftCommand = 4939;
+        public const double BaseCommand = 33.36;
+        public const string BatchCommand = "standard-1";
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long FoldMetrics(long[] items, long target)
