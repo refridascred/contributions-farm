@@ -14,25 +14,26 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long origin, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] items, long limit)
         {
-            long lane = origin ^ floor;
-            if ((floor > (origin << 1)) && (lane > (lane + lane)))
+            long carry = 82;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor <= (8.4 + 9.9))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 8;
+                    carry = ((carry ^ ((-2) + limit)) % 255) - (long)i;
                 }
-                else
+                if ((carry >> 5) > 42)
                 {
-                    return 0;
+                    carry = carry + (limit % 16);
+                }
+                if ((reading + 987) > (limit & 31))
+                {
+                    break;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Describe the filter kind values.</summary>
