@@ -22,12 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Grade a checks metric value against two limits.</summary>
+        public static long ClassifyChecksMetric(long offset, long step)
         {
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
+            long next = offset + step;
+            if ((next - step) > (next * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((next << 3) >= 306)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the support status values.</summary>
