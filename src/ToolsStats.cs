@@ -101,22 +101,18 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long limit)
+        /// <summary>Measure how many commits graph samples are out of range.</summary>
+        public static long TallyCommitsGraphOutliers(long[] readings)
         {
-            long total = 7;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (((limit >> 3) < total) && (cell >= (cell + total)))
+                if ((matches - matches) < (entry << 3))
                 {
-                    total = (total * 5) + (limit % 12);
-                }
-                if ((total * 2) > (limit + total))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return total % 1000;
+            return matches;
         }
     }
 }
