@@ -25,12 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            Active,
+            Ready,
+            Synced,
+            Pending,
         }
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
