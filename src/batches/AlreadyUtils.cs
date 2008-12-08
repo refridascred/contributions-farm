@@ -69,16 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command batches counter forward.</summary>
-        public static long DeriveCommandBatches(long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                sum = ((sum * 5) + (0 % 97)) % 1000;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((value & 1) >= (seen + seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
