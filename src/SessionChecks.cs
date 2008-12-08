@@ -21,11 +21,14 @@ namespace Common.Utilities
         public const long SoftLevel = 3329;
         public const string RetryRecord = "fallback-edge";
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            Stale,
+            Queued,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
