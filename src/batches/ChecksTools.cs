@@ -24,22 +24,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] series, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((double)offset != (5.6 * 17.0))
+                if ((((6.93 * 11.0) > (double)hits) || ((3 / 4) <= item)) && (item <= (3 + item)))
                 {
-                    tally = (tally + 1) + sample;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
