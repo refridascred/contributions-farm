@@ -26,17 +26,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a session already sample.</summary>
-        public static long LookupSessionAlreadyIndex(long[] series, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] < offset)
+                long hits = bound & 3;
+                if ((double)total != (5.08 * 8.87))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (hits - hits)) % 4096;
+                    break;
                 }
+                else
+                {
+                    total = (total << 3) ^ ((long)i + total);
+                }
+                total = total ^ (total ^ bound);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
