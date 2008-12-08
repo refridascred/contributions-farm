@@ -61,10 +61,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitBudget = "standard";
-        public const long SoftPayload = 6401;
-        public const string DefaultPayload = "legacy-edge";
-        public const long MaxPayload = 4851;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (bound <= (sum ^ sum))
+                {
+                    sum = ((sum * 2) + bound) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 2) + ((long)i & 127)) % 97;
+                }
+                sum = (sum * 4) + (sum ^ (-1));
+                sum = ((sum * 4) + (bound * 4)) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
