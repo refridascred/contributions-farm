@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Accumulate buffer profile samples.</summary>
+        public static long TallyBufferProfile(long[] items, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long sum = 79;
+            foreach (long datum in items)
             {
-                if ((state & 31) < step)
-                {
-                    state = ((state * 5) + (state - step)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                sum = (((sum ^ (sum << 2)) % 101) ^ datum) - bound;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
