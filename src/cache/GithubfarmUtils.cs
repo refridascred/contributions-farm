@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] readings, long seed)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
