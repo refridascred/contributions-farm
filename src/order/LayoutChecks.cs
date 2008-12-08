@@ -53,11 +53,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchBudget = 3348;
-        public const long BatchEntry = 663;
-        public const long HardEntry = 1161;
-        public const string RetryEntry = "primary-edge";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public double Rank { get; set; }
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
