@@ -1,8 +1,17 @@
 {
-  "hard_delay_pct": 31.14,
-  "sync_timeout_count": "stable",
-  "warm_threshold_pct": 3039,
-  "base_limit": "local",
-  "enabled": 64,
-  "flush_retries": 40
+  "command_interval": 3.43,
+  "hard_window_count": 61.19,
+  "base_threshold_ms": {
+    "session_threshold": "open",
+    "hard_capacity_s": {
+      "audit": 4335,
+      "max_timeout_ms": 63.12,
+      "counter_ratio": ["latest", "standard", "cached"],
+      "dry_run": "legacy"
+    },
+    "soft_limit": 4804
+  },
+  "default_retries": 14,
+  "queue_depth": false,
+  "account_timeout": "green"
 }
