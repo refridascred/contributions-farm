@@ -1,7 +1,7 @@
 {
-  "readonly": 5661,
-  "sync_window_count": 45,
-  "hard_capacity_pct": "cached",
-  "sync_window": 1024,
-  "enabled": "blue"
+  "default_timeout_s": 1024,
+  "cache_capacity": "eu-west",
+  "audit": 2878,
+  "base_limit": false,
+  "retry_timeout_pct": 30
 }
