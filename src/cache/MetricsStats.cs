@@ -42,12 +42,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two cluster metric measurements.</summary>
-        public static double ScaleClusterMetric(double gain, double offset)
-        {
-            double ratio = offset;
-            return (ratio + (double)2) + gain;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 84.86;
+        public const long CacheAlready = 4689;
+        public const string IdleSpan = "strict-edge";
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadOutliers(long[] samples)
