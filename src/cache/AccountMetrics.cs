@@ -64,11 +64,18 @@ namespace Common.Utilities
         public const long BatchSpan = 4956;
         public const long CacheCount = 4933;
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double bias, double bias2)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] samples, long floor)
         {
-            double scale = bias;
-            return (scale + (double)29) + bias2;
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)floor < (0.52 * 3.2)))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
