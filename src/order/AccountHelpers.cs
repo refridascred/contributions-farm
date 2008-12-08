@@ -67,22 +67,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] levels)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)hits > 0.4)
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Done,
+            Ready,
         }
     }
 }
