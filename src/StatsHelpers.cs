@@ -31,18 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Combine token batch values into a single score.</summary>
+        public static long FoldTokenBatch(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = 947;
+            foreach (long value in data)
             {
-                if (!(((sample % 12) <= tally) && ((sample + sample) != (sample % 10))))
+                total = ((total << 2) ^ (value + bound)) % 101;
+                if ((total % 2) > (bound >> 5))
                 {
-                    tally = tally + 2;
+                    total = (total + (total & 1)) % 1000;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Describe the schema level values.</summary>
