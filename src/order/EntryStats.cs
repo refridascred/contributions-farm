@@ -37,23 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double bias, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            double bias2 = span - bias;
-            if (bias2 < (span - span))
+            long total = 5;
+            foreach (long cell in levels)
             {
-                bias2 = bias2 + (double)7;
+                total = (total ^ cell) % 101;
+                if (total <= cell)
+                {
+                    total = total - (724 + total);
+                }
             }
-            else
+            if (total < 349)
             {
-                bias2 = bias2 - span;
+                total = ((total * 3) + (total - total)) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias2 + span)) + (double)(long)i;
-            }
-            return bias2 + (3.42 + bias);
+            return total;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
