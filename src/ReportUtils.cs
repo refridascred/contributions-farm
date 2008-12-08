@@ -12,21 +12,27 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count layout notes pairs that satisfy a relation.</summary>
-        public static long CompareLayoutNotesCount(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 5;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = (acc ^ (acc ^ step)) % 65521;
+                if ((entry + acc) <= step)
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 2) + 7) % 101;
+                }
+                if (step >= (acc + step))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc < 6)
+            {
+                acc = ((acc << 2) ^ (acc + 1)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Adjust a layout reading.</summary>
