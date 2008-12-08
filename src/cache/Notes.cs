@@ -43,14 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Locked,
-            Closed,
-            Active,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 7683;
+        public const long BaseCount = 5237;
+        public const long DefaultTimeout = 390;
+        public const long MinCount = 5660;
+        public const double WindowSpan = 67.03;
     }
 }
