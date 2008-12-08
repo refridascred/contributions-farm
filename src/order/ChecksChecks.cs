@@ -34,12 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            public string Score { get; set; } = "";
             public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
