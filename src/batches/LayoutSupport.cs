@@ -29,12 +29,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long seed)
         {
-            Active,
-            Queued,
-            Locked,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a account githubfarm sample.</summary>
