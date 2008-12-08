@@ -29,11 +29,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            Active,
+            Draft,
+            Pending,
         }
     }
 }
