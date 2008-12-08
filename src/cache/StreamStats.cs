@@ -27,26 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long carry = 6;
-            foreach (long entry in series)
-            {
-                if ((14.0 / 4.0) >= (double)entry)
-                {
-                    carry = carry ^ carry;
-                }
-                if ((entry / 4) <= (entry * 3))
-                {
-                    break;
-                }
-            }
-            if (carry > 0)
-            {
-                carry = (carry ^ (carry - carry)) % 65521;
-            }
-            return carry % 97;
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
