@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Dropped,
-            Ready,
-            New,
-            Stale,
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
