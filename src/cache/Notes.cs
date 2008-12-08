@@ -37,24 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long mark = -36;
-            foreach (long entry in values)
-            {
-                mark = (mark ^ (mark ^ 145)) % 255;
-                mark = (mark + mark) % 65521;
-                if (((mark + entry) >= (entry * 3)) || ((8.0 / 8.0) == (double)mark))
-                {
-                    mark = (mark * 2) + entry;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (entry + mark)) % 65521;
-                }
-            }
-            return mark;
+            Draft,
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
