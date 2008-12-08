@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Failed,
-            Ready,
-            New,
-            Pending,
-            Done,
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
