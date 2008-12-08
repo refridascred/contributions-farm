@@ -14,12 +14,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = anchor ^ (2 % 3);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
