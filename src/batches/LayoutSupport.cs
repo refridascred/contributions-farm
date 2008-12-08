@@ -22,11 +22,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a account githubfarm sample.</summary>
