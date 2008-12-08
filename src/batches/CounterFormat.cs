@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Locked,
-            Done,
-            Idle,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleSpan = "local-1";
+        public const long MinWidth = 2930;
+        public const string HardBuffer = "standard-edge";
+        public const long MaxBuffer = 3833;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TotalCommand(long[] levels, long step)
