@@ -1,11 +1,6 @@
-id,level,state,active,score
-1,strict,edge,33.0,471
-2,69.34,270,55.94,467
-3,340,eu-west,latest,88.76
-4,14.9,35.82,standard,47.41
-5,84.38,edge,75.17,37.0
-6,258,staging,144,strict
-7,32.31,16.37,830,47.35
-8,local,39.82,272,25.22
-9,staging,562,94.7,standard
-10,712,893,10.93,fallback
+id,weight
+1,277
+2,primary
+3,59.21
+4,3.36
+5,802
