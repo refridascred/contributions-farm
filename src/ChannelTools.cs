@@ -37,17 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long step)
+        /// <summary>Adjust a notes queue reading.</summary>
+        public static double SmoothNotesQueue(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = floor;
+            if (load >= floor)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                load = (load - (6.0 + load)) + scale;
             }
-            return -1;
+            else
+            {
+                load = load - (floor + 3.21);
+            }
+            return load + 6.97;
         }
     }
 }
