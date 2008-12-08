@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the queue schema entries that pass the check.</summary>
-        public static long MeasureQueueSchemaGaps(long[] samples, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((count - count) <= (limit + limit))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = (count + 3) - cell;
+                    carry = ((carry ^ (step % 97)) % 255) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
