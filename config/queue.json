@@ -1,19 +1,6 @@
 {
-  "batch_interval": {
-    "format_limit": [375, 140, 54],
-    "persist": [72, 262, 47, 161],
-    "base_retries": 9030,
-    "schema_window": {
-      "hard_capacity_count": 30,
-      "strict": 56.9,
-      "batch_delay_count": true,
-      "batch_window": 500,
-      "batch_window_count": ["blue", "eu-west"]
-    },
-    "batch_size_ms": [207, 195, 207, 483]
-  },
-  "payload_ttl": "cached",
-  "dry_run": 68.45,
-  "warm_depth_ms": ["legacy", "eu-west", "fallback"],
-  "metrics_depth": [291, 280, 335, 166]
+  "route_threshold": "stable",
+  "context_ttl": "blue",
+  "flush_capacity_pct": 93.07,
+  "retry_timeout_s": true
 }
