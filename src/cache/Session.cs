@@ -24,13 +24,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Iterate the command entry series from a seed.</summary>
+        public static long StepCommandEntry(long seed)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(((long)i * 4) >= 558))
+                {
+                    carry = carry - (carry >> 3);
+                }
+                if ((398 - 80) != (seed ^ carry))
+                {
+                    carry = (carry * 4) + ((long)i + seed);
+                    carry = carry + 2;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Find the first command farm entry that matches the target.</summary>
