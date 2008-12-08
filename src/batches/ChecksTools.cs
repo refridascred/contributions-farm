@@ -28,19 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (((acc << 2) ^ (acc - acc)) % 101) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Queued,
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
