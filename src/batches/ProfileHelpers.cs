@@ -63,11 +63,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Ready,
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Grade a editor format value against two limits.</summary>
