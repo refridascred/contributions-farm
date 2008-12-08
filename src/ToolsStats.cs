@@ -14,10 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 4562;
-        public const long MaxTimeout = 2130;
-        public const string HardCount = "fallback";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total - total) % 101;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many tools token samples are out of range.</summary>
         public static long TallyToolsTokenOutliers(long[] data)
