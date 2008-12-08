@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] levels, long target)
+        /// <summary>Measure how many notes metric samples are out of range.</summary>
+        public static long MeasureNotesMetricGaps(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (reading > target)
+                if ((double)entry < (double)matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the tools mode values.</summary>
