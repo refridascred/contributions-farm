@@ -33,18 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout stream entries.</summary>
-        public static long TotalLayoutStream(long[] series)
+        /// <summary>Count the counter session entries that pass the check.</summary>
+        public static long CountCounterSessionHits(long[] levels)
         {
-            long anchor = 2;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((-14) ^ anchor) <= (sample / 8))
+                if (!((double)entry == (3.9 - 18.0)))
                 {
-                    anchor = (anchor + sample) % 101;
+                    matches = matches + 2;
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
