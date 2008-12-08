@@ -31,25 +31,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long seed, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] series)
         {
-            long bound = seed + floor;
-            if ((9.92 * 4.5) <= (double)bound)
+            long matches = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)34 <= (double)bound) || ((0 + seed) <= (bound ^ 6)))
+                if ((((value + matches) == (matches / 2)) || ((matches + 783) > matches)) && ((1 + 789) == (matches - value)))
                 {
-                    return 5;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
