@@ -1,9 +1,22 @@
 # support settings
-default_ttl_s: staging
-verbose:
-  - 292
-  - 393
-  - 288
-retry_depth_pct: true
-persist: 3274
-hard_retries: 50.6
+cluster_ratio: fallback
+poll_window_pct: 500
+cache_retries_ms: false
+max_depth_pct:
+  burst_size_count: standard
+  idle_delay_s:
+    - latest
+    - open
+    - standard
+    - primary
+  compress: false
+  idle_delay_pct: legacy
+  max_ttl: 8748
+  base_size_count: true
+strict:
+  batch_depth_pct: legacy
+  graph_interval: eu-west
+  editor_depth: 1024
+  idle_retries_ms: legacy
+  cache_capacity_count: 82
+  queue_depth: staging
