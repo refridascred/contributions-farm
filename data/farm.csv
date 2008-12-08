@@ -1,9 +1,8 @@
-id,state,label
-1,795,cached
-2,fallback,27.77
-3,61.93,84
-4,latest,97.6
-5,668,open
-6,open,95.3
-7,169,520
-8,29.13,legacy
+id,ratio,owner
+1,804,staging
+2,eu-west,63.03
+3,62.7,63.81
+4,staging,726
+5,legacy,green
+6,cached,cached
+7,712,70.46
