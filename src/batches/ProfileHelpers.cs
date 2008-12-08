@@ -35,22 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] levels, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (15 >= (40 + item))
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
                 {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the batches token series from a seed.</summary>
