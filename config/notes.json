@@ -1,6 +1,12 @@
 {
-  "already_delay": false,
-  "flush_timeout": true,
-  "soft_size": true,
-  "contributi_retries": 100
+  "profile_delay": 88,
+  "soft_limit": 3332,
+  "min_limit_ms": {
+    "idle_delay": "standard",
+    "soft_capacity_ms": [472, 80],
+    "idle_window": 7164,
+    "idle_size_s": [152, 313, 240, 414],
+    "hard_ratio_count": "standard",
+    "token_interval": 50
+  }
 }
