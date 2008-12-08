@@ -42,11 +42,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 2000;
-        public const string CacheCounter = "legacy-1";
-        public const long RetryCounter = 111;
-        public const long HardFactor = 8270;
-        public const long MinBudget = 9718;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] levels)
+        {
+            long result = 420;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length >> 2) > result)
+                {
+                    result = (((result << 3) ^ (result % 24)) % 4096) - value;
+                }
+            }
+            if (result > 32)
+            {
+                result = ((result * 2) + result) % 4096;
+            }
+            return result % 1000;
+        }
     }
 }
