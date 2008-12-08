@@ -43,9 +43,17 @@ namespace Common.Utilities
             return gain2 + (19.0 - 3.3);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 3551;
-        public const string CacheCounter = "alpha";
-        public const double IdleSpan = 76.04;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
