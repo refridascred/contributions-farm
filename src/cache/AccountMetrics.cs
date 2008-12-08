@@ -20,15 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] series, long seed)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long entry in series)
             {
-                if ((2.3 + 4.16) < (double)datum)
+                if (!(seed > (7 + 767)))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 3) + entry;
                 }
             }
             return seen;
