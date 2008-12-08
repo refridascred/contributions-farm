@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command payload readings.</summary>
-        public static long TotalCommandPayload(long[] series, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] data, long limit)
         {
-            long score = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)score >= (8.3 - 18.0))
+                if ((limit < (limit - limit)) && (((limit + seen) < (727 - limit)) || ((4 + sample) > (limit + seen))))
                 {
-                    score = ((score * 5) + (seed / 8)) % 255;
+                    seen = seen + 3;
                 }
-                score = (score << 3) ^ datum;
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Match up channel stream samples.</summary>
