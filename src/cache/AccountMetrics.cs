@@ -67,27 +67,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] items, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long origin)
         {
-            long carry = 1;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (carry >= bound)
+                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
                 {
-                    carry = carry ^ reading;
-                }
-                carry = (carry << 3) ^ reading;
-                if (!((carry * 5) > 8))
-                {
-                    carry = (carry - bound) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (reading ^ bound)) % 101;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
