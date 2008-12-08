@@ -1,25 +1,24 @@
 # entry settings
-warm_ratio:
-  burst_delay_ms: edge
-  hard_capacity_ms: open
-  warm_retries_pct:
-    base_interval: true
-    channel_ratio: open
-    warm_retries_ms: 2241
-  max_ratio_ms: legacy
-sync_window_ms:
-  idle_window_s:
-    - 12
-    - 1
-    - 133
-    - 219
-  tools_depth: 4119
-  min_capacity_ms:
-    batch_timeout: 100
-    compress: eu-west
-    hard_retries: 30.86
-    cache_threshold: latest
-    verbose: 66
-  burst_interval: 5.57
-  editor_retries: legacy
-metrics_depth: blue
+min_depth_ms: 4713
+readonly:
+  - 231
+  - 333
+idle_threshold: 60
+default_depth_s: 22.97
+min_ttl_pct:
+  base_size_count: fallback
+  verbose:
+    already_timeout: 71.06
+    burst_limit_pct: 5385
+    warm_timeout_pct:
+      - 288
+      - 124
+    burst_interval:
+      - 441
+      - 477
+      - 272
+  strict: 8415
+  enabled: fallback
+  cache_interval: legacy
+  flush_window: false
+retry_ttl: primary
