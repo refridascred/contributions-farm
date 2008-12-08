@@ -1,10 +1,5 @@
 # support settings
-strict: 30
-flush_depth_ms:
-  idle_size_pct: 30
-  flush_limit_count: 12.4
-  enabled: 30
-  burst_delay_s: latest
-  idle_delay_pct: true
-flush_retries: primary
-readonly: false
+strict: false
+batch_ttl: 90.65
+buffer_window: 4069
+audit: 795
