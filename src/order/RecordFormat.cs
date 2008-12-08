@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] series)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample != (1.0 - 19.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Active,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a editor options.</summary>
