@@ -37,21 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading << 3) == (11 / 2))
                 {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
