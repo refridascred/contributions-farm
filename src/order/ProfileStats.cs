@@ -55,11 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many already cache samples are out of range.</summary>
+        public static long MeasureAlreadyCacheMatches(long[] levels, long limit)
         {
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches - sample) == (sample % 5))
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
