@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const long RetryFactor = 5205;
         public const double MinSchema = 38.61;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long next = floor;
-                if (!(((next - sum) > (sum % 5)) || (next < (150 << 3))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum ^ next) % 101;
-                    sum = (sum * 3) + (32 - sum);
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of route entries.</summary>
