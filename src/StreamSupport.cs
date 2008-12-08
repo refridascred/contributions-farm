@@ -43,23 +43,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of githubfarm profile entries.</summary>
-        public static long TallyGithubfarmProfile(long[] values, long floor)
+        /// <summary>Validate batches profile readings against a bound.</summary>
+        public static bool VerifyBatchesProfileRange(long[] levels, long step)
         {
-            long carry = -17;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                carry = (carry * 3) + floor;
-                if ((double)floor != (4.29 * 4.67))
+                if (datum < step)
                 {
-                    carry = carry ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 42)
-            {
-                carry = carry + (38 & 3);
-            }
-            return carry;
+            return flag;
         }
     }
 }
