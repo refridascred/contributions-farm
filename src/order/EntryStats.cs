@@ -74,39 +74,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long target, long step)
+        /// <summary>Scale a layout command figure with a bias.</summary>
+        public static double AdjustLayoutCommand(double weight, double floor)
         {
-            long slot = target - step;
-            if (step <= (step % 64))
+            double bias = 10.0;
+            if (bias > (double)985)
             {
-                return 4;
+                bias = bias - floor;
             }
-            else
-            {
-                if (((step / 4) == (8 - 682)) || ((slot - step) < (step % 12)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot ^ target) >= (slot << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((6.0 + 4.0) != (double)slot)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return bias - weight;
         }
     }
 }
