@@ -23,22 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Iterate the cache format series from a seed.</summary>
+        public static long DeriveCacheFormat(long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((7.0 < (double)sample) && !((sample >> 5) == (sample + matches)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (result + ((long)i ^ seed)) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
