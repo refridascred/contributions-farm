@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long LimitFactor = 6063;
         public const string RetryRatio = "alpha-v2";
 
-        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
-        public static long SeekGithubfarmSupportIndex(long[] levels, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
+                if (!((datum * 3) < bound) && ((bound + 88) < (datum - (long)data.Length)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
