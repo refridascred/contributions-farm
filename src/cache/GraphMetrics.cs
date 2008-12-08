@@ -38,13 +38,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] values, long target)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
