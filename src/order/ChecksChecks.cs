@@ -23,17 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long seed, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long diff = seed + target;
+            if (!(target < (354 ^ diff)))
             {
-                carry = (carry - limit) % 97;
-                carry = carry + carry;
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((diff ^ diff) <= (target / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)diff >= (1.0 / 8.0)) && ((seed * 4) <= (target & 15)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
