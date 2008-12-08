@@ -31,17 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Check that every buffer entry entry stays within the limit.</summary>
+        public static bool ValidateBufferEntryRange(long[] series, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                score = ((score << 3) ^ (bound - score)) % 65521;
-                score = (score << 3) ^ (score << 3);
-                score = ((score * 4) + (long)i) % 1000;
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
     }
 }
