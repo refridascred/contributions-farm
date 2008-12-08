@@ -32,31 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long offset, long offset2)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] data, long seed)
         {
-            if (!((offset2 * 4) >= offset2))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 24) > offset2)
+                if ((6.27 + 0.2) == (double)matches)
                 {
-                    return 7;
+                    matches = ((matches + 3) + sample) + seed;
                 }
                 else
                 {
-                    if ((3.2 / 3.0) == (double)offset2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of report payload readings.</summary>
