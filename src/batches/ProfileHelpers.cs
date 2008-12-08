@@ -75,10 +75,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxDepth = 1273;
-        public const double CacheSpan = 9.83;
-        public const double MinLayout = 49.91;
-        public const long BatchFactor = 8316;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinTimeout = 1563;
+        public const long WindowOrder = 1788;
+        public const long RetryOrder = 2560;
+        public const long StepOrder = 9251;
     }
 }
