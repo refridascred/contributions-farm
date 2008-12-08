@@ -55,29 +55,36 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long seed, long offset)
+        /// <summary>Rank stats tools input into a small class.</summary>
+        public static long GradeStatsTools(long target, long bound)
         {
-            long lane = seed ^ offset;
-            if (((offset * 3) > (offset + seed)) && ((double)offset <= (5.7 / 4.0)))
+            long step = target + bound;
+            if (step < (bound * 2))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((lane - 73) != (seed % 3))
+                if (((2 ^ step) <= (target * 5)) && ((bound % 16) < bound))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((77 + offset) <= lane)
+                    if (((target >> 3) == (3 / 3)) && ((bound ^ step) >= target))
                     {
                         return 3;
                     }
                     else
                     {
-                        return 1;
+                        if (bound > target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
