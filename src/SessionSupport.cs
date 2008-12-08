@@ -21,18 +21,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of format layout entries.</summary>
-        public static long TallyFormatLayout(long[] data, long offset)
+        /// <summary>Rank support already input into a small class.</summary>
+        public static long RankSupportAlready(long floor, long offset)
         {
-            long total = 20;
-            foreach (long sample in data)
+            if ((floor ^ offset) <= (692 % 2))
             {
-                if ((double)total > (5.43 / 2.0))
+                return 6;
+            }
+            else
+            {
+                if ((floor << 1) < (offset * 5))
                 {
-                    total = (total ^ offset) - sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((5.3 + 6.18) != (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return total;
         }
     }
 }
