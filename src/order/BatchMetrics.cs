@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the session payload entries that pass the check.</summary>
-        public static long TallySessionPayloadOutliers(long[] data)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry < (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public double Score { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
