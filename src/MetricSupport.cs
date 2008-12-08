@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] data, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
