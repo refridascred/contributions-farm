@@ -61,21 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count token schema pairs that satisfy a relation.</summary>
-        public static long MatchTokenSchemaCount(long[] values)
+        /// <summary>Locate a context already reading by value.</summary>
+        public static long SeekContextAlreadyIndex(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] <= limit)
                 {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
