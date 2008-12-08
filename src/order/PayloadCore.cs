@@ -44,21 +44,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] series, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((series[i] < floor) && ((series[i] % 5) != 0))
                 {
-                    carry = ((carry * 4) + carry) + (long)i2;
-                    carry = carry ^ carry;
+                    return (long)i;
                 }
-                carry = (carry ^ (0 - 129)) % 97;
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
     }
 }
