@@ -20,11 +20,16 @@ namespace Common.Utilities
         public const long BurstMetric = 3471;
         public const string RetrySize = "open-edge";
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc - ((long)i << 2)) % 65521;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
