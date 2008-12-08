@@ -51,25 +51,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long bound, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long diff = bound - origin;
-            if ((bound >= 30) && ((9.5 / 5.0) != (double)diff))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((diff + diff) == (diff - bound)) || ((double)origin > (double)diff))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
