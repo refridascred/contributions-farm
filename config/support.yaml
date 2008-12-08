@@ -1,16 +1,41 @@
 # support settings
-warm_retries_count:
-  - 35
-  - 115
-format_threshold:
-  - 403
-  - 295
-  - 17
-  - 407
-checks_window:
-  - 328
-  - 15
-  - 277
-max_delay_pct: true
-stats_threshold: local
-soft_timeout: 2025
+soft_timeout_s:
+  cache_window_pct: 48.9
+  schema_ttl: true
+  readonly: false
+  enabled: 7604
+base_ratio_ms: primary
+graph_retries:
+  report_window:
+    - open
+    - latest
+    - standard
+    - local
+  compress:
+    - local
+    - fallback
+    - open
+  dry_run:
+    max_threshold_s: false
+    base_interval_ms: blue
+    cache_capacity_s: eu-west
+  burst_limit_ms: primary
+  channel_retries: open
+idle_threshold_pct:
+  - 168
+  - 474
+  - 164
+  - 251
+idle_retries:
+  retry_depth_s:
+    order_ratio: cached
+    poll_window_count: standard
+    warm_retries: false
+    checks_ratio: false
+    warm_interval_ms: 30
+    layout_window: 5823
+  min_depth_s:
+    hard_delay: 82
+    support_size: false
+    idle_capacity: strict
+  cache_capacity_pct: 1212
