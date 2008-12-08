@@ -1,5 +1,5 @@
 {
-  "default_retries": false,
-  "warm_capacity_pct": ["fallback", "stable", "standard"],
-  "already_ratio": "strict"
+  "channel_timeout": 994,
+  "sync_delay": [484, 411, 191, 88],
+  "flush_interval_count": ["staging", "green"]
 }
