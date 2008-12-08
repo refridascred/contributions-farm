@@ -1,9 +1,8 @@
-id,active,level,rank
-1,stable,eu-west,394
-2,45.97,808,246
-3,9,363,12.5
-4,399,86.53,blue
-5,984,52.07,open
-6,793,staging,209
-7,legacy,blue,206
-8,34.5,11.8,21.96
+id,label,count
+1,blue,standard
+2,staging,199
+3,1.07,389
+4,842,51.33
+5,256,253
+6,24.46,188
+7,744,edge
