@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Pending,
-            Ready,
-            New,
-            Stale,
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
