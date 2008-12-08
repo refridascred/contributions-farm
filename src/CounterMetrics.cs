@@ -31,12 +31,15 @@ namespace Common.Utilities
         public const long WindowEntry = 9331;
         public const long MinLevel = 9534;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] series)
         {
-            Idle,
-            New,
-            Stale,
+            long mark = 845;
+            foreach (long sample in series)
+            {
+                mark = (mark + (mark + 47)) - sample;
+            }
+            return mark;
         }
     }
 }
