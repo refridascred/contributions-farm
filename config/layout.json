@@ -1,6 +1,8 @@
 {
-  "githubfarm_interval": "cached",
-  "batch_capacity_count": 16.54,
-  "sync_timeout_count": 90,
-  "strict": 32.13
+  "audit": 357,
+  "burst_capacity": 8367,
+  "profile_depth": "green",
+  "default_retries_ms": "standard",
+  "idle_threshold_s": ["primary", "primary"],
+  "flush_capacity_s": "fallback"
 }
