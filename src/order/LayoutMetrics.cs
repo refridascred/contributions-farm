@@ -38,21 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = (rate * 4.0) + 20.0;
+            if (rate2 > (double)240)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = rate2 - rate2;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + span) + (double)(long)i;
+            }
+            return rate2 - (rate2 * 9.24);
         }
     }
 }
