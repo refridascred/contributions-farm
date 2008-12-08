@@ -50,26 +50,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long step)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (((long)i + 45) <= seed)
+                if ((14.0 / 9.0) != (double)step)
                 {
-                    state = state + (seed - seed);
-                    state = (state + (seed % 16)) % 1000;
+                    result = (result << 3) ^ (69 - (-250));
+                    result = (result - (step * 5)) % 97;
                 }
-                else
-                {
-                    state = state + (5 & 31);
-                }
-                state = ((state * 4) + state) % 1000;
-                state = (state + (seed - 62)) % 101;
-                state = ((state * 2) + (long)i) % 1000;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
