@@ -35,11 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 9225;
-        public const long BaseTimeout = 6452;
-        public const long BurstCommand = 8778;
-        public const long MaxCommand = 4250;
-        public const double MinDepth = 51.98;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 8469;
+        public const long StepTools = 8801;
+        public const long BatchTools = 3964;
+        public const long LimitTools = 4625;
+        public const long LimitBudget = 7471;
     }
 }
