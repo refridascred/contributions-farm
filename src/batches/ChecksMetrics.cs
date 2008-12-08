@@ -83,18 +83,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] series)
+        /// <summary>Combine queue report values into a single score.</summary>
+        public static long WeighQueueReport(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long acc = 4;
+            foreach (long entry in samples)
             {
-                if (item >= 81)
+                if (((limit / 9) <= (54 + 924)) && ((8.5 / 3.0) <= (double)acc))
                 {
-                    seen = seen + 3;
+                    acc = ((acc + (7 ^ limit)) % 1000) + entry;
+                }
+                else
+                {
+                    acc = (acc - (limit * 5)) % 65521;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
     }
 }
