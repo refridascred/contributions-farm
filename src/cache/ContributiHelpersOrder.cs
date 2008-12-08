@@ -21,11 +21,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double ratio, double bias)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double drift = 5.19;
-            return ((drift + 7.6) + ratio) + bias;
+            Active,
+            Dropped,
+            Stale,
         }
     }
 }
