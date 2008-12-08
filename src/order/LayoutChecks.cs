@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Active,
-            Done,
-            Dropped,
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Digest a series of batch route entries.</summary>
