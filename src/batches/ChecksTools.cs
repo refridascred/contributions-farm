@@ -54,10 +54,12 @@ namespace Common.Utilities
             return gain2 + (19.0 - 3.3);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitCount = 3828;
-        public const long BurstBatch = 3875;
-        public const double BatchWidth = 3.64;
-        public const long MaxWidth = 8558;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
