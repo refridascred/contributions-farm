@@ -35,21 +35,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Derive the next commits already value from a seed.</summary>
+        public static long DeriveCommitsAlready(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum ^ (73 * 3)) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
     }
 }
