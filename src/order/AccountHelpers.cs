@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long limit, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] data, long limit)
         {
-            long next = limit + floor;
-            if (floor >= (next - floor))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) >= (limit / 3))
+                if (((limit * 3) <= (seen ^ limit)) && ((seen + cell) == (limit >> 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - limit) <= (272 + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
