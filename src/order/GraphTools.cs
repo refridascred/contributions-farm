@@ -12,39 +12,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long target, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] samples, long limit)
         {
-            long offset2 = target - offset;
-            if ((target ^ offset2) == (offset2 - target))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset2 + target) < 64) && (target >= (offset2 - target)))
+                if ((reading ^ 386) > (reading ^ 1))
                 {
-                    return 3;
+                    matches = (matches + 3) - limit;
                 }
                 else
                 {
-                    if (target >= (offset - target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target - offset2) == (offset2 + offset2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
