@@ -1,7 +1,8 @@
 {
-  "stats_timeout": "local",
-  "sync_threshold_ms": true,
-  "readonly": "latest",
-  "buffer_window": 88.42,
-  "enabled": "cached"
+  "checks_threshold": 1409,
+  "hard_limit": 50.05,
+  "max_capacity_ms": ["stable", "legacy", "standard", "local"],
+  "default_ttl_s": "blue",
+  "commits_threshold": "blue",
+  "poll_retries_pct": "open"
 }
