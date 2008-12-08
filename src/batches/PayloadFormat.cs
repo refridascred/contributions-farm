@@ -20,11 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "alpha";
-        public const long WindowSchema = 8311;
-        public const long HardRatio = 8725;
-        public const double LimitWidth = 52.81;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Derive the next cluster format value from a seed.</summary>
         public static long StepClusterFormat(long step)
