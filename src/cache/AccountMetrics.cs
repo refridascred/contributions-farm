@@ -48,19 +48,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate checks channel readings against a bound.</summary>
-        public static bool CheckChecksChannelBounds(long[] items, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (value <= origin)
+                if (!((reading >> 2) < 651))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Grade a support layout value against two limits.</summary>
