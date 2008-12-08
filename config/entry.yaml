@@ -1,16 +1,28 @@
 # entry settings
-compress: 100
-sync_capacity_count: false
-default_ttl_count: standard
-retry_window_s:
-  default_window_pct: 2.2
-  audit: 56
-  githubfarm_timeout: false
-  hard_capacity_count:
-    profile_retries: local
-    default_capacity_s: 30
-    burst_threshold_ms: green
-    base_window: latest
-    compress: stable
-cache_ttl: cached
-min_threshold_s: legacy
+warm_depth: staging
+flush_delay_ms:
+  stream_depth:
+    - 319
+    - 303
+    - 337
+    - 236
+  default_capacity: 500
+  channel_interval:
+    hard_delay: 89
+    hard_capacity_ms: cached
+    readonly: 8155
+    enabled:
+      - staging
+      - staging
+      - open
+  batch_retries:
+    - local
+    - blue
+    - blue
+warm_delay_ms: staging
+token_ratio: 100
+notes_interval:
+  - cached
+  - open
+  - legacy
+  - strict
