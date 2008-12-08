@@ -1,6 +1,8 @@
 {
-  "soft_capacity_s": 8235,
-  "report_timeout": true,
-  "min_ttl_s": 30.96,
-  "warm_delay_ms": 8
+  "enabled": "standard",
+  "base_retries_ms": ["latest", "edge", "edge"],
+  "queue_size": true,
+  "cache_capacity": 60,
+  "persist": "legacy",
+  "max_depth_pct": 58.83
 }
