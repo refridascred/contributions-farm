@@ -1,34 +1,8 @@
 # support settings
-strict:
-  cache_capacity: 1
-  burst_threshold:
-    persist: 2533
-    enabled: 81.25
-    cache_ratio_count: 77
-    verbose:
-      - 383
-      - 30
-      - 270
-  max_size_count: 250
-  strict: 38
-  account_ratio: 54
-already_threshold: 99
-route_capacity: false
-cache_capacity:
-  - fallback
-  - local
-cache_retries_count: strict
-metric_delay:
-  sync_window:
-    warm_capacity: 500
-    batch_limit: 51.99
-    sync_depth_s:
-      - 343
-      - 397
-      - 325
-    max_retries_ms: true
-  sync_delay_count: 62.49
-  batch_size: staging
-  route_retries:
-    - eu-west
-    - cached
+retry_size: legacy
+commits_limit:
+  - 100
+  - 9
+persist: 30
+warm_depth_pct: eu-west
+max_size_pct: latest
