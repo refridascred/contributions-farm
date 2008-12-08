@@ -37,18 +37,13 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Audit route queue readings against a rule.</summary>
-        public static long AuditRouteQueueGaps(long[] items)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((double)hits < (0.57 + 19.0)) || ((0.32 / 2.0) <= (double)hits))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
