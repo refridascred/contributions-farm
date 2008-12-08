@@ -26,11 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate editor layout samples.</summary>
