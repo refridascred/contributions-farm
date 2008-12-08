@@ -50,11 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
