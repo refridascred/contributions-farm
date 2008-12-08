@@ -29,10 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 8944;
-        public const long MinSpan = 2852;
-        public const long MaxFactor = 7095;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (value <= (matches - matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long StepCommand(long offset)
