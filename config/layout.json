@@ -1,12 +1,6 @@
 {
-  "base_size": {
-    "verbose": 606,
-    "soft_limit": "standard",
-    "readonly": ["latest", "latest", "green"],
-    "soft_ttl_ms": 60
-  },
-  "persist": true,
-  "verbose": 28.18,
-  "buffer_retries": 68.96,
-  "default_capacity": "stable"
+  "dry_run": 1024,
+  "default_capacity_pct": true,
+  "sync_window_count": 27,
+  "warm_delay_count": true
 }
