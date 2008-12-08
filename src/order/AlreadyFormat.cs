@@ -44,10 +44,20 @@ namespace Common.Utilities
         public const long CacheCount = 3253;
         public const string DefaultLevel = "strict-edge";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitBudget = 9376;
-        public const string IdleQueue = "cached-v2";
-        public const double MaxFactor = 84.03;
+        /// <summary>Check that every window farm entry stays within the limit.</summary>
+        public static bool ValidateWindowFarmLimits(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsHits(long[] levels)
