@@ -17,12 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
             Stale,
-            Done,
-            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
