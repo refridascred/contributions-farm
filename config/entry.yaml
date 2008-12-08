@@ -1,23 +1,9 @@
 # entry settings
-poll_interval_count: staging
-hard_retries_count: true
-default_ratio:
-  session_threshold: local
-  base_limit:
-    cache_ttl: false
-    verbose:
-      - 160
-      - 222
-      - 220
-    compress: fallback
-  hard_threshold: standard
-  dry_run: false
-  cache_interval: 37.53
-  audit:
-    - legacy
-    - legacy
-    - blue
-    - edge
-batch_ttl: 100
-format_retries: 70.92
-base_depth_s: 1942
+poll_size: 100
+retry_capacity: stable
+base_limit_s: primary
+default_ttl_count: green
+strict:
+  - cached
+  - staging
+  - standard
