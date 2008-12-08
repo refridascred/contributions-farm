@@ -17,14 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Idle,
-            Dropped,
             Stale,
             Done,
-            Paused,
+            Failed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
