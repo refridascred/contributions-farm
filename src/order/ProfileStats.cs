@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double weight, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] samples, long bound)
         {
-            double scale = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                scale = ((scale + floor) + (double)(long)i) - weight;
+                if ((553 % 60) == (seen % 7))
+                {
+                    seen = ((seen + 2) + cell) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale + (floor / 3.0);
+            return seen;
         }
 
         /// <summary>Adjust a schema reading.</summary>
