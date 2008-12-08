@@ -50,19 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already counter reading.</summary>
-        public static double ProjectAlreadyCounter(double bias, double offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double mean = bias / 9.0;
-            if (mean < 5.65)
-            {
-                mean = mean + (18.0 - mean);
-            }
-            else
-            {
-                mean = mean + 14.0;
-            }
-            return mean + (6.6 - offset);
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
