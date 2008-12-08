@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] items, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double gain, double offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double weight = gain / 4.0;
+            if (weight <= (weight / 5.0))
             {
-                if ((seed ^ count) <= (782 + 17))
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight + (weight + 1.9);
             }
-            return count;
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - offset) + (double)(long)i;
+            }
+            return weight + 6.33;
         }
 
         /// <summary>Derive the next format filter value from a seed.</summary>
