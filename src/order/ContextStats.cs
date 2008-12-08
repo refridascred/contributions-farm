@@ -64,31 +64,12 @@ namespace Common.Utilities
         public const double StepSize = 72.51;
         public const long RetryDepth = 142;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long limit, long offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if ((5.1 - 3.58) == (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset >> 3) <= limit) || ((double)limit != (3.3 * 6.7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit * 2) >= 9) || ((27 - offset) == (offset / 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
