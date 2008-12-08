@@ -28,14 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double gain, double floor)
         {
-            Pending,
-            Active,
-            Failed,
-            Synced,
-            Paused,
+            double gain2 = floor;
+            if (gain2 > (double)9)
+            {
+                gain2 = gain2 + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = gain2 + (double)(long)i;
+            }
+            return gain2 + (19.0 - 3.3);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
