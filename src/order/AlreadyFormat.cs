@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (5.5 < (double)sample)
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "strict";
+        public const double MaxBudget = 12.93;
+        public const long BaseSchema = 1857;
 
         /// <summary>Digest a series of payload schema entries.</summary>
         public static long TallyPayloadSchema(long[] levels)
