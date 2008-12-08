@@ -33,11 +33,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepTimeout = 6479;
-        public const long RetryWidth = 9029;
-        public const long BaseBudget = 4897;
-        public const long StepContext = 2673;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseWidth = 2516;
+        public const long DefaultRatio = 6797;
+        public const long BatchStream = 5414;
+        public const string MinStream = "local-v2";
+        public const double IdleSpan = 55.55;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 7221;
