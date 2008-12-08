@@ -52,11 +52,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate checks channel readings against a bound.</summary>
+        public static bool CheckChecksChannelBounds(long[] items, long origin)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
