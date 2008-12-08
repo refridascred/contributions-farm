@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCache = "standard";
-        public const long StepCache = 2655;
-        public const double CacheWidth = 7.53;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
