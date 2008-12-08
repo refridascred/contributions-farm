@@ -24,16 +24,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state ^ floor) % 97;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Validate booking cache readings against a bound.</summary>
