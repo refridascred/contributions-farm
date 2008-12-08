@@ -43,21 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel already pairs that satisfy a relation.</summary>
-        public static long CompareChannelAlreadyCount(long[] samples)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] samples, long target)
         {
-            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
                 {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
