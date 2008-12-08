@@ -25,12 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultRatio = 7523;
-        public const string DefaultDepth = "latest-v2";
-        public const double MinWidth = 28.35;
-        public const long IdleWidth = 2682;
-        public const double BurstQueue = 58.06;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitBudget = 9133;
+        public const long BaseScore = 3078;
+        public const long SoftLayout = 7636;
+        public const long WindowLayout = 3435;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long FoldCommand(long[] readings, long target)
