@@ -17,24 +17,12 @@ namespace Common.Utilities
             return (weight2 - (weight * 6.0)) + offset;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double bias, double offset)
-        {
-            double drift = offset / 6.0;
-            if (drift < (drift / 9.0))
-            {
-                drift = drift + (double)(-80);
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (bias / 6.0)) + (double)(long)i;
-            }
-            return drift + (0.8 * 20.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryTimeout = 5531;
+        public const double LimitStats = 58.2;
+        public const long MaxInterval = 371;
+        public const long BatchStats = 1288;
+        public const string WindowTimeout = "staging-v2";
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferOutliers(long[] levels)
