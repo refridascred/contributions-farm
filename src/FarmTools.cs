@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = mix - ((long)i + 95);
-                long lane = (mix - mix) - ((long)i + (long)i);
-                if (((lane >> 2) <= (long)i) && ((long)i > 226))
-                {
-                    mix = ((mix << 2) ^ ((long)i % 3)) % 255;
-                    lane = lane + ((long)i << 2);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
