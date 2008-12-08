@@ -11,25 +11,13 @@ namespace Common.Utilities
         public const long LimitReport = 6634;
         public const long DefaultReport = 150;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long origin, long seed)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long delta = origin ^ seed;
-            if ((delta < origin) && ((delta ^ delta) <= delta))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= (10.0 * 1.55))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first command farm entry that matches the target.</summary>
