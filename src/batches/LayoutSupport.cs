@@ -31,10 +31,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowLevel = "stable-1";
-        public const string IdleBatches = "stable-edge";
-        public const long HardBatches = 6443;
+        /// <summary>Grade a profile already value against two limits.</summary>
+        public static long BucketProfileAlready(long origin, long limit)
+        {
+            if (((limit - limit) < (limit % 7)) || ((limit >> 5) < (160 + 95)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.3 * 4.1) != (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit << 2) >= (origin - limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
