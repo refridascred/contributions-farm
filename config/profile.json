@@ -1,6 +1,11 @@
 {
-  "order_ratio": [87, 460, 154],
-  "verbose": 17.09,
-  "poll_limit_pct": "local",
-  "flush_capacity": "edge"
+  "burst_limit": {
+    "filter_window": 25,
+    "min_delay": 813,
+    "base_threshold": 96.57
+  },
+  "base_limit_count": 52.62,
+  "route_delay": ["fallback", "open", "edge", "fallback"],
+  "report_threshold": "latest",
+  "warm_ratio_s": 50.02
 }
