@@ -48,12 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] items, long step)
         {
-            Active,
-            Queued,
-            Ready,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
