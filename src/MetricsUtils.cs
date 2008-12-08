@@ -12,19 +12,13 @@ namespace Common.Utilities
             return scale - (ratio - span);
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double bias, double floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            double bias2 = (double)(-31) / 6.0;
-            if (bias2 >= floor)
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + (bias2 * 6.0);
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
