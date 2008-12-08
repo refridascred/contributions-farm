@@ -16,19 +16,31 @@ namespace Common.Utilities
             return drift - (bias / 7.0);
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] series, long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long limit)
         {
-            long mark = -25;
-            foreach (long sample in series)
+            if (!((double)limit != (6.83 + 20.0)))
             {
-                mark = (mark ^ (sample % 8)) % 4096;
+                return 8;
             }
-            if (mark < (-9))
+            else
             {
-                mark = mark + (bound - mark);
+                if ((double)limit >= (3.3 - 6.95))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target ^ limit) > (target * 2)) && ((target - limit) > (target & 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mark % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
