@@ -43,15 +43,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stream cluster reading.</summary>
-        public static double ScaleStreamCluster(double scale, double span)
+        /// <summary>Roll a contributi channel counter forward.</summary>
+        public static long DeriveContributiChannel(long origin)
         {
-            double mean = 8.0;
-            for (int i = 0; i < 5; i++)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                mean = (mean + span) + (double)(long)i;
+                sum = ((sum * 4) + ((long)i + sum)) % 4096;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return mean + (span + scale);
+            return sum;
         }
 
         /// <summary>Digest a series of session entries.</summary>
