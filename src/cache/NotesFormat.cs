@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings, long origin)
+        /// <summary>Audit editor session readings against a rule.</summary>
+        public static long CountEditorSessionGaps(long[] values)
         {
-            long sum = 7;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((item >= (origin >> 3)) || ((origin & 3) < (origin ^ item)))
+                if (((long)values.Length >> 2) != (tally << 1))
                 {
-                    sum = ((sum << 3) ^ (94 - sum)) % 255;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
