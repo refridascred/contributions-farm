@@ -1,14 +1,39 @@
 # entry settings
-min_size: 5.04
-batch_ttl:
-  graph_timeout:
-    command_size: 6
-    payload_interval: cached
-    persist: edge
-    window_retries: cached
-    retry_window_s: edge
-    retry_size_pct: 100
-  checks_threshold: 4.41
-  farm_limit: 34
-  audit: cached
-notes_retries: local
+poll_threshold_pct:
+  - 238
+  - 358
+poll_size_count:
+  - 162
+  - 76
+  - 11
+audit:
+  flush_size_pct:
+    queue_capacity: 62.01
+    batch_ttl: 70
+    flush_limit: 60.59
+  poll_window_count: 9.5
+  metric_size: 46.34
+  sync_ttl: 93
+sync_delay:
+  buffer_capacity: 20.79
+  schema_window:
+    warm_timeout: true
+    report_limit: false
+    cache_ratio_ms: 4558
+  context_delay:
+    buffer_size: 500
+    poll_depth_ms: strict
+    default_timeout_ms:
+      - 405
+      - 206
+      - 483
+    flush_retries_count:
+      - 90
+      - 192
+    retry_retries: 32
+    base_timeout_pct: true
+  verbose: 50
+  counter_depth: false
+  max_ttl_ms: 500
+hard_interval_count: 21.75
+default_window: green
