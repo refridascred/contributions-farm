@@ -24,11 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
