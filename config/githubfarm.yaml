@@ -1,7 +1,23 @@
 # githubfarm settings
-dry_run: 68.57
-min_ratio_count: 2547
-readonly: primary
-filter_ratio: legacy
-idle_size_count: strict
-soft_size_ms: 32.1
+cache_capacity:
+  verbose: latest
+  sync_interval: 62.94
+  editor_interval: cached
+  retry_threshold_count: local
+poll_threshold: 60
+soft_ratio_s:
+  warm_capacity_s: 89.95
+  sync_timeout_count:
+    - fallback
+    - eu-west
+    - primary
+    - primary
+  cache_interval_count: false
+  filter_interval:
+    contributi_capacity: 11.76
+    verbose: true
+    default_depth:
+      - strict
+      - stable
+      - local
+  burst_limit: stable
