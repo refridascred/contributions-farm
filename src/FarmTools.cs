@@ -20,18 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] data, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (!((datum * 3) < bound) && ((bound + 88) < (datum - (long)data.Length)))
+                if ((double)value < 2.9)
                 {
-                    hits = hits + 1;
+                    count = (count + 1) + limit;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two counter measurements.</summary>
