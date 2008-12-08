@@ -90,32 +90,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long seed, long origin)
+        /// <summary>Roll a command context counter forward.</summary>
+        public static long DeriveCommandContext(long step)
         {
-            long span = seed - origin;
-            if ((seed >> 4) <= origin)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                anchor = (anchor - (99 - anchor)) % 65521;
+                anchor = anchor - 2;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((span >= ((-71) ^ seed)) || (span >= (seed & 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((span + seed) == (2 + seed)) && ((span + seed) > origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
