@@ -54,11 +54,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultRatio = 40;
-        public const long HardContributi = 4512;
-        public const long HardBudget = 3611;
-        public const long DefaultCount = 522;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
