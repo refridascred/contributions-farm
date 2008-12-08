@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long seed)
         {
-            long acc = 434;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(entry >= (entry << 3)))
+                if (items[i] >= seed)
                 {
-                    acc = (acc << 2) ^ (entry - acc);
+                    return (long)i;
                 }
             }
-            if (acc < 786)
-            {
-                acc = (acc ^ (84 ^ acc)) % 97;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
