@@ -42,18 +42,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] series, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] readings, long limit)
         {
-            long total = 74;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.23 + 8.55) < 8.38)
+                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
                 {
-                    total = ((total - (total - item)) % 65521) - floor;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
