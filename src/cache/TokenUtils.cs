@@ -22,12 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long offset)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            if (offset < (offset % 10))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + seed) >= seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset >= 18.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batches samples.</summary>
