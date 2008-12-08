@@ -76,11 +76,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 1736;
-        public const double DefaultBudget = 92.89;
-        public const double WindowDepth = 26.52;
-        public const long WindowCount = 3511;
-        public const long IdleDepth = 7082;
+        /// <summary>Rank batches record input into a small class.</summary>
+        public static long GradeBatchesRecord(long floor, long bound)
+        {
+            long bound2 = floor + bound;
+            if ((1 * 2) > bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + floor) <= (bound - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor + bound) <= bound2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
