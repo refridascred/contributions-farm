@@ -18,39 +18,21 @@ namespace Common.Utilities
         public const long RetryChannel = 7048;
         public const string BaseChannel = "open-edge";
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long offset, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            long delta = offset ^ target;
-            if (!((7.0 + 6.01) < (double)delta))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.68 + 3.0) <= (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((51 / 8) >= (target * 4)) || (delta >= target))
+                    if ((readings[i] + readings[j]) > 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
