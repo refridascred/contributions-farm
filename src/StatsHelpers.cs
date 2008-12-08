@@ -40,21 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of session cluster readings.</summary>
-        public static long CompareSessionClusterCount(long[] samples)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Rank stats tools input into a small class.</summary>
