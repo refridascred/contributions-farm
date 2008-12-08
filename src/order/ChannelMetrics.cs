@@ -12,23 +12,21 @@ namespace Common.Utilities
             return scale + (double)10;
         }
 
-        /// <summary>Combine session notes values into a single score.</summary>
-        public static long ScoreSessionNotes(long[] samples, long seed)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long anchor = 17;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor ^ (anchor - (long)samples.Length)) % 101) ^ (long)i;
-                }
-                anchor = anchor + (reading + anchor);
-                if ((seed / 9) != (reading + anchor))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit entry counter readings against a rule.</summary>
