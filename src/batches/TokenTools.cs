@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            Idle,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum * 2) >= datum)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
