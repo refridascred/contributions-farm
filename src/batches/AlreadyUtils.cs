@@ -49,13 +49,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long seed, long origin)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Ready,
+            if ((seed / 6) >= (104 & 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin >> 2) < (seed >> 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed < 0) && ((double)seed <= 1.4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((864 - origin) == (origin ^ origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
