@@ -39,18 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((3.08 + 7.1) < (double)matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 8811;
+        public const long CacheRecord = 8979;
+        public const long SoftSpan = 3375;
+        public const double BurstRecord = 17.11;
+        public const string StepRatio = "staging-1";
     }
 }
