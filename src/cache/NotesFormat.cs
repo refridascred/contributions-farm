@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the metric editor entries that pass the check.</summary>
+        public static long TallyMetricEditorOutliers(long[] readings, long seed)
         {
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((hits - seed) > hits) && (((6 - 25) >= (reading / 9)) || ((hits >> 3) <= (seed / 9))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
