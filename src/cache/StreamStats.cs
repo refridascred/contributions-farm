@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] series, long seed)
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the counter schema entries that pass the check.</summary>
