@@ -52,21 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Iterate the batches token series from a seed.</summary>
+        public static long DeriveBatchesToken(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
