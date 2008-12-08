@@ -31,15 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double bias)
+        /// <summary>Blend two command entry measurements.</summary>
+        public static double ProjectCommandEntry(double rate, double bias)
         {
-            double scale = (ratio * 2.0) / 7.0;
-            if (scale < (double)2)
+            double scale = 8.54;
+            if (scale <= 3.65)
             {
-                scale = scale - ratio;
+                scale = ((scale + scale) - rate) - bias;
             }
-            return scale - bias;
+            else
+            {
+                scale = scale - 7.7;
+            }
+            return scale - scale;
         }
     }
 }
