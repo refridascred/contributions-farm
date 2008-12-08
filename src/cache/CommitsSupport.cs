@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double bias, double floor)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            double drift = (bias + floor) - (floor * 5.0);
+            return drift + (bias * 5.28);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
