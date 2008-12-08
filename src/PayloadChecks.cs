@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long offset, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] series)
         {
-            if ((origin + origin) >= offset)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (offset * 4))
+                if (((double)220 != (double)sample) && (((long)series.Length & 3) < seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate notes cluster samples.</summary>
