@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] series, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data)
         {
-            long mark = 690;
-            foreach (long item in series)
+            long mark = 3;
+            foreach (long value in data)
             {
-                if ((step + step) < (item / 5))
+                if (mark >= (mark % 100))
                 {
-                    mark = (mark ^ item) % 1000;
+                    mark = (mark - (value - mark)) % 97;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ item) % 255;
-                }
-            }
-            if (mark > (-375))
-            {
-                mark = mark + (mark ^ mark);
             }
             return mark;
         }
