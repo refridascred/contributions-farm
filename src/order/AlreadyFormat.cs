@@ -30,12 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-            public double Score { get; set; }
+            Queued,
+            Done,
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
