@@ -54,11 +54,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 34.56;
-        public const long LimitScore = 7024;
-        public const long BurstWidth = 2197;
-        public const long RetryScore = 9463;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 93.51;
+        public const long MaxBatch = 2749;
+        public const long MaxBudget = 3623;
+        public const double IdleInterval = 9.63;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long origin, long step)
