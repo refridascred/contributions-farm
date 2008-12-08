@@ -93,15 +93,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next metrics filter value from a seed.</summary>
-        public static long DeriveMetricsFilter(long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] readings, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
     }
 }
