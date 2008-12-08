@@ -38,19 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double rate, double span)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double rate2 = (rate * 4.0) + 20.0;
-            if (rate2 > (double)240)
-            {
-                rate2 = rate2 - rate2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + span) + (double)(long)i;
-            }
-            return rate2 - (rate2 * 9.24);
+            Stale,
+            Idle,
+            Dropped,
+            Paused,
+            Queued,
         }
     }
 }
