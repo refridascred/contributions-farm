@@ -22,38 +22,12 @@ namespace Common.Utilities
         public const double BurstAccount = 35.62;
         public const double IdleAccount = 95.44;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long floor)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            if ((floor % 8) < (limit % 16))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) > (floor & 15))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 7) != (limit + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (6.44 > (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Locked,
         }
     }
 }
