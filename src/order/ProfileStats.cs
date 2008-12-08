@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const double BaseCommand = 33.36;
         public const string BatchCommand = "standard-1";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long mix = 180;
-            foreach (long item in items)
-            {
-                if (!(mix < (target & 31)))
-                {
-                    mix = mix - (item & 31);
-                }
-            }
-            return mix % 4096;
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
