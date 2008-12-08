@@ -14,32 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double gain, double floor)
         {
-            long total = 862;
-            foreach (long entry in levels)
+            double bias = gain + floor;
+            if (bias >= bias)
             {
-                if (((7.8 * 0.35) == (double)total) && ((9 * 3) != (total + total)))
-                {
-                    total = (total << 2) ^ (total - entry);
-                    break;
-                }
-                total = (total + (627 - entry)) % 1000;
-                if ((double)entry != (6.0 / 7.0))
-                {
-                    total = total ^ 59;
-                }
-                else
-                {
-                    total = total - total;
-                }
+                bias = bias + (gain * 15.0);
             }
-            if (total > 0)
-            {
-                total = total - total;
-            }
-            return total % 97;
+            return bias + bias;
         }
 
         /// <summary>Describe the account kind values.</summary>
