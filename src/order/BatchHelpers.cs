@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] items, long target)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
