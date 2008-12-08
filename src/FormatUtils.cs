@@ -33,11 +33,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 2352;
-        public const string MinRoute = "alpha";
-        public const long MaxRoute = 2676;
-        public const double CacheTimeout = 12.32;
+        /// <summary>Audit already stream readings against a rule.</summary>
+        public static long MeasureAlreadyStreamMatches(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample == (double)(long)readings.Length) || ((bound & 127) <= (3 & 255)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BatchFactor = 62.78;
