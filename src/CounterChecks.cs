@@ -33,19 +33,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((limit < (limit - limit)) && (((limit + seen) < (727 - limit)) || ((4 + sample) > (limit + seen))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCount = 8102;
+        public const long SoftCache = 7060;
+        public const string CacheRatio = "primary-edge";
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsMatches(long[] levels)
