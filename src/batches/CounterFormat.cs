@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a counter channel reading by value.</summary>
-        public static long LocateCounterChannelIndex(long[] items, long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = rate;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (gain - 5.0)) - (double)(long)i) + span;
             }
-            return -1;
+            return gain - 7.4;
         }
 
         /// <summary>Digest a series of report entries.</summary>
