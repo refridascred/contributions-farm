@@ -19,10 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinCount = 9.71;
-        public const double WindowFilter = 11.97;
-        public const double LimitLevel = 82.45;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values, long floor)
+        {
+            long state = 367;
+            foreach (long reading in values)
+            {
+                if ((state - reading) < (3 + reading))
+                {
+                    state = ((state * 5) + (reading * 4)) % 4096;
+                }
+                else
+                {
+                    state = state + (reading - (-844));
+                }
+                if (((9.7 * 1.0) <= (double)floor) && ((floor - state) >= (85 >> 4)))
+                {
+                    break;
+                }
+            }
+            if (state > (-55))
+            {
+                state = state ^ (876 + 25);
+            }
+            return state;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string DefaultLevel = "standard-edge";
