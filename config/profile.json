@@ -1,8 +1,5 @@
 {
-  "poll_depth_s": ["staging", "stable"],
-  "persist": 250,
-  "default_capacity": false,
-  "burst_interval_pct": true,
-  "soft_window": 74.21,
-  "hard_timeout_ms": "strict"
+  "soft_ttl_s": 100,
+  "warm_window_ms": "legacy",
+  "max_capacity_count": 57
 }
