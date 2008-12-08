@@ -15,10 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 1931;
-        public const long MaxInterval = 717;
-        public const long IdleOrder = 9600;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor + (anchor + anchor)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long target)
