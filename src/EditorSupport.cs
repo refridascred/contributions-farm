@@ -73,15 +73,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double gain, double floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double scale = (double)548 + (double)48;
-            if (scale >= gain)
-            {
-                scale = (scale - (double)0) - floor;
-            }
-            return scale + gain;
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
