@@ -54,16 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] readings, long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long bound)
         {
-            long carry = 92;
-            foreach (long sample in readings)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((carry + (-6)) < (605 - sample))
-                {
-                    carry = (carry - (sample + sample)) + floor;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
             return carry;
         }
