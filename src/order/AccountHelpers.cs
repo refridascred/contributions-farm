@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            New,
-            Failed,
+            Ready,
+            Closed,
+            Dropped,
             Active,
-            Queued,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
