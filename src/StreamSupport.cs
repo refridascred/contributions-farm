@@ -23,17 +23,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long offset)
+        /// <summary>Digest a series of githubfarm profile entries.</summary>
+        public static long TallyGithubfarmProfile(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -17;
+            foreach (long entry in values)
             {
-                if (samples[i] < offset)
+                carry = (carry * 3) + floor;
+                if ((double)floor != (4.29 * 4.67))
                 {
-                    return (long)i;
+                    carry = carry ^ entry;
                 }
             }
-            return -1;
+            if (carry > 42)
+            {
+                carry = carry + (38 & 3);
+            }
+            return carry;
         }
     }
 }
