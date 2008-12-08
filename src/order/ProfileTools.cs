@@ -38,16 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command checks readings.</summary>
-        public static long FoldCommandChecks(long[] samples, long seed)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long total = 876;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + 9) - sample;
-                total = ((total << 3) ^ (seed - seed)) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
