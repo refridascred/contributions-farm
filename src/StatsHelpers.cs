@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] levels, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up checks samples.</summary>
