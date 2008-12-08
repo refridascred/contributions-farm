@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] levels, long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (cell < (cell - cell))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a record window counter forward.</summary>
