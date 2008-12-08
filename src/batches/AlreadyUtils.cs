@@ -61,18 +61,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((44 + hits) >= (hits + hits))
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
                 {
-                    hits = (hits + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
