@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile filter entries that pass the check.</summary>
-        public static long MeasureProfileFilterOutliers(long[] values, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((-7) <= (tally - tally))
-                {
-                    tally = ((tally + 2) - reading) + offset;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Blend two cluster metric measurements.</summary>
