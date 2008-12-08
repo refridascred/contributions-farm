@@ -50,13 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            long result = target;
+            for (int i = 0; i < 4; i++)
+            {
+                result = (result - (result % 60)) % 255;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
