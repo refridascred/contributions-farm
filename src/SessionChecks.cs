@@ -24,14 +24,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Stale,
-            Queued,
-            Pending,
-            Locked,
-            Failed,
+            Retry,
+            Ready,
+            Paused,
+            Done,
+            New,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
