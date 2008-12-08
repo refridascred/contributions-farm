@@ -50,13 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double bias, double offset)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            double gain = offset - (double)227;
+            if (gain <= (gain - offset))
+            {
+                gain = (gain + (offset + gain)) - bias;
+            }
+            return gain - offset;
         }
 
         /// <summary>Hold a metric record.</summary>
