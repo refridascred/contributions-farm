@@ -1,8 +1,14 @@
 # entry settings
-burst_size_pct: 1024
-payload_depth: 250
-poll_interval:
-  - stable
-  - staging
-default_delay_pct: strict
-record_window: primary
+min_size: 5.04
+batch_ttl:
+  graph_timeout:
+    command_size: 6
+    payload_interval: cached
+    persist: edge
+    window_retries: cached
+    retry_window_s: edge
+    retry_size_pct: 100
+  checks_threshold: 4.41
+  farm_limit: 34
+  audit: cached
+notes_retries: local
