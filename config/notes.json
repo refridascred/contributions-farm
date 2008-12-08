@@ -1,18 +1,6 @@
 {
-  "min_limit_count": 20,
-  "poll_timeout_ms": "open",
-  "burst_ttl_count": {
-    "batch_capacity_count": 0.98,
-    "account_interval": "staging",
-    "dry_run": {
-      "account_retries": 30,
-      "base_timeout_ms": "local",
-      "tools_threshold": "strict",
-      "max_ttl_s": 2,
-      "tools_capacity": ["staging", "edge", "eu-west"]
-    }
-  },
-  "cluster_interval": true,
-  "max_timeout_s": ["latest", "edge", "edge"],
-  "persist": [138, 36, 350]
+  "retry_depth_ms": [153, 415, 403, 412],
+  "route_retries": "open",
+  "retry_ratio_count": "standard",
+  "session_capacity": "cached"
 }
