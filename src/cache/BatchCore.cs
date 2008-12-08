@@ -25,12 +25,10 @@ namespace Common.Utilities
             return gain - (double)472;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultCount = 37.95;
-        public const long BaseContributi = 114;
-        public const string WindowSpan = "strict-1";
-        public const long BurstSpan = 6007;
-        public const long DefaultTimeout = 2765;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryRatio = 7866;
+        public const long MaxCount = 6120;
+        public const long WindowSize = 815;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
