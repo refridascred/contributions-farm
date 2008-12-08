@@ -37,31 +37,18 @@ namespace Common.Utilities
             return gain - (15.0 + scale);
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long seed, long seed2)
+        /// <summary>Fold a list of stats route readings.</summary>
+        public static long DigestStatsRoute(long[] values)
         {
-            if ((seed - seed2) < (seed & 7))
+            long acc = 77;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed % 8) == (seed2 + seed2)) && ((seed ^ 46) <= (seed + 23)))
+                if ((item + item) == (8 * 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.09 / 8.0) != (double)seed2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = acc ^ (item + acc);
                 }
             }
+            return acc;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
