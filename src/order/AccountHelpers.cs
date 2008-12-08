@@ -33,12 +33,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchDepth = 7540;
-        public const long CacheRoute = 3860;
-        public const double WindowRoute = 79.33;
-        public const string HardRoute = "fallback";
-        public const long SoftRoute = 8726;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double bias)
+        {
+            double scale = (double)(57 * 2);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale - 8.9) + (double)(long)i) - ratio;
+            }
+            return scale + (bias * 13.0);
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
