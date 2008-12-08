@@ -1,15 +1,14 @@
 {
-  "hard_size_ms": [368, 288, 49],
-  "flush_retries_count": 36,
-  "cache_retries": "blue",
-  "commits_size": {
-    "default_interval": [487, 236, 191, 237],
-    "context_size": {
-      "stats_depth": 500,
-      "default_capacity_pct": 1024,
-      "base_ttl": false,
-      "poll_retries": "standard"
+  "compress": [217, 17, 210],
+  "min_ttl_pct": {
+    "enabled": 28,
+    "graph_ttl": {
+      "layout_retries": 11.36,
+      "idle_window_ms": 12.99,
+      "min_ttl_count": [153, 230],
+      "batch_threshold_pct": 36.83
     },
-    "soft_window": true
-  }
+    "max_delay_pct": 98.21
+  },
+  "strict": 24.25
 }
