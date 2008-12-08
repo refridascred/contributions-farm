@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Iterate the command schema series from a seed.</summary>
+        public static long IterateCommandSchema(long origin)
         {
-            Paused,
-            Pending,
-            Idle,
-            Retry,
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor ^ (anchor << 3)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
