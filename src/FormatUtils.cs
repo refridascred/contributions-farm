@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] items)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double scale = bias;
+            if (scale < scale)
             {
-                if (((long)items.Length / 8) >= (tally + sample))
-                {
-                    tally = tally + 2;
-                }
+                scale = scale - floor;
             }
-            return tally;
+            return scale - 1.0;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
