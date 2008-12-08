@@ -14,16 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total - total) % 101;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public bool Count { get; set; }
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many tools token samples are out of range.</summary>
