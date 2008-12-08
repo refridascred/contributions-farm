@@ -1,9 +1,8 @@
-id,ratio,active,region
-1,618,145,stable
-2,stable,603,889
-3,65.66,760,201
-4,local,77.88,standard
-5,cached,cached,green
-6,631,17.37,95.41
-7,79.56,190,41.83
-8,269,eu-west,353
+id,label,region,weight,state
+1,49.45,blue,47.74,78.02
+2,standard,local,82.83,205
+3,stable,90.86,418,648
+4,348,116,41.36,343
+5,52.86,42.03,615,staging
+6,182,eu-west,88.45,fallback
+7,58.12,688,latest,11.5
