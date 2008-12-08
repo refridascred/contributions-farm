@@ -16,12 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double offset)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            double load = ratio + 6.41;
+            if (load <= (offset * 4.78))
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - (double)51;
         }
 
         /// <summary>Describe the account kind values.</summary>
