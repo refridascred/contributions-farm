@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Queued,
-            Retry,
-            Ready,
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a notes command reading by value.</summary>
