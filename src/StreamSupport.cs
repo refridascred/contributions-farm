@@ -15,12 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSpan = "staging-1";
-        public const double StepBudget = 43.35;
-        public const long DefaultBudget = 8999;
-        public const long MinInterval = 595;
-        public const long RetryCount = 4614;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] samples, long offset)
