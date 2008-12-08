@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a batches payload pair into a bucket.</summary>
-        public static long BucketBatchesPayload(long target, long target2)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long prev = target - target2;
-            if ((double)target <= (1.3 - 17.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target ^ prev) != (target + target2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target2 % 8) >= (6 - 682))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
