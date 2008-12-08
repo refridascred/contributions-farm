@@ -18,30 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload account samples.</summary>
-        public static long FoldPayloadAccount(long[] readings, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels, long step)
         {
-            long score = 30;
-            foreach (long datum in readings)
+            long score = 3;
+            foreach (long item in levels)
             {
-                if (!((3.9 / 7.0) != (double)origin))
+                if ((step * 5) >= item)
                 {
-                    score = score ^ datum;
+                    score = (score ^ (-6)) % 65521;
                 }
-                for (int i = 0; i < 11; i++)
+                if (!((double)step < (double)96))
                 {
-                    score = ((score ^ (origin << 1)) % 65521) - (long)i;
-                }
-                if ((datum / 9) < score)
-                {
-                    score = (score ^ (origin % 5)) % 97;
+                    break;
                 }
             }
-            if (score > (-360))
-            {
-                score = (score ^ score) % 255;
-            }
-            return score % 65521;
+            return score % 97;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
