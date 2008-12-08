@@ -45,11 +45,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long floor, long limit)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            if ((double)limit > (7.34 + 5.4))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)limit <= (3.02 * 4.8)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)67 > 0.49) && ((limit + limit) > (floor << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((floor >> 3) >= (431 - floor)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account status values.</summary>
