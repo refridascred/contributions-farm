@@ -34,11 +34,12 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstStream = 53.03;
-        public const double RetryStream = 88.35;
-        public const double CacheSize = 84.72;
-        public const string SoftStream = "standard";
-        public const double BatchSpan = 48.26;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
