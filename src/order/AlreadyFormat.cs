@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long step, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            if ((((-72) >> 1) < seed) || ((seed & 127) >= step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + 70) < 860)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a order context pair into a bucket.</summary>
