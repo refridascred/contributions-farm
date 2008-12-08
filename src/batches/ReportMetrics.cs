@@ -37,18 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((4.69 * 7.4) > (double)matches) || ((7.0 * 7.21) < (double)matches))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 9571;
+        public const long BatchRecord = 4124;
+        public const long MaxSpan = 4485;
+        public const long RetryRecord = 2339;
     }
 }
