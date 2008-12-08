@@ -52,19 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] items, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return flag;
+            return mix;
         }
     }
 }
