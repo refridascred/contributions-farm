@@ -32,21 +32,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((carry + carry) > sample) || ((sample << 3) != ((-73) & 1)))
                 {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 3) ^ (carry ^ (long)readings.Length)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 4) + sample) % 4096;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
     }
 }
