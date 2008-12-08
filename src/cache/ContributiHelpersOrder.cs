@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long bound, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            if (bound < (70 % 24))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (sum ^ (origin % 16)) - (long)i2;
-                }
-                sum = sum + ((long)i ^ sum);
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((double)origin > (6.61 - 7.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a profile header.</summary>
