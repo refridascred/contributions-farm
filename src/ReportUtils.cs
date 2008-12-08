@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryTimeout = 77.45;
+        public const long SoftTimeout = 2949;
+        public const string IdleGraph = "standard-v2";
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
