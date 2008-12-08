@@ -47,18 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] series, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] series, long origin)
         {
-            long seen = 0;
+            bool ok = true;
             foreach (long reading in series)
             {
-                if (!!((double)seen != (6.46 - 8.0)))
+                if (reading != origin)
                 {
-                    seen = ((seen + 2) + reading) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
