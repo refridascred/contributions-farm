@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Locate a metric context reading by value.</summary>
+        public static long LocateMetricContextIndex(long[] series, long offset)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
