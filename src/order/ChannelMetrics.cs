@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long seed)
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc + (seed + acc);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
