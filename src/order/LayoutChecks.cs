@@ -58,19 +58,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] series, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long limit, long target)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long offset = limit - target;
+            if ((offset << 1) >= (limit << 1))
             {
-                if (item <= floor)
+                return 2;
+            }
+            else
+            {
+                if (offset >= (offset - offset))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((17.0 * 2.0) != (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((0 ^ target) <= (target - offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
