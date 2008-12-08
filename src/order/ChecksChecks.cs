@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long origin, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] data, long offset)
         {
-            if ((1 + offset) <= (origin + offset))
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin - offset) >= origin)
+                if (value > offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + 96) < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a githubfarm route sample.</summary>
