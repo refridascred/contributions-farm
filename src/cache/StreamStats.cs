@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (((sum << 3) ^ sum) % 97) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
