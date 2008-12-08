@@ -1,8 +1,6 @@
 {
-  "editor_retries": "cached",
-  "readonly": true,
-  "hard_ttl_count": 80,
-  "payload_window": 996,
-  "warm_delay": 832,
-  "batch_depth_s": [151, 395]
+  "batch_capacity": "fallback",
+  "min_depth_pct": 74,
+  "burst_capacity_count": [35, 94, 21, 411],
+  "base_size": [60, 222, 246, 219]
 }
