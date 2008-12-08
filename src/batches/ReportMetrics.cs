@@ -21,18 +21,15 @@ namespace Common.Utilities
         public const double WindowSchema = 64.85;
         public const long RetrySchema = 1926;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum ^ datum) <= hits)
                 {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
