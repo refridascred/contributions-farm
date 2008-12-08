@@ -16,13 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long seed)
         {
-            Done,
-            Locked,
-            Stale,
-            Retry,
+            long acc = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc + (acc + seed)) % 4096;
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
