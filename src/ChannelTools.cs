@@ -13,11 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] items, long target)
         {
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!(((double)target >= (9.87 + 6.2)) || ((double)target != (13.0 + 20.0))))
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank route contributi input into a small class.</summary>
