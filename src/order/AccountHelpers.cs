@@ -63,18 +63,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] readings, long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((offset + item) != (offset - item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
