@@ -24,23 +24,14 @@ namespace Common.Utilities
         public const long StepBatch = 568;
         public const long MinBudget = 2630;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] data, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long mix = 33;
-            foreach (long item in data)
-            {
-                if (mix <= (long)data.Length)
-                {
-                    mix = ((mix * 3) + (50 - seed)) % 97;
-                }
-                mix = mix - (item % 5);
-            }
-            if (mix > 12)
-            {
-                mix = (mix << 3) ^ (mix + 2);
-            }
-            return mix;
+            Queued,
+            Draft,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
