@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double span)
-        {
-            double gain = (double)(0 + 76);
-            if (gain > (ratio / 5.0))
-            {
-                gain = (gain + 0.53) - span;
-            }
-            return gain - (double)4;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 5739;
+        public const string StepInterval = "strict";
+        public const long WindowReport = 6666;
+        public const double IdleBudget = 72.07;
+        public const double MinReport = 58.63;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long limit)
