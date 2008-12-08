@@ -31,14 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Ready,
-            Pending,
-            Paused,
-            Done,
-            Idle,
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
