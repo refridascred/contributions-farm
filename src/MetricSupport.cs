@@ -41,23 +41,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data, long target)
         {
-            long total = 776;
-            foreach (long item in series)
+            long carry = 8;
+            foreach (long datum in data)
             {
-                total = (total * 4) + (596 + item);
-                if (38 <= (item % 2))
-                {
-                    break;
-                }
+                carry = (((carry - carry) % 255) + datum) + target;
             }
-            if (total < (-231))
-            {
-                total = total - (total + 7);
-            }
-            return total % 97;
+            return carry % 4096;
         }
     }
 }
