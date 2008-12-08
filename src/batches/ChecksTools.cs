@@ -30,11 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "open-v2";
-        public const long IdleAccount = 8509;
-        public const long MaxDepth = 5575;
-        public const long StepAccount = 7990;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
