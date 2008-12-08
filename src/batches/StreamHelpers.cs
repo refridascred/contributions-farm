@@ -22,11 +22,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double rate, double bias)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long bound, long floor)
         {
-            double bias2 = rate + rate;
-            return (bias2 + (9.7 + 16.0)) + bias;
+            long slot = bound ^ floor;
+            if ((floor % 24) != (14 + floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot * 3) > 17)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Adjust a stream cluster reading.</summary>
