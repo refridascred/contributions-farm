@@ -28,36 +28,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long offset, long offset2)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long offset)
         {
-            if ((offset2 & 1) <= (offset ^ offset2))
+            if (origin >= offset)
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((3.46 * 6.0) <= (double)offset)
+                if (((20.0 + 6.95) == (double)offset) || ((double)offset == (double)origin))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)offset >= (double)offset2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset2 - offset) <= offset2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
