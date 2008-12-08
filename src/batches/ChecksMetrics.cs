@@ -42,22 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] samples, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = 20;
+            foreach (long item in data)
             {
-                if ((entry + hits) >= 8)
-                {
-                    hits = (hits + 2) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (((acc + ((-7) - 3)) % 65521) - item) - step;
             }
-            return hits;
+            if (acc > 52)
+            {
+                acc = ((acc << 3) ^ (acc & 63)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
