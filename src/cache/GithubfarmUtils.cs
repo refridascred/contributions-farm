@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the layout format entries that pass the check.</summary>
-        public static long AuditLayoutFormatMatches(long[] readings, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((7 > (tally - cell)) && ((828 + floor) > (floor + cell)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Draft,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a already header.</summary>
