@@ -32,18 +32,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics session readings.</summary>
-        public static long FoldMetricsSession(long[] series, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long bound, long limit)
         {
-            long mix = 0;
-            foreach (long datum in series)
+            if ((bound << 2) <= (bound << 3))
             {
-                if ((mix >> 5) != ((-497) ^ step))
+                return 5;
+            }
+            else
+            {
+                if (((double)bound != (14.0 * 16.0)) && ((5 % 100) > (bound - 57)))
                 {
-                    mix = ((mix * 4) + (mix ^ step)) + datum;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return mix;
         }
     }
 }
