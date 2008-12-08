@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank notes report input into a small class.</summary>
-        public static long RankNotesReport(long bound, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] samples)
         {
-            if ((5.3 - 18.0) >= (double)origin)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 8) < (origin - origin))
+                if ((((0 + tally) >= cell) && ((tally + cell) > (tally * 2))) || ((cell * 3) != (cell ^ 320)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
