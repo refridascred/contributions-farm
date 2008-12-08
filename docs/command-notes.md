@@ -1,11 +1,11 @@
 # Command notes
 
-Each report is validated before it reaches the graph queue.
-The route report groups every already by profile.
-Defaults for entry live in the config folder and can be overridden per environment.
+Keep batch and notes names short and lowercase.
+Run the format check before changing any window limits.
+Use schema settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Document new record fields
-- Prefer route defaults
-- Log every cache change
+- Log every stream change
+- Review graph limits each release
+- Keep metrics values small
