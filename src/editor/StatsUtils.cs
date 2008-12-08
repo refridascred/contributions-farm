@@ -36,32 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long bound, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] data, long seed)
         {
-            long lane = bound + target;
-            if ((bound * 4) < (bound & 3))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.0 - 0.28) >= (double)target)
+                if (!(((double)count == (double)seed) || ((seed / 6) < (entry - entry))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target >= lane)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a format options.</summary>
