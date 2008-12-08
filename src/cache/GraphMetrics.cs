@@ -32,13 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
