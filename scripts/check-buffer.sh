@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=465
+BUFFER_LIMIT=316
 log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 12); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in fallback blue edge stable; do
-    log "checking ${item}"
-done
