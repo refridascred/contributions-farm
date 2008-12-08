@@ -45,11 +45,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxSize = 6353;
-        public const double MinDepth = 60.27;
-        public const long IdleMetric = 5300;
-        public const long CacheLevel = 2769;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinBudget = 5909;
+        public const long MinMetrics = 9851;
+        public const double StepMetrics = 61.69;
+        public const long WindowDepth = 1624;
 
         /// <summary>Audit cluster context readings against a rule.</summary>
         public static long AuditClusterContextMatches(long[] levels)
