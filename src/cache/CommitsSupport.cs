@@ -45,22 +45,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many stats metric samples are out of range.</summary>
-        public static long TallyStatsMetricHits(long[] items)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value / 4) > value)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of already graph readings.</summary>
