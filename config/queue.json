@@ -1,15 +1,6 @@
 {
-  "dry_run": 49.33,
-  "order_capacity": 93.36,
-  "poll_capacity_pct": "open",
-  "strict": 21.43,
-  "base_window": {
-    "record_retries": {
-      "base_window_pct": 3565,
-      "burst_limit_count": 56.86,
-      "farm_limit": [287, 46, 156, 42]
-    },
-    "sync_ratio": 39.85,
-    "command_ratio": true
-  }
+  "min_timeout_pct": [268, 475, 255],
+  "default_delay": "latest",
+  "default_depth_pct": 69.26,
+  "hard_window_ms": 500
 }
