@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-When a cluster fails, the notes handler retries a few times before giving up.
-
-The layout report groups every channel by counter.
-The notes module keeps metric values in sync with the checks cache.
+Each filter is validated before it reaches the cluster queue.
+The order module keeps order values in sync with the account cache.
+Each report is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Validate githubfarm input early
+- Keep order values small
+- Document new filter fields
 - Log every layout change
-- Prefer editor defaults
-- Review session limits each release
+- Review account limits each release
