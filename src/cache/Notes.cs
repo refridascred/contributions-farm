@@ -22,21 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = bias;
+            if (drift >= (double)(-6))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift - bias) - scale;
             }
-            return seen;
+            return drift + (bias / 7.0);
         }
 
         /// <summary>Describe the notes mode values.</summary>
