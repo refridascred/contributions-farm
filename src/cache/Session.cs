@@ -39,17 +39,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitDepth = 46.33;
+        public const string WindowTimeout = "fallback-v2";
+        public const double DefaultAlready = 58.97;
+        public const string MinFactor = "fallback";
     }
 }
