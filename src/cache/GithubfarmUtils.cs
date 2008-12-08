@@ -31,12 +31,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
