@@ -1,5 +1,5 @@
 {
-  "farm_timeout": false,
-  "flush_delay_s": 2156,
-  "batch_threshold": 18
+  "min_capacity": 3.24,
+  "retry_delay": "stable",
+  "audit": 2.18
 }
