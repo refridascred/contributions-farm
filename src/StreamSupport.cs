@@ -25,19 +25,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate batches profile readings against a bound.</summary>
-        public static bool VerifyBatchesProfileRange(long[] levels, long step)
+        /// <summary>Fold a list of layout farm readings.</summary>
+        public static long ScoreLayoutFarm(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long score = 150;
+            foreach (long item in data)
             {
-                if (datum < step)
+                if ((score >> 2) > ((-71) - item))
                 {
-                    flag = false;
-                    break;
+                    score = (score - (score / 6)) % 65521;
                 }
             }
-            return flag;
+            if (score < 110)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
     }
 }
