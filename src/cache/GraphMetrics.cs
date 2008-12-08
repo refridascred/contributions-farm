@@ -32,13 +32,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
