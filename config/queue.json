@@ -1,6 +1,12 @@
 {
-  "checks_depth": 26,
-  "enabled": [466, 239, 479],
-  "compress": "blue",
-  "layout_retries": 85
+  "cache_ttl": "standard",
+  "sync_delay": 1629,
+  "idle_retries_s": [315, 275, 102, 371],
+  "idle_interval_count": {
+    "warm_capacity_count": "green",
+    "compress": 15.19,
+    "flush_delay": "blue",
+    "dry_run": "staging",
+    "format_capacity": ["standard", "green", "latest", "standard"]
+  }
 }
