@@ -29,18 +29,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (((reading + reading) <= (reading - reading)) || (((-487) >> 4) != (50 + (long)readings.Length)))
+                result = (result ^ (target - result)) % 101;
+                if ((double)target < 6.2)
                 {
-                    count = count + 1;
+                    result = result + (result - target);
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the stream class values.</summary>
