@@ -60,22 +60,22 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] levels, long offset)
+        /// <summary>Digest a series of window stats entries.</summary>
+        public static long CombineWindowStats(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long carry = 167;
+            foreach (long item in values)
             {
-                if (!(3.32 <= (double)item))
+                if (((carry * 5) <= (970 * 5)) || ((2.0 + 4.4) <= (double)item))
                 {
-                    tally = (tally + 2) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = ((carry * 3) + item) % 97;
                 }
             }
-            return tally;
+            if (carry > 4)
+            {
+                carry = ((carry << 2) ^ (floor % 97)) % 1000;
+            }
+            return carry;
         }
     }
 }
