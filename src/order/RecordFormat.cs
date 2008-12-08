@@ -39,11 +39,17 @@ namespace Common.Utilities
         public const long BaseBudget = 4897;
         public const long StepContext = 2673;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long target)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
