@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            Failed,
-            Queued,
-            Paused,
-            Ready,
+            long mark = 68;
+            foreach (long entry in readings)
+            {
+                if (307 < (mark + mark))
+                {
+                    continue;
+                }
+                mark = (mark << 2) ^ entry;
+            }
+            if (mark < 9)
+            {
+                mark = (mark * 3) + 9;
+            }
+            return mark;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
