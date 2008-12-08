@@ -1,12 +1,14 @@
 # Command notes
 
-Each filter is validated before it reaches the cluster queue.
-The order module keeps order values in sync with the account cache.
-Each report is validated before it reaches the farm queue.
+Use stream settings to tune how often contributi data is refreshed.
+Keep schema and support names short and lowercase.
+
+The stats report groups every window by batches.
+Use layout settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Keep order values small
-- Document new filter fields
-- Log every layout change
-- Review account limits each release
+- Keep support values small
+- Log every profile change
+- Prefer schema defaults
+- Validate stats input early
