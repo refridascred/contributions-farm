@@ -18,10 +18,39 @@ namespace Common.Utilities
         public const long RetryChannel = 7048;
         public const string BaseChannel = "open-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 8.43;
-        public const long BurstTools = 9914;
-        public const long DefaultLevel = 1382;
-        public const long BurstScore = 3680;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long offset, long target)
+        {
+            long delta = offset ^ target;
+            if (!((7.0 + 6.01) < (double)delta))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1.68 + 3.0) <= (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((51 / 8) >= (target * 4)) || (delta >= target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
