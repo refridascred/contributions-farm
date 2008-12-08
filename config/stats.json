@@ -1,5 +1,12 @@
 {
-  "command_timeout": 8989,
-  "flush_capacity_pct": 4865,
-  "checks_interval": 1024
+  "dry_run": "local",
+  "hard_depth_ms": 54.25,
+  "audit": [137, 180, 244],
+  "support_timeout": 39.7,
+  "record_capacity": {
+    "min_retries_count": 5106,
+    "idle_threshold_s": ["eu-west", "fallback"],
+    "retry_window_count": false,
+    "warm_timeout": "local"
+  }
 }
