@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long carry = 76;
-            foreach (long sample in readings)
-            {
-                carry = (carry ^ sample) % 1000;
-            }
-            return carry;
+            Synced,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
