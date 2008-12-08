@@ -50,15 +50,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] data, long bound)
         {
-            double scale = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale - (bias * 4.6)) - (double)(long)i) + rate;
+                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
