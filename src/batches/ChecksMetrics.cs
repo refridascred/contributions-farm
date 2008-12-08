@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Locate a notes metrics reading by value.</summary>
+        public static long LocateNotesMetricsIndex(long[] items, long step)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next filter value.</summary>
