@@ -30,18 +30,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] levels)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((0.38 + 10.0) <= (double)reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Dropped,
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Classify a window tools pair into a bucket.</summary>
