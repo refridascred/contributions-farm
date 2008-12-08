@@ -22,38 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor commits value against two limits.</summary>
-        public static long RankEditorCommits(long limit, long bound)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            if ((146 & 3) <= (limit >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit >= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit ^ bound) <= (bound / 8)) || ((387 & 15) == (bound % 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + limit) == (limit + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
