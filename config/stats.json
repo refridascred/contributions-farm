@@ -1,5 +1,5 @@
 {
-  "cluster_timeout": false,
-  "dry_run": true,
-  "queue_interval": ["green", "standard"]
+  "profile_ratio": 86,
+  "min_size_pct": 76.48,
+  "base_timeout_s": "blue"
 }
