@@ -1,11 +1,8 @@
 {
-  "dry_run": "legacy",
-  "default_ttl": {
-    "batch_window_s": "local",
-    "soft_ratio_ms": "legacy",
-    "max_limit_count": 11.87,
-    "route_threshold": "staging"
-  },
-  "queue_delay": 100,
-  "payload_timeout": "fallback"
+  "sync_size_count": 4291,
+  "default_interval_count": "legacy",
+  "retry_threshold_s": "staging",
+  "default_ratio": 40.32,
+  "strict": 34.63,
+  "batches_delay": "edge"
 }
