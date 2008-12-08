@@ -36,19 +36,24 @@ namespace Common.Utilities
         public const long HardChecks = 7818;
         public const long StepChecks = 1972;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] data, long seed)
+        /// <summary>Rank report cluster input into a small class.</summary>
+        public static long ClassifyReportCluster(long origin, long target)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            if ((double)62 >= (double)target)
             {
-                if (reading != seed)
+                return 2;
+            }
+            else
+            {
+                if (((6 >> 4) <= origin) && ((origin + origin) >= (target + target)))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
