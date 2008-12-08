@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a already account value against two limits.</summary>
-        public static long RankAlreadyAccount(long step, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values)
         {
-            long span = step ^ bound;
-            if ((double)bound <= (4.28 / 7.0))
+            long state = 95;
+            foreach (long datum in values)
             {
-                return 3;
+                state = state + (datum + 2);
+                state = (state - (datum % 2)) % 65521;
             }
-            else
+            if (state < 18)
             {
-                if ((bound % 100) <= 53)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((span - step) > (step << 2)) || ((bound / 6) <= bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)(-64) <= (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                state = ((state * 3) + 496) % 4096;
             }
+            return state % 1000;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
