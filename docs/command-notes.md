@@ -1,14 +1,15 @@
 # Command notes
 
-When a farm fails, the filter handler retries a few times before giving up.
-The entry module keeps channel values in sync with the queue cache.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Run the format check before changing any graph limits.
+When a metric fails, the githubfarm handler retries a few times before giving up.
 
-Each route is validated before it reaches the cluster queue.
-Run the commits check before changing any metrics limits.
-Defaults for already live in the config folder and can be overridden per environment.
+The filter module keeps contributi values in sync with the token cache.
+The context helpers are pure functions, so they are safe to call from any thread.
+Use window settings to tune how often schema data is refreshed.
 
 ## Guidelines
 
-- Log every graph change
-- Document new counter fields
-- Review stream limits each release
+- Document new commits fields
+- Log every token change
+- Validate session input early
