@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 9409;
-        public const double WindowQueue = 70.77;
-        public const long SoftBudget = 1801;
-        public const long DefaultBudget = 2178;
+        /// <summary>Fold a list of order graph readings.</summary>
+        public static long TotalOrderGraph(long[] samples, long offset)
+        {
+            long mark = 87;
+            foreach (long datum in samples)
+            {
+                if ((double)10 < (double)datum)
+                {
+                    mark = (((mark << 2) ^ (datum ^ mark)) % 65521) - offset;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] levels, long floor)
