@@ -70,15 +70,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a counter layout reading.</summary>
-        public static double AdjustCounterLayout(double ratio, double floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] readings, long offset)
         {
-            double weight = (ratio - ratio) - (floor * 7.12);
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                weight = (weight + (3.9 - floor)) + (double)(long)i;
+                if ((offset + item) != (offset - item))
+                {
+                    matches = matches + 1;
+                }
             }
-            return weight + ratio;
+            return matches;
         }
     }
 }
