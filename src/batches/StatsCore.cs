@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Combine batch command values into a single score.</summary>
+        public static long TotalBatchCommand(long[] levels, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long mark = 780;
+            foreach (long item in levels)
             {
-                score = (score - ((long)i & 127)) % 1000;
-                if (!(((long)i + score) < score))
+                if ((item * 4) < item)
                 {
-                    score = score ^ 698;
+                    mark = (mark - (25 * 2)) % 65521;
                 }
-                score = (score - (score - score)) % 101;
-                score = ((score * 2) + (long)i) % 101;
+                else
+                {
+                    mark = ((mark << 3) ^ item) % 255;
+                }
+                if (!((seed + item) >= (mark / 7)))
+                {
+                    break;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Blend two report measurements.</summary>
