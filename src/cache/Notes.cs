@@ -69,11 +69,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 7683;
-        public const long BaseCount = 5237;
-        public const long DefaultTimeout = 390;
-        public const long MinCount = 5660;
-        public const double WindowSpan = 67.03;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((0.19 / 9.0) != (double)limit)
+                {
+                    carry = (carry + ((long)i + limit)) % 101;
+                    continue;
+                }
+                else
+                {
+                    carry = ((carry * 2) + limit) % 65521;
+                }
+                if ((7.2 - 0.8) > (double)carry)
+                {
+                    carry = (carry ^ ((long)i + carry)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
