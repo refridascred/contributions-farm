@@ -63,11 +63,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitTimeout = 73.35;
-        public const long BatchSize = 1450;
-        public const long IdleScore = 2333;
-        public const long MaxWidth = 4259;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public double Owner { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Grade a editor format value against two limits.</summary>
         public static long ClassifyEditorFormat(long limit, long step)
