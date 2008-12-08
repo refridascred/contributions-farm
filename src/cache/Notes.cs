@@ -60,19 +60,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Grade a tools token value against two limits.</summary>
+        public static long RankToolsToken(long target, long bound)
         {
-            long state = 37;
-            foreach (long entry in data)
+            if ((target * 5) == (target ^ target))
             {
-                state = (state << 2) ^ (entry & 127);
-                if (6.75 < (double)entry)
+                return 8;
+            }
+            else
+            {
+                if (((target & 7) > target) || ((9.0 / 4.0) <= (double)bound))
                 {
-                    state = (state + (entry - entry)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (bound / 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return state % 1000;
         }
     }
 }
