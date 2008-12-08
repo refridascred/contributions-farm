@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double scale, double floor)
         {
-            Retry,
-            Ready,
-            Idle,
-            Queued,
+            double gain = (scale + scale) + (double)(-9);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + gain) - (double)(long)i) + floor;
+            }
+            return gain + gain;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
