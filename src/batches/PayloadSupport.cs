@@ -33,21 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryBudget = 6719;
+        public const string LimitSupport = "strict-edge";
+        public const string DefaultScore = "legacy";
+        public const double DefaultSupport = 45.93;
     }
 }
