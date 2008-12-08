@@ -63,16 +63,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result << 2) ^ (result * 4)) % 97;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            double bias = 16.0 * 4.6;
+            return (bias - (gain * 9.64)) + floor;
         }
     }
 }
