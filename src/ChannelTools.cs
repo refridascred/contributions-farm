@@ -23,9 +23,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepSpan = 23.86;
-        public const long BatchStats = 8265;
-        public const long StepStats = 6051;
+        /// <summary>Rank route contributi input into a small class.</summary>
+        public static long BucketRouteContributi(long limit, long floor)
+        {
+            if ((limit + limit) > floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((25 + floor) < 38)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
