@@ -36,18 +36,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!((matches - reading) != (reading * 2)))
+                if ((count & 31) > count)
                 {
-                    matches = matches + 2;
+                    count = ((count + 3) ^ item) + bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next report value.</summary>
