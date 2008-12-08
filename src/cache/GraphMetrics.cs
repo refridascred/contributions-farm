@@ -44,22 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels, long bound)
+        /// <summary>Match up stream cache samples.</summary>
+        public static long MatchStreamCacheCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)matches == (5.0 * 1.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 3) ^ cell) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of farm entry readings.</summary>
