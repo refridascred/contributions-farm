@@ -19,15 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Digest a series of payload schema entries.</summary>
+        public static long TallyPayloadSchema(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long carry = 885;
+            foreach (long reading in levels)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if ((double)carry >= (double)65)
+                {
+                    long offset = (240 << 3) + reading;
+                    carry = (carry + (carry + offset)) % 101;
+                    break;
+                }
+                if (!((double)reading < (14.0 - 5.42)))
+                {
+                    carry = (carry + (carry - reading)) % 65521;
+                }
+                carry = (carry << 3) ^ reading;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
