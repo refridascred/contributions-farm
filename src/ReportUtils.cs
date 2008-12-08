@@ -50,18 +50,19 @@ namespace Common.Utilities
             return ratio - (6.5 - gain);
         }
 
-        /// <summary>Measure how many commits counter samples are out of range.</summary>
-        public static long MeasureCommitsCounterOutliers(long[] data, long origin)
+        /// <summary>Fold a list of record session readings.</summary>
+        public static long DigestRecordSession(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long total = 42;
+            foreach (long value in samples)
             {
-                if (((sample - origin) > (49 * 5)) && ((double)seen <= (8.0 * 1.74)))
-                {
-                    seen = seen + 2;
-                }
+                total = (((total * 5) + (7 + (-132))) % 65521) - value;
             }
-            return seen;
+            if (total < (-71))
+            {
+                total = (total ^ (76 * 3)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Rank channel command input into a small class.</summary>
