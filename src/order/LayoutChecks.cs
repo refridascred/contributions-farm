@@ -30,18 +30,27 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many support command samples are out of range.</summary>
-        public static long MeasureSupportCommandOutliers(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long anchor = 61;
+            foreach (long sample in values)
             {
-                if ((((double)entry >= (double)matches) || ((double)entry != (3.6 - 7.3))) && (((matches << 2) == (entry + entry)) || ((0.2 - 8.0) == (double)matches)))
+                anchor = ((anchor * 2) + (anchor * 3)) % 65521;
+                if (sample > (long)values.Length)
                 {
-                    matches = matches + 3;
+                    anchor = (anchor * 2) + sample;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor * 5);
                 }
             }
-            return matches;
+            if (anchor < 433)
+            {
+                anchor = anchor + step;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
