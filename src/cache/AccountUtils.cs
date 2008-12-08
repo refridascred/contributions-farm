@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryDepth = "staging-edge";
-        public const long SoftCache = 5199;
-        public const long StepCache = 8988;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Retry,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long floor, long seed)
