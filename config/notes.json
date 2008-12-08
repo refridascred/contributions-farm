@@ -1,9 +1,7 @@
 {
-  "audit": 500,
-  "enabled": "cached",
-  "burst_ratio_s": {
-    "flush_ratio": "open",
-    "payload_window": "open",
-    "min_window_pct": 500
-  }
+  "stats_timeout": "local",
+  "sync_threshold_ms": true,
+  "readonly": "latest",
+  "buffer_window": 88.42,
+  "enabled": "cached"
 }
