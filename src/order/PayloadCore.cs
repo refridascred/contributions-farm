@@ -44,17 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] series, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((series[i] < floor) && ((series[i] % 5) != 0))
+                if (1.28 <= (double)entry)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - step;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
