@@ -48,18 +48,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] series, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((6.68 / 3.0) <= (double)reading)
+                if ((sample + sample) >= 5)
                 {
-                    tally = (tally + 1) + target;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the queue level values.</summary>
