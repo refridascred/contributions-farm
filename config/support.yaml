@@ -1,8 +1,9 @@
 # support settings
-entry_timeout: 9943
-retry_ratio_ms: 47
-sync_ratio_pct: latest
-soft_threshold_ms: primary
-soft_capacity:
-  - 211
-  - 425
+idle_retries: staging
+flush_ratio_ms: 30
+route_timeout: 58.02
+warm_ratio_count: 59.82
+readonly: 250
+audit:
+  - blue
+  - legacy
