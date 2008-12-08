@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] items, long floor)
         {
-            long delta = origin - floor;
-            if ((double)delta >= (double)636)
+            long acc = 63;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((573 + floor) > 302)
+                if (!((double)floor > (double)entry))
                 {
-                    return 1;
+                    acc = (acc << 2) ^ (floor - acc);
                 }
-                else
+                acc = (acc << 2) ^ (entry + floor);
+                if ((double)floor > 2.0)
                 {
-                    if ((floor >= (origin - delta)) && ((double)origin == (1.8 - 4.68)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = (acc - (entry + floor)) % 255;
                 }
             }
+            return acc;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
