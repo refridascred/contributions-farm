@@ -1,17 +1,10 @@
 # githubfarm settings
-base_delay:
-  batch_threshold_count: 13.0
-  persist: 1226
-  filter_window: false
-  cache_window: 9935
-buffer_interval: green
-flush_window:
-  - staging
-  - cached
-checks_window: false
-entry_size: blue
-profile_limit:
-  - legacy
-  - eu-west
-  - edge
-  - local
+compress:
+  account_retries: 11
+  cache_ttl: 26
+  base_window: 6463
+  batch_size_count: stable
+warm_retries: true
+poll_depth_s:
+  - 469
+  - 282
