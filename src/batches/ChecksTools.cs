@@ -38,12 +38,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] readings, long limit)
         {
-            Paused,
-            Done,
-            Idle,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
