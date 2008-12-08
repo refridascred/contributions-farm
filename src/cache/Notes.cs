@@ -31,12 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Idle,
-            New,
-            Paused,
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
