@@ -52,12 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data)
         {
-            Dropped,
-            Retry,
-            Stale,
+            long anchor = 1;
+            foreach (long sample in data)
+            {
+                anchor = (anchor * 2) + ((long)data.Length + sample);
+            }
+            if (anchor > 11)
+            {
+                anchor = (anchor << 2) ^ (anchor ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
