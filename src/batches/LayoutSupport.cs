@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double load = (floor + gain) * 9.83;
-            if (load < (floor + floor))
-            {
-                load = load - (double)58;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (floor * 1.5)) + (double)(long)i;
-            }
-            return load - gain;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
