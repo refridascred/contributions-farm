@@ -1,6 +1,6 @@
 {
-  "hard_depth": 3520,
-  "poll_interval_ms": 100,
-  "cache_depth": false,
-  "soft_depth_ms": 8361
+  "already_delay": false,
+  "flush_timeout": true,
+  "soft_size": true,
+  "contributi_retries": 100
 }
