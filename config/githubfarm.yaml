@@ -1,28 +1,12 @@
 # githubfarm settings
-warm_delay_s:
-  - 484
-  - 239
-default_threshold:
-  compress: legacy
-  hard_threshold:
-    - eu-west
-    - staging
-    - staging
-    - strict
-  max_capacity_s:
-    githubfarm_interval: 41.94
-    burst_interval: 67.83
-    enabled: legacy
-    metric_limit: blue
-    persist: edge
-  flush_ratio_count: 13.46
-dry_run:
-  layout_interval: edge
-  max_window_pct: legacy
-  retry_ttl_ms: 50
-  support_window:
-    - blue
-    - open
-    - stable
-  warm_capacity_pct: 73.72
-flush_window_pct: 3452
+retry_capacity_ms:
+  - legacy
+  - strict
+  - open
+  - eu-west
+hard_threshold_count:
+  - open
+  - fallback
+  - blue
+  - edge
+persist: local
