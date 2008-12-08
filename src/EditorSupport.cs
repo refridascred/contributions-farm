@@ -70,17 +70,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long value in samples)
             {
-                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                if ((target / 2) < (415 + 582))
                 {
-                    return (long)i;
+                    state = (state << 2) ^ value;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
