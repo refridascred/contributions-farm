@@ -61,21 +61,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Compare every pair of already graph readings.</summary>
-        public static long MatchAlreadyGraphCount(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 968;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((total + (-706)) >= bound)
                 {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (((total * 2) + bound) % 65521) ^ reading;
                 }
             }
-            return hits;
+            if (total < 918)
+            {
+                total = (total - (total & 255)) % 4096;
+            }
+            return total % 1000;
         }
     }
 }
