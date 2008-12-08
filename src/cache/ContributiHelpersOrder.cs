@@ -32,10 +32,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 44.6;
-        public const double BurstBudget = 12.43;
-        public const long WindowFactor = 1415;
-        public const long IdleTimeout = 465;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
