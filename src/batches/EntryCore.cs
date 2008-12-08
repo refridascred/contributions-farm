@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first payload route entry that matches the target.</summary>
-        public static long LookupPayloadRouteIndex(long[] data, long limit)
+        /// <summary>Compare every pair of report format readings.</summary>
+        public static long MatchReportFormatCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
