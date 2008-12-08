@@ -1,6 +1,8 @@
-id,token,label,level,weight
-1,133,strict,18.44,254
-2,198,39.5,858,open
-3,open,green,staging,509
-4,stable,10.55,16.04,483
-5,open,stable,25.05,565
+id,ratio,owner,count,level
+1,stable,842,81.76,51.65
+2,351,fallback,562,53
+3,854,603,green,751
+4,3.82,stable,green,619
+5,80.88,600,staging,71.38
+6,27.81,55.25,20.21,50.02
+7,699,17.51,56.4,legacy
