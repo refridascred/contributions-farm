@@ -62,17 +62,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] levels, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (levels[i] >= step)
+                if (cell != offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the stream mode values.</summary>
