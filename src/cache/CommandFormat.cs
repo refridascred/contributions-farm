@@ -62,21 +62,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of support stats readings.</summary>
-        public static long CompareSupportStatsCount(long[] samples)
+        /// <summary>Classify a contributi cluster pair into a bucket.</summary>
+        public static long GradeContributiCluster(long bound, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (9.0 >= (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((bound ^ bound) != (bound / 9)) && ((8.0 + 16.0) >= (double)bound))
                 {
-                    if ((samples[i] - samples[j]) > 7)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor <= (bound ^ bound)) && ((bound << 2) >= (floor % 100)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound <= (floor + 36))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
