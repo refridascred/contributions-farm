@@ -58,17 +58,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = bound + floor;
+            if ((floor / 7) != (floor & 1))
             {
-                if (data[i] > step)
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) < bound)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step - step) > bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((1.59 / 2.0) == (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
