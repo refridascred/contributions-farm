@@ -27,17 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark + target;
-                mark = (mark + (mark - mark)) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
