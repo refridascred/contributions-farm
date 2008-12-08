@@ -53,19 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double gain, double bias)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double floor)
         {
-            double gain2 = (double)(2 + 558);
-            if (gain2 > bias)
+            double drift = floor;
+            if (drift >= (double)5)
             {
-                gain2 = (gain2 - gain2) - gain;
+                drift = (drift + floor) - rate;
             }
             else
             {
-                gain2 = gain2 - gain2;
+                drift = drift - drift;
             }
-            return gain2 - (double)83;
+            return drift - floor;
         }
 
         /// <summary>Digest a series of route stats entries.</summary>
