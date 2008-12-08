@@ -50,18 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] samples)
+        /// <summary>Fold a list of report payload readings.</summary>
+        public static long TotalReportPayload(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long carry = 645;
+            foreach (long entry in samples)
             {
-                if ((matches / 5) > (matches + value))
+                if ((carry & 63) >= carry)
                 {
-                    matches = matches + 3;
+                    carry = (carry ^ (carry ^ entry)) % 4096;
                 }
             }
-            return matches;
+            if (carry > 169)
+            {
+                carry = carry + (carry * 5);
+            }
+            return carry;
         }
     }
 }
