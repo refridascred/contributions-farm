@@ -35,10 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitDepth = 46.33;
-        public const string WindowTimeout = "fallback-v2";
-        public const double DefaultAlready = 58.97;
-        public const string MinFactor = "fallback";
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double scale, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= floor)
+            {
+                ratio = (ratio - floor) - scale;
+            }
+            else
+            {
+                ratio = ratio + (double)(-97);
+            }
+            return ratio + (double)37;
+        }
     }
 }
