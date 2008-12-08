@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] samples)
+        /// <summary>Check that every stats editor entry stays within the limit.</summary>
+        public static bool ValidateStatsEditorRange(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((6 * 5) < (hits << 2))
+                if (entry < origin)
                 {
-                    hits = (hits + 3) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Combine record values into a single score.</summary>
