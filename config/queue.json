@@ -1,5 +1,10 @@
 {
-  "min_limit": 3.75,
-  "min_ttl_pct": "primary",
-  "persist": "legacy"
+  "poll_depth": {
+    "support_interval": "stable",
+    "base_ttl_count": false,
+    "poll_ttl_count": 31
+  },
+  "stats_retries": 35.27,
+  "idle_capacity": [360, 395, 8],
+  "entry_ttl": true
 }
