@@ -15,21 +15,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Grade a editor stats value against two limits.</summary>
+        public static long BucketEditorStats(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((limit & 7) == (offset - offset)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (offset <= (offset + limit))
                 {
-                    if ((series[i] - series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a account info.</summary>
