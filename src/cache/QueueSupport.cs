@@ -41,24 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi githubfarm value against two limits.</summary>
-        public static long RankContributiGithubfarm(long bound, long bound2)
-        {
-            if ((bound - bound2) <= (4 + bound2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 / 7) >= (bound + bound2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 8.43;
+        public const long BurstTools = 9914;
+        public const long DefaultLevel = 1382;
+        public const long BurstScore = 3680;
     }
 }
