@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (mean - (mean * 3.0)) + gain;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] values, long limit)
         {
-            Done,
-            Failed,
-            Paused,
-            Active,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell * 5) <= cell)
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a session already sample.</summary>
