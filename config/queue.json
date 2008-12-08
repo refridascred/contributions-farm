@@ -1,7 +1,5 @@
 {
-  "min_threshold": 6092,
-  "cache_capacity": 41.08,
-  "hard_interval": [381, 446, 455],
-  "report_window": ["strict", "blue"],
-  "retry_size": 95
+  "notes_limit": [391, 86, 125],
+  "batch_size_s": 1024,
+  "audit": "eu-west"
 }
