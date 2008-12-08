@@ -1,4 +1,6 @@
 # githubfarm settings
-burst_threshold_pct: fallback
-flush_interval_s: primary
-audit: standard
+persist: blue
+min_capacity_s: 22.77
+hard_depth_pct: 79.01
+warm_size: 34.62
+max_delay_pct: 162
