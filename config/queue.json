@@ -1,12 +1,5 @@
 {
-  "farm_capacity": {
-    "channel_retries": "latest",
-    "batches_timeout": 2,
-    "retry_ttl": "standard",
-    "default_window_ms": "standard",
-    "soft_ttl_ms": 25.79
-  },
-  "order_limit": ["standard", "eu-west", "standard", "edge"],
-  "min_limit": 48.39,
-  "checks_ttl": "blue"
+  "flush_ratio_s": true,
+  "dry_run": 250,
+  "batches_delay": "blue"
 }
