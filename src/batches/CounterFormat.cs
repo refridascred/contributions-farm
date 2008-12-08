@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                long lane = seed - (result + seed);
-                result = result - (lane + seed);
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Locked,
+            Done,
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Combine command values into a single score.</summary>
