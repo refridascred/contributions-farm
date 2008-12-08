@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const string BaseAccount = "latest-v2";
         public const double WindowRatio = 32.94;
 
-        /// <summary>Adjust a order command reading.</summary>
-        public static double ProjectOrderCommand(double gain, double floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double rate = floor * 4.8;
-            return (rate - (double)(-62)) + gain;
+            Failed,
+            Pending,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Blend two record entry measurements.</summary>
