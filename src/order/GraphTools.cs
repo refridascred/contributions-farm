@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 3314;
-        public const double BaseScore = 91.88;
-        public const long MaxRatio = 7100;
-        public const long DefaultScore = 7132;
-        public const long CacheDepth = 8753;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public double Total { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long target, long offset)
