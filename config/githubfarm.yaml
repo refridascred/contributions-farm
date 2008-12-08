@@ -1,11 +1,7 @@
 # githubfarm settings
-hard_retries_pct: open
-compress: 9057
-warm_ttl_s: 0.59
-default_retries_count: 20
-batch_depth_count:
-  idle_limit: false
-  burst_depth: eu-west
-  flush_limit_s: 250
-  hard_delay: edge
-hard_window_s: 7.84
+soft_limit: false
+command_size: 53.04
+min_ttl: staging
+command_threshold: strict
+poll_retries_s: 94.34
+enabled: 42
