@@ -61,21 +61,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up metrics counter samples.</summary>
-        public static long PairMetricsCounterCount(long[] items)
+        /// <summary>Scale a profile layout figure with a bias.</summary>
+        public static double AdjustProfileLayout(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = rate;
+            if (rate2 < rate)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate2 = (rate2 - (rate * 3.34)) + floor;
             }
-            return tally;
+            return rate2 - rate;
         }
     }
 }
