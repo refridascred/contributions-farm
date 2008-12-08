@@ -63,22 +63,31 @@ namespace Common.Utilities
             return gain + (double)244;
         }
 
-        /// <summary>Audit counter session readings against a rule.</summary>
-        public static long TallyCounterSessionOutliers(long[] samples, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long bound, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if ((bound >> 1) < (941 & 7))
             {
-                if (366 < (limit + entry))
+                return 5;
+            }
+            else
+            {
+                if ((((-640) >> 4) >= (floor - floor)) && ((floor & 3) >= (83 ^ floor)))
                 {
-                    count = count + 3;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((bound << 3) > (bound % 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
     }
 }
