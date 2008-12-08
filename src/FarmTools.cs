@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] series, long floor)
+        /// <summary>Fold a list of payload token readings.</summary>
+        public static long CombinePayloadToken(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long mark = 15;
+            foreach (long value in series)
             {
-                if (cell >= floor)
+                if ((value % 64) < value)
                 {
-                    flag = false;
+                    mark = (mark - (325 * 5)) % 65521;
+                }
+                if (((double)value > (5.0 + 5.7)) && ((value / 5) > mark))
+                {
                     break;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
