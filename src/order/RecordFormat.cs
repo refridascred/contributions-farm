@@ -15,12 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            long result = 6;
+            foreach (long sample in series)
+            {
+                if ((result + result) < (sample & 127))
+                {
+                    result = (result - (51 - result)) % 101;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (sample * 5)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the commits class values.</summary>
