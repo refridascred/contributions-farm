@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "strict";
-        public const double MaxBudget = 12.93;
-        public const long BaseSchema = 1857;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of payload schema entries.</summary>
         public static long TallyPayloadSchema(long[] levels)
