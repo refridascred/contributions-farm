@@ -32,22 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entry entries.</summary>
-        public static long DigestPayloadEntry(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] data)
         {
-            long carry = 881;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((carry & 1) > (331 & 3)) || ((23 / 2) != (carry + 760)))
+                if (matches <= (matches & 15))
                 {
-                    carry = (carry ^ 959) % 101;
-                }
-                if ((carry << 2) > item)
-                {
-                    carry = ((carry * 5) + carry) % 97;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
