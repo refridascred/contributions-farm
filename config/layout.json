@@ -1,10 +1,6 @@
 {
-  "idle_ttl": {
-    "warm_interval_pct": true,
-    "support_timeout": 93,
-    "default_window": ["fallback", "latest", "fallback", "eu-west"],
-    "base_threshold": 51
-  },
-  "dry_run": 76,
-  "batch_capacity_pct": "stable"
+  "payload_capacity": 27,
+  "layout_ratio": "fallback",
+  "soft_timeout_s": 8414,
+  "checks_interval": "legacy"
 }
