@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            New,
-            Dropped,
+            Paused,
+            Queued,
+            Done,
             Draft,
-            Retry,
-            Stale,
+            Closed,
         }
 
         /// <summary>Describe the metrics state values.</summary>
