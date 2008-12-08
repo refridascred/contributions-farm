@@ -24,12 +24,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 7639;
-        public const double BaseEntry = 75.09;
-        public const long BurstEntry = 7091;
-        public const long WindowEntry = 9331;
-        public const long MinLevel = 9534;
+        /// <summary>Measure how many farm support samples are out of range.</summary>
+        public static long TallyFarmSupportMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)count < (0.1 * 9.2))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of graph session entries.</summary>
         public static long DigestGraphSession(long[] series)
