@@ -32,18 +32,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] readings)
+        /// <summary>Adjust a stream cluster reading.</summary>
+        public static double ScaleStreamCluster(double scale, double span)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double mean = 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sample + sample) != ((long)readings.Length - sample))
-                {
-                    matches = matches + 3;
-                }
+                mean = (mean + span) + (double)(long)i;
             }
-            return matches;
+            return mean + (span + scale);
         }
 
         /// <summary>Validate channel context readings against a bound.</summary>
