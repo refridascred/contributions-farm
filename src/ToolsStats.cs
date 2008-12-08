@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)(long)i <= 12.0)
-                {
-                    anchor = anchor - (origin ^ anchor);
-                    anchor = (anchor - 761) % 65521;
-                }
-                anchor = (anchor << 2) ^ ((long)i >> 1);
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Failed,
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
