@@ -49,10 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 9329;
-        public const long BatchContext = 5283;
-        public const long BurstInterval = 7410;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long limit)
