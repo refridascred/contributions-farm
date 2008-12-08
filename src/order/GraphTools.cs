@@ -39,18 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] readings, long seed)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < 3.73)
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of queue entries.</summary>
