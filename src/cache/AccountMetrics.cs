@@ -90,12 +90,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Active,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseCount = 6.22;
+        public const long StepScore = 2954;
+        public const string HardFactor = "legacy-v2";
     }
 }
