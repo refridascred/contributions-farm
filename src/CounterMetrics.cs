@@ -35,18 +35,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many farm support samples are out of range.</summary>
-        public static long TallyFarmSupportMatches(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if ((731 + origin) == (step + origin))
             {
-                if ((double)count < (0.1 * 9.2))
+                return 5;
+            }
+            else
+            {
+                if (((step + step) <= (origin * 4)) && ((39 >> 3) != (step % 97)))
                 {
-                    count = (count + 2) - sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin != (0.8 - 13.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate format cluster readings against a bound.</summary>
