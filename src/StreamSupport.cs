@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ratio - (double)4;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] series, long seed)
+        /// <summary>Check that every command cluster entry stays within the limit.</summary>
+        public static bool GuardCommandClusterRange(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (series[i] <= seed)
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
