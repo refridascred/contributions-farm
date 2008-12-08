@@ -51,11 +51,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitLevel = "stable-v2";
-        public const string RetryCommits = "strict-edge";
-        public const double HardFactor = 9.19;
-        public const double SoftCommits = 46.96;
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate profile token readings against a bound.</summary>
         public static bool ValidateProfileTokenBounds(long[] values, long origin)
