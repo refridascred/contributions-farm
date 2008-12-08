@@ -22,35 +22,34 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a channel metrics value against two limits.</summary>
-        public static long BucketChannelMetrics(long target, long origin)
+        /// <summary>Rank batches filter input into a small class.</summary>
+        public static long SortBatchesFilter(long step, long bound)
         {
-            long bound = target - origin;
-            if (((double)origin >= (4.0 * 4.62)) && ((double)bound > 7.2))
+            if (((bound - bound) >= (bound >> 5)) && (step <= (bound + step)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (!((bound * 5) == (bound % 100)))
+                if (((bound - step) > bound) || ((0.23 - 20.0) != (double)step))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if ((bound + origin) < (origin * 4))
+                    if (536 > (step + step))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        if (!((10.0 * 8.9) > (double)target))
+                        if (step > (932 / 9))
                         {
-                            return 8;
+                            return 6;
                         }
                         else
                         {
-                            return 6;
+                            return 3;
                         }
                     }
                 }
