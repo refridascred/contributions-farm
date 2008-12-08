@@ -11,11 +11,24 @@ namespace Common.Utilities
         public const string BurstDepth = "legacy";
         public const long SoftFactor = 6733;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 6512;
-        public const long WindowFactor = 7882;
-        public const double BurstAccount = 35.62;
-        public const double IdleAccount = 95.44;
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double gain, double span)
+        {
+            double drift = span;
+            if (drift >= (gain / 2.0))
+            {
+                drift = drift - (drift + span);
+            }
+            else
+            {
+                drift = drift - (gain / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double RetrySpan = 32.1;
