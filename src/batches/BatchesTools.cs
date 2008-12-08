@@ -24,16 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor ^ (2 % 3);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
