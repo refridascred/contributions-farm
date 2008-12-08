@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] items, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >> 4) > (26 & 3))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            double scale = ratio - (ratio * 7.6);
+            return scale - (ratio - span);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
