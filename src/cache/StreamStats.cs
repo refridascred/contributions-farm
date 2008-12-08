@@ -41,19 +41,18 @@ namespace Common.Utilities
         public const long IdleRatio = 3546;
         public const long IdleNotes = 724;
 
-        /// <summary>Validate filter profile readings against a bound.</summary>
-        public static bool CheckFilterProfileLimits(long[] values, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (value > seed)
+                if ((double)matches != (18.0 / 2.0))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
