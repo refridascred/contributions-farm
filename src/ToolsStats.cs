@@ -21,39 +21,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long seed, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] values, long offset)
         {
-            long gap = seed - offset;
-            if (seed > (614 >> 2))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap << 1) <= gap)
+                if ((count << 3) >= reading)
                 {
-                    return 6;
+                    count = (count + 2) - offset;
                 }
                 else
                 {
-                    if (offset <= (65 << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset / 4) != (seed / 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a order route figure with a bias.</summary>
