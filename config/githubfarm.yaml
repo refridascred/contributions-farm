@@ -1,6 +1,17 @@
 # githubfarm settings
-tools_interval: 54.48
-soft_depth: 41.19
-sync_capacity: legacy
-retry_ratio: legacy
-commits_delay: strict
+base_delay:
+  batch_threshold_count: 13.0
+  persist: 1226
+  filter_window: false
+  cache_window: 9935
+buffer_interval: green
+flush_window:
+  - staging
+  - cached
+checks_window: false
+entry_size: blue
+profile_limit:
+  - legacy
+  - eu-west
+  - edge
+  - local
