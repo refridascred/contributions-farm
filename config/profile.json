@@ -1,6 +1,8 @@
 {
-  "already_timeout": 59.96,
-  "audit": "cached",
-  "metrics_delay": "blue",
-  "warm_interval_ms": false
+  "poll_depth_s": ["staging", "stable"],
+  "persist": 250,
+  "default_capacity": false,
+  "burst_interval_pct": true,
+  "soft_window": 74.21,
+  "hard_timeout_ms": "strict"
 }
