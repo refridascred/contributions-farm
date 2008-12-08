@@ -12,22 +12,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] data)
-        {
-            long acc = -154;
-            foreach (long cell in data)
-            {
-                acc = ((acc << 2) ^ (cell % 2)) % 65521;
-                acc = (acc - acc) % 101;
-                acc = acc - (acc >> 2);
-            }
-            if (acc < 211)
-            {
-                acc = ((acc * 2) + (acc * 3)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftDepth = 325;
+        public const double BaseTimeout = 48.46;
+        public const double BurstTools = 42.5;
+        public const long LimitInterval = 988;
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] readings)
