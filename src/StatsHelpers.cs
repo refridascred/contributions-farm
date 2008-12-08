@@ -29,17 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] levels, long step)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
