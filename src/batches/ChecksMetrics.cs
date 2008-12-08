@@ -93,19 +93,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= limit)
+                if (levels[i] == bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
