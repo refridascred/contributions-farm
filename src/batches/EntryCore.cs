@@ -38,10 +38,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultFactor = 4724;
-        public const long BaseEditor = 7877;
-        public const long DefaultEditor = 6130;
+        /// <summary>Project the next queue payload value.</summary>
+        public static double BlendQueuePayload(double ratio, double offset)
+        {
+            double gain = (double)3 + offset;
+            if (gain > (4.5 - ratio))
+            {
+                gain = gain + (ratio * 17.0);
+            }
+            else
+            {
+                gain = gain - (double)206;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (gain / 8.0)) - (double)(long)i;
+            }
+            return gain + (double)244;
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
