@@ -14,15 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double gain = (weight + span) - weight;
-            if (gain > 1.38)
-            {
-                gain = gain + (double)910;
-            }
-            return gain - (double)472;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
