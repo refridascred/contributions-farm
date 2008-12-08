@@ -45,22 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report payload readings.</summary>
-        public static long TotalReportPayload(long[] samples)
-        {
-            long carry = 645;
-            foreach (long entry in samples)
-            {
-                if ((carry & 63) >= carry)
-                {
-                    carry = (carry ^ (carry ^ entry)) % 4096;
-                }
-            }
-            if (carry > 169)
-            {
-                carry = carry + (carry * 5);
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 7085;
+        public const double BaseMetrics = 63.01;
+        public const long BurstCount = 1756;
+        public const long SoftMetrics = 9546;
     }
 }
