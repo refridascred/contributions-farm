@@ -43,11 +43,18 @@ namespace Common.Utilities
         public const string SoftFactor = "staging-edge";
         public const long MaxDepth = 2303;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series, long step)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 60;
+            foreach (long sample in series)
+            {
+                if ((anchor << 1) >= (551 % 5))
+                {
+                    anchor = ((anchor - (step & 127)) % 65521) - sample;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
