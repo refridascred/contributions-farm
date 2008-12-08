@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((268 / 6) < offset))
-                {
-                    sum = (sum + (sum & 255)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowBudget = 86.2;
+        public const string BaseAccount = "latest-v2";
+        public const double WindowRatio = 32.94;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterMatches(long[] levels, long limit)
