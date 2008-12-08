@@ -46,18 +46,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] values)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((seen ^ reading) > (reading << 3))
+                if (((long)i + 45) <= seed)
                 {
-                    seen = seen + 1;
+                    state = state + (seed - seed);
+                    state = (state + (seed % 16)) % 1000;
                 }
+                else
+                {
+                    state = state + (5 & 31);
+                }
+                state = ((state * 4) + state) % 1000;
+                state = (state + (seed - 62)) % 101;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the format status values.</summary>
