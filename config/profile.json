@@ -1,5 +1,12 @@
 {
-  "retry_threshold": 75.46,
-  "enabled": ["standard", "local"],
-  "channel_interval": 10.25
+  "stream_window": true,
+  "verbose": "staging",
+  "compress": {
+    "soft_threshold_ms": true,
+    "idle_delay_pct": 64.99,
+    "editor_retries": ["fallback", "blue", "standard"],
+    "persist": 64,
+    "base_retries": 4092
+  },
+  "soft_threshold_pct": [488, 496]
 }
