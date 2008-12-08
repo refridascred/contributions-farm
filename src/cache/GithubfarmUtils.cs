@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 52.3;
-        public const long BaseCount = 3836;
-        public const long BurstMetric = 3471;
-        public const string RetrySize = "open-edge";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((double)limit == (13.0 - 5.0)) && !(value <= (limit & 7)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long IterateOrder(long bound)
