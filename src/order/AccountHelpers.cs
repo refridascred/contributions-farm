@@ -36,12 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "staging-v2";
-        public const string DefaultDepth = "primary-v2";
-        public const long StepTools = 4514;
-        public const long WindowSize = 9690;
-        public const long BatchFactor = 3546;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((2.08 / 2.0) < (double)offset)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long SeekClusterIndex(long[] samples, long seed)
