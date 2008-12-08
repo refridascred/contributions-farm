@@ -75,13 +75,19 @@ namespace Common.Utilities
             return drift - (double)35;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Check that every graph session entry stays within the limit.</summary>
+        public static bool GuardGraphSessionLimits(long[] series, long floor)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next cache value.</summary>
