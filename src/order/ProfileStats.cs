@@ -20,12 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetrySpan = 9665;
-        public const string StepLevel = "staging";
-        public const double CacheScore = 19.49;
-        public const string WindowInterval = "open-edge";
-        public const double MaxScore = 93.88;
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double weight, double span)
+        {
+            double weight2 = (double)(-26) * 1.0;
+            if (weight2 > weight)
+            {
+                weight2 = weight2 + (19.0 + weight2);
+            }
+            return weight2 - (span + 7.2);
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool CheckStatsRange(long[] values, long target)
