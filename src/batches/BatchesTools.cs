@@ -47,17 +47,39 @@ namespace Common.Utilities
         public const double WindowMetric = 82.61;
         public const long LimitScore = 9179;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] readings, long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long limit, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = limit + bound;
+            if (!((bound + lane) == (lane + limit)))
             {
-                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((lane + (-259)) >= (limit + 920))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (lane <= (limit + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((2.5 * 19.0) == (double)lane) && (lane <= (lane << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
