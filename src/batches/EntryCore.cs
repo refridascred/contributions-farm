@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a stream contributi counter forward.</summary>
-        public static long StepStreamContributi(long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] data, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 4) + (origin % 5)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Hold a payload record.</summary>
