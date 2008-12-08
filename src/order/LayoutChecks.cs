@@ -20,19 +20,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next layout cache value from a seed.</summary>
-        public static long DeriveLayoutCache(long bound)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((anchor + bound) > (761 ^ anchor)))
-                {
-                    anchor = ((anchor * 3) + (anchor << 2)) % 65521;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Grade a schema counter value against two limits.</summary>
