@@ -23,17 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload tools reading by value.</summary>
-        public static long FindPayloadToolsIndex(long[] values, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
