@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema layout value from a seed.</summary>
-        public static long IterateSchemaLayout(long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((5.0 - 8.1) >= (double)entry)
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the commits class values.</summary>
