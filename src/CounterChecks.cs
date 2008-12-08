@@ -80,13 +80,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count token schema pairs that satisfy a relation.</summary>
+        public static long MatchTokenSchemaCount(long[] values)
         {
-            Pending,
-            Locked,
-            Closed,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
