@@ -45,14 +45,13 @@ namespace Common.Utilities
         public const long HardToken = 3476;
         public const long RetryToken = 5369;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Locked,
-            New,
-            Draft,
-            Closed,
-            Pending,
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
