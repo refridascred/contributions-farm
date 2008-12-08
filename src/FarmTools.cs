@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] values, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Find the first githubfarm support entry that matches the target.</summary>
