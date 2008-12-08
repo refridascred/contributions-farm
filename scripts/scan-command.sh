@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback edge primary cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
@@ -16,7 +18,7 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-cached}"
 case "${mode}" in
     eu-west)
         log "fast path"
