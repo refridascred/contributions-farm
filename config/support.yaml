@@ -1,10 +1,11 @@
 # support settings
-sync_ttl: 96
-warm_ratio_pct:
-  stats_limit: false
-  verbose: standard
-  warm_ttl_count: strict
-  warm_ttl_pct: 19
-stats_depth: 4501
-audit: stable
-profile_limit: 6038
+audit:
+  context_interval:
+    - 199
+    - 44
+    - 24
+  commits_timeout: primary
+  record_size: true
+  dry_run: stable
+persist: local
+sync_window_s: 10.0
