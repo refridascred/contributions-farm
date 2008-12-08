@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long bound, long origin)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double span)
         {
-            if (bound < (70 % 24))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin > (6.61 - 7.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double mean = (double)(6 ^ 897);
+            return (mean - span) + ratio;
         }
 
         /// <summary>Hold a profile header.</summary>
