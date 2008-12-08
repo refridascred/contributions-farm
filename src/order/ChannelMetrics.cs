@@ -31,11 +31,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] samples)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)entry == (7.24 * 10.0)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
