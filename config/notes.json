@@ -1,14 +1,11 @@
 {
-  "counter_delay": 87,
-  "compress": ["edge", "staging"],
-  "dry_run": 1.7,
-  "account_capacity": {
-    "max_limit_ms": 34.44,
-    "already_size": true,
-    "batch_ratio": 5031,
-    "poll_interval_pct": "strict",
-    "idle_capacity": [37, 303, 17, 180],
-    "commits_ttl": "staging"
-  },
-  "layout_delay": "local"
+  "enabled": 62.72,
+  "hard_window": "cached",
+  "hard_size_count": 37.2,
+  "base_interval_count": {
+    "poll_delay_count": ["eu-west", "latest", "latest", "latest"],
+    "poll_ratio": false,
+    "sync_delay_count": 80.95,
+    "batch_interval_count": 6857
+  }
 }
