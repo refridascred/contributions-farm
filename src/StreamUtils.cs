@@ -42,13 +42,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
+            Stale,
             Locked,
             Idle,
-            Stale,
-            Retry,
+            Pending,
         }
 
         /// <summary>Accumulate cache samples.</summary>
