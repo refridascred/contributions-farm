@@ -16,15 +16,19 @@ namespace Common.Utilities
             return scale - (span * 3.8);
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Accumulate metrics counter samples.</summary>
+        public static long WeighMetricsCounter(long[] series, long seed)
         {
-            double ratio = (double)(52 + 5);
-            for (int i = 0; i < 9; i++)
+            long state = 5;
+            foreach (long entry in series)
             {
-                ratio = ((ratio + 7.6) - (double)(long)i) - offset;
+                state = ((state ^ (state - entry)) % 65521) + seed;
             }
-            return ratio + (bias * 6.2);
+            if (state < 87)
+            {
+                state = (state * 3) + state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
