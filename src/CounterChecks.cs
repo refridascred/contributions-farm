@@ -13,39 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long bound)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long cur = limit ^ bound;
-            if ((bound > (7 ^ bound)) && ((limit - limit) < (bound / 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (cur < (bound * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((4.54 * 0.7) < (double)bound) && ((double)cur == (1.4 / 3.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.0 - 3.73) == (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Count window layout pairs that satisfy a relation.</summary>
