@@ -17,19 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two notes already measurements.</summary>
-        public static double SmoothNotesAlready(double ratio, double span)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] series, long seed)
         {
-            double weight = 15.0;
-            if (weight >= weight)
+            long sum = 0;
+            foreach (long item in series)
             {
-                weight = (weight + (double)0) - ratio;
+                if ((seed >> 3) < sum)
+                {
+                    sum = (sum ^ (540 + seed)) + item;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (span * 5.0)) - (double)(long)i;
-            }
-            return weight + span;
+            return sum % 4096;
         }
 
         /// <summary>Hold a filter record.</summary>
