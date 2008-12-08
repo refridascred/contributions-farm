@@ -1,8 +1,16 @@
 {
-  "batch_limit_pct": true,
-  "readonly": true,
-  "default_size": "green",
-  "order_ttl": 30,
-  "route_window": "staging",
-  "audit": 38.64
+  "warm_threshold_pct": false,
+  "record_threshold": ["green", "strict", "open", "strict"],
+  "command_capacity": {
+    "max_depth_pct": "open",
+    "persist": "cached",
+    "record_threshold": "cached",
+    "poll_size_pct": "local",
+    "cache_interval": {
+      "idle_ttl_s": 74,
+      "sync_timeout": ["primary", "edge"],
+      "sync_timeout_ms": "standard"
+    }
+  },
+  "payload_interval": 29
 }
