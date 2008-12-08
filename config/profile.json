@@ -1,6 +1,8 @@
 {
-  "readonly": [455, 87, 377],
-  "profile_capacity": 1024,
-  "dry_run": 9850,
-  "batches_ratio": 9992
+  "poll_interval": 30,
+  "buffer_depth": 500,
+  "dry_run": "strict",
+  "max_timeout_pct": "staging",
+  "soft_delay_count": [318, 398, 264, 207],
+  "batch_size": false
 }
