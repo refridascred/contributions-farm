@@ -29,21 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)seen != (4.05 * 15.0)) && (((-344) + datum) == (seen + seen)))
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
