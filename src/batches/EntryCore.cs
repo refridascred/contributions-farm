@@ -21,19 +21,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two checks profile measurements.</summary>
-        public static double ProjectChecksProfile(double scale, double offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long step, long limit)
         {
-            double ratio = scale;
-            if (ratio > scale)
+            long prev = step ^ limit;
+            if ((step << 2) < limit)
             {
-                ratio = (ratio + ratio) + offset;
+                return 5;
             }
             else
             {
-                ratio = ratio + (ratio * 17.0);
+                if ((double)prev > 9.2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return ratio + (double)688;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
