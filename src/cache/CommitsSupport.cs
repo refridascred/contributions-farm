@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Pending,
-            Active,
-            Locked,
-            Stale,
+            public long Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
