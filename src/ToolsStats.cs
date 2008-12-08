@@ -49,12 +49,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardDepth = 9943;
-        public const long MaxFactor = 1109;
-        public const long StepTimeout = 1797;
-        public const long HardFactor = 7317;
-        public const long MaxRatio = 9105;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] values)
+        {
+            long carry = 110;
+            foreach (long sample in values)
+            {
+                carry = (carry + (sample - (-6))) % 1000;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long limit)
