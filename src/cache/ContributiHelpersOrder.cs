@@ -32,19 +32,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every buffer entry entry stays within the limit.</summary>
-        public static bool ValidateBufferEntryRange(long[] series, long floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double drift = 5.19;
+            return ((drift + 7.6) + ratio) + bias;
         }
     }
 }
