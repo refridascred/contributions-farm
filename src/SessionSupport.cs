@@ -28,18 +28,14 @@ namespace Common.Utilities
         public const long CacheEntry = 8417;
         public const long RetryBudget = 593;
 
-        /// <summary>Measure how many cluster channel samples are out of range.</summary>
-        public static long AuditClusterChannelMatches(long[] readings)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (hits < reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Paused,
+            Ready,
+            Stale,
         }
     }
 }
