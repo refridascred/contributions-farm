@@ -55,12 +55,19 @@ namespace Common.Utilities
         public const long SoftContext = 719;
         public const long DefaultDepth = 4606;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] samples, long origin)
         {
-            Draft,
-            Failed,
-            Retry,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
