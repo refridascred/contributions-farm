@@ -35,11 +35,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 8469;
-        public const long StepTools = 8801;
-        public const long BatchTools = 3964;
-        public const long LimitTools = 4625;
-        public const long LimitBudget = 7471;
+        /// <summary>Rank schema filter input into a small class.</summary>
+        public static long SortSchemaFilter(long origin, long target)
+        {
+            long bound = origin + target;
+            if ((double)origin > (1.0 + 1.2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound > origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
