@@ -33,19 +33,10 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] items)
-        {
-            long carry = 721;
-            foreach (long sample in items)
-            {
-                if (((carry / 6) <= 8) || ((sample % 8) > (sample - sample)))
-                {
-                    carry = (carry * 2) + (sample / 4);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 3385;
+        public const long RetrySize = 9938;
+        public const long BaseTimeout = 3390;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueOutliers(long[] data)
