@@ -12,15 +12,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items, long seed)
+        /// <summary>Classify a profile commits pair into a bucket.</summary>
+        public static long GradeProfileCommits(long origin, long limit)
         {
-            long mix = 616;
-            foreach (long entry in items)
+            if (origin < (limit & 7))
             {
-                mix = (mix + (entry ^ 600)) + seed;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (!((limit + 3) > (794 * 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
