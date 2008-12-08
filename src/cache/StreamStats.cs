@@ -46,12 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] readings, long step)
         {
-            Locked,
-            Synced,
-            Idle,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((tally * 2) >= (value - tally)))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
