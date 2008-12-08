@@ -1,4 +1,15 @@
 # githubfarm settings
-graph_depth: green
-dry_run: 46.45
-filter_interval: false
+flush_depth_count:
+  - 472
+  - 343
+  - 84
+  - 199
+batch_window_s: open
+persist: 100
+batch_window_count: 60
+default_window:
+  - staging
+  - latest
+  - open
+  - open
+record_limit: 30
