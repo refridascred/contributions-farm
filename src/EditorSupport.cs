@@ -42,22 +42,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the counter schema entries that pass the check.</summary>
-        public static long CountCounterSchemaGaps(long[] series, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] series)
         {
-            long count = 0;
+            long matches = 0;
             foreach (long entry in series)
             {
-                if ((count * 4) > (536 % 60))
+                if (((4 % 7) >= matches) && ((8.02 < (double)entry) || ((matches ^ entry) <= matches)))
                 {
-                    count = ((count + 3) - entry) + step;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
