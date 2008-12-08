@@ -41,21 +41,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count support order pairs that satisfy a relation.</summary>
-        public static long OverlapSupportOrderCount(long[] readings)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)origin != (4.0 - 20.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((floor / 5) >= 54))
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
+                    return 7;
+                }
+                else
+                {
+                    if ((12.0 * 9.9) == (double)floor)
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((5.0 - 4.31) <= (double)origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
