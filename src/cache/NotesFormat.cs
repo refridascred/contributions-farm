@@ -33,16 +33,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                score = score ^ (score ^ 1);
-                score = ((score * 5) + (long)i) % 1000;
+                if ((-1) <= (carry / 8))
+                {
+                    carry = (carry * 4) + target;
+                    carry = ((carry << 2) ^ (carry - target)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
     }
 }
