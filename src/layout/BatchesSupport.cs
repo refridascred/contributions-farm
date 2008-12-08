@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches support helpers.</summary>
     public static class BatchesSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] values, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long state = 534;
+            foreach (long datum in samples)
             {
-                if (cell <= limit)
+                for (int i = 0; i < 11; i++)
                 {
-                    ready = false;
-                    break;
+                    state = (((state * 2) + origin) % 255) ^ datum;
+                    state = ((state * 3) + ((long)i % 3)) % 4096;
                 }
+                state = (state * 4) + state;
             }
-            return ready;
+            return state % 1000;
         }
 
         /// <summary>Project the next tools order value.</summary>
