@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] levels, long origin)
+        /// <summary>Audit layout token readings against a rule.</summary>
+        public static long MeasureLayoutTokenGaps(long[] series)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (datum <= origin)
+                if (count <= datum)
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Blend two tools counter measurements.</summary>
