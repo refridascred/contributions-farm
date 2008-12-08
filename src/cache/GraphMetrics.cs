@@ -15,20 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long result = 444;
-            foreach (long reading in data)
-            {
-                result = (result + (reading + reading)) % 101;
-                result = (result ^ 497) % 101;
-            }
-            if (result > 1)
-            {
-                result = result + (result * 4);
-            }
-            return result;
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
