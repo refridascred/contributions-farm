@@ -48,21 +48,25 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Rank channel command input into a small class.</summary>
+        public static long RankChannelCommand(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long edge = bound + seed;
+            if (edge >= (edge ^ bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((1.0 / 4.0) != (double)bound)
                 {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
