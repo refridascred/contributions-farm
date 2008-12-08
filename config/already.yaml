@@ -1,18 +1,16 @@
 # already settings
-stream_capacity: open
-default_limit_s:
-  command_delay: 56.38
-  sync_limit: 7778
-  retry_depth:
-    already_retries:
-      - staging
-      - green
-      - blue
-    base_window_pct: 91
-    burst_timeout_pct: 28.65
-    poll_threshold: false
-    idle_retries: 7657
-    soft_timeout_s: 3.28
-  dry_run: latest
-  retry_retries_pct: eu-west
-stream_size: open
+hard_threshold: stable
+record_size:
+  record_size: 100
+  retry_ttl_count: 6749
+  idle_depth_s: 88.43
+  enabled: latest
+  already_delay:
+    - eu-west
+    - blue
+flush_threshold_pct: 1024
+strict: 60
+filter_size:
+  - legacy
+  - fallback
+idle_limit: 2663
