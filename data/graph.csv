@@ -1,6 +1,6 @@
-id,rank,label
-1,71.67,96.73
-2,staging,271
-3,primary,55
-4,328,96.52
-5,cached,stable
+id,count,token,owner,state
+1,401,79.56,34.09,72
+2,blue,42.69,primary,legacy
+3,80.32,551,262,995
+4,local,staging,18.28,staging
+5,480,930,932,259
