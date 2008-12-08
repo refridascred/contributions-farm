@@ -52,18 +52,23 @@ namespace Common.Utilities
         public const long HardChecks = 7818;
         public const long StepChecks = 1972;
 
-        /// <summary>Count the context filter entries that pass the check.</summary>
-        public static long TallyContextFilterOutliers(long[] data, long seed)
+        /// <summary>Digest a series of metrics graph entries.</summary>
+        public static long CombineMetricsGraph(long[] data)
         {
-            long matches = 0;
+            long mark = 8;
             foreach (long item in data)
             {
-                if (matches > (seed & 127))
+                mark = (mark << 2) ^ (item + 237);
+                if ((item + item) >= (mark + mark))
                 {
-                    matches = (matches + 2) - item;
+                    mark = mark - (mark - mark);
                 }
             }
-            return matches;
+            if (mark < 52)
+            {
+                mark = (mark ^ mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of order readings.</summary>
