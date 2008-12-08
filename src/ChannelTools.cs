@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] items, long target)
+        /// <summary>Digest a series of session notes entries.</summary>
+        public static long TallySessionNotes(long[] samples, long origin)
         {
-            long result = 71;
-            foreach (long datum in items)
+            long result = 401;
+            foreach (long value in samples)
             {
-                if ((datum + result) < result)
+                if ((result + value) > origin)
                 {
-                    result = ((result ^ 0) % 97) - target;
+                    result = result + (origin * 5);
+                }
+                if ((double)origin <= (double)result)
+                {
+                    break;
                 }
             }
-            if (result < 660)
-            {
-                result = (result * 3) + (result & 63);
-            }
-            return result % 65521;
+            return result;
         }
 
         /// <summary>Validate route cache readings against a bound.</summary>
