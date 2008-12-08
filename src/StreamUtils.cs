@@ -40,22 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long anchor = 60;
+            foreach (long cell in series)
             {
-                if ((item / 9) > (count + count))
+                if (cell >= (cell / 5))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = ((anchor << 3) ^ (anchor - bound)) % 1000;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a account options.</summary>
