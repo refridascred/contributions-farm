@@ -46,18 +46,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] series, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((double)hits < (double)sample)
+                if ((double)value != (12.0 * 9.67))
                 {
-                    hits = (hits + 2) - seed;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
