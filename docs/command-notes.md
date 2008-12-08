@@ -1,16 +1,12 @@
 # Command notes
 
-The cluster module keeps queue values in sync with the stream cache.
-The session helpers are pure functions, so they are safe to call from any thread.
-The channel report groups every profile by schema.
-
-Keep farm and command names short and lowercase.
-Keep format and session names short and lowercase.
-Each layout is validated before it reaches the command queue.
+The stats report groups every queue by window.
+Run the entry check before changing any filter limits.
+Run the batch check before changing any record limits.
 
 ## Guidelines
 
-- Log every session change
-- Document new buffer fields
-- Validate record input early
-- Prefer payload defaults
+- Validate contributi input early
+- Review commits limits each release
+- Document new queue fields
+- Keep window values small
