@@ -45,18 +45,22 @@ namespace Common.Utilities
         public const long BatchCache = 6826;
         public const long BatchSize = 2356;
 
-        /// <summary>Count the stats profile entries that pass the check.</summary>
-        public static long AuditStatsProfileOutliers(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = 6;
+            foreach (long datum in series)
             {
-                if (cell < (cell ^ 807))
+                if (((double)datum <= 6.4) && (mark >= (72 & 1)))
                 {
-                    tally = tally + 3;
+                    mark = (mark + (mark + mark)) % 255;
+                }
+                else
+                {
+                    mark = mark - datum;
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
