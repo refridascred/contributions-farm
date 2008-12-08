@@ -23,17 +23,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metric context reading by value.</summary>
-        public static long LocateMetricContextIndex(long[] series, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long cell in values)
             {
-                if (series[i] >= offset)
+                if (!!((double)floor != (9.1 - 1.4)))
                 {
-                    return (long)i;
+                    mark = (mark ^ (floor >> 4)) % 255;
+                    mark = (mark << 2) ^ (floor / 4);
+                }
+                if ((double)floor > (7.66 / 2.0))
+                {
+                    mark = (mark ^ (mark ^ cell)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + 34) % 101;
+                }
+                if ((mark << 1) >= floor)
+                {
+                    mark = (mark - (0 & 31)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + cell) % 255;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
