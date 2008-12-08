@@ -49,15 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a batches checks figure with a bias.</summary>
-        public static double ProjectBatchesChecks(double ratio, double floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] data, long origin)
         {
-            double drift = (double)0 - (ratio / 8.0);
-            if (drift > ratio)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                drift = drift + (floor / 4.0);
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift + (drift - ratio);
+            return ready;
         }
     }
 }
