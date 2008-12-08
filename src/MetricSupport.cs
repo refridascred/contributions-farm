@@ -40,15 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double rate, double offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long step)
         {
-            double rate2 = (double)(3 - (-38));
-            for (int i = 0; i < 8; i++)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                rate2 = ((rate2 - 2.0) + (double)(long)i) - rate;
+                if ((12.0 + 3.74) > (double)result)
+                {
+                    result = (result * 3) + (result + step);
+                }
+                else
+                {
+                    result = ((result * 2) + 560) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return rate2 - offset;
+            return result;
         }
 
         /// <summary>Describe the filter kind values.</summary>
