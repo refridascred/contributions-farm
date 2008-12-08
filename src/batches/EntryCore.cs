@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long limit)
+        /// <summary>Roll a stream contributi counter forward.</summary>
+        public static long StepStreamContributi(long origin)
         {
-            long gap = bound + limit;
-            if ((bound <= gap) && (limit >= (bound << 1)))
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
+                anchor = ((anchor * 4) + (origin % 5)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((bound - gap) < limit) && ((59 + 895) != (limit + limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - bound) <= gap)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a payload record.</summary>
