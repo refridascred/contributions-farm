@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long limit)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long cur = seed + limit;
-            if ((5 / 7) != (cur + cur))
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((cur * 5) <= limit)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 5;
+                    carry = ((carry * 3) + (long)i) ^ (long)i2;
                 }
-                else
-                {
-                    if ((cur - cur) < (6 & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Hold a account info.</summary>
