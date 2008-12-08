@@ -14,10 +14,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardRatio = 9933;
-        public const string HardStats = "latest-edge";
-        public const long BaseBudget = 1536;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of stats route readings.</summary>
         public static long DigestStatsRoute(long[] values)
