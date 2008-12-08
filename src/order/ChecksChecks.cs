@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a githubfarm route sample.</summary>
+        public static long FindGithubfarmRouteIndex(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                if (series[i] == bound)
                 {
                     return (long)i;
                 }
