@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data)
-        {
-            long score = 7;
-            foreach (long datum in data)
-            {
-                if ((1 < (datum & 7)) || ((double)score >= 7.8))
-                {
-                    score = ((score << 2) ^ (datum * 2)) % 65521;
-                }
-            }
-            if (score < 26)
-            {
-                score = ((score << 2) ^ (score - score)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 241;
+        public const long CacheBudget = 9591;
+        public const string BurstDepth = "legacy";
+        public const long SoftFactor = 6733;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowAccount = 6512;
