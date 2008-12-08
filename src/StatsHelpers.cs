@@ -70,11 +70,17 @@ namespace Common.Utilities
             return bias - scale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 4699;
-        public const long RetryCommand = 2314;
-        public const string HardCommand = "alpha-1";
-        public const double MinWidth = 45.14;
-        public const long MaxCommand = 757;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
