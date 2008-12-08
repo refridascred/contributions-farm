@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] readings)
+        /// <summary>Validate route editor readings against a bound.</summary>
+        public static bool GuardRouteEditorLimits(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((double)matches == (9.29 - 15.0))
+                if (reading >= seed)
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the profile kind values.</summary>
