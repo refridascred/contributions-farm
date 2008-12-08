@@ -96,17 +96,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry contributi sample.</summary>
-        public static long SeekEntryContributiIndex(long[] series, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            Retry,
+            Pending,
         }
     }
 }
