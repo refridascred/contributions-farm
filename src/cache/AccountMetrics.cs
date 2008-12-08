@@ -48,15 +48,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double scale, double floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double bias = (double)212 + (1.05 + 2.0);
-            for (int i = 0; i < 2; i++)
-            {
-                bias = ((bias - (double)92) + (double)(long)i) - scale;
-            }
-            return bias - floor;
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
