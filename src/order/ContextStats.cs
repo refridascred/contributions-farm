@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) > (datum ^ 581))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 3.97;
+        public const long MinWidth = 7279;
+        public const long MaxRatio = 64;
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] series)
