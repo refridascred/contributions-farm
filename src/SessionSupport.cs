@@ -26,26 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                long hits = bound & 3;
-                if ((double)total != (5.08 * 8.87))
-                {
-                    total = ((total << 3) ^ (hits - hits)) % 4096;
-                    break;
-                }
-                else
-                {
-                    total = (total << 3) ^ ((long)i + total);
-                }
-                total = total ^ (total ^ bound);
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
