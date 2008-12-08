@@ -44,26 +44,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] readings, long step)
         {
-            long mark = 72;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)mark >= 7.23)
+                if (readings[i] < step)
                 {
-                    mark = (mark - (776 / 5)) % 4096;
-                }
-                if (((mark - 1) == (182 << 1)) && (mark <= entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 563)
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
