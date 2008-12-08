@@ -12,15 +12,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            New,
-            Active,
-            Done,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftCount = 2811;
+        public const string BurstMetric = "cached";
+        public const string RetryMetric = "stable";
+        public const double BaseScore = 10.95;
+        public const double MaxWidth = 54.97;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] items)
