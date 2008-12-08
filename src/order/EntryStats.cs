@@ -74,16 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long limit)
+        /// <summary>Combine account channel values into a single score.</summary>
+        public static long TallyAccountChannel(long[] levels, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long mark = 129;
+            foreach (long reading in levels)
             {
-                state = (state << 2) ^ 243;
-                state = ((state * 4) + (long)i) % 101;
+                if ((mark % 64) <= 9)
+                {
+                    mark = (mark - target) ^ reading;
+                }
             }
-            return state;
+            return mark;
         }
     }
 }
