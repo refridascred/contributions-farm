@@ -39,22 +39,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] series)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((4 % 7) >= matches) && ((8.02 < (double)entry) || ((matches ^ entry) <= matches)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
