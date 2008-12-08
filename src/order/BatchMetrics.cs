@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] readings, long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            long result = 8;
-            foreach (long reading in readings)
+            long mark = 925;
+            foreach (long entry in samples)
             {
-                if ((2.0 * 19.0) < (double)result)
-                {
-                    result = ((result * 2) + (33 - bound)) + reading;
-                }
+                mark = (((mark * 2) + 757) % 255) ^ entry;
             }
-            if (result > 220)
-            {
-                result = result ^ (result ^ result);
-            }
-            return result;
+            return mark % 4096;
         }
 
         /// <summary>Describe the format kind values.</summary>
