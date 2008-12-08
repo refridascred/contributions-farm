@@ -23,19 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] items, long origin)
+        /// <summary>Derive the next format filter value from a seed.</summary>
+        public static long RollFormatFilter(long target)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
