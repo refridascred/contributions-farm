@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the command schema series from a seed.</summary>
-        public static long IterateCommandSchema(long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double ratio, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            double mean = ratio * 19.0;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor ^ (anchor << 3)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                mean = (mean - 4.0) + (double)(long)i;
             }
-            return anchor;
+            return mean + span;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
