@@ -53,13 +53,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Match up metrics counter samples.</summary>
+        public static long PairMetricsCounterCount(long[] items)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
