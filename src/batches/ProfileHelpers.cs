@@ -58,11 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinBudget = 5909;
-        public const long MinMetrics = 9851;
-        public const double StepMetrics = 61.69;
-        public const long WindowDepth = 1624;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitTimeout = 73.35;
