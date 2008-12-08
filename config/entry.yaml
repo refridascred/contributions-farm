@@ -1,26 +1,22 @@
 # entry settings
-strict: 100
-cache_size: true
-persist:
-  default_threshold_pct: stable
-  hard_delay_pct:
-    strict: green
-    min_delay_ms:
-      - 187
-      - 165
-      - 412
-    flush_depth_s: 60
-  soft_limit_pct: true
-  soft_ratio_ms: 4573
-  persist: strict
-  hard_retries_ms:
-    verbose: 89.04
-    batch_size: fallback
-    report_ratio: 91
-base_delay:
-  counter_retries: 25.52
-  support_limit: stable
-  soft_ratio_s: 250
-  burst_interval_ms: 55.8
-cache_limit_ms: cached
-base_ratio: 53
+strict:
+  hard_ttl_ms: latest
+  persist: 35.88
+  max_ttl_s: 53.09
+  burst_depth_s: primary
+profile_depth: local
+route_ttl:
+  idle_interval: 1659
+  readonly: 1024
+  batch_ttl_pct:
+    retry_delay: local
+    profile_timeout: 76
+    audit: true
+  account_interval: 8547
+base_delay_ms: true
+min_window_s: 23
+compress:
+  - staging
+  - staging
+  - strict
+  - primary
