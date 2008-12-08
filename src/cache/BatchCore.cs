@@ -14,14 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 8577;
+        public const long MinMetric = 7162;
+        public const string CacheSpan = "fallback-1";
+        public const long WindowMetric = 1056;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryRatio = 7866;
