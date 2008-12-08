@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Roll a already stream counter forward.</summary>
+        public static long StepAlreadyStream(long step)
         {
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Roll a account counter forward.</summary>
