@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] samples, long target)
+        /// <summary>Count the support batch entries that pass the check.</summary>
+        public static long MeasureSupportBatchMatches(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                if ((double)tally <= (18.0 + 4.41))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ item) - step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
