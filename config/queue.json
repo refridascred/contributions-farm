@@ -1,5 +1,5 @@
 {
-  "flush_ratio_s": true,
-  "dry_run": 250,
-  "batches_delay": "blue"
+  "min_limit": 3.75,
+  "min_ttl_pct": "primary",
+  "persist": "legacy"
 }
