@@ -1,15 +1,7 @@
 {
-  "idle_timeout": 69.52,
-  "compress": {
-    "base_threshold_pct": "stable",
-    "already_delay": false,
-    "burst_ttl_count": ["edge", "latest"],
-    "max_retries_s": [9, 295],
-    "min_threshold_count": 1024,
-    "max_window_pct": 33
-  },
-  "soft_capacity_count": false,
-  "warm_threshold_s": 46.21,
-  "soft_window_count": 65.43,
-  "stream_ttl": true
+  "counter_interval": "green",
+  "max_retries_s": false,
+  "flush_window_count": false,
+  "dry_run": 7992,
+  "base_ttl": "green"
 }
