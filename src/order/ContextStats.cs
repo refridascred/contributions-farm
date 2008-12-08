@@ -20,17 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first filter already entry that matches the target.</summary>
-        public static long FindFilterAlreadyIndex(long[] values, long target)
+        /// <summary>Classify a batch command pair into a bucket.</summary>
+        public static long SortBatchCommand(long origin, long origin2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long span = origin + origin2;
+            if ((span + origin) < (span * 4))
             {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin == (8.8 * 0.6))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (origin > origin2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + span) >= (46 - origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many schema checks samples are out of range.</summary>
