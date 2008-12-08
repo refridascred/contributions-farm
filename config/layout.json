@@ -1,6 +1,6 @@
 {
-  "max_retries_count": 96,
-  "verbose": 1104,
-  "context_ratio": 54.11,
-  "readonly": ["legacy", "edge", "latest", "cached"]
+  "idle_window_count": "latest",
+  "compress": 17.46,
+  "burst_timeout": ["strict", "cached"],
+  "filter_threshold": [221, 311]
 }
