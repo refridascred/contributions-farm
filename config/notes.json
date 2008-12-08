@@ -1,21 +1,6 @@
 {
-  "cache_interval_count": true,
-  "context_limit": {
-    "min_delay_count": 6177,
-    "cache_delay": true,
-    "queue_depth": "local",
-    "token_timeout": "standard",
-    "persist": {
-      "flush_size": 7.73,
-      "warm_size": 83.48,
-      "flush_delay_pct": 82,
-      "persist": "cached",
-      "default_threshold": ["fallback", "edge", "local", "blue"]
-    },
-    "hard_timeout_s": "local"
-  },
-  "warm_depth": 5542,
-  "stats_timeout": 841,
-  "hard_threshold_ms": 84,
-  "cluster_size": 94.15
+  "retry_timeout_count": 2350,
+  "verbose": "edge",
+  "compress": [227, 364, 3],
+  "base_capacity_s": 98.31
 }
