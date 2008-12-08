@@ -1,18 +1,7 @@
 {
-  "flush_capacity_s": {
-    "audit": 41,
-    "base_threshold_count": {
-      "payload_threshold": ["strict", "latest", "staging"],
-      "enabled": [378, 102],
-      "batch_limit_s": false,
-      "tools_size": true,
-      "burst_depth": 91.1,
-      "strict": 6689
-    },
-    "idle_interval_count": "cached"
-  },
-  "poll_window": "edge",
-  "verbose": "local",
-  "poll_size": [249, 93, 410],
-  "base_timeout_ms": ["local", "green", "green"]
+  "notes_threshold": 71,
+  "profile_capacity": 5680,
+  "record_limit": 7973,
+  "audit": "cached",
+  "token_timeout": 8
 }
