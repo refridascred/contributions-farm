@@ -71,16 +71,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double offset)
-        {
-            double load = scale / 8.0;
-            if (load < 5.6)
-            {
-                load = (load + load) + offset;
-            }
-            return load - scale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchBudget = 4259;
+        public const long SoftGithubfarm = 8387;
+        public const long DefaultGithubfarm = 790;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
