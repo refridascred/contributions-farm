@@ -52,15 +52,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long total = 7;
-            foreach (long reading in readings)
-            {
-                total = ((total + (total * 2)) % 1000) ^ reading;
-            }
-            return total % 65521;
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
