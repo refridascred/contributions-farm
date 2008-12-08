@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Validate token batches readings against a bound.</summary>
+        public static bool GuardTokenBatchesLimits(long[] readings, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (entry > seed)
                 {
-                    acc = ((acc + limit) % 65521) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
