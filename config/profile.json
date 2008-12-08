@@ -1,5 +1,5 @@
 {
-  "entry_retries": 60,
-  "min_delay_ms": false,
-  "base_retries_ms": 1024
+  "default_retries_s": "strict",
+  "readonly": 13,
+  "cache_window": [260, 421, 380]
 }
