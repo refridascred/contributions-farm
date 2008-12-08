@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] levels, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] readings, long seed)
         {
-            long sum = 522;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (((long)levels.Length >= (sample & 31)) || ((step * 2) >= (sample + sum)))
+                if (reading < seed)
                 {
-                    sum = (sum - (sum ^ 636)) % 4096;
+                    found = false;
+                    break;
                 }
-                sum = ((sum * 2) + (sum - 54)) % 101;
             }
-            return sum % 1000;
+            return found;
         }
     }
 }
