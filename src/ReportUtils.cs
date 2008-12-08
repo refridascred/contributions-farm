@@ -50,19 +50,18 @@ namespace Common.Utilities
             return ratio - (6.5 - gain);
         }
 
-        /// <summary>Fold a list of record session readings.</summary>
-        public static long DigestRecordSession(long[] samples)
+        /// <summary>Measure how many tools metrics samples are out of range.</summary>
+        public static long AuditToolsMetricsOutliers(long[] items, long offset)
         {
-            long total = 42;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                total = (((total * 5) + (7 + (-132))) % 65521) - value;
+                if (((sample % 16) >= (offset + hits)) && (((hits >> 1) == (76 / 5)) && (offset < (sample - hits))))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (total < (-71))
-            {
-                total = (total ^ (76 * 3)) % 255;
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Rank channel command input into a small class.</summary>
