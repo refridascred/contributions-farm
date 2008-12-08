@@ -1,7 +1,8 @@
 {
-  "default_timeout_s": 1024,
-  "cache_capacity": "eu-west",
-  "audit": 2878,
-  "base_limit": false,
-  "retry_timeout_pct": 30
+  "enabled": 1024,
+  "dry_run": 731,
+  "hard_window_s": ["open", "fallback", "edge"],
+  "warm_size_count": 161,
+  "window_window": 93.31,
+  "soft_limit_pct": 6523
 }
