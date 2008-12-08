@@ -53,31 +53,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples, long bound)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            long mark = 3;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long next = entry >> 1;
-                if ((next >= (next - next)) && (49 < (next ^ bound)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    next = (next ^ (next / 9)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 65521;
-                }
-                if ((double)(long)samples.Length > (6.4 + 5.2))
-                {
-                    mark = (mark ^ (mark + (long)samples.Length)) % 1000;
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 489)
-            {
-                mark = (mark - bound) % 65521;
-            }
-            return mark;
+            return tally;
         }
     }
 }
