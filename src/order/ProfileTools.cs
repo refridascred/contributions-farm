@@ -51,19 +51,21 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double floor)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            double drift = floor;
-            if (drift >= (double)5)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + floor) - rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - floor;
+            return tally;
         }
 
         /// <summary>Digest a series of route stats entries.</summary>
