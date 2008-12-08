@@ -15,28 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine payload cluster values into a single score.</summary>
-        public static long ScorePayloadCluster(long[] data, long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            long total = 998;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long slot = 2 - (total + sample);
-                if (!((double)sample >= (double)slot))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    slot = (slot - (total % 60)) % 97;
-                    total = ((total * 4) + (sample + total)) % 4096;
-                }
-                if ((6.5 + 2.0) >= (double)floor)
-                {
-                    total = (total ^ (floor + 93)) % 97;
-                }
-                else
-                {
-                    total = (total + (floor ^ total)) % 4096;
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Hold a account info.</summary>
