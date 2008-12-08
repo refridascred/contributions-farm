@@ -47,17 +47,19 @@ namespace Common.Utilities
         public const long IdleRatio = 3546;
         public const long IdleNotes = 724;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] values, long seed)
+        /// <summary>Validate filter profile readings against a bound.</summary>
+        public static bool CheckFilterProfileLimits(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (values[i] <= seed)
+                if (value > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
