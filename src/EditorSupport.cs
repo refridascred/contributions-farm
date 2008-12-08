@@ -24,15 +24,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double bias, double bias2)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            double gain = bias2 - (bias + bias2);
-            for (int i = 0; i < 5; i++)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                gain = (gain + (bias + gain)) + (double)(long)i;
+                total = total - (limit + limit);
+                total = (total - ((long)i >> 3)) % 65521;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return gain + (bias2 - bias2);
+            return total;
         }
 
         /// <summary>Digest a series of command entries.</summary>
