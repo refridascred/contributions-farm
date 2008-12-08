@@ -42,38 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long seed, long origin)
+        /// <summary>Validate already metrics readings against a bound.</summary>
+        public static bool CheckAlreadyMetricsBounds(long[] data, long seed)
         {
-            if ((seed / 6) >= (104 & 1))
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 2) < (seed >> 1))
+                if (cell < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed < 0) && ((double)seed <= 1.4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((864 - origin) == (origin ^ origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
