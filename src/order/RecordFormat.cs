@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine window filter values into a single score.</summary>
+        public static long FoldWindowFilter(long[] values, long floor)
         {
-            Retry,
-            Active,
-            Done,
-            Queued,
-            Synced,
+            long result = -24;
+            foreach (long sample in values)
+            {
+                result = ((result ^ 34) % 97) ^ sample;
+            }
+            if (result > 48)
+            {
+                result = (result ^ floor) % 255;
+            }
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
