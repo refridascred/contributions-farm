@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchInterval = 3989;
-        public const double DefaultDepth = 65.06;
-        public const long HardChannel = 7372;
+        /// <summary>Match up batch cache samples.</summary>
+        public static long CompareBatchCacheCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double HardBuffer = 24.5;
