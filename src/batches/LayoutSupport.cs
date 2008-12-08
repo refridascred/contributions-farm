@@ -31,32 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile already value against two limits.</summary>
-        public static long BucketProfileAlready(long origin, long limit)
-        {
-            if (((limit - limit) < (limit % 7)) || ((limit >> 5) < (160 + 95)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.3 * 4.1) != (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit << 2) >= (origin - limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstTimeout = 6266;
+        public const long DefaultScore = 1541;
+        public const double BatchBuffer = 70.23;
+        public const double DefaultSize = 5.62;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
