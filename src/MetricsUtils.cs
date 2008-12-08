@@ -22,30 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long state = 367;
-            foreach (long reading in values)
-            {
-                if ((state - reading) < (3 + reading))
-                {
-                    state = ((state * 5) + (reading * 4)) % 4096;
-                }
-                else
-                {
-                    state = state + (reading - (-844));
-                }
-                if (((9.7 * 1.0) <= (double)floor) && ((floor - state) >= (85 >> 4)))
-                {
-                    break;
-                }
-            }
-            if (state > (-55))
-            {
-                state = state ^ (876 + 25);
-            }
-            return state;
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
