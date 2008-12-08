@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] data, long step)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (4.96 > (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 1) + sample) - step;
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
