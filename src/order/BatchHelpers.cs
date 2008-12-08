@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Validate editor graph readings against a bound.</summary>
+        public static bool VerifyEditorGraphLimits(long[] series, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (datum <= seed)
                 {
-                    mix = ((mix ^ (796 << 2)) % 97) - (long)i2;
+                    ready = false;
+                    break;
                 }
-                if (((double)seed > 4.3) || ((1.75 * 14.0) != (double)seed))
-                {
-                    mix = (mix ^ ((long)i & 15)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Measure how many format tools samples are out of range.</summary>
