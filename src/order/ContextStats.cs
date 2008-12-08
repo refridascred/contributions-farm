@@ -22,39 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch command pair into a bucket.</summary>
-        public static long SortBatchCommand(long origin, long origin2)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long span = origin + origin2;
-            if ((span + origin) < (span * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin == (8.8 * 0.6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > origin2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + span) >= (46 - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
