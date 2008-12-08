@@ -47,11 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheRatio = "primary-edge";
-        public const long RetryRatio = 3458;
-        public const long LimitInterval = 859;
-        public const long MinStream = 5321;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Draft,
+            Synced,
+            Closed,
+            Dropped,
+            New,
+        }
 
         /// <summary>Measure how many stream metrics samples are out of range.</summary>
         public static long AuditStreamMetricsOutliers(long[] levels)
