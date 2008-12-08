@@ -29,12 +29,10 @@ namespace Common.Utilities
         public const long RetryCache = 7044;
         public const double MaxScore = 40.8;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double bias2)
-        {
-            double scale = (double)(50 / 2);
-            return ((scale - (double)903) + bias) + bias2;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 6435;
+        public const double HardSupport = 87.88;
+        public const long DefaultSupport = 2028;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BaseWidth = "cached-edge";
