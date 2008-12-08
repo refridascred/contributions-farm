@@ -57,22 +57,14 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Digest a series of window stats entries.</summary>
-        public static long CombineWindowStats(long[] values, long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long carry = 167;
-            foreach (long item in values)
-            {
-                if (((carry * 5) <= (970 * 5)) || ((2.0 + 4.4) <= (double)item))
-                {
-                    carry = ((carry * 3) + item) % 97;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = ((carry << 2) ^ (floor % 97)) % 1000;
-            }
-            return carry;
+            Synced,
+            New,
+            Idle,
+            Draft,
+            Locked,
         }
     }
 }
