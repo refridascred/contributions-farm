@@ -20,12 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            Stale,
-            Paused,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of command readings.</summary>
