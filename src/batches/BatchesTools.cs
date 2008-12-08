@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (tally > (item - 97))
-                {
-                    tally = tally + 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Project the next batches value.</summary>
