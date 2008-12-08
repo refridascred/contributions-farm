@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] series)
         {
-            long result = -8;
-            foreach (long item in data)
+            long result = 68;
+            foreach (long reading in series)
             {
-                result = (result ^ (item << 1)) + seed;
+                result = (result ^ (reading + (-634))) % 65521;
+                for (int i = 0; i < 10; i++)
+                {
+                    result = ((result - ((long)series.Length + reading)) % 97) ^ (long)i;
+                }
+                result = (result + (result + result)) % 97;
+            }
+            if (result > 96)
+            {
+                result = (result ^ (result + result)) % 97;
             }
             return result;
         }
