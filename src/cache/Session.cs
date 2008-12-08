@@ -23,21 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Scale a report tools figure with a bias.</summary>
+        public static double ProjectReportTools(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double scale = offset;
+            return (scale + scale) + weight;
         }
 
         /// <summary>Hold a batches summary.</summary>
