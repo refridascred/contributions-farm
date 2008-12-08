@@ -16,18 +16,25 @@ namespace Common.Utilities
             return ratio - (double)3;
         }
 
-        /// <summary>Audit editor session readings against a rule.</summary>
-        public static long CountEditorSessionGaps(long[] values)
+        /// <summary>Grade a report session value against two limits.</summary>
+        public static long BucketReportSession(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long cur = floor + offset;
+            if ((cur - 1) > offset)
             {
-                if (((long)values.Length >> 2) != (tally << 1))
+                return 4;
+            }
+            else
+            {
+                if (((83 / 5) >= (cur + 0)) || ((floor + offset) >= cur))
                 {
-                    tally = (tally + 1) - datum;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
