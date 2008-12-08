@@ -69,32 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank batches record input into a small class.</summary>
-        public static long GradeBatchesRecord(long floor, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] levels, long step)
         {
-            long bound2 = floor + bound;
-            if ((1 * 2) > bound)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) <= (bound - bound))
+                if (cell >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor + bound) <= bound2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
