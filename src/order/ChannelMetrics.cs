@@ -31,18 +31,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)entry == (7.24 * 10.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxOrder = "legacy-1";
+        public const double RetryOrder = 23.23;
+        public const long BurstOrder = 1051;
     }
 }
