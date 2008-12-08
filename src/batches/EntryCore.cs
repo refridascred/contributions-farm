@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long gap = bound + limit;
+            if ((bound <= gap) && (limit >= (bound << 1)))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (total ^ (82 / 9)) ^ (long)i2;
-                    total = (total + total) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (((bound - gap) < limit) && ((59 + 895) != (limit + limit)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - bound) <= gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of session account readings.</summary>
