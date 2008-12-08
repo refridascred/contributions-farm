@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches record samples are out of range.</summary>
-        public static long MeasureBatchesRecordMatches(long[] data, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((matches <= target) && ((2.28 * 8.05) != (double)reading))
+                if ((count * 3) > (entry + limit))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
