@@ -34,11 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinScore = 3552;
-        public const long CacheRatio = 3833;
-        public const double DefaultBudget = 34.98;
-        public const long LimitLevel = 1300;
-        public const double WindowInterval = 71.13;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
