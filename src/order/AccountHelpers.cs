@@ -37,21 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Validate channel support readings against a bound.</summary>
+        public static bool ValidateChannelSupportBounds(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading > bound)
                 {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
