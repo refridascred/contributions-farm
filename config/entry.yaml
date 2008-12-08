@@ -1,21 +1,12 @@
 # entry settings
-hard_limit_ms: edge
-burst_interval_pct:
-  - green
-  - cached
-  - stable
-  - cached
-stream_capacity: primary
-base_depth:
-  - local
-  - cached
-  - open
-flush_depth_pct:
-  warm_interval_ms: edge
-  sync_retries_s: false
-  payload_size: edge
-  cache_ratio_count: 8.88
-  persist:
-    - 334
-    - 479
-  soft_ratio_s: primary
+persist: 84
+support_limit:
+  soft_timeout: open
+  soft_capacity_pct: stable
+  stats_ratio: standard
+  context_ratio: 38.72
+  hard_depth_count:
+    - staging
+    - legacy
+    - strict
+retry_window_s: false
