@@ -1,7 +1,19 @@
 {
-  "soft_capacity": 8873,
-  "base_ratio_s": "fallback",
-  "max_interval": 21,
-  "tools_delay": 70.71,
-  "sync_limit": "strict"
+  "retry_size": ["primary", "strict", "cached"],
+  "audit": 18,
+  "flush_ttl_ms": 500,
+  "soft_timeout": 30,
+  "max_delay": {
+    "retry_ratio_ms": 57.55,
+    "warm_interval_ms": {
+      "default_delay_count": true,
+      "persist": "fallback",
+      "enabled": "blue",
+      "record_retries": true
+    },
+    "cache_interval_pct": 20,
+    "hard_threshold_pct": [319, 353],
+    "strict": true,
+    "hard_window": 6975
+  }
 }
