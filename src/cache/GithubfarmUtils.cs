@@ -27,18 +27,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] samples)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading == (6.8 / 5.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Locked,
+            Closed,
+            Active,
         }
     }
 }
