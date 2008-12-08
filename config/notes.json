@@ -1,5 +1,12 @@
 {
-  "retry_interval": 48,
-  "dry_run": 6606,
-  "audit": "latest"
+  "retry_limit": {
+    "buffer_retries": ["open", "edge", "latest"],
+    "base_interval_s": true,
+    "max_size": 70.59,
+    "strict": 60,
+    "min_threshold": 43.36,
+    "filter_ratio": 19.73
+  },
+  "record_depth": true,
+  "filter_window": "cached"
 }
