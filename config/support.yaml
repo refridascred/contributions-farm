@@ -1,5 +1,4 @@
 # support settings
-max_ratio_count: 7183
-account_retries: stable
-profile_capacity: false
-format_window: green
+format_ratio: open
+verbose: blue
+poll_delay: staging
