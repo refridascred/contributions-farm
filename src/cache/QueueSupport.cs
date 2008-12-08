@@ -13,32 +13,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long limit, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] samples, long floor)
         {
-            long span = limit ^ floor;
-            if ((floor + 557) <= (limit + 711))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit / 8) <= (span ^ 565))
+                if (datum != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.49 - 5.89) <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
