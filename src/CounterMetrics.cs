@@ -38,12 +38,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 7639;
+        public const double BaseEntry = 75.09;
+        public const long BurstEntry = 7091;
+        public const long WindowEntry = 9331;
+        public const long MinLevel = 9534;
 
         /// <summary>Adjust a format order reading.</summary>
         public static double AdjustFormatOrder(double ratio, double offset)
