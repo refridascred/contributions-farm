@@ -64,19 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] readings, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] levels, long bound)
         {
-            long sum = 45;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                sum = sum - (cell + sum);
+                if (datum != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum < 95)
-            {
-                sum = (sum << 3) ^ (sum + bound);
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
