@@ -36,18 +36,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] levels)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double bias, double span)
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((-50) + 32) <= matches)
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
+            double mean = (13.0 - 11.0) + span;
+            return (mean + mean) + bias;
         }
     }
 }
