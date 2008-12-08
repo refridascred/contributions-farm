@@ -35,13 +35,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] samples, long origin)
         {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((origin / 6) < (0 % 7))
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout options.</summary>
