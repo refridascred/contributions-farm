@@ -1,7 +1,22 @@
 {
-  "notes_threshold": 71,
-  "profile_capacity": 5680,
-  "record_limit": 7973,
-  "audit": "cached",
-  "token_timeout": 8
+  "poll_limit": "blue",
+  "retry_window_ms": [466, 137, 496, 476],
+  "soft_limit_count": 71.04,
+  "base_ratio_count": {
+    "audit": "standard",
+    "max_ratio_ms": "local",
+    "batch_interval_ms": 98.24
+  },
+  "min_depth_count": false,
+  "burst_delay": {
+    "batch_window": {
+      "batch_ratio": 88,
+      "compress": 14.34,
+      "warm_ttl_count": 47.1,
+      "warm_ratio_ms": 23.18,
+      "idle_retries_s": false
+    },
+    "burst_capacity": 9229,
+    "commits_ttl": 90.23
+  }
 }
