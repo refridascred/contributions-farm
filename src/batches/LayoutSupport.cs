@@ -22,11 +22,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a channel metrics value against two limits.</summary>
+        public static long BucketChannelMetrics(long target, long origin)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long bound = target - origin;
+            if (((double)origin >= (4.0 * 4.62)) && ((double)bound > 7.2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound * 5) == (bound % 100)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + origin) < (origin * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((10.0 * 8.9) > (double)target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a account githubfarm sample.</summary>
