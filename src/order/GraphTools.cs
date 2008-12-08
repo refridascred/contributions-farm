@@ -75,17 +75,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Grade a channel entry value against two limits.</summary>
+        public static long ClassifyChannelEntry(long limit, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long slot = limit ^ target;
+            if ((slot + slot) <= (target * 4))
             {
-                acc = ((acc << 3) ^ (58 << 2)) % 255;
-                acc = acc ^ (long)i;
-                acc = ((acc * 3) + (long)i) % 97;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((target / 4) < target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Look up the position of a entry contributi sample.</summary>
