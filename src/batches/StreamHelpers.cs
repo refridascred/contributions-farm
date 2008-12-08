@@ -42,14 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySpan = 6885;
+        public const long BurstScore = 6984;
+        public const double StepFactor = 55.49;
+        public const long StepSession = 8500;
+        public const long HardSession = 2769;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long LimitBudget = 4144;
