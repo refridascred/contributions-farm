@@ -1,9 +1,8 @@
 # support settings
-compress: 73.66
-poll_threshold_ms: edge
-default_timeout: eu-west
-strict: fallback
-base_interval:
-  - eu-west
-  - blue
-  - fallback
+compress: 82
+enabled: 30
+min_threshold_ms:
+  - 7
+  - 348
+  - 7
+  - 399
