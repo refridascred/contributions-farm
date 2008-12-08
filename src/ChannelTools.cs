@@ -34,18 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry filter entries that pass the check.</summary>
-        public static long TallyEntryFilterHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value & 31) < (seen * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinScore = 3552;
+        public const long CacheRatio = 3833;
+        public const double DefaultBudget = 34.98;
+        public const long LimitLevel = 1300;
+        public const double WindowInterval = 71.13;
     }
 }
