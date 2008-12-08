@@ -53,19 +53,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] levels, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long floor, long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            if (((floor + floor) <= (step - floor)) && ((floor ^ step) <= floor))
             {
-                if (cell > target)
+                return 0;
+            }
+            else
+            {
+                if ((758 >> 2) > (floor >> 1))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step < (floor << 3)) && (104 > step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a filter entry.</summary>
