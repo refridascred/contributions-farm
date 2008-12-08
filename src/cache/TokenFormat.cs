@@ -27,15 +27,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchRatio = "local-edge";
+        public const long LimitFactor = 4569;
+        public const long RetryCounter = 8668;
+        public const long MinCounter = 9737;
+        public const long SoftDepth = 9837;
     }
 }
