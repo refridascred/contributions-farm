@@ -38,19 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (matches > bound)
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "fallback-v2";
+        public const long MaxTimeout = 7532;
+        public const long HardMetrics = 4060;
+        public const long BurstWidth = 7964;
+        public const long CacheMetrics = 5942;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesLimits(long[] readings, long origin)
