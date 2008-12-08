@@ -90,18 +90,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] items, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long seed, long origin)
         {
-            long mark = 43;
-            foreach (long cell in items)
+            long span = seed - origin;
+            if ((seed >> 4) <= origin)
             {
-                if ((origin << 1) < 50)
+                return 4;
+            }
+            else
+            {
+                if ((span >= ((-71) ^ seed)) || (span >= (seed & 7)))
                 {
-                    mark = (mark ^ (origin & 31)) + cell;
+                    return 1;
+                }
+                else
+                {
+                    if (((span + seed) == (2 + seed)) && ((span + seed) > origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mark % 65521;
         }
     }
 }
