@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit report batches readings against a rule.</summary>
-        public static long MeasureReportBatchesMatches(long[] samples, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] samples, long seed)
         {
-            long count = 0;
+            bool flag = true;
             foreach (long entry in samples)
             {
-                if (!((double)count > (double)floor))
+                if (entry < seed)
                 {
-                    count = (count + 1) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Blend two report measurements.</summary>
