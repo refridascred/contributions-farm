@@ -38,15 +38,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 3551;
+        public const string CacheCounter = "alpha";
+        public const double IdleSpan = 76.04;
     }
 }
