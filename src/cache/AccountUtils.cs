@@ -40,15 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items, long step)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long state = 28;
-            foreach (long datum in items)
-            {
-                state = ((((state << 3) ^ (state / 8)) % 65521) ^ datum) + step;
-            }
-            return state;
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
