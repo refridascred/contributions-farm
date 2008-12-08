@@ -78,25 +78,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account context input into a small class.</summary>
-        public static long RankAccountContext(long floor, long floor2)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long edge = floor - floor2;
-            if ((edge << 2) < edge)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor / 8) < (floor ^ floor2)) && ((1.0 - 13.0) != (double)floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
