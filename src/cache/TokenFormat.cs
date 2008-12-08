@@ -25,22 +25,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit session graph readings against a rule.</summary>
-        public static long MeasureSessionGraphHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally - tally) != (reading - tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstLevel = 2291;
+        public const double BatchNotes = 34.93;
+        public const long CacheLevel = 5188;
+        public const double CacheNotes = 10.4;
     }
 }
