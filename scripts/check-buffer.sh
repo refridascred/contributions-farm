@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+BUFFER_LIMIT=328
+log "limit is ${BUFFER_LIMIT}"
