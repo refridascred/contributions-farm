@@ -31,19 +31,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Check that every format checks entry stays within the limit.</summary>
+        public static bool CheckFormatChecksRange(long[] data, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((carry / 4) > (floor + carry))
+                if (item < bound)
                 {
-                    carry = carry ^ carry;
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return ok;
         }
     }
 }
