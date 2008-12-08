@@ -40,21 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)entry < 3.73)
                 {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + seed;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
