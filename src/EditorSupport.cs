@@ -59,18 +59,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] values)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((hits & 7) >= ((long)values.Length << 1))
+                if (reading > floor)
                 {
-                    hits = (hits + 2) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Project the next channel value.</summary>
