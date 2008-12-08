@@ -25,13 +25,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Active,
-            Ready,
+            Paused,
             Synced,
-            Pending,
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
