@@ -2,10 +2,14 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    created_at TIMESTAMP,
-    region TEXT,
+    ratio REAL,
+    state TEXT NOT NULL DEFAULT 'new',
     level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
+
+INSERT INTO layout_items (token, ratio, state, level, rank) VALUES ('local', 61.37, 'primary', 3, 34);
+INSERT INTO layout_items (token, ratio, state, level, rank) VALUES ('green', 37.29, 'blue', 97, 44);
+INSERT INTO layout_items (token, ratio, state, level, rank) VALUES ('local', 79.41, 'cached', 87, 83);
