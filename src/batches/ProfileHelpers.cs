@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] data, long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.0 - 1.7) < (6.2 - 3.5))
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
                 {
-                    count = ((count + 3) ^ item) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit checks layout readings against a rule.</summary>
