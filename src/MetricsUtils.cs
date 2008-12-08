@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const double HardWidth = 82.15;
         public const string MaxBudget = "primary-1";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] values, long origin)
-        {
-            long sum = -5;
-            foreach (long sample in values)
-            {
-                sum = ((sum - (sum >> 5)) % 97) - sample;
-            }
-            if (sum > (-52))
-            {
-                sum = (sum ^ (origin % 12)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinCount = 9.71;
+        public const double WindowFilter = 11.97;
+        public const double LimitLevel = 82.45;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] values)
