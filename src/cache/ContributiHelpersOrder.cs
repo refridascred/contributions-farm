@@ -13,11 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Find the first support graph entry that matches the target.</summary>
+        public static long SeekSupportGraphIndex(long[] readings, long offset)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
