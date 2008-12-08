@@ -21,22 +21,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] values, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] levels, long offset)
         {
-            long sum = -686;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((origin - reading) >= (86 + sum)) && ((reading >> 1) < reading))
+                if ((double)hits < 2.36)
                 {
-                    sum = (sum * 4) + (reading + origin);
+                    hits = ((hits + 3) + sample) - offset;
                 }
             }
-            if (sum < 321)
-            {
-                sum = sum ^ (origin * 4);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
