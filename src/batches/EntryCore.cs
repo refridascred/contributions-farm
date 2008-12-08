@@ -58,21 +58,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Failed,
+            Retry,
+            Dropped,
+            Pending,
         }
     }
 }
