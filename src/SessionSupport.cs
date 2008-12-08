@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (mean - (mean * 3.0)) + gain;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell * 5) <= cell)
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 5439;
+        public const long HardAlready = 8803;
+        public const double WindowWidth = 48.97;
+        public const double CacheDepth = 13.07;
+        public const double IdleAlready = 73.37;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
