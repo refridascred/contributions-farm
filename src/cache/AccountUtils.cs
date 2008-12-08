@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double bias, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items, long step)
         {
-            double load = bias * 5.6;
-            for (int i = 0; i < 6; i++)
+            long state = 28;
+            foreach (long datum in items)
             {
-                load = ((load + (double)(-42)) + (double)(long)i) - offset;
+                state = ((((state << 3) ^ (state / 8)) % 65521) ^ datum) + step;
             }
-            return load + 7.58;
+            return state;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
