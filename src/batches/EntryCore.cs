@@ -52,18 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] data, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = 5;
+            foreach (long value in levels)
             {
-                if ((((value << 3) < (35 ^ limit)) || ((limit >> 4) < value)) && (((value * 4) < value) && ((value ^ value) > (value >> 5))))
-                {
-                    count = count + 1;
-                }
+                mix = mix + (value * 5);
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
