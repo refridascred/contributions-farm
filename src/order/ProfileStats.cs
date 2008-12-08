@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = mix + (target * 5);
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
