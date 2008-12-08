@@ -12,19 +12,19 @@ namespace Common.Utilities
             return drift + (bias * 5.28);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] values, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (datum > floor)
+                if (sample >= bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Describe the session kind values.</summary>
