@@ -14,15 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double gain, double floor)
+        /// <summary>Combine session cluster values into a single score.</summary>
+        public static long CombineSessionCluster(long[] series, long origin)
         {
-            double bias = gain + floor;
-            if (bias >= bias)
+            long mix = -102;
+            foreach (long reading in series)
             {
-                bias = bias + (gain * 15.0);
+                if (((3.12 + 2.7) < (double)mix) || ((origin / 8) > reading))
+                {
+                    mix = (mix * 4) + (reading << 3);
+                }
             }
-            return bias + bias;
+            return mix;
         }
 
         /// <summary>Describe the account kind values.</summary>
