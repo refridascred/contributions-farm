@@ -63,19 +63,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] samples, long bound)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
