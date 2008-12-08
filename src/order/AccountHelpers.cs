@@ -33,19 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel support readings against a bound.</summary>
-        public static bool ValidateChannelSupportBounds(long[] readings, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > bound)
+                if (samples[i] < limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
