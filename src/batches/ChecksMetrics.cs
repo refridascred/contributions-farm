@@ -14,26 +14,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] items, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double ratio, double bias)
         {
-            long carry = 82;
-            foreach (long reading in items)
+            double load = bias;
+            if (load >= (bias + ratio))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = ((carry ^ ((-2) + limit)) % 255) - (long)i;
-                }
-                if ((carry >> 5) > 42)
-                {
-                    carry = carry + (limit % 16);
-                }
-                if ((reading + 987) > (limit & 31))
-                {
-                    break;
-                }
+                load = load + ratio;
             }
-            return carry % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - ratio) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Describe the filter kind values.</summary>
