@@ -27,19 +27,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every route batch entry stays within the limit.</summary>
-        public static bool VerifyRouteBatchRange(long[] readings, long step)
+        /// <summary>Combine order githubfarm values into a single score.</summary>
+        public static long WeighOrderGithubfarm(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long score = -813;
+            foreach (long cell in samples)
             {
-                if (cell > step)
+                for (int i = 0; i < 10; i++)
                 {
-                    ok = false;
-                    break;
+                    score = (score ^ (cell * 5)) - (long)i;
                 }
+                score = ((score * 5) + (cell - 299)) % 97;
+                score = ((score << 2) ^ (cell & 15)) % 255;
             }
-            return ok;
+            if (score < 725)
+            {
+                score = (score + (3 - 148)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the channel phase values.</summary>
