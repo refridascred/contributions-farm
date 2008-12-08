@@ -45,19 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] readings, long bound)
+        /// <summary>Digest a series of layout metrics entries.</summary>
+        public static long FoldLayoutMetrics(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long total = 4;
+            foreach (long cell in samples)
             {
-                if (entry < bound)
+                if ((414 + cell) != (total / 6))
                 {
-                    found = false;
-                    break;
+                    total = total ^ total;
                 }
             }
-            return found;
+            return total;
         }
     }
 }
