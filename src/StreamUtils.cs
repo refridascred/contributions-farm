@@ -104,18 +104,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] readings)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + count) < (34 / 9))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
