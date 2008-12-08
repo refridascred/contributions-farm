@@ -1,4 +1,24 @@
 # support settings
-format_ratio: open
-verbose: blue
-poll_delay: staging
+retry_retries_ms: false
+default_capacity: blue
+burst_depth_count: eu-west
+retry_depth_ms:
+  queue_size:
+    - blue
+    - blue
+  max_timeout_count:
+    - green
+    - cached
+    - edge
+    - stable
+  account_interval: 82
+  stream_ratio:
+    metrics_interval: 500
+    base_interval_pct: 100
+    burst_threshold: green
+    flush_depth_pct: 100
+  persist:
+    default_window: 500
+    verbose: 6925
+    persist: strict
+  session_delay: 58.16
