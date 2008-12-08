@@ -50,15 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double bias, double offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] samples, long target)
         {
-            double gain = offset - (double)227;
-            if (gain <= (gain - offset))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                gain = (gain + (offset + gain)) - bias;
+                if ((entry + hits) >= 8)
+                {
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain - offset;
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
