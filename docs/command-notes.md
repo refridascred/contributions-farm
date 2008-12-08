@@ -1,11 +1,10 @@
 # Command notes
 
-Keep batch and notes names short and lowercase.
-Run the format check before changing any window limits.
-Use schema settings to tune how often stream data is refreshed.
+Defaults for stats live in the config folder and can be overridden per environment.
+The queue report groups every context by stream.
 
 ## Guidelines
 
-- Log every stream change
-- Review graph limits each release
-- Keep metrics values small
+- Review cluster limits each release
+- Document new cluster fields
+- Keep context values small
