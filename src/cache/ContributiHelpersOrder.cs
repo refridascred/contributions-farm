@@ -32,23 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph commits entries.</summary>
-        public static long TotalGraphCommits(long[] levels, long seed)
+        /// <summary>Validate layout support readings against a bound.</summary>
+        public static bool ValidateLayoutSupportBounds(long[] items, long offset)
         {
-            long score = -59;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                score = ((score * 5) + (score & 255)) % 4096;
-                if (!(sample <= (42 - seed)))
+                if (datum >= offset)
                 {
-                    score = (score << 2) ^ (score - 93);
+                    stale = false;
+                    break;
                 }
             }
-            if (score < 676)
-            {
-                score = score + (seed ^ score);
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Check that every buffer entry entry stays within the limit.</summary>
