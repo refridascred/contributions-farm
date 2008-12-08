@@ -23,17 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] samples, long offset)
+        /// <summary>Derive the next payload graph value from a seed.</summary>
+        public static long IteratePayloadGraph(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the channel state values.</summary>
