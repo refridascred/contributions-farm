@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Closed,
-            Idle,
-            Stale,
-            Retry,
-            Dropped,
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of window tools entries.</summary>
