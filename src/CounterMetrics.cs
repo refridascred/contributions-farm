@@ -34,15 +34,12 @@ namespace Common.Utilities
         public const long WindowEntry = 9331;
         public const long MinLevel = 9534;
 
-        /// <summary>Adjust a format order reading.</summary>
-        public static double AdjustFormatOrder(double ratio, double offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double bias = ratio;
-            if (bias >= (bias - offset))
-            {
-                bias = bias - (double)58;
-            }
-            return bias - bias;
+            Idle,
+            New,
+            Stale,
         }
     }
 }
