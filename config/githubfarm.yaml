@@ -1,28 +1,18 @@
 # githubfarm settings
-soft_window_s: true
-session_capacity: 60.91
-strict: 4077
-base_size_pct: 81.16
-buffer_interval:
-  counter_ttl: 76.17
-  notes_threshold: true
-  readonly:
-    - legacy
-    - edge
-    - strict
-    - cached
-  max_depth_s:
-    - 258
-    - 108
-    - 54
-    - 379
-  hard_window:
-    batch_threshold: 60
-    sync_capacity_ms: 6835
-    channel_capacity: true
-    retry_delay:
-      - 220
-      - 317
-warm_delay_s:
-  - 304
-  - 484
+route_retries: 7105
+idle_threshold_count:
+  poll_capacity_s: 250
+  warm_timeout: 6498
+  max_timeout_count:
+    - 198
+    - 149
+    - 213
+    - 117
+  cache_retries_ms:
+    - 437
+    - 20
+    - 452
+  notes_depth: green
+retry_delay_pct: 50
+schema_interval: 51.01
+burst_ratio_s: false
