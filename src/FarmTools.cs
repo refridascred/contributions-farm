@@ -35,11 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxBudget = 35.49;
-        public const long MaxFormat = 960;
-        public const double BatchFormat = 39.18;
-        public const long MinFormat = 7731;
-        public const long LimitFormat = 4640;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
