@@ -26,13 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Look up the position of a checks session sample.</summary>
+        public static long LocateChecksSessionIndex(long[] readings, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches info.</summary>
