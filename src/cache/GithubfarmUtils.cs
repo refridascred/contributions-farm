@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] items, long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((double)limit == (13.0 - 5.0)) && !(value <= (limit & 7)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
