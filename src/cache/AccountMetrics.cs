@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] items, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long total = -128;
+            foreach (long reading in items)
             {
-                if ((double)(long)i < (double)target)
+                for (int i = 0; i < 6; i++)
                 {
-                    carry = (carry * 4) + carry;
+                    total = (((total << 3) ^ (offset - offset)) % 1000) ^ (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (((total - 4) <= (51 * 5)) && ((double)reading != (3.74 + 9.83)))
+                {
+                    total = (total ^ total) % 101;
+                }
+                else
+                {
+                    total = ((total * 3) + (total ^ reading)) % 101;
+                }
             }
-            return carry;
+            if (total > (-119))
+            {
+                total = ((total * 2) + (offset >> 5)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
