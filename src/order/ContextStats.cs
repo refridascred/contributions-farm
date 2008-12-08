@@ -28,19 +28,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] samples, long step)
+        /// <summary>Measure how many schema checks samples are out of range.</summary>
+        public static long CountSchemaChecksMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (cell < step)
+                if (((cell >= (tally * 2)) || ((double)cell <= (17.0 - 8.99))) || !(tally <= (tally / 6)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
