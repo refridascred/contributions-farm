@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate token format samples.</summary>
-        public static long TallyTokenFormat(long[] items, long limit)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long sum = 990;
-            foreach (long cell in items)
-            {
-                sum = (((sum * 5) + (sum - cell)) % 1000) - limit;
-            }
-            return sum % 4096;
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a session stats.</summary>
