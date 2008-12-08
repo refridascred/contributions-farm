@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate notes format readings against a bound.</summary>
-        public static bool VerifyNotesFormatLimits(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 6350;
+        public const long MaxCounter = 274;
+        public const long MinDepth = 8277;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] samples)
