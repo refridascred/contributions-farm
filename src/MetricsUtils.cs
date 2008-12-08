@@ -44,18 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter session entries that pass the check.</summary>
-        public static long CountCounterSessionHits(long[] levels)
+        /// <summary>Accumulate buffer farm samples.</summary>
+        public static long TallyBufferFarm(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = 67;
+            foreach (long item in series)
             {
-                if (!((double)entry == (3.9 - 18.0)))
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = matches + 2;
+                    anchor = ((anchor - anchor) - (long)i) ^ item;
                 }
+                anchor = (anchor << 2) ^ (anchor * 3);
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Rank account context input into a small class.</summary>
