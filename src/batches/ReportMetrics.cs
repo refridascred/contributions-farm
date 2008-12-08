@@ -15,13 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the context status values.</summary>
