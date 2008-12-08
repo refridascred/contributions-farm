@@ -35,16 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next commits already value from a seed.</summary>
-        public static long DeriveCommitsAlready(long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            long score = 65;
+            foreach (long item in items)
             {
-                sum = (sum ^ (73 * 3)) % 65521;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (((double)item >= (5.91 * 4.3)) || ((double)score > 5.0))
+                {
+                    score = score + (item + item);
+                }
             }
-            return sum;
+            return score;
         }
     }
 }
