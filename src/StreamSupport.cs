@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
             Stale,
-            New,
-            Failed,
-            Synced,
-            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the commits phase values.</summary>
