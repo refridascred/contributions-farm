@@ -22,18 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes account samples are out of range.</summary>
-        public static long CountNotesAccountMatches(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if ((double)bound <= 8.0)
             {
-                if ((hits % 8) < (item + item))
+                return 1;
+            }
+            else
+            {
+                if ((origin - bound) > bound)
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (bound <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound - bound) == (origin / 6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the command kind values.</summary>
