@@ -24,24 +24,38 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Iterate the command entry series from a seed.</summary>
-        public static long StepCommandEntry(long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long target, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            if (!(limit > (target % 16)))
             {
-                if (!(((long)i * 4) >= 558))
-                {
-                    carry = carry - (carry >> 3);
-                }
-                if ((398 - 80) != (seed ^ carry))
-                {
-                    carry = (carry * 4) + ((long)i + seed);
-                    carry = carry + 2;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (((-504) >= (limit + limit)) || ((double)target >= 3.5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1 >> 4) > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit / 7) <= (target % 60))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first command farm entry that matches the target.</summary>
