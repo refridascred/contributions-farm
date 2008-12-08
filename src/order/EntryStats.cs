@@ -61,14 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Idle,
-            Closed,
-            Paused,
-            Draft,
-            Synced,
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
