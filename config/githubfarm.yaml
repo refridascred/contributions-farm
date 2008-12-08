@@ -1,14 +1,4 @@
 # githubfarm settings
-cluster_retries: false
-hard_ratio_s: green
-warm_threshold_s: green
-warm_delay_ms: true
-poll_window_pct:
-  poll_limit_count: true
-  base_capacity:
-    - 420
-    - 241
-  warm_ttl_pct: false
-  dry_run: 250
-  flush_ratio_pct: local
-verbose: 100
+graph_depth: green
+dry_run: 46.45
+filter_interval: false
