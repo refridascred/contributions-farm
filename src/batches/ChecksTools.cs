@@ -28,13 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Queued,
-            Done,
-            Idle,
-            Closed,
+            Pending,
+            Active,
+            Failed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
