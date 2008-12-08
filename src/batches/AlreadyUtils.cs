@@ -52,18 +52,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] series, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading - tally) < (tally << 1))
-                {
-                    tally = (tally + 1) + limit;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
