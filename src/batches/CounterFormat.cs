@@ -29,11 +29,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheWidth = 3156;
-        public const long StepGithubfarm = 5905;
-        public const long CacheGithubfarm = 417;
-        public const long MinGithubfarm = 6775;
-        public const double DefaultGithubfarm = 93.08;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] samples)
+        {
+            long score = 1;
+            foreach (long reading in samples)
+            {
+                score = (score << 3) ^ (9 << 1);
+                score = (score ^ (score + reading)) % 97;
+            }
+            return score;
+        }
     }
 }
