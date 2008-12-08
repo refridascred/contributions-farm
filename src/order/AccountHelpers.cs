@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of farm support readings.</summary>
-        public static long OverlapFarmSupportCount(long[] readings)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            New,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
