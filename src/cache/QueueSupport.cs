@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double ratio, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double rate = ratio - ratio;
-            return (rate + (ratio / 9.0)) + span;
+            public double Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
