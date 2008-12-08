@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public double Token { get; set; }
+            Pending,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a record info.</summary>
