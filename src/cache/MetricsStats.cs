@@ -49,18 +49,18 @@ namespace Common.Utilities
             return (ratio + (double)2) + gain;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] items, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((bound % 64) > item)
+                if (matches < (850 % 64))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
