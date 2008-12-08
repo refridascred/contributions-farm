@@ -1,19 +1,12 @@
 {
-  "compress": {
-    "compress": 60,
-    "strict": {
-      "format_interval": 91,
-      "channel_timeout": "eu-west",
-      "queue_timeout": "stable",
-      "min_ttl": 88,
-      "checks_timeout": "latest"
-    },
-    "flush_capacity_count": 500,
-    "filter_retries": false,
-    "warm_ratio_pct": 90.05
-  },
-  "soft_interval": ["blue", "local", "blue"],
-  "idle_window": 61,
-  "warm_delay_pct": [196, 95, 309, 209],
-  "verbose": 11.68
+  "burst_limit_pct": 24.19,
+  "hard_ttl": "latest",
+  "batch_capacity_s": "local",
+  "flush_depth": "blue",
+  "cluster_threshold": true,
+  "max_ttl": {
+    "compress": 5394,
+    "idle_ttl_s": "strict",
+    "dry_run": 5895
+  }
 }
