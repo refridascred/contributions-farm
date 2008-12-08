@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in local blue open; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-CHANNEL_LIMIT=118
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in strict open green; do
-    log "checking ${item}"
-done
