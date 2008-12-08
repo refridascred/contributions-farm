@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 886;
-        public const double RetryRoute = 55.31;
-        public const long WindowRoute = 1846;
-        public const string StepLevel = "legacy";
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
