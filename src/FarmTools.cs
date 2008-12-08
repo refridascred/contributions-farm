@@ -20,14 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
             Failed,
-            Pending,
-            New,
-            Synced,
-            Locked,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
