@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings, long origin)
-        {
-            long sum = 34;
-            foreach (long item in readings)
-            {
-                sum = ((sum ^ origin) % 101) - item;
-                if (5.4 >= (double)sum)
-                {
-                    sum = (sum * 5) + (long)readings.Length;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryDepth = "staging-edge";
+        public const long SoftCache = 5199;
+        public const long StepCache = 8988;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long floor, long seed)
