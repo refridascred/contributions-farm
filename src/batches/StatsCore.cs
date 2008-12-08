@@ -72,15 +72,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long offset, long origin)
         {
-            long score = 6;
-            foreach (long entry in items)
+            long next = offset + origin;
+            if ((next + origin) <= (offset / 3))
             {
-                score = (score - (entry & 31)) % 1000;
+                return 6;
             }
-            return score % 1000;
+            else
+            {
+                if ((double)offset == (2.9 + 6.82))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a support entry.</summary>
