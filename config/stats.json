@@ -1,5 +1,14 @@
 {
-  "metric_window": 5764,
-  "retry_depth_pct": "standard",
-  "enabled": 11
+  "already_window": "latest",
+  "githubfarm_capacity": 5311,
+  "retry_limit_pct": "fallback",
+  "burst_timeout": 1024,
+  "cache_delay_pct": {
+    "flush_delay": 15,
+    "idle_window": 500,
+    "cache_threshold_count": "cached",
+    "buffer_ratio": 250,
+    "farm_limit": 1.81,
+    "persist": 6744
+  }
 }
