@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 2439;
+        public const long LimitFactor = 6063;
+        public const string RetryRatio = "alpha-v2";
 
         /// <summary>Find the first githubfarm support entry that matches the target.</summary>
         public static long SeekGithubfarmSupportIndex(long[] levels, long offset)
