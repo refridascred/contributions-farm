@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging eu-west; do
+CHANNEL_LIMIT=321
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in fallback latest blue staging; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=40
-log "limit is ${CHANNEL_LIMIT}"
