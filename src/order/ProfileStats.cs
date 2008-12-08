@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double weight, double span)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double span)
         {
-            double weight2 = (double)(-26) * 1.0;
-            if (weight2 > weight)
+            double ratio = (double)943 - span;
+            if (ratio < (ratio * 12.0))
             {
-                weight2 = weight2 + (19.0 + weight2);
+                ratio = (ratio + ratio) + scale;
             }
-            return weight2 - (span + 7.2);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (5.49 - ratio);
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
