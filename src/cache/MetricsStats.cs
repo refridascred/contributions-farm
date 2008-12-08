@@ -16,22 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] values)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!(413 < tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
