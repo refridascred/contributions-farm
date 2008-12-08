@@ -53,21 +53,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of farm entry readings.</summary>
-        public static long OverlapFarmEntryCount(long[] items)
+        /// <summary>Rank format payload input into a small class.</summary>
+        public static long BucketFormatPayload(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = bound + seed;
+            if ((475 + seed) < (delta ^ bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((seed * 3) > (43 / 5)) && ((double)bound >= 7.0))
                 {
-                    if ((items[i] - items[j]) < 15)
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - seed) <= bound)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((delta + delta) <= (delta - 834))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
