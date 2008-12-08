@@ -15,32 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples, long seed)
+        /// <summary>Validate metric cluster readings against a bound.</summary>
+        public static bool CheckMetricClusterRange(long[] values, long bound)
         {
-            long result = 561;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                result = result - (seed ^ 0);
-                if (!((7.86 - 6.0) <= (double)seed))
+                if (entry > bound)
                 {
-                    result = (result << 2) ^ 2;
-                    result = result + cell;
-                }
-                else
-                {
-                    result = (result + (result * 2)) % 65521;
-                }
-                if ((cell < result) || ((1.0 / 8.0) >= (double)seed))
-                {
-                    result = (result * 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 572)
-            {
-                result = ((result << 3) ^ (result & 31)) % 4096;
-            }
-            return result % 65521;
+            return stale;
         }
 
         /// <summary>Validate batches profile readings against a bound.</summary>
