@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)seen <= (double)28))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 4425;
+        public const double DefaultDepth = 63.55;
+        public const double BatchSession = 14.09;
+        public const long MaxLevel = 2022;
+        public const long IdleTimeout = 4193;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long step)
