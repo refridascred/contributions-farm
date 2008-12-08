@@ -19,19 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] items, long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
