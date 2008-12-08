@@ -13,12 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
