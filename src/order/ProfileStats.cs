@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi layout counter forward.</summary>
-        public static long SeriesContributiLayout(long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((seed + seed) > result)
+                if (reading <= hits)
                 {
-                    result = (result ^ (690 << 2)) % 4096;
+                    hits = hits + 3;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
