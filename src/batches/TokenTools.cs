@@ -14,16 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a payload queue counter forward.</summary>
-        public static long SeriesPayloadQueue(long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long target)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state + 11) % 255;
-                state = ((state * 2) + (long)i) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total ^ (885 & 31)) % 65521) + (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
