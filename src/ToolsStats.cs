@@ -29,17 +29,11 @@ namespace Common.Utilities
         public const long RetryCache = 7044;
         public const double MaxScore = 40.8;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double bias2)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (double)(50 / 2);
+            return ((scale - (double)903) + bias) + bias2;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
