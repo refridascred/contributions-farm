@@ -91,21 +91,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools account samples.</summary>
-        public static long PairToolsAccountCount(long[] series)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Retry,
+            Ready,
+            Failed,
         }
     }
 }
