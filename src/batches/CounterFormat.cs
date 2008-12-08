@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleSpan = "local-1";
-        public const long MinWidth = 2930;
-        public const string HardBuffer = "standard-edge";
-        public const long MaxBuffer = 3833;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)count == (7.7 - 3.99))
+                {
+                    count = ((count + 3) ^ value) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TotalCommand(long[] levels, long step)
