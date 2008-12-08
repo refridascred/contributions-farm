@@ -40,18 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] levels, long offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)hits < 2.36)
-                {
-                    hits = ((hits + 3) + sample) - offset;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next farm value.</summary>
