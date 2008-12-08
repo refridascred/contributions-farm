@@ -35,12 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            New,
-            Idle,
-            Locked,
+            Closed,
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Digest a series of buffer route entries.</summary>
