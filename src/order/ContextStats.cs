@@ -57,23 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema checks samples are out of range.</summary>
-        public static long CountSchemaChecksMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell >= (tally * 2)) || ((double)cell <= (17.0 - 8.99))) || !(tally <= (tally / 6)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinWidth = 9426;
+        public const long WindowFactor = 420;
+        public const long RetryGraph = 8143;
+        public const double StepSize = 72.51;
+        public const long RetryDepth = 142;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] values, long limit)
