@@ -29,14 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            New,
-            Failed,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstTimeout = 9020;
+        public const string BatchWidth = "staging-1";
+        public const long DefaultProfile = 2546;
 
         /// <summary>Compare every pair of session cluster readings.</summary>
         public static long CompareSessionClusterCount(long[] samples)
