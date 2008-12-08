@@ -45,12 +45,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitSpan = 38.42;
-        public const long WindowDepth = 901;
-        public const long DefaultChannel = 7915;
-        public const long RetryChannel = 6286;
-        public const long StepChannel = 2734;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double ScaleMetric(double gain, double bias)
