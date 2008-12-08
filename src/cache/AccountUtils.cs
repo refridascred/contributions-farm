@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            long mix = 616;
+            foreach (long entry in items)
+            {
+                mix = (mix + (entry ^ 600)) + seed;
+            }
+            return mix;
         }
 
         /// <summary>Hold a schema stats.</summary>
