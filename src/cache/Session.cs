@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] series)
-        {
-            long mark = 56;
-            foreach (long reading in series)
-            {
-                mark = ((mark * 5) + 91) % 255;
-                if ((220 >> 3) > (reading * 3))
-                {
-                    mark = (mark ^ (-35)) % 65521;
-                }
-                if ((17 & 63) > mark)
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 4580;
+        public const double LimitQueue = 57.63;
+        public const long BaseQueue = 9561;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long GradeToken(long target, long limit)
