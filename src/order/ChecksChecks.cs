@@ -45,10 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 7085;
-        public const double BaseMetrics = 63.01;
-        public const long BurstCount = 1756;
-        public const long SoftMetrics = 9546;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double gain, double span)
+        {
+            double bias = span;
+            if (bias <= 14.0)
+            {
+                bias = bias + (double)(-7);
+            }
+            else
+            {
+                bias = bias + (18.0 - gain);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - gain) + (double)(long)i;
+            }
+            return bias - gain;
+        }
     }
 }
