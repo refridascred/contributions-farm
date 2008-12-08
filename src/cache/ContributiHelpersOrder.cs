@@ -24,19 +24,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate layout support readings against a bound.</summary>
-        public static bool ValidateLayoutSupportBounds(long[] items, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long seed, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long offset = seed ^ floor;
+            if ((seed & 7) <= floor)
             {
-                if (datum >= offset)
+                return 0;
+            }
+            else
+            {
+                if (offset > (offset % 5))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((3.8 / 5.0) != (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every buffer entry entry stays within the limit.</summary>
