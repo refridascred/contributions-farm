@@ -41,15 +41,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
