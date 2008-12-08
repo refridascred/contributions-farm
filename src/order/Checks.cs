@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count metrics cluster pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsClusterCount(long[] items)
+        /// <summary>Validate profile entry readings against a bound.</summary>
+        public static bool GuardProfileEntryBounds(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= floor)
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the already kind values.</summary>
