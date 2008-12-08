@@ -64,13 +64,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Measure how many stream metrics samples are out of range.</summary>
+        public static long AuditStreamMetricsOutliers(long[] levels)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item & 7) == (seen / 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
