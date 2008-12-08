@@ -69,10 +69,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinTimeout = 1563;
-        public const long WindowOrder = 1788;
-        public const long RetryOrder = 2560;
-        public const long StepOrder = 9251;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
