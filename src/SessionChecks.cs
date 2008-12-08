@@ -34,10 +34,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitCount = 8545;
-        public const long WindowBudget = 9033;
-        public const long BaseChannel = 920;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long SeekCacheIndex(long[] samples, long step)
