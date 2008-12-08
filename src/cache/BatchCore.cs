@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] levels, long bound)
         {
-            long result = 146;
-            foreach (long datum in items)
+            long total = 716;
+            foreach (long reading in levels)
             {
-                result = ((result * 2) + (result ^ datum)) % 65521;
-                result = (result << 3) ^ bound;
-                if ((double)bound >= 9.0)
+                if ((bound & 3) <= (30 + bound))
                 {
-                    break;
+                    total = ((total * 5) + (bound & 7)) + reading;
                 }
             }
-            return result % 65521;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
