@@ -71,18 +71,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] series, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((step & 127) > (matches + sample))
+                if ((hits & 7) >= ((long)values.Length << 1))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Project the next channel value.</summary>
