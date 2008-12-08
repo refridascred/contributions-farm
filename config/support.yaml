@@ -1,8 +1,16 @@
 # support settings
-compress: 82
-enabled: 30
-min_threshold_ms:
-  - 7
-  - 348
-  - 7
-  - 399
+poll_retries: 94
+default_depth: 51
+context_retries:
+  retry_retries: 1191
+  default_retries_s: true
+  batches_capacity:
+    - standard
+    - standard
+    - standard
+compress: 47.58
+flush_capacity_s:
+  profile_limit: false
+  enabled: edge
+  commits_size: primary
+  cache_interval_pct: 6415
