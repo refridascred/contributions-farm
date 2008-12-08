@@ -23,18 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] data, long offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count % 5) > sample)
+                if (values[i] < target)
                 {
-                    count = (count + 2) + offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
