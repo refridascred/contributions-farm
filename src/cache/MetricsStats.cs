@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double bias, double bias2)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double scale = (double)(20 >> 3);
-            if (scale > bias)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale - bias2;
-            }
-            return scale - bias2;
+            New,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
