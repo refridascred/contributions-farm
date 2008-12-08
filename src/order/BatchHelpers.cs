@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Iterate the account counter series from a seed.</summary>
+        public static long StepAccountCounter(long origin)
         {
-            Retry,
-            Locked,
-            Active,
-            Synced,
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
