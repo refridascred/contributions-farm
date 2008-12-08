@@ -1,9 +1,10 @@
 # entry settings
-poll_size: 100
-retry_capacity: stable
-base_limit_s: primary
-default_ttl_count: green
-strict:
-  - cached
-  - staging
-  - standard
+hard_threshold: 75.64
+burst_threshold_ms:
+  - latest
+  - edge
+  - green
+format_window: 47.9
+retry_ttl_pct: false
+batch_interval: 4431
+max_window_count: 7167
