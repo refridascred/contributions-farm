@@ -48,19 +48,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double gain, double bias)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double offset)
         {
-            double gain2 = gain;
-            if (gain2 <= gain2)
+            double load = scale / 8.0;
+            if (load < 5.6)
             {
-                gain2 = (gain2 + gain2) + bias;
+                load = (load + load) + offset;
             }
-            else
-            {
-                gain2 = gain2 + 5.0;
-            }
-            return gain2 - (1.2 - 6.83);
+            return load - scale;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
