@@ -1,9 +1,6 @@
-id,state,token,region
-1,67.31,green,283
-2,blue,165,57.98
-3,82.34,local,open
-4,96.1,92.46,blue
-5,70.87,7.72,edge
-6,legacy,cached,local
-7,standard,latest,90.05
-8,latest,136,18.45
+id,owner,label,score
+1,184,74.93,302
+2,43.11,stable,legacy
+3,blue,62.8,90
+4,blue,471,94.68
+5,open,55,22.39
