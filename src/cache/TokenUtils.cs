@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((tally + tally) > (tally - 736))
+                if (sample > origin)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
