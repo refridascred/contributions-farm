@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] items, long target)
         {
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long result = 71;
+            foreach (long datum in items)
+            {
+                if ((datum + result) < result)
+                {
+                    result = ((result ^ 0) % 97) - target;
+                }
+            }
+            if (result < 660)
+            {
+                result = (result * 3) + (result & 63);
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the support batch entries that pass the check.</summary>
