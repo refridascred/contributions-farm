@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxBudget = "local-v2";
-        public const string DefaultContributi = "alpha";
-        public const long BaseScore = 2457;
-        public const string LimitTimeout = "alpha";
-        public const long HardWidth = 870;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
