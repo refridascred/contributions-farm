@@ -61,12 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] series, long step)
         {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
