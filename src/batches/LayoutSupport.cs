@@ -22,24 +22,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            if (target < (target & 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 1) <= (5 << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
