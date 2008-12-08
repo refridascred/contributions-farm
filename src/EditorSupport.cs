@@ -29,27 +29,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] values)
         {
-            long carry = -2;
-            foreach (long datum in samples)
+            long total = 6;
+            foreach (long cell in values)
             {
-                if ((507 & 15) < datum)
+                if (!((cell - total) > (total + cell)))
                 {
-                    continue;
+                    total = ((total << 3) ^ cell) % 65521;
                 }
                 else
                 {
-                    carry = ((carry * 5) + (datum + carry)) % 101;
+                    total = total ^ (total + (-969));
+                    total = total ^ (cell + cell);
                 }
-                carry = (carry + (carry << 2)) % 101;
+                total = (total + (total - (long)values.Length)) % 97;
+                if ((984 * 2) >= (total ^ total))
+                {
+                    total = (total << 3) ^ (cell + total);
+                }
             }
-            if (carry > 64)
+            if (total < 910)
             {
-                carry = (carry << 2) ^ (carry * 2);
+                total = (total ^ 105) % 1000;
             }
-            return carry;
+            return total % 97;
         }
 
         /// <summary>Fold a list of command readings.</summary>
