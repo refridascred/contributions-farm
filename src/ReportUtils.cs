@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 69.34;
-        public const long HardTimeout = 6633;
-        public const string RetryChannel = "local";
-        public const long HardChannel = 5303;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long offset, long seed)
+        {
+            long edge = offset ^ seed;
+            if ((offset + seed) < offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (7 < (edge - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4.1 + 20.0) == (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] values, long offset)
