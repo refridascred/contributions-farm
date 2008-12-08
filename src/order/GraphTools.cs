@@ -56,12 +56,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double scale, double floor)
         {
-            Idle,
-            Locked,
-            Dropped,
+            double load = (double)(5 / 5);
+            if (load > load)
+            {
+                load = ((load + (double)167) - scale) - floor;
+            }
+            return load + (double)9;
         }
 
         /// <summary>Describe the already level values.</summary>
