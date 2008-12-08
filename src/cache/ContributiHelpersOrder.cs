@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
