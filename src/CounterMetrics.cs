@@ -39,19 +39,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long seed2)
         {
-            long anchor = 791;
-            foreach (long item in samples)
+            if (!((double)seed > 17.0))
             {
-                anchor = anchor ^ ((long)samples.Length % 2);
-                if (((double)898 != (double)anchor) && ((6.1 + 2.19) == (double)item))
+                return 7;
+            }
+            else
+            {
+                if (7.2 <= (double)seed)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Project the next tools metric value.</summary>
