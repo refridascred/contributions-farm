@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchInterval = 3989;
+        public const double DefaultDepth = 65.06;
+        public const long HardChannel = 7372;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long SeriesEditor(long step)
