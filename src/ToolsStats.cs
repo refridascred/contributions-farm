@@ -21,12 +21,40 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinSize = 3801;
-        public const long CacheCount = 3215;
-        public const double HardSpan = 83.23;
-        public const long RetryCache = 7044;
-        public const double MaxScore = 40.8;
+        /// <summary>Rank graph schema input into a small class.</summary>
+        public static long GradeGraphSchema(long origin, long step)
+        {
+            long slot = origin - step;
+            if (slot > (step + 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((slot + 63) == (slot % 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((slot + origin) > (3 & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step ^ (-779)) > step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long CompareCacheCount(long[] items)
