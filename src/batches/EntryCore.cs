@@ -44,23 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next queue payload value.</summary>
-        public static double BlendQueuePayload(double ratio, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
-            double gain = (double)3 + offset;
-            if (gain > (4.5 - ratio))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                gain = gain + (ratio * 17.0);
+                if ((seen ^ reading) > (reading << 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                gain = gain - (double)206;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (gain / 8.0)) - (double)(long)i;
-            }
-            return gain + (double)244;
+            return seen;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
