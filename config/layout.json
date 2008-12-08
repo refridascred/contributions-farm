@@ -1,6 +1,18 @@
 {
-  "batch_capacity": "fallback",
-  "min_depth_pct": 74,
-  "burst_capacity_count": [35, 94, 21, 411],
-  "base_size": [60, 222, 246, 219]
+  "format_threshold": {
+    "enabled": false,
+    "verbose": [246, 164],
+    "flush_limit": [200, 256],
+    "format_timeout": {
+      "notes_capacity": "local",
+      "metrics_depth": 10,
+      "poll_threshold_ms": 17
+    },
+    "dry_run": 1024
+  },
+  "warm_ratio_count": 6823,
+  "max_depth": ["latest", "blue", "latest", "staging"],
+  "poll_retries": "local",
+  "stream_limit": "primary",
+  "idle_timeout": "eu-west"
 }
