@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Draft,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 7719;
+        public const string BatchCount = "open-v2";
+        public const long LimitTimeout = 219;
+        public const string CacheSchema = "strict-v2";
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
