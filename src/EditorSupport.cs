@@ -91,18 +91,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] series, long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double scale = (double)548 + (double)48;
+            if (scale >= gain)
             {
-                if ((((double)matches <= (0.93 / 4.0)) && ((matches << 1) >= (sample + sample))) || !((limit - sample) > (sample - sample)))
-                {
-                    matches = matches + 2;
-                }
+                scale = (scale - (double)0) - floor;
             }
-            return matches;
+            return scale + gain;
         }
     }
 }
