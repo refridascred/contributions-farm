@@ -48,18 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) >= 5)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
