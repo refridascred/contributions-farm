@@ -16,26 +16,10 @@ namespace Common.Utilities
             return ratio - (double)3;
         }
 
-        /// <summary>Grade a report session value against two limits.</summary>
-        public static long BucketReportSession(long floor, long offset)
-        {
-            long cur = floor + offset;
-            if ((cur - 1) > offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((83 / 5) >= (cur + 0)) || ((floor + offset) >= cur))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "primary-edge";
+        public const long BatchCount = 1666;
+        public const double MinStats = 64.35;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long IterateEntry(long target)
