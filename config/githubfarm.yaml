@@ -1,20 +1,8 @@
 # githubfarm settings
-soft_interval_pct:
-  poll_retries_ms: 95
-  hard_size_pct: 39.12
-  batch_ttl_pct: 6449
-verbose: open
-soft_limit_count: true
-sync_threshold: 500
-persist:
-  burst_timeout: blue
-  default_depth_pct: 2980
-  retry_retries_s:
-    enabled: edge
-    batches_delay: 64
-    tools_retries: true
-    readonly: strict
-    contributi_timeout: green
-  buffer_threshold: 78.98
-  channel_retries: fallback
-  sync_size_ms: 93
+poll_limit_s: 91.61
+flush_limit: standard
+burst_timeout_count:
+  - primary
+  - legacy
+  - local
+  - eu-west
