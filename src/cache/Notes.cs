@@ -56,14 +56,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Stale,
-            Dropped,
-            Synced,
-            Failed,
+            Locked,
+            Closed,
+            Active,
             Ready,
+            Dropped,
         }
     }
 }
