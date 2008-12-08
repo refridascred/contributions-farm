@@ -1,4 +1,11 @@
 # entry settings
-profile_retries: 19.47
-sync_interval: true
-tools_timeout: strict
+hard_threshold_pct: 4375
+token_limit:
+  strict: 44
+  poll_retries_ms: open
+  base_depth_ms: standard
+  batch_timeout: strict
+  max_threshold_count: green
+max_depth_ms: 13.61
+verbose: 27
+burst_limit_s: 10
