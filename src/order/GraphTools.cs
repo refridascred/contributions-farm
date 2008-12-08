@@ -60,13 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] levels, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
