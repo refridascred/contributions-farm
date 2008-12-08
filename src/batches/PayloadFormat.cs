@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate stream batch samples.</summary>
-        public static long WeighStreamBatch(long[] samples)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] samples, long limit)
         {
-            long result = 246;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                result = (result << 3) ^ entry;
-                result = ((result << 2) ^ (result + result)) % 97;
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
