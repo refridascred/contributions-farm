@@ -42,23 +42,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double scale, double offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double gain = offset;
-            if (gain >= gain)
-            {
-                gain = (gain - 16.0) + scale;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - offset) - (double)(long)i;
-            }
-            return gain - gain;
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
