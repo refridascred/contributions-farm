@@ -22,32 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long seed, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] values, long seed)
         {
-            long step = seed ^ target;
-            if (((step ^ seed) > step) || ((target + 91) == (target << 1)))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed - target) > (step ^ step)) || ((step + step) <= (step % 60)))
+                if (((double)datum >= (2.0 * 8.2)) || (seed > (hits + 677)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed % 16) != (target + 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many cluster channel samples are out of range.</summary>
