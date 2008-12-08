@@ -14,22 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] data, long bound)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double gain = (weight + span) - weight;
+            if (gain > 1.38)
             {
-                if ((reading >> 1) == (reading << 3))
-                {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + (double)910;
             }
-            return hits;
+            return gain - (double)472;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
