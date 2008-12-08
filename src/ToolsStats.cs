@@ -49,16 +49,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] values)
-        {
-            long carry = 110;
-            foreach (long sample in values)
-            {
-                carry = (carry + (sample - (-6))) % 1000;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 9329;
+        public const long BatchContext = 5283;
+        public const long BurstInterval = 7410;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long limit)
