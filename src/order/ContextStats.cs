@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate route tools readings against a bound.</summary>
-        public static bool ValidateRouteToolsBounds(long[] values, long offset)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Classify a batch command pair into a bucket.</summary>
