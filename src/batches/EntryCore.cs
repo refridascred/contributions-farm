@@ -16,13 +16,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
