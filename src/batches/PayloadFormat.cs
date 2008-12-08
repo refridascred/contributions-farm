@@ -20,21 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
