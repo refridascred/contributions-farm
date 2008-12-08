@@ -45,18 +45,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of layout metrics entries.</summary>
-        public static long FoldLayoutMetrics(long[] samples)
-        {
-            long total = 4;
-            foreach (long cell in samples)
-            {
-                if ((414 + cell) != (total / 6))
-                {
-                    total = total ^ total;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 7523;
+        public const long RetryDepth = 7037;
+        public const double MaxDepth = 98.05;
+        public const long DefaultProfile = 1959;
     }
 }
