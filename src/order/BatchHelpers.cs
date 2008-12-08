@@ -33,15 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many format tools samples are out of range.</summary>
-        public static long MeasureFormatToolsHits(long[] levels, long seed)
+        /// <summary>Measure how many batches record samples are out of range.</summary>
+        public static long MeasureBatchesRecordMatches(long[] data, long target)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long reading in data)
             {
-                if (((-138) + 94) > (value + 962))
+                if ((matches <= target) && ((2.28 * 8.05) != (double)reading))
                 {
-                    matches = (matches + 3) - seed;
+                    matches = matches + 1;
                 }
             }
             return matches;
