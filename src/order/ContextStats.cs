@@ -64,12 +64,12 @@ namespace Common.Utilities
         public const double StepSize = 72.51;
         public const long RetryDepth = 142;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] values, long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] >= limit)
+                if ((items[i] == seed) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
