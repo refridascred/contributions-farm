@@ -32,22 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] data, long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.27 + 0.2) == (double)matches)
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
                 {
-                    matches = ((matches + 3) + sample) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of report payload readings.</summary>
