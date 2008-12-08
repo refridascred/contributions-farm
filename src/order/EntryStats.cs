@@ -85,18 +85,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account channel values into a single score.</summary>
-        public static long TallyAccountChannel(long[] levels, long target)
-        {
-            long mark = 129;
-            foreach (long reading in levels)
-            {
-                if ((mark % 64) <= 9)
-                {
-                    mark = (mark - target) ^ reading;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardLevel = 87.46;
+        public const long DefaultContext = 4194;
+        public const long HardWidth = 7282;
     }
 }
