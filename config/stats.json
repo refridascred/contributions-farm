@@ -1,5 +1,10 @@
 {
-  "channel_timeout": 994,
-  "sync_delay": [484, 411, 191, 88],
-  "flush_interval_count": ["staging", "green"]
+  "support_window": "local",
+  "persist": {
+    "already_capacity": "stable",
+    "min_ttl_ms": 14.39,
+    "retry_capacity": 60,
+    "dry_run": 2587
+  },
+  "batch_threshold_s": false
 }
