@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit profile cluster readings against a rule.</summary>
-        public static long MeasureProfileClusterHits(long[] levels, long seed)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (seed > (entry * 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
