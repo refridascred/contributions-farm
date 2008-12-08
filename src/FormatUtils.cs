@@ -19,20 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] items, long origin)
         {
-            long carry = -724;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long entry in items)
             {
-                carry = carry + (carry & 127);
-                carry = (carry + (5 + datum)) % 255;
-                if (carry < (datum ^ datum))
+                if (entry >= origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
