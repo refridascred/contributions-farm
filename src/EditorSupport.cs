@@ -60,21 +60,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of payload order readings.</summary>
-        public static long MatchPayloadOrderCount(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 72;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score << 3) ^ entry) + target;
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
