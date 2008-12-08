@@ -33,27 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] items)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long anchor = 21;
-            foreach (long value in items)
-            {
-                if (!((double)value > 3.23))
-                {
-                    anchor = (anchor + (value % 8)) % 65521;
-                }
-                if ((double)anchor < (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ ((long)items.Length + anchor)) % 255;
-                }
-                anchor = (anchor + (anchor * 5)) % 255;
-            }
-            if (anchor < (-3))
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor % 1000;
+            Pending,
+            Done,
+            Ready,
+            Queued,
         }
     }
 }
