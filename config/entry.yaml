@@ -1,7 +1,38 @@
 # entry settings
-default_retries: 50.18
-report_retries: 3489
-audit: 10
-burst_size_count: staging
-window_ratio: 250
-dry_run: 52
+base_window_ms: 8142
+payload_size:
+  verbose: 75.79
+  max_size:
+    - 444
+    - 185
+    - 499
+    - 359
+  record_size: 8288
+  persist: legacy
+  readonly:
+    - latest
+    - standard
+    - cached
+    - open
+  min_threshold_count: stable
+context_ttl: true
+max_timeout_pct:
+  support_ttl:
+    base_ttl_s: 4033
+    idle_ttl_ms: edge
+    strict:
+      - strict
+      - staging
+      - standard
+  base_retries_pct:
+    - blue
+    - eu-west
+    - edge
+    - blue
+  persist:
+    - standard
+    - cached
+    - strict
+  idle_window: staging
+  default_ratio_count: 68.01
+  hard_timeout_pct: 9196
