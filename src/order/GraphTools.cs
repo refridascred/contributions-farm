@@ -25,18 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long target, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long offset2 = target - offset;
+            if ((target ^ offset2) == (offset2 - target))
             {
-                if ((97 + datum) == (hits & 127))
+                return 5;
+            }
+            else
+            {
+                if (((offset2 + target) < 64) && (target >= (offset2 - target)))
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (target >= (offset - target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target - offset2) == (offset2 + offset2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a support options.</summary>
