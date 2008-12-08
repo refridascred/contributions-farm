@@ -30,14 +30,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] values, long step)
         {
-            Stale,
-            Dropped,
-            Closed,
-            Draft,
-            Retry,
+            long carry = 71;
+            foreach (long value in values)
+            {
+                if ((5.4 > (double)step) && (1.0 <= (double)carry))
+                {
+                    carry = (((carry * 5) + (step >> 2)) % 97) - value;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
