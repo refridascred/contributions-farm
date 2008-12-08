@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long origin, long offset)
-        {
-            long lane = origin + offset;
-            if (((origin + 10) >= (origin / 7)) || ((offset & 7) >= 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset >= (offset & 127)) && (lane <= (offset + lane)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-68) & 7) >= (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxDepth = 8298;
+        public const double BurstLevel = 12.15;
+        public const long IdleCommits = 4232;
+        public const double DefaultCount = 56.2;
+        public const long SoftBudget = 5616;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long limit)
