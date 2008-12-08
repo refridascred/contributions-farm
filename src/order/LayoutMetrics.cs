@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const string DefaultSpan = "legacy-edge";
         public const long BurstBatches = 2471;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count + value) < count)
                 {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + origin;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
