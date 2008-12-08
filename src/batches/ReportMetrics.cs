@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Digest a series of entry buffer entries.</summary>
+        public static long TallyEntryBuffer(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = 2;
+            foreach (long sample in readings)
+            {
+                if ((double)mark < (9.7 / 8.0))
+                {
+                    mark = (((mark << 3) ^ (mark % 16)) % 65521) + sample;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = ((mark << 3) ^ (mark + mark)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the metrics state values.</summary>
