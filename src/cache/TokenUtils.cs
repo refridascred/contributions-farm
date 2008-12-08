@@ -22,23 +22,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] data)
         {
-            double weight = (double)(755 & 31);
-            if (weight <= (ratio - 11.0))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                weight = weight - (ratio - bias);
+                if ((0.48 * 12.0) != (double)matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            else
-            {
-                weight = weight - (weight / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (weight - ratio)) + (double)(long)i;
-            }
-            return weight - (ratio + bias);
+            return matches;
         }
     }
 }
