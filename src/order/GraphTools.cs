@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] levels, long floor)
         {
-            long sum = 964;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((sum % 7) == (482 + item))
+                if (datum < floor)
                 {
-                    sum = ((sum << 2) ^ ((long)readings.Length + sum)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Match up support samples.</summary>
