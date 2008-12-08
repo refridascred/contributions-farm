@@ -27,20 +27,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] data, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
         {
-            long mark = -208;
-            foreach (long item in data)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                mark = (mark + (item + mark)) % 65521;
-                mark = (mark + (step << 3)) % 97;
-                if (((-59) - step) > (749 + mark))
-                {
-                    mark = ((mark << 3) ^ mark) % 65521;
-                }
+                score = ((score << 3) ^ (bound - score)) % 65521;
+                score = (score << 3) ^ (score << 3);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
     }
 }
