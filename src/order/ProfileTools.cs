@@ -53,11 +53,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryLevel = 1832;
-        public const double MinCache = 95.82;
-        public const long RetryCache = 5164;
-        public const long DefaultCache = 9297;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] series)
+        {
+            long score = -624;
+            foreach (long entry in series)
+            {
+                score = ((score - score) % 255) ^ entry;
+            }
+            return score;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string LimitBatches = "latest-edge";
