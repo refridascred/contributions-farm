@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long seed)
+        /// <summary>Count command farm pairs that satisfy a relation.</summary>
+        public static long MatchCommandFarmCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
