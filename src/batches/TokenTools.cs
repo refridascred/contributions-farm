@@ -14,21 +14,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Digest a series of cache format entries.</summary>
+        public static long TotalCacheFormat(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 68;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((acc / 4) < 5)
                 {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc + (cell - cell);
+                }
+                if ((cell < (acc + 5)) || ((7.0 - 6.7) != (double)acc))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc > 32)
+            {
+                acc = ((acc * 4) + (acc + acc)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
