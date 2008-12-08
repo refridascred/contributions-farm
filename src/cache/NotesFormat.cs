@@ -16,21 +16,11 @@ namespace Common.Utilities
             return scale - (span * 3.8);
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((seed + state) != (59 % 64))
-                {
-                    state = state - (state + seed);
-                    state = (state ^ (seed >> 5)) % 4096;
-                }
-                state = ((state * 5) + ((long)i / 7)) % 101;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            double scale = (rate * 2.0) - (double)1;
+            return (scale - (double)9) + floor;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
