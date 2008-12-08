@@ -20,13 +20,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Draft,
-            Retry,
-            Failed,
-            Dropped,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
