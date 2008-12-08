@@ -20,15 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long step, long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            if (step < (0 << 1))
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((step << 1) < step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + target) == (66 % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step / 7) == (step << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
