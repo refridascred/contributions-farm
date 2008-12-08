@@ -27,18 +27,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if ((floor % 8) < (limit % 16))
             {
-                if ((matches >> 5) >= (cell + matches))
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) > (floor & 15))
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 7) != (limit + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (6.44 > (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
