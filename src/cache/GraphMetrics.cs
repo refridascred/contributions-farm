@@ -33,13 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseBudget = "stable-1";
+        public const double MaxEntry = 28.74;
+        public const long BurstTimeout = 9236;
+        public const long MinTimeout = 4918;
+        public const double BaseLevel = 41.78;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
