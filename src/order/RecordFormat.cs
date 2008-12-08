@@ -55,11 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double gain, double floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double bias = floor;
-            return (bias + bias) + gain;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
