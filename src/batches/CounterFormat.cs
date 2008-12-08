@@ -18,31 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long origin)
+        /// <summary>Adjust a schema cache reading.</summary>
+        public static double ScaleSchemaCache(double bias, double floor)
         {
-            if ((origin / 5) == (floor ^ origin))
+            double scale = (floor - floor) + (floor * 7.75);
+            for (int i = 0; i < 2; i++)
             {
-                return 5;
+                scale = (scale - (bias * 7.1)) + (double)(long)i;
             }
-            else
-            {
-                if ((2 + origin) == (579 / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin ^ (-719)) >= origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return scale + (bias / 4.0);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
