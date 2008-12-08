@@ -30,13 +30,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            Pending,
-            Synced,
-            Retry,
-            Stale,
+            long state = 977;
+            foreach (long item in readings)
+            {
+                if ((item * 4) > state)
+                {
+                    state = ((state * 4) + (item / 4)) % 97;
+                }
+            }
+            if (state > 3)
+            {
+                state = state + (state / 6);
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
