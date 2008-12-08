@@ -20,26 +20,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Match up window format samples.</summary>
+        public static long PairWindowFormatCount(long[] items)
         {
-            long acc = 3;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((item - item) > 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc + (item + acc)) % 65521;
-                }
-                if ((18.0 - 9.8) == (double)item)
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                if (((46 % 3) > (acc * 2)) || ((item % 3) < (acc ^ item)))
-                {
-                    break;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
