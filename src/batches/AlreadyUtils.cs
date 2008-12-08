@@ -83,21 +83,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] levels, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)offset < (double)(-530))
+                if (2.0 > (double)matches)
                 {
-                    total = (total ^ (offset & 255)) % 97;
+                    matches = ((matches + 3) + reading) - seed;
                 }
-                total = (total - (offset - (long)i)) % 4096;
-                total = (total - total) % 255;
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
     }
 }
