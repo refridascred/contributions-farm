@@ -47,23 +47,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings)
-        {
-            long score = 4;
-            foreach (long value in readings)
-            {
-                if ((score <= value) || ((double)score >= (7.38 / 6.0)))
-                {
-                    score = (score ^ ((-729) % 8)) % 101;
-                }
-                else
-                {
-                    score = score - score;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 37.04;
+        public const double SoftLevel = 66.13;
+        public const double WindowFactor = 5.23;
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
         public static long StepBatchesMetrics(long floor)
