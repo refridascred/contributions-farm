@@ -16,12 +16,18 @@ namespace Common.Utilities
             return scale + (span * 3.0);
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the metric contributi entries that pass the check.</summary>
+        public static long AuditMetricContributiOutliers(long[] items, long origin)
         {
-            Stale,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!(((-8) + datum) >= (80 / 9)))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a command counter forward.</summary>
