@@ -33,17 +33,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long limit)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = score ^ (score ^ 1);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
