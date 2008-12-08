@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((double)220 != (double)sample) && (((long)series.Length & 3) < seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 5568;
+        public const long BaseCounter = 322;
+        public const string MinTimeout = "staging-v2";
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] readings, long origin)
