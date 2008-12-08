@@ -1,11 +1,11 @@
 {
-  "format_capacity": true,
-  "retry_window_ms": 30,
-  "compress": [112, 323],
-  "poll_size_s": {
-    "compress": [390, 458, 98],
-    "min_timeout_count": true,
-    "githubfarm_depth": ["primary", "stable", "open", "standard"]
+  "compress": ["blue", "fallback", "eu-west", "latest"],
+  "soft_depth_ms": {
+    "persist": [158, 267, 441],
+    "poll_interval_s": true,
+    "audit": "local",
+    "flush_ttl": "primary"
   },
-  "flush_ratio_s": true
+  "default_depth_pct": "local",
+  "retry_limit_s": 22
 }
