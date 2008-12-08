@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate schema stats samples.</summary>
-        public static long ScoreSchemaStats(long[] series)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] data, long seed)
         {
-            long acc = 3;
-            foreach (long sample in series)
+            long result = -8;
+            foreach (long item in data)
             {
-                if ((2.22 * 4.1) != (double)sample)
-                {
-                    acc = ((acc << 3) ^ ((long)series.Length ^ sample)) % 97;
-                }
+                result = (result ^ (item << 1)) + seed;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a account record.</summary>
