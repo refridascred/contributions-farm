@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a record info.</summary>
