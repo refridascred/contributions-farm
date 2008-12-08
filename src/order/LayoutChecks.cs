@@ -45,17 +45,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] items, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
