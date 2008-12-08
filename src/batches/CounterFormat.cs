@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 241;
-        public const long CacheBudget = 9591;
-        public const string BurstDepth = "legacy";
-        public const long SoftFactor = 6733;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                long lane = seed - (result + seed);
+                result = result - (lane + seed);
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double AdjustWindow(double gain, double span)
