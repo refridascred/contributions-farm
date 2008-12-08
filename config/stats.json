@@ -1,12 +1,18 @@
 {
-  "entry_ratio": {
-    "buffer_capacity": false,
-    "graph_interval": 30,
-    "burst_delay": 23.88,
-    "audit": 8834
-  },
-  "checks_retries": [148, 379],
-  "schema_retries": 500,
-  "cache_interval_ms": 98.68,
-  "strict": "eu-west"
+  "token_depth": 60.74,
+  "max_threshold": "stable",
+  "idle_window_ms": {
+    "readonly": 5610,
+    "enabled": [423, 382, 425, 472],
+    "base_limit": {
+      "soft_timeout": 8794,
+      "min_threshold_count": 59.16,
+      "metrics_limit": ["standard", "cached", "cached"],
+      "strict": 100,
+      "audit": false
+    },
+    "command_limit": 12.94,
+    "default_ratio_s": [279, 83],
+    "session_ratio": "blue"
+  }
 }
