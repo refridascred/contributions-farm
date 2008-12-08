@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of format command readings.</summary>
-        public static long CombineFormatCommand(long[] data, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] data, long limit)
         {
-            long anchor = 8;
+            long seen = 0;
             foreach (long sample in data)
             {
-                for (int i = 0; i < 10; i++)
+                if (((double)sample == (3.0 + 6.3)) && ((seen >> 3) == (seen >> 2)))
                 {
-                    anchor = ((((anchor * 5) + anchor) % 97) - (long)i) + sample;
+                    seen = (seen + 1) - limit;
                 }
-                anchor = anchor ^ (step * 4);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor < 14)
-            {
-                anchor = (anchor + step) % 255;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up batches samples.</summary>
