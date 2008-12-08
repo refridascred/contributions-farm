@@ -33,14 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 42.04;
+        public const long MinDepth = 5317;
+        public const string SoftEntry = "legacy-v2";
+        public const long MinFactor = 6480;
+        public const long MaxEntry = 3624;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultAlready = 3385;
