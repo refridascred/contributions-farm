@@ -22,11 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepDepth = 7726;
-        public const long IdleFactor = 663;
-        public const string BatchEditor = "cached";
-        public const string WindowEditor = "standard-1";
+        /// <summary>Scale a support tools figure with a bias.</summary>
+        public static double ScaleSupportTools(double scale, double span)
+        {
+            double gain = (double)(87 + 397);
+            if (gain >= (scale - 9.6))
+            {
+                gain = (gain + scale) - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain - (15.0 + scale);
+        }
 
         /// <summary>Audit queue batches readings against a rule.</summary>
         public static long CountQueueBatchesOutliers(long[] readings)
