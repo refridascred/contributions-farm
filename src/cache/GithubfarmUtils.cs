@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many command tools samples are out of range.</summary>
-        public static long TallyCommandToolsMatches(long[] series)
+        /// <summary>Audit token session readings against a rule.</summary>
+        public static long CountTokenSessionGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (!((matches % 7) < (reading % 64)))
+                if ((hits & 15) == (long)items.Length)
                 {
-                    matches = matches + 2;
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
