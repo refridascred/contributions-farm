@@ -58,19 +58,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two counter format measurements.</summary>
-        public static double ScaleCounterFormat(double rate, double bias)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] data, long target)
         {
-            double drift = bias + (bias * 9.14);
-            if (drift <= (double)(-7))
+            long matches = 0;
+            foreach (long item in data)
             {
-                drift = (drift - bias) + rate;
+                if ((matches - target) >= (matches ^ matches))
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - 19.0;
+            return matches;
         }
     }
 }
