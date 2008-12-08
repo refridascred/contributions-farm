@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank tools batch input into a small class.</summary>
-        public static long GradeToolsBatch(long seed, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long target)
         {
-            if ((seed * 2) >= seed)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((target + 285) == (829 + seed)) && ((double)seed > 3.19))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 5;
+                    mark = (mark ^ mark) + (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 7; i3++)
                 {
-                    if ((double)target < (3.4 - 4.71))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = ((mark ^ target) % 97) - (long)i3;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Audit account entry readings against a rule.</summary>
