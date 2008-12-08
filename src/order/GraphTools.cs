@@ -48,19 +48,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] series, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] levels, long target)
         {
-            long acc = 733;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc - acc) ^ entry) + limit;
-                if ((222 % 16) >= acc)
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
