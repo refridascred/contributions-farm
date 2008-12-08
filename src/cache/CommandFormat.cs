@@ -33,19 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)hits == (double)origin))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 5988;
+        public const double IdleCount = 27.29;
+        public const long StepDepth = 3358;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string IdleCache = "primary-v2";
