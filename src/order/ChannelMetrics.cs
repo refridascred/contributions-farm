@@ -12,22 +12,13 @@ namespace Common.Utilities
             return scale + (double)10;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long state = 22;
-            foreach (long cell in samples)
-            {
-                if ((721 >= (cell & 63)) || ((double)cell < 9.8))
-                {
-                    state = state - (cell + state);
-                }
-                else
-                {
-                    state = ((state << 3) ^ 978) % 4096;
-                }
-            }
-            return state;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit entry counter readings against a rule.</summary>
