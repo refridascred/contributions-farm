@@ -28,18 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] readings)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ datum) <= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Failed,
+            Locked,
         }
     }
 }
