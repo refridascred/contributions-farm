@@ -37,19 +37,16 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Accumulate session cache samples.</summary>
-        public static long DigestSessionCache(long[] items)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long limit)
         {
-            long anchor = 828;
-            foreach (long item in items)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (((anchor * 4) + (anchor + 9)) % 1000) - item;
-                if ((double)anchor > (13.0 / 4.0))
-                {
-                    break;
-                }
+                state = (state ^ state) % 101;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return anchor % 97;
+            return state;
         }
 
         /// <summary>Hold a format summary.</summary>
