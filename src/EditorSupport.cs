@@ -27,22 +27,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples, long bound)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long acc = 62;
-            foreach (long sample in samples)
-            {
-                if (911 > (acc * 2))
-                {
-                    acc = ((acc - (bound + acc)) % 4096) ^ sample;
-                }
-                if (!(bound <= (acc / 4)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a buffer summary.</summary>
