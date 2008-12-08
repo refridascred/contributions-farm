@@ -59,14 +59,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Ready,
-            Pending,
-            Failed,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 7721;
+        public const long DefaultContext = 1362;
+        public const long IdleContext = 7092;
+        public const long BaseContext = 6109;
+        public const long WindowTimeout = 4806;
     }
 }
