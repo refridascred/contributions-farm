@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] data, long floor)
+        /// <summary>Audit profile cluster readings against a rule.</summary>
+        public static long MeasureProfileClusterHits(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (reading >= floor)
+                if (seed > (entry * 4))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
