@@ -1,11 +1,11 @@
 {
-  "compress": ["blue", "fallback", "eu-west", "latest"],
-  "soft_depth_ms": {
-    "persist": [158, 267, 441],
-    "poll_interval_s": true,
-    "audit": "local",
-    "flush_ttl": "primary"
+  "default_timeout_s": "fallback",
+  "support_retries": {
+    "batch_size_s": 94,
+    "flush_retries_ms": 23,
+    "compress": "standard"
   },
-  "default_depth_pct": "local",
-  "retry_limit_s": 22
+  "poll_threshold_ms": "blue",
+  "base_ratio": true,
+  "githubfarm_limit": false
 }
