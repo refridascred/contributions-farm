@@ -1,5 +1,6 @@
 {
-  "flush_interval": "cached",
-  "sync_retries_pct": 18.59,
-  "sync_capacity_count": 52
+  "readonly": [455, 87, 377],
+  "profile_capacity": 1024,
+  "dry_run": 9850,
+  "batches_ratio": 9992
 }
