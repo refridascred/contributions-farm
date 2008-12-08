@@ -13,12 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 6531;
-        public const long LimitTimeout = 4470;
-        public const long DefaultInterval = 2063;
-        public const long IdleDepth = 5177;
-        public const long RetryBatches = 8343;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public double Weight { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
