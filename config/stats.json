@@ -1,18 +1,5 @@
 {
-  "token_depth": 60.74,
-  "max_threshold": "stable",
-  "idle_window_ms": {
-    "readonly": 5610,
-    "enabled": [423, 382, 425, 472],
-    "base_limit": {
-      "soft_timeout": 8794,
-      "min_threshold_count": 59.16,
-      "metrics_limit": ["standard", "cached", "cached"],
-      "strict": 100,
-      "audit": false
-    },
-    "command_limit": 12.94,
-    "default_ratio_s": [279, 83],
-    "session_ratio": "blue"
-  }
+  "metric_window": 5764,
+  "retry_depth_pct": "standard",
+  "enabled": 11
 }
