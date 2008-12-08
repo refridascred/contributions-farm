@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long carry = 905;
-            foreach (long entry in readings)
-            {
-                carry = (carry * 2) + entry;
-                if ((6.4 - 8.7) <= (double)carry)
-                {
-                    carry = carry + (544 / 2);
-                }
-            }
-            if (carry > (-9))
-            {
-                carry = (carry + (carry >> 2)) % 255;
-            }
-            return carry;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
