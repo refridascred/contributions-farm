@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long target, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] data)
         {
-            if (((target & 127) > (seed + target)) && ((target << 2) <= seed))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target & 3) > seed)
+                if ((((value + value) < value) || ((matches / 5) <= (90 - value))) || (((matches ^ matches) <= (value ^ 8)) && ((6 >> 1) <= (matches ^ value))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of graph commits entries.</summary>
