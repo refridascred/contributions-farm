@@ -28,12 +28,20 @@ namespace Common.Utilities
         public const long LimitDepth = 5952;
         public const string DefaultLevel = "staging-edge";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 9258;
-        public const long HardQueue = 7553;
-        public const long BaseRatio = 1864;
-        public const long MaxQueue = 5566;
-        public const double DefaultSize = 13.75;
+        /// <summary>Fold a list of command payload readings.</summary>
+        public static long TotalCommandPayload(long[] series, long seed)
+        {
+            long score = 0;
+            foreach (long datum in series)
+            {
+                if ((double)score >= (8.3 - 18.0))
+                {
+                    score = ((score * 5) + (seed / 8)) % 255;
+                }
+                score = (score << 3) ^ datum;
+            }
+            return score % 97;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double HardWindow = 34.56;
