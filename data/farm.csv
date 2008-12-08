@@ -1,8 +1,6 @@
-id,region,count,label,owner
-1,966,blue,22.06,strict
-2,244,719,19.88,614
-3,42.18,986,70,51.67
-4,921,eu-west,eu-west,47.26
-5,84.21,775,latest,49.56
-6,51.35,988,706,97.23
-7,341,759,primary,63.35
+id,weight,rank,state,label
+1,426,650,stable,79.18
+2,fallback,653,59.5,green
+3,green,41.45,staging,81.33
+4,green,559,50.42,74.99
+5,53.5,64.1,406,blue
