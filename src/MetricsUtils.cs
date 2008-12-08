@@ -75,22 +75,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] samples, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            long hits = 0;
+            long mark = 485;
             foreach (long datum in samples)
             {
-                if ((datum + 87) <= (hits % 7))
+                if (!(datum > (mark - datum)))
                 {
-                    hits = (hits + 3) + step;
+                    mark = (mark + 157) % 65521;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = ((mark * 2) + ((-54) & 3)) % 1000;
                 }
             }
-            return hits;
+            if (mark < 10)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 4096;
+            }
+            return mark;
         }
     }
 }
