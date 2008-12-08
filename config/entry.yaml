@@ -1,15 +1,4 @@
 # entry settings
-buffer_size:
-  - 100
-  - 282
-  - 426
-  - 119
-compress: true
-max_window_s: legacy
-hard_ttl_s: 60
-max_depth:
-  soft_depth_pct: 98.44
-  window_capacity: stable
-  max_retries_ms: 19
-  audit: false
-  soft_ttl_s: 70.05
+profile_retries: 19.47
+sync_interval: true
+tools_timeout: strict
