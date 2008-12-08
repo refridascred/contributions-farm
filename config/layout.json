@@ -1,6 +1,7 @@
 {
-  "cache_threshold_count": "cached",
-  "base_depth": ["local", "primary", "blue"],
-  "persist": 61.22,
-  "flush_interval": false
+  "compress": 1024,
+  "max_timeout_ms": "cached",
+  "idle_depth": "stable",
+  "readonly": ["standard", "fallback"],
+  "graph_depth": ["stable", "eu-west", "cached", "stable"]
 }
