@@ -24,19 +24,16 @@ namespace Common.Utilities
         public const long BatchStats = 1288;
         public const string WindowTimeout = "staging-v2";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] data, long origin)
+        /// <summary>Combine context record values into a single score.</summary>
+        public static long CombineContextRecord(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long mix = 685;
+            foreach (long item in levels)
             {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = mix + item;
+                mix = (mix + (23 >> 5)) % 65521;
             }
-            return valid;
+            return mix % 97;
         }
     }
 }
