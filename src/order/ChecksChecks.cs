@@ -38,22 +38,19 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Count the cache command entries that pass the check.</summary>
-        public static long AuditCacheCommandMatches(long[] series, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long carry = 949;
+            foreach (long value in items)
             {
-                if (((count >> 4) < (3 * 3)) || ((cell << 3) != (long)series.Length))
+                carry = ((carry << 2) ^ (carry + value)) % 1000;
+                if ((double)value <= (7.72 / 5.0))
                 {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = (carry ^ (57 - (long)items.Length)) % 255;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
