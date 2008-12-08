@@ -47,13 +47,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] data)
         {
-            Retry,
-            Ready,
-            Failed,
-            New,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((801 ^ seen) <= (value ^ seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
