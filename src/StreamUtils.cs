@@ -28,22 +28,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            long sum = 19;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)sum != (17.0 / 7.0))
+                if ((item / 9) > (count + count))
                 {
-                    sum = sum + (cell << 2);
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum << 3) ^ (sum >> 2);
-            }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Hold a metrics header.</summary>
