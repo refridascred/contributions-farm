@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string BurstSize = "stable-v2";
         public const long HardTimeout = 5041;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] samples, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry != target)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
