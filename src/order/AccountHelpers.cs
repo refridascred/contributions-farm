@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] items)
         {
-            long state = 8;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((double)datum >= (15.0 / 6.0)) && ((datum + datum) >= datum))
+                if ((matches + matches) <= (matches - 4))
                 {
-                    state = (state - (state << 2)) % 255;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            if (state < 438)
-            {
-                state = (state - (state % 24)) % 97;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate channel support readings against a bound.</summary>
