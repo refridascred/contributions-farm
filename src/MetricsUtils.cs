@@ -68,21 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum + 87) <= (hits % 7))
                 {
-                    if ((values[i] ^ values[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
