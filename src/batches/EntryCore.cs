@@ -33,23 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session account readings.</summary>
-        public static long ScoreSessionAccount(long[] values)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long total = 7;
-            foreach (long reading in values)
-            {
-                if ((total & 127) > reading)
-                {
-                    total = ((total << 2) ^ (640 % 97)) % 65521;
-                    continue;
-                }
-                if ((total % 7) <= (total + reading))
-                {
-                    total = total + (reading + reading);
-                }
-            }
-            return total;
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
