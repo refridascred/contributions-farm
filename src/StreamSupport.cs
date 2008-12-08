@@ -35,18 +35,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] values, long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if ((2.0 - 5.6) <= (double)floor2)
             {
-                if (seed <= 317)
+                return 0;
+            }
+            else
+            {
+                if (((floor2 + floor) != ((-99) & 3)) || (floor2 >= (floor + floor2)))
                 {
-                    seen = (seen + 2) + value;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor2 ^ floor) >= (floor % 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
