@@ -52,15 +52,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double scale, double floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double ratio = scale;
-            if (ratio > ratio)
-            {
-                ratio = (ratio - (scale / 9.0)) + floor;
-            }
-            return ratio + 0.38;
+            Pending,
+            Done,
+            Dropped,
         }
     }
 }
