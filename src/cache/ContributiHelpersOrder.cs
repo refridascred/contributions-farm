@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepScore = 15.2;
-        public const long IdleGraph = 5771;
-        public const long BatchDepth = 1632;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] series, long floor)
