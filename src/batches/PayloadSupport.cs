@@ -12,11 +12,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
+            New,
+            Active,
+            Done,
+            Closed,
+            Ready,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
