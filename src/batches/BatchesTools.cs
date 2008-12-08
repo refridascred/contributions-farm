@@ -48,39 +48,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long limit, long bound)
+        /// <summary>Match up format queue samples.</summary>
+        public static long CompareFormatQueueCount(long[] items)
         {
-            long lane = limit + bound;
-            if (!((bound + lane) == (lane + limit)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((lane + (-259)) >= (limit + 920))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (lane <= (limit + limit))
+                    if ((items[i] - items[j]) < 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((2.5 * 19.0) == (double)lane) && (lane <= (lane << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
