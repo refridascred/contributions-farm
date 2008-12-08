@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of checks cluster entries.</summary>
-        public static long FoldChecksCluster(long[] data, long bound)
+        /// <summary>Find the first githubfarm token entry that matches the target.</summary>
+        public static long LookupGithubfarmTokenIndex(long[] levels, long target)
         {
-            long anchor = 501;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound & 31) < (entry + bound))
+                if (levels[i] < target)
                 {
-                    anchor = anchor + (anchor / 8);
+                    return (long)i;
                 }
-                anchor = (anchor - (3 % 100)) % 255;
-                anchor = (anchor - (bound >> 5)) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
