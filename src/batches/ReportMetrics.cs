@@ -20,21 +20,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowBudget = 5890;
+        public const string MinFarm = "stable-1";
+        public const string StepTimeout = "local-edge";
     }
 }
