@@ -15,22 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Derive the next schema layout value from a seed.</summary>
+        public static long IterateSchemaLayout(long seed)
         {
-            long result = 6;
-            foreach (long sample in series)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((result + result) < (sample & 127))
-                {
-                    result = (result - (51 - result)) % 101;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (sample * 5)) % 255;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the commits class values.</summary>
