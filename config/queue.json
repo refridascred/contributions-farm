@@ -1,11 +1,15 @@
 {
-  "batch_window_pct": ["fallback", "staging"],
-  "max_interval": 1024,
-  "base_timeout_pct": {
-    "verbose": 50.02,
-    "cache_threshold_s": "primary",
-    "burst_interval": "primary",
-    "cluster_depth": "open",
-    "min_limit_ms": "cached"
+  "base_window_s": 5871,
+  "batches_size": 97,
+  "audit": "eu-west",
+  "strict": "staging",
+  "payload_threshold": 66,
+  "poll_delay_ms": {
+    "poll_depth_count": 1024,
+    "cache_delay_s": 91,
+    "default_interval_ms": 30,
+    "soft_ttl_ms": "blue",
+    "metrics_size": 30,
+    "idle_capacity": "latest"
   }
 }
