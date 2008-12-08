@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=191
+CHANNEL_LIMIT=201
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in latest cached strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-mode="${1:-eu-west}"
+mode="${1:-stable}"
 case "${mode}" in
-    standard)
+    green)
         log "fast path"
         ;;
     *)
