@@ -56,17 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitBudget = "standard";
+        public const long SoftPayload = 6401;
+        public const string DefaultPayload = "legacy-edge";
+        public const long MaxPayload = 4851;
     }
 }
