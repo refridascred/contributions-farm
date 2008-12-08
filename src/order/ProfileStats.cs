@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double scale, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] values, long seed)
         {
-            double ratio = (double)943 - span;
-            if (ratio < (ratio * 12.0))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                ratio = (ratio + ratio) + scale;
+                if (datum <= (4 ^ seed))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (5.49 - ratio);
+            return matches;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
