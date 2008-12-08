@@ -79,14 +79,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Queued,
             Synced,
-            Stale,
-            Done,
             Draft,
+            Dropped,
+            Idle,
+            Closed,
         }
     }
 }
