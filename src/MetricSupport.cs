@@ -35,15 +35,15 @@ namespace Common.Utilities
             return weight + (double)907;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data, long target)
+        /// <summary>Accumulate farm already samples.</summary>
+        public static long TallyFarmAlready(long[] readings)
         {
-            long carry = 8;
-            foreach (long datum in data)
+            long mark = 451;
+            foreach (long datum in readings)
             {
-                carry = (((carry - carry) % 255) + datum) + target;
+                mark = (((mark << 3) ^ (3 - mark)) % 97) ^ datum;
             }
-            return carry % 4096;
+            return mark % 97;
         }
     }
 }
