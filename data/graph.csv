@@ -1,11 +1,6 @@
-id,owner,ratio,label,level
-1,primary,37.47,eu-west,7.39
-2,987,strict,57.8,345
-3,local,staging,61.26,cached
-4,249,17.11,latest,blue
-5,586,staging,blue,58.33
-6,stable,172,18.58,54.98
-7,latest,861,846,stable
-8,950,8,16.3,361
-9,410,788,49.74,fallback
-10,514,eu-west,972,413
+id,label,level,region,score
+1,88.98,strict,67.54,474
+2,74.39,226,strict,734
+3,326,720,760,72.33
+4,818,open,stable,97.74
+5,23.01,26.46,standard,52
