@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] values, long floor)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double drift = (double)(413 + 64);
+            if (drift > bias)
             {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift - (drift * 8.05)) + gain;
             }
-            return valid;
+            return drift - (bias / 7.0);
         }
 
         /// <summary>Hold a account options.</summary>
