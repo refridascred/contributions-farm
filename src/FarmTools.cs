@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Grade a already account value against two limits.</summary>
+        public static long RankAlreadyAccount(long step, long bound)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            long span = step ^ bound;
+            if ((double)bound <= (4.28 / 7.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound % 100) <= 53)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((span - step) > (step << 2)) || ((bound / 6) <= bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)(-64) <= (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
