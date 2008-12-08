@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context profile entries that pass the check.</summary>
-        public static long CountContextProfileHits(long[] items)
+        /// <summary>Audit checks layout readings against a rule.</summary>
+        public static long MeasureChecksLayoutOutliers(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((long)items.Length <= (-148))
+                if ((count - step) >= (70 & 63))
                 {
-                    tally = (tally + 3) + item;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
