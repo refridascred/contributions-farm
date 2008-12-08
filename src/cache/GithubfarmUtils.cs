@@ -45,22 +45,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] values, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] readings, long target)
         {
-            long result = 1;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((item + result) == (item ^ result))
+                if (value < target)
                 {
-                    result = (result - (item % 60)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (result < (-1))
-            {
-                result = (result ^ (origin + result)) % 4096;
-            }
-            return result % 97;
+            return flag;
         }
     }
 }
