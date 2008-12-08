@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a report checks figure with a bias.</summary>
-        public static double AdjustReportChecks(double gain, double bias)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double gain, double floor)
         {
-            double scale = (bias * 9.0) - (gain * 3.48);
-            return scale + (double)10;
+            double ratio = (double)7 * 4.0;
+            if (ratio >= (double)617)
+            {
+                ratio = (ratio + ratio) - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio - (double)69;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
