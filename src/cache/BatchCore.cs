@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] levels, long seed)
         {
-            Queued,
-            Stale,
-            Paused,
-            Done,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!((double)datum < 2.9))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
