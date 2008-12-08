@@ -58,38 +58,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long seed, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] series, long seed)
         {
-            if ((double)offset >= (0.4 + 16.0))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset % 60) != (offset % 10)) && ((96 * 2) != (seed + seed)))
+                if ((double)hits < (double)sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset >= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset ^ seed) > (offset / 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 2) - seed;
                 }
             }
+            return hits;
         }
     }
 }
