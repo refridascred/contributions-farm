@@ -28,16 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double bias)
-        {
-            double scale = (double)(57 * 2);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - 8.9) + (double)(long)i) - ratio;
-            }
-            return scale + (bias * 13.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "staging-v2";
+        public const string DefaultDepth = "primary-v2";
+        public const long StepTools = 4514;
+        public const long WindowSize = 9690;
+        public const long BatchFactor = 3546;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
