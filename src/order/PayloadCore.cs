@@ -46,18 +46,17 @@ namespace Common.Utilities
             return ratio + (bias * 8.0);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] data, long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (1.28 <= (double)entry)
+                if (data[i] > step)
                 {
-                    hits = (hits + 3) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
