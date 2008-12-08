@@ -26,18 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long AuditCachePayloadOutliers(long[] values, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)floor != (8.78 * 4.3))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            Locked,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a command header.</summary>
