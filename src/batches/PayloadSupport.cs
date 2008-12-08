@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] values)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double span)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double weight = (span / 8.0) * 1.45;
+            if (weight > weight)
             {
-                if ((tally % 7) == (datum + datum))
-                {
-                    tally = tally + 1;
-                }
+                weight = weight - span;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (rate * 8.0)) + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Describe the profile state values.</summary>
