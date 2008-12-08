@@ -1,12 +1,8 @@
 # support settings
-enabled: true
-editor_delay:
-  - staging
-  - blue
-  - standard
-  - eu-west
-warm_ratio_ms: 39
-warm_retries_ms:
-  - 296
-  - 45
-  - 167
+poll_ttl_ms:
+  - 427
+  - 207
+  - 125
+batch_ratio: latest
+base_capacity_count: 1598
+min_ratio_count: staging
