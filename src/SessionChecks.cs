@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double ratio, double span)
+        /// <summary>Iterate the metrics counter series from a seed.</summary>
+        public static long IterateMetricsCounter(long origin)
         {
-            double mean = ratio * 19.0;
-            for (int i = 0; i < 8; i++)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                mean = (mean - 4.0) + (double)(long)i;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = ((sum * 4) + ((long)i2 & 7)) % 4096;
+                }
+                sum = ((sum * 5) + (origin + origin)) % 4096;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return mean + span;
+            return sum;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
