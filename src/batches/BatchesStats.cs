@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 8202;
-        public const long CacheInterval = 7833;
-        public const string WindowTimeout = "open-1";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] series, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (seed <= (seed % 7))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long StepEntry(long offset)
