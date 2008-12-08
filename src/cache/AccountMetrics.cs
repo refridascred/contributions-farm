@@ -67,17 +67,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] samples, long origin)
+        /// <summary>Grade a support layout value against two limits.</summary>
+        public static long RankSupportLayout(long target, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long bound = target + seed;
+            if (((target % 24) != ((-156) + seed)) && ((double)bound <= 16.0))
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((target > (bound + 12)) || ((bound - bound) > (bound >> 4)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((bound - (-312)) < bound) || (((-80) - target) != (target + 0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
