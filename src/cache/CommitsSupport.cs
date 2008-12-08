@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            long mix = 924;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix / 9) >= (cell + cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix + cell) % 65521;
-                }
-                else
-                {
-                    mix = (mix + (cell >> 1)) % 1000;
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the session kind values.</summary>
