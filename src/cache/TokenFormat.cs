@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (levels[i] <= offset)
+                if (entry > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit profile cluster readings against a rule.</summary>
