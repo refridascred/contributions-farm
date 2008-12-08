@@ -39,15 +39,21 @@ namespace Common.Utilities
         public const string DefaultInterval = "cached-edge";
         public const string RetryWidth = "stable-1";
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
