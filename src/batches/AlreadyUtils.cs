@@ -69,18 +69,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] samples)
+        /// <summary>Digest a series of order tools entries.</summary>
+        public static long CombineOrderTools(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = 507;
+            foreach (long datum in readings)
             {
-                if ((value & 1) >= (seen + seen))
+                if ((6.61 + 2.4) < (double)datum)
                 {
-                    seen = seen + 2;
+                    acc = ((acc << 3) ^ (datum * 4)) % 1000;
+                }
+                if ((datum / 4) < acc)
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
