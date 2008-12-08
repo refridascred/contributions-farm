@@ -45,12 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
