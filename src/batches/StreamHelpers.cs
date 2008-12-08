@@ -22,19 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double ratio, double span)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double rate, double bias)
         {
-            double ratio2 = 6.7;
-            if (ratio2 < 1.24)
-            {
-                ratio2 = (ratio2 + (ratio * 6.3)) - span;
-            }
-            else
-            {
-                ratio2 = ratio2 + (ratio / 6.0);
-            }
-            return ratio2 + ratio2;
+            double bias2 = rate + rate;
+            return (bias2 + (9.7 + 16.0)) + bias;
         }
 
         /// <summary>Adjust a stream cluster reading.</summary>
