@@ -1,10 +1,11 @@
 # Already notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Keep editor and booking names short and lowercase.
+A schema that stays idle for too long is moved to the tools list.
+Each payload is validated before it reaches the session queue.
+Use graph settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Validate context input early
-- Review session limits each release
-- Document new account fields
+- Keep payload values small
+- Document new window fields
+- Log every metrics change
