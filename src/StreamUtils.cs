@@ -64,36 +64,28 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long floor, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long target, long seed)
         {
-            long offset = floor - bound;
-            if ((double)offset != (1.5 + 11.0))
+            if (!((target / 5) == (910 * 5)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((4.4 + 3.44) < (double)offset)
+                if ((8 + target) <= (8 - seed))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (!((19.0 - 9.7) > (double)bound))
+                    if (seed > (seed + target))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        if (89 > floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 2;
                     }
                 }
             }
