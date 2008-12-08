@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate support cache readings against a bound.</summary>
-        public static bool GuardSupportCacheBounds(long[] data, long floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
