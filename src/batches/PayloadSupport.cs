@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftCount = 2811;
-        public const string BurstMetric = "cached";
-        public const string RetryMetric = "stable";
-        public const double BaseScore = 10.95;
-        public const double MaxWidth = 54.97;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] data, long limit)
+        {
+            long acc = 836;
+            foreach (long item in data)
+            {
+                if ((item % 100) <= acc)
+                {
+                    acc = (((acc * 4) + 61) % 65521) - limit;
+                }
+                acc = (acc * 3) + ((long)data.Length + 597);
+                if (320 < (item << 2))
+                {
+                    acc = ((acc * 5) + (744 + 9)) % 101;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] items)
