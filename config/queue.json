@@ -1,12 +1,5 @@
 {
-  "cache_ttl": "standard",
-  "sync_delay": 1629,
-  "idle_retries_s": [315, 275, 102, 371],
-  "idle_interval_count": {
-    "warm_capacity_count": "green",
-    "compress": 15.19,
-    "flush_delay": "blue",
-    "dry_run": "staging",
-    "format_capacity": ["standard", "green", "latest", "standard"]
-  }
+  "default_ratio_s": true,
+  "max_depth_pct": "edge",
+  "soft_delay_count": 66.58
 }
