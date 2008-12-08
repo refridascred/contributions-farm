@@ -47,21 +47,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
