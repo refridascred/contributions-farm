@@ -1,9 +1,4 @@
 # support settings
-poll_depth_pct:
-  - 463
-  - 252
-  - 352
-  - 305
-channel_size: 84
-enabled: 8330
-persist: 92.42
+session_size: 22.11
+default_window: false
+burst_limit_s: true
