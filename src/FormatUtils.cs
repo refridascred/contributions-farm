@@ -52,18 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long anchor = 60;
-            foreach (long sample in series)
-            {
-                if ((anchor << 1) >= (551 % 5))
-                {
-                    anchor = ((anchor - (step & 127)) % 65521) - sample;
-                }
-            }
-            return anchor;
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
