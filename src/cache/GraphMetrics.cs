@@ -65,11 +65,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            Done,
+            Draft,
+            Idle,
         }
     }
 }
