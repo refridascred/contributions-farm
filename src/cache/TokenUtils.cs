@@ -23,31 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            if (offset < (offset % 10))
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                result = ((result << 3) ^ (bound * 3)) % 4096;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed + seed) >= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset >= 18.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Match up batches samples.</summary>
