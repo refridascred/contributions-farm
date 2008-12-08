@@ -19,12 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftFactor = 36.44;
-        public const long WindowProfile = 2106;
-        public const string MinWidth = "local";
-        public const long LimitProfile = 1631;
-        public const long LimitRatio = 7194;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long GradeAlready(long limit, long offset)
