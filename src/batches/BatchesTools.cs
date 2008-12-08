@@ -41,18 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] readings, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((seed << 1) >= (entry % 60))
+                if (value != step)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
