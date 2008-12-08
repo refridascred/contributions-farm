@@ -1,21 +1,7 @@
 {
-  "readonly": 80,
-  "compress": [77, 24, 113, 61],
-  "cache_threshold_count": {
-    "persist": 1024,
-    "burst_interval": 53.36,
-    "verbose": {
-      "enabled": "local",
-      "persist": 2028,
-      "base_interval": "strict",
-      "verbose": "latest",
-      "batch_window": "staging"
-    }
-  },
-  "retry_ttl_pct": 45.63,
-  "route_limit": {
-    "notes_size": 4903,
-    "soft_interval": true,
-    "compress": 3.94
-  }
+  "batch_interval": "open",
+  "record_window": 64,
+  "stream_timeout": [73, 268, 472, 460],
+  "order_window": 3799,
+  "payload_delay": 23.86
 }
