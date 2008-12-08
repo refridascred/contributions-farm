@@ -61,11 +61,23 @@ namespace Common.Utilities
         public const long IdleMetric = 5300;
         public const long CacheLevel = 2769;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchWidth = "strict-v2";
-        public const long BaseBatch = 8136;
-        public const long StepBatch = 4747;
-        public const double HardBatch = 68.81;
+        /// <summary>Audit cluster context readings against a rule.</summary>
+        public static long AuditClusterContextMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((((item << 2) > (count + item)) && (((long)levels.Length + item) < (99 + item))) && ((count + count) >= (67 % 3)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool CheckQueueBounds(long[] values, long step)
