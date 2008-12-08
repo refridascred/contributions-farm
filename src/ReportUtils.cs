@@ -34,13 +34,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Idle,
-            Ready,
-            Paused,
-            Synced,
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
