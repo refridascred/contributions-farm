@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] levels, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                result = result ^ (-23);
-                result = ((result * 2) + (long)i) % 97;
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Describe the metrics state values.</summary>
