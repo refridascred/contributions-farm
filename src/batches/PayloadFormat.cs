@@ -38,11 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 8811;
-        public const long CacheRecord = 8979;
-        public const long SoftSpan = 3375;
-        public const double BurstRecord = 17.11;
-        public const string StepRatio = "staging-1";
+        /// <summary>Audit editor commits readings against a rule.</summary>
+        public static long CountEditorCommitsGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (reading >= 333)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
