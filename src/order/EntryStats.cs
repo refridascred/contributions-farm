@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate support token readings against a bound.</summary>
-        public static bool CheckSupportTokenBounds(long[] levels, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry != limit)
+                if ((state & 31) < step)
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 5) + (state - step)) % 101;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
