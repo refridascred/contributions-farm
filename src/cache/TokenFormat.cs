@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two account commits measurements.</summary>
-        public static double ProjectAccountCommits(double scale, double offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double rate = 7.11;
-            return ((rate - rate) + scale) + offset;
+            Done,
+            New,
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
