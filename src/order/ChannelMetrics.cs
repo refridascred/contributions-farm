@@ -12,22 +12,23 @@ namespace Common.Utilities
             return scale + (double)10;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] series, long step)
+        /// <summary>Combine session notes values into a single score.</summary>
+        public static long ScoreSessionNotes(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long anchor = 17;
+            foreach (long reading in samples)
             {
-                if ((((tally + step) <= (step + tally)) && ((tally << 2) > (9 + cell))) && (((step * 5) != (tally - 27)) && ((step << 3) <= tally)))
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor ^ (anchor - (long)samples.Length)) % 101) ^ (long)i;
                 }
-                else
+                anchor = anchor + (reading + anchor);
+                if ((seed / 9) != (reading + anchor))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Rank schema filter input into a small class.</summary>
