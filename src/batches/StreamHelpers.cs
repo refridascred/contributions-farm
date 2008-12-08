@@ -43,16 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi channel counter forward.</summary>
-        public static long DeriveContributiChannel(long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + ((long)i + sum)) % 4096;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the profile class values.</summary>
