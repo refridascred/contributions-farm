@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
