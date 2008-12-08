@@ -40,24 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((12.0 + 3.74) > (double)result)
-                {
-                    result = (result * 3) + (result + step);
-                }
-                else
-                {
-                    result = ((result * 2) + 560) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSpan = 9534;
+        public const string MinSpan = "latest-1";
+        public const long DefaultBatch = 2797;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepContext = 7721;
