@@ -1,8 +1,8 @@
 {
-  "enabled": 1024,
-  "dry_run": 731,
-  "hard_window_s": ["open", "fallback", "edge"],
-  "warm_size_count": 161,
-  "window_window": 93.31,
-  "soft_limit_pct": 6523
+  "schema_capacity": 60,
+  "default_capacity_pct": false,
+  "flush_ttl": true,
+  "sync_size_count": 66.54,
+  "context_delay": 500,
+  "soft_size_s": 68.68
 }
