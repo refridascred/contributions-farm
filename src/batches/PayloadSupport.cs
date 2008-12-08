@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit format command readings against a rule.</summary>
-        public static long AuditFormatCommandGaps(long[] data)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!(((datum + 52) >= datum) && ((double)(long)data.Length == (1.45 + 5.0))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
