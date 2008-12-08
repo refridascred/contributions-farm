@@ -39,18 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] samples)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((11.0 * 15.0) < (double)reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double load = (double)(83 % 100);
+            return ((load - load) + ratio) + span;
         }
     }
 }
