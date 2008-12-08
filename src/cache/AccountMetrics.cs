@@ -65,10 +65,14 @@ namespace Common.Utilities
         public const string MaxDepth = "open-v2";
         public const long CacheGraph = 2627;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultLevel = 7421;
-        public const long BatchSpan = 4956;
-        public const long CacheCount = 4933;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Failed,
+            Draft,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatGaps(long[] samples, long floor)
