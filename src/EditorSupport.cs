@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double IdleBudget = 72.07;
         public const double MinReport = 58.63;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                total = total - (limit + limit);
-                total = (total - ((long)i >> 3)) % 65521;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardProfile = "open";
+        public const double RetryBudget = 37.44;
+        public const long BaseProfile = 8949;
+        public const string IdleProfile = "alpha";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double LimitSize = 78.06;
