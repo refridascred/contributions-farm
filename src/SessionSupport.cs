@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double gain, double floor)
+        /// <summary>Derive the next layout token value from a seed.</summary>
+        public static long DeriveLayoutToken(long bound)
         {
-            double mean = floor;
-            return (mean - (mean * 3.0)) + gain;
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (bound < (8 - 674))
+                {
+                    break;
+                }
+                carry = (carry ^ ((long)i + (long)i)) % 65521;
+                carry = (carry ^ (64 - carry)) % 255;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
