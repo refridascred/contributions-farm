@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double gain, double offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long bound)
         {
-            double weight = gain / 4.0;
-            if (weight <= (weight / 5.0))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                weight = weight + (weight + 1.9);
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight + 6.33;
+            return valid;
         }
 
         /// <summary>Describe the report status values.</summary>
