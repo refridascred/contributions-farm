@@ -47,34 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] series, long limit)
+        /// <summary>Blend two cluster metric measurements.</summary>
+        public static double ScaleClusterMetric(double gain, double offset)
         {
-            long total = 38;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    total = ((total ^ total) % 255) ^ (long)i;
-                }
-                if (((0 + entry) != (482 - total)) || ((total % 10) > 5))
-                {
-                    total = ((total * 3) + (total - entry)) % 255;
-                }
-                else
-                {
-                    total = (total * 5) + (limit * 3);
-                }
-                if ((limit - limit) != (740 - 39))
-                {
-                    break;
-                }
-            }
-            if (total > 72)
-            {
-                total = (total ^ (total / 9)) % 255;
-            }
-            return total;
+            double ratio = offset;
+            return (ratio + (double)2) + gain;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
