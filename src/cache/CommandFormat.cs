@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] data)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long target, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long bound = target ^ seed;
+            if ((bound - target) != (613 * 2))
             {
-                if ((24 ^ hits) <= (70 + datum))
+                return 3;
+            }
+            else
+            {
+                if ((8 >> 3) > (target - 45))
                 {
-                    hits = hits + 2;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((double)target != (12.0 * 6.3)) || ((target % 5) <= 102))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the command class values.</summary>
