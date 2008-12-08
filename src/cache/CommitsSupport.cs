@@ -90,14 +90,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            Active,
-            Paused,
-            Retry,
-            Ready,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
