@@ -1,14 +1,18 @@
 # githubfarm settings
-batch_window_count: 75
-account_ttl:
-  max_ttl: false
-  audit:
-    - 461
-    - 206
-  dry_run: local
-  batch_retries: local
-sync_window_ms: staging
-persist:
-  - primary
-  - green
-enabled: edge
+context_ttl: latest
+max_ttl_pct:
+  strict: stable
+  cache_depth_pct: primary
+  soft_retries_s:
+    batch_ttl_pct: 34.92
+    checks_size: fallback
+    burst_limit: 47.0
+    warm_limit_count: 4902
+    soft_interval: 17.47
+    hard_size_pct: 2053
+  metrics_interval: staging
+  sync_threshold_ms: staging
+  sync_retries_s: strict
+filter_delay: 7136
+poll_window: 8802
+enabled: legacy
