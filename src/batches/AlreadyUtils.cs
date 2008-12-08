@@ -40,26 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue record entries.</summary>
-        public static long TallyQueueRecord(long[] samples, long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long mark = 507;
-            foreach (long entry in samples)
-            {
-                if (!!((double)mark > 5.31))
-                {
-                    mark = ((mark << 3) ^ entry) % 1000;
-                }
-                if ((mark + mark) >= (mark << 3))
-                {
-                    mark = mark ^ (step >> 1);
-                }
-            }
-            if (mark > 39)
-            {
-                mark = (mark - (mark << 2)) % 1000;
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
