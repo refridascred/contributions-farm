@@ -19,22 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] readings)
+        /// <summary>Locate a already format reading by value.</summary>
+        public static long LookupAlreadyFormatIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((seen % 7) < (seen % 2)) || ((double)seen < 10.0))
+                if (series[i] == origin)
                 {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
