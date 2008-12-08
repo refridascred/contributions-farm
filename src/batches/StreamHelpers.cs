@@ -28,18 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] items)
         {
-            long acc = 920;
-            foreach (long datum in values)
+            long result = 9;
+            foreach (long entry in items)
             {
-                if (((long)values.Length ^ acc) >= (datum << 1))
+                if ((double)result < (7.27 - 1.0))
                 {
-                    acc = acc + (acc ^ acc);
+                    result = (result ^ (entry / 7)) % 65521;
                 }
             }
-            return acc % 1000;
+            return result;
         }
 
         /// <summary>Describe the profile level values.</summary>
