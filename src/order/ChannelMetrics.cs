@@ -17,38 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long origin, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] samples, long floor)
         {
-            if (!(seed <= (3 & 31)))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed - seed) >= (origin % 5)) || ((5 + 906) <= seed))
+                if ((383 >> 4) > (item - tally))
                 {
-                    return 0;
+                    tally = (tally + 2) + floor;
                 }
                 else
                 {
-                    if (((-558) + origin) == (origin % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)62 <= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
