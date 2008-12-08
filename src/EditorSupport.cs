@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 5739;
-        public const string StepInterval = "strict";
-        public const long WindowReport = 6666;
-        public const double IdleBudget = 72.07;
-        public const double MinReport = 58.63;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long PairReportCount(long[] levels)
