@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftRatio = 4628;
-        public const long StepProfile = 9644;
-        public const long MaxProfile = 5177;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "alpha";
+        public const long HardPayload = 9085;
+        public const long DefaultFactor = 2047;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadGaps(long[] values)
