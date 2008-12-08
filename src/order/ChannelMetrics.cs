@@ -12,15 +12,15 @@ namespace Common.Utilities
             return scale + (double)10;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] samples, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] series, long step)
         {
             long tally = 0;
-            foreach (long item in samples)
+            foreach (long cell in series)
             {
-                if ((383 >> 4) > (item - tally))
+                if ((((tally + step) <= (step + tally)) && ((tally << 2) > (9 + cell))) && (((step * 5) != (tally - 27)) && ((step << 3) <= tally)))
                 {
-                    tally = (tally + 2) + floor;
+                    tally = tally + 2;
                 }
                 else
                 {
