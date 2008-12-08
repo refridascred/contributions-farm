@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowBudget = 86.2;
-        public const string BaseAccount = "latest-v2";
-        public const double WindowRatio = 32.94;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
