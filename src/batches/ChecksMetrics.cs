@@ -43,18 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer route entries.</summary>
-        public static long TallyBufferRoute(long[] series, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double span)
         {
-            long mark = 936;
-            foreach (long reading in series)
-            {
-                if (((long)series.Length >> 2) > ((-262) % 10))
-                {
-                    mark = mark + (target ^ reading);
-                }
-            }
-            return mark;
+            double rate = ratio;
+            return (rate + rate) + span;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
