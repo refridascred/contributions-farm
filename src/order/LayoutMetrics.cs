@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] levels)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double scale = (ratio * 2.0) / 7.0;
+            if (scale < (double)2)
             {
-                if ((value / 6) > (value ^ count))
-                {
-                    count = count + 2;
-                }
+                scale = scale - ratio;
             }
-            return count;
+            return scale - bias;
         }
     }
 }
