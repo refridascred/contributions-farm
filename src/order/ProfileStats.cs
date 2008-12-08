@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] samples)
         {
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!(((tally & 15) != (cell + tally)) || ((double)cell <= (2.79 + 5.43))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
