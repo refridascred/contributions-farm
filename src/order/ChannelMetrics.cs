@@ -21,12 +21,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            Failed,
+            Retry,
+            Ready,
+            Paused,
+            Stale,
         }
     }
 }
