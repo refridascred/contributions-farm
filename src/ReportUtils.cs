@@ -12,27 +12,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long seed, long limit)
         {
-            long acc = 5;
-            foreach (long entry in samples)
+            long diff = seed ^ limit;
+            if ((diff ^ diff) < (limit + seed))
             {
-                acc = (acc ^ (acc ^ step)) % 65521;
-                if ((entry + acc) <= step)
+                return 4;
+            }
+            else
+            {
+                if (diff < (seed / 5))
                 {
-                    acc = ((acc * 2) + 7) % 101;
+                    return 0;
                 }
-                if (step >= (acc + step))
+                else
                 {
-                    break;
+                    if (limit > (limit + diff))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)diff != (2.2 * 8.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (acc < 6)
-            {
-                acc = ((acc << 2) ^ (acc + 1)) % 4096;
-            }
-            return acc % 97;
         }
 
         /// <summary>Adjust a layout reading.</summary>
