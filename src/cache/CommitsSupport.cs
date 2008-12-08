@@ -42,11 +42,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 77.7;
-        public const string BatchDepth = "staging-v2";
-        public const double CacheRoute = 76.6;
-        public const string BatchRoute = "legacy";
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen > 9) || ((offset + entry) >= entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] samples)
