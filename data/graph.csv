@@ -1,6 +1,9 @@
-id,owner,label,score
-1,184,74.93,302
-2,43.11,stable,legacy
-3,blue,62.8,90
-4,blue,471,94.68
-5,open,55,22.39
+id,state,level
+1,533,blue
+2,475,43
+3,57.81,658
+4,813,12
+5,staging,868
+6,768,primary
+7,71.88,staging
+8,77.73,677
