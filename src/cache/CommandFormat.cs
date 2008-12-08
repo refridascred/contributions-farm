@@ -27,24 +27,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine order githubfarm values into a single score.</summary>
-        public static long WeighOrderGithubfarm(long[] samples)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long step, long seed)
         {
-            long score = -813;
-            foreach (long cell in samples)
+            long offset = step + seed;
+            if ((seed << 3) >= (seed & 63))
             {
-                for (int i = 0; i < 10; i++)
+                return 2;
+            }
+            else
+            {
+                if (((offset & 15) == (572 ^ offset)) && ((offset % 3) <= (768 - step)))
                 {
-                    score = (score ^ (cell * 5)) - (long)i;
+                    return 3;
                 }
-                score = ((score * 5) + (cell - 299)) % 97;
-                score = ((score << 2) ^ (cell & 15)) % 255;
+                else
+                {
+                    if ((offset << 2) > (13 - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset + step) != (step + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            if (score < 725)
-            {
-                score = (score + (3 - 148)) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Count the stats profile entries that pass the check.</summary>
