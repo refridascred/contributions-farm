@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((cell % 3) >= cell) && ((cell * 4) > (hits + cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 751;
+        public const string DefaultWidth = "staging-1";
+        public const long MaxScore = 6366;
+        public const string BatchProfile = "standard-v2";
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] levels)
