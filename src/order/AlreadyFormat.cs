@@ -30,14 +30,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            Queued,
-            Done,
-            Locked,
-            Stale,
-            Closed,
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total - (total / 5)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
