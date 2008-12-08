@@ -64,17 +64,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] samples, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
+                if (((6 + (long)series.Length) >= (489 / 6)) && ((count + count) < (count >> 2)))
                 {
-                    return (long)i;
+                    count = (count + 1) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a profile header.</summary>
