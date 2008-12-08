@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            Stale,
-            Ready,
-            Synced,
+            long result = 662;
+            foreach (long cell in series)
+            {
+                result = ((result << 3) ^ (result - result)) % 65521;
+                if ((cell << 2) >= (1 + cell))
+                {
+                    result = (result * 3) + 33;
+                }
+                else
+                {
+                    result = (result + (result % 12)) % 65521;
+                }
+            }
+            if (result > 78)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Check that every format checks entry stays within the limit.</summary>
