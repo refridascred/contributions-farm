@@ -74,26 +74,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] data, long offset)
         {
-            long mark = 485;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(datum > (mark - datum)))
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
                 {
-                    mark = (mark + 157) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 2) + ((-54) & 3)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mark < 10)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 4096;
-            }
-            return mark;
+            return -1;
         }
     }
 }
