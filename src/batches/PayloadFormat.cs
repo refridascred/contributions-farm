@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings, long limit)
         {
-            long anchor = 994;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                anchor = (anchor << 3) ^ (reading & 1);
+                if ((double)seen == (7.2 + 5.1))
+                {
+                    seen = ((seen + 3) ^ entry) + limit;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
