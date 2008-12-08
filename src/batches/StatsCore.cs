@@ -20,14 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
+            Idle,
+            Dropped,
+            Stale,
             Done,
-            Active,
-            Retry,
-            New,
-            Ready,
+            Paused,
         }
 
         /// <summary>Derive the next context graph value from a seed.</summary>
