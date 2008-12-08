@@ -1,7 +1,6 @@
 {
-  "soft_size": 3909,
-  "flush_capacity": 37.28,
-  "context_timeout": 18,
-  "audit": ["primary", "fallback", "latest", "fallback"],
-  "filter_capacity": false
+  "batch_interval_ms": "staging",
+  "githubfarm_limit": 92,
+  "compress": "open",
+  "flush_limit": "standard"
 }
