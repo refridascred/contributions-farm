@@ -37,15 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] series)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long total = 1;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total + (sample % 3);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
