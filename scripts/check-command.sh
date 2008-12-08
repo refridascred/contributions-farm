@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=454
+COMMAND_LIMIT=64
 log "limit is ${COMMAND_LIMIT}"
 
-for item in primary latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+log "total ${total}"
