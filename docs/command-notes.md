@@ -1,15 +1,16 @@
 # Command notes
 
-Use context settings to tune how often metrics data is refreshed.
-Use checks settings to tune how often farm data is refreshed.
-Defaults for window live in the config folder and can be overridden per environment.
+The metrics report groups every channel by context.
+Run the metrics check before changing any session limits.
+Defaults for counter live in the config folder and can be overridden per environment.
 
-Use githubfarm settings to tune how often record data is refreshed.
-The stats module keeps route values in sync with the payload cache.
-Each stats is validated before it reaches the token queue.
+The report module keeps token values in sync with the profile cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer metrics defaults
-- Log every buffer change
+- Validate stream input early
+- Prefer context defaults
+- Keep graph values small
+- Document new queue fields
