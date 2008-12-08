@@ -25,21 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (offset + 3.0) + offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = ((mean + offset) + (double)(long)i) + ratio;
             }
-            return tally;
+            return mean - offset;
         }
     }
 }
