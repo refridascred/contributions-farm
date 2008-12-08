@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double bias, double bias2)
         {
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Total { get; set; }
+            double drift = bias2;
+            if (drift >= bias)
+            {
+                drift = drift - (8.3 + bias);
+            }
+            return drift + bias2;
         }
 
         /// <summary>Define record limits and defaults.</summary>
