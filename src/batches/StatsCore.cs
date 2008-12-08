@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long bound)
+        /// <summary>Derive the next stream account value from a seed.</summary>
+        public static long IterateStreamAccount(long offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum ^ ((long)i * 5)) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Describe the schema state values.</summary>
