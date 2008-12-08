@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((mix + target) < (1 << 2))
+                if ((matches + (-1)) <= matches)
                 {
-                    mix = (mix + (52 + (long)i)) % 101;
+                    matches = (matches + 2) ^ sample;
                 }
-                mix = ((mix * 3) + (target ^ target)) % 65521;
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
