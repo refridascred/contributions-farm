@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] samples, long origin)
         {
-            New,
-            Locked,
-            Dropped,
+            long state = 1;
+            foreach (long sample in samples)
+            {
+                state = ((state * 5) + (state - origin)) - sample;
+                if (((double)origin > 9.08) && ((state + state) <= (state % 2)))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a profile header.</summary>
