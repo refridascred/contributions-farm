@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] readings, long step)
+        /// <summary>Accumulate tools support samples.</summary>
+        public static long TallyToolsSupport(long[] readings)
         {
-            long anchor = 8;
-            foreach (long entry in readings)
+            long state = 68;
+            foreach (long reading in readings)
             {
-                if ((step ^ anchor) < 503)
+                if (((double)reading < (double)state) && ((3.7 - 5.0) >= (double)reading))
                 {
-                    anchor = anchor + (anchor - (long)readings.Length);
+                    state = state ^ (reading % 60);
                 }
-                else
-                {
-                    anchor = (anchor - (entry ^ 569)) % 4096;
-                }
+                state = ((state * 5) + (state ^ reading)) % 1000;
             }
-            if (anchor > (-38))
+            if (state < 37)
             {
-                anchor = (anchor - (step ^ anchor)) % 65521;
+                state = (state * 3) + (long)readings.Length;
             }
-            return anchor % 65521;
+            return state;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
