@@ -27,9 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxOrder = "legacy-1";
-        public const double RetryOrder = 23.23;
-        public const long BurstOrder = 1051;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
