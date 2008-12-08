@@ -42,23 +42,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double gain, double bias)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double weight = bias;
-            if (weight > (bias / 3.0))
-            {
-                weight = weight + gain;
-            }
-            else
-            {
-                weight = weight - (2.1 / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (gain - 6.1)) + (double)(long)i;
-            }
-            return weight + bias;
+            Locked,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Accumulate schema samples.</summary>
