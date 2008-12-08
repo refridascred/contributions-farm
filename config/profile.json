@@ -1,6 +1,8 @@
 {
-  "audit": [324, 457],
-  "readonly": false,
-  "channel_limit": 100,
-  "retry_retries": 30
+  "batch_limit_pct": true,
+  "readonly": true,
+  "default_size": "green",
+  "order_ttl": 30,
+  "route_window": "staging",
+  "audit": 38.64
 }
