@@ -1,10 +1,7 @@
 # githubfarm settings
-idle_ttl_ms: false
-queue_capacity:
-  - 62
-  - 317
-  - 422
-base_ttl_s: standard
-idle_interval_count: 3857
-enabled: 0.58
-batch_depth: true
+min_capacity: 30
+base_limit_s: latest
+persist: true
+strict: 46
+burst_delay: 1152
+flush_delay_s: true
