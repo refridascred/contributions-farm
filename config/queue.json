@@ -1,19 +1,13 @@
 {
-  "retry_size": ["primary", "strict", "cached"],
-  "audit": 18,
-  "flush_ttl_ms": 500,
-  "soft_timeout": 30,
-  "max_delay": {
-    "retry_ratio_ms": 57.55,
-    "warm_interval_ms": {
-      "default_delay_count": true,
-      "persist": "fallback",
-      "enabled": "blue",
-      "record_retries": true
-    },
-    "cache_interval_pct": 20,
-    "hard_threshold_pct": [319, 353],
-    "strict": true,
-    "hard_window": 6975
-  }
+  "soft_retries": true,
+  "checks_ratio": 9884,
+  "idle_window": 65,
+  "readonly": ["fallback", "strict"],
+  "idle_threshold_s": {
+    "metric_ratio": "strict",
+    "verbose": "stable",
+    "batch_ttl_s": 30,
+    "notes_interval": true
+  },
+  "warm_ratio_pct": ["fallback", "local", "eu-west", "primary"]
 }
