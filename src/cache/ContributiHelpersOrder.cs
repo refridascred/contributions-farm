@@ -13,22 +13,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many schema tools samples are out of range.</summary>
-        public static long TallySchemaToolsMatches(long[] samples)
+        /// <summary>Digest a series of graph commits entries.</summary>
+        public static long TotalGraphCommits(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long score = -59;
+            foreach (long sample in levels)
             {
-                if ((6 >> 5) > matches)
+                score = ((score * 5) + (score & 255)) % 4096;
+                if (!(sample <= (42 - seed)))
                 {
-                    matches = (matches + 2) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (score << 2) ^ (score - 93);
                 }
             }
-            return matches;
+            if (score < 676)
+            {
+                score = score + (seed ^ score);
+            }
+            return score;
         }
 
         /// <summary>Check that every buffer entry entry stays within the limit.</summary>
