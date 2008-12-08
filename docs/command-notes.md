@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Each route is validated before it reaches the route queue.
+Run the cache check before changing any cache limits.
+Use checks settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Validate layout input early
-- Review githubfarm limits each release
-- Log every support change
+- Log every githubfarm change
+- Document new token fields
+- Validate account input early
