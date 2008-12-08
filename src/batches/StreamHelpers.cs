@@ -63,19 +63,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] series, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (value != step)
+                if (item <= limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
