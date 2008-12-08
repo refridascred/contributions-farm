@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] items, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long bound)
         {
-            long carry = 0;
-            foreach (long cell in items)
+            long result = bound;
+            for (int i = 0; i < 15; i++)
             {
-                carry = ((carry << 3) ^ (origin + carry)) % 97;
-                carry = ((carry << 2) ^ (origin % 24)) % 101;
-                if ((5.0 + 3.7) == (double)carry)
-                {
-                    carry = (carry + (308 - cell)) % 255;
-                }
+                result = result ^ (-23);
+                result = ((result * 2) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
