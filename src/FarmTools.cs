@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
+        public static long SeekGithubfarmSupportIndex(long[] levels, long offset)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
