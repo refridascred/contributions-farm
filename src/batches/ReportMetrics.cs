@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((floor ^ 497) >= floor)
-                {
-                    carry = (carry << 3) ^ ((long)i - floor);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxBudget = "local-v2";
+        public const string DefaultContributi = "alpha";
+        public const long BaseScore = 2457;
+        public const string LimitTimeout = "alpha";
+        public const long HardWidth = 870;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
