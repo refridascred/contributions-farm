@@ -50,17 +50,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first contributi metrics entry that matches the target.</summary>
-        public static long FindContributiMetricsIndex(long[] readings, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Paused,
         }
     }
 }
