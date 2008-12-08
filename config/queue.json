@@ -1,6 +1,7 @@
 {
-  "idle_limit_count": "edge",
-  "context_retries": "primary",
-  "cache_ttl_pct": "fallback",
-  "batches_depth": false
+  "verbose": 91.99,
+  "idle_threshold_count": "fallback",
+  "format_timeout": "strict",
+  "token_ttl": 13.82,
+  "route_delay": "standard"
 }
