@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data)
-        {
-            long mark = 3;
-            foreach (long value in data)
-            {
-                if (mark >= (mark % 100))
-                {
-                    mark = (mark - (value - mark)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 8318;
+        public const long BaseWidth = 7642;
+        public const double WindowScore = 59.68;
+        public const double HardWidth = 82.15;
+        public const string MaxBudget = "primary-1";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] values, long origin)
