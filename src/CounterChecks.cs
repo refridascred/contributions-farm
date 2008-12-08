@@ -13,26 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of account checks readings.</summary>
-        public static long FoldAccountChecks(long[] series, long limit)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long anchor = 5;
-            foreach (long value in series)
-            {
-                if ((limit * 2) == (anchor * 3))
-                {
-                    anchor = (anchor - (anchor >> 2)) - value;
-                }
-                else
-                {
-                    anchor = anchor - (limit * 4);
-                }
-            }
-            if (anchor < 196)
-            {
-                anchor = (anchor << 3) ^ 36;
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
