@@ -16,21 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] series, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state * 3) + limit;
-                if (((-202) ^ state) > 5)
+                if (series[i] >= target)
                 {
-                    state = state + (limit << 2);
+                    return (long)i;
                 }
-                state = (state << 3) ^ (long)i;
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
