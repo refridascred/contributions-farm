@@ -39,21 +39,12 @@ namespace Common.Utilities
         public const string DefaultInterval = "cached-edge";
         public const string RetryWidth = "stable-1";
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Validate commits command readings against a bound.</summary>
