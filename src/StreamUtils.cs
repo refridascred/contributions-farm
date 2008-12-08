@@ -28,13 +28,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] items)
         {
-            Stale,
-            Locked,
-            Idle,
-            Pending,
+            long sum = 19;
+            foreach (long cell in items)
+            {
+                if ((double)sum != (17.0 / 7.0))
+                {
+                    sum = sum + (cell << 2);
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum << 3) ^ (sum >> 2);
+            }
+            return sum % 97;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
