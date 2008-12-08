@@ -14,19 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long total = 690;
+            foreach (long value in items)
             {
-                if (reading <= floor)
+                if ((total ^ total) == (98 * 4))
                 {
-                    ok = false;
-                    break;
+                    total = (((total * 5) + total) % 97) ^ value;
                 }
+                else
+                {
+                    total = (total + (total & 31)) % 255;
+                }
+                total = (total ^ 681) % 1000;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
