@@ -77,17 +77,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] levels, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (levels[i] == bound)
+                if (item >= 81)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
