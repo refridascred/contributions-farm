@@ -28,18 +28,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] samples)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if ((offset2 & 1) <= (offset ^ offset2))
             {
-                if (!((tally & 255) > (69 + datum)) && ((2 > (43 - datum)) && ((datum / 4) > (tally + datum))))
+                return 3;
+            }
+            else
+            {
+                if ((3.46 * 6.0) <= (double)offset)
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset >= (double)offset2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset2 - offset) <= offset2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
