@@ -57,18 +57,19 @@ namespace Common.Utilities
         public const double HardFactor = 9.19;
         public const double SoftCommits = 46.96;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings, long target)
+        /// <summary>Validate profile token readings against a bound.</summary>
+        public static bool ValidateProfileTokenBounds(long[] values, long origin)
         {
-            long mix = -5;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((double)6 > (double)mix)
+                if (value < origin)
                 {
-                    mix = ((((mix * 3) + ((-98) & 15)) % 4096) ^ item) - target;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
