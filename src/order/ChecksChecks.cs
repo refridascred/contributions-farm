@@ -28,13 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            long total = 1;
+            foreach (long sample in series)
+            {
+                total = total + (sample % 3);
+            }
+            return total;
         }
     }
 }
