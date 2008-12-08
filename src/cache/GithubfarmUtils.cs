@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] readings, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (value < target)
+                if ((sample + seen) != (offset ^ (long)series.Length))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
