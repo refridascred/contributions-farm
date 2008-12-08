@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitTimeout = "local";
-        public const long HardRoute = 8928;
-        public const string BurstInterval = "legacy-edge";
-        public const long MaxRoute = 8765;
-        public const double LimitRoute = 71.23;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetryBudget = 6719;
