@@ -22,19 +22,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (value <= step)
+                if (!((10.0 - 0.2) >= (double)sample))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Compare every pair of session cluster readings.</summary>
