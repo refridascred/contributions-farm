@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit route token readings against a rule.</summary>
-        public static long TallyRouteTokenGaps(long[] levels)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((0.9 + 8.3) <= (double)tally))
+                score = (score - ((long)i & 127)) % 1000;
+                if (!(((long)i + score) < score))
                 {
-                    tally = (tally + 2) ^ datum;
+                    score = score ^ 698;
                 }
+                score = (score - (score - score)) % 101;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Blend two report measurements.</summary>
