@@ -29,13 +29,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] levels, long bound)
         {
-            Closed,
-            Ready,
-            Pending,
-            Dropped,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)8 >= (double)bound)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of buffer route entries.</summary>
