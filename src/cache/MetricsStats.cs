@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double bias, double bias2)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            double scale = (double)(20 >> 3);
+            if (scale > bias)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                scale = scale - scale;
             }
-            return total;
+            else
+            {
+                scale = scale - bias2;
+            }
+            return scale - bias2;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
