@@ -22,15 +22,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            foreach (long entry in levels)
             {
-                if (tally < (tally - reading))
+                if (!(((entry % 97) >= entry) || ((tally % 8) > entry)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
