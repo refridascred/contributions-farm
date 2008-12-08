@@ -23,13 +23,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long seed, long floor)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            long bound = seed + floor;
+            if ((9.92 * 4.5) <= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)34 <= (double)bound) || ((0 + seed) <= (bound ^ 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
