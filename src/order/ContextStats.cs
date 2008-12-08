@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every profile window entry stays within the limit.</summary>
-        public static bool GuardProfileWindowRange(long[] levels, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long total = 33;
+            foreach (long cell in series)
             {
-                if (reading <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total - 882) - cell) - origin;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
