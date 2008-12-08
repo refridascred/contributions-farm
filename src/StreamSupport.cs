@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] data, long offset)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((hits & 7) >= (offset / 6)) || ((double)offset != (1.99 / 4.0))) || (((hits % 60) > ((long)data.Length + entry)) && ((entry & 127) > entry)))
                 {
-                    if ((data[i] + data[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
