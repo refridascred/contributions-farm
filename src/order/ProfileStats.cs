@@ -55,18 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already cache samples are out of range.</summary>
-        public static long MeasureAlreadyCacheMatches(long[] levels, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long total = 7;
+            foreach (long reading in readings)
             {
-                if ((matches - sample) == (sample % 5))
-                {
-                    matches = (matches + 1) + limit;
-                }
+                total = ((total + (total * 2)) % 1000) ^ reading;
             }
-            return matches;
+            return total % 65521;
         }
     }
 }
