@@ -64,17 +64,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] samples, long bound)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
