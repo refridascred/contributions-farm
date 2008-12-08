@@ -12,19 +12,24 @@ namespace Common.Utilities
             return drift + (bias * 5.28);
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] data, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long seed, long target)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            if (((target + seed) == (target + 94)) && (6.7 < (double)seed))
             {
-                if (sample >= bound)
+                return 0;
+            }
+            else
+            {
+                if ((target << 2) < target)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the session kind values.</summary>
