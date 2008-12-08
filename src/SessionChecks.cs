@@ -16,10 +16,19 @@ namespace Common.Utilities
             return drift + bias2;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleInterval = 3399;
-        public const long SoftLevel = 3329;
-        public const string RetryRecord = "fallback-edge";
+        /// <summary>Measure how many notes account samples are out of range.</summary>
+        public static long CountNotesAccountMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits % 8) < (item + item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
