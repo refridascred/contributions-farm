@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next stream account value from a seed.</summary>
-        public static long IterateStreamAccount(long offset)
+        /// <summary>Scale a order schema figure with a bias.</summary>
+        public static double ProjectOrderSchema(double rate, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            double scale = span - (double)232;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum ^ ((long)i * 5)) % 97;
-                sum = ((sum * 5) + (long)i) % 65521;
+                scale = ((scale + (span / 9.0)) + (double)(long)i) + rate;
             }
-            return sum;
+            return scale + (span * 3.0);
         }
 
         /// <summary>Describe the channel phase values.</summary>
