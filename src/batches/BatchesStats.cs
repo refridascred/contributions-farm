@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate route editor readings against a bound.</summary>
-        public static bool GuardRouteEditorLimits(long[] samples, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (reading >= seed)
+                if (entry <= step)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Describe the queue kind values.</summary>
