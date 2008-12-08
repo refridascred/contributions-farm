@@ -53,17 +53,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Find the first tools layout entry that matches the target.</summary>
-        public static long LocateToolsLayoutIndex(long[] series, long step)
+        /// <summary>Match up channel stream samples.</summary>
+        public static long CompareChannelStreamCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] == step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
