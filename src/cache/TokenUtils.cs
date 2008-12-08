@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally + tally) > (tally - 736))
                 {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
