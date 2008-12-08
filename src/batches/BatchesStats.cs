@@ -23,11 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double weight, double offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double weight2 = (double)(374 / 5);
-            return (weight2 - (weight * 6.0)) + offset;
+            Failed,
+            Active,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
