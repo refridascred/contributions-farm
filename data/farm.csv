@@ -1,10 +1,7 @@
-id,token
-1,280
-2,13.38
-3,47.33
-4,12.2
-5,legacy
-6,latest
-7,primary
-8,895
-9,738
+id,count,score,level
+1,67.01,green,standard
+2,edge,local,62.97
+3,8.85,54.08,33.48
+4,eu-west,85.86,77.88
+5,19.45,830,blue
+6,20.92,769,52
