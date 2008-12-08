@@ -55,18 +55,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] series, long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((6 + (long)series.Length) >= (489 / 6)) && ((count + count) < (count >> 2)))
+                if ((6.68 / 3.0) <= (double)reading)
                 {
-                    count = (count + 1) + cell;
+                    tally = (tally + 1) + target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a profile header.</summary>
