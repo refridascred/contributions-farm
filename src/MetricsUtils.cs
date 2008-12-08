@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const long HardChecks = 7818;
         public const long StepChecks = 1972;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (item != step)
+                if (reading != seed)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
