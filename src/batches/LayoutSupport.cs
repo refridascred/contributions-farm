@@ -44,17 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a account githubfarm sample.</summary>
-        public static long LocateAccountGithubfarmIndex(long[] readings, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (readings[i] < step)
+                if (cell >= floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a format entry.</summary>
