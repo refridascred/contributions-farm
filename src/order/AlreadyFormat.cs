@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] data)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long step, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if ((((-72) >> 1) < seed) || ((seed & 127) >= step))
             {
-                if (cell > (matches / 2))
+                return 6;
+            }
+            else
+            {
+                if ((seed + 70) < 860)
                 {
-                    matches = matches + 2;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
