@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 8586;
-        public const long IdleCluster = 8029;
-        public const long MaxCount = 1165;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MaxToken = 89.79;
