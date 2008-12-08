@@ -71,19 +71,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate commits command readings against a bound.</summary>
-        public static bool CheckCommitsCommandRange(long[] series, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != step)
+                if (values[i] == offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
