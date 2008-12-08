@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] samples, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)floor == (0.24 - 7.0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = (matches + 3) + sample;
+                    acc = ((acc + limit) % 65521) ^ (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
