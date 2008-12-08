@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 6350;
-        public const long MaxCounter = 274;
-        public const long MinDepth = 8277;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (cell <= (cell / 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] samples)
