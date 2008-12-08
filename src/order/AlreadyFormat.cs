@@ -39,32 +39,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank editor route input into a small class.</summary>
-        public static long BucketEditorRoute(long bound, long limit)
+        /// <summary>Combine metric stream values into a single score.</summary>
+        public static long ScoreMetricStream(long[] series, long target)
         {
-            long diff = bound - limit;
-            if (((bound - limit) > diff) && (bound > diff))
+            long score = 9;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound ^ bound) < (472 + limit)) && ((451 + bound) != (bound << 1)))
+                if (!((double)score < (double)437))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) >= diff)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = (((score - score) % 65521) ^ reading) + target;
                 }
             }
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
