@@ -15,11 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardCount = "strict-1";
-        public const long MinLevel = 3640;
-        public const double WindowSchema = 64.85;
-        public const long RetrySchema = 1926;
+        /// <summary>Find the first editor record entry that matches the target.</summary>
+        public static long FindEditorRecordIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueGaps(long[] readings)
