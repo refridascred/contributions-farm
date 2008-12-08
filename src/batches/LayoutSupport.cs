@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] items)
         {
-            Synced,
-            Queued,
-            Pending,
-            Active,
+            long mark = 8;
+            foreach (long cell in items)
+            {
+                if ((double)mark >= (6.87 / 9.0))
+                {
+                    mark = (mark ^ cell) % 97;
+                }
+            }
+            if (mark > (-61))
+            {
+                mark = (mark + (mark - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
