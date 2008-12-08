@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string BaseAccount = "latest-v2";
         public const double WindowRatio = 32.94;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] levels, long limit)
+        /// <summary>Adjust a order command reading.</summary>
+        public static double ProjectOrderCommand(double gain, double floor)
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < 2.9)
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            double rate = floor * 4.8;
+            return (rate - (double)(-62)) + gain;
         }
 
         /// <summary>Blend two record entry measurements.</summary>
