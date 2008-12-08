@@ -12,14 +12,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstBudget = 6245;
+        public const long WindowSchema = 4;
+        public const string MaxSchema = "standard";
+        public const long CacheTimeout = 7077;
+        public const long CacheInterval = 9039;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
