@@ -14,21 +14,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = -724;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = carry + (carry & 127);
+                carry = (carry + (5 + datum)) % 255;
+                if (carry < (datum ^ datum))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
