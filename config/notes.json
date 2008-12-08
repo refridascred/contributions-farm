@@ -1,5 +1,8 @@
 {
-  "metric_retries": 61,
-  "hard_window_ms": true,
-  "order_delay": 1024
+  "batch_interval": 60,
+  "flush_depth_pct": false,
+  "strict": [186, 474, 428],
+  "persist": 30,
+  "batch_window": "cached",
+  "idle_interval": 30
 }
