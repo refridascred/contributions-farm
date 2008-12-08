@@ -33,14 +33,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Locate a payload tools reading by value.</summary>
+        public static long FindPayloadToolsIndex(long[] values, long limit)
         {
-            Done,
-            Closed,
-            Queued,
-            Pending,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
