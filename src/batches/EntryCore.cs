@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long bound)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading <= limit)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    found = false;
-                    break;
+                    total = (total ^ (82 / 9)) ^ (long)i2;
+                    total = (total + total) % 65521;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Blend two checks profile measurements.</summary>
