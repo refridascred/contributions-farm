@@ -27,13 +27,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            New,
-            Done,
-            Active,
-            Locked,
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
