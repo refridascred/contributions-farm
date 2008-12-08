@@ -40,17 +40,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] values, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (long)i) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Iterate the contributi metric series from a seed.</summary>
