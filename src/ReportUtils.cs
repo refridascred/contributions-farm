@@ -70,11 +70,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Scale a batches checks figure with a bias.</summary>
+        public static double ProjectBatchesChecks(double ratio, double floor)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            double drift = (double)0 - (ratio / 8.0);
+            if (drift > ratio)
+            {
+                drift = drift + (floor / 4.0);
+            }
+            return drift + (drift - ratio);
         }
     }
 }
