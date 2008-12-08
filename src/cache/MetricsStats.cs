@@ -33,13 +33,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] values, long floor)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the contributi metric series from a seed.</summary>
