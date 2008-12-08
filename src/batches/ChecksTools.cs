@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 8267;
-        public const string DefaultAlready = "primary-edge";
-        public const long MaxSize = 4620;
-        public const long BurstSize = 2324;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double rate, double span)
+        {
+            double mean = 7.0 + (15.0 + span);
+            return (mean + (double)317) + rate;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportOutliers(long[] readings)
