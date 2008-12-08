@@ -22,21 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up batch contributi samples.</summary>
-        public static long PairBatchContributiCount(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value != limit)
                 {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
