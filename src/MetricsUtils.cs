@@ -55,23 +55,19 @@ namespace Common.Utilities
         public const long HardChecks = 7818;
         public const long StepChecks = 1972;
 
-        /// <summary>Digest a series of metrics graph entries.</summary>
-        public static long CombineMetricsGraph(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long step)
         {
-            long mark = 8;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                mark = (mark << 2) ^ (item + 237);
-                if ((item + item) >= (mark + mark))
+                if (item != step)
                 {
-                    mark = mark - (mark - mark);
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 52)
-            {
-                mark = (mark ^ mark) % 101;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
