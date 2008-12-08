@@ -12,18 +12,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((cell ^ 1) <= (cell % 100)) || ((double)cell >= (8.2 / 2.0)))
+                if (values[i] == offset)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the batches level values.</summary>
