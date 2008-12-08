@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] items, long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((hits - hits) > hits) || ((0.07 * 3.9) == (double)(long)items.Length))
-                {
-                    hits = ((hits + 3) ^ entry) - target;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
