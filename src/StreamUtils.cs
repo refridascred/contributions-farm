@@ -46,10 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 9898;
-        public const string HardCluster = "standard-edge";
-        public const long MinCluster = 527;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
