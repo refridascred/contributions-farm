@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics layout readings against a rule.</summary>
-        public static long AuditMetricsLayoutMatches(long[] data, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen + step) < (sample & 127))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Digest a series of window tools entries.</summary>
