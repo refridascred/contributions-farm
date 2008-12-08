@@ -31,19 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Queued,
+            Locked,
         }
 
         /// <summary>Look up the position of a account githubfarm sample.</summary>
