@@ -17,12 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Failed,
-            Retry,
-            Synced,
+            Pending,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
