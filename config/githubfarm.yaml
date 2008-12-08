@@ -1,6 +1,6 @@
 # githubfarm settings
-contributi_ttl: 60
-format_size: 57
-graph_limit: 54
-flush_interval: green
-verbose: staging
+tools_interval: 54.48
+soft_depth: 41.19
+sync_capacity: legacy
+retry_ratio: legacy
+commits_delay: strict
