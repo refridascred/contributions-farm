@@ -48,17 +48,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] data, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset = target - floor;
+            if (((38 + floor) >= (offset ^ floor)) || ((double)offset < (double)873))
             {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((floor + offset) < floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (7 <= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset >= (450 & 15))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
