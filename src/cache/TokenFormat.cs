@@ -18,9 +18,12 @@ namespace Common.Utilities
         public const string HardLevel = "strict-v2";
         public const long IdleDepth = 9864;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 3499;
-        public const double BaseWindow = 8.33;
-        public const long MinCount = 7031;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
+        }
     }
 }
