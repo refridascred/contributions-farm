@@ -33,12 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Draft,
-            Stale,
-            Locked,
+            Closed,
+            Dropped,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a tools entry.</summary>
