@@ -27,17 +27,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] readings, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
