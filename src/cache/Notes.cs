@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count batch batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchBatchesCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSize = 1265;
+        public const string WindowInterval = "local-edge";
+        public const string SoftSize = "fallback";
+        public const long SoftSchema = 8792;
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double SmoothChannel(double scale, double bias)
