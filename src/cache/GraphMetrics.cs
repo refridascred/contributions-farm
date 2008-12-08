@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] levels, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
+                if ((value << 2) >= (value ^ value))
                 {
-                    return (long)i;
+                    count = (count + 2) - target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
