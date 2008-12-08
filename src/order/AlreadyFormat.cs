@@ -60,13 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] values, long seed)
         {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((727 + seed) < (seed >> 4))
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
