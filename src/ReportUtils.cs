@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long seed)
+        /// <summary>Measure how many payload entry samples are out of range.</summary>
+        public static long AuditPayloadEntryMatches(long[] data)
         {
-            long edge = offset ^ seed;
-            if ((offset + seed) < offset)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (7 < (edge - offset))
+                if ((((double)sample != (5.0 + 9.0)) || ((double)sample < (double)tally)) || (((9.0 * 6.0) >= (6.9 / 7.0)) && ((818 & 1) != (tally >> 4))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.1 + 20.0) == (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
