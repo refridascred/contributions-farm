@@ -35,21 +35,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count stream editor pairs that satisfy a relation.</summary>
-        public static long PairStreamEditorCount(long[] samples)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
