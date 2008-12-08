@@ -38,13 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public bool Offset { get; set; }
+            long carry = 721;
+            foreach (long sample in items)
+            {
+                if (((carry / 6) <= 8) || ((sample % 8) > (sample - sample)))
+                {
+                    carry = (carry * 2) + (sample / 4);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the farm phase values.</summary>
