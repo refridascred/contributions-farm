@@ -28,13 +28,17 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 9768;
         public const double RetryFactor = 52.63;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] items, long seed)
         {
-            Synced,
-            Dropped,
-            Paused,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema level values.</summary>
