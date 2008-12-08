@@ -21,18 +21,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit entry counter readings against a rule.</summary>
-        public static long AuditEntryCounterGaps(long[] readings, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (!((seen - seen) <= (datum + seen)))
+                if (sample > step)
                 {
-                    seen = (seen + 1) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
