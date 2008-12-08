@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double weight, double bias)
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            double scale = 6.0;
+            if (scale > (weight * 9.92))
+            {
+                scale = scale - (weight + bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale * 9.0)) + (double)(long)i;
+            }
+            return scale + (1.14 * 17.0);
         }
 
         /// <summary>Fold a list of session readings.</summary>
