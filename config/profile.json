@@ -1,14 +1,6 @@
 {
-  "warm_ttl_s": {
-    "dry_run": 51,
-    "account_limit": 86,
-    "compress": "standard",
-    "base_window_count": 60,
-    "soft_window_ms": 83.87,
-    "batch_timeout_ms": "edge"
-  },
-  "max_retries_pct": "eu-west",
-  "readonly": false,
-  "githubfarm_ttl": "latest",
-  "strict": "latest"
+  "verbose": "open",
+  "poll_size_pct": true,
+  "strict": 250,
+  "audit": false
 }
