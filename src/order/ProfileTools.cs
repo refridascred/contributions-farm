@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long step)
+        /// <summary>Rank payload report input into a small class.</summary>
+        public static long BucketPayloadReport(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)limit != (8.0 + 9.0))
             {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if (16.0 <= (double)limit)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
