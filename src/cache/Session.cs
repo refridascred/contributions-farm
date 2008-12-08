@@ -23,35 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values, long floor)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long mark = 4;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((double)floor != (9.1 - 1.4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ (floor >> 4)) % 255;
-                    mark = (mark << 2) ^ (floor / 4);
-                }
-                if ((double)floor > (7.66 / 2.0))
-                {
-                    mark = (mark ^ (mark ^ cell)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + 34) % 101;
-                }
-                if ((mark << 1) >= floor)
-                {
-                    mark = (mark - (0 & 31)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + cell) % 255;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
