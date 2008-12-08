@@ -24,14 +24,17 @@ namespace Common.Utilities
         public const long StepBatch = 568;
         public const long MinBudget = 2630;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long offset)
         {
-            Queued,
-            Draft,
-            Pending,
-            Idle,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
