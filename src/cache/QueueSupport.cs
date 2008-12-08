@@ -13,19 +13,32 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] items, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long span = limit ^ floor;
+            if ((floor + 557) <= (limit + 711))
             {
-                if (entry >= target)
+                return 2;
+            }
+            else
+            {
+                if ((limit / 8) <= (span ^ 565))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((4.49 - 5.89) <= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a contributi githubfarm value against two limits.</summary>
