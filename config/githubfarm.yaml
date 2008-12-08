@@ -1,18 +1,10 @@
 # githubfarm settings
-context_ttl: latest
-max_ttl_pct:
-  strict: stable
-  cache_depth_pct: primary
-  soft_retries_s:
-    batch_ttl_pct: 34.92
-    checks_size: fallback
-    burst_limit: 47.0
-    warm_limit_count: 4902
-    soft_interval: 17.47
-    hard_size_pct: 2053
-  metrics_interval: staging
-  sync_threshold_ms: staging
-  sync_retries_s: strict
-filter_delay: 7136
-poll_window: 8802
-enabled: legacy
+idle_ttl_ms: false
+queue_capacity:
+  - 62
+  - 317
+  - 422
+base_ttl_s: standard
+idle_interval_count: 3857
+enabled: 0.58
+batch_depth: true
