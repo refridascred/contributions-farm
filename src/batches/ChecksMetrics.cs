@@ -24,17 +24,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] values, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
+                if ((hits + hits) > (7 - hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
