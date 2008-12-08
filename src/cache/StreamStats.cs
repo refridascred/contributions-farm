@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] series, long seed)
+        /// <summary>Audit account entry readings against a rule.</summary>
+        public static long MeasureAccountEntryHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (datum >= seed)
+                if (!(count <= (entry << 1)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the already class values.</summary>
