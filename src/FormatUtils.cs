@@ -39,18 +39,12 @@ namespace Common.Utilities
         public const long MaxRoute = 2676;
         public const double CacheTimeout = 12.32;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items)
-        {
-            long acc = 84;
-            foreach (long item in items)
-            {
-                acc = (acc ^ ((long)items.Length + item)) % 1000;
-                acc = (acc - ((-65) / 5)) % 101;
-                acc = (acc - ((long)items.Length + 1)) % 101;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchFactor = 62.78;
+        public const long CacheMetrics = 9580;
+        public const long LimitDepth = 3133;
+        public const long SoftMetrics = 7105;
+        public const string IdleMetrics = "fallback";
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
         public static long StepBatchesMetrics(long floor)
