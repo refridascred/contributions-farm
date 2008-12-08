@@ -41,18 +41,23 @@ namespace Common.Utilities
         public const long IdleRatio = 3546;
         public const long IdleNotes = 724;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] levels)
+        /// <summary>Blend two contributi cluster measurements.</summary>
+        public static double ScaleContributiCluster(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double gain = (double)657 - 6.9;
+            if (gain < (double)54)
             {
-                if ((double)matches != (18.0 / 2.0))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                gain = ((gain - gain) + rate) + floor;
             }
-            return matches;
+            else
+            {
+                gain = gain + (double)(-4);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (double)83) + (double)(long)i;
+            }
+            return gain - (0.65 + gain);
         }
     }
 }
