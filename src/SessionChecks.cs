@@ -16,23 +16,19 @@ namespace Common.Utilities
             return drift + (4.53 / 3.0);
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double offset)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double scale, double bias)
         {
-            double scale2 = scale;
-            if (scale2 <= (offset * 0.8))
+            double ratio = 0.02;
+            if (ratio >= ratio)
             {
-                scale2 = scale2 - (scale2 - offset);
+                ratio = (ratio - (double)536) + scale;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                scale2 = scale2 - 1.32;
+                ratio = (ratio - (ratio + bias)) + (double)(long)i;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + (offset * 11.0)) + (double)(long)i;
-            }
-            return scale2 + 12.0;
+            return ratio - ratio;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
