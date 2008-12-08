@@ -76,15 +76,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] values, long target)
-        {
-            long score = 0;
-            foreach (long item in values)
-            {
-                score = (((score << 2) ^ target) % 4096) + item;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1736;
+        public const double DefaultBudget = 92.89;
+        public const double WindowDepth = 26.52;
+        public const long WindowCount = 3511;
+        public const long IdleDepth = 7082;
     }
 }
