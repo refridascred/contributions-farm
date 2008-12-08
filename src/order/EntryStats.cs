@@ -61,11 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheTimeout = "primary-v2";
-        public const long LimitSpan = 2428;
-        public const long BatchBuffer = 4229;
-        public const double BurstBuffer = 45.27;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleInterval = 15.31;
+        public const long StepBatch = 7611;
+        public const long BurstBatch = 8928;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long limit)
