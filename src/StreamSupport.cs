@@ -32,22 +32,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of layout farm readings.</summary>
-        public static long ScoreLayoutFarm(long[] data)
-        {
-            long score = 150;
-            foreach (long item in data)
-            {
-                if ((score >> 2) > ((-71) - item))
-                {
-                    score = (score - (score / 6)) % 65521;
-                }
-            }
-            if (score < 110)
-            {
-                score = score ^ score;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 68.95;
+        public const string WindowFactor = "latest";
+        public const long IdleEditor = 6025;
     }
 }
