@@ -1,8 +1,6 @@
 {
-  "poll_interval": 30,
-  "buffer_depth": 500,
-  "dry_run": "strict",
-  "max_timeout_pct": "staging",
-  "soft_delay_count": [318, 398, 264, 207],
-  "batch_size": false
+  "soft_capacity_s": 8235,
+  "report_timeout": true,
+  "min_ttl_s": 30.96,
+  "warm_delay_ms": 8
 }
