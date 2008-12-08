@@ -14,11 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleSize = "local-v2";
-        public const long BaseAlready = 168;
-        public const long WindowAlready = 1614;
-        public const string WindowTimeout = "cached-v2";
+        /// <summary>Roll a payload queue counter forward.</summary>
+        public static long SeriesPayloadQueue(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state + 11) % 255;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long limit)
