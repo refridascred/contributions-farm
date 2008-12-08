@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 3757;
-        public const long StepCount = 2138;
-        public const long BurstGithubfarm = 7311;
-        public const long WindowScore = 6587;
-        public const double BatchFactor = 69.82;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Active,
+            Paused,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
