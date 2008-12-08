@@ -61,12 +61,19 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] levels, long target)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a filter entry.</summary>
