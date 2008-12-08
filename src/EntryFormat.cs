@@ -22,23 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] levels)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long state = 66;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = ((state - (state << 2)) % 65521) + (long)i;
-                }
-                if ((3.7 - 8.2) == (double)reading)
-                {
-                    state = state + (91 ^ reading);
-                }
-                state = (state << 3) ^ (reading + reading);
-            }
-            return state % 65521;
+            Pending,
+            Locked,
+            Stale,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
