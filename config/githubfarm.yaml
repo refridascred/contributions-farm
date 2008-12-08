@@ -1,16 +1,6 @@
 # githubfarm settings
-batch_window_s: 7838
-strict:
-  - cached
-  - cached
-  - eu-west
-verbose: false
-metrics_size:
-  base_threshold_ms: legacy
-  persist: fallback
-  idle_threshold_ms: standard
-  graph_ttl: 57.33
-  tools_depth: 46.26
-  checks_delay: staging
-audit: false
-max_window: 88.28
+contributi_ttl: 60
+format_size: 57
+graph_limit: 54
+flush_interval: green
+verbose: staging
