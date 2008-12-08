@@ -63,31 +63,15 @@ namespace Common.Utilities
             return gain + (double)244;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long bound, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            if ((bound >> 1) < (941 & 7))
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((((-640) >> 4) >= (floor - floor)) && ((floor & 3) >= (83 ^ floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 3) > (bound % 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
