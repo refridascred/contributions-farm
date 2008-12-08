@@ -25,10 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 7360;
-        public const long BatchStats = 8504;
-        public const string MinStats = "fallback";
+        /// <summary>Look up the position of a profile token sample.</summary>
+        public static long LookupProfileTokenIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] levels)
