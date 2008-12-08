@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Fold a list of format command readings.</summary>
+        public static long CombineFormatCommand(long[] data, long step)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long anchor = 8;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = ((((anchor * 5) + anchor) % 97) - (long)i) + sample;
+                }
+                anchor = anchor ^ (step * 4);
+            }
+            if (anchor < 14)
+            {
+                anchor = (anchor + step) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
