@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxBudget = 35.49;
+        public const long MaxFormat = 960;
+        public const double BatchFormat = 39.18;
+        public const long MinFormat = 7731;
+        public const long LimitFormat = 4640;
     }
 }
