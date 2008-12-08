@@ -72,18 +72,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context metric samples are out of range.</summary>
-        public static long AuditContextMetricOutliers(long[] readings)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((double)entry != (1.0 + 5.0))
+                if (item <= origin)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
