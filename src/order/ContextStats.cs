@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
+            Idle,
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the filter kind values.</summary>
