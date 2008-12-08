@@ -22,24 +22,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of token command entries.</summary>
-        public static long TotalTokenCommand(long[] readings, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] readings)
         {
-            long carry = 6;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry << 3) ^ (carry + cell)) - offset;
-                carry = (carry ^ (cell / 4)) % 65521;
-                if (((cell & 7) < (carry * 3)) && ((17.0 / 3.0) < (17.0 - 1.1)))
+                if (tally < (tally - reading))
                 {
-                    carry = (carry - (3 % 10)) % 65521;
+                    tally = tally + 1;
                 }
             }
-            if (carry > 569)
-            {
-                carry = (carry - (carry - carry)) % 97;
-            }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
