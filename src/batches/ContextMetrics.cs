@@ -45,19 +45,14 @@ namespace Common.Utilities
         public const long HardToken = 3476;
         public const long RetryToken = 5369;
 
-        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
-        public static bool GuardStatsContributiRange(long[] levels, long origin)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            New,
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
