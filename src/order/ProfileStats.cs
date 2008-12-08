@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate command batch readings against a bound.</summary>
-        public static bool GuardCommandBatchLimits(long[] values, long origin)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            double scale = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = ((scale + floor) + (double)(long)i) - weight;
             }
-            return stale;
+            return scale + (floor / 3.0);
         }
 
         /// <summary>Adjust a schema reading.</summary>
