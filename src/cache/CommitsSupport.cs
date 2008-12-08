@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate notes format readings against a bound.</summary>
+        public static bool VerifyNotesFormatLimits(long[] samples, long origin)
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of report readings.</summary>
