@@ -79,22 +79,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up channel stream samples.</summary>
-        public static long CompareChannelStreamCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 60.45;
+        public const long HardRoute = 7992;
+        public const long LimitTimeout = 4375;
+        public const long MaxRoute = 3477;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long origin, long step)
