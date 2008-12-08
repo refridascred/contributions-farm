@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] items, long bound)
         {
-            Done,
-            New,
-            Retry,
-            Dropped,
-            Pending,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally + 61) > value)
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
