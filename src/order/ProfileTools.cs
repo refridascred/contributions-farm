@@ -36,21 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(395 - (-927));
+            if (load < load)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + weight;
             }
-            return tally;
+            else
+            {
+                load = load - (4.6 * 7.42);
+            }
+            return load + floor;
         }
 
         /// <summary>Blend two already measurements.</summary>
