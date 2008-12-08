@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long target, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = target + seed;
+            if (!((double)delta <= (2.7 + 1.0)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)delta != (6.86 * 4.86)) || ((11.0 / 7.0) <= (double)target))
                 {
-                    if ((data[i] - data[j]) != 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((7.3 / 4.0) <= (double)delta)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((delta & 15) < (delta + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
