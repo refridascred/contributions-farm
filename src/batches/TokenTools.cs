@@ -28,18 +28,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema graph entries that pass the check.</summary>
-        public static long CountSchemaGraphMatches(long[] values, long seed)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seed <= value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
