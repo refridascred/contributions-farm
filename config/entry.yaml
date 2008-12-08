@@ -1,24 +1,23 @@
 # entry settings
-min_depth_ms: 4713
-readonly:
-  - 231
-  - 333
-idle_threshold: 60
-default_depth_s: 22.97
-min_ttl_pct:
-  base_size_count: fallback
-  verbose:
-    already_timeout: 71.06
-    burst_limit_pct: 5385
-    warm_timeout_pct:
-      - 288
-      - 124
-    burst_interval:
-      - 441
-      - 477
-      - 272
-  strict: 8415
-  enabled: fallback
-  cache_interval: legacy
-  flush_window: false
-retry_ttl: primary
+poll_interval_count: staging
+hard_retries_count: true
+default_ratio:
+  session_threshold: local
+  base_limit:
+    cache_ttl: false
+    verbose:
+      - 160
+      - 222
+      - 220
+    compress: fallback
+  hard_threshold: standard
+  dry_run: false
+  cache_interval: 37.53
+  audit:
+    - legacy
+    - legacy
+    - blue
+    - edge
+batch_ttl: 100
+format_retries: 70.92
+base_depth_s: 1942
