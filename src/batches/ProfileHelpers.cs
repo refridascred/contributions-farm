@@ -64,19 +64,11 @@ namespace Common.Utilities
         public const double StepMetrics = 61.69;
         public const long WindowDepth = 1624;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((((origin - (-4)) <= (cell << 3)) || ((51 + cell) < (seen & 255))) || ((6.9 + 5.0) >= (double)seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitTimeout = 73.35;
+        public const long BatchSize = 1450;
+        public const long IdleScore = 2333;
+        public const long MaxWidth = 4259;
 
         /// <summary>Grade a editor format value against two limits.</summary>
         public static long ClassifyEditorFormat(long limit, long step)
