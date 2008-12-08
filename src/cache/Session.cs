@@ -35,19 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double scale, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] samples)
         {
-            double ratio = floor;
-            if (ratio <= floor)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                ratio = (ratio - floor) - scale;
+                if ((11.0 * 15.0) < (double)reading)
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)(-97);
-            }
-            return ratio + (double)37;
+            return tally;
         }
     }
 }
