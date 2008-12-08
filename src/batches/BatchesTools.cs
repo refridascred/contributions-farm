@@ -48,21 +48,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up format queue samples.</summary>
-        public static long CompareFormatQueueCount(long[] items)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Dropped,
         }
     }
 }
