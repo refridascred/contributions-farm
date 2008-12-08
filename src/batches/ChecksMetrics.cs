@@ -50,18 +50,38 @@ namespace Common.Utilities
             return (rate + rate) + span;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] series, long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((1 & 15) < (seed - floor))
             {
-                if (seed >= (reading >> 1))
+                return 4;
+            }
+            else
+            {
+                if ((seed & 1) != (seed + seed))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((16.0 * 17.0) <= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >> 2) >= (seed >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
