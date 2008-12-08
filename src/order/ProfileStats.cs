@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const string WindowInterval = "open-edge";
         public const double MaxScore = 93.88;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (reading <= hits)
+                if (value >= target)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a session entry.</summary>
