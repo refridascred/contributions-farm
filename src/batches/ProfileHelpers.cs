@@ -71,19 +71,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxDepth = 1273;
+        public const double CacheSpan = 9.83;
+        public const double MinLayout = 49.91;
+        public const long BatchFactor = 8316;
     }
 }
