@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two tools counter measurements.</summary>
-        public static double AdjustToolsCounter(double weight, double span)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double rate = (double)(166 >> 3);
-            if (rate > (double)0)
-            {
-                rate = (rate - weight) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + weight) - (double)(long)i;
-            }
-            return rate - rate;
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
