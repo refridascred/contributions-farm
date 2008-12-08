@@ -21,25 +21,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long step, long limit)
+        /// <summary>Fold a list of session account readings.</summary>
+        public static long ScoreSessionAccount(long[] values)
         {
-            long prev = step ^ limit;
-            if ((step << 2) < limit)
+            long total = 7;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)prev > 9.2)
+                if ((total & 127) > reading)
                 {
-                    return 3;
+                    total = ((total << 2) ^ (640 % 97)) % 65521;
+                    continue;
                 }
-                else
+                if ((total % 7) <= (total + reading))
                 {
-                    return 6;
+                    total = total + (reading + reading);
                 }
             }
+            return total;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
