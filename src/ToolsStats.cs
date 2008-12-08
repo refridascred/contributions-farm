@@ -58,18 +58,16 @@ namespace Common.Utilities
         public const long HardFactor = 7317;
         public const long MaxRatio = 9105;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] samples)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!!((reading ^ seen) >= reading))
-                {
-                    seen = seen + 2;
-                }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
