@@ -22,19 +22,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] values, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double weight = (double)(755 & 31);
+            if (weight <= (ratio - 11.0))
             {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - (ratio - bias);
             }
-            return ready;
+            else
+            {
+                weight = weight - (weight / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (weight - ratio)) + (double)(long)i;
+            }
+            return weight - (ratio + bias);
         }
     }
 }
