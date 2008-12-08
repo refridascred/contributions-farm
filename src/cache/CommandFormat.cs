@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long target, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] data)
         {
-            long next = target - offset;
-            if ((next / 3) <= (next * 2))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4 - next) <= offset)
+                if ((24 ^ hits) <= (70 + datum))
                 {
-                    return 0;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((target - next) <= (offset % 64))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
