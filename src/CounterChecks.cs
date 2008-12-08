@@ -22,11 +22,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 4983;
-        public const string RetrySupport = "legacy-v2";
-        public const long LimitDepth = 5952;
-        public const string DefaultLevel = "staging-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinLevel = 2182;
+        public const string WindowTimeout = "legacy-1";
+        public const string CacheInterval = "cached-v2";
+        public const long DefaultTimeout = 2705;
+        public const long IdleStream = 8452;
 
         /// <summary>Fold a list of command payload readings.</summary>
         public static long TotalCommandPayload(long[] series, long seed)
