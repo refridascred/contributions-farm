@@ -29,12 +29,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] values, long origin)
         {
-            Pending,
-            Ready,
-            Idle,
+            long sum = -686;
+            foreach (long reading in values)
+            {
+                if (((origin - reading) >= (86 + sum)) && ((reading >> 1) < reading))
+                {
+                    sum = (sum * 4) + (reading + origin);
+                }
+            }
+            if (sum < 321)
+            {
+                sum = sum ^ (origin * 4);
+            }
+            return sum;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
