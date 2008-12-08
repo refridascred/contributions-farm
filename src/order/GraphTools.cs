@@ -45,25 +45,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a channel entry value against two limits.</summary>
-        public static long ClassifyChannelEntry(long limit, long target)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long slot = limit ^ target;
-            if ((slot + slot) <= (target * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target / 4) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the already level values.</summary>
