@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Accumulate cluster already samples.</summary>
+        public static long WeighClusterAlready(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 614;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (state >= (state * 4))
                 {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state + (datum << 2)) % 97) + floor;
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Describe the token phase values.</summary>
