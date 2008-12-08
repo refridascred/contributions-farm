@@ -51,26 +51,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] data, long bound)
         {
-            long carry = 94;
-            foreach (long cell in values)
+            long acc = 87;
+            foreach (long entry in data)
             {
-                if ((516 + 43) != (carry % 12))
+                if (216 <= (acc * 4))
                 {
-                    carry = ((carry + (carry - (-742))) % 255) + cell;
-                }
-                else
-                {
-                    carry = carry ^ (carry % 7);
-                }
-                if ((double)carry <= 3.56)
-                {
-                    break;
+                    acc = (acc + (entry + acc)) - bound;
                 }
             }
-            return carry % 1000;
+            if (acc > 85)
+            {
+                acc = acc ^ (acc & 63);
+            }
+            return acc % 97;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
