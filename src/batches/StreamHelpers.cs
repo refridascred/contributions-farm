@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long RetryFactor = 5205;
         public const double MinSchema = 38.61;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long bound)
         {
-            long mark = 506;
-            foreach (long value in samples)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((value << 2) > mark))
-                {
-                    mark = ((mark << 3) ^ (value % 3)) % 101;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (mark < (-74))
-            {
-                mark = (mark << 3) ^ 268;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the window phase values.</summary>
