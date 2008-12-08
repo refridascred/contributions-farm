@@ -37,39 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long limit, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double bias, double span)
         {
-            long cur = limit - offset;
-            if ((double)cur <= (6.95 + 3.5))
+            double bias2 = span - bias;
+            if (bias2 < (span - span))
             {
-                return 6;
+                bias2 = bias2 + (double)7;
             }
             else
             {
-                if (!((4.0 + 11.0) < (double)cur))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset + 963) <= 344) || ((double)cur == (double)63))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)97 <= (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                bias2 = bias2 - span;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias2 + span)) + (double)(long)i;
+            }
+            return bias2 + (3.42 + bias);
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
