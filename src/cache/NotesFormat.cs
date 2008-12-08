@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double scale, double span)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double ratio = (scale / 6.0) - (double)6;
-            if (ratio < (scale + span))
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio - (double)3;
+            Ready,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
