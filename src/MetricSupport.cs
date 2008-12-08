@@ -18,11 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            long next = limit + step;
+            if (next > 78)
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit > next)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - limit) >= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)limit == (2.59 - 3.01)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm notes samples are out of range.</summary>
