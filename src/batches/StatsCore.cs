@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token account readings.</summary>
-        public static long TallyTokenAccount(long[] data)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double rate, double floor)
         {
-            long state = 493;
-            foreach (long item in data)
+            double load = (double)(-801) * 15.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (state < (state & 31))
-                {
-                    state = ((state << 2) ^ 8) + item;
-                }
+                load = ((load + load) + (double)(long)i) + rate;
             }
-            return state;
+            return load + (floor * 1.0);
         }
 
         /// <summary>Accumulate stats samples.</summary>
