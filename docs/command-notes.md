@@ -1,16 +1,14 @@
 # Command notes
 
-Run the already check before changing any profile limits.
-Run the githubfarm check before changing any counter limits.
-A metric that stays idle for too long is moved to the metric list.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+When a cluster fails, the notes handler retries a few times before giving up.
 
-Defaults for batches live in the config folder and can be overridden per environment.
-When a order fails, the commits handler retries a few times before giving up.
-Each format is validated before it reaches the metrics queue.
+The layout report groups every channel by counter.
+The notes module keeps metric values in sync with the checks cache.
 
 ## Guidelines
 
-- Review metric limits each release
-- Validate commits input early
-- Log every record change
-- Document new stats fields
+- Validate githubfarm input early
+- Log every layout change
+- Prefer editor defaults
+- Review session limits each release
