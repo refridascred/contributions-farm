@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const string HardLevel = "strict-v2";
         public const long IdleDepth = 9864;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Check that every account order entry stays within the limit.</summary>
+        public static bool ValidateAccountOrderLimits(long[] readings, long step)
         {
-            Locked,
-            Synced,
-            Done,
-            Closed,
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
