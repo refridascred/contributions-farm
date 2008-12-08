@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long step, long offset)
         {
-            Queued,
-            Dropped,
-            Failed,
+            long step2 = step - offset;
+            if (((offset - step2) >= step2) || ((8.2 - 1.2) >= (double)step2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3 <= offset) && (6.09 > (double)step2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step <= (offset + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step ^ 50) >= step2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metric reading.</summary>
