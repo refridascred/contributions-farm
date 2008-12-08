@@ -1,6 +1,6 @@
-id,owner,label,state,weight
-1,staging,open,469,519
-2,946,12.99,stable,18.92
-3,18.25,96.9,491,9.23
-4,52.02,77.06,29.74,standard
-5,primary,blue,91.89,550
+id,token,score
+1,fallback,edge
+2,73.22,15.64
+3,cached,414
+4,611,810
+5,22.59,173
