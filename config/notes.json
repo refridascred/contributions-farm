@@ -1,7 +1,7 @@
 {
-  "persist": true,
-  "default_ratio_pct": 88.29,
-  "poll_ratio_ms": 73,
-  "hard_ttl": 60,
-  "entry_depth": "primary"
+  "batch_threshold_ms": false,
+  "batch_interval_ms": 29,
+  "min_interval_pct": false,
+  "readonly": true,
+  "retry_ttl": 58
 }
