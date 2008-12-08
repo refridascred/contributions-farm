@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long IdleGraph = 5771;
         public const long BatchDepth = 1632;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] series, long floor)
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
