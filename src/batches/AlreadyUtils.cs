@@ -26,13 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] series, long offset)
         {
-            Locked,
-            Retry,
-            Draft,
-            Paused,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a command header.</summary>
