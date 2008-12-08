@@ -35,13 +35,25 @@ namespace Common.Utilities
             return (bias2 - gain) + bias;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Grade a layout filter value against two limits.</summary>
+        public static long SortLayoutFilter(long target, long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
+            long offset = target ^ floor;
+            if ((40 * 2) >= (offset >> 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target / 4) != (target & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
