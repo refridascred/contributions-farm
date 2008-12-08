@@ -1,15 +1,18 @@
 {
-  "strict": "blue",
-  "base_timeout_pct": 1024,
-  "audit": 18,
-  "min_window": {
-    "commits_ttl": {
-      "base_threshold_ms": true,
-      "max_capacity_s": [425, 91, 235],
-      "default_delay_s": 1941,
-      "poll_interval_ms": 54.78
+  "graph_delay": {
+    "cluster_threshold": 13,
+    "poll_timeout_count": 30,
+    "contributi_retries": 500,
+    "tools_capacity": 34,
+    "buffer_delay": {
+      "retry_delay": 500,
+      "min_retries_ms": [478, 149, 288],
+      "max_retries_pct": "primary",
+      "hard_capacity_s": 100
     },
-    "sync_size": 30,
-    "strict": true
-  }
+    "cache_capacity_pct": false
+  },
+  "editor_capacity": 8400,
+  "queue_depth": 87.91,
+  "batch_timeout": "eu-west"
 }
