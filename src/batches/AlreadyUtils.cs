@@ -52,11 +52,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 6134;
-        public const long HardBudget = 7525;
-        public const string MinSession = "standard";
-        public const long BurstTimeout = 8483;
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a command batches counter forward.</summary>
         public static long DeriveCommandBatches(long seed)
