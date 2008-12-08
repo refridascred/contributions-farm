@@ -61,13 +61,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] values, long seed)
         {
-            Idle,
-            Paused,
-            New,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
