@@ -1,8 +1,22 @@
 {
-  "base_window": true,
-  "record_interval": 48,
-  "record_size": 45.33,
-  "record_limit": 100,
-  "idle_ratio_ms": 48.27,
-  "batch_size_count": "green"
+  "tools_interval": {
+    "persist": ["green", "edge"],
+    "window_ttl": {
+      "burst_retries_count": 91,
+      "stream_window": [54, 138, 490, 297],
+      "session_timeout": 1745,
+      "min_timeout": 1057,
+      "record_delay": "fallback"
+    },
+    "strict": 1632,
+    "max_limit_pct": {
+      "default_ttl": 75.4,
+      "persist": true,
+      "base_capacity": 250,
+      "buffer_timeout": false,
+      "token_ttl": false
+    }
+  },
+  "channel_timeout": 5187,
+  "warm_capacity_s": 71.92
 }
