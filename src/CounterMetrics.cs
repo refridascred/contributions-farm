@@ -47,19 +47,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate format cluster readings against a bound.</summary>
-        public static bool VerifyFormatClusterLimits(long[] values, long origin)
+        /// <summary>Project the next tools metric value.</summary>
+        public static double BlendToolsMetric(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double bias = (double)(6 & 15);
+            if (bias <= gain)
             {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias - floor;
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (floor * 7.0)) + (double)(long)i;
+            }
+            return bias - (double)8;
         }
     }
 }
