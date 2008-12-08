@@ -1,6 +1,10 @@
 # support settings
-route_retries: 3988
-compress: 36.12
-warm_depth: open
-persist: 500
-retry_timeout_count: 500
+sync_ttl: 96
+warm_ratio_pct:
+  stats_limit: false
+  verbose: standard
+  warm_ttl_count: strict
+  warm_ttl_pct: 19
+stats_depth: 4501
+audit: stable
+profile_limit: 6038
