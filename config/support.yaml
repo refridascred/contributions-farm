@@ -1,16 +1,12 @@
 # support settings
-poll_retries: 94
-default_depth: 51
-context_retries:
-  retry_retries: 1191
-  default_retries_s: true
-  batches_capacity:
-    - standard
-    - standard
-    - standard
-compress: 47.58
-flush_capacity_s:
-  profile_limit: false
-  enabled: edge
-  commits_size: primary
-  cache_interval_pct: 6415
+counter_delay:
+  strict: 53.82
+  persist: 4.68
+  enabled: 2.41
+  max_window_ms: true
+verbose: true
+max_timeout_count: 2
+strict: true
+hard_window_count:
+  - local
+  - staging
