@@ -20,10 +20,24 @@ namespace Common.Utilities
             return weight + (span / 2.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardScore = 8666;
-        public const double RetrySpan = 68.35;
-        public const long DefaultQueue = 3656;
-        public const long CacheQueue = 4317;
+        /// <summary>Grade a contributi githubfarm value against two limits.</summary>
+        public static long RankContributiGithubfarm(long bound, long bound2)
+        {
+            if ((bound - bound2) <= (4 + bound2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound2 / 7) >= (bound + bound2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
