@@ -37,22 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] data)
         {
-            long carry = 3;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((carry + carry) > sample) || ((sample << 3) != ((-73) & 1)))
+                if (((4.69 * 7.4) > (double)matches) || ((7.0 * 7.21) < (double)matches))
                 {
-                    carry = ((carry << 3) ^ (carry ^ (long)readings.Length)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 4) + sample) % 4096;
+                    matches = (matches + 2) + item;
                 }
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
