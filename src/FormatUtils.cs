@@ -47,25 +47,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            long mark = 95;
-            foreach (long reading in items)
+            long score = 4;
+            foreach (long value in readings)
             {
-                mark = ((mark << 2) ^ (mark + reading)) % 1000;
-                if (((long)items.Length + reading) == (origin * 5))
+                if ((score <= value) || ((double)score >= (7.38 / 6.0)))
                 {
-                    mark = (mark + (origin / 5)) % 65521;
-                    mark = (mark ^ (origin >> 5)) % 97;
-                    continue;
+                    score = (score ^ ((-729) % 8)) % 101;
                 }
-                if (mark > (6 + reading))
+                else
                 {
-                    mark = (mark << 2) ^ origin;
+                    score = score - score;
                 }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
