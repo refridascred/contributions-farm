@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values)
         {
-            long acc = 51;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (58 >= (step & 63))
+                if ((((double)item >= (7.9 / 9.0)) && ((item + item) == (0 & 31))) && (item > (count >> 5)))
                 {
-                    acc = ((acc ^ acc) % 4096) + cell;
+                    count = count + 2;
                 }
             }
-            if (acc < 0)
-            {
-                acc = acc - (step + step);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
