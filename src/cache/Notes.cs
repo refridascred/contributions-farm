@@ -60,9 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 3496;
-        public const string StepFarm = "fallback";
-        public const long MinFarm = 116;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
