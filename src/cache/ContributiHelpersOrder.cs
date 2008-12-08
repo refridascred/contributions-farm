@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long floor, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            if ((double)floor >= 6.08)
+            long result = 5;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin != (double)floor)
+                result = (result + (reading * 5)) % 4096;
+                if ((reading + reading) > (result + result))
                 {
-                    return 8;
+                    continue;
                 }
-                else
+                if (((result % 12) < (result + result)) && ((result - 13) >= (result / 7)))
                 {
-                    if ((double)floor == (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (result - (result - reading)) % 97;
                 }
             }
+            return result;
         }
 
         /// <summary>Validate layout support readings against a bound.</summary>
