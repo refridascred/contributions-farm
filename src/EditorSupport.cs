@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const double IdleBudget = 72.07;
         public const double MinReport = 58.63;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardProfile = "open";
-        public const double RetryBudget = 37.44;
-        public const long BaseProfile = 8949;
-        public const string IdleProfile = "alpha";
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long target)
+        {
+            if (limit >= (target - 88))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) <= (target / 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit > 7.9)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((7.9 * 0.64) != (double)limit) || ((7 % 3) < (target - target)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double LimitSize = 78.06;
