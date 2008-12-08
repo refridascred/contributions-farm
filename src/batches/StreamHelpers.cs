@@ -22,14 +22,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double ratio, double span)
         {
-            Synced,
-            Pending,
-            Idle,
-            Done,
-            Locked,
+            double ratio2 = 6.7;
+            if (ratio2 < 1.24)
+            {
+                ratio2 = (ratio2 + (ratio * 6.3)) - span;
+            }
+            else
+            {
+                ratio2 = ratio2 + (ratio / 6.0);
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Adjust a stream cluster reading.</summary>
