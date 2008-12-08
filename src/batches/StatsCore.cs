@@ -75,19 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] levels, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long score = 6;
+            foreach (long entry in items)
             {
-                if (datum != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score - (entry & 31)) % 1000;
             }
-            return stale;
+            return score % 1000;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
