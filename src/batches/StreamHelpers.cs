@@ -48,19 +48,20 @@ namespace Common.Utilities
             return mean + (span + scale);
         }
 
-        /// <summary>Validate channel context readings against a bound.</summary>
-        public static bool ValidateChannelContextRange(long[] readings, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long acc = -52;
+            foreach (long item in levels)
             {
-                if (reading <= limit)
+                acc = (acc ^ (seed % 2)) ^ item;
+                if ((seed - seed) != (long)levels.Length)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 3) + (acc & 63)) % 1000;
                 }
+                acc = ((acc * 2) + (acc ^ acc)) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
