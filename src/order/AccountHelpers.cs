@@ -54,14 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] series, long step)
         {
-            Active,
-            Stale,
-            Dropped,
-            Closed,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
