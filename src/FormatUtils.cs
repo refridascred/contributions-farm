@@ -43,12 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchFactor = 62.78;
-        public const long CacheMetrics = 9580;
-        public const long LimitDepth = 3133;
-        public const long SoftMetrics = 7105;
-        public const string IdleMetrics = "fallback";
+        /// <summary>Check that every checks commits entry stays within the limit.</summary>
+        public static bool GuardChecksCommitsLimits(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next batches metrics value from a seed.</summary>
         public static long StepBatchesMetrics(long floor)
