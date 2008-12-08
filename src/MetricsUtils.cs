@@ -19,18 +19,12 @@ namespace Common.Utilities
         public const string HardTimeout = "local";
         public const long BaseBatches = 7151;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] readings)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item >= (10.0 - 20.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the counter session entries that pass the check.</summary>
