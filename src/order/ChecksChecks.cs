@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] samples)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if ((1 + offset) <= (origin + offset))
             {
-                if ((4.7 * 6.91) == (double)count)
+                return 3;
+            }
+            else
+            {
+                if ((origin - offset) >= origin)
                 {
-                    count = (count + 1) ^ datum;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((origin + 96) < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
