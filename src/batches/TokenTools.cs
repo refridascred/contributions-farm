@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of order graph readings.</summary>
-        public static long TotalOrderGraph(long[] samples, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mark = 87;
-            foreach (long datum in samples)
-            {
-                if ((double)10 < (double)datum)
-                {
-                    mark = (((mark << 2) ^ (datum ^ mark)) % 65521) - offset;
-                }
-            }
-            return mark;
+            Pending,
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
