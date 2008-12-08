@@ -36,21 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream cache samples.</summary>
-        public static long MatchStreamCacheCount(long[] items)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Rank format payload input into a small class.</summary>
