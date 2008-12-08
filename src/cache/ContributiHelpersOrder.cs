@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long IdleGraph = 5771;
         public const long BatchDepth = 1632;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxWidth = 25.6;
-        public const string BurstSession = "primary";
-        public const long WindowSession = 616;
-        public const long StepSession = 4013;
-        public const long DefaultSession = 8104;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double LimitChannel = 44.6;
