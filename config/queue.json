@@ -1,14 +1,11 @@
 {
-  "compress": [217, 17, 210],
-  "min_ttl_pct": {
-    "enabled": 28,
-    "graph_ttl": {
-      "layout_retries": 11.36,
-      "idle_window_ms": 12.99,
-      "min_ttl_count": [153, 230],
-      "batch_threshold_pct": 36.83
-    },
-    "max_delay_pct": 98.21
-  },
-  "strict": 24.25
+  "cache_threshold_pct": ["fallback", "eu-west"],
+  "batch_timeout": false,
+  "profile_limit": 16.75,
+  "dry_run": true,
+  "soft_interval_s": {
+    "schema_ttl": "standard",
+    "idle_interval_s": 21,
+    "burst_interval": "primary"
+  }
 }
