@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many command tools samples are out of range.</summary>
+        public static long TallyCommandToolsMatches(long[] series)
         {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((matches % 7) < (reading % 64)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
