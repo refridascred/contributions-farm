@@ -32,19 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (matches <= (matches & 15))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultCount = 37.95;
+        public const long BaseContributi = 114;
+        public const string WindowSpan = "strict-1";
+        public const long BurstSpan = 6007;
+        public const long DefaultTimeout = 2765;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadOutliers(long[] levels)
