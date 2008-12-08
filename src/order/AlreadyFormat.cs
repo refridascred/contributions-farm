@@ -31,19 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every route payload entry stays within the limit.</summary>
-        public static bool CheckRoutePayloadBounds(long[] series, long floor)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
