@@ -1,5 +1,15 @@
 {
-  "notes_limit": [391, 86, 125],
-  "batch_size_s": 1024,
-  "audit": "eu-west"
+  "hard_size_ms": [368, 288, 49],
+  "flush_retries_count": 36,
+  "cache_retries": "blue",
+  "commits_size": {
+    "default_interval": [487, 236, 191, 237],
+    "context_size": {
+      "stats_depth": 500,
+      "default_capacity_pct": 1024,
+      "base_ttl": false,
+      "poll_retries": "standard"
+    },
+    "soft_window": true
+  }
 }
