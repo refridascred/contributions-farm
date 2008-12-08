@@ -14,12 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Draft,
-            New,
-            Pending,
+            Idle,
+            Queued,
+            Ready,
         }
 
         /// <summary>Match up batch contributi samples.</summary>
