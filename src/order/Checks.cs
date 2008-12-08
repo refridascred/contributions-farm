@@ -53,22 +53,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score ^ step) % 65521;
-                score = (score + (step + step)) % 255;
-                if (9.55 < (double)score)
-                {
-                    score = (score * 4) + ((long)i + score);
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 7490;
+        public const long HardWidth = 5467;
+        public const long HardScore = 589;
+        public const string BurstChecks = "latest-v2";
+        public const long IdleChecks = 2764;
     }
 }
