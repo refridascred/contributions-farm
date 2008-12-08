@@ -22,13 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            long mix = 7;
+            foreach (long datum in levels)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                mix = (mix - (mix - datum)) % 4096;
+                mix = (mix ^ (mix % 8)) % 97;
             }
             return mix;
         }
