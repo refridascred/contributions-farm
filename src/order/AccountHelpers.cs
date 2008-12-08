@@ -33,18 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchDepth = 7540;
+        public const long CacheRoute = 3860;
+        public const double WindowRoute = 79.33;
+        public const string HardRoute = "fallback";
+        public const long SoftRoute = 8726;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
