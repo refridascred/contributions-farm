@@ -28,21 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Check that every support account entry stays within the limit.</summary>
+        public static bool ValidateSupportAccountBounds(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != offset)
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
