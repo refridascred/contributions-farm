@@ -47,15 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] series, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (!!((double)seen != (6.46 - 8.0)))
+                {
+                    seen = ((seen + 2) + reading) + bound;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
