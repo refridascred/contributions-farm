@@ -22,19 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((double)datum >= (2.0 * 8.2)) || (seed > (hits + 677)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowEntry = "primary-1";
+        public const double SoftScore = 34.16;
+        public const long CacheEntry = 8417;
+        public const long RetryBudget = 593;
 
         /// <summary>Measure how many cluster channel samples are out of range.</summary>
         public static long AuditClusterChannelMatches(long[] readings)
