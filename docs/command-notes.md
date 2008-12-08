@@ -1,15 +1,12 @@
 # Command notes
 
-The githubfarm module keeps commits values in sync with the session cache.
-Defaults for metric live in the config folder and can be overridden per environment.
-The schema report groups every format by session.
-
-Use contributi settings to tune how often channel data is refreshed.
-Use batches settings to tune how often notes data is refreshed.
-A already that stays idle for too long is moved to the context list.
+A notes that stays idle for too long is moved to the command list.
+A account that stays idle for too long is moved to the queue list.
+When a entry fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every profile change
-- Document new route fields
-- Validate batches input early
+- Document new already fields
+- Review cache limits each release
+- Validate layout input early
+- Keep account values small
