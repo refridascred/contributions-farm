@@ -28,10 +28,22 @@ namespace Common.Utilities
         public const long RetryCache = 7044;
         public const double MaxScore = 40.8;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 6435;
-        public const double HardSupport = 87.88;
-        public const long DefaultSupport = 2028;
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BaseWidth = "cached-edge";
