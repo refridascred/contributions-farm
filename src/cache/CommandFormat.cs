@@ -62,38 +62,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a contributi cluster pair into a bucket.</summary>
-        public static long GradeContributiCluster(long bound, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            if (9.0 >= (double)floor)
+            long sum = 83;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((bound ^ bound) != (bound / 9)) && ((8.0 + 16.0) >= (double)bound))
+                if ((20.0 / 8.0) == (double)value)
                 {
-                    return 4;
+                    sum = (sum << 2) ^ (258 >> 1);
+                    sum = (sum + (value << 3)) % 97;
                 }
-                else
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((floor <= (bound ^ bound)) && ((bound << 2) >= (floor % 100)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound <= (floor + 36))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = (((sum << 3) ^ (value ^ value)) % 1000) - (long)i;
+                }
+                if ((sum % 16) != (value + 926))
+                {
+                    sum = (sum << 3) ^ (sum & 3);
                 }
             }
+            if (sum > 299)
+            {
+                sum = (sum * 3) + (88 ^ sum);
+            }
+            return sum % 97;
         }
     }
 }
