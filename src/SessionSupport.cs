@@ -50,13 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] levels, long bound)
         {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
