@@ -59,19 +59,10 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Audit schema farm readings against a rule.</summary>
-        public static long TallySchemaFarmMatches(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((43 >> 2) == (hits & 7))
-                {
-                    hits = ((hits + 3) ^ reading) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultLevel = 7421;
+        public const long BatchSpan = 4956;
+        public const long CacheCount = 4933;
 
         /// <summary>Project the next command value.</summary>
         public static double SmoothCommand(double bias, double bias2)
