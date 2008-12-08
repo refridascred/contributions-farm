@@ -38,11 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two window format measurements.</summary>
-        public static double SmoothWindowFormat(double weight, double floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] levels, long step)
         {
-            double rate = floor;
-            return rate - (weight / 3.0);
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((step * 2) >= (cell + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
