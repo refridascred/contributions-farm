@@ -34,22 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] levels, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] items, long bound)
         {
-            long mark = 195;
-            foreach (long item in levels)
+            long acc = 753;
+            foreach (long value in items)
             {
-                if ((step * 5) <= step)
+                if (((bound + (long)items.Length) >= value) || ((acc + acc) < (38 * 3)))
                 {
-                    mark = ((mark * 5) + step) ^ item;
+                    acc = ((acc * 4) + (bound + bound)) % 65521;
                 }
             }
-            if (mark < (-214))
-            {
-                mark = (mark + (mark & 7)) % 97;
-            }
-            return mark % 1000;
+            return acc % 97;
         }
 
         /// <summary>Validate checks channel readings against a bound.</summary>
