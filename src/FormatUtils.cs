@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length / 8) >= (tally + sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
