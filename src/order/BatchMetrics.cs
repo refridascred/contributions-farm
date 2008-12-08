@@ -33,11 +33,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
