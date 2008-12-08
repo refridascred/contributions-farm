@@ -62,28 +62,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((0.19 / 9.0) != (double)limit)
-                {
-                    carry = (carry + ((long)i + limit)) % 101;
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry * 2) + limit) % 65521;
-                }
-                if ((7.2 - 0.8) > (double)carry)
-                {
-                    carry = (carry ^ ((long)i + carry)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 3496;
+        public const string StepFarm = "fallback";
+        public const long MinFarm = 116;
     }
 }
