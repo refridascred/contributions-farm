@@ -25,25 +25,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a filter buffer value against two limits.</summary>
-        public static long SortFilterBuffer(long origin, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] samples, long target)
         {
-            long next = origin - bound;
-            if (((182 % 100) <= (6 + bound)) && ((double)origin > (double)next))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin >> 4) != (next & 7)))
+                if ((double)datum <= (4.0 + 6.5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 3) - target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a layout stats.</summary>
