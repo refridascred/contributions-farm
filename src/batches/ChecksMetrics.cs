@@ -37,18 +37,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] levels, long bound)
+        /// <summary>Audit route queue readings against a rule.</summary>
+        public static long AuditRouteQueueGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)8 >= (double)bound)
+                if (((double)hits < (0.57 + 19.0)) || ((0.32 / 2.0) <= (double)hits))
                 {
-                    tally = (tally + 3) + item;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a metric record.</summary>
