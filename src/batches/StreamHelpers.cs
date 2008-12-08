@@ -42,13 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Paused,
-            Retry,
+            Dropped,
+            Stale,
             New,
-            Pending,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
