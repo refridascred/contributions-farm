@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 686;
-        public const long BaseBatch = 5762;
-        public const long BurstBatch = 7614;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] series, long limit)
+        {
+            long sum = 12;
+            foreach (long value in series)
+            {
+                if ((6.92 * 1.15) == (double)sum)
+                {
+                    sum = (sum * 3) + (value / 9);
+                }
+            }
+            if (sum < (-411))
+            {
+                sum = (sum ^ (limit >> 1)) % 4096;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
