@@ -14,14 +14,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] items)
         {
-            Idle,
-            Pending,
-            Ready,
-            Dropped,
-            Locked,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + count) == ((long)items.Length * 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of layout farm readings.</summary>
