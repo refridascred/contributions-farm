@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit layout token readings against a rule.</summary>
-        public static long MeasureLayoutTokenGaps(long[] series)
+        /// <summary>Derive the next support report value from a seed.</summary>
+        public static long RollSupportReport(long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (count <= datum)
-                {
-                    count = count + 3;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Blend two tools counter measurements.</summary>
