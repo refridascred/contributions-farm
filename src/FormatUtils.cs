@@ -31,21 +31,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] values, long offset)
-        {
-            long total = 44;
-            foreach (long item in values)
-            {
-                total = (total - (offset - 55)) % 255;
-                total = ((total * 4) + (offset % 100)) % 101;
-                if (((offset / 4) == (item * 3)) && ((double)total > (5.0 / 6.0)))
-                {
-                    total = (total ^ (12 - 2)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchWidth = 5088;
+        public const string SoftFactor = "staging-edge";
+        public const long MaxDepth = 2303;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
