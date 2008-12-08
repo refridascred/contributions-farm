@@ -20,10 +20,33 @@ namespace Common.Utilities
         public const string CacheSpan = "fallback-1";
         public const long WindowMetric = 1056;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryRatio = 7866;
-        public const long MaxCount = 6120;
-        public const long WindowSize = 815;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long limit, long seed)
+        {
+            long bound = limit + seed;
+            if (0 >= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) == (bound / 9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound + seed) > 9) || ((seed - (-734)) == (45 ^ bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
