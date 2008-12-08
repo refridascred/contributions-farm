@@ -33,19 +33,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((74 + value) > (seed << 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 2352;
+        public const string MinRoute = "alpha";
+        public const long MaxRoute = 2676;
+        public const double CacheTimeout = 12.32;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] items)
