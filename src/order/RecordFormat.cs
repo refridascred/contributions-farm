@@ -46,20 +46,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate profile account readings against a bound.</summary>
-        public static bool CheckProfileAccountRange(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 8559;
+        public const double RetryStream = 9.32;
+        public const long CacheStream = 1941;
+        public const long MinBudget = 7580;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 7221;
