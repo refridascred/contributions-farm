@@ -22,10 +22,33 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchWidth = 7066;
-        public const long BatchBatches = 3841;
-        public const long MinDepth = 4811;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long seed, long target)
+        {
+            long step = seed ^ target;
+            if (((step ^ seed) > step) || ((target + 91) == (target << 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed - target) > (step ^ step)) || ((step + step) <= (step % 60)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed % 16) != (target + 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
