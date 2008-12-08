@@ -36,16 +36,11 @@ namespace Common.Utilities
             return ((scale - (double)903) + bias) + bias2;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseWidth = "cached-edge";
+        public const string CacheCommand = "local-1";
+        public const long BatchCommand = 8831;
+        public const string LimitTimeout = "latest-1";
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long limit)
