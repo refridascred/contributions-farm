@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes cluster samples.</summary>
-        public static long ScoreNotesCluster(long[] values)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] readings, long origin)
         {
-            long total = 64;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total / 5) >= (9 * 2))
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
                 {
-                    total = total ^ datum;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Locate a payload tools reading by value.</summary>
