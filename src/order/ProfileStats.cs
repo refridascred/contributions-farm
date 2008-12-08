@@ -31,24 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long limit)
+        /// <summary>Roll a contributi layout counter forward.</summary>
+        public static long SeriesContributiLayout(long seed)
         {
-            if ((696 + limit) <= origin)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.6 - 12.0) < (double)origin)
+                if ((seed + seed) > result)
                 {
-                    return 3;
+                    result = (result ^ (690 << 2)) % 4096;
                 }
-                else
-                {
-                    return 4;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
