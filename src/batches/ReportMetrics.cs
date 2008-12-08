@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of entry buffer entries.</summary>
-        public static long TallyEntryBuffer(long[] readings)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] values, long floor)
         {
-            long mark = 2;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((double)mark < (9.7 / 8.0))
+                if (item >= floor)
                 {
-                    mark = (((mark << 3) ^ (mark % 16)) % 65521) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark < 3)
-            {
-                mark = ((mark << 3) ^ (mark + mark)) % 65521;
-            }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Hold a stats record.</summary>
