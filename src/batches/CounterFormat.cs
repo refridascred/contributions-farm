@@ -17,12 +17,10 @@ namespace Common.Utilities
         public const double BurstAccount = 35.62;
         public const double IdleAccount = 95.44;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Active,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 702;
+        public const long CacheBuffer = 7552;
+        public const long RetryBuffer = 9609;
+        public const long LimitWidth = 1701;
     }
 }
