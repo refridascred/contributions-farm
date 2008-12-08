@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many filter tools samples are out of range.</summary>
-        public static long TallyFilterToolsHits(long[] levels, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long target, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if (target < limit)
             {
-                if (((18.0 <= (0.8 - 5.0)) || (reading >= offset)) || ((reading + offset) > (2 + 21)))
+                return 1;
+            }
+            else
+            {
+                if ((limit & 7) != (target >> 4))
                 {
-                    count = count + 3;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit metrics layout readings against a rule.</summary>
