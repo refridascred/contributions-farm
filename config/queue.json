@@ -1,12 +1,7 @@
 {
-  "dry_run": ["green", "eu-west"],
-  "min_timeout_count": {
-    "default_capacity_pct": "fallback",
-    "base_ttl_count": "staging",
-    "record_depth": 35
-  },
-  "record_delay": [200, 331],
-  "poll_threshold": 500,
-  "retry_capacity": [323, 125, 484, 249],
-  "retry_threshold_count": 6.92
+  "min_threshold": 6092,
+  "cache_capacity": 41.08,
+  "hard_interval": [381, 446, 455],
+  "report_window": ["strict", "blue"],
+  "retry_size": 95
 }
