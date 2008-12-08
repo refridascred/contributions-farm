@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((double)floor >= 6.08)
             {
-                if ((((value + value) < value) || ((matches / 5) <= (90 - value))) || (((matches ^ matches) <= (value ^ 8)) && ((6 >> 1) <= (matches ^ value))))
+                return 2;
+            }
+            else
+            {
+                if ((double)origin != (double)floor)
                 {
-                    matches = matches + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor == (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of graph commits entries.</summary>
