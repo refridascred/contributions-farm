@@ -29,22 +29,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Locate a report filter reading by value.</summary>
+        public static long LocateReportFilterIndex(long[] values, long offset)
         {
-            long acc = 9;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sample + 5) == (acc ^ (-17))) || ((7 << 3) == (acc / 5)))
+                if ((values[i] <= offset) && ((values[i] % 5) == 0))
                 {
-                    acc = (acc - (sample >> 3)) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc > 407)
-            {
-                acc = ((acc * 3) + acc) % 101;
-            }
-            return acc % 65521;
+            return -1;
         }
     }
 }
