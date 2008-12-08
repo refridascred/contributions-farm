@@ -31,25 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank schema filter input into a small class.</summary>
-        public static long SortSchemaFilter(long origin, long target)
+        /// <summary>Audit entry counter readings against a rule.</summary>
+        public static long AuditEntryCounterGaps(long[] readings, long origin)
         {
-            long bound = origin + target;
-            if ((double)origin > (1.0 + 1.2))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound > origin)
+                if (!((seen - seen) <= (datum + seen)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 1) - origin;
                 }
             }
+            return seen;
         }
     }
 }
