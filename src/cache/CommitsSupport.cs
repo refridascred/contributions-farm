@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double bias, double floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double drift = (bias + floor) - (floor * 5.0);
-            return drift + (bias * 5.28);
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
