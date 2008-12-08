@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long target, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] readings)
         {
-            if (target < limit)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 7) != (target >> 4))
+                if ((double)(long)readings.Length > (4.0 - 2.2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    count = (count + 2) - value;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a channel entry.</summary>
