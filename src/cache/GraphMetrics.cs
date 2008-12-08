@@ -38,12 +38,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstBudget = "fallback-v2";
-        public const double HardRoute = 15.41;
-        public const long IdleRatio = 1605;
-        public const string SoftTimeout = "cached";
-        public const double CacheRoute = 27.45;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Stale,
+            Pending,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] levels, long bound)
