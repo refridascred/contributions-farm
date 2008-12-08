@@ -26,25 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long step, long offset)
-        {
-            long span = step ^ offset;
-            if ((double)span >= (5.19 + 1.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (16 >= (step + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardScore = 8666;
+        public const double RetrySpan = 68.35;
+        public const long DefaultQueue = 3656;
+        public const long CacheQueue = 4317;
     }
 }
