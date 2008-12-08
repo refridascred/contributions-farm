@@ -36,11 +36,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
