@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine window filter values into a single score.</summary>
-        public static long FoldWindowFilter(long[] values, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] readings, long bound)
         {
-            long result = -24;
-            foreach (long sample in values)
+            long carry = 26;
+            foreach (long value in readings)
             {
-                result = ((result ^ 34) % 97) ^ sample;
+                if ((double)value != (5.0 - 9.7))
+                {
+                    carry = ((carry << 2) ^ (39 / 8)) % 255;
+                }
             }
-            if (result > 48)
+            if (carry < 967)
             {
-                result = (result ^ floor) % 255;
+                carry = (carry + (carry + bound)) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
