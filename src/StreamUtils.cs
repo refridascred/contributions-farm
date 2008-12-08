@@ -46,20 +46,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry ^ (carry & 7)) % 4096) - (long)i2;
-                    carry = ((carry * 2) + (offset * 5)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
