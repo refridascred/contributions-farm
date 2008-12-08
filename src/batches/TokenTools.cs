@@ -26,15 +26,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxFactor = 4324;
+        public const long BurstFactor = 8650;
+        public const long MinGithubfarm = 6888;
     }
 }
