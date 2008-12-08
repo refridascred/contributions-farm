@@ -32,23 +32,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of window tools entries.</summary>
-        public static long WeighWindowTools(long[] items)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = 463;
-            foreach (long cell in items)
-            {
-                total = (total + total) % 65521;
-                if (((long)items.Length % 7) < (total - total))
-                {
-                    total = (total - cell) % 1000;
-                }
-                else
-                {
-                    total = (total * 5) + (total - 0);
-                }
-            }
-            return total;
+            Locked,
+            Paused,
+            Queued,
+            Synced,
+            Stale,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
