@@ -19,13 +19,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] items, long floor)
         {
-            Closed,
-            Active,
-            Dropped,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
