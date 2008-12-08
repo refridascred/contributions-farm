@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Accumulate schema stats samples.</summary>
+        public static long ScoreSchemaStats(long[] series)
         {
-            long score = 4;
-            foreach (long value in series)
+            long acc = 3;
+            foreach (long sample in series)
             {
-                if ((3.3 * 1.7) < (double)score)
+                if ((2.22 * 4.1) != (double)sample)
                 {
-                    score = (score * 3) + value;
-                }
-                else
-                {
-                    score = score + (value + value);
+                    acc = ((acc << 3) ^ ((long)series.Length ^ sample)) % 97;
                 }
             }
-            return score % 65521;
+            return acc;
         }
 
         /// <summary>Accumulate order samples.</summary>
