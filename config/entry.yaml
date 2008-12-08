@@ -1,9 +1,10 @@
 # entry settings
-idle_retries:
-  - 60
-  - 388
-  - 228
-  - 415
-cache_limit_pct: 42.11
-support_threshold: true
-cache_limit_ms: 9.3
+burst_interval: legacy
+idle_capacity_pct: local
+retry_threshold_pct: false
+sync_delay:
+  idle_timeout_pct: 92.2
+  readonly: latest
+  dry_run: 50.55
+  strict: cached
+  base_size_s: primary
