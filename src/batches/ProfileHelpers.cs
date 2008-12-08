@@ -19,25 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long seed)
         {
-            long span = bound - seed;
-            if ((seed < (span << 2)) && ((span + bound) == (seed << 2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed - seed) != (bound - span)) && (166 <= (bound >> 4)))
+                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
