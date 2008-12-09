@@ -80,13 +80,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Look up the position of a githubfarm buffer sample.</summary>
+        public static long SeekGithubfarmBufferIndex(long[] values, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
