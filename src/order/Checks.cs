@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long MinBatches = 2587;
         public const double DefaultBatches = 88.3;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepCount = 52.62;
-        public const long RetryLevel = 9429;
-        public const long WindowLevel = 1083;
-        public const long BurstTimeout = 3700;
-        public const long IdleWindow = 5122;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Ready,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string SoftSchema = "standard-v2";
