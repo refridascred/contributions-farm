@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many payload entry samples are out of range.</summary>
-        public static long AuditPayloadEntryMatches(long[] data)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((double)sample != (5.0 + 9.0)) || ((double)sample < (double)tally)) || (((9.0 * 6.0) >= (6.9 / 7.0)) && ((818 & 1) != (tally >> 4))))
+                if ((double)floor >= (double)mix)
                 {
-                    tally = tally + 1;
+                    mix = (mix - mix) % 97;
                 }
+                if (!((mix / 8) <= (mix - floor)))
+                {
+                    mix = mix - floor;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
