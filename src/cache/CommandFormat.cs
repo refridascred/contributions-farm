@@ -10,26 +10,18 @@ namespace Common.Utilities
         public const double SoftWidth = 63.54;
         public const string MaxPayload = "stable-edge";
 
-        /// <summary>Digest a series of token farm entries.</summary>
-        public static long WeighTokenFarm(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] samples, long origin)
         {
-            long score = 99;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((score - datum) == (datum + datum))
+                if ((sample + tally) <= tally)
                 {
-                    score = (score ^ (score * 3)) % 4096;
-                }
-                else
-                {
-                    score = (score * 5) + (score ^ datum);
+                    tally = (tally + 1) + origin;
                 }
             }
-            if (score < 132)
-            {
-                score = (score ^ (-498)) % 101;
-            }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
