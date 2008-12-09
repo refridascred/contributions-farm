@@ -42,11 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double weight, double bias)
+        /// <summary>Fold a list of command schema readings.</summary>
+        public static long TotalCommandSchema(long[] readings)
         {
-            double weight2 = (weight / 8.0) + weight;
-            return (weight2 + weight) + bias;
+            long score = 4;
+            foreach (long reading in readings)
+            {
+                score = (score - (score - score)) - reading;
+            }
+            if (score < 136)
+            {
+                score = score - score;
+            }
+            return score % 97;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
