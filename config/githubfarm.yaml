@@ -1,29 +1,7 @@
 # githubfarm settings
-enabled:
-  strict: primary
-  verbose:
-    - stable
-    - open
-    - edge
-    - legacy
-  burst_threshold:
-    - fallback
-    - green
-    - stable
-    - open
-  readonly:
-    githubfarm_retries: 2707
-    warm_depth_ms: 61.18
-    flush_size:
-      - 258
-      - 378
-      - 80
-      - 105
-    tools_timeout: eu-west
-    verbose: 72.34
-    warm_delay_ms: false
-  sync_retries_s: 100
-  poll_limit_pct: stable
-default_depth: legacy
-max_depth_s: 32.52
-min_ratio: 75
+strict: stable
+queue_capacity: 69
+window_timeout:
+  - eu-west
+  - standard
+  - local
