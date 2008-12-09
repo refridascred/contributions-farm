@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] data, long limit)
-        {
-            long acc = 97;
-            foreach (long datum in data)
-            {
-                acc = (acc - (datum >> 1)) + limit;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 2769;
+        public const string CacheInterval = "standard";
+        public const double MinChannel = 73.24;
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
