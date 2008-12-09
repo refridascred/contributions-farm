@@ -56,10 +56,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 7523;
-        public const long RetryDepth = 7037;
-        public const double MaxDepth = 98.05;
-        public const long DefaultProfile = 1959;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
