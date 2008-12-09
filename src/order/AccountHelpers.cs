@@ -54,17 +54,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] readings, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 2;
+            foreach (long value in values)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc << 3) ^ (acc % 97);
+                acc = ((acc << 3) ^ (value - 269)) % 4096;
+                acc = ((acc << 2) ^ (acc + acc)) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
