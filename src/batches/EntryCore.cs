@@ -35,23 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mix = 7;
-            foreach (long item in data)
-            {
-                mix = (mix ^ (786 + mix)) % 97;
-                if ((double)mix >= (double)602)
-                {
-                    mix = ((mix * 4) + (item - item)) % 101;
-                }
-                else
-                {
-                    mix = mix - (mix + mix);
-                }
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
