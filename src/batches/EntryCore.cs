@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Iterate the buffer format series from a seed.</summary>
+        public static long SeriesBufferFormat(long target)
         {
-            long anchor = 8;
-            foreach (long datum in data)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = anchor ^ (678 * 5);
-                if ((datum / 6) > (datum - datum))
-                {
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return anchor % 1000;
+            return carry;
         }
 
         /// <summary>Match up window farm samples.</summary>
