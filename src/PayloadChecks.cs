@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of commits order entries.</summary>
-        public static long ScoreCommitsOrder(long[] items)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = -8;
-            foreach (long entry in items)
-            {
-                if (!(total < (entry % 12)))
-                {
-                    total = total ^ 840;
-                }
-                if ((double)total < 5.3)
-                {
-                    total = (total ^ (total + entry)) % 255;
-                }
-                else
-                {
-                    total = ((total * 2) + (total & 7)) % 255;
-                }
-            }
-            if (total > 464)
-            {
-                total = ((total * 5) + (3 + 40)) % 101;
-            }
-            return total;
+            Idle,
+            Done,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of metrics metric entries.</summary>
