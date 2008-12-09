@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((limit % 24) != ((long)i * 5)))
-                {
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Done,
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
