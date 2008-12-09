@@ -24,19 +24,11 @@ namespace Common.Utilities
             return weight - (scale - weight);
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] levels, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double gain = (double)506 - bias;
+            return (gain - bias) + bias2;
         }
 
         /// <summary>Describe the support phase values.</summary>
