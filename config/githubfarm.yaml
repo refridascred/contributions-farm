@@ -1,10 +1,21 @@
 # githubfarm settings
-flush_window_ms: standard
-max_size_count: 63
-retry_interval: staging
-sync_timeout_s:
-  - 104
-  - 204
-  - 418
-  - 489
-farm_threshold: 31
+cache_interval_count:
+  max_ratio_count: eu-west
+  poll_delay_ms: standard
+  min_ttl_ms:
+    verbose: 14
+    poll_capacity_s: 51.13
+    warm_ratio_pct: false
+    batch_limit: 61
+  idle_capacity:
+    - primary
+    - local
+    - green
+    - fallback
+verbose: blue
+min_ttl:
+  - 246
+  - 468
+  - 171
+  - 421
+burst_retries_s: 7859
