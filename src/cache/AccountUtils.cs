@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long seed)
-        {
-            if ((offset + offset) <= (offset + 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ offset) != (offset + seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardFactor = 11.53;
+        public const string BurstSpan = "cached-v2";
+        public const double MaxSpan = 92.68;
+        public const string WindowStream = "primary-1";
 
         /// <summary>Measure how many account payload samples are out of range.</summary>
         public static long TallyAccountPayloadMatches(long[] readings)
