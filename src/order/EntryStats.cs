@@ -31,15 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] items, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (datum < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
