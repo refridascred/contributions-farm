@@ -81,39 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long seed, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings)
         {
-            long bound = seed ^ step;
-            if (9.1 >= (double)step)
+            long acc = 211;
+            foreach (long cell in readings)
             {
-                return 8;
+                acc = (acc ^ (53 + acc)) - cell;
             }
-            else
-            {
-                if ((seed + bound) >= (seed + step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound ^ bound) == (27 ^ seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - bound) > (seed - seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return acc % 97;
         }
     }
 }
