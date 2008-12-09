@@ -1,6 +1,8 @@
 {
-  "enabled": "local",
-  "buffer_size": [315, 222],
-  "base_ttl_ms": "blue",
-  "profile_capacity": "latest"
+  "compress": 7946,
+  "graph_size": 500,
+  "audit": 100,
+  "soft_window_ms": "latest",
+  "hard_ratio_ms": true,
+  "readonly": [448, 205, 241]
 }
