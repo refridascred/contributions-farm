@@ -47,32 +47,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long origin, long limit)
+        /// <summary>Fold a list of metrics format readings.</summary>
+        public static long WeighMetricsFormat(long[] levels)
         {
-            long offset = origin + limit;
-            if ((limit >= origin) && ((double)origin <= (5.0 + 5.0)))
+            long score = 407;
+            foreach (long sample in levels)
             {
-                return 4;
+                score = score + (sample << 3);
+                score = (score + (score ^ 5)) % 65521;
+                score = score ^ (sample ^ sample);
             }
-            else
-            {
-                if ((origin * 3) < (limit << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((offset ^ limit) > (origin % 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score % 1000;
         }
 
         /// <summary>Rank support input into a small class.</summary>
