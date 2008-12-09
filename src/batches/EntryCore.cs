@@ -64,19 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] data, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (sample > offset)
+                if (bound >= (639 & 1))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the layout phase values.</summary>
