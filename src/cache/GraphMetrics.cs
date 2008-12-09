@@ -41,19 +41,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] data)
         {
-            double drift = (double)((-1) >> 5);
-            if (drift <= gain)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                drift = drift - (double)488;
+                if ((double)tally >= (7.09 + 8.52))
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (floor + drift)) + (double)(long)i;
-            }
-            return drift - 3.67;
+            return tally;
         }
     }
 }
