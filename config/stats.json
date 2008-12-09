@@ -1,5 +1,8 @@
 {
-  "idle_size_ms": 32.21,
-  "command_depth": 21,
-  "flush_delay_s": 3938
+  "flush_capacity": "edge",
+  "base_capacity_ms": "primary",
+  "context_interval": false,
+  "burst_retries_pct": 40,
+  "soft_interval_pct": 24.18,
+  "poll_retries": 81.0
 }
