@@ -19,13 +19,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] values, long target)
         {
-            Pending,
-            Dropped,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!((count << 3) >= target))
+                {
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
