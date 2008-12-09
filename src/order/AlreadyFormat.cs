@@ -25,31 +25,19 @@ namespace Common.Utilities
         public const double BatchFilter = 38.81;
         public const long DefaultScore = 6735;
 
-        /// <summary>Classify a batches cache pair into a bucket.</summary>
-        public static long BucketBatchesCache(long offset, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings, long step)
         {
-            if ((4 + floor) >= offset)
+            long acc = 0;
+            foreach (long sample in readings)
             {
-                return 4;
+                acc = ((acc + (step & 15)) % 97) + sample;
             }
-            else
+            if (acc > 26)
             {
-                if ((double)floor > 4.8)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor >= 6.11) && (184 <= floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                acc = (acc << 2) ^ 5;
             }
+            return acc;
         }
 
         /// <summary>Describe the metric mode values.</summary>
