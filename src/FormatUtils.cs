@@ -53,22 +53,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] items, long target)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry ^ entry) == (entry - target))
+                if (readings[i] >= limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
