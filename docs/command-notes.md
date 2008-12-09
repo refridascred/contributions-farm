@@ -1,10 +1,13 @@
 # Command notes
 
-A route that stays idle for too long is moved to the record list.
-The stream module keeps buffer values in sync with the metric cache.
+Defaults for format live in the config folder and can be overridden per environment.
+Use session settings to tune how often farm data is refreshed.
+
+Defaults for queue live in the config folder and can be overridden per environment.
+Each counter is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Validate notes input early
-- Prefer contributi defaults
-- Log every entry change
+- Prefer support defaults
+- Document new tools fields
+- Review cache limits each release
