@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Project the next record buffer value.</summary>
+        public static double SmoothRecordBuffer(double rate, double offset)
         {
-            Locked,
-            Paused,
-            Active,
-            Idle,
+            double rate2 = (double)(731 ^ 331);
+            return (rate2 + rate) + offset;
         }
 
         /// <summary>Project the next account value.</summary>
