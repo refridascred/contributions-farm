@@ -1,5 +1,4 @@
 # entry settings
-cache_delay: 38.28
-max_threshold: primary
-order_retries: true
-warm_depth: true
+enabled: 35
+retry_ttl_pct: 83.17
+default_window_count: latest
