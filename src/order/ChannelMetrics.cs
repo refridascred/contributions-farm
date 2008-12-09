@@ -33,15 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
