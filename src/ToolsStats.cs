@@ -16,15 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] data)
         {
-            long score = 51;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                score = (score ^ (64 % 8)) - sample;
+                if (!(((double)item <= (8.44 + 1.0)) || ((tally >> 5) <= (0 - item))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
