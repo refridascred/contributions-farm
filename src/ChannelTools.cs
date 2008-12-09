@@ -21,21 +21,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = scale * 5.0;
+            if (bias2 > (14.0 - bias))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 - scale;
             }
-            return count;
+            return bias2 + bias2;
         }
     }
 }
