@@ -61,11 +61,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepCount = 6784;
-        public const long WindowTimeout = 7416;
-        public const double LimitScore = 14.64;
-        public const double WindowContext = 71.45;
-        public const long CacheSpan = 3851;
+        /// <summary>Measure how many graph counter samples are out of range.</summary>
+        public static long TallyGraphCounterMatches(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading << 1) == (8 + 9)) || !(645 >= (matches - reading)))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
     }
 }
