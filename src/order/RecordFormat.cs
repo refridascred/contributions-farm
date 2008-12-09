@@ -62,19 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout editor readings.</summary>
-        public static long DigestLayoutEditor(long[] data, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] data)
         {
-            long state = 4;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                state = ((state << 2) ^ (origin ^ reading)) % 101;
-                if ((7.0 * 8.28) <= (double)origin)
+                if ((value + seen) != (seen % 8))
                 {
-                    state = (state - state) % 97;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state % 65521;
+            return seen;
         }
     }
 }
