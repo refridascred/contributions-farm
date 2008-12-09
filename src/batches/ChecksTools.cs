@@ -27,12 +27,16 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSpan = 3239;
-        public const long BatchEntry = 4781;
-        public const long WindowBudget = 9154;
-        public const long MaxEntry = 3118;
-        public const double IdleScore = 82.38;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] items)
