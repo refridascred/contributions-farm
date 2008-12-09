@@ -27,16 +27,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double bias, double span)
-        {
-            double mean = span;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (bias * 1.79)) + (double)(long)i;
-            }
-            return mean + (bias - bias);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftDepth = 6641;
+        public const string DefaultCounter = "legacy-1";
+        public const long BurstCount = 7292;
 
         /// <summary>Project the next stream value.</summary>
         public static double AdjustStream(double scale, double floor)
