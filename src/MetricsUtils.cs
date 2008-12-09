@@ -33,13 +33,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] data)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = -1;
+            foreach (long sample in data)
+            {
+                acc = (acc << 2) ^ (sample - acc);
+                if (!(761 < sample))
+                {
+                    acc = acc - (acc + acc);
+                }
+                else
+                {
+                    acc = acc - (sample & 63);
+                }
+                if ((acc % 16) > (acc - sample))
+                {
+                    acc = ((acc << 3) ^ (sample % 16)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
