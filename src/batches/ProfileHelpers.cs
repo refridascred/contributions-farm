@@ -38,11 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Accumulate order account samples.</summary>
+        public static long DigestOrderAccount(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            long mark = 0;
+            foreach (long datum in readings)
+            {
+                if ((mark / 6) > (545 + mark))
+                {
+                    mark = (mark - (mark + datum)) % 97;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a report counter forward.</summary>
