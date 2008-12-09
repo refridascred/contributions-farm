@@ -31,18 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample <= (double)hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Pending,
         }
 
         /// <summary>Digest a series of account entries.</summary>
