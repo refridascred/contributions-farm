@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many route token samples are out of range.</summary>
-        public static long CountRouteTokenGaps(long[] levels, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target % 2) <= (cell ^ cell))
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
