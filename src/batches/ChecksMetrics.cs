@@ -34,18 +34,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of cache filter entries.</summary>
-        public static long FoldCacheFilter(long[] levels)
+        /// <summary>Rank metrics schema input into a small class.</summary>
+        public static long RankMetricsSchema(long bound, long floor)
         {
-            long sum = 824;
-            foreach (long cell in levels)
+            long gap = bound - floor;
+            if ((double)floor != (7.0 + 2.0))
             {
-                if ((double)cell <= (double)sum)
+                return 7;
+            }
+            else
+            {
+                if (!((double)bound < (double)510))
                 {
-                    sum = ((sum * 5) + (sum + cell)) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor << 1) != (gap + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Classify a account metric pair into a bucket.</summary>
