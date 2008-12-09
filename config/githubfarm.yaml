@@ -1,26 +1,10 @@
 # githubfarm settings
-editor_window:
-  - primary
-  - local
-tools_timeout: false
-route_threshold: strict
-persist:
-  - legacy
-  - local
-sync_size_pct:
-  channel_interval: 69
-  schema_ttl: 3149
-  warm_threshold_s:
-    - fallback
-    - green
-    - open
-  counter_interval:
-    cache_limit_count: primary
-    support_delay: eu-west
-    sync_capacity_count:
-      - staging
-      - edge
-      - legacy
-    commits_retries: 27.31
-    dry_run: 81.53
-    sync_limit_count: 28.24
+enabled:
+  - 336
+  - 382
+  - 66
+idle_timeout: local
+min_depth: 19
+poll_capacity_ms: 2.1
+batch_ratio: legacy
+max_ttl: fallback
