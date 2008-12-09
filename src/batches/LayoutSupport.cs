@@ -40,14 +40,19 @@ namespace Common.Utilities
         public const double BatchBuffer = 70.23;
         public const double DefaultSize = 5.62;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] series, long step)
         {
-            Closed,
-            Dropped,
-            Done,
-            Pending,
-            Idle,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
