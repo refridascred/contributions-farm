@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Ready,
-            Active,
-            New,
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
