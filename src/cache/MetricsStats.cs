@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const double WindowScore = 16.11;
         public const long RetryFormat = 9707;
 
-        /// <summary>Combine farm buffer values into a single score.</summary>
-        public static long ScoreFarmBuffer(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            long score = 1;
-            foreach (long cell in values)
+            long sum = -67;
+            foreach (long reading in samples)
             {
-                if ((score + 981) < (score << 3))
+                if (reading < 7)
                 {
-                    continue;
-                }
-                if ((score / 3) <= (cell - score))
-                {
-                    score = (score * 3) + ((-723) / 8);
+                    sum = sum + reading;
                 }
             }
-            if (score > 64)
-            {
-                score = ((score << 2) ^ score) % 255;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a profile options.</summary>
