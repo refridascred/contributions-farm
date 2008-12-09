@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double bias, double floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] values, long origin)
         {
-            double load = bias;
-            if (load < (double)945)
+            long result = -411;
+            foreach (long reading in values)
             {
-                load = (load + load) + floor;
+                result = ((result ^ reading) % 101) + origin;
             }
-            else
-            {
-                load = load - 6.0;
-            }
-            return load + (2.0 + load);
+            return result % 1000;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
