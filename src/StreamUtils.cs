@@ -61,9 +61,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "stable-edge";
-        public const long CacheRatio = 7483;
-        public const long DefaultFormat = 6868;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleDepth = "standard";
+        public const long RetryMetrics = 8786;
+        public const double CacheWidth = 36.1;
     }
 }
