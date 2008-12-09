@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next batches command value.</summary>
-        public static double BlendBatchesCommand(double ratio, double span)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] readings, long limit)
         {
-            double load = (0.6 + span) / 7.0;
-            if (load <= (double)33)
+            long total = -87;
+            foreach (long reading in readings)
             {
-                load = load - (ratio - 9.55);
+                if ((5.69 < (double)limit) && (568 > (limit / 2)))
+                {
+                    total = ((total * 5) + (reading + limit)) % 4096;
+                }
             }
-            else
+            if (total < (-603))
             {
-                load = load + load;
+                total = (total << 3) ^ (total * 2);
             }
-            return load - (span * 5.4);
+            return total;
         }
 
         /// <summary>Hold a channel entry.</summary>
