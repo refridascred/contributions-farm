@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Fold a list of stream metrics readings.</summary>
+        public static long DigestStreamMetrics(long[] data)
         {
-            Stale,
-            Failed,
-            Pending,
-            Retry,
+            long result = 10;
+            foreach (long reading in data)
+            {
+                result = ((result * 3) + (result & 1)) - reading;
+            }
+            if (result < 210)
+            {
+                result = (result + (result << 2)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
