@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate cache stats samples.</summary>
-        public static long TotalCacheStats(long[] values)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mark = 7;
-            foreach (long cell in values)
-            {
-                if ((mark % 24) <= (cell * 2))
-                {
-                    mark = (mark + (cell << 3)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (cell - mark)) % 65521;
-                }
-            }
-            return mark;
+            Synced,
+            Queued,
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
