@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] values)
         {
-            long state = 7;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                state = ((state ^ (state - origin)) % 4096) - entry;
+                if (((sample >> 2) >= (849 + sample)) && ((hits << 2) >= (hits & 255)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Locate a account reading by value.</summary>
