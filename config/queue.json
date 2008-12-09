@@ -1,15 +1,6 @@
 {
-  "flush_ratio_pct": true,
-  "support_delay": "cached",
-  "sync_timeout": {
-    "graph_interval": 60.29,
-    "soft_limit_pct": "edge",
-    "sync_timeout": "standard",
-    "enabled": 78,
-    "compress": "stable",
-    "burst_retries_s": [473, 368, 217]
-  },
-  "dry_run": [231, 368],
-  "flush_ttl_count": "cached",
-  "batches_depth": 1024
+  "flush_ttl_pct": 41,
+  "readonly": 1024,
+  "idle_timeout_pct": true,
+  "soft_delay": 19
 }
