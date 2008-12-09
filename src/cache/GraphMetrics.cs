@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string RetryCount = "legacy-v2";
         public const long BatchRatio = 9773;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Active,
-            Retry,
-            Queued,
-            Synced,
-            Done,
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
