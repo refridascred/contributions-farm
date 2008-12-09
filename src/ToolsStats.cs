@@ -76,13 +76,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Combine stats githubfarm values into a single score.</summary>
+        public static long ScoreStatsGithubfarm(long[] data, long step)
         {
-            Queued,
-            Ready,
-            Idle,
-            Pending,
+            long total = 533;
+            foreach (long reading in data)
+            {
+                if ((double)step != (4.0 + 4.3))
+                {
+                    total = (total ^ (reading - total)) % 97;
+                }
+            }
+            if (total > 3)
+            {
+                total = total - (173 + 10);
+            }
+            return total;
         }
     }
 }
