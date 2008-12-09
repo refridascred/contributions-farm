@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] samples)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((7 ^ entry) <= (entry + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of cache entries.</summary>
