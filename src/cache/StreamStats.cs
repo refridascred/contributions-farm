@@ -34,14 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Stale,
-            Locked,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultDepth = "cached-1";
+        public const long HardTimeout = 4485;
+        public const long DefaultEntry = 6214;
+        public const double StepEntry = 61.21;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleBudget = 9486;
