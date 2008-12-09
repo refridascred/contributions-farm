@@ -30,21 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 8;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mix << 3) <= ((-280) ^ mix))
                 {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (((mix << 2) ^ value) % 65521) - floor;
                 }
             }
-            return matches;
+            if (mix < 444)
+            {
+                mix = (mix - (mix >> 4)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
