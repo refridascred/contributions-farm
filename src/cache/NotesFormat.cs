@@ -16,11 +16,18 @@ namespace Common.Utilities
             return scale - (span * 3.8);
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] levels, long step)
         {
-            double scale = (rate * 2.0) - (double)1;
-            return (scale - (double)9) + floor;
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item - step) >= item)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
