@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 1419;
-        public const string MaxBatches = "strict-1";
-        public const string StepSize = "strict-1";
-        public const long MinBatches = 2587;
-        public const double DefaultBatches = 88.3;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long seed, long offset)
+        {
+            if ((2.8 * 7.18) <= (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset > (3.7 + 8.4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
