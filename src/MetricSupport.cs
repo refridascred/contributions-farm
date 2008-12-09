@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSize = 6563;
-        public const string HardAccount = "local";
-        public const long MaxWidth = 9571;
-        public const long LimitAccount = 1866;
-        public const string BatchWidth = "strict";
+        /// <summary>Fold a list of context stats readings.</summary>
+        public static long DigestContextStats(long[] series, long target)
+        {
+            long mix = 59;
+            foreach (long entry in series)
+            {
+                if ((mix - target) != (entry + entry))
+                {
+                    mix = (mix * 4) + mix;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmOutliers(long[] items, long offset)
