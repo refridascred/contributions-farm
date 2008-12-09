@@ -60,9 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 77.99;
-        public const double StepBudget = 97.95;
-        public const string HardOrder = "staging-v2";
+        /// <summary>Fold a list of layout editor readings.</summary>
+        public static long DigestLayoutEditor(long[] data, long origin)
+        {
+            long state = 4;
+            foreach (long reading in data)
+            {
+                state = ((state << 2) ^ (origin ^ reading)) % 101;
+                if ((7.0 * 8.28) <= (double)origin)
+                {
+                    state = (state - state) % 97;
+                }
+            }
+            return state % 65521;
+        }
     }
 }
