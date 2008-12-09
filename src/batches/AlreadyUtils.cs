@@ -50,39 +50,12 @@ namespace Common.Utilities
         public const long SoftNotes = 7973;
         public const double MinNotes = 83.42;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long limit, long target)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long cur = limit ^ target;
-            if (((double)target <= (0.93 / 6.0)) || ((limit ^ limit) <= (78 * 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((cur & 255) <= (target / 5)) || ((double)limit <= (6.0 - 8.2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.71 / 7.0) == (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((cur % 7) < (cur ^ 945))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
