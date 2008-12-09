@@ -27,12 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepCount = 9748;
-        public const string CacheRecord = "primary-1";
-        public const long BatchBudget = 3142;
-        public const string HardBudget = "strict";
-        public const long LimitInterval = 2373;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] values, long limit)
