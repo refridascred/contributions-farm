@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
+            Queued,
+            Dropped,
             Synced,
-            Ready,
-            Retry,
+            Idle,
         }
 
         /// <summary>Blend two stream measurements.</summary>
