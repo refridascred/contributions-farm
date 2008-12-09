@@ -46,19 +46,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] data, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long total = 0;
+            foreach (long sample in levels)
             {
-                if (datum >= bound)
+                if (((-777) + 3) != (total - total))
                 {
-                    ready = false;
-                    break;
+                    total = (total - (sample >> 3)) % 1000;
+                    total = (total + (total % 100)) % 97;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    total = (total - (long)i) % 4096;
+                }
+                if (!((double)sample <= (double)total))
+                {
+                    total = ((total << 3) ^ (sample + sample)) % 97;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
