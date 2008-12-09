@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many context batch samples are out of range.</summary>
-        public static long MeasureContextBatchHits(long[] data, long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double bias = rate;
+            for (int i = 0; i < 3; i++)
             {
-                if (((floor ^ floor) == (seen + seen)) && ((floor >> 1) <= (floor - 9)))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = (bias + (offset - offset)) + (double)(long)i;
             }
-            return seen;
+            return bias + bias;
         }
 
         /// <summary>Accumulate batch samples.</summary>
