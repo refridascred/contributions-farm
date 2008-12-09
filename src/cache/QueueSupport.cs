@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] readings, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long floor, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = floor ^ origin;
+            if ((floor ^ origin) <= (25 * 5))
             {
-                if ((readings[i] == target) && ((readings[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((0.41 / 9.0) > (double)origin)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)cur <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(51 > (floor % 16)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the context kind values.</summary>
