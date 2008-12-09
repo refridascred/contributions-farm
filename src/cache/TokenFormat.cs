@@ -34,17 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] readings, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 58;
+            foreach (long item in values)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
+                if ((long)values.Length >= (item >> 3))
                 {
-                    return (long)i;
+                    score = (score ^ (item / 6)) % 97;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
