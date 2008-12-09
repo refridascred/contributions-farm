@@ -46,11 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
+        public static long CountOrderGithubfarmMatches(long[] levels, long limit)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((5.0 / 4.0) == (double)limit)
+                {
+                    tally = (tally + 1) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
