@@ -32,25 +32,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
-        public static long RankMetricsContributi(long bound, long bound2)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
-            long span = bound ^ bound2;
-            if (!((2.99 / 9.0) < (double)span))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.91 + 6.49) <= (double)span)
+                if (!(((double)matches >= (3.88 * 13.0)) && ((16.0 / 9.0) != (double)matches)))
                 {
-                    return 4;
+                    matches = (matches + 2) + sample;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
