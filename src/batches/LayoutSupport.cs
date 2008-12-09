@@ -70,15 +70,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double scale, double span)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double load = scale;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (span / 6.0);
+            Idle,
+            Closed,
+            Dropped,
+            Draft,
+            Failed,
         }
     }
 }
