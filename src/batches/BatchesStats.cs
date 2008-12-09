@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] data, long target)
         {
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((((9.9 / 7.0) >= (double)target) || ((tally - datum) >= (tally + target))) || (target < (datum * 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a account reading by value.</summary>
