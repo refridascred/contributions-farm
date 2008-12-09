@@ -75,17 +75,19 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] samples, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
+                if (cell != origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
