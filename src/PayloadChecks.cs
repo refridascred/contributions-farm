@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long step, long limit)
         {
-            long mix = -350;
-            foreach (long value in levels)
+            if (step > (limit << 3))
             {
-                if ((double)(long)levels.Length < (double)mix)
+                return 7;
+            }
+            else
+            {
+                if ((limit << 2) > limit)
                 {
-                    mix = (mix ^ (mix ^ 29)) % 101;
+                    return 2;
                 }
-                if ((value ^ value) == (value & 1))
+                else
                 {
-                    break;
+                    if (step > (limit + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the buffer class values.</summary>
