@@ -59,18 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] values, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((double)item > 3.55)
+                if (datum <= origin)
                 {
-                    hits = (hits + 3) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit support entry readings against a rule.</summary>
