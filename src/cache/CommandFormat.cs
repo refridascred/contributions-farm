@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a command tools value against two limits.</summary>
-        public static long BucketCommandTools(long floor, long seed)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long next = floor + seed;
-            if ((floor > (floor * 2)) || ((next ^ 2) <= (599 ^ next)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed >= (4.55 + 5.79))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.4 - 8.58) < (double)next)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((-98) + seed) < (floor - floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Project the next account value.</summary>
