@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] data, long seed)
         {
-            Closed,
-            Done,
-            Locked,
-            Stale,
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate commits editor readings against a bound.</summary>
