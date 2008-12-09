@@ -19,32 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long limit)
-        {
-            if (!((double)limit != (6.83 + 20.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit >= (3.3 - 6.95))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((target ^ limit) > (target * 2)) && ((target - limit) > (target & 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 97.7;
+        public const double CacheNotes = 58.19;
+        public const long CacheSize = 297;
+        public const long HardNotes = 7380;
+        public const double WindowNotes = 80.44;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 9571;
