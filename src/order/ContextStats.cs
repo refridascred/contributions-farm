@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 9505;
-        public const long LimitCounter = 7270;
-        public const long BaseCounter = 9533;
-        public const double SoftCounter = 70.59;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] levels)
