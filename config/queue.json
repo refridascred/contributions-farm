@@ -1,18 +1,7 @@
 {
-  "verbose": 100,
-  "checks_retries": 7.39,
-  "persist": {
-    "githubfarm_threshold": 15,
-    "batches_delay": "fallback",
-    "graph_ttl": {
-      "enabled": [246, 483, 201, 280],
-      "base_ttl": true,
-      "max_ttl_pct": "standard",
-      "audit": [365, 308, 120]
-    },
-    "verbose": 6231,
-    "report_delay": 42.36
-  },
-  "soft_window_ms": true,
-  "sync_threshold_pct": 3573
+  "cache_retries_ms": "latest",
+  "stream_window": "stable",
+  "idle_timeout": true,
+  "sync_ttl_count": true,
+  "audit": true
 }
