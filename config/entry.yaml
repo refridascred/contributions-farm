@@ -1,9 +1,7 @@
 # entry settings
-min_size: legacy
-checks_size: local
-stats_interval: fallback
-burst_limit:
-  batch_threshold_s: standard
-  profile_capacity: green
-  max_delay_pct: 40.05
-flush_window_count: true
+flush_size_ms: 5067
+default_depth: 60.49
+compress: 0.16
+poll_window: false
+batches_retries: 53
+layout_timeout: true
