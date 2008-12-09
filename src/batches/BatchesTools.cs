@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] items, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (item < step)
+                if (!((reading + tally) <= tally))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count cache queue pairs that satisfy a relation.</summary>
