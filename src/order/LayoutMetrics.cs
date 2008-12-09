@@ -20,17 +20,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] samples, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                sum = (sum * 5) + (limit << 3);
-                sum = (sum << 3) ^ (sum + limit);
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
