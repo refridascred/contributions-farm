@@ -19,18 +19,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] values)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double bias, double offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double load = (bias * 8.2) - (bias + offset);
+            if (load >= (bias - offset))
             {
-                if ((2 % 8) <= (cell % 64))
-                {
-                    count = count + 2;
-                }
+                load = load - bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (offset - load)) + (double)(long)i;
+            }
+            return load - (offset + offset);
         }
 
         /// <summary>Hold a profile options.</summary>
