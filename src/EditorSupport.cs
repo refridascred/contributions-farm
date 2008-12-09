@@ -71,21 +71,23 @@ namespace Common.Utilities
         public const double BaseCount = 3.49;
         public const long MaxEntry = 8728;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Fold a list of githubfarm context readings.</summary>
+        public static long FoldGithubfarmContext(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 94;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = state ^ value;
+                if ((20.0 * 16.0) == (double)target)
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (state < 3)
+            {
+                state = (state * 3) + (89 - target);
+            }
+            return state % 97;
         }
     }
 }
