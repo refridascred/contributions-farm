@@ -41,32 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long bound, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double bias, double floor)
         {
-            long bound2 = bound - floor;
-            if ((9 + bound) == (floor << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) == (bound2 + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= ((-9) - bound2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double weight = (double)(1 * 2);
+            return ((weight + weight) + bias) + floor;
         }
     }
 }
