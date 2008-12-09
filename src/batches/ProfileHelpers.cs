@@ -15,32 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long seed, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double gain, double span)
         {
-            long offset2 = seed + offset;
-            if ((1.83 * 0.4) > (double)offset2)
+            double mean = span;
+            if (mean >= span)
             {
-                return 7;
+                mean = (mean + 6.4) - gain;
             }
             else
             {
-                if ((offset << 2) >= (offset * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset2 ^ 596) <= (1 + offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = mean - (double)93;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + (double)661;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
