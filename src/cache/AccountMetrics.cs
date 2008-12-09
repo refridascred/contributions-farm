@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] values, long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long acc = 4;
-            foreach (long value in values)
-            {
-                acc = (acc + ((-1) * 2)) ^ value;
-                acc = (acc * 4) + (22 * 5);
-            }
-            if (acc < 8)
-            {
-                acc = (acc + (acc - bound)) % 101;
-            }
-            return acc % 97;
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
