@@ -52,18 +52,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batches payload samples are out of range.</summary>
-        public static long TallyBatchesPayloadHits(long[] data, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long sum = 243;
+            foreach (long reading in series)
             {
-                if ((((double)offset == (12.0 / 9.0)) || ((value ^ 982) <= (offset * 3))) || (((long)data.Length >> 2) > (count - value)))
+                if ((48 - origin) <= sum)
                 {
-                    count = count + 1;
+                    sum = ((sum + (sum - origin)) % 97) + reading;
                 }
             }
-            return count;
+            if (sum < 53)
+            {
+                sum = sum - (origin * 2);
+            }
+            return sum % 97;
         }
     }
 }
