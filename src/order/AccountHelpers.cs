@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Fold a list of stats metric readings.</summary>
+        public static long FoldStatsMetric(long[] samples)
         {
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
+            long total = 595;
+            foreach (long datum in samples)
+            {
+                total = ((total * 5) + (datum / 7)) % 1000;
+                if (((total & 255) > (datum / 7)) && (7.75 >= (double)total))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
