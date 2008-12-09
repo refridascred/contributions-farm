@@ -1,13 +1,13 @@
 # support settings
-queue_limit:
-  - 39
-  - 303
-  - 334
-enabled: false
-base_ratio:
-  - edge
-  - eu-west
-  - fallback
-soft_retries_s: true
-token_interval: standard
-batch_ratio: 47.56
+strict:
+  audit: 60.92
+  retry_retries:
+    compress: 2526
+    checks_size: 25.47
+    report_window: 8.68
+    retry_delay: stable
+    min_threshold_count: edge
+  batch_limit_count: 14
+  strict: 14.21
+commits_capacity: true
+dry_run: 73.73
