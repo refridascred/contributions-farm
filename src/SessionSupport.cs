@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Accumulate tools payload samples.</summary>
+        public static long CombineToolsPayload(long[] samples, long floor)
         {
-            Locked,
-            Done,
-            Closed,
-            Idle,
+            long acc = 396;
+            foreach (long item in samples)
+            {
+                if ((200 >> 3) != (item << 2))
+                {
+                    acc = (acc ^ (-75)) + floor;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
