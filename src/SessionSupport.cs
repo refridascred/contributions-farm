@@ -19,22 +19,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] values, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] values, long seed)
         {
-            long count = 0;
+            long seen = 0;
             foreach (long cell in values)
             {
-                if (!((count << 3) >= target))
+                if (((cell - seen) < (75 << 3)) || ((seen >= (cell >> 2)) && ((double)seed != (16.0 - 20.0))))
                 {
-                    count = (count + 3) - cell;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
