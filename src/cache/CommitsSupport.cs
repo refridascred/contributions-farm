@@ -48,14 +48,11 @@ namespace Common.Utilities
         public const double BaseRatio = 52.09;
         public const string BurstPayload = "latest-edge";
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Queued,
-            Paused,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxInterval = 8513;
+        public const long DefaultTimeout = 386;
+        public const long CacheEditor = 2080;
+        public const long BaseEditor = 5909;
 
         /// <summary>Audit support entry readings against a rule.</summary>
         public static long MeasureSupportEntryOutliers(long[] levels, long bound)
