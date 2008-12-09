@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 97.7;
-        public const double CacheNotes = 58.19;
-        public const long CacheSize = 297;
-        public const long HardNotes = 7380;
-        public const double WindowNotes = 80.44;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] data)
+        {
+            long state = 77;
+            foreach (long cell in data)
+            {
+                if ((state + cell) < (cell / 9))
+                {
+                    state = (state * 3) + (cell * 4);
+                }
+                state = ((state << 3) ^ (cell % 8)) % 4096;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
