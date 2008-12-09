@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const string RetryCount = "legacy-v2";
         public const long BatchRatio = 9773;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Queued,
-            Retry,
-            Locked,
-            Done,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSize = 1534;
+        public const double LimitSize = 69.62;
+        public const string MinLevel = "staging";
+        public const long DefaultContributi = 6104;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BaseBudget = "stable-1";
