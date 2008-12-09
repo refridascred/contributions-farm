@@ -65,16 +65,13 @@ namespace Common.Utilities
         public const long BatchCommand = 8831;
         public const string LimitTimeout = "latest-1";
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Queued,
+            Ready,
+            Idle,
+            Pending,
         }
     }
 }
