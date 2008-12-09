@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string RetryCount = "legacy-v2";
         public const long BatchRatio = 9773;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] items, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                score = (score ^ (score % 2)) % 65521;
-                score = (score - score) % 65521;
-                score = score - (long)i;
-                score = ((score * 3) + (long)i) % 1000;
+                if ((floor & 3) <= (floor & 63))
+                {
+                    tally = (tally + 2) - datum;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
