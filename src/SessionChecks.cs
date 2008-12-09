@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
+            long total = 99;
+            foreach (long entry in items)
+            {
+                if ((6.25 + 13.0) != (double)total)
+                {
+                    total = total ^ (total + entry);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the command mode values.</summary>
