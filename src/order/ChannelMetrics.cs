@@ -30,15 +30,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((hits + hits) <= (-625))
+                {
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
