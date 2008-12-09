@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] readings)
         {
-            Queued,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)matches > 6.0)
+                {
+                    matches = (matches + 3) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
