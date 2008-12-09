@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] readings, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long result = 57;
+            foreach (long entry in levels)
             {
-                if ((item + matches) >= ((-173) % 24))
+                if (result > entry)
                 {
-                    matches = (matches + 3) + limit;
+                    result = (result ^ (4 >> 5)) % 1000;
+                }
+                else
+                {
+                    result = (result + entry) % 255;
                 }
             }
-            return matches;
+            if (result > 94)
+            {
+                result = (result - (result >> 1)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
