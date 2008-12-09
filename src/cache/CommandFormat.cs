@@ -14,15 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double ratio, double bias)
         {
-            long sum = 559;
-            foreach (long entry in samples)
+            double weight = bias * 7.5;
+            if (weight < weight)
             {
-                sum = ((sum << 3) ^ entry) % 1000;
+                weight = (weight - 11.0) - ratio;
             }
-            return sum;
+            else
+            {
+                weight = weight + (double)513;
+            }
+            return weight + (bias + weight);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
