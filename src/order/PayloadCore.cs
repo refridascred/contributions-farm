@@ -49,16 +49,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] items, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result + (699 - 911);
-                result = ((result * 3) + (long)i) % 1000;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
