@@ -16,19 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] levels, long target)
         {
-            double load = ratio + 6.41;
-            if (load <= (offset * 4.78))
+            long state = -56;
+            foreach (long item in levels)
             {
-                load = load - offset;
+                state = state - (long)levels.Length;
+                if ((item + target) == ((long)levels.Length >> 2))
+                {
+                    state = ((state << 2) ^ (8 - target)) % 97;
+                }
+                if ((3.5 - 9.2) > (double)item)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - (double)51;
+            return state;
         }
 
         /// <summary>Describe the account kind values.</summary>
