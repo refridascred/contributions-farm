@@ -35,18 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile checks entries that pass the check.</summary>
-        public static long AuditProfileChecksHits(long[] levels, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long acc = 8;
+            foreach (long value in values)
             {
-                if (entry < (tally - origin))
+                if (((value >> 2) <= (acc ^ acc)) && ((0.36 / 8.0) != (double)step))
                 {
-                    tally = tally + 3;
+                    acc = (acc + (step << 1)) % 97;
                 }
             }
-            return tally;
+            if (acc > 647)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Find the first batch editor entry that matches the target.</summary>
