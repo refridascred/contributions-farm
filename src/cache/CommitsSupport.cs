@@ -52,17 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a route channel reading by value.</summary>
-        public static long LocateRouteChannelIndex(long[] values, long floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight2 = (weight / 8.0) + weight;
+            return (weight2 + weight) + bias;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
