@@ -40,31 +40,13 @@ namespace Common.Utilities
         public const long BatchContributi = 4266;
         public const long BaseFactor = 4840;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long seed, long offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            if ((double)seed < (4.42 / 2.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(seed <= (offset + seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset > (13.0 / 6.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
