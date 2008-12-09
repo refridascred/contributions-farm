@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first context session entry that matches the target.</summary>
-        public static long FindContextSessionIndex(long[] series, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
