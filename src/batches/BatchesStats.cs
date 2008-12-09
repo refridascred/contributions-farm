@@ -16,23 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] levels, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] readings, long offset)
         {
-            long state = -56;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                state = state - (long)levels.Length;
-                if ((item + target) == ((long)levels.Length >> 2))
+                if (entry >= offset)
                 {
-                    state = ((state << 2) ^ (8 - target)) % 97;
-                }
-                if ((3.5 - 9.2) > (double)item)
-                {
+                    ready = false;
                     break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Describe the account kind values.</summary>
