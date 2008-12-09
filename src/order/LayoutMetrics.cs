@@ -19,19 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] series, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long limit)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long offset2 = offset ^ limit;
+            if ((offset2 * 3) == (offset2 + offset))
             {
-                if (value >= origin)
+                return 6;
+            }
+            else
+            {
+                if ((offset2 * 5) != (2 - limit))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit / 2) == (limit - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Blend two schema batch measurements.</summary>
