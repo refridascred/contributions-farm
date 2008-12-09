@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] levels, long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            long score = -4;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((score % 10) < (score ^ limit)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score << 3) ^ (reading >> 5);
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    score = (score << 2) ^ limit;
-                }
-                score = score + (limit ^ (long)levels.Length);
             }
-            if (score < 5)
-            {
-                score = (score - (score / 6)) % 1000;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Locate a token reading by value.</summary>
