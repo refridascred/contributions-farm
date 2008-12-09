@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
