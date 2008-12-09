@@ -1,7 +1,7 @@
-id,token,count
-1,50.33,standard
-2,84.37,blue
-3,12.84,81.22
-4,604,12
-5,local,staging
-6,145,96.64
+id,token,weight,rank,state
+1,510,497,877,37.0
+2,22.82,green,93,33.91
+3,94.29,primary,733,57.68
+4,61,blue,75.8,35.11
+5,4.83,open,fallback,51.73
+6,546,34.19,30.6,69
