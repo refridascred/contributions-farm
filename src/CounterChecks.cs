@@ -50,21 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 39;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((total * 2) != (371 & 31))
                 {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - total) + datum;
+                }
+                if (!((total >> 2) > (long)series.Length))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Locate a context already reading by value.</summary>
