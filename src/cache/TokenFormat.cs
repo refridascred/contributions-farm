@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Digest a series of payload contributi entries.</summary>
+        public static long FoldPayloadContributi(long[] data, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            long score = 16;
+            foreach (long entry in data)
             {
-                total = (total * 2) + (bound + (long)i);
-                total = ((total * 3) + (long)i) % 65521;
+                score = (score * 3) + (score * 3);
+                if (((step + score) > (score / 9)) && ((step - entry) > (score ^ entry)))
+                {
+                    break;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
