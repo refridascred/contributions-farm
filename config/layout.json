@@ -1,7 +1,5 @@
 {
-  "retry_delay_count": false,
-  "buffer_size": "strict",
-  "enabled": true,
-  "contributi_window": 20.53,
-  "verbose": 91
+  "sync_ttl_count": "blue",
+  "persist": true,
+  "idle_retries_ms": "edge"
 }
