@@ -22,17 +22,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] data, long limit)
+        /// <summary>Blend two session order measurements.</summary>
+        public static double SmoothSessionOrder(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = 6.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
+                mean = ((mean - mean) - (double)(long)i) - rate;
             }
-            return -1;
+            return mean + floor;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
