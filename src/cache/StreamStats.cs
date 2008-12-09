@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 2978;
+        public const long RetryBuffer = 8992;
+        public const long MinScore = 8436;
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double ratio, double bias)
