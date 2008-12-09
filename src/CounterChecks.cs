@@ -66,22 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long total = 39;
-            foreach (long datum in series)
-            {
-                if ((total * 2) != (371 & 31))
-                {
-                    total = (total - total) + datum;
-                }
-                if (!((total >> 2) > (long)series.Length))
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
