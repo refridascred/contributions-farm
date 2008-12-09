@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 2048;
         public const double HardStats = 94.86;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] data)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double gain = bias;
+            if (gain < gain)
             {
-                if ((double)tally >= (7.09 + 8.52))
-                {
-                    tally = (tally + 3) + entry;
-                }
+                gain = gain - gain;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain - (bias2 - gain);
         }
     }
 }
