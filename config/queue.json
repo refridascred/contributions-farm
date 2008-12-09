@@ -1,5 +1,8 @@
 {
-  "session_ttl": false,
-  "githubfarm_threshold": "green",
-  "readonly": 9252
+  "audit": 100,
+  "cache_capacity": [95, 118],
+  "default_ratio_ms": "latest",
+  "hard_ttl_ms": ["standard", "standard", "latest", "cached"],
+  "verbose": 68.5,
+  "retry_delay_pct": [378, 39]
 }
