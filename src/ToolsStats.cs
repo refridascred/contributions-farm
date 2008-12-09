@@ -35,13 +35,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Dropped,
-            Stale,
-            Pending,
-            Ready,
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
