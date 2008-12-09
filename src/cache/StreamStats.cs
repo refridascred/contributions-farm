@@ -15,22 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] series)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((((count >> 1) != (737 % 97)) || ((count + count) <= (entry ^ 6))) && ((entry - count) != (count ^ count)))
+                if (sample > bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
