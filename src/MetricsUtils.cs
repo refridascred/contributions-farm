@@ -17,18 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the record tools entries that pass the check.</summary>
-        public static long CountRecordToolsMatches(long[] items, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((193 + reading) != (seed - reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
