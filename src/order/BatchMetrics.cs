@@ -33,16 +33,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long target)
         {
-            long anchor = 56;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                anchor = ((anchor + (1 + anchor)) % 101) ^ sample;
-                anchor = (anchor * 3) + ((long)values.Length & 7);
+                if (value >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor % 4096;
+            return valid;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
