@@ -1,9 +1,10 @@
 # githubfarm settings
-report_depth: 88.46
-notes_timeout: eu-west
-queue_ratio:
-  graph_limit: edge
-  dry_run: 7909
-  profile_size: legacy
-idle_threshold_count: stable
-min_limit: 43.64
+batch_delay_s: eu-west
+persist: 30
+batch_retries: 100
+base_retries: true
+githubfarm_ttl:
+  - 50
+  - 475
+  - 215
+  - 282
