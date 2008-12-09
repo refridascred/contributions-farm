@@ -49,22 +49,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] samples, long origin)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long offset = origin + limit;
+            if ((limit >= origin) && ((double)origin <= (5.0 + 5.0)))
             {
-                if ((origin / 6) < (0 % 7))
+                return 4;
+            }
+            else
+            {
+                if ((origin * 3) < (limit << 2))
                 {
-                    matches = (matches + 1) + item;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((offset ^ limit) > (origin % 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank support input into a small class.</summary>
