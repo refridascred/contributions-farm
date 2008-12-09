@@ -1,4 +1,25 @@
 # entry settings
-enabled: 35
-retry_ttl_pct: 83.17
-default_window_count: latest
+strict: 1024
+warm_timeout_count:
+  compress:
+    flush_threshold_s:
+      - stable
+      - blue
+    counter_delay: false
+    tools_ratio: primary
+    base_timeout_count: false
+    default_delay_s: 2
+  base_interval:
+    - standard
+    - local
+    - latest
+  poll_timeout_s: blue
+base_depth: local
+stream_window: 87
+soft_timeout_s:
+  base_window_pct: false
+  warm_size: standard
+  poll_ttl_ms: edge
+  persist: primary
+  strict: 60
+  token_delay: stable
