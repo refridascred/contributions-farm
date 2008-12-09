@@ -77,22 +77,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double rate, double span)
         {
-            long score = -7;
-            foreach (long sample in samples)
-            {
-                if (((double)sample > (7.9 / 2.0)) || ((double)score < 3.0))
-                {
-                    score = (score + sample) % 1000;
-                }
-            }
-            if (score > 292)
-            {
-                score = score ^ (score - (-2));
-            }
-            return score;
+            double scale = rate;
+            return (scale + (double)3) + span;
         }
     }
 }
