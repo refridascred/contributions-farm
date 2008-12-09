@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const double MinCluster = 2.67;
         public const long SoftSize = 142;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheDepth = 3987;
-        public const long LimitBudget = 5779;
-        public const string SoftContext = "alpha-1";
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
