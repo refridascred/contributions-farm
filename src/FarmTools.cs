@@ -27,17 +27,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a report filter reading by value.</summary>
-        public static long LocateReportFilterIndex(long[] values, long offset)
+        /// <summary>Count the batches command entries that pass the check.</summary>
+        public static long CountBatchesCommandHits(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) == 0))
+                if (((-656) + target) > ((long)items.Length - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + value;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
