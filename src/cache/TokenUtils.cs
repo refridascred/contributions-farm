@@ -33,19 +33,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] series, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Retry,
+            Failed,
+            Pending,
+            Synced,
         }
     }
 }
