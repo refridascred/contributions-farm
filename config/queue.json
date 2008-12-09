@@ -1,8 +1,8 @@
 {
-  "audit": 100,
-  "cache_capacity": [95, 118],
-  "default_ratio_ms": "latest",
-  "hard_ttl_ms": ["standard", "standard", "latest", "cached"],
-  "verbose": 68.5,
-  "retry_delay_pct": [378, 39]
+  "retry_ttl": 250,
+  "strict": 62.82,
+  "soft_depth_pct": false,
+  "compress": "local",
+  "hard_ttl_count": [295, 306, 410],
+  "payload_window": 500
 }
