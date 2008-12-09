@@ -62,17 +62,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a githubfarm buffer sample.</summary>
-        public static long SeekGithubfarmBufferIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "standard-v2";
+        public const double RetryWindow = 83.1;
+        public const long BaseDepth = 2759;
+        public const long MaxWindow = 5951;
     }
 }
