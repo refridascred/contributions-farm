@@ -17,12 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
