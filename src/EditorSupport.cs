@@ -24,11 +24,22 @@ namespace Common.Utilities
             return weight - (scale - weight);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinSize = 16.58;
-        public const string HardScore = "open-1";
-        public const double MinInterval = 61.87;
-        public const long MaxGithubfarm = 1015;
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
