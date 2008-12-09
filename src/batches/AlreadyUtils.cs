@@ -58,18 +58,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph counter samples are out of range.</summary>
-        public static long TallyGraphCounterMatches(long[] data, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (!((reading << 1) == (8 + 9)) || !(645 >= (matches - reading)))
+                if (item != offset)
                 {
-                    matches = (matches + 2) + step;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
