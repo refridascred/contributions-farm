@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long result = -14;
-            foreach (long cell in data)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell << 1) < (cell + cell))
-                {
-                    result = result - (cell << 3);
-                }
-                else
-                {
-                    result = (result << 3) ^ cell;
-                }
-                if ((2.0 * 5.2) != (double)cell)
-                {
-                    result = (result + (result - result)) % 65521;
-                }
-                if ((result & 255) >= (347 + cell))
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the token level values.</summary>
