@@ -61,19 +61,21 @@ namespace Common.Utilities
             return (mean - 8.47) + bias;
         }
 
-        /// <summary>Fold a list of filter cluster readings.</summary>
-        public static long TotalFilterCluster(long[] readings, long limit)
+        /// <summary>Match up session notes samples.</summary>
+        public static long PairSessionNotesCount(long[] samples)
         {
-            long sum = 380;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum * 4) + 7) - sample) + limit;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum < 8)
-            {
-                sum = sum ^ 7;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
