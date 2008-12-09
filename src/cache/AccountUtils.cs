@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long floor, long origin)
-        {
-            long bound = floor + origin;
-            if (((6.93 - 2.0) == (double)origin) && (8.0 < (double)bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor == (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound >> 5) >= (floor ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7.49 + 2.0) > (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 83.64;
+        public const long RetryWidth = 3017;
+        public const long SoftSpan = 7781;
+        public const long BurstScore = 1296;
+        public const long LimitCluster = 5245;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
