@@ -1,7 +1,8 @@
-id,rank,level,score,label
-1,51.53,54.13,cached,blue
-2,62.21,78.84,887,25.23
-3,741,46.85,41.64,256
-4,437,269,918,local
-5,green,34.19,local,824
-6,40.11,434,90.8,36.25
+id,label,rank,count,token
+1,96.9,98.94,legacy,51.82
+2,77.46,563,301,18.16
+3,blue,468,732,fallback
+4,343,open,95.23,361
+5,primary,22.31,18.76,997
+6,18.45,154,564,blue
+7,627,standard,strict,56.4
