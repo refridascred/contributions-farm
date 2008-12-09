@@ -14,12 +14,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Rank filter graph input into a small class.</summary>
+        public static long BucketFilterGraph(long limit, long seed)
         {
-            Retry,
-            New,
-            Done,
+            long next = limit + seed;
+            if ((seed / 3) == (next + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((696 - next) == (limit + next))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit > (12.0 * 8.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((next * 3) > (limit ^ next)) && (next >= (25 << 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record record.</summary>
