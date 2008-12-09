@@ -32,27 +32,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] samples, long seed)
         {
-            long acc = -1;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                acc = (acc << 2) ^ (sample - acc);
-                if (!(761 < sample))
+                if (datum < seed)
                 {
-                    acc = acc - (acc + acc);
-                }
-                else
-                {
-                    acc = acc - (sample & 63);
-                }
-                if ((acc % 16) > (acc - sample))
-                {
-                    acc = ((acc << 3) ^ (sample % 16)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
