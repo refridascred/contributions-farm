@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long score = 3;
-            foreach (long item in values)
-            {
-                if ((item / 2) != (item / 3))
-                {
-                    score = ((score << 3) ^ (item - score)) % 97;
-                }
-            }
-            if (score < 39)
-            {
-                score = ((score << 2) ^ (score + score)) % 255;
-            }
-            return score % 4096;
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Roll a token counter forward.</summary>
