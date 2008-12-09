@@ -20,28 +20,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                double mean = 9.0;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (((result * 2) + (seed + seed)) % 101) - (long)i2;
-                }
-                if ((mean + mean) > (2.9 - mean))
-                {
-                    result = (result * 5) + (seed + result);
-                }
-                else
-                {
-                    result = (result - (499 & 3)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                sum = (sum * 5) + (limit << 3);
+                sum = (sum << 3) ^ (sum + limit);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
