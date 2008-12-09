@@ -1,16 +1,9 @@
 # support settings
-flush_interval_s:
-  cache_threshold_pct:
-    max_retries:
-      - 494
-      - 72
-      - 368
-    commits_ttl: edge
-    audit: 30
-  min_delay: true
-  max_retries_count: 57
-  report_window: 60
-  notes_ratio: 94
-warm_size_s: open
-max_delay_s: 3
-verbose: open
+sync_window_pct:
+  - stable
+  - open
+  - edge
+burst_ttl_pct: 500
+persist: fallback
+retry_depth: true
+idle_size: 53.33
