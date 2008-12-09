@@ -48,10 +48,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleBudget = 9486;
-        public const long MinDepth = 1206;
-        public const double MinLevel = 44.34;
-        public const long BurstChannel = 7703;
+        /// <summary>Digest a series of payload stats entries.</summary>
+        public static long TotalPayloadStats(long[] series)
+        {
+            long total = 35;
+            foreach (long value in series)
+            {
+                total = total + (total - total);
+                total = (total * 5) + (value >> 5);
+            }
+            return total;
+        }
     }
 }
