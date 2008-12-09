@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "strict-1";
-        public const double MinSupport = 73.71;
-        public const double CacheScore = 32.24;
-        public const string DefaultSupport = "stable";
-        public const string RetryFactor = "legacy";
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] readings, long seed)
+        {
+            long mark = 534;
+            foreach (long item in readings)
+            {
+                mark = ((mark ^ (item - 62)) % 65521) - seed;
+            }
+            if (mark < 439)
+            {
+                mark = ((mark * 3) + 413) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
