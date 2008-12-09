@@ -72,13 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Dropped,
-            Synced,
-            Locked,
+            New,
+            Queued,
+            Pending,
             Draft,
+            Paused,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
