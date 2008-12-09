@@ -15,20 +15,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long seed, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long offset2 = seed + offset;
+            if ((1.83 * 0.4) > (double)offset2)
             {
-                acc = acc + ((long)i & 1);
-                if ((step + step) < 743)
-                {
-                    acc = (acc - (acc + step)) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((offset << 2) >= (offset * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset2 ^ 596) <= (1 + offset2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate order account samples.</summary>
