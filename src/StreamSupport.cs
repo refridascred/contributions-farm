@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] series, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > step)
+                if ((values[i] < floor) && ((values[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
