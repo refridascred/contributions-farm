@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel schema samples.</summary>
-        public static long CombineChannelSchema(long[] samples, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long anchor = 285;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor ^ (94 << 1)) ^ reading) - limit;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
