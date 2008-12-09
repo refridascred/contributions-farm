@@ -55,20 +55,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 2048;
         public const double HardStats = 94.86;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Find the first batch metrics entry that matches the target.</summary>
+        public static long LookupBatchMetricsIndex(long[] series, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (series[i] >= seed)
                 {
-                    score = (((score * 2) + origin) % 101) - (long)i2;
-                    score = ((score * 3) + (score / 4)) % 97;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
     }
 }
