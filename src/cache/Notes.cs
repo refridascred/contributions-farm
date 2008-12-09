@@ -20,27 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate schema layout samples.</summary>
-        public static long ScoreSchemaLayout(long[] values, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] values)
         {
-            long score = 19;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((4.21 - 20.0) < (double)step)
+                if ((376 + tally) < (tally * 2))
                 {
-                    score = ((score << 3) ^ datum) % 1000;
+                    tally = (tally + 3) ^ reading;
                 }
-                else
-                {
-                    score = ((score << 2) ^ datum) % 1000;
-                }
-                score = score - (0 % 7);
             }
-            if (score < 53)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
