@@ -58,10 +58,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 743;
-        public const long BurstContext = 9243;
-        public const string DefaultSpan = "open-1";
-        public const string SoftContext = "cached-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryBudget = 3605;
+        public const long DefaultProfile = 9076;
+        public const long BaseProfile = 187;
+        public const long BurstProfile = 3710;
+        public const double MaxProfile = 38.47;
     }
 }
