@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] values, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            long state = 702;
-            foreach (long sample in values)
+            long state = 7;
+            foreach (long sample in levels)
             {
-                state = (state << 2) ^ (sample * 2);
-                if (((double)state == (double)bound) && ((sample - sample) >= (-68)))
+                if ((8.3 + 2.0) <= (double)state)
                 {
-                    state = ((state * 2) + (bound - sample)) % 1000;
+                    state = ((state << 2) ^ (sample + state)) % 4096;
                 }
             }
-            return state;
+            return state % 1000;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
