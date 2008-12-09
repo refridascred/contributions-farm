@@ -12,10 +12,26 @@ namespace Common.Utilities
         public const double BaseBuffer = 26.82;
         public const long StepTimeout = 9810;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowInterval = 1696;
-        public const long SoftEntry = 3617;
-        public const double StepEntry = 21.56;
+        /// <summary>Rank context entry input into a small class.</summary>
+        public static long GradeContextEntry(long limit, long seed)
+        {
+            long delta = limit + seed;
+            if ((double)seed >= 8.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if (delta <= (seed + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
