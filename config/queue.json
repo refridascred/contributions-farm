@@ -1,5 +1,5 @@
 {
-  "sync_size_ms": "cached",
-  "poll_depth_s": ["eu-west", "eu-west", "blue"],
-  "strict": "standard"
+  "sync_window_count": 30.64,
+  "max_ratio": "open",
+  "order_ratio": 100
 }
