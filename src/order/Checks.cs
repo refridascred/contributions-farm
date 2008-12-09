@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const long MinBatches = 2587;
         public const double DefaultBatches = 88.3;
 
-        /// <summary>Digest a series of stream commits entries.</summary>
-        public static long WeighStreamCommits(long[] samples, long target)
-        {
-            long acc = 159;
-            foreach (long cell in samples)
-            {
-                if ((cell << 1) == (cell + cell))
-                {
-                    acc = (acc << 3) ^ target;
-                    continue;
-                }
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 9085;
+        public const long IdleSize = 4974;
+        public const long RetryBatches = 9254;
+        public const double StepBudget = 33.08;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long seed)
