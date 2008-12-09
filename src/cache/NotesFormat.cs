@@ -20,16 +20,30 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] samples, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] series)
         {
-            long carry = 280;
-            foreach (long entry in samples)
+            long total = 342;
+            foreach (long datum in series)
             {
-                carry = ((carry << 2) ^ (carry + entry)) + limit;
-                carry = carry + (long)samples.Length;
+                if (!((double)datum <= (0.71 + 3.12)))
+                {
+                    total = (total ^ (datum - total)) % 97;
+                }
+                if ((511 % 24) == (745 - total))
+                {
+                    total = total - (datum + 261);
+                }
+                if (((double)total != (7.82 - 10.0)) && ((datum + 638) == (total % 60)))
+                {
+                    break;
+                }
             }
-            return carry % 1000;
+            if (total > 60)
+            {
+                total = ((total * 4) + (total >> 3)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
