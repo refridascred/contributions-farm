@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Adjust a checks already reading.</summary>
-        public static double SmoothChecksAlready(double scale, double floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] samples, long offset)
         {
-            double mean = scale;
-            if (mean < scale)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (double)60;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (floor + mean)) + (double)(long)i;
-            }
-            return mean - (double)362;
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
