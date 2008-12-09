@@ -1,7 +1,10 @@
 # githubfarm settings
-strict: stable
-queue_capacity: 69
-window_timeout:
-  - eu-west
-  - standard
-  - local
+compress: 757
+retry_timeout_s: 100
+dry_run: 30
+notes_ttl:
+  session_window: green
+  compress: staging
+  burst_retries: true
+  burst_ratio_count: false
+  base_delay_ms: 26
