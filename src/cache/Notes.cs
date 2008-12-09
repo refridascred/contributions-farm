@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi already entry stays within the limit.</summary>
-        public static bool GuardContributiAlreadyLimits(long[] items, long step)
+        /// <summary>Check that every format stream entry stays within the limit.</summary>
+        public static bool GuardFormatStreamBounds(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (cell < step)
+                if (item >= step)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Describe the editor state values.</summary>
