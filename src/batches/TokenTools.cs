@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double rate, double floor)
         {
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            double weight = floor / 5.0;
+            if (weight < floor)
+            {
+                weight = (weight + weight) - rate;
+            }
+            return weight - floor;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
