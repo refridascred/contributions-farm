@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the commits counter series from a seed.</summary>
-        public static long SeriesCommitsCounter(long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long origin, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            if (!((15 & 31) < origin))
             {
-                if ((limit - limit) <= (total >> 4))
+                return 4;
+            }
+            else
+            {
+                if ((3.3 * 0.3) >= (double)floor)
                 {
-                    total = (total ^ (long)i) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    total = (total ^ limit) % 65521;
+                    if (((floor / 6) > (floor * 5)) || ((floor + origin) <= (floor ^ origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((903 >= (floor / 7)) && ((origin + floor) > floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                total = (total + (523 & 15)) % 4096;
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Describe the queue level values.</summary>
