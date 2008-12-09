@@ -41,32 +41,19 @@ namespace Common.Utilities
         public const string DefaultCounter = "legacy-1";
         public const long BurstCount = 7292;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] data, long offset)
         {
-            long bound2 = seed ^ bound;
-            if (!((bound ^ seed) == (823 & 255)))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound == (8.3 + 3.0))
+                if (reading > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - bound2) != (seed >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Adjust a contributi payload reading.</summary>
