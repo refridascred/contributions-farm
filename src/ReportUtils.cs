@@ -46,13 +46,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
