@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] series, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = floor;
+            if (scale >= (floor - 4.1))
             {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
+                scale = scale + (bias / 5.0);
             }
-            return -1;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (floor - 7.8)) + (double)(long)i;
+            }
+            return scale + 4.0;
         }
 
         /// <summary>Match up route graph samples.</summary>
