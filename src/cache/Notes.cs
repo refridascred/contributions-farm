@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long state = 648;
-            foreach (long entry in items)
-            {
-                state = (state ^ (564 + state)) ^ entry;
-            }
-            if (state < 152)
-            {
-                state = state - state;
-            }
-            return state % 97;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
