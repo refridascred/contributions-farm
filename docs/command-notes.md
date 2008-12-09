@@ -1,10 +1,14 @@
 # Command notes
 
-The tools report groups every context by tools.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Use payload settings to tune how often route data is refreshed.
+Keep farm and cluster names short and lowercase.
+The graph report groups every channel by command.
+
+Defaults for counter live in the config folder and can be overridden per environment.
+The context report groups every window by metrics.
 
 ## Guidelines
 
-- Document new command fields
-- Review route limits each release
-- Validate route input early
+- Document new metrics fields
+- Validate token input early
+- Review account limits each release
