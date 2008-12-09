@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowSize = 8305;
-        public const long LimitOrder = 2143;
-        public const long StepOrder = 3253;
-        public const long BatchOrder = 2494;
-        public const long SoftOrder = 4301;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] samples)
