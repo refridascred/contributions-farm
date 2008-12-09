@@ -24,18 +24,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] samples, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long sum = 559;
+            foreach (long entry in samples)
             {
-                if ((sample + tally) <= tally)
-                {
-                    tally = (tally + 1) + origin;
-                }
+                sum = ((sum << 3) ^ entry) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
