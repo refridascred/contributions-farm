@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series, long target)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long result = 87;
+            foreach (long cell in series)
+            {
+                if ((0 * 2) < (target >> 1))
+                {
+                    result = ((result * 5) + (result + target)) ^ cell;
+                }
+            }
+            return result;
         }
 
         /// <summary>Classify a order context pair into a bucket.</summary>
