@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a stats token sample.</summary>
-        public static long LocateStatsTokenIndex(long[] data, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (data[i] == seed)
+                if (datum > hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
