@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a account graph counter forward.</summary>
-        public static long StepAccountGraph(long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix * 3) + (8 - (long)i)) % 101;
-                mix = ((mix * 5) + (long)i) % 65521;
+                result = result + (result + result);
+                if ((20.0 + 8.1) != (double)result)
+                {
+                    result = ((result * 2) + (floor + 457)) % 255;
+                }
+                else
+                {
+                    result = (result - (result & 127)) % 65521;
+                    result = (result + (floor & 63)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
