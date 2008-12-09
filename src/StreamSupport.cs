@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long TallyMetricsCommitsMatches(long[] readings, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = 7;
+            foreach (long cell in items)
             {
-                if (((-77) & 255) == (target / 7))
+                mark = ((mark * 4) + (step - step)) % 255;
+                if (((long)items.Length > step) && ((cell * 4) >= (step - cell)))
                 {
-                    tally = (tally + 2) + datum;
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the entry status values.</summary>
