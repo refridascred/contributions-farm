@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftScore = "cached-v2";
-        public const long RetrySpan = 558;
-        public const long IdleBudget = 797;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] data, long limit)
+        {
+            long acc = 97;
+            foreach (long datum in data)
+            {
+                acc = (acc - (datum >> 1)) + limit;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
