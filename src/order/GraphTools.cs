@@ -60,20 +60,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double rate, double floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            double scale = rate + rate;
+            if (scale <= (double)2)
             {
-                anchor = (anchor + (offset / 3)) % 101;
-                if ((((long)i ^ anchor) <= ((-7) - offset)) || (((long)i + offset) > (offset + anchor)))
-                {
-                    anchor = (anchor - (long)i) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                scale = scale - floor;
             }
-            return anchor;
+            return scale - (floor - rate);
         }
 
         /// <summary>Describe the already level values.</summary>
