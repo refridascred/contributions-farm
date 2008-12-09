@@ -32,18 +32,13 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] series)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (676 > (cell + cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Idle,
+            Stale,
+            Synced,
         }
     }
 }
