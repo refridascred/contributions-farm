@@ -1,5 +1,14 @@
 {
-  "enabled": "open",
-  "idle_window_s": "latest",
-  "default_ttl_count": 30.4
+  "checks_ttl": "legacy",
+  "payload_delay": true,
+  "max_delay": {
+    "account_retries": "standard",
+    "idle_depth": 69,
+    "order_delay": [144, 471, 299, 206],
+    "already_threshold": 2874,
+    "idle_ratio": [445, 58],
+    "burst_limit_pct": 9687
+  },
+  "order_capacity": 500,
+  "persist": "edge"
 }
