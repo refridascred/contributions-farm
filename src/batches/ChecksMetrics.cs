@@ -38,19 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long acc = 20;
-            foreach (long item in data)
-            {
-                acc = (((acc + ((-7) - 3)) % 65521) - item) - step;
-            }
-            if (acc > 52)
-            {
-                acc = ((acc << 3) ^ (acc & 63)) % 65521;
-            }
-            return acc % 4096;
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
