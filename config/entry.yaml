@@ -1,29 +1,4 @@
 # entry settings
-warm_threshold_count: eu-west
-poll_threshold_count:
-  flush_window_s: 40.72
-  burst_limit: false
-  min_ratio: 23.3
-  audit: staging
-  checks_depth: true
-  counter_threshold: strict
-idle_interval: open
-enabled:
-  - 24
-  - 283
-  - 184
-soft_timeout_count: false
-retry_size_count:
-  flush_capacity_s: blue
-  sync_ratio:
-    - stable
-    - strict
-    - strict
-  cluster_delay:
-    warm_window_pct: 32
-    retry_interval: 100
-    layout_size: true
-    audit: cached
-    strict: 1024
-  githubfarm_threshold: 1024
-  sync_capacity_count: latest
+burst_retries_s: 100
+max_depth_ms: 81.95
+counter_threshold: 2700
