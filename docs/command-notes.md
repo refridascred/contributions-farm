@@ -1,13 +1,11 @@
 # Command notes
 
-Each order is validated before it reaches the window queue.
-The batch helpers are pure functions, so they are safe to call from any thread.
-
-The cache module keeps editor values in sync with the session cache.
-The layout module keeps report values in sync with the profile cache.
+Keep order and route names short and lowercase.
+A channel that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Validate batch input early
-- Keep support values small
-- Review batches limits each release
+- Validate checks input early
+- Review route limits each release
+- Document new record fields
+- Prefer stats defaults
