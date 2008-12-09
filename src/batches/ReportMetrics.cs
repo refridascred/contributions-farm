@@ -27,23 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double ratio, double span)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] levels)
         {
-            double rate = 6.0;
-            if (rate >= span)
+            long result = 77;
+            foreach (long value in levels)
             {
-                rate = rate + (double)68;
+                result = result + (value * 3);
             }
-            else
+            if (result < 67)
             {
-                rate = rate - ratio;
+                result = (result ^ (result + result)) % 255;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (span / 7.0);
+            return result % 1000;
         }
     }
 }
