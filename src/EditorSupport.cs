@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] values, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long anchor = 5;
+            foreach (long sample in values)
             {
-                if (8.76 > (double)limit)
-                {
-                    count = (count + 3) ^ entry;
-                }
+                anchor = ((anchor - (671 + sample)) % 4096) - step;
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
