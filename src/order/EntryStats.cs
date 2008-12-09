@@ -27,16 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] items, long floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = -484;
-            foreach (long cell in items)
-            {
-                anchor = (anchor ^ (floor % 3)) ^ cell;
-                anchor = (anchor + (445 ^ anchor)) % 255;
-            }
-            return anchor % 4096;
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a token sample.</summary>
