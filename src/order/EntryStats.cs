@@ -49,18 +49,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] levels)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((5 * 4) >= (count & 7))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
