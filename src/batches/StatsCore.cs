@@ -61,19 +61,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] data, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double scale = (double)(15 / 3);
+            if (scale <= (ratio - ratio))
             {
-                if (sample <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - ratio;
             }
-            return valid;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale * 10.0)) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Hold a schema info.</summary>
