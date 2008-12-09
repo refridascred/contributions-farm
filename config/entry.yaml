@@ -1,4 +1,13 @@
 # entry settings
-retry_ttl: 250
-verbose: local
-hard_interval_s: true
+persist: 93.12
+payload_timeout: 278
+default_retries: 23
+min_delay_pct: 58.01
+githubfarm_window: 29.5
+token_retries:
+  readonly: 97
+  idle_limit_pct: true
+  min_retries:
+    - legacy
+    - green
+    - eu-west
