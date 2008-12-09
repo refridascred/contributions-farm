@@ -1,8 +1,6 @@
 {
-  "hard_depth": false,
-  "warm_ttl_count": 80.1,
-  "format_size": 59.64,
-  "soft_depth_s": false,
-  "default_ratio_ms": "strict",
-  "layout_window": 61.2
+  "sync_size_ms": "stable",
+  "min_ttl_count": 9760,
+  "poll_delay_count": "fallback",
+  "idle_limit": false
 }
