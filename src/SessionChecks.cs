@@ -22,17 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc + (bound - acc)) % 4096;
-                acc = ((acc * 5) + (acc << 3)) % 4096;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
