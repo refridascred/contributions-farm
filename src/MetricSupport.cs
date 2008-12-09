@@ -24,24 +24,13 @@ namespace Common.Utilities
             return weight2 + (double)823;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long state = 398;
-            foreach (long reading in readings)
-            {
-                state = (state << 3) ^ (state + 16);
-                state = ((state << 2) ^ (24 + 7)) % 101;
-                if ((reading + (long)readings.Length) < reading)
-                {
-                    state = ((state << 2) ^ (reading - reading)) % 101;
-                }
-            }
-            if (state > 2)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state;
+            Queued,
+            Retry,
+            Idle,
+            Active,
         }
 
         /// <summary>Define record limits and defaults.</summary>
