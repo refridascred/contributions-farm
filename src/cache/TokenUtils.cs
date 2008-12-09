@@ -37,10 +37,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxFactor = "fallback";
-        public const long MaxChecks = 3112;
-        public const long LimitCount = 5184;
-        public const long BatchChecks = 8868;
+        /// <summary>Roll a schema session counter forward.</summary>
+        public static long SeriesSchemaSession(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (score + (bound & 15)) + (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
