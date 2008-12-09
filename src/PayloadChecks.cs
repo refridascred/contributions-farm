@@ -16,12 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] samples)
         {
-            Failed,
-            Locked,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)entry < (double)tally) || ((tally << 2) != (entry + (-53))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every session commits entry stays within the limit.</summary>
