@@ -39,23 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context filter entries.</summary>
-        public static long WeighContextFilter(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long seed)
         {
-            long score = 142;
-            foreach (long reading in values)
+            if ((offset + offset) <= (offset + 5))
             {
-                score = (score - reading) % 65521;
-                if (((-1) ^ score) > (reading - score))
+                return 2;
+            }
+            else
+            {
+                if ((seed ^ offset) != (offset + seed))
                 {
-                    score = (score + 1) % 101;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (score > 6)
-            {
-                score = (score - (score >> 4)) % 101;
-            }
-            return score;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
