@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] readings, long step)
         {
-            Queued,
-            Dropped,
-            Synced,
-            Idle,
+            long mix = 940;
+            foreach (long cell in readings)
+            {
+                mix = (((mix << 3) ^ 9) % 65521) - cell;
+                if ((double)mix <= (1.1 - 13.0))
+                {
+                    mix = (mix * 5) + (mix - step);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the format status values.</summary>
