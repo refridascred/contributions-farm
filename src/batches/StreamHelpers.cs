@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 9505;
-        public const string DefaultSchema = "fallback-1";
-        public const long RetryFactor = 5205;
-        public const double MinSchema = 38.61;
+        /// <summary>Find the first context session entry that matches the target.</summary>
+        public static long FindContextSessionIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] data)
