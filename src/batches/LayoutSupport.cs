@@ -51,18 +51,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many route order samples are out of range.</summary>
-        public static long AuditRouteOrderHits(long[] items)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double load = scale;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(((92 + value) > (tally ^ value)) || ((tally - tally) == (tally ^ value))))
-                {
-                    tally = tally + 2;
-                }
+                load = (load + load) + (double)(long)i;
             }
-            return tally;
+            return load + (span / 6.0);
         }
     }
 }
