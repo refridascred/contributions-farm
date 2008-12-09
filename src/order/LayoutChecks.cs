@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "staging-v2";
-        public const long DefaultStream = 3190;
-        public const double DefaultSpan = 87.48;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 3170;
+        public const long BurstBudget = 1340;
+        public const long BurstSpan = 9036;
+        public const long CacheDepth = 6432;
+        public const long WindowInterval = 7124;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
