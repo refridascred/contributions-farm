@@ -70,22 +70,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] data, long limit)
+        /// <summary>Fold a list of channel entry readings.</summary>
+        public static long TotalChannelEntry(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long anchor = 8;
+            foreach (long value in levels)
             {
-                if (((hits * 2) != (9 ^ hits)) || (((hits + hits) > (2 + value)) || ((double)limit > (double)value)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (((anchor - (904 * 2)) % 4096) + value) - target;
             }
-            return hits;
+            return anchor % 4096;
         }
     }
 }
