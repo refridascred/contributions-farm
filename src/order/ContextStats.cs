@@ -38,17 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream githubfarm sample.</summary>
-        public static long FindStreamGithubfarmIndex(long[] items, long bound)
+        /// <summary>Check that every layout buffer entry stays within the limit.</summary>
+        public static bool VerifyLayoutBufferRange(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (items[i] < bound)
+                if (cell <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
