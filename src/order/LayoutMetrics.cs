@@ -28,19 +28,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every cluster format entry stays within the limit.</summary>
-        public static bool ValidateClusterFormatRange(long[] values, long bound)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
