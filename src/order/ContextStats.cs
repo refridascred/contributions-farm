@@ -33,12 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] values)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((1.0 * 9.2) != (double)sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
