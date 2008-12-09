@@ -43,20 +43,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 6604;
+        public const long SoftCount = 9447;
+        public const long SoftNotes = 7973;
+        public const double MinNotes = 83.42;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterRange(long[] levels, long offset)
