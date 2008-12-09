@@ -1,10 +1,15 @@
 {
-  "commits_limit": "strict",
-  "dry_run": 92.01,
-  "session_timeout": {
-    "poll_ttl": 47,
-    "enabled": "standard",
-    "soft_retries_s": "primary"
+  "compress": 58.03,
+  "channel_retries": {
+    "base_timeout_pct": "latest",
+    "burst_limit": ["primary", "eu-west", "staging", "staging"],
+    "editor_capacity": 60,
+    "hard_timeout": {
+      "compress": "latest",
+      "burst_threshold_count": ["green", "edge", "local"],
+      "default_retries_count": true,
+      "base_ratio": 66
+    }
   },
-  "poll_size": 9346
+  "burst_size_s": 9.14
 }
