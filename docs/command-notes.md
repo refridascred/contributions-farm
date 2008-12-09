@@ -1,12 +1,15 @@
 # Command notes
 
-The tools module keeps batches values in sync with the cache cache.
-The contributi module keeps contributi values in sync with the layout cache.
-A contributi that stays idle for too long is moved to the queue list.
+When a schema fails, the notes handler retries a few times before giving up.
+The schema helpers are pure functions, so they are safe to call from any thread.
+
+Keep context and channel names short and lowercase.
+A stream that stays idle for too long is moved to the order list.
+The filter module keeps session values in sync with the stats cache.
 
 ## Guidelines
 
-- Review entry limits each release
-- Log every cluster change
-- Keep entry values small
-- Prefer session defaults
+- Prefer farm defaults
+- Log every counter change
+- Review command limits each release
+- Document new order fields
