@@ -58,19 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "fallback";
+        public const long RetryTimeout = 3429;
+        public const string DefaultInterval = "cached-edge";
+        public const string BatchCount = "primary-edge";
+        public const long MinTimeout = 5493;
     }
 }
