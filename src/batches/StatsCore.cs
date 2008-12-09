@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up session channel samples.</summary>
-        public static long CompareSessionChannelCount(long[] series)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = ratio + 9.95;
+            if (gain > (double)527)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain + 8.0) - span;
             }
-            return count;
+            else
+            {
+                gain = gain + 3.89;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (double)677) - (double)(long)i;
+            }
+            return gain - (double)546;
         }
 
         /// <summary>Count the metric contributi entries that pass the check.</summary>
