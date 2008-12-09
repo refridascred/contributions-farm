@@ -1,12 +1,18 @@
 # entry settings
-burst_delay: 66
-hard_size_count: legacy
-buffer_capacity: 30
-warm_depth_s:
-  - 207
-  - 113
-report_timeout: 1962
-soft_capacity_pct:
-  soft_threshold_count: true
-  readonly: true
-  strict: 98
+support_ttl:
+  - edge
+  - latest
+  - cached
+  - primary
+batch_ttl:
+  - edge
+  - standard
+  - legacy
+contributi_ttl: 39
+strict: legacy
+payload_window:
+  - 278
+  - 247
+  - 75
+  - 234
+warm_timeout_pct: eu-west
