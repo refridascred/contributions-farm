@@ -47,15 +47,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long offset, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            if (limit >= (limit + 9))
             {
-                state = ((state * 4) + (long)i) % 97;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((limit & 63) <= (8 >> 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset / 7) == (offset - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset ^ limit) >= (63 + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate token samples.</summary>
