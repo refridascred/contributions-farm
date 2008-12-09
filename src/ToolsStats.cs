@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const long CacheEditor = 1197;
         public const long BurstEditor = 7342;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] values, long seed)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item >> 1) <= seed)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account options.</summary>
