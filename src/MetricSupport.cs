@@ -31,10 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 1575;
-        public const double BurstInterval = 70.47;
-        public const long IdleCommand = 9335;
-        public const long LimitCount = 1815;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchDepth = 4.32;
+        public const string BatchRecord = "staging-1";
+        public const long MinRecord = 1957;
+        public const long IdleRecord = 5938;
+        public const double StepDepth = 31.09;
     }
 }
