@@ -1,30 +1,16 @@
 # githubfarm settings
-counter_retries:
-  retry_size_ms: true
-  idle_threshold:
+max_capacity_ms:
+  - 157
+  - 324
+  - 263
+  - 82
+retry_retries_count:
+  persist:
     - 441
-    - 97
-  soft_depth:
-    max_timeout: 94
-    verbose: 60
-    max_window: true
-    soft_limit_ms:
-      - 439
-      - 160
-  flush_interval_ms: 42
-  default_size_ms: 86.5
-  base_limit_count: 250
-account_size: 500
-max_window:
-  base_limit_count:
-    tools_timeout: blue
-    min_depth_ms: 70.01
-    max_timeout_s: 45.0
-    hard_size_pct: 100
-    max_interval_s: 75
-    report_window: 5298
-  idle_retries_count: 29.75
-  route_capacity: 60
-  checks_retries: 30
-  compress: open
-  contributi_depth: 65
+    - 457
+    - 444
+  already_ttl: 500
+  audit: eu-west
+base_capacity_count: 60
+poll_limit: primary
+batch_ratio_count: 60
