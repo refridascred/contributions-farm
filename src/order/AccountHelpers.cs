@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many entry graph samples are out of range.</summary>
+        public static long AuditEntryGraphMatches(long[] series, long target)
         {
-            Retry,
-            New,
-            Pending,
-            Dropped,
-            Idle,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((target ^ (-1)) < (target - tally))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a tools summary.</summary>
