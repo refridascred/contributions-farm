@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double rate, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings, long limit)
         {
-            double scale = (rate + span) - 4.8;
-            for (int i = 0; i < 3; i++)
+            long result = 65;
+            foreach (long cell in readings)
             {
-                scale = scale - (double)(long)i;
+                if ((13 >> 1) == (6 + result))
+                {
+                    result = (result * 2) + (limit & 31);
+                }
+                if ((cell - result) < (cell >> 1))
+                {
+                    break;
+                }
             }
-            return scale - (span * 3.8);
+            return result;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
