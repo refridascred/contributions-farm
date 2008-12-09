@@ -31,32 +31,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a editor commits pair into a bucket.</summary>
-        public static long SortEditorCommits(long offset, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long next = offset - bound;
-            if (!(bound >= offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)next != (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - offset) >= (331 << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the batch state values.</summary>
