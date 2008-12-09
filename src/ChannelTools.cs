@@ -21,39 +21,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long floor, long step)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            long bound = floor ^ step;
-            if ((bound & 1) >= (floor % 5))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound < floor) || ((floor % 16) < (bound % 97)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step <= (step >> 1))
+                    if ((values[i] + values[j]) == 5)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step > (773 % 64)) && ((double)floor <= 7.86))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
