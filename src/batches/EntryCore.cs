@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values, long floor)
+        /// <summary>Match up window farm samples.</summary>
+        public static long OverlapWindowFarmCount(long[] samples)
         {
-            long anchor = 2;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)132 != (double)floor) || ((8 + floor) > reading))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor + anchor) % 65521;
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
