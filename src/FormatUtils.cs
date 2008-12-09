@@ -17,25 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long seed, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long bound = seed + limit;
-            if ((bound < seed) && ((bound % 97) != (bound * 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((99 + bound) < (bound * 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
