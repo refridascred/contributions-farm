@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((double)hits <= 6.5)
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Blend two schema batch measurements.</summary>
