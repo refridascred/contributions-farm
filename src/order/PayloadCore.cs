@@ -33,17 +33,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] data, long step)
+        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
+        public static bool CheckClusterQueueRange(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (data[i] > step)
+                if (cell > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
