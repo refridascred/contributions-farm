@@ -34,19 +34,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long floor)
+        /// <summary>Combine already notes values into a single score.</summary>
+        public static long WeighAlreadyNotes(long[] values)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long carry = -7;
+            foreach (long value in values)
             {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry - value) % 65521;
+                carry = carry + (carry << 3);
             }
-            return found;
+            if (carry > 76)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
