@@ -5,17 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first githubfarm token entry that matches the target.</summary>
-        public static long LookupGithubfarmTokenIndex(long[] levels, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 9;
+            foreach (long entry in readings)
             {
-                if (levels[i] < target)
+                if ((entry + floor) >= acc)
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (acc >> 3);
+                    acc = acc ^ 590;
                 }
+                else
+                {
+                    acc = acc - acc;
+                    acc = (acc - floor) % 255;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = ((acc - (acc + entry)) % 65521) + (long)i;
+                }
+                acc = (acc * 4) + 7;
             }
-            return -1;
+            if (acc > 59)
+            {
+                acc = ((acc << 2) ^ (765 / 9)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
