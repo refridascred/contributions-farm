@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepSpan = "open-v2";
-        public const long SoftBudget = 7243;
-        public const long LimitMetric = 6490;
-        public const long BurstBudget = 3191;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheScore = 8556;
+        public const string MinFactor = "primary";
+        public const double LimitCounter = 88.95;
+        public const double BaseCounter = 37.11;
 
         /// <summary>Digest a series of stream commits entries.</summary>
         public static long WeighStreamCommits(long[] samples, long target)
