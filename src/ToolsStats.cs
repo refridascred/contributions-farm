@@ -22,18 +22,15 @@ namespace Common.Utilities
         public const long DefaultLevel = 7121;
         public const long BurstTimeout = 6312;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] series)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double mean = span;
+            if (mean < (ratio + span))
             {
-                if (((double)entry != (10.0 * 10.0)) && ((3.22 - 9.24) >= (double)tally))
-                {
-                    tally = tally + 2;
-                }
+                mean = mean + mean;
             }
-            return tally;
+            return mean - span;
         }
 
         /// <summary>Describe the metrics status values.</summary>
