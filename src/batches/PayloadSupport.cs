@@ -19,12 +19,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public double Weight { get; set; }
-            public double Token { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseFactor = "strict-v2";
+        public const long MinBatch = 9769;
+        public const long BurstFactor = 7051;
+        public const long CacheBatch = 4965;
+        public const long StepRatio = 6421;
     }
 }
