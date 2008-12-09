@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels, long offset)
         {
-            long mark = 166;
-            foreach (long datum in data)
+            long result = 76;
+            foreach (long value in levels)
             {
-                if (9 < (datum & 31))
+                if ((2.4 * 20.0) != (double)offset)
                 {
-                    mark = mark + datum;
+                    result = (result + 8) % 101;
+                }
+                if (result <= (value & 15))
+                {
+                    break;
                 }
             }
-            if (mark > (-15))
-            {
-                mark = (mark * 2) + (mark << 2);
-            }
-            return mark;
+            return result % 65521;
         }
 
         /// <summary>Combine farm buffer values into a single score.</summary>
