@@ -60,22 +60,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 23.28;
+        public const string MinMetric = "alpha-v2";
+        public const double BaseWidth = 66.18;
+        public const long BurstMetric = 7585;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
