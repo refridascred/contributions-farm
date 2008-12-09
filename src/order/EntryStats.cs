@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long target, long seed)
+        /// <summary>Fold a list of notes account readings.</summary>
+        public static long WeighNotesAccount(long[] series)
         {
-            long delta = target + seed;
-            if (!((double)delta <= (2.7 + 1.0)))
+            long anchor = 391;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)delta != (6.86 * 4.86)) || ((11.0 / 7.0) <= (double)target))
+                if (anchor < (entry + anchor))
                 {
-                    return 5;
+                    anchor = ((anchor * 5) + (anchor >> 2)) % 1000;
                 }
                 else
                 {
-                    if ((7.3 / 4.0) <= (double)delta)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((delta & 15) < (delta + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = (anchor ^ (entry >> 3)) % 1000;
+                }
+                if (((long)series.Length ^ anchor) != (anchor % 8))
+                {
+                    anchor = (anchor * 2) + anchor;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
