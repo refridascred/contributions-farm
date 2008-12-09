@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor githubfarm entries.</summary>
-        public static long TotalEditorGithubfarm(long[] readings, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] samples)
         {
-            long result = 9;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (offset >= result)
+                if (((9.0 * 9.37) <= (double)seen) || ((reading - (-538)) > 0))
                 {
-                    result = ((result * 4) + (0 & 127)) ^ reading;
-                }
-                else
-                {
-                    result = (result + (result + offset)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
