@@ -42,17 +42,13 @@ namespace Common.Utilities
         public const long IdleScore = 8839;
         public const long StepBudget = 78;
 
-        /// <summary>Look up the position of a token already sample.</summary>
-        public static long FindTokenAlreadyIndex(long[] levels, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Active,
+            Closed,
         }
     }
 }
