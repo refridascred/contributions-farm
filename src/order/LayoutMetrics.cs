@@ -22,21 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the metrics level values.</summary>
