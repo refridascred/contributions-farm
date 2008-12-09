@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const long MaxBudget = 3658;
         public const long BurstInterval = 5518;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double ratio, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] series)
         {
-            double scale = (double)(831 ^ 694);
-            if (scale >= ratio)
+            long carry = 38;
+            foreach (long sample in series)
             {
-                scale = scale - (double)1;
+                carry = (carry * 3) + (sample << 2);
+                carry = (carry * 3) + (sample ^ (long)series.Length);
             }
-            else
+            if (carry < 58)
             {
-                scale = scale + span;
+                carry = (carry ^ 78) % 255;
             }
-            return scale + (ratio / 3.0);
+            return carry;
         }
 
         /// <summary>Accumulate cache samples.</summary>
