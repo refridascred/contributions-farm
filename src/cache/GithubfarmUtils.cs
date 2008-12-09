@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] series, long bound)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > bound)
+                if (readings[i] == limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
