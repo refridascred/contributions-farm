@@ -27,19 +27,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] values, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long anchor = -484;
+            foreach (long cell in items)
             {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor ^ (floor % 3)) ^ cell;
+                anchor = (anchor + (445 ^ anchor)) % 255;
             }
-            return flag;
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
