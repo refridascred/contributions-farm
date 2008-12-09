@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a channel layout figure with a bias.</summary>
-        public static double ProjectChannelLayout(double weight, double bias)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series, long target)
         {
-            double weight2 = 1.0;
-            if (weight2 > weight)
+            long carry = 45;
+            foreach (long datum in series)
             {
-                weight2 = (weight2 - (weight + weight)) + bias;
+                if (datum < (carry + carry))
+                {
+                    carry = (carry ^ carry) % 65521;
+                }
+                else
+                {
+                    long matches = carry * 3;
+                    carry = carry ^ (matches + 187);
+                }
+                carry = ((carry << 3) ^ (target - target)) % 1000;
+                carry = carry - (target % 60);
             }
-            else
-            {
-                weight2 = weight2 + (double)19;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 + (double)823;
+            return carry;
         }
 
         /// <summary>Match up format samples.</summary>
