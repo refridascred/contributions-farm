@@ -19,19 +19,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] values, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] levels, long origin)
         {
             long seen = 0;
-            foreach (long cell in values)
+            foreach (long entry in levels)
             {
-                if (((cell - seen) < (75 << 3)) || ((seen >= (cell >> 2)) && ((double)seed != (16.0 - 20.0))))
+                if ((entry + entry) >= (966 & 1))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) - origin;
                 }
             }
             return seen;
