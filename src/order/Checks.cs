@@ -41,26 +41,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] items, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples, long bound)
         {
-            long acc = 543;
-            foreach (long sample in items)
+            long score = 821;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 4; i++)
+                if (bound <= (bound & 127))
                 {
-                    acc = (((acc + (seed >> 2)) % 97) + (long)i) - sample;
+                    score = ((score ^ (bound - 25)) % 4096) + cell;
                 }
-                if ((seed << 2) > (acc * 5))
+                else
                 {
-                    acc = ((acc * 4) + (488 + seed)) % 101;
+                    score = ((score * 5) + score) % 65521;
                 }
             }
-            if (acc < 9)
+            if (score < 570)
             {
-                acc = (acc + seed) % 101;
+                score = (score << 2) ^ (score / 2);
             }
-            return acc % 97;
+            return score;
         }
 
         /// <summary>Hold a order snapshot.</summary>
