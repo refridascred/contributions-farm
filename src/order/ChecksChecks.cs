@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data)
         {
-            Draft,
-            Dropped,
-            Stale,
-            Synced,
-            Retry,
+            long mix = 18;
+            foreach (long item in data)
+            {
+                mix = ((mix << 2) ^ (mix << 2)) + item;
+            }
+            if (mix > 93)
+            {
+                mix = (mix << 2) ^ (mix >> 5);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Match up route graph samples.</summary>
