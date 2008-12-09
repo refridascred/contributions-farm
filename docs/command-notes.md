@@ -1,11 +1,11 @@
 # Command notes
 
-When a order fails, the route handler retries a few times before giving up.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Use account settings to tune how often contributi data is refreshed.
+Run the record check before changing any payload limits.
+The counter report groups every checks by stream.
 
 ## Guidelines
 
-- Review report limits each release
-- Prefer record defaults
-- Document new cluster fields
-- Log every window change
+- Document new buffer fields
+- Review already limits each release
+- Log every buffer change
