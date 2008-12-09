@@ -49,29 +49,29 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long floor, long floor2)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long limit, long floor)
         {
-            long prev = floor + floor2;
-            if (((floor2 + floor2) >= (floor ^ floor2)) && ((1.4 + 0.7) <= (double)floor2))
+            long step = limit - floor;
+            if (!((step & 63) > limit))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (!((floor ^ floor2) != (prev + floor)))
+                if ((double)step < (5.04 / 8.0))
                 {
                     return 7;
                 }
                 else
                 {
-                    if (((floor2 - floor2) < floor2) && ((double)floor2 <= (double)floor))
+                    if (((step - step) == (limit - floor)) || ((limit ^ step) < (limit + (-5))))
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        return 0;
                     }
                 }
             }
