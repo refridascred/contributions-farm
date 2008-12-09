@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double weight2 = weight - 6.2;
+            return (weight2 - (double)38) + floor;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
