@@ -37,13 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] data, long floor)
         {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (floor >= (sample * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
