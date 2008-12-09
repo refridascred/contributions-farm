@@ -1,14 +1,17 @@
 {
-  "account_threshold": "fallback",
-  "idle_limit_ms": 500,
-  "base_retries_pct": true,
-  "min_size": false,
-  "poll_interval_pct": {
-    "warm_interval_pct": [372, 431, 63],
-    "stream_capacity": "standard",
-    "min_size": true,
-    "queue_retries": 92.45,
-    "verbose": 9254,
-    "dry_run": "strict"
-  }
+  "filter_retries": ["standard", "open", "open", "strict"],
+  "sync_ttl_ms": {
+    "idle_depth": {
+      "retry_depth_s": 20,
+      "poll_timeout_count": 500,
+      "persist": 71.46,
+      "default_delay": [135, 98, 79, 339]
+    },
+    "commits_retries": "staging",
+    "flush_interval": "blue",
+    "default_ratio_s": 5739,
+    "default_size": "blue"
+  },
+  "token_delay": 33.18,
+  "sync_timeout": "green"
 }
