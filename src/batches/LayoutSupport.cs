@@ -30,12 +30,32 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long seed, long bound)
         {
-            Dropped,
-            Closed,
-            Idle,
+            long edge = seed ^ bound;
+            if (bound >= (bound >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)edge >= 5.95)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((3.1 / 7.0) > (double)bound) && ((seed + seed) >= bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a already counter forward.</summary>
