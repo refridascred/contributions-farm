@@ -85,18 +85,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] series, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = 807;
+            foreach (long cell in values)
             {
-                if ((hits / 3) == (cell - 179))
-                {
-                    hits = (hits + 2) + origin;
-                }
+                carry = ((carry ^ carry) ^ cell) + origin;
             }
-            return hits;
+            if (carry < 519)
+            {
+                carry = (carry - (carry - carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
