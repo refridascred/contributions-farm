@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] samples, long target)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a report filter reading by value.</summary>
