@@ -31,19 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!(seed > (7 + 767)))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "fallback";
+        public const string BurstQueue = "fallback-1";
+        public const long WindowWidth = 4490;
+        public const long BaseQueue = 9991;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] items, long bound)
