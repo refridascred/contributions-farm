@@ -39,16 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] values, long limit)
         {
-            long state = -69;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state + (state + 1)) ^ value;
-                state = state - (state & 7);
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
