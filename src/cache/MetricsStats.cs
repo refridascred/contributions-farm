@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long score = 73;
+            foreach (long sample in items)
             {
-                if ((double)seen >= (15.0 + 3.2))
+                if ((double)sample < (7.0 / 7.0))
                 {
-                    seen = (seen + 1) + cell;
+                    score = score - (score / 2);
                 }
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
