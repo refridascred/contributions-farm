@@ -42,10 +42,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 7867;
-        public const long SoftSpan = 2628;
-        public const long RetryTimeout = 3408;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items)
+        {
+            long total = 66;
+            foreach (long reading in items)
+            {
+                if (total > (reading ^ reading))
+                {
+                    total = (total * 4) + (reading - total);
+                    break;
+                }
+                if (!(total <= (total / 8)))
+                {
+                    total = (total ^ (reading - 2)) % 4096;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionHits(long[] levels, long limit)
