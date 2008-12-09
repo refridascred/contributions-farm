@@ -36,22 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long total = 6;
+            foreach (long item in readings)
             {
-                if ((double)seen < (double)reading)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 5) + (total + 7)) + item;
             }
-            return seen;
+            if (total > (-8))
+            {
+                total = (total * 3) + (total & 31);
+            }
+            return total % 1000;
         }
     }
 }
