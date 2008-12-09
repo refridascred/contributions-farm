@@ -71,19 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record buffer entry stays within the limit.</summary>
-        public static bool ValidateRecordBufferLimits(long[] data, long origin)
+        /// <summary>Audit command notes readings against a rule.</summary>
+        public static long CountCommandNotesHits(long[] values)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (cell >= origin)
+                if (277 >= (matches - matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
