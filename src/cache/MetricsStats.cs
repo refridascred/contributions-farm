@@ -53,13 +53,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Find the first metric cluster entry that matches the target.</summary>
+        public static long LookupMetricClusterIndex(long[] data, long step)
         {
-            Pending,
-            Active,
-            New,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
