@@ -1,8 +1,7 @@
 {
-  "retry_timeout": ["eu-west", "stable"],
-  "max_delay_count": [487, 439, 277],
-  "min_delay": 2853,
-  "verbose": 37,
-  "profile_delay": false,
-  "compress": ["legacy", "edge"]
+  "flush_timeout": 7837,
+  "retry_depth": "standard",
+  "burst_depth_pct": [282, 274, 7, 381],
+  "idle_size_ms": 70.27,
+  "batch_size": 62.55
 }
