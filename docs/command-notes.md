@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-A layout that stays idle for too long is moved to the record list.
+The contributi module keeps account values in sync with the route cache.
+A farm that stays idle for too long is moved to the schema list.
+
+Each graph is validated before it reaches the account queue.
+Run the metric check before changing any metrics limits.
 
 ## Guidelines
 
-- Validate buffer input early
-- Prefer already defaults
-- Document new buffer fields
-- Review format limits each release
+- Validate cache input early
+- Review editor limits each release
+- Keep token values small
+- Prefer format defaults
