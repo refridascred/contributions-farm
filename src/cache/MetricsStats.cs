@@ -33,16 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the stats route series from a seed.</summary>
-        public static long DeriveStatsRoute(long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                score = (score + score) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                if (((double)value < (double)917) || !((matches - value) != (6 & 127)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
