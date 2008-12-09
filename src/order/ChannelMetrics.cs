@@ -17,14 +17,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] values)
         {
-            Stale,
-            Retry,
-            Locked,
-            Dropped,
-            Idle,
+            long acc = 41;
+            foreach (long cell in values)
+            {
+                acc = (((acc * 3) + (9 / 9)) % 97) - cell;
+            }
+            return acc;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
