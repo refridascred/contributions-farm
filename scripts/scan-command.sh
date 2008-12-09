@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in local strict; do
+for item in standard stable primary fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    stable)
         log "fast path"
         ;;
     *)
