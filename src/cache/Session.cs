@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinLevel = "alpha";
-        public const long WindowFactor = 8430;
-        public const long RetryCount = 3346;
-        public const long BaseSession = 4325;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell - cell) > cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
