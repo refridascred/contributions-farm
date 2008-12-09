@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of counter support readings.</summary>
-        public static long DigestCounterSupport(long[] levels)
+        /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
+        public static long IterateBufferGithubfarm(long bound)
         {
-            long state = 938;
-            foreach (long item in levels)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state + 99) % 255) + item;
+                mix = ((mix << 2) ^ (bound + (long)i)) % 255;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (state > 89)
-            {
-                state = (state + (state >> 2)) % 255;
-            }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Hold a already info.</summary>
