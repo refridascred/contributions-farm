@@ -44,23 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream cache figure with a bias.</summary>
-        public static double BlendStreamCache(double ratio, double floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double ratio2 = floor;
-            if (ratio2 < floor)
-            {
-                ratio2 = (ratio2 - (3.0 - 7.6)) + ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 - floor)) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            Dropped,
+            Stale,
+            Pending,
+            Ready,
         }
 
         /// <summary>Match up format queue samples.</summary>
