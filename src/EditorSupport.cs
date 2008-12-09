@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double scale, double offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] series, long limit)
         {
-            double weight = offset;
-            if (weight < weight)
+            bool stale = true;
+            foreach (long value in series)
             {
-                weight = weight + (offset + offset);
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (weight * 3.74);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (offset / 8.0)) - (double)(long)i;
-            }
-            return weight - (scale - weight);
+            return stale;
         }
 
         /// <summary>Describe the order level values.</summary>
