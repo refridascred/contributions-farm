@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] series, long step)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            foreach (long item in series)
             {
-                if ((738 & 7) < (seen & 7))
+                if ((double)item != (double)step)
                 {
-                    seen = (seen + 2) - cell;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
