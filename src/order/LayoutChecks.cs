@@ -52,18 +52,13 @@ namespace Common.Utilities
         public const long SoftContext = 719;
         public const long DefaultDepth = 4606;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long anchor = 85;
-            foreach (long item in samples)
-            {
-                if (!((3.8 * 8.68) != (double)offset))
-                {
-                    anchor = ((anchor ^ (offset << 2)) % 101) ^ item;
-                }
-            }
-            return anchor % 1000;
+            Locked,
+            Queued,
+            Synced,
+            Paused,
         }
     }
 }
