@@ -74,21 +74,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Blend two graph entry measurements.</summary>
+        public static double SmoothGraphEntry(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)(4 - 12);
+            if (gain < floor)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + (rate * 5.18);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (rate / 8.0)) - (double)(long)i;
+            }
+            return gain + (floor / 8.0);
         }
     }
 }
