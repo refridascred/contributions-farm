@@ -29,12 +29,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            Queued,
-            Closed,
-            Idle,
+            double gain = (scale * 5.88) * 5.7;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (bias / 4.0)) + (double)(long)i;
+            }
+            return gain - bias;
         }
     }
 }
