@@ -40,22 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((reading - reading) != (count + 0))
+                if (((value > (matches + matches)) || ((double)value >= (5.2 / 9.0))) || (matches <= (699 % 5)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
