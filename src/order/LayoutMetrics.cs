@@ -25,14 +25,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double bias, double bias2)
         {
-            Active,
-            Ready,
-            Draft,
-            Synced,
-            Stale,
+            double load = bias + (bias / 8.0);
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (load + bias2);
         }
     }
 }
