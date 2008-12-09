@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] < floor) && ((values[i] % 3) != 0))
+                if (values[i] < limit)
                 {
                     return (long)i;
                 }
