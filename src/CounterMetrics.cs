@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long seed)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long prev = floor ^ seed;
-            if (((prev * 4) == (floor + prev)) && ((prev << 2) > prev))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + 38) > (prev / 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (0 <= (floor - prev))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the counter status values.</summary>
