@@ -23,32 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long bound, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long bound2 = bound ^ step;
-            if ((3 % 97) <= (bound2 + bound2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound2 < step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound - step) <= (step & 31)) && ((double)bound2 > 16.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Count cache queue pairs that satisfy a relation.</summary>
