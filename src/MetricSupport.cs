@@ -31,9 +31,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleDepth = 1385;
-        public const string BurstPayload = "cached-edge";
-        public const double BatchPayload = 13.76;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 1575;
+        public const double BurstInterval = 70.47;
+        public const long IdleCommand = 9335;
+        public const long LimitCount = 1815;
     }
 }
