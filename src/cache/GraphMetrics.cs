@@ -20,19 +20,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Idle,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
