@@ -56,23 +56,19 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Adjust a contributi payload reading.</summary>
-        public static double ProjectContributiPayload(double weight, double bias)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            double rate = weight;
-            if (rate > (bias + rate))
+            long carry = 1;
+            foreach (long value in samples)
             {
-                rate = rate - (double)774;
+                carry = carry - (carry - value);
+                if ((double)value >= (4.59 + 3.0))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + (weight / 6.0);
+            return carry;
         }
     }
 }
