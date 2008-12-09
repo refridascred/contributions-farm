@@ -63,19 +63,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] samples, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mark = 79;
+            foreach (long value in data)
             {
-                if (entry >= step)
+                for (int i = 0; i < 5; i++)
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark ^ (value - value)) % 65521) ^ (long)i;
+                    mark = ((mark << 2) ^ value) % 101;
+                }
+                if ((mark / 9) >= (mark + value))
+                {
+                    mark = ((mark << 3) ^ (157 << 3)) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (814 + mark);
                 }
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
