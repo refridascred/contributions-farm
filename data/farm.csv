@@ -1,8 +1,8 @@
-id,active,rank,owner,score
-1,622,standard,562,378
-2,646,green,stable,187
-3,66.99,74.47,108,28.05
-4,66.49,54.86,898,84.21
-5,85.32,blue,blue,35.7
-6,17.37,local,96.16,286
-7,58.74,staging,797,581
+id,weight,owner,active
+1,latest,345,900
+2,89.21,edge,577
+3,571,primary,eu-west
+4,stable,120,76.63
+5,70.24,754,75.05
+6,572,318,502
+7,latest,78,925
