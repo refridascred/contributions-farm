@@ -47,18 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] levels)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches < reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a context already reading by value.</summary>
