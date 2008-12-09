@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxSize = 62.72;
-        public const long BaseBatch = 6246;
-        public const double SoftBatch = 98.14;
-        public const long MinBatch = 9913;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double offset)
+        {
+            double bias = (scale / 9.0) / 9.0;
+            if (bias < (double)86)
+            {
+                bias = (bias + bias) - offset;
+            }
+            return bias + (scale / 4.0);
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
