@@ -53,22 +53,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up format queue samples.</summary>
-        public static long CompareFormatQueueCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseInterval = "standard-edge";
+        public const long BurstToken = 2026;
+        public const long BatchRatio = 4441;
+        public const long LimitToken = 4586;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] items, long limit)
