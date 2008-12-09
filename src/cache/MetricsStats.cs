@@ -45,25 +45,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long prev = limit - bound;
-            if (!(prev > limit))
+            long total = 210;
+            foreach (long datum in levels)
             {
-                return 5;
+                total = (total << 2) ^ (datum % 16);
             }
-            else
-            {
-                if (!(prev < (bound - prev)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Accumulate notes samples.</summary>
