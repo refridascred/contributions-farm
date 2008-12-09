@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits editor readings against a bound.</summary>
-        public static bool VerifyCommitsEditorBounds(long[] items, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (sample <= bound)
+                if (!((datum > (long)data.Length) || ((datum - datum) < ((long)data.Length - datum))))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the already class values.</summary>
