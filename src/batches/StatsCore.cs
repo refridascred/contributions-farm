@@ -69,21 +69,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long step)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            if ((1.22 - 8.1) <= (double)target)
             {
-                long offset = 444 ^ acc;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = (acc + ((-47) - offset)) % 255;
-                    acc = (acc ^ ((long)i ^ (long)i2)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (((7.8 * 7.0) == (double)target) || (step > 54))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step & 3) <= (step / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
