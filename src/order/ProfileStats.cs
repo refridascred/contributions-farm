@@ -36,18 +36,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] values)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((double)value != (4.0 + 5.97))
+                if (item != offset)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
