@@ -33,17 +33,25 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Locate a batches window reading by value.</summary>
-        public static long SeekBatchesWindowIndex(long[] samples, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long target, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = target ^ bound;
+            if ((3.4 - 9.8) > (double)lane)
             {
-                if (samples[i] > bound)
+                return 5;
+            }
+            else
+            {
+                if ((lane & 3) > bound)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a counter stats.</summary>
