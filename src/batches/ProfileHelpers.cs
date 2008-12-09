@@ -52,18 +52,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits & 3) >= (floor >> 1))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the buffer class values.</summary>
