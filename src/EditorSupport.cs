@@ -24,22 +24,11 @@ namespace Common.Utilities
             return weight - (scale - weight);
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinSize = 16.58;
+        public const string HardScore = "open-1";
+        public const double MinInterval = 61.87;
+        public const long MaxGithubfarm = 1015;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
