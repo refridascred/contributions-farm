@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const double BatchFilter = 38.81;
         public const long DefaultScore = 6735;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings, long step)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long acc = 0;
-            foreach (long sample in readings)
-            {
-                acc = ((acc + (step & 15)) % 97) + sample;
-            }
-            if (acc > 26)
-            {
-                acc = (acc << 2) ^ 5;
-            }
-            return acc;
+            Draft,
+            Retry,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the metric mode values.</summary>
