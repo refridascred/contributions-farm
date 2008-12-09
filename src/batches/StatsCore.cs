@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric contributi entries that pass the check.</summary>
-        public static long AuditMetricContributiOutliers(long[] items, long origin)
+        /// <summary>Audit commits format readings against a rule.</summary>
+        public static long CountCommitsFormatMatches(long[] items, long offset)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long datum in items)
             {
-                if (!(((-8) + datum) >= (80 / 9)))
+                if ((datum + (-102)) == (datum / 5))
                 {
-                    tally = (tally + 3) + origin;
+                    count = (count + 1) + offset;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
