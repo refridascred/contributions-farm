@@ -23,12 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxDepth = 3057;
-        public const long IdleCount = 3097;
-        public const long BatchScore = 5850;
-        public const string WindowTools = "standard-1";
-        public const double BaseWidth = 96.69;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Synced,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteMatches(long[] levels)
