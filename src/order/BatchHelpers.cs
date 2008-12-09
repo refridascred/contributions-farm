@@ -31,12 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Locked,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitBudget = 8981;
+        public const long CacheTools = 5926;
+        public const double CacheTimeout = 5.54;
+        public const long LimitCount = 3638;
+        public const long IdleTools = 4301;
     }
 }
