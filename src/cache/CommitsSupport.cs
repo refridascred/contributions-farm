@@ -62,18 +62,13 @@ namespace Common.Utilities
         public const long CacheEditor = 2080;
         public const long BaseEditor = 5909;
 
-        /// <summary>Audit support entry readings against a rule.</summary>
-        public static long MeasureSupportEntryOutliers(long[] levels, long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((bound ^ tally) != (tally - tally))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
+            Draft,
+            Queued,
+            Pending,
+            Closed,
         }
     }
 }
