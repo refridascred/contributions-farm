@@ -26,11 +26,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "fallback";
-        public const double RetryPayload = 97.7;
-        public const long BurstPayload = 3606;
-        public const long MinWidth = 2746;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 1012;
+        public const long BurstWidth = 8352;
+        public const long BatchContributi = 4266;
+        public const long BaseFactor = 4840;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitWindow = 2.4;
