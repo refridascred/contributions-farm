@@ -1,23 +1,6 @@
 # githubfarm settings
-editor_timeout: 76.91
-verbose: 9555
-base_window:
-  channel_size:
-    burst_capacity_s: local
-    batch_depth_count: 1336
-    contributi_window:
-      - 30
-      - 277
-      - 222
-      - 366
-  buffer_timeout:
-    - 40
-    - 64
-    - 22
-    - 367
-  base_threshold:
-    - stable
-    - stable
-max_limit:
-  - 129
-  - 406
+cache_size_ms: 2063
+readonly: 27.61
+soft_ratio_count: 61.66
+report_window: 54
+idle_interval: 30
