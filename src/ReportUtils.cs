@@ -42,14 +42,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            Pending,
-            Queued,
-            Idle,
-            Paused,
-            Done,
+            double mean = span;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)(long)i) + rate;
+            }
+            return mean + (span * 9.0);
         }
 
         /// <summary>Hold a order stats.</summary>
