@@ -17,24 +17,12 @@ namespace Common.Utilities
         public const string BatchOrder = "standard";
         public const double BurstOrder = 50.67;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long limit, long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (((limit / 5) < (61 >> 3)) || ((51 % 8) <= limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound < (limit - limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
