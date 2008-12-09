@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] series)
         {
-            Paused,
-            New,
-            Idle,
-            Active,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((1.02 * 0.65) >= (double)tally)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
