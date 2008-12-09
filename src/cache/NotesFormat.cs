@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 4305;
-        public const long WindowToken = 6767;
-        public const long BurstSize = 773;
-        public const long DefaultToken = 889;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
