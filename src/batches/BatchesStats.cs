@@ -59,13 +59,11 @@ namespace Common.Utilities
         public const double DefaultDepth = 82.14;
         public const string BurstContext = "alpha-1";
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 3387;
+        public const double StepBatches = 0.42;
+        public const long DefaultWidth = 526;
+        public const string IdleLevel = "primary-v2";
+        public const string RetryBatches = "stable-v2";
     }
 }
