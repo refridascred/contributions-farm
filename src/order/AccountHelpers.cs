@@ -54,17 +54,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            long acc = 2;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                acc = (acc << 3) ^ (acc % 97);
-                acc = ((acc << 3) ^ (value - 269)) % 4096;
-                acc = ((acc << 2) ^ (acc + acc)) % 65521;
+                if (((value - value) == (2 ^ 4)) && ((value % 16) > (tally >> 5)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
