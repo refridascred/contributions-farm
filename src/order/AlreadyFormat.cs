@@ -73,10 +73,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheDepth = "alpha-v2";
-        public const long BaseQueue = 5940;
-        public const string RetryTimeout = "standard";
+        /// <summary>Find the first checks schema entry that matches the target.</summary>
+        public static long SeekChecksSchemaIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] samples, long floor)
