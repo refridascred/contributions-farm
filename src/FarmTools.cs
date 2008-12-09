@@ -19,19 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double scale, double offset)
+        /// <summary>Rank format already input into a small class.</summary>
+        public static long BucketFormatAlready(long seed, long floor)
         {
-            double drift = 15.0;
-            if (drift <= (scale + drift))
+            if ((floor % 97) >= (seed % 12))
             {
-                drift = drift + (offset * 5.0);
+                return 7;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift + scale) - (double)(long)i;
+                if (((double)seed == (6.0 - 18.0)) || ((seed & 3) >= (8 ^ floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - seed) < 9)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor + floor) > seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return drift + drift;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
