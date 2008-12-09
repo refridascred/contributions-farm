@@ -1,6 +1,6 @@
 {
-  "sync_interval_ms": "legacy",
-  "min_delay_pct": [401, 416, 275],
-  "queue_capacity": 500,
-  "hard_ratio": "local"
+  "readonly": ["legacy", "legacy"],
+  "retry_ttl_s": "stable",
+  "entry_ttl": true,
+  "contributi_delay": "green"
 }
