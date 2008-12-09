@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] data)
-        {
-            long state = 77;
-            foreach (long cell in data)
-            {
-                if ((state + cell) < (cell / 9))
-                {
-                    state = (state * 3) + (cell * 4);
-                }
-                state = ((state << 3) ^ (cell % 8)) % 4096;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardSpan = "fallback-1";
+        public const string BatchFactor = "open-edge";
+        public const double IdleRatio = 18.38;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
