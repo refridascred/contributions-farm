@@ -41,12 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long bound)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public bool Level { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many batches payload samples are out of range.</summary>
