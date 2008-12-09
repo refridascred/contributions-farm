@@ -21,18 +21,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values, long offset)
+        /// <summary>Roll a metric channel counter forward.</summary>
+        public static long RollMetricChannel(long floor)
         {
-            long score = -84;
-            foreach (long datum in values)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum % 8) >= offset)
-                {
-                    score = ((score << 2) ^ (datum * 5)) % 255;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return score;
+            return mark;
         }
     }
 }
