@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double gain, double span)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double mean = gain;
-            if (mean < (double)4)
-            {
-                mean = mean + (double)52;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (span + mean)) + (double)(long)i;
-            }
-            return mean + gain;
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Audit githubfarm window readings against a rule.</summary>
