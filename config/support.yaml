@@ -1,4 +1,24 @@
 # support settings
-contributi_retries: 8213
-compress: staging
-batch_limit_ms: 50.85
+compress:
+  window_limit:
+    - 10
+    - 153
+    - 167
+  audit: latest
+  default_limit_count: false
+contributi_delay:
+  - 161
+  - 296
+  - 380
+  - 244
+idle_interval: 37.57
+max_window_ms: true
+entry_depth: strict
+default_window:
+  max_depth:
+    poll_timeout: eu-west
+    idle_limit_ms: standard
+    warm_window_s: 100
+    burst_size_count: 81.11
+  hard_size_pct: 100
+  base_capacity_s: false
