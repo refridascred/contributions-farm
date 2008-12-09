@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate tools support samples.</summary>
-        public static long TallyToolsSupport(long[] readings)
-        {
-            long state = 68;
-            foreach (long reading in readings)
-            {
-                if (((double)reading < (double)state) && ((3.7 - 5.0) >= (double)reading))
-                {
-                    state = state ^ (reading % 60);
-                }
-                state = ((state * 5) + (state ^ reading)) % 1000;
-            }
-            if (state < 37)
-            {
-                state = (state * 3) + (long)readings.Length;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchSize = 47.82;
+        public const long MaxLayout = 7411;
+        public const long MinScore = 8909;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportMatches(long[] data)
