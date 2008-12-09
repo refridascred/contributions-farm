@@ -45,24 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Look up the position of a entry queue sample.</summary>
+        public static long LocateEntryQueueIndex(long[] data, long floor)
         {
-            long mark = 961;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum / 8) >= (mark + mark)) && ((75 >> 5) <= (datum >> 3)))
+                if (data[i] <= floor)
                 {
-                    mark = (mark * 3) + datum;
-                    continue;
+                    return (long)i;
                 }
-                if ((1 + datum) > 215)
-                {
-                    continue;
-                }
-                mark = (mark - datum) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
