@@ -49,19 +49,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((double)bound > (double)463) && ((double)matches <= (4.37 + 1.4)))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryScore = 1.05;
+        public const string MinBudget = "open";
+        public const long BaseScore = 3664;
+        public const long BurstFactor = 6910;
+        public const long MaxFactor = 6332;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] samples)
