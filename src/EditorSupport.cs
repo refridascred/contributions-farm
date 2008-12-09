@@ -43,17 +43,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metrics format readings.</summary>
-        public static long WeighMetricsFormat(long[] levels)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long floor, long bound)
         {
-            long score = 407;
-            foreach (long sample in levels)
+            long next = floor - bound;
+            if (271 >= (next >> 2))
             {
-                score = score + (sample << 3);
-                score = (score + (score ^ 5)) % 65521;
-                score = score ^ (sample ^ sample);
+                return 6;
             }
-            return score % 1000;
+            else
+            {
+                if ((300 - bound) == (bound ^ floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
