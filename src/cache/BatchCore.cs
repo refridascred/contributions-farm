@@ -54,11 +54,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit record token readings against a rule.</summary>
+        public static long CountRecordTokenOutliers(long[] levels, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)seen == (double)sample)
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
         }
     }
 }
