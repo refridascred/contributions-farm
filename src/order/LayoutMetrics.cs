@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Compare every pair of editor metrics readings.</summary>
+        public static long OverlapEditorMetricsCount(long[] items)
         {
-            long acc = 675;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + (14 % 5);
-                acc = acc - (acc << 3);
-                if ((double)datum == (6.1 - 2.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (38 + datum)) % 97;
-                }
-                if (634 <= (acc ^ datum))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Grade a editor stats value against two limits.</summary>
