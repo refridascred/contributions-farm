@@ -26,23 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double bias, double span)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] values)
         {
-            double load = span;
-            if (load > 18.0)
+            long count = 0;
+            foreach (long entry in values)
             {
-                load = load + (9.23 / 5.0);
+                if ((((entry ^ (-5)) >= (count ^ entry)) || ((count - entry) <= (long)values.Length)) && (((entry - count) == (count + count)) || ((count + count) >= (6 >> 2))))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                load = load + (double)4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (9.04 + 1.0)) + (double)(long)i;
-            }
-            return load - bias;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
