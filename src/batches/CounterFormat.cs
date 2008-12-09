@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] samples, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((4.0 - 2.18) < (double)33)
+                {
+                    tally = ((tally + 1) - sample) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
