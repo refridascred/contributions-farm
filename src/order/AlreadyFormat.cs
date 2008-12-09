@@ -48,26 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes window readings.</summary>
-        public static long TallyNotesWindow(long[] items)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] samples, long floor)
         {
-            long carry = 58;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (!((item & 255) == (item / 2)))
+                if (entry < floor)
                 {
-                    carry = (carry - (carry - (-617))) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry * 5);
-                }
-                if ((2 / 7) >= (item << 2))
-                {
+                    found = false;
                     break;
                 }
             }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Accumulate stream samples.</summary>
