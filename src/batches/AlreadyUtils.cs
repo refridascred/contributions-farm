@@ -50,9 +50,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowRatio = 39.36;
-        public const long MaxWidth = 5418;
-        public const long SoftSize = 2694;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long bound, long origin)
+        {
+            long lane = bound + origin;
+            if (!((bound - origin) != (bound << 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (lane < (584 ^ origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((lane ^ origin) == (lane ^ 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
