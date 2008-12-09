@@ -29,17 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] levels, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                if (cell > step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
