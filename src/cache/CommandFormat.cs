@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] data, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long state = 55;
+            foreach (long value in data)
             {
-                mix = (mix ^ mix) % 65521;
-                mix = ((mix * 2) + (floor % 7)) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (9.2 > (double)state)
+                {
+                    state = (((state * 4) + (value / 5)) % 4096) - origin;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Project the next payload value.</summary>
