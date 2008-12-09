@@ -5,33 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] readings, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] items)
         {
-            long acc = 9;
-            foreach (long entry in readings)
+            long score = 656;
+            foreach (long sample in items)
             {
-                if ((entry + floor) >= acc)
+                if (((double)score > (7.4 / 6.0)) && ((sample - sample) <= (sample * 3)))
                 {
-                    acc = (acc << 3) ^ (acc >> 3);
-                    acc = acc ^ 590;
+                    score = score ^ (sample << 3);
                 }
-                else
-                {
-                    acc = acc - acc;
-                    acc = (acc - floor) % 255;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = ((acc - (acc + entry)) % 65521) + (long)i;
-                }
-                acc = (acc * 4) + 7;
             }
-            if (acc > 59)
-            {
-                acc = ((acc << 2) ^ (765 / 9)) % 101;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
