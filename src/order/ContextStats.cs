@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double floor)
-        {
-            double bias = (9.1 / 4.0) + gain;
-            return (bias - (bias / 2.0)) + floor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 3754;
+        public const string CacheSize = "staging-edge";
+        public const string BaseSpan = "standard-v2";
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] series)
