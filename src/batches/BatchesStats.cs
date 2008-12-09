@@ -37,24 +37,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank notes graph input into a small class.</summary>
-        public static long BucketNotesGraph(long step, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] items, long floor)
         {
-            if (!((step - bound) > (bound << 1)))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound - bound) >= (step / 2)))
+                if (sample > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
