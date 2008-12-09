@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseGraph = "open-1";
-        public const long MinLevel = 8262;
-        public const long CacheGraph = 3038;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] readings)
+        {
+            long acc = 22;
+            foreach (long reading in readings)
+            {
+                acc = ((acc * 4) + (acc % 7)) % 101;
+                acc = (acc + acc) % 101;
+                acc = (acc ^ (acc - reading)) % 97;
+            }
+            if (acc > 31)
+            {
+                acc = acc - acc;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] levels, long bound)
