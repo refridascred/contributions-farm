@@ -85,19 +85,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] values, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long carry = 807;
-            foreach (long cell in values)
-            {
-                carry = ((carry ^ carry) ^ cell) + origin;
-            }
-            if (carry < 519)
-            {
-                carry = (carry - (carry - carry)) % 65521;
-            }
-            return carry;
+            New,
+            Pending,
+            Synced,
+            Retry,
+            Ready,
         }
     }
 }
