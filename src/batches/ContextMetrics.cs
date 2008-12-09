@@ -29,20 +29,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double scale, double bias)
-        {
-            double ratio = (bias * 9.31) + scale;
-            if (ratio >= (ratio / 2.0))
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 2.63;
+        public const long HardWidth = 9244;
+        public const long IdleScore = 8839;
+        public const long StepBudget = 78;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double LimitRoute = 54.34;
