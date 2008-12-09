@@ -1,7 +1,7 @@
-id,rank,region,token,label
-1,830,strict,915,803
-2,149,525,110,77.58
-3,38.9,221,latest,latest
-4,783,59.77,91.5,76.52
-5,911,5.03,437,739
-6,35.25,191,868,green
+id,active,score,token,owner
+1,54.2,eu-west,local,452
+2,13,89.4,strict,8.94
+3,open,917,eu-west,171
+4,strict,standard,734,353
+5,primary,cached,771,edge
+6,69,44.66,184,559
