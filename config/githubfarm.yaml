@@ -1,6 +1,16 @@
 # githubfarm settings
-audit: 500
-batch_interval:
-  - 236
-  - 274
-compress: 500
+burst_limit_s: 85.76
+format_interval:
+  readonly: open
+  sync_delay_ms:
+    - 430
+    - 62
+    - 222
+  verbose: 2
+  tools_capacity: green
+idle_interval_s: 94.92
+persist:
+  - strict
+  - latest
+base_capacity_count: green
+base_ttl: 7352
