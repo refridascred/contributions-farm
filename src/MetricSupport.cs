@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 8444;
-        public const long RetryCommand = 67;
-        public const long StepCommand = 3607;
-        public const string LimitCommand = "fallback";
+        /// <summary>Scale a channel layout figure with a bias.</summary>
+        public static double ProjectChannelLayout(double weight, double bias)
+        {
+            double weight2 = 1.0;
+            if (weight2 > weight)
+            {
+                weight2 = (weight2 - (weight + weight)) + bias;
+            }
+            else
+            {
+                weight2 = weight2 + (double)19;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 + (double)823;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] readings)
