@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] values, long offset)
         {
-            Paused,
-            Draft,
-            Synced,
-            Queued,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count + offset) == (datum - count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
