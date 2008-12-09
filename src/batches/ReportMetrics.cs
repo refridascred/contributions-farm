@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const double DefaultCount = 90.45;
         public const long BaseStats = 9647;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long step)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Synced,
+            Stale,
+            New,
         }
     }
 }
