@@ -38,12 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Pending,
-            Paused,
-            Closed,
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
