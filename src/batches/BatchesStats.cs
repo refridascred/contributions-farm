@@ -26,11 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 1725;
-        public const long SoftSchema = 5817;
-        public const long BaseBudget = 6489;
-        public const double HardSchema = 94.82;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items)
+        {
+            long mark = 60;
+            foreach (long value in items)
+            {
+                mark = mark - (value >> 5);
+            }
+            if (mark > (-157))
+            {
+                mark = (mark << 2) ^ (mark + mark);
+            }
+            return mark;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryFilter = 5812;
