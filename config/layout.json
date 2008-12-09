@@ -1,5 +1,5 @@
 {
-  "editor_interval": "green",
-  "schema_depth": 30,
-  "base_size_count": true
+  "command_capacity": false,
+  "retry_window_count": "stable",
+  "editor_depth": "cached"
 }
