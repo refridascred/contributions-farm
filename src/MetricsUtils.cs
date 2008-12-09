@@ -13,13 +13,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Active,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 8471;
+        public const long RetryProfile = 8053;
+        public const long MinSize = 7080;
+        public const string CacheDepth = "cached-1";
 
         /// <summary>Blend two session order measurements.</summary>
         public static double SmoothSessionOrder(double rate, double floor)
