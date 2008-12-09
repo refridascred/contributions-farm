@@ -1,10 +1,11 @@
 # Command notes
 
-A route that stays idle for too long is moved to the graph list.
-Keep editor and schema names short and lowercase.
+When a report fails, the schema handler retries a few times before giving up.
+The tools module keeps report values in sync with the graph cache.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Validate session input early
-- Log every session change
+- Prefer format defaults
+- Validate stats input early
+- Keep metric values small
+- Review notes limits each release
