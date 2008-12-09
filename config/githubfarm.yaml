@@ -1,10 +1,6 @@
 # githubfarm settings
-enabled:
-  - 336
-  - 382
-  - 66
-idle_timeout: local
-min_depth: 19
-poll_capacity_ms: 2.1
-batch_ratio: legacy
-max_ttl: fallback
+window_threshold: false
+base_timeout: 85.12
+flush_limit: cached
+audit: true
+max_size: 83
