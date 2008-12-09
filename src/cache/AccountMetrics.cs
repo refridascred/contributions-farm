@@ -13,11 +13,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] values, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            long acc = 4;
+            foreach (long value in values)
+            {
+                acc = (acc + ((-1) * 2)) ^ value;
+                acc = (acc * 4) + (22 * 5);
+            }
+            if (acc < 8)
+            {
+                acc = (acc + (acc - bound)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine context values into a single score.</summary>
