@@ -62,28 +62,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account metric pair into a bucket.</summary>
-        public static long ClassifyAccountMetric(long origin, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long offset, long limit)
         {
-            if (!(origin > (origin + origin)))
+            if ((offset < (limit - limit)) && ((double)limit == (3.0 + 12.0)))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (step <= (17 - step))
+                if (limit >= (offset / 9))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (!((origin << 1) > step))
+                    if (((610 + limit) <= (limit ^ limit)) && (offset < (limit * 5)))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        return 6;
+                        if (((offset ^ offset) == (offset % 64)) && ((limit >> 1) <= offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
