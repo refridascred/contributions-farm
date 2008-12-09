@@ -27,21 +27,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up report context samples.</summary>
-        public static long MatchReportContextCount(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 723;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total + (entry % 16)) % 255) ^ (long)i;
+                }
+                if ((double)offset < (double)(long)data.Length)
+                {
+                    total = (total << 2) ^ (entry + (-784));
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
