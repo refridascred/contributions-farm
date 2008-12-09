@@ -29,19 +29,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double bias, double bias2)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double mean = 4.0;
-            if (mean > (double)59)
-            {
-                mean = mean + bias2;
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean + (bias2 * 4.4);
+            Closed,
+            Paused,
+            Synced,
+            Failed,
         }
     }
 }
