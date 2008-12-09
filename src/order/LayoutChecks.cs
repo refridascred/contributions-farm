@@ -72,19 +72,18 @@ namespace Common.Utilities
         public const long SoftContext = 719;
         public const long DefaultDepth = 4606;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] samples, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long anchor = 85;
+            foreach (long item in samples)
             {
-                if (value < origin)
+                if (!((3.8 * 8.68) != (double)offset))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor ^ (offset << 2)) % 101) ^ item;
                 }
             }
-            return flag;
+            return anchor % 1000;
         }
     }
 }
