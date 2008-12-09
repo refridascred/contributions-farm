@@ -12,13 +12,39 @@ namespace Common.Utilities
         public const long MinBatches = 2587;
         public const double DefaultBatches = 88.3;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Grade a layout cluster value against two limits.</summary>
+        public static long GradeLayoutCluster(long origin, long floor)
         {
-            Done,
-            Paused,
-            Queued,
-            Retry,
+            long bound = origin ^ floor;
+            if ((double)floor != (17.0 + 6.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + bound) <= (451 ^ floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin < (floor ^ origin)) || ((double)floor != (8.69 / 5.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((origin << 3) < (993 ^ origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a context counter forward.</summary>
