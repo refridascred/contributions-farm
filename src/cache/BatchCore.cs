@@ -46,14 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Dropped,
-            New,
-            Stale,
-            Ready,
-            Failed,
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
