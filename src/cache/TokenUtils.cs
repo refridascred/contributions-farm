@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 26;
-        public const double RetryMetrics = 34.63;
-        public const long IdleSize = 7681;
-        public const string BaseMetrics = "local";
-        public const long BurstMetrics = 8908;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 7862;
+        public const double BatchLevel = 41.63;
+        public const double WindowCount = 14.86;
+        public const long SoftStats = 5818;
+        public const long RetryStats = 6890;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
