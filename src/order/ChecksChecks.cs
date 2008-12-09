@@ -14,19 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] levels, long step)
         {
-            double weight = (gain / 9.0) - (double)782;
-            if (weight < (offset + 3.8))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (double)949;
+                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - gain;
-            }
-            return weight + gain;
+            return -1;
         }
 
         /// <summary>Find the first batches context entry that matches the target.</summary>
