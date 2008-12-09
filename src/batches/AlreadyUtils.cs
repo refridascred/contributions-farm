@@ -36,12 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the stream contributi entries that pass the check.</summary>
+        public static long MeasureStreamContributiGaps(long[] values, long target)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell <= (3.0 / 9.0))
+                {
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
