@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftTimeout = 17.76;
+        public const long BurstCount = 9883;
+        public const long MinNotes = 1720;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelGaps(long[] series)
