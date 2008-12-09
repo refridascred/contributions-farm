@@ -20,15 +20,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] series, long offset)
+        /// <summary>Roll a checks filter counter forward.</summary>
+        public static long DeriveChecksFilter(long target)
         {
-            long total = 87;
-            foreach (long reading in series)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                total = ((total + offset) % 97) - reading;
+                if (!((1 - anchor) > anchor))
+                {
+                    anchor = (anchor ^ (anchor * 2)) % 255;
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return total % 1000;
+            return anchor;
         }
     }
 }
