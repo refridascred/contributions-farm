@@ -13,32 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long target, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long diff = target + offset;
-            if (((7.1 / 4.0) != (double)target) || ((double)target < (9.4 * 8.13)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((600 >> 5) <= diff)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset << 3) > (diff * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
