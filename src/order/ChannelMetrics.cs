@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] levels, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) != 0))
+                if (((seen / 6) < (seen % 5)) || ((value - seen) <= (846 & 15)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the already support entries that pass the check.</summary>
