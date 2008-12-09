@@ -56,11 +56,22 @@ namespace Common.Utilities
         public const double BaseRatio = 52.09;
         public const string BurstPayload = "latest-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxInterval = 8513;
-        public const long DefaultTimeout = 386;
-        public const long CacheEditor = 2080;
-        public const long BaseEditor = 5909;
+        /// <summary>Match up contributi counter samples.</summary>
+        public static long PairContributiCounterCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
