@@ -27,24 +27,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a tools checks value against two limits.</summary>
-        public static long BucketToolsChecks(long step, long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            if ((target + target) == (step + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-592) + target) > (target + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
