@@ -29,14 +29,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Locked,
-            New,
-            Synced,
-            Draft,
+            Pending,
             Queued,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a order stats.</summary>
