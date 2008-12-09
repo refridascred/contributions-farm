@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardTimeout = 2118;
-        public const double WindowSupport = 90.43;
-        public const long BurstSupport = 3511;
+        /// <summary>Locate a stream session reading by value.</summary>
+        public static long SeekStreamSessionIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
