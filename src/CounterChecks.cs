@@ -85,19 +85,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two graph entry measurements.</summary>
-        public static double SmoothGraphEntry(double rate, double floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long floor)
         {
-            double gain = (double)(4 - 12);
-            if (gain < floor)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                gain = gain + (rate * 5.18);
+                if ((result <= (floor * 5)) || (floor <= result))
+                {
+                    result = result ^ ((long)i + 19);
+                }
+                result = (result - (floor << 3)) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (rate / 8.0)) - (double)(long)i;
-            }
-            return gain + (floor / 8.0);
+            return result;
         }
     }
 }
