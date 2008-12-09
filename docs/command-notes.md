@@ -1,11 +1,11 @@
 # Command notes
 
-Each format is validated before it reaches the layout queue.
-The record module keeps editor values in sync with the profile cache.
+Use support settings to tune how often buffer data is refreshed.
+The entry module keeps layout values in sync with the report cache.
 
 ## Guidelines
 
-- Keep entry values small
-- Review stream limits each release
-- Log every already change
-- Prefer tools defaults
+- Log every format change
+- Prefer editor defaults
+- Keep already values small
+- Review buffer limits each release
