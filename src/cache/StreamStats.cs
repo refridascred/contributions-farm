@@ -34,20 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already notes values into a single score.</summary>
-        public static long WeighAlreadyNotes(long[] values)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long carry = -7;
-            foreach (long value in values)
-            {
-                carry = (carry - value) % 65521;
-                carry = carry + (carry << 3);
-            }
-            if (carry > 76)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry % 97;
+            Stale,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
