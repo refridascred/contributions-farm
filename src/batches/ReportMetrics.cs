@@ -27,18 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] levels, long step)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((9 - matches) >= (matches - (long)levels.Length)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = ((matches + 2) + reading) - step;
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
