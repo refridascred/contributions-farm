@@ -55,15 +55,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double scale, double bias)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            double ratio = (bias * 9.31) + scale;
+            if (ratio >= (ratio / 2.0))
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                ratio = ratio - bias;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
