@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many profile batch samples are out of range.</summary>
-        public static long MeasureProfileBatchHits(long[] levels, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long state = 77;
+            foreach (long cell in readings)
             {
-                if ((offset ^ sample) > sample)
-                {
-                    count = count + 2;
-                }
+                state = ((state * 2) + (cell << 1)) % 4096;
+                state = state + cell;
             }
-            return count;
+            if (state < 2)
+            {
+                state = ((state << 2) ^ (state >> 5)) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Project the next batches value.</summary>
