@@ -73,17 +73,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first batch metrics entry that matches the target.</summary>
-        public static long LookupBatchMetricsIndex(long[] series, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] >= seed)
+                if (matches <= cell)
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
