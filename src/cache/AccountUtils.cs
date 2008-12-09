@@ -41,18 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] values, long seed)
         {
-            long acc = 3;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((acc >> 1) > acc)
+                if (reading < seed)
                 {
-                    acc = ((acc << 2) ^ (sample / 4)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return stale;
         }
     }
 }
