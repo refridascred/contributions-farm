@@ -1,14 +1,10 @@
 # support settings
-entry_capacity:
-  - standard
-  - eu-west
-sync_ttl_ms:
-  - latest
-  - fallback
-  - stable
-dry_run: 43.75
-retry_delay_count: primary
-readonly:
-  - 410
-  - 416
-max_ttl: true
+hard_retries_s: cached
+token_timeout: cached
+hard_limit: 19.71
+batch_window:
+  - 214
+  - 133
+  - 245
+retry_interval: cached
+cache_interval: 9082
