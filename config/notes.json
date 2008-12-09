@@ -1,6 +1,5 @@
 {
-  "min_capacity_ms": "legacy",
-  "default_threshold_count": 61,
-  "soft_window_s": 39.72,
-  "base_depth": "staging"
+  "sync_ttl_ms": 1630,
+  "min_interval": 14.42,
+  "profile_limit": "standard"
 }
