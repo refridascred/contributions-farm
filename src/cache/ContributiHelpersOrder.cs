@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 3295;
         public const string WindowScore = "alpha";
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
