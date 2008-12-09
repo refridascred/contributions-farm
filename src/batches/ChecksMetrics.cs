@@ -62,38 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long offset, long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            if ((offset < (limit - limit)) && ((double)limit == (3.0 + 12.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit >= (offset / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((610 + limit) <= (limit ^ limit)) && (offset < (limit * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset ^ offset) == (offset % 64)) && ((limit >> 1) <= offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the batch state values.</summary>
