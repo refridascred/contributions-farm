@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((2.0 / 4.0) != (double)seed)
-                {
-                    hits = (hits + 1) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftTimeout = 67.2;
+        public const long BatchCache = 1208;
+        public const double BurstSize = 3.59;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double SmoothCluster(double scale, double offset)
