@@ -37,19 +37,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every session commits entry stays within the limit.</summary>
-        public static bool GuardSessionCommitsBounds(long[] levels, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (datum < step)
+                if ((cell % 3) >= (380 + cell))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
