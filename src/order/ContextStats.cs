@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheInterval = 388;
+        public const string WindowContributi = "latest-1";
+        public const long StepInterval = 3496;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
