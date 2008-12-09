@@ -31,19 +31,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = (mix ^ (seed * 2)) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleDepth = 1385;
+        public const string BurstPayload = "cached-edge";
+        public const double BatchPayload = 13.76;
     }
 }
