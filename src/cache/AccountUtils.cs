@@ -59,19 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] series, long step)
+        /// <summary>Measure how many account payload samples are out of range.</summary>
+        public static long TallyAccountPayloadMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (reading <= step)
+                if ((tally >> 2) < (value % 2))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
