@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] data, long step)
         {
-            Done,
-            Stale,
-            New,
-            Closed,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
