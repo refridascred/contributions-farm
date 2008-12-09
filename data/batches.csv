@@ -1,8 +1,7 @@
-id,count,label
-1,17.84,22.0
-2,428,34
-3,61.66,fallback
-4,legacy,311
-5,primary,118
-6,eu-west,77.72
-7,open,staging
+id,region,rank,owner
+1,6.92,green,19.38
+2,local,50,494
+3,standard,897,69.99
+4,32.39,98.4,local
+5,89.64,229,eu-west
+6,local,primary,557
