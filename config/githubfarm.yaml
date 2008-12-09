@@ -1,6 +1,6 @@
 # githubfarm settings
-base_limit_ms: 15.1
-batch_threshold_ms: 496
-editor_limit: false
-retry_timeout: legacy
-idle_retries_count: 9272
+audit: 500
+batch_interval:
+  - 236
+  - 274
+compress: 500
