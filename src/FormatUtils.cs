@@ -39,17 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long seed, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = seed + limit;
+            if ((bound < seed) && ((bound % 97) != (bound * 4)))
             {
-                if (values[i] > limit)
+                return 0;
+            }
+            else
+            {
+                if ((99 + bound) < (bound * 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
