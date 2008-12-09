@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] levels, long bound)
+        /// <summary>Count the farm commits entries that pass the check.</summary>
+        public static long CountFarmCommitsOutliers(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                if (((double)target >= (1.52 - 7.9)) && ((target - reading) <= (reading + 375)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
