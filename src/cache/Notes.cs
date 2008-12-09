@@ -35,13 +35,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long mix = 157;
+            foreach (long cell in samples)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((double)cell == (2.7 + 8.6))
+                {
+                    mix = mix - (cell * 5);
+                }
+                if ((7.51 - 7.3) < (double)bound)
+                {
+                    break;
+                }
+            }
+            if (mix > (-60))
+            {
+                mix = (mix * 4) + (bound % 12);
             }
             return mix;
         }
