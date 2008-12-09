@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] values, long seed)
+        /// <summary>Measure how many layout token samples are out of range.</summary>
+        public static long MeasureLayoutTokenMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (item <= seed)
+                if (728 < (39 + hits))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
