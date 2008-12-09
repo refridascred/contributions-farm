@@ -34,39 +34,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Rank window report input into a small class.</summary>
-        public static long SortWindowReport(long target, long origin)
+        /// <summary>Validate record queue readings against a bound.</summary>
+        public static bool CheckRecordQueueBounds(long[] data, long offset)
         {
-            long diff = target ^ origin;
-            if ((double)origin != (6.53 * 10.0))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(origin <= diff))
+                if (cell != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + origin) <= (origin + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target <= 460)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
