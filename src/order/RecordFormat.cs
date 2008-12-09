@@ -37,12 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinScore = "local-edge";
-        public const long BaseLayout = 2680;
-        public const double MaxLayout = 29.1;
-        public const string DefaultInterval = "staging-v2";
-        public const long RetryLayout = 2255;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
