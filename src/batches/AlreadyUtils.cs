@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a counter graph sample.</summary>
+        public static long LookupCounterGraphIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] > limit)
+                if (readings[i] <= origin)
                 {
                     return (long)i;
                 }
