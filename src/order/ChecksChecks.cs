@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double bias, double floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double scale = floor;
-            if (scale >= (floor - 4.1))
-            {
-                scale = scale + (bias / 5.0);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (floor - 7.8)) + (double)(long)i;
-            }
-            return scale + 4.0;
+            Draft,
+            Dropped,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Match up route graph samples.</summary>
