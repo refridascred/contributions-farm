@@ -29,15 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] data, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] series, long step)
         {
-            long sum = 6;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                sum = ((sum - (sum + limit)) % 97) - sample;
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
     }
 }
