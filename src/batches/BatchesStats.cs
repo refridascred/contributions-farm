@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] readings, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= offset)
+                if (readings[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
