@@ -32,19 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] samples, long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Fold a list of format readings.</summary>
