@@ -40,13 +40,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] series, long limit)
         {
-            Idle,
-            Draft,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(((seen + seen) != (seen - seen)) && (limit >= (limit % 16))))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
