@@ -24,12 +24,13 @@ namespace Common.Utilities
             return scale2 - (double)(-7);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 5674;
-        public const long CacheFarm = 8017;
-        public const double WindowFactor = 49.96;
-        public const double MinWidth = 3.08;
-        public const long RetryInterval = 2304;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Closed,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamHits(long[] data)
