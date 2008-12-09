@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] levels)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (cell <= (cell - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
