@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = limit - target;
+            if ((718 + limit) <= (limit << 1))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((delta % 64) >= (8 * 5))
                 {
-                    if ((data[i] ^ data[j]) > 20)
+                    return 8;
+                }
+                else
+                {
+                    if (!((target >> 2) < 72))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target - 546) == (delta - target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
