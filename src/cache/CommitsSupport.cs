@@ -79,18 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] values, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double scale, double offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            double weight = 4.8;
+            if (weight > (double)164)
             {
-                if ((((457 & 127) == (origin / 2)) || (0.2 >= (double)count)) || !((8.49 / 8.0) >= (double)count))
-                {
-                    count = (count + 3) + value;
-                }
+                weight = (weight + 8.9) + offset;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - (scale - 12.0);
         }
     }
 }
