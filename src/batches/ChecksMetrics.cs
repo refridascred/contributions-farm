@@ -28,18 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first farm record entry that matches the target.</summary>
-        public static long SeekFarmRecordIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 5107;
+        public const double WindowInterval = 92.54;
+        public const long BaseGraph = 6094;
+        public const long SoftBudget = 4611;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long DigestMetrics(long[] levels, long floor)
