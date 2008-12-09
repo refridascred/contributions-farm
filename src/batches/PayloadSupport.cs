@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] levels, long seed)
         {
-            Failed,
-            New,
-            Closed,
-            Ready,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen - seed) != (seed - seen))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up session samples.</summary>
