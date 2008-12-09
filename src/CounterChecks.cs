@@ -73,11 +73,18 @@ namespace Common.Utilities
         public const double MinNotes = 88.78;
         public const long HardBudget = 7104;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] data, long target)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long mark = 776;
+            foreach (long cell in data)
+            {
+                if (((double)cell > (3.0 + 7.0)) || (mark < target))
+                {
+                    mark = (mark + (cell << 2)) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
