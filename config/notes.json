@@ -1,16 +1,5 @@
 {
-  "retry_window_pct": [174, 326, 443],
-  "batch_delay": 17.85,
-  "base_threshold_ms": ["edge", "latest"],
-  "profile_threshold": true,
-  "command_delay": {
-    "poll_delay": {
-      "idle_delay_count": 60,
-      "payload_size": "strict",
-      "min_ttl_count": [291, 418]
-    },
-    "metrics_timeout": ["blue", "legacy", "cached", "latest"],
-    "soft_interval_pct": 1303
-  },
-  "max_depth_pct": 38.56
+  "format_limit": 100,
+  "hard_window": 500,
+  "retry_window_count": "legacy"
 }
