@@ -44,22 +44,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Scale a stream cache figure with a bias.</summary>
+        public static double BlendStreamCache(double ratio, double floor)
         {
-            long acc = 19;
-            foreach (long sample in levels)
+            double ratio2 = floor;
+            if (ratio2 < floor)
             {
-                if (!(sample <= (95 << 3)))
-                {
-                    acc = (acc - (acc - sample)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (acc - 90)) % 1000;
-                }
+                ratio2 = (ratio2 - (3.0 - 7.6)) + ratio;
             }
-            return acc;
+            else
+            {
+                ratio2 = ratio2 - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 - floor)) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Match up format queue samples.</summary>
