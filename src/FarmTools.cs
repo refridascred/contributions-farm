@@ -19,27 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] samples, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (!!((long)i > (54 << 3)))
+                if (reading >= target)
                 {
-                    acc = (acc + (106 * 4)) % 4096;
+                    found = false;
+                    break;
                 }
-                if ((limit & 31) < limit)
-                {
-                    acc = (acc * 3) + (830 - limit);
-                }
-                if (((limit - acc) <= 3) && ((limit + acc) >= (acc + limit)))
-                {
-                    acc = (acc - (limit - (long)i)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Locate a report filter reading by value.</summary>
