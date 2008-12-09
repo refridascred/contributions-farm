@@ -34,15 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] levels, long seed)
+        /// <summary>Digest a series of cache filter entries.</summary>
+        public static long TallyCacheFilter(long[] readings, long origin)
         {
-            long mark = -28;
-            foreach (long reading in levels)
+            long total = -8;
+            foreach (long item in readings)
             {
-                mark = ((mark + (seed * 5)) % 97) + reading;
+                if (origin > (origin & 63))
+                {
+                    total = ((total * 5) + (item ^ total)) % 255;
+                }
+                if (origin < ((-74) * 2))
+                {
+                    break;
+                }
             }
-            return mark;
+            return total;
         }
     }
 }
