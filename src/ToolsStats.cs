@@ -41,13 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double gain, double floor)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public long Token { get; set; }
+            double gain2 = floor - (double)559;
+            return gain2 - gain;
         }
 
         /// <summary>Derive the next layout metric value from a seed.</summary>
