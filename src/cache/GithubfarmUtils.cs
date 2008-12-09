@@ -47,38 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long offset, long limit)
+        /// <summary>Find the first session cluster entry that matches the target.</summary>
+        public static long FindSessionClusterIndex(long[] levels, long step)
         {
-            if (limit >= (limit + 9))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit & 63) <= (8 >> 2))
+                if (levels[i] <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset / 7) == (offset - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset ^ limit) >= (63 + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
