@@ -51,11 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
