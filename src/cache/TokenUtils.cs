@@ -27,15 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings, long floor)
         {
-            long anchor = 91;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                anchor = ((anchor - (value - value)) % 97) + limit;
+                if ((count ^ floor) != (325 + (-2)))
+                {
+                    count = (count + 2) ^ item;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
