@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] samples)
+        /// <summary>Check that every filter githubfarm entry stays within the limit.</summary>
+        public static bool VerifyFilterGithubfarmLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((3.64 + 8.2) == (double)seen)
+                if (entry <= offset)
                 {
-                    seen = (seen + 2) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a record options.</summary>
