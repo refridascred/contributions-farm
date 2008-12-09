@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
