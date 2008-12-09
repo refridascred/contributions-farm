@@ -31,12 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] items, long offset)
         {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
