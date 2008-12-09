@@ -89,11 +89,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] readings, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate format cache samples.</summary>
