@@ -1,8 +1,6 @@
 {
-  "default_size_s": 73.83,
-  "retry_delay_pct": true,
-  "dry_run": "strict",
-  "base_window_ms": [239, 480, 32],
-  "persist": [12, 440, 225],
-  "route_size": "edge"
+  "batch_capacity_pct": 67,
+  "cache_size_ms": false,
+  "checks_size": [225, 204, 223, 340],
+  "compress": [369, 399, 277]
 }
