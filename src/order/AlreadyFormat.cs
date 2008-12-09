@@ -69,18 +69,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 0;
+            foreach (long item in values)
             {
-                if ((hits / 2) >= reading)
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry ^ 934) + item) + seed;
+                carry = (carry - 83) % 101;
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
