@@ -1,9 +1,7 @@
 {
-  "soft_depth": 8289,
-  "idle_limit": "standard",
-  "idle_limit_s": {
-    "checks_limit": 9981,
-    "enabled": ["local", "primary", "cached", "standard"],
-    "compress": "staging"
-  }
+  "base_limit_s": "blue",
+  "cache_depth": false,
+  "soft_timeout_pct": "staging",
+  "channel_depth": false,
+  "batch_depth_s": 71
 }
