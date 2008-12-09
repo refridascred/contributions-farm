@@ -27,17 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] data, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (step << 2)) % 65521;
+                mix = mix - (77 - 29);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
