@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const long BaseCounter = 9533;
         public const double SoftCounter = 70.59;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            Dropped,
-            New,
-            Pending,
-            Stale,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
