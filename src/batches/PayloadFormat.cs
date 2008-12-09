@@ -29,12 +29,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] levels, long bound)
         {
-            Closed,
-            Failed,
-            Draft,
+            long mix = 58;
+            foreach (long item in levels)
+            {
+                mix = (((mix * 4) + (mix % 7)) + item) + bound;
+            }
+            if (mix < (-50))
+            {
+                mix = (mix * 4) + (mix / 9);
+            }
+            return mix;
         }
     }
 }
