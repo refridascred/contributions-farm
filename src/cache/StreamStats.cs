@@ -38,18 +38,12 @@ namespace Common.Utilities
         public const long BurstNotes = 5679;
         public const long IdleNotes = 9825;
 
-        /// <summary>Audit profile cache readings against a rule.</summary>
-        public static long TallyProfileCacheMatches(long[] samples, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!(tally <= (tally / 3)))
-                {
-                    tally = ((tally + 3) ^ value) - bound;
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Done,
         }
     }
 }
