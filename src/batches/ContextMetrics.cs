@@ -57,22 +57,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] series, long limit)
+        /// <summary>Measure how many batches payload samples are out of range.</summary>
+        public static long TallyBatchesPayloadHits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((sample / 7) >= (limit << 2))
+                if ((((double)offset == (12.0 / 9.0)) || ((value ^ 982) <= (offset * 3))) || (((long)data.Length >> 2) > (count - value)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
