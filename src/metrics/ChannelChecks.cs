@@ -53,19 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((offset % 16) > (offset + hits))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 2212;
+        public const long LimitSize = 4124;
+        public const long BatchCache = 2248;
+        public const string SoftCache = "staging-edge";
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] series)
