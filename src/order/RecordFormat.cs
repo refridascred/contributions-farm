@@ -37,14 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            New,
-            Locked,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinScore = "local-edge";
+        public const long BaseLayout = 2680;
+        public const double MaxLayout = 29.1;
+        public const string DefaultInterval = "staging-v2";
+        public const long RetryLayout = 2255;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MaxStream = 8559;
