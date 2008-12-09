@@ -13,11 +13,40 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "fallback";
-        public const string BurstQueue = "fallback-1";
-        public const long WindowWidth = 4490;
-        public const long BaseQueue = 9991;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long offset, long seed)
+        {
+            long diff = offset ^ seed;
+            if ((seed / 5) <= (offset >> 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset > (-66))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed <= (double)diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0.2 + 8.6) < (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] values, long floor)
