@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit account tools readings against a rule.</summary>
+        public static long TallyAccountToolsMatches(long[] items, long step)
         {
-            Retry,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((item + item) == (step << 1)) && ((40 - 9) >= (count / 3)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter status values.</summary>
