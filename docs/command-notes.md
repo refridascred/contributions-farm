@@ -1,10 +1,10 @@
 # Command notes
 
-When a order fails, the notes handler retries a few times before giving up.
-Keep payload and context names short and lowercase.
+A route that stays idle for too long is moved to the graph list.
+Keep editor and schema names short and lowercase.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep counter values small
-- Log every buffer change
+- Prefer notes defaults
+- Validate session input early
+- Log every session change
