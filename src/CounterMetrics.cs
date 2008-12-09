@@ -27,18 +27,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit buffer already readings against a rule.</summary>
-        public static long CountBufferAlreadyMatches(long[] samples)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((23 <= reading) || ((reading / 8) != (30 - count))) && (((3.0 - 6.71) == (double)count) || ((-85) < reading)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
