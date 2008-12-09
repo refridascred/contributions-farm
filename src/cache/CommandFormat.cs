@@ -27,18 +27,39 @@ namespace Common.Utilities
             return weight + (bias + weight);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] readings, long offset)
+        /// <summary>Rank checks githubfarm input into a small class.</summary>
+        public static long GradeChecksGithubfarm(long target, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long prev = target + seed;
+            if ((target + prev) != (seed / 8))
             {
-                if (tally <= (offset ^ item))
+                return 6;
+            }
+            else
+            {
+                if ((double)target != (7.8 * 4.08))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.74 + 4.0) == (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)prev <= (2.2 * 0.8)) && (target >= 329))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
