@@ -25,22 +25,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] readings)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((double)count <= 10.0)
+                if (datum < seed)
                 {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
