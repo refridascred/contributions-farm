@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Blend two session order measurements.</summary>
