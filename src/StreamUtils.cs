@@ -54,12 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long offset)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next metrics value.</summary>
