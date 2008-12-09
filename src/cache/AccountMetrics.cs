@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many batches route samples are out of range.</summary>
+        public static long MeasureBatchesRouteGaps(long[] items)
         {
-            Ready,
-            Retry,
-            Closed,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!((0.6 * 4.0) <= (double)datum))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
