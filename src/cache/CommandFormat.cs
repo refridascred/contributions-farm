@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] readings)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)matches > 6.0)
-                {
-                    matches = (matches + 3) - cell;
-                }
+                anchor = anchor - 148;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine support values into a single score.</summary>
