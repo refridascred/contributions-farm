@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long origin, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long offset = origin + limit;
+            if ((offset & 15) != (offset & 63))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = ((mix << 3) ^ (floor >> 1)) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((407 / 9) > (offset + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((3 - origin) <= (81 - 9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry record.</summary>
