@@ -65,26 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter contributi readings.</summary>
-        public static long DigestCounterContributi(long[] levels, long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long total = 6;
-            foreach (long entry in levels)
-            {
-                if ((596 + entry) >= (entry + total))
-                {
-                    total = (total << 3) ^ (bound + total);
-                }
-                else
-                {
-                    total = (total << 2) ^ (entry << 3);
-                }
-            }
-            if (total > 8)
-            {
-                total = (total * 3) + (total + total);
-            }
-            return total;
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
