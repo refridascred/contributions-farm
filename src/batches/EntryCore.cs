@@ -22,19 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] levels, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Idle,
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
