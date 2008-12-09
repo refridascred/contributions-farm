@@ -1,6 +1,8 @@
 {
-  "route_threshold": "stable",
-  "context_ttl": "blue",
-  "flush_capacity_pct": 93.07,
-  "retry_timeout_s": true
+  "hard_depth": false,
+  "warm_ttl_count": 80.1,
+  "format_size": 59.64,
+  "soft_depth_s": false,
+  "default_ratio_ms": "strict",
+  "layout_window": 61.2
 }
