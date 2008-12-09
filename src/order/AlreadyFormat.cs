@@ -86,17 +86,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] samples, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 4;
+            foreach (long datum in levels)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                state = ((state << 3) ^ (floor + state)) ^ datum;
+                if ((1.4 - 4.7) > (double)floor)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < 915)
+            {
+                state = ((state << 2) ^ (75 & 7)) % 65521;
+            }
+            return state;
         }
     }
 }
