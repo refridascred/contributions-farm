@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] series)
+        /// <summary>Measure how many report channel samples are out of range.</summary>
+        public static long MeasureReportChannelHits(long[] items, long seed)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long entry in items)
             {
-                if ((5.0 - 8.1) >= (double)entry)
+                if ((((8.0 + 6.8) != (double)count) && ((seed + entry) <= count)) || ((seed ^ count) > entry))
                 {
                     count = count + 2;
                 }
