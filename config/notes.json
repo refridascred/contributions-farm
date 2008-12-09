@@ -1,17 +1,6 @@
 {
-  "max_ttl": "standard",
-  "order_interval": "latest",
-  "soft_ratio_s": {
-    "warm_depth_count": 9742,
-    "retry_delay": "legacy",
-    "retry_interval_ms": 60.7,
-    "dry_run": {
-      "dry_run": 63.46,
-      "retry_timeout": 0.29,
-      "soft_threshold": true,
-      "strict": 77.91
-    }
-  },
-  "format_threshold": false,
-  "idle_window_ms": 59
+  "retry_delay": false,
+  "batches_ratio": "blue",
+  "cache_ratio_ms": 250,
+  "checks_retries": 87.15
 }
