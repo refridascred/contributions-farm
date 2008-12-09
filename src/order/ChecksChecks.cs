@@ -35,18 +35,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] levels, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long result = 88;
+            foreach (long sample in values)
             {
-                if (3 < bound)
+                if ((80 ^ result) == (sample - floor))
                 {
-                    tally = (tally + 3) + datum;
+                    result = (result - (result + floor)) % 97;
+                }
+                else
+                {
+                    result = (result * 2) + (sample ^ 3);
                 }
             }
-            return tally;
+            return result % 4096;
         }
     }
 }
