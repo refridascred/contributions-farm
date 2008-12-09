@@ -45,12 +45,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 2329;
-        public const string RetryRatio = "stable";
-        public const long DefaultContext = 7097;
-        public const long SoftContext = 719;
-        public const long DefaultDepth = 4606;
+        /// <summary>Roll a commits account counter forward.</summary>
+        public static long SeriesCommitsAccount(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
