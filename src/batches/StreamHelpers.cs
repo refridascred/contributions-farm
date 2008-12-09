@@ -49,12 +49,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] data, long step)
         {
-            Dropped,
-            Stale,
-            New,
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
