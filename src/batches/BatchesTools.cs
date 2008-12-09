@@ -24,12 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Done,
-            Draft,
+            Pending,
             Paused,
+            Ready,
         }
     }
 }
