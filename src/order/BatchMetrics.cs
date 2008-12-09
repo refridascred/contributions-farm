@@ -33,22 +33,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] samples, long origin)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] values, long origin)
         {
-            long mark = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark * 5) <= 951)
+                if ((values[i] <= origin) && ((values[i] % 5) != 0))
                 {
-                    mark = ((mark << 2) ^ item) % 4096;
+                    return (long)i;
                 }
             }
-            if (mark < 301)
-            {
-                mark = mark + (origin >> 3);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
