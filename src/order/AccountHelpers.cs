@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many entry graph samples are out of range.</summary>
-        public static long AuditEntryGraphMatches(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((target ^ (-1)) < (target - tally))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchFactor = 5478;
+        public const long IdleWidth = 1376;
+        public const string MinSize = "legacy-v2";
+        public const long CacheBatches = 8320;
 
         /// <summary>Fold a list of stats metric readings.</summary>
         public static long FoldStatsMetric(long[] samples)
