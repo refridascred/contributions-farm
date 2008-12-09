@@ -1,16 +1,11 @@
 # support settings
-base_window_s: 13
-sync_retries:
-  burst_threshold_count: 60
-  counter_retries:
-    - cached
-    - cached
-    - open
-    - latest
-  retry_capacity: latest
-  notes_interval: local
-  max_delay_s: 41
-githubfarm_size: fallback
-warm_limit_s: 1953
-audit: false
-persist: 7166
+verbose: 36
+max_threshold: false
+flush_threshold: true
+readonly:
+  - fallback
+  - cached
+  - standard
+  - standard
+retry_interval_ms: cached
+audit: true
