@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate layout metrics samples.</summary>
-        public static long TallyLayoutMetrics(long[] samples, long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long score = 779;
-            foreach (long reading in samples)
-            {
-                if (!((double)floor <= 6.2))
-                {
-                    score = ((score + (floor << 3)) % 1000) ^ reading;
-                }
-                else
-                {
-                    score = ((score * 3) + (floor ^ 975)) % 97;
-                }
-            }
-            return score % 4096;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
