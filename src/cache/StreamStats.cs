@@ -38,12 +38,12 @@ namespace Common.Utilities
         public const long BurstNotes = 5679;
         public const long IdleNotes = 9825;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            New,
-            Locked,
-            Done,
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
