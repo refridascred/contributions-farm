@@ -44,12 +44,14 @@ namespace Common.Utilities
         public const string DefaultInterval = "staging-v2";
         public const long RetryLayout = 2255;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftBudget = 915;
-        public const string BurstSupport = "fallback-v2";
-        public const string SoftSupport = "primary";
-        public const double HardSupport = 7.3;
-        public const long CacheTimeout = 1415;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Active,
+            Ready,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 7221;
