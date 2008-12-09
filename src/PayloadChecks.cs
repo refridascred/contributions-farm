@@ -46,15 +46,12 @@ namespace Common.Utilities
         public const double DefaultGraph = 93.19;
         public const long IdleGraph = 2976;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a layout filter value against two limits.</summary>
