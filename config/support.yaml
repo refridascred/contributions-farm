@@ -1,10 +1,6 @@
 # support settings
-hard_retries_s: cached
-token_timeout: cached
-hard_limit: 19.71
-batch_window:
-  - 214
-  - 133
-  - 245
-retry_interval: cached
-cache_interval: 9082
+counter_limit: false
+order_retries: open
+flush_ttl_s:
+  - local
+  - eu-west
