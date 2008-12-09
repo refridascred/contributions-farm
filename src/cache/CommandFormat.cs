@@ -34,11 +34,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long carry = 300;
+            foreach (long sample in levels)
+            {
+                if (carry <= (510 - carry))
+                {
+                    carry = carry ^ (carry - sample);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate window samples.</summary>
