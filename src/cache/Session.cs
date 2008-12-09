@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 4580;
-        public const double LimitQueue = 57.63;
-        public const long BaseQueue = 9561;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
