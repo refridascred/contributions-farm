@@ -24,18 +24,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Count the support metrics entries that pass the check.</summary>
+        public static long AuditSupportMetricsGaps(long[] samples, long target)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches + target) < (sample + 768))
                 {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
