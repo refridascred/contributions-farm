@@ -46,18 +46,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] series)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((((9 + 7) <= count) || ((5.7 + 10.0) <= (double)count)) || ((double)count > 9.83))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
