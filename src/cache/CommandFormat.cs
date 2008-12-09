@@ -38,13 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] items, long offset)
         {
-            Synced,
-            Draft,
-            Active,
-            Queued,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
