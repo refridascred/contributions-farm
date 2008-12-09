@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((9 >> 5) > (matches - (long)values.Length))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinScore = 6.23;
+        public const string WindowSupport = "latest-v2";
+        public const long IdleRatio = 4410;
+        public const long SoftSupport = 3172;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchLevel = 5164;
