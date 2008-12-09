@@ -1,5 +1,7 @@
 {
-  "poll_threshold_count": "primary",
-  "warm_limit": "eu-west",
-  "flush_capacity_ms": true
+  "poll_window": "latest",
+  "batches_ttl": 85,
+  "persist": "green",
+  "retry_retries_s": "latest",
+  "batch_size_count": ["blue", "primary", "stable", "latest"]
 }
