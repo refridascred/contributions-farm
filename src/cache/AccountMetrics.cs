@@ -38,23 +38,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] series)
         {
-            long total = -983;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((floor + datum) > (total / 9)) || ((double)floor != (3.58 - 4.3)))
+                if (((-455) ^ datum) >= count)
                 {
-                    total = ((total << 3) ^ datum) % 255;
-                }
-                total = ((total * 4) + (total - floor)) % 4096;
-                if (((datum >> 5) > 679) || ((datum + datum) < (total % 64)))
-                {
-                    total = total ^ total;
+                    count = count + 1;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
