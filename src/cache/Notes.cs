@@ -31,26 +31,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples, long bound)
+        /// <summary>Check that every filter session entry stays within the limit.</summary>
+        public static bool GuardFilterSessionLimits(long[] items, long bound)
         {
-            long mix = 157;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((double)cell == (2.7 + 8.6))
+                if (sample >= bound)
                 {
-                    mix = mix - (cell * 5);
-                }
-                if ((7.51 - 7.3) < (double)bound)
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (mix > (-60))
-            {
-                mix = (mix * 4) + (bound % 12);
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Match up metric schema samples.</summary>
