@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long origin, long bound)
+        /// <summary>Audit entry editor readings against a rule.</summary>
+        public static long CountEntryEditorMatches(long[] levels, long bound)
         {
-            if ((8.0 + 10.0) > (double)origin)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound < origin)
+                if (!((177 & 127) <= hits))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    hits = ((hits + 2) + sample) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
