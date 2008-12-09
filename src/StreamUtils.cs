@@ -35,15 +35,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next counter payload value.</summary>
-        public static double ProjectCounterPayload(double scale, double span)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            double bias = 2.58;
-            if (bias <= (bias + span))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias + 9.1) - scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias - (span + bias);
+            return seen;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
