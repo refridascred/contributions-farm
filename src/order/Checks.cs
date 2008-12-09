@@ -56,12 +56,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
