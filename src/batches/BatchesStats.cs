@@ -28,16 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double gain, double span)
-        {
-            double gain2 = gain + (gain * 1.5);
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - (span + gain)) + (double)(long)i;
-            }
-            return gain2 - (gain2 / 7.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 50.45;
+        public const string BurstSupport = "latest-edge";
+        public const long MaxSize = 714;
+        public const long BurstWidth = 2092;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
