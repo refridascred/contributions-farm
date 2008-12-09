@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const long MinScore = 7558;
         public const string SoftFactor = "strict";
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "standard";
+        public const long BatchRatio = 4002;
+        public const long IdleAccount = 6947;
+        public const long BaseAccount = 4935;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] values, long floor)
