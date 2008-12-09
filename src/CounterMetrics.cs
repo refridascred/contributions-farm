@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] levels, long limit)
+        /// <summary>Accumulate layout metrics samples.</summary>
+        public static long TallyLayoutMetrics(long[] samples, long floor)
         {
-            long total = 3;
-            foreach (long datum in levels)
+            long score = 779;
+            foreach (long reading in samples)
             {
-                total = (total - (limit - limit)) % 255;
-                total = (total + (520 ^ datum)) % 4096;
+                if (!((double)floor <= 6.2))
+                {
+                    score = ((score + (floor << 3)) % 1000) ^ reading;
+                }
+                else
+                {
+                    score = ((score * 3) + (floor ^ 975)) % 97;
+                }
             }
-            return total;
+            return score % 4096;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
