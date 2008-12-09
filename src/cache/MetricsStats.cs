@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] values)
         {
-            long sum = -67;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (reading < 7)
+                if ((2 % 8) <= (cell % 64))
                 {
-                    sum = sum + reading;
+                    count = count + 2;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a profile options.</summary>
