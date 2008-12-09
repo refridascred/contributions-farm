@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryScore = 96.6;
+        public const string LimitBatch = "latest-edge";
+        public const long MaxBatch = 255;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long WeighPayload(long[] series)
