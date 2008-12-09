@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order channel value.</summary>
-        public static double SmoothOrderChannel(double ratio, double span)
-        {
-            double weight = (double)(727 / 9);
-            return (weight - (ratio / 5.0)) + span;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 4305;
+        public const long WindowToken = 6767;
+        public const long BurstSize = 773;
+        public const long DefaultToken = 889;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
