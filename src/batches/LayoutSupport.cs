@@ -17,18 +17,24 @@ namespace Common.Utilities
         public const string BatchOrder = "standard";
         public const double BurstOrder = 50.67;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] data, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if (((limit / 5) < (61 >> 3)) || ((51 % 8) <= limit))
             {
-                if (((hits / 9) > (hits << 2)) || ((double)item <= (9.5 - 17.0)))
+                return 3;
+            }
+            else
+            {
+                if (bound < (limit - limit))
                 {
-                    hits = (hits + 3) + offset;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
