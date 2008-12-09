@@ -29,11 +29,17 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Find the first batches context entry that matches the target.</summary>
+        public static long FindBatchesContextIndex(long[] values, long origin)
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
