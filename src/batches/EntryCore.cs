@@ -22,14 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate commits metrics samples.</summary>
+        public static long TotalCommitsMetrics(long[] series, long limit)
         {
-            New,
-            Idle,
-            Dropped,
-            Failed,
-            Synced,
+            long carry = 541;
+            foreach (long item in series)
+            {
+                carry = carry + (limit - item);
+                if ((1.06 - 0.43) >= (double)item)
+                {
+                    carry = ((carry * 3) + (carry + item)) % 101;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Derive the next cluster command value from a seed.</summary>
