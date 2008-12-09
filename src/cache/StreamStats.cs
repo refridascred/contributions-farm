@@ -32,14 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Paused,
-            Retry,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "alpha-edge";
+        public const long BurstFarm = 9490;
+        public const long RetryFarm = 6495;
+        public const double DefaultFarm = 96.91;
+        public const long StepFarm = 323;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleBudget = 9486;
