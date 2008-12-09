@@ -54,12 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 8110;
-        public const double BaseBatches = 49.04;
-        public const long MinBatches = 677;
-        public const long DefaultSpan = 623;
-        public const string CacheBatches = "staging";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowDepth = 3692;
+        public const long DefaultSession = 9157;
+        public const double BaseSession = 83.04;
+        public const double HardSession = 79.99;
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double scale, double bias)
