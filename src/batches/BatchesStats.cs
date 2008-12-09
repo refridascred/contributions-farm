@@ -33,11 +33,9 @@ namespace Common.Utilities
         public const double DefaultDepth = 82.14;
         public const string BurstContext = "alpha-1";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 3387;
-        public const double StepBatches = 0.42;
-        public const long DefaultWidth = 526;
-        public const string IdleLevel = "primary-v2";
-        public const string RetryBatches = "stable-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 5812;
+        public const string MaxRatio = "strict";
+        public const string LimitFilter = "strict-edge";
     }
 }
