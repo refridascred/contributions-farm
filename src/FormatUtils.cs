@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 9216;
-        public const double MinBudget = 92.7;
-        public const double BurstFilter = 54.9;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long floor2)
+        {
+            if (!((floor2 + floor) > (0 + floor2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor2 & 63) >= (floor + floor2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor2 <= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor * 2) > (floor2 + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatMatches(long[] items, long step)
