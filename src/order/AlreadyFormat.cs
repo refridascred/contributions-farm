@@ -77,23 +77,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] levels, long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long state = 4;
-            foreach (long datum in levels)
-            {
-                state = ((state << 3) ^ (floor + state)) ^ datum;
-                if ((1.4 - 4.7) > (double)floor)
-                {
-                    break;
-                }
-            }
-            if (state < 915)
-            {
-                state = ((state << 2) ^ (75 & 7)) % 65521;
-            }
-            return state;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
