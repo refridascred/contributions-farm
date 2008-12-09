@@ -51,9 +51,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchDepth = "staging";
-        public const long RetryStream = 2856;
-        public const long BurstStream = 7070;
+        /// <summary>Measure how many route order samples are out of range.</summary>
+        public static long AuditRouteOrderHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!(((92 + value) > (tally ^ value)) || ((tally - tally) == (tally ^ value))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
