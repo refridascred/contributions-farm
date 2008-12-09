@@ -42,11 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            New,
+            Pending,
+            Closed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a notes stats.</summary>
