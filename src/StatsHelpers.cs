@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const string DefaultCounter = "legacy-1";
         public const long BurstCount = 7292;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double floor)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] series, long seed)
         {
-            double mean = (double)37 * 9.93;
-            if (mean <= (scale * 17.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - scale;
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (scale * 6.9);
-            }
-            return mean + floor;
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
