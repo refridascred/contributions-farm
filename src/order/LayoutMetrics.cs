@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] series, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 675;
+            foreach (long datum in values)
             {
-                if ((series[i] < limit) && ((series[i] % 3) == 0))
+                acc = acc + (14 % 5);
+                acc = acc - (acc << 3);
+                if ((double)datum == (6.1 - 2.0))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (38 + datum)) % 97;
+                }
+                if (634 <= (acc ^ datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Grade a editor stats value against two limits.</summary>
