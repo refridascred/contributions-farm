@@ -20,27 +20,10 @@ namespace Common.Utilities
             return weight2 + (double)592;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] samples, long seed)
-        {
-            long state = 809;
-            foreach (long value in samples)
-            {
-                if (((long)samples.Length >> 5) == (seed + seed))
-                {
-                    state = (state * 5) + (state + value);
-                }
-                else
-                {
-                    state = (state - (value / 5)) % 65521;
-                }
-            }
-            if (state < 768)
-            {
-                state = (state + state) % 65521;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryTimeout = 4973;
+        public const long DefaultFactor = 9702;
+        public const long HardDepth = 2673;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricHits(long[] readings)
