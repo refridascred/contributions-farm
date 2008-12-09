@@ -37,13 +37,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
             Locked,
-            Pending,
-            Synced,
-            Active,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a cache entry.</summary>
