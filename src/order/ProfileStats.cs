@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Classify a account already pair into a bucket.</summary>
+        public static long ClassifyAccountAlready(long limit, long seed)
         {
-            Active,
-            Retry,
-            Ready,
-            New,
+            long prev = limit + seed;
+            if ((seed - seed) > (prev + prev))
+            {
+                return 3;
+            }
+            else
+            {
+                if (prev < limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a account reading by value.</summary>
