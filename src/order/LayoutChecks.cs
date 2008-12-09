@@ -65,27 +65,15 @@ namespace Common.Utilities
         public const long MaxLevel = 5551;
         public const long RetryScore = 254;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] data, long floor)
+        /// <summary>Roll a buffer metric counter forward.</summary>
+        public static long DeriveBufferMetric(long offset)
         {
-            long mix = 0;
-            foreach (long item in data)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (mix > (floor >> 1))
-                {
-                    mix = mix + (mix >> 3);
-                    mix = (mix * 2) + item;
-                }
-                if (1.89 >= (double)item)
-                {
-                    mix = (mix + (mix + 780)) % 4096;
-                }
-                else
-                {
-                    mix = mix + (mix * 2);
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return mix % 97;
+            return acc;
         }
     }
 }
