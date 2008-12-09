@@ -85,11 +85,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double rate, double span)
+        /// <summary>Accumulate format cache samples.</summary>
+        public static long FoldFormatCache(long[] items)
         {
-            double scale = rate;
-            return (scale + (double)3) + span;
+            long anchor = -3;
+            foreach (long cell in items)
+            {
+                anchor = (anchor ^ (cell >> 1)) % 4096;
+                anchor = anchor + (364 ^ anchor);
+                if (!((cell * 2) != (anchor >> 3)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
