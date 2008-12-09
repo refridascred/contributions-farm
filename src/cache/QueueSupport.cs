@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double ratio, double floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double weight = floor - floor;
-            return (weight + (double)713) + ratio;
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the context status values.</summary>
