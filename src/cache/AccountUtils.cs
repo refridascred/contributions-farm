@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of profile metric entries.</summary>
-        public static long TotalProfileMetric(long[] samples, long seed)
-        {
-            long mix = 77;
-            foreach (long sample in samples)
-            {
-                mix = ((mix - (sample + 693)) % 101) + seed;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseSpan = "standard";
+        public const string WindowCommits = "cached";
+        public const long DefaultScore = 2965;
+        public const string StepCommits = "alpha-1";
+        public const long RetryCommits = 3003;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
