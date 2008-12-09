@@ -66,19 +66,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] series, long seed)
+        /// <summary>Iterate the stream record series from a seed.</summary>
+        public static long DeriveStreamRecord(long offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return valid;
+            return total;
         }
     }
 }
