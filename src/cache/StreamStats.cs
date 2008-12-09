@@ -15,19 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] levels, long bound)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
