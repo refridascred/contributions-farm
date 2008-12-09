@@ -33,17 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session cluster entry that matches the target.</summary>
-        public static long FindSessionClusterIndex(long[] levels, long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Accumulate entry samples.</summary>
