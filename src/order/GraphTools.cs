@@ -57,15 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double rate, double floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double scale = rate + rate;
-            if (scale <= (double)2)
-            {
-                scale = scale - floor;
-            }
-            return scale - (floor - rate);
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
