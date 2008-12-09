@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const double BaseBuffer = 26.82;
         public const long StepTimeout = 9810;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches < (matches + (long)levels.Length))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowInterval = 1696;
+        public const long SoftEntry = 3617;
+        public const double StepEntry = 21.56;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
