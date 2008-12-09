@@ -36,21 +36,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                result = result - ((long)i << 1);
-                if (!(((long)i / 2) < result))
-                {
-                    result = ((result << 3) ^ (long)i) % 97;
-                }
-                result = (result + 119) % 65521;
-                result = ((result * 2) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
