@@ -26,12 +26,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            long state = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state - state) % 97;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
