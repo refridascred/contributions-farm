@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Idle,
-            Failed,
-            Draft,
+            Active,
+            Stale,
+            Paused,
             Done,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
