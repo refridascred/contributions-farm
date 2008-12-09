@@ -57,12 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] readings, long target)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the schema phase values.</summary>
