@@ -1,7 +1,4 @@
 # entry settings
-idle_interval_count: cached
-retry_window_ms: 44.27
-stream_capacity: false
-report_interval: 47
-cache_timeout_ms: local
-cache_retries: eu-west
+retry_ttl: 250
+verbose: local
+hard_interval_s: true
