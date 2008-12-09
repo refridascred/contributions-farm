@@ -25,15 +25,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double bias, double bias2)
+        /// <summary>Check that every cluster format entry stays within the limit.</summary>
+        public static bool ValidateClusterFormatRange(long[] values, long bound)
         {
-            double load = bias + (bias / 8.0);
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                load = (load + bias) + (double)(long)i;
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load + (load + bias2);
+            return ready;
         }
     }
 }
