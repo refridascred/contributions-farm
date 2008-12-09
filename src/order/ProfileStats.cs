@@ -49,21 +49,32 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Grade a report stats value against two limits.</summary>
+        public static long GradeReportStats(long seed, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = seed ^ origin;
+            if ((span ^ span) < seed)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed != (19.0 + 9.8))
                 {
-                    if ((items[i] + items[j]) != 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((span - span) == ((-960) + 9))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
     }
 }
