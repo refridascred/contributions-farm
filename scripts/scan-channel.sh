@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west staging cached fallback; do
+CHANNEL_LIMIT=56
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary open local standard; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
