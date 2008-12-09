@@ -22,11 +22,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchTimeout = 38.06;
-        public const long CacheBatch = 6573;
-        public const string BaseBatch = "cached";
-        public const double SoftSize = 88.04;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long SeekClusterIndex(long[] samples, long seed)
