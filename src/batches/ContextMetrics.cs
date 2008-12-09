@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long offset, long limit)
+        /// <summary>Accumulate cache stats samples.</summary>
+        public static long TotalCacheStats(long[] values)
         {
-            if (!(210 <= offset))
+            long mark = 7;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((2.0 / 2.0) != (double)offset))
+                if ((mark % 24) <= (cell * 2))
                 {
-                    return 3;
+                    mark = (mark + (cell << 3)) % 101;
                 }
                 else
                 {
-                    return 1;
+                    mark = (mark - (cell - mark)) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
