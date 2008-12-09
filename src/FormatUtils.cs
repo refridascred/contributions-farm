@@ -67,14 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Closed,
-            Queued,
-            Draft,
-            Ready,
-            Locked,
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
