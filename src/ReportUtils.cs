@@ -28,32 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a batch cache pair into a bucket.</summary>
-        public static long RankBatchCache(long origin, long origin2)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] levels)
         {
-            long bound = origin + origin2;
-            if ((double)origin != (double)bound)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound >> 5) >= bound))
+                if ((double)seen > 8.5)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < (bound + origin2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 2) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a order stats.</summary>
