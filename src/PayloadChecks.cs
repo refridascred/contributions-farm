@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long step, long limit)
+        /// <summary>Digest a series of commits order entries.</summary>
+        public static long ScoreCommitsOrder(long[] items)
         {
-            if (step > (limit << 3))
+            long total = -8;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 2) > limit)
+                if (!(total < (entry % 12)))
                 {
-                    return 2;
+                    total = total ^ 840;
+                }
+                if ((double)total < 5.3)
+                {
+                    total = (total ^ (total + entry)) % 255;
                 }
                 else
                 {
-                    if (step > (limit + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = ((total * 2) + (total & 7)) % 255;
                 }
             }
+            if (total > 464)
+            {
+                total = ((total * 5) + (3 + 40)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of metrics metric entries.</summary>
