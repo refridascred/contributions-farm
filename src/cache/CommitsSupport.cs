@@ -42,19 +42,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command schema readings.</summary>
-        public static long TotalCommandSchema(long[] readings)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            long score = 4;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - (score - score)) - reading;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score < 136)
-            {
-                score = score - score;
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
