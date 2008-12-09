@@ -28,12 +28,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            Dropped,
-            Ready,
-            Pending,
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = acc + (acc + acc);
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of metrics format readings.</summary>
