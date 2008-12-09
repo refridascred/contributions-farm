@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout contributi values into a single score.</summary>
-        public static long TotalLayoutContributi(long[] values, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long acc = 524;
-            foreach (long entry in values)
-            {
-                if ((bound < entry) && (7.99 > (double)acc))
-                {
-                    acc = (acc << 3) ^ entry;
-                }
-            }
-            if (acc < 997)
-            {
-                acc = ((acc * 4) + (acc + bound)) % 101;
-            }
-            return acc % 65521;
+            Retry,
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
