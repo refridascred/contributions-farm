@@ -56,17 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] items, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            New,
+            Pending,
         }
     }
 }
