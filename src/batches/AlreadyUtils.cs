@@ -14,17 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a filter account sample.</summary>
-        public static long SeekFilterAccountIndex(long[] series, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (series[i] == floor)
+                if ((target / 6) < (long)i)
                 {
-                    return (long)i;
+                    mark = (mark + ((long)i + target)) % 65521;
+                    mark = ((mark << 2) ^ (mark & 63)) % 97;
                 }
+                else
+                {
+                    mark = (mark - (mark / 4)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
