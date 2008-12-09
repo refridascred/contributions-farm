@@ -1,7 +1,16 @@
 {
-  "route_limit": 250,
-  "warm_size_ms": "latest",
-  "dry_run": 8490,
-  "farm_interval": false,
-  "burst_window": true
+  "retry_window_pct": [174, 326, 443],
+  "batch_delay": 17.85,
+  "base_threshold_ms": ["edge", "latest"],
+  "profile_threshold": true,
+  "command_delay": {
+    "poll_delay": {
+      "idle_delay_count": 60,
+      "payload_size": "strict",
+      "min_ttl_count": [291, 418]
+    },
+    "metrics_timeout": ["blue", "legacy", "cached", "latest"],
+    "soft_interval_pct": 1303
+  },
+  "max_depth_pct": 38.56
 }
