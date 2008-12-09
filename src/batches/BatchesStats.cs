@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank payload stream input into a small class.</summary>
-        public static long ClassifyPayloadStream(long offset, long bound)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if (((5.4 * 8.35) <= (double)bound) || ((bound - bound) < bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound / 3) == ((-9) - bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset <= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound / 6) <= bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Locate a account reading by value.</summary>
