@@ -24,15 +24,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Check that every githubfarm filter entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmFilterLimits(long[] data, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
