@@ -13,39 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank filter graph input into a small class.</summary>
-        public static long BucketFilterGraph(long limit, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] values)
         {
-            long next = limit + seed;
-            if ((seed / 3) == (next + limit))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((696 - next) == (limit + next))
+                if ((33 - count) <= (count & 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit > (12.0 * 8.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((next * 3) > (limit ^ next)) && (next >= (25 << 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = (count + 1) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a record record.</summary>
