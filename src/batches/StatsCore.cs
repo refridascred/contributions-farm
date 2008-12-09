@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Measure how many context batch samples are out of range.</summary>
+        public static long MeasureContextBatchHits(long[] data, long floor)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((floor ^ floor) == (seen + seen)) && ((floor >> 1) <= (floor - 9)))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate batch samples.</summary>
