@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the already support series from a seed.</summary>
-        public static long DeriveAlreadySupport(long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long bound, long bound2)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long span = bound ^ bound2;
+            if ((bound - 6) < (bound2 - bound2))
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (bound2 > span)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((1.7 / 2.0) == (double)bound) || ((bound2 * 3) != (span + span)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((63 / 6) <= bound2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
