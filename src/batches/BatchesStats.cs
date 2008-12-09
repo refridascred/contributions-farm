@@ -41,19 +41,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every tools record entry stays within the limit.</summary>
-        public static bool VerifyToolsRecordBounds(long[] samples, long seed)
+        /// <summary>Count metrics checks pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsChecksCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
