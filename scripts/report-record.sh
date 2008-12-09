@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=125
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in legacy strict blue; do
+for item in cached latest blue; do
     log "checking ${item}"
 done
+
+mode="${1:-open}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
