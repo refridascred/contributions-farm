@@ -10,20 +10,22 @@ namespace Common.Utilities
         public const double BaseTimeout = 61.93;
         public const long LimitFactor = 382;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            long score = 3;
+            foreach (long item in values)
             {
-                if (((long)i % 8) > total)
+                if ((item / 2) != (item / 3))
                 {
-                    total = total - 85;
-                    break;
+                    score = ((score << 3) ^ (item - score)) % 97;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            if (score < 39)
+            {
+                score = ((score << 2) ^ (score + score)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine account notes values into a single score.</summary>
