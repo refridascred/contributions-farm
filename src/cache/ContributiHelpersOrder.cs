@@ -50,19 +50,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long score = 114;
-            foreach (long sample in series)
-            {
-                score = (score + (sample & 3)) % 65521;
-            }
-            if (score > 42)
-            {
-                score = score ^ (score - 18);
-            }
-            return score;
+            Retry,
+            Done,
+            Ready,
+            Active,
+            Dropped,
         }
     }
 }
