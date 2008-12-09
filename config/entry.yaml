@@ -1,13 +1,5 @@
 # entry settings
-graph_timeout:
-  - green
-  - stable
-  - edge
-  - blue
-record_retries: 1822
-min_timeout_ms: false
-strict:
-  queue_depth: 10
-  hard_window_ms: 60
-  persist: stable
-base_ratio_pct: false
+retry_limit: latest
+support_delay: 71.95
+flush_limit: 100
+token_window: 14.91
