@@ -1,5 +1,12 @@
 # entry settings
-retry_limit: latest
-support_delay: 71.95
-flush_limit: 100
-token_window: 14.91
+max_retries_s: 33
+idle_threshold_pct:
+  dry_run: 1.03
+  support_interval: staging
+  batch_ttl: 60
+audit: 4130
+strict: false
+graph_ratio:
+  - 306
+  - 297
+idle_limit_count: strict
