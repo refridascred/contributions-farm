@@ -32,10 +32,26 @@ namespace Common.Utilities
         public const long BatchContributi = 4266;
         public const long BaseFactor = 4840;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 2.4;
-        public const long IdleWindow = 2153;
-        public const long BatchWindow = 6592;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long step, long offset)
+        {
+            long gap = step - offset;
+            if ((offset * 4) < (gap - step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset / 8) <= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
