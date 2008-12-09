@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long result = 4;
-            foreach (long value in items)
-            {
-                result = result ^ value;
-            }
-            return result % 97;
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a order context pair into a bucket.</summary>
