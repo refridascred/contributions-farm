@@ -13,13 +13,38 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Classify a cache order pair into a bucket.</summary>
+        public static long BucketCacheOrder(long floor, long step)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Ready,
+            if ((floor / 7) <= floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((9.0 / 4.0) != (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((floor + floor) != (step + (-4))))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor == (1.56 - 14.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a report filter reading by value.</summary>
