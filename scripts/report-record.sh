@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local staging; do
+mode="${1:-green}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=133
+log "limit is ${RECORD_LIMIT}"
+
+for item in stable standard fallback latest; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
