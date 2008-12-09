@@ -1,8 +1,18 @@
 {
-  "default_window_ms": 38,
-  "max_depth_s": "green",
-  "entry_ratio": false,
-  "persist": [352, 230, 277],
-  "batch_threshold": 1231,
-  "cache_capacity_count": 250
+  "flush_size": "edge",
+  "record_ratio": "blue",
+  "already_ttl": "staging",
+  "token_timeout": "local",
+  "hard_timeout": {
+    "idle_timeout": false,
+    "sync_capacity_count": 30.84,
+    "buffer_delay": true,
+    "sync_window": {
+      "contributi_timeout": false,
+      "default_size_count": true,
+      "burst_ratio_s": 45.94
+    },
+    "poll_delay_ms": "local",
+    "soft_ttl_s": ["edge", "eu-west", "strict"]
+  }
 }
