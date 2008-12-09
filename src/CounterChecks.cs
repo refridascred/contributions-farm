@@ -39,19 +39,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] series, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples, long limit)
         {
-            long acc = 62;
-            foreach (long sample in series)
+            long carry = 0;
+            foreach (long item in samples)
             {
-                acc = (((acc << 3) ^ floor) % 255) ^ sample;
+                if ((0 + item) < (limit + item))
+                {
+                    carry = (carry + (item + limit)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ limit) % 65521;
+                }
             }
-            if (acc > 797)
-            {
-                acc = acc - (acc / 9);
-            }
-            return acc;
+            return carry % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
