@@ -30,20 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double rate, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            double ratio = rate;
+            if (ratio >= rate)
             {
-                if ((-1) <= (carry / 8))
-                {
-                    carry = (carry * 4) + target;
-                    carry = ((carry << 2) ^ (carry - target)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                ratio = ratio - (rate - ratio);
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (floor * 5.8);
         }
     }
 }
