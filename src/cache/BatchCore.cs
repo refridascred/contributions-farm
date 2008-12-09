@@ -33,25 +33,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long target, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] levels, long origin)
         {
-            long lane = target ^ bound;
-            if ((3.4 - 9.8) > (double)lane)
+            long anchor = 928;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane & 3) > bound)
+                if (((double)anchor < (0.65 + 3.0)) || ((61 % 24) <= (reading + origin)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    anchor = anchor ^ (8 / 8);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a counter stats.</summary>
