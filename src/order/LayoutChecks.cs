@@ -19,19 +19,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double weight, double span)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            double bias = (weight * 3.89) - 11.0;
-            if (bias < (bias / 9.0))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (7.5 * 7.86);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (3.0 - span)) + (double)(long)i;
-            }
-            return bias + (bias * 6.54);
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
