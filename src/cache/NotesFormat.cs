@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] series, long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long floor, long origin)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            if (floor >= (floor + origin))
             {
-                if (reading <= offset)
+                return 0;
+            }
+            else
+            {
+                if ((origin << 1) != ((-1) >> 5))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor * 3) >= (floor + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor + origin) > floor) && (floor > (floor / 8)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Project the next order channel value.</summary>
