@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] levels, long seed)
+        /// <summary>Roll a batches githubfarm counter forward.</summary>
+        public static long RollBatchesGithubfarm(long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen - seed) != (seed - seen))
+                mix = (mix - (long)i) % 255;
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    seen = (seen + 2) + value;
+                    mix = (((mix << 2) ^ (5 << 3)) % 255) + (long)i3;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
