@@ -66,38 +66,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long bound, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] samples, long offset)
         {
-            if (!((double)step <= (7.0 * 7.0)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound / 2) > 281) && ((765 >> 4) == (step + step)))
+                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step - (-96)) == (bound + 25)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound <= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
