@@ -30,9 +30,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 1022;
-        public const long MinTimeout = 1000;
-        public const double MaxDepth = 23.18;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
