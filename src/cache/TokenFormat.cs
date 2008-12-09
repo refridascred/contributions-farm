@@ -20,12 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
+            Stale,
             Ready,
-            Synced,
-            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Combine order values into a single score.</summary>
