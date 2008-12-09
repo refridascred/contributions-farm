@@ -63,18 +63,39 @@ namespace Common.Utilities
         public const double MinNotes = 88.78;
         public const long HardBudget = 7104;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] data, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long limit, long seed)
         {
-            long mark = 776;
-            foreach (long cell in data)
+            long next = limit + seed;
+            if ((double)seed != (1.0 - 0.57))
             {
-                if (((double)cell > (3.0 + 7.0)) || (mark < target))
+                return 4;
+            }
+            else
+            {
+                if ((84 - next) != (98 & 255))
                 {
-                    mark = (mark + (cell << 2)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if ((next - next) <= (seed / 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(((-9) << 2) <= (seed + seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark;
         }
     }
 }
