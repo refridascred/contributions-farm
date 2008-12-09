@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double BatchRatio = 76.71;
         public const long BatchLayout = 4826;
 
-        /// <summary>Accumulate cluster farm samples.</summary>
-        public static long TotalClusterFarm(long[] samples, long step)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mark = -47;
-            foreach (long item in samples)
-            {
-                mark = mark - (step >> 3);
-                if ((3 << 3) <= ((-9) - step))
-                {
-                    mark = (mark ^ (item + 73)) % 255;
-                }
-            }
-            return mark;
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
