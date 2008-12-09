@@ -25,24 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long seed, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            if ((seed / 2) != (seed & 255))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + bound) <= (bound * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double drift = offset;
+            return (drift + (double)49) + bias;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
