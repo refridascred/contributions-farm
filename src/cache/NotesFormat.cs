@@ -37,19 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double rate, double floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] data, long limit)
         {
-            double ratio = rate;
-            if (ratio >= rate)
+            long count = 0;
+            foreach (long sample in data)
             {
-                ratio = ratio - (rate - ratio);
+                if ((12.0 + 7.08) <= (double)sample)
+                {
+                    count = (count + 1) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (floor * 5.8);
+            return count;
         }
     }
 }
