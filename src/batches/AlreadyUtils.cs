@@ -73,22 +73,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] items)
-        {
-            long anchor = 81;
-            foreach (long cell in items)
-            {
-                if (anchor < cell)
-                {
-                    anchor = (anchor << 2) ^ 4;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor % 100);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "latest-v2";
+        public const long RetryBudget = 1504;
+        public const long HardChecks = 3859;
     }
 }
