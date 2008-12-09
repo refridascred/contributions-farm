@@ -59,18 +59,11 @@ namespace Common.Utilities
             return bias - (weight + weight);
         }
 
-        /// <summary>Measure how many channel payload samples are out of range.</summary>
-        public static long TallyChannelPayloadMatches(long[] levels)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((0 << 3) < matches)
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
