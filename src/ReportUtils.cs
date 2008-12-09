@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] values, long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally ^ tally) > (limit & 3))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate metric schema samples.</summary>
