@@ -1,17 +1,11 @@
 {
-  "session_window": false,
-  "poll_size_ms": {
-    "batch_ttl_pct": 30,
-    "channel_depth": 82.26,
-    "base_ttl": "latest",
-    "readonly": {
-      "checks_retries": 4464,
-      "base_size": 32.66,
-      "hard_depth_ms": "fallback"
-    },
-    "account_ttl": 1026
+  "sync_timeout_s": {
+    "support_capacity": "edge",
+    "audit": 250,
+    "max_limit_s": 1024
   },
-  "readonly": [289, 345],
-  "poll_timeout_s": 62.08,
-  "batch_ttl": ["legacy", "strict"]
+  "hard_ratio": 30,
+  "max_retries_s": 23.07,
+  "command_interval": "eu-west",
+  "poll_interval_ms": "primary"
 }
