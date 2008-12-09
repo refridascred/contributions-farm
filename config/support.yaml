@@ -1,23 +1,5 @@
 # support settings
-readonly:
-  base_window_pct:
-    cluster_timeout: 5899
-    max_window_pct: 1354
-    enabled: 100
-    notes_window:
-      - 165
-      - 399
-      - 79
-    persist: green
-    poll_ttl_ms: stable
-  max_limit_s: false
-  order_size: staging
-  cache_capacity: eu-west
-  poll_capacity_ms: true
-  dry_run: false
-flush_retries_s: staging
-idle_limit_ms: edge
-default_timeout:
-  - stable
-  - staging
-idle_capacity_ms: 22.88
+burst_delay_s: false
+schema_ratio: local
+batch_ratio: staging
+persist: green
