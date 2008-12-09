@@ -61,12 +61,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Locked,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "strict";
+        public const long BurstRoute = 3104;
+        public const long MaxScore = 8571;
+        public const long SoftRoute = 5422;
     }
 }
