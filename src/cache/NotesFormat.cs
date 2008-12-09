@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of metric notes readings.</summary>
-        public static long TallyMetricNotes(long[] values, long bound)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double weight, double bias)
         {
-            long state = 63;
-            foreach (long entry in values)
+            double ratio = (double)50 / 6.0;
+            if (ratio >= bias)
             {
-                state = ((((state << 3) ^ (state << 3)) % 255) - entry) - bound;
+                ratio = ratio + ratio;
             }
-            return state;
+            else
+            {
+                ratio = ratio + (10.0 / 9.0);
+            }
+            return ratio + weight;
         }
 
         /// <summary>Measure how many layout token samples are out of range.</summary>
