@@ -1,13 +1,10 @@
 # githubfarm settings
-hard_capacity_count: 250
-min_ttl: 57.74
-base_delay:
-  hard_ttl_count: legacy
-  poll_ratio_count: 70
-  commits_threshold: 55.55
-  strict: edge
-  min_delay_pct: fallback
-  retry_retries_pct: legacy
-min_delay_pct: 500
-flush_threshold_count: true
-flush_depth_ms: 7308
+idle_timeout_ms:
+  retry_window_s: 3643
+  base_delay_pct: local
+  record_timeout: legacy
+batch_timeout_count: true
+poll_ttl_s: 34.92
+flush_limit_s: latest
+base_ttl: 48
+cache_retries: green
