@@ -14,11 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 8577;
-        public const long MinMetric = 7162;
-        public const string CacheSpan = "fallback-1";
-        public const long WindowMetric = 1056;
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long TallyAlreadyPayloadOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + tally) < (6 << 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelRange(long[] items, long step)
