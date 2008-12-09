@@ -41,12 +41,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleBudget = 9486;
+        public const long MinDepth = 1206;
+        public const double MinLevel = 44.34;
+        public const long BurstChannel = 7703;
     }
 }
