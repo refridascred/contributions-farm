@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "local";
-        public const long MaxBuffer = 1055;
-        public const double MinBuffer = 95.62;
-        public const string SoftSize = "alpha-v2";
-        public const string BurstBuffer = "standard-v2";
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] readings, long step)
+        {
+            long state = 5;
+            foreach (long cell in readings)
+            {
+                state = (state ^ (state - step)) % 4096;
+                if ((double)step > (double)state)
+                {
+                    state = ((state * 4) + (cell + cell)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ cell) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadRange(long[] items, long offset)
