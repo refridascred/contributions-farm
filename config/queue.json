@@ -1,7 +1,8 @@
 {
-  "poll_threshold_pct": "eu-west",
-  "hard_interval_s": 9785,
-  "soft_interval": 1.47,
-  "persist": 13,
-  "verbose": "local"
+  "default_size_s": 73.83,
+  "retry_delay_pct": true,
+  "dry_run": "strict",
+  "base_window_ms": [239, 480, 32],
+  "persist": [12, 440, 225],
+  "route_size": "edge"
 }
