@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 5284;
-        public const long StepCount = 7970;
-        public const string RetryAlready = "latest";
-        public const double CacheAlready = 83.09;
+        /// <summary>Iterate the already support series from a seed.</summary>
+        public static long DeriveAlreadySupport(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksMatches(long[] values)
