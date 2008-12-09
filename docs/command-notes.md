@@ -1,15 +1,14 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the entry list.
-Use metric settings to tune how often command data is refreshed.
-Keep counter and counter names short and lowercase.
+Use window settings to tune how often channel data is refreshed.
+When a cache fails, the stream handler retries a few times before giving up.
 
-Defaults for checks live in the config folder and can be overridden per environment.
-The command report groups every token by route.
+The record report groups every checks by metric.
+The checks report groups every stream by cache.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate farm input early
-- Prefer graph defaults
-- Log every buffer change
-- Document new editor fields
+- Log every format change
+- Keep payload values small
+- Review metric limits each release
