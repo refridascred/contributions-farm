@@ -17,21 +17,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (anchor >= (limit - anchor))
                 {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor * 5) + (anchor * 5);
                 }
+                else
+                {
+                    anchor = (anchor + anchor) % 65521;
+                }
+                if (((double)38 >= (double)limit) && ((limit >> 4) > anchor))
+                {
+                    anchor = ((anchor * 5) + (limit - (long)i)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
