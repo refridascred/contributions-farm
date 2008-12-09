@@ -52,15 +52,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double scale, double bias)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long floor)
         {
-            double gain = (scale * 5.88) * 5.7;
-            for (int i = 0; i < 8; i++)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                gain = (gain - (bias / 4.0)) + (double)(long)i;
+                if (((floor >> 4) < (floor - floor)) || ((2.89 * 0.57) == (double)floor))
+                {
+                    result = (result << 2) ^ ((long)i % 16);
+                }
+                result = result ^ result;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return gain - bias;
+            return result;
         }
     }
 }
