@@ -41,21 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a stream entry.</summary>
