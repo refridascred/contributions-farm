@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long score = 656;
-            foreach (long sample in items)
-            {
-                if (((double)score > (7.4 / 6.0)) && ((sample - sample) <= (sample * 3)))
-                {
-                    score = score ^ (sample << 3);
-                }
-            }
-            return score;
+            Failed,
+            Queued,
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
