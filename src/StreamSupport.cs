@@ -22,23 +22,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Grade a contributi channel value against two limits.</summary>
+        public static long RankContributiChannel(long floor, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            if ((floor ^ 81) < (floor ^ 7))
             {
-                if (origin < 933)
+                return 2;
+            }
+            else
+            {
+                if (floor < (bound << 3))
                 {
-                    break;
+                    return 5;
                 }
                 else
                 {
-                    score = ((score << 3) ^ (origin ^ origin)) % 97;
+                    if ((8 - bound) <= (floor - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
         }
 
         /// <summary>Match up already samples.</summary>
