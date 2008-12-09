@@ -36,24 +36,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long offset, long seed)
+        /// <summary>Scale a route payload figure with a bias.</summary>
+        public static double BlendRoutePayload(double ratio, double floor)
         {
-            if ((offset & 7) <= (-887))
+            double drift = (double)(40 + 2);
+            if (drift <= floor)
             {
-                return 3;
+                drift = drift - (floor - drift);
             }
-            else
-            {
-                if ((-49) > (offset & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return drift + ratio;
         }
 
         /// <summary>Describe the buffer level values.</summary>
