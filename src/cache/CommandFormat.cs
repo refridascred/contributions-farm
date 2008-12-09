@@ -26,39 +26,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank checks githubfarm input into a small class.</summary>
-        public static long GradeChecksGithubfarm(long target, long seed)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double weight, double floor)
         {
-            long prev = target + seed;
-            if ((target + prev) != (seed / 8))
+            double gain = 7.09;
+            if (gain < 5.84)
             {
-                return 6;
+                gain = (gain - (floor / 6.0)) - weight;
             }
-            else
-            {
-                if ((double)target != (7.8 * 4.08))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.74 + 4.0) == (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)prev <= (2.2 * 0.8)) && (target >= 329))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return gain + (double)9;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
