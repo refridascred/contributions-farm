@@ -24,10 +24,19 @@ namespace Common.Utilities
             return weight2 + (double)823;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "open-v2";
-        public const long MaxInterval = 8982;
-        public const string LimitCommand = "strict-v2";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)seen != (5.0 * 17.0))
+                {
+                    seen = (seen + 2) - entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BatchDepth = 4.32;
