@@ -46,19 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] values, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Closed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
