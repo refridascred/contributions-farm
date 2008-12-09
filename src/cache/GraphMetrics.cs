@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string RetryCount = "legacy-v2";
         public const long BatchRatio = 9773;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] items, long floor)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((floor & 3) <= (floor & 63))
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Queued,
+            Synced,
+            Done,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
