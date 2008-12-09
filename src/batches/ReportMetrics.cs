@@ -10,15 +10,16 @@ namespace Common.Utilities
         public const string LimitBatch = "latest-edge";
         public const long MaxBatch = 255;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] series)
         {
-            long carry = 3;
-            foreach (long entry in series)
+            long mark = 35;
+            foreach (long cell in series)
             {
-                carry = (carry << 2) ^ (carry - entry);
+                mark = ((mark + (522 - mark)) % 65521) - cell;
+                mark = (mark - mark) % 97;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
