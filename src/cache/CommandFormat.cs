@@ -45,19 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] items, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (reading >= offset)
+                if (entry >= (floor / 5))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
