@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Iterate the commits counter series from a seed.</summary>
+        public static long SeriesCommitsCounter(long limit)
         {
-            Paused,
-            Closed,
-            Ready,
+            long total = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((limit - limit) <= (total >> 4))
+                {
+                    total = (total ^ (long)i) % 1000;
+                }
+                else
+                {
+                    total = (total ^ limit) % 65521;
+                }
+                total = (total + (523 & 15)) % 4096;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count metric layout pairs that satisfy a relation.</summary>
