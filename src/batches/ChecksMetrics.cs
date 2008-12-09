@@ -99,18 +99,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] data)
+        /// <summary>Measure how many buffer token samples are out of range.</summary>
+        public static long MeasureBufferTokenGaps(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (!((73 + value) <= (value >> 1)) && ((seen * 3) <= (value << 3)))
+                if (((double)(long)series.Length == (0.53 + 10.0)) || (((datum % 60) >= (tally + limit)) && ((3.4 / 8.0) > (double)limit)))
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
