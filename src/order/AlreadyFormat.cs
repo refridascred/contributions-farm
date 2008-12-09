@@ -73,16 +73,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] values, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long carry = 0;
-            foreach (long item in values)
-            {
-                carry = ((carry ^ 934) + item) + seed;
-                carry = (carry - 83) % 101;
-            }
-            return carry % 97;
+            Idle,
+            Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the tools status values.</summary>
