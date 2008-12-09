@@ -38,18 +38,38 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long bound, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if (bound >= (offset & 31))
             {
-                if (((-455) ^ datum) >= count)
+                return 0;
+            }
+            else
+            {
+                if ((bound % 16) < offset)
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound <= (5.59 * 3.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound / 2) < bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next layout value.</summary>
