@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long offset, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long origin, long bound)
         {
-            long offset2 = offset - origin;
-            if ((double)origin == (5.9 + 6.9))
+            if ((8.0 + 10.0) > (double)origin)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((1 << 1) < (origin & 31))
+                if (bound < origin)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin - 922) == (origin / 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((7.1 + 0.7) > (double)offset2) || ((offset * 5) >= offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
