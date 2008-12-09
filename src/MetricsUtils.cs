@@ -17,13 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long CombineChannelRoute(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long score = 77;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (score - (long)i) % 97;
+                }
+                if (((6.6 + 8.7) != (double)score) && ((score + score) <= (956 + cell)))
+                {
+                    score = ((score << 3) ^ (-607)) % 1000;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a metric record.</summary>
