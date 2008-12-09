@@ -33,17 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(868 + (-5));
+            if (ratio >= ratio)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (offset / 3.0)) - gain;
             }
-            return -1;
+            return ratio + (double)6;
         }
 
         /// <summary>Match up cluster samples.</summary>
