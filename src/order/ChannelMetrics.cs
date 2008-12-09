@@ -36,22 +36,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] items)
+        /// <summary>Find the first entry editor entry that matches the target.</summary>
+        public static long LookupEntryEditorIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits + hits) <= (-625))
+                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
                 {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
