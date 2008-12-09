@@ -25,15 +25,39 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Adjust a filter metric reading.</summary>
-        public static double ScaleFilterMetric(double ratio, double span)
+        /// <summary>Rank window report input into a small class.</summary>
+        public static long SortWindowReport(long target, long origin)
         {
-            double bias = span * 1.9;
-            if (bias < (double)(-625))
+            long diff = target ^ origin;
+            if ((double)origin != (6.53 * 10.0))
             {
-                bias = bias - (ratio + bias);
+                return 1;
             }
-            return bias + 2.0;
+            else
+            {
+                if (!(origin <= diff))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + origin) <= (origin + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target <= 460)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
