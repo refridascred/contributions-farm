@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Queued,
+            Done,
+            Retry,
+            Ready,
+            Idle,
             Stale,
-            Locked,
         }
 
         /// <summary>Digest a series of context filter entries.</summary>
