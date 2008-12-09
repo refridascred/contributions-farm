@@ -44,18 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] data, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] values)
         {
-            long state = 527;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)state >= (18.0 / 3.0))
+                if ((hits + hits) == (hits + value))
                 {
-                    state = ((state ^ (8 + limit)) % 65521) ^ cell;
+                    hits = hits + 3;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
