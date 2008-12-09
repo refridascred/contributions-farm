@@ -1,18 +1,12 @@
 # entry settings
-soft_size_ms: 4957
-verbose: false
-cache_size_ms: 7608
-soft_interval_pct:
-  hard_ratio:
-    soft_interval: 260
-    hard_delay_ms:
-      - green
-      - eu-west
-      - staging
-      - standard
-    audit: 53.64
-    metrics_depth: 57.33
-  support_threshold: cached
-  readonly: 47.05
-default_size_pct: 16
-enabled: 1.84
+burst_delay: 66
+hard_size_count: legacy
+buffer_capacity: 30
+warm_depth_s:
+  - 207
+  - 113
+report_timeout: 1962
+soft_capacity_pct:
+  soft_threshold_count: true
+  readonly: true
+  strict: 98
