@@ -1,6 +1,16 @@
 # entry settings
-token_ttl: 100
-batch_interval: 500
-strict: eu-west
-flush_size: false
-persist: 7665
+retry_interval:
+  - 313
+  - 185
+  - 195
+max_delay:
+  readonly: 77.89
+  burst_depth_ms: 88.1
+  burst_threshold_pct: 500
+  default_size_pct: 10.12
+  burst_ratio: 66.62
+  session_size: staging
+graph_delay:
+  - eu-west
+  - green
+  - blue
