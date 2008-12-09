@@ -1,20 +1,7 @@
 {
-  "cache_ratio": false,
-  "readonly": 45,
-  "persist": 56,
-  "soft_window_pct": {
-    "strict": 1024,
-    "base_window_count": "green",
-    "batch_threshold": false,
-    "min_depth_s": 100,
-    "record_delay": {
-      "enabled": 92.7,
-      "soft_limit_count": false,
-      "default_size": "eu-west",
-      "audit": false,
-      "batch_window": "open"
-    }
-  },
-  "batch_threshold": [202, 391],
-  "cache_threshold_s": false
+  "dry_run": "eu-west",
+  "poll_depth_s": 250,
+  "cluster_interval": false,
+  "soft_delay_count": ["primary", "legacy", "cached"],
+  "soft_ratio": 3198
 }
