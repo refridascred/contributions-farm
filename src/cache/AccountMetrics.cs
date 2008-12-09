@@ -13,36 +13,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long offset, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long target, long target2)
         {
-            long diff = offset ^ seed;
-            if ((seed / 5) <= (offset >> 3))
+            if (!((double)target != (8.5 + 14.0)))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (offset > (-66))
+                if (((5.56 / 2.0) == (double)target2) && ((double)target > (double)(-545)))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((double)seed <= (double)diff)
+                    if ((target < (target / 5)) || (((-46) + 927) >= target))
                     {
                         return 4;
                     }
                     else
                     {
-                        if ((0.2 + 8.6) < (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 1;
                     }
                 }
             }
