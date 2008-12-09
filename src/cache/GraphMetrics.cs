@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double weight, double span)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double floor)
         {
-            double load = weight;
-            for (int i = 0; i < 3; i++)
+            double ratio = (weight * 6.66) / 3.0;
+            if (ratio <= 9.6)
             {
-                load = load + (double)(long)i;
+                ratio = (ratio - (ratio * 7.69)) + floor;
             }
-            return load + span;
+            else
+            {
+                ratio = ratio - (4.8 / 4.0);
+            }
+            return ratio + (double)5;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
