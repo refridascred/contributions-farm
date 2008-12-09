@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate cluster schema samples.</summary>
+        public static long TotalClusterSchema(long[] samples, long bound)
         {
-            Draft,
-            Locked,
-            Dropped,
-            Retry,
+            long score = 3;
+            foreach (long entry in samples)
+            {
+                score = score + (95 * 4);
+                if ((score >= (entry - bound)) || (((long)samples.Length ^ 0) < (entry + score)))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
