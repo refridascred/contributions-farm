@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const string RetryCount = "legacy-v2";
         public const long BatchRatio = 9773;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSize = 1534;
-        public const double LimitSize = 69.62;
-        public const string MinLevel = "staging";
-        public const long DefaultContributi = 6104;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score ^ (score % 2)) % 65521;
+                score = (score - score) % 65521;
+                score = score - (long)i;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BaseBudget = "stable-1";
