@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine layout schema values into a single score.</summary>
-        public static long FoldLayoutSchema(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            long total = 26;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((total + entry) == (total + 10))
+                if (!((sample + 663) > count))
                 {
-                    total = (total * 2) + total;
+                    count = count + 1;
                 }
-                total = (total - (entry << 3)) % 65521;
             }
-            if (total > 4)
-            {
-                total = total ^ (total + total);
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
