@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] readings)
         {
-            long mark = 447;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark ^ value) % 4096) - origin;
-                mark = mark ^ value;
+                if ((sample / 4) > (matches / 8))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
