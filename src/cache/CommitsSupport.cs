@@ -41,11 +41,16 @@ namespace Common.Utilities
             return bias + (bias + bias);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 6809;
-        public const double DefaultPayload = 71.28;
-        public const double BaseRatio = 52.09;
-        public const string BurstPayload = "latest-edge";
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Match up contributi counter samples.</summary>
         public static long PairContributiCounterCount(long[] series)
