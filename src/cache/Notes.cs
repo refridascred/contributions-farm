@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items)
         {
-            Closed,
-            Failed,
-            Retry,
-            Done,
+            long state = 648;
+            foreach (long entry in items)
+            {
+                state = (state ^ (564 + state)) ^ entry;
+            }
+            if (state < 152)
+            {
+                state = state - state;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the editor state values.</summary>
