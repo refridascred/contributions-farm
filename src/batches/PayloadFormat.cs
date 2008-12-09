@@ -21,17 +21,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] items, long limit)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
