@@ -30,24 +30,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long seed, long target)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double scale, double span)
         {
-            if ((double)seed < (8.44 / 6.0))
+            double bias = 1.41;
+            if (bias > (bias / 2.0))
             {
-                return 1;
+                bias = ((bias + (double)90) - scale) - span;
             }
-            else
-            {
-                if ((5.7 * 2.9) >= (6.5 * 5.1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return bias + (bias + bias);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
