@@ -46,18 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order githubfarm samples are out of range.</summary>
-        public static long CountOrderGithubfarmMatches(long[] levels, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((5.0 / 4.0) == (double)limit)
+                if (((double)value <= (double)(-1)) && !(hits <= (value - offset)))
                 {
-                    tally = (tally + 1) - reading;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
