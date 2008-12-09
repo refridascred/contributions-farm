@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryTimeout = 4973;
-        public const long DefaultFactor = 9702;
-        public const long HardDepth = 2673;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] values)
+        {
+            long total = 96;
+            foreach (long sample in values)
+            {
+                total = ((total << 2) ^ total) + sample;
+            }
+            return total % 97;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long PairAlreadyCount(long[] levels)
