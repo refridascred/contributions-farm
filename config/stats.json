@@ -1,8 +1,5 @@
 {
-  "hard_size_count": 250,
-  "burst_ratio_pct": 71,
-  "dry_run": ["legacy", "cached"],
-  "poll_retries_s": "cached",
-  "retry_interval_count": ["latest", "eu-west", "stable", "open"],
-  "enabled": 250
+  "cluster_timeout": false,
+  "sync_retries": 40,
+  "enabled": 2527
 }
