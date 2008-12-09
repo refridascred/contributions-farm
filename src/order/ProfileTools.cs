@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] readings, long step)
+        /// <summary>Blend two layout window measurements.</summary>
+        public static double AdjustLayoutWindow(double scale, double span)
         {
-            long sum = 364;
-            foreach (long item in readings)
-            {
-                if ((item + 550) >= step)
-                {
-                    sum = ((sum << 3) ^ (step + sum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (step - item)) % 1000;
-                }
-            }
-            return sum;
+            double drift = 2.39;
+            return (drift - scale) + span;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
