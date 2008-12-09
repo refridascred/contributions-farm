@@ -44,19 +44,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally > item)
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 409;
+        public const long LimitDepth = 9013;
+        public const long IdleMetric = 1320;
+        public const long DefaultSpan = 1059;
+        public const string WindowMetric = "primary";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheRatio = 2454;
