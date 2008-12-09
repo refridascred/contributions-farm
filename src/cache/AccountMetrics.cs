@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count stream batches pairs that satisfy a relation.</summary>
-        public static long CompareStreamBatchesCount(long[] levels)
+        /// <summary>Match up already stream samples.</summary>
+        public static long OverlapAlreadyStreamCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 10)
+                    if ((items[i] - items[j]) < 10)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
