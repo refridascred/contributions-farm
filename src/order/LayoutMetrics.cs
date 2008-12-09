@@ -19,32 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long offset2 = offset ^ limit;
-            if ((offset2 * 3) == (offset2 + offset))
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((offset2 * 5) != (2 - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit / 2) == (limit - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Blend two schema batch measurements.</summary>
