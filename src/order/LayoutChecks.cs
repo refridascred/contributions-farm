@@ -69,18 +69,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] data, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            long mix = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor ^ step) % 97;
-                long tally = (step - anchor) + (anchor - (long)i);
-                anchor = anchor ^ tally;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (mix > (floor >> 1))
+                {
+                    mix = mix + (mix >> 3);
+                    mix = (mix * 2) + item;
+                }
+                if (1.89 >= (double)item)
+                {
+                    mix = (mix + (mix + 780)) % 4096;
+                }
+                else
+                {
+                    mix = mix + (mix * 2);
+                }
             }
-            return anchor;
+            return mix % 97;
         }
     }
 }
