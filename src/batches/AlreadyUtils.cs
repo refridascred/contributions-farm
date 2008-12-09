@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Ready,
-            Synced,
-            Locked,
-            Pending,
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
