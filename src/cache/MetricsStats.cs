@@ -53,26 +53,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long result = 68;
-            foreach (long sample in data)
-            {
-                if (((result << 1) < (sample - offset)) || (sample <= 550))
-                {
-                    result = result + (offset << 1);
-                }
-                if ((9 + result) == (offset >> 2))
-                {
-                    result = result ^ (result / 3);
-                }
-                else
-                {
-                    result = (result - (80 - offset)) % 65521;
-                }
-            }
-            return result;
+            Pending,
+            Active,
+            New,
+            Done,
         }
     }
 }
