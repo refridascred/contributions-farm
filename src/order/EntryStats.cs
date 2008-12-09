@@ -35,13 +35,18 @@ namespace Common.Utilities
             return rate2 + (double)7;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seed * 3) < seed)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
