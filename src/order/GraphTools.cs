@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context filter readings against a bound.</summary>
-        public static bool VerifyContextFilterLimits(long[] levels, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
