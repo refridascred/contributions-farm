@@ -40,18 +40,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] data)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((value > (matches + matches)) || ((double)value >= (5.2 / 9.0))) || (matches <= (699 % 5)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
