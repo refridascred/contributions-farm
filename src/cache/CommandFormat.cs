@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowTimeout = 5983;
-        public const string BatchLayout = "primary-1";
-        public const long BurstSize = 4698;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Locked,
+            Paused,
+            Active,
+            Idle,
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TallyMetrics(long[] samples)
