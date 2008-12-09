@@ -43,13 +43,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double bias)
         {
-            Idle,
-            Pending,
-            Closed,
-            Dropped,
+            double rate = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = ((rate + rate) + (double)(long)i) - weight;
+            }
+            return rate - (bias * 1.0);
         }
     }
 }
