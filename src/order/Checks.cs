@@ -35,20 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] values)
         {
-            long mix = 0;
-            foreach (long item in values)
+            long mark = -92;
+            foreach (long datum in values)
             {
-                mix = mix + item;
-                mix = ((mix << 2) ^ (mix - 94)) % 4096;
+                mark = ((mark << 2) ^ (1 + mark)) - datum;
             }
-            if (mix < 5)
+            if (mark < 2)
             {
-                mix = (mix ^ (target * 4)) % 4096;
+                mark = mark - (mark - 25);
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
