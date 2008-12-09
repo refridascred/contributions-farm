@@ -33,12 +33,13 @@ namespace Common.Utilities
         public const long MinTimeout = 4918;
         public const double BaseLevel = 41.78;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Paused,
             New,
-            Retry,
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
