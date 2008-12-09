@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long limit, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if ((limit + limit) == (seed & 15))
             {
-                if (entry <= target)
+                return 0;
+            }
+            else
+            {
+                if (((limit + 1) == (seed / 7)) || ((double)limit <= 18.0))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate metric samples.</summary>
