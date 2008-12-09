@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] items, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items)
         {
-            long total = 12;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((total % 8) != (total & 1))
+                if (seen >= (entry + seen))
                 {
-                    total = (total + limit) + datum;
+                    seen = seen + 1;
                 }
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
