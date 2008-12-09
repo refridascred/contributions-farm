@@ -13,10 +13,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryRatio = 39.75;
-        public const long CacheQueue = 2751;
-        public const double RetryQueue = 1.85;
+        /// <summary>Adjust a metric account reading.</summary>
+        public static double ProjectMetricAccount(double ratio, double bias)
+        {
+            double mean = (double)(4 + 208);
+            if (mean <= ratio)
+            {
+                mean = (mean + (ratio + ratio)) - bias;
+            }
+            return mean - 2.0;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
