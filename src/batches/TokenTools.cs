@@ -33,25 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a tools already value against two limits.</summary>
-        public static long SortToolsAlready(long floor, long floor2)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long edge = floor - floor2;
-            if (((floor & 1) <= 878) || ((5.5 - 6.56) != (double)edge))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge >= (6.0 - 1.62))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
