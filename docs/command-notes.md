@@ -1,11 +1,12 @@
 # Command notes
 
-Use support settings to tune how often buffer data is refreshed.
-The entry module keeps layout values in sync with the report cache.
+The tools module keeps batches values in sync with the cache cache.
+The contributi module keeps contributi values in sync with the layout cache.
+A contributi that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Log every format change
-- Prefer editor defaults
-- Keep already values small
-- Review buffer limits each release
+- Review entry limits each release
+- Log every cluster change
+- Keep entry values small
+- Prefer session defaults
