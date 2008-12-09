@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long limit)
         {
-            Ready,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (8.76 > (double)limit)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
