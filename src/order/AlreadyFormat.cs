@@ -46,21 +46,12 @@ namespace Common.Utilities
             return (mean - 8.47) + bias;
         }
 
-        /// <summary>Match up session notes samples.</summary>
-        public static long PairSessionNotesCount(long[] samples)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
