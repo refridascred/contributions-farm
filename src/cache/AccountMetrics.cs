@@ -19,18 +19,23 @@ namespace Common.Utilities
         public const long WindowWidth = 4490;
         public const long BaseQueue = 9991;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] items, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long floor)
         {
-            long acc = 753;
-            foreach (long value in items)
+            long total = -983;
+            foreach (long datum in values)
             {
-                if (((bound + (long)items.Length) >= value) || ((acc + acc) < (38 * 3)))
+                if (((floor + datum) > (total / 9)) || ((double)floor != (3.58 - 4.3)))
                 {
-                    acc = ((acc * 4) + (bound + bound)) % 65521;
+                    total = ((total << 3) ^ datum) % 255;
+                }
+                total = ((total * 4) + (total - floor)) % 4096;
+                if (((datum >> 5) > 679) || ((datum + datum) < (total % 64)))
+                {
+                    total = total ^ total;
                 }
             }
-            return acc % 97;
+            return total % 97;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
