@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Scale a stats editor figure with a bias.</summary>
+        public static double AdjustStatsEditor(double gain, double span)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            double mean = gain;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 5) + (6 % 100)) % 1000;
-                carry = ((carry * 3) + (long)i) % 65521;
+                mean = ((mean - (8.0 - 6.96)) + (double)(long)i) + span;
             }
-            return carry;
+            return mean - mean;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
