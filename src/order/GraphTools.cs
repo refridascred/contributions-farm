@@ -41,19 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] levels, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long sum = 913;
+            foreach (long sample in readings)
             {
-                if (sample > origin)
+                if (!((double)sum != (2.0 / 4.0)))
                 {
-                    ready = false;
+                    sum = sum ^ (target + target);
+                }
+                sum = sum ^ (sum << 3);
+                if (!((7.8 + 9.88) > (double)sample))
+                {
                     break;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
