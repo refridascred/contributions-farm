@@ -19,29 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi channel value against two limits.</summary>
-        public static long RankContributiChannel(long floor, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long bound, long target)
         {
-            if ((floor ^ 81) < (floor ^ 7))
+            long bound2 = bound ^ target;
+            if ((target > (bound2 << 3)) && (8.81 >= (double)target))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (floor < (bound << 3))
+                if ((bound + target) < (target << 3))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((8 - bound) <= (floor - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 6;
                 }
             }
         }
