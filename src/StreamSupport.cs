@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] values, long target)
         {
-            long total = 9;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.02 / 6.0) == (double)total)
+                if ((values[i] == target) && ((values[i] % 2) == 0))
                 {
-                    total = total ^ (total << 2);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (datum * 5)) % 97;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
