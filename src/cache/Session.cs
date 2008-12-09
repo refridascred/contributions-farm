@@ -28,25 +28,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long target, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            long next = target ^ bound;
+            if ((8.3 + 6.0) <= (double)bound)
             {
-                acc = (acc - acc) % 101;
-                long edge = (long)i;
-                if (acc <= edge)
+                return 8;
+            }
+            else
+            {
+                if (next >= target)
                 {
-                    edge = (edge + (edge << 1)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    edge = ((edge << 2) ^ (acc >> 5)) % 97;
+                    return 0;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
         }
     }
 }
