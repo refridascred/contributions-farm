@@ -72,19 +72,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleBudget = 44.97;
+        public const double MaxLevel = 97.53;
+        public const long LimitWidth = 6434;
+        public const double DefaultDepth = 34.79;
+        public const string DefaultRatio = "local-edge";
     }
 }
