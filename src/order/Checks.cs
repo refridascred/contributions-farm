@@ -20,21 +20,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Combine batch payload values into a single score.</summary>
+        public static long TotalBatchPayload(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 421;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = (sum ^ sum) % 101;
+                if ((value * 5) < (target + sum))
                 {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
