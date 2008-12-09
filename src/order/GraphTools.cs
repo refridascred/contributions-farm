@@ -46,27 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] series)
         {
-            long mark = 9;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((mark & 7) >= (mark * 2))
+                if ((((9 + 7) <= count) || ((5.7 + 10.0) <= (double)count)) || ((double)count > 9.83))
                 {
-                    mark = (mark - item) % 65521;
-                }
-                mark = (mark ^ (mark + mark)) % 65521;
-                if ((mark + (long)levels.Length) == (bound - mark))
-                {
-                    mark = mark - (item >> 5);
-                }
-                if ((item << 3) >= (bound + mark))
-                {
-                    break;
+                    count = (count + 1) + value;
                 }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
