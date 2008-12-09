@@ -51,12 +51,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] data)
         {
-            Locked,
-            Queued,
-            Done,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!((73 + value) <= (value >> 1)) && ((seen * 3) <= (value << 3)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
