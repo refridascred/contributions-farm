@@ -41,17 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token already sample.</summary>
-        public static long LocateTokenAlreadyIndex(long[] values, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (values[i] >= bound)
+                if (item < ((-56) / 9))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
