@@ -69,18 +69,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] items, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((matches + target) < (667 + matches)) || ((2.0 - 8.6) >= (double)matches)) && ((target < (matches * 3)) && ((double)matches != (3.76 + 8.1))))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                anchor = (anchor ^ step) % 97;
+                long tally = (step - anchor) + (anchor - (long)i);
+                anchor = anchor ^ tally;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
