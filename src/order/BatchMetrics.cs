@@ -43,17 +43,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first metrics already entry that matches the target.</summary>
-        public static long LookupMetricsAlreadyIndex(long[] samples, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (samples[i] > offset)
+                if ((sample * 4) < tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a already snapshot.</summary>
