@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double gain, double offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double load = (double)11 - 11.0;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load + (offset / 4.0);
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
