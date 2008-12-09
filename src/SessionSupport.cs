@@ -17,13 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] levels, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!!(607 >= ((long)levels.Length % 2)))
+                {
+                    seen = ((seen + 1) ^ sample) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
