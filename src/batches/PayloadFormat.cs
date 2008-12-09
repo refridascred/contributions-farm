@@ -58,19 +58,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] levels, long bound)
-        {
-            long mix = 58;
-            foreach (long item in levels)
-            {
-                mix = (((mix * 4) + (mix % 7)) + item) + bound;
-            }
-            if (mix < (-50))
-            {
-                mix = (mix * 4) + (mix / 9);
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepTimeout = 77.0;
+        public const double RetryLevel = 32.02;
+        public const long HardBuffer = 9244;
+        public const long StepBuffer = 6730;
+        public const string IdleBuffer = "strict-v2";
     }
 }
