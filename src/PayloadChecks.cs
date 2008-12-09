@@ -23,18 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] samples)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)entry < (double)tally) || ((tally << 2) != (entry + (-53))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Check that every session commits entry stays within the limit.</summary>
