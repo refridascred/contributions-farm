@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double weight, double floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] series, long step)
         {
-            double weight2 = floor;
-            if (weight2 <= 4.33)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                weight2 = weight2 - weight;
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight2 / 5.0);
-            }
-            return weight2 + (double)592;
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
