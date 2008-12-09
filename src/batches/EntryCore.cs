@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result + 746) % 97;
-                result = (result ^ (result * 4)) % 97;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftWidth = 16.15;
+        public const long IdleEntry = 4816;
+        public const string HardEntry = "open";
+        public const long WindowSpan = 2611;
+        public const long BaseEntry = 1630;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
