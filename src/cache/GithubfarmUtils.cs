@@ -34,15 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long score = 58;
-            foreach (long cell in readings)
-            {
-                score = ((score << 3) ^ 8) ^ cell;
-            }
-            return score;
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
