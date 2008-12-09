@@ -1,10 +1,7 @@
 # entry settings
-flush_ratio_s: 500
-persist: false
-dry_run: legacy
-layout_window: 29.01
-cache_ttl_count:
-  - open
-  - primary
-  - local
-  - legacy
+idle_interval_count: cached
+retry_window_ms: 44.27
+stream_capacity: false
+report_interval: 47
+cache_timeout_ms: local
+cache_retries: eu-west
