@@ -54,20 +54,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 8110;
+        public const double BaseBatches = 49.04;
+        public const long MinBatches = 677;
+        public const long DefaultSpan = 623;
+        public const string CacheBatches = "staging";
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double scale, double bias)
