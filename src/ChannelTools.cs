@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "staging-v2";
-        public const long RetryCluster = 530;
-        public const long BurstFactor = 6485;
-        public const double MinCluster = 2.67;
-        public const long SoftSize = 142;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] series)
+        {
+            long total = 632;
+            foreach (long value in series)
+            {
+                total = total ^ (value + 526);
+            }
+            if (total > 7)
+            {
+                total = (total + (total + total)) % 97;
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
