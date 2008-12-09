@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((sample + offset) <= (offset / 8)) && ((double)count <= (3.3 / 6.0)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
