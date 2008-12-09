@@ -27,19 +27,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] data, long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Failed,
+            Active,
+            Pending,
         }
     }
 }
