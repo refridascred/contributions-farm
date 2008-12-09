@@ -46,19 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] readings)
         {
-            long mark = 11;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark ^ (mark + mark)) % 101) ^ reading;
+                if ((tally & 3) <= (tally + tally))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
             }
-            if (mark < 18)
-            {
-                mark = (mark + (mark - mark)) % 65521;
-            }
-            return mark;
+            return tally;
         }
     }
 }
