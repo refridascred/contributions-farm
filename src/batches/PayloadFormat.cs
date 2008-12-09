@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
