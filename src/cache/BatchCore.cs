@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const string BurstPayload = "open";
         public const string StepPayload = "local-edge";
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] readings)
-        {
-            long score = 0;
-            foreach (long sample in readings)
-            {
-                score = ((score << 3) ^ (sample << 1)) % 65521;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepFactor = 4280;
+        public const long HardTimeout = 9571;
+        public const string BaseSpan = "strict";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] levels, long origin)
