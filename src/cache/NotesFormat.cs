@@ -33,12 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Queued,
-            Ready,
-            Closed,
+            public bool Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
