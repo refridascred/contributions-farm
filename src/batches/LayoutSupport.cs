@@ -73,23 +73,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            long mark = 58;
-            foreach (long entry in series)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark << 2) ^ (mark % 3);
-                if ((131 >> 5) >= entry)
-                {
-                    mark = mark ^ (mark + mark);
-                }
-                if (((7 + mark) != (entry / 8)) || (entry >= ((-97) * 4)))
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
     }
 }
