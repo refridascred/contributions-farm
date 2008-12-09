@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Iterate the route payload series from a seed.</summary>
+        public static long StepRoutePayload(long floor)
         {
-            New,
-            Stale,
-            Done,
+            long score = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((floor << 3) >= (5 - score))
+                {
+                    score = score + (score << 3);
+                }
+                else
+                {
+                    score = ((score * 3) + (score ^ score)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
