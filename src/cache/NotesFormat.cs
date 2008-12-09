@@ -39,22 +39,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] items, long target)
+        /// <summary>Classify a metrics contributi pair into a bucket.</summary>
+        public static long RankMetricsContributi(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long span = bound ^ bound2;
+            if (!((2.99 / 9.0) < (double)span))
             {
-                if ((target << 1) < (sample >> 5))
+                return 2;
+            }
+            else
+            {
+                if ((0.91 + 6.49) <= (double)span)
                 {
-                    tally = tally + 3;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
