@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many metrics account samples are out of range.</summary>
-        public static long AuditMetricsAccountOutliers(long[] items, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long offset, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (12 <= (target << 1))
             {
-                if ((double)value <= (double)seed)
+                return 5;
+            }
+            else
+            {
+                if ((offset % 97) < target)
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the farm level values.</summary>
