@@ -54,12 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] samples, long bound)
         {
-            Done,
-            New,
-            Ready,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
