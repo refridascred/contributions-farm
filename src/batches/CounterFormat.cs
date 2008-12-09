@@ -41,24 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long floor, long step)
+        /// <summary>Look up the position of a token already sample.</summary>
+        public static long LocateTokenAlreadyIndex(long[] values, long bound)
         {
-            if ((step << 1) <= (step & 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor + floor) != (8 + floor)) || ((step % 3) <= (floor << 1)))
+                if (values[i] >= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
