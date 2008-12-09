@@ -51,19 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools payload entry stays within the limit.</summary>
-        public static bool GuardToolsPayloadRange(long[] data, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < origin)
+                if ((data[i] >= target) && ((data[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
