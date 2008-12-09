@@ -23,15 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the checks account series from a seed.</summary>
-        public static long RollChecksAccount(long origin)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
