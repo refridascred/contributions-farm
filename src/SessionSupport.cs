@@ -19,18 +19,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] levels, long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry + entry) >= (966 & 1))
+                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
                 {
-                    seen = (seen + 2) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
