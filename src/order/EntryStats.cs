@@ -61,25 +61,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long offset, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long offset2 = offset + target;
-            if ((1.0 > (double)offset2) && (offset2 > (offset ^ offset2)))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 + offset2) <= (offset + offset2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
