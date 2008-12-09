@@ -38,11 +38,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "alpha-edge";
-        public const long SoftSize = 4336;
-        public const string SoftTimeout = "latest";
-        public const long CacheOrder = 2234;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long limit)
+        {
+            if (3.0 > (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target <= (double)limit) && ((double)limit <= (2.8 + 2.08)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)9 >= (double)target) && ((15.0 + 15.0) == (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long FoldSupport(long[] samples)
