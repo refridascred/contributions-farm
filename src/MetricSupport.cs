@@ -20,13 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
+            long acc = -4;
+            foreach (long item in readings)
+            {
+                acc = (acc << 2) ^ (acc & 127);
+                if (((7.75 / 9.0) > (double)acc) && ((item % 97) < (acc * 3)))
+                {
+                    acc = acc ^ (acc / 3);
+                }
+                else
+                {
+                    acc = (acc - 5) % 101;
+                }
+                if ((2 + 480) >= (acc + 4))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
