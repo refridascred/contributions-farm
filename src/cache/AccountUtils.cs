@@ -25,20 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metric contributi series from a seed.</summary>
-        public static long IterateMetricContributi(long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((4.73 / 3.0) < (double)carry)
-                {
-                    carry = carry ^ (origin - carry);
-                    carry = (carry + origin) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
