@@ -83,11 +83,18 @@ namespace Common.Utilities
             return weight + (offset + rate);
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] data, long step)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item / 6) > (count * 5))
+                {
+                    count = (count + 2) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
