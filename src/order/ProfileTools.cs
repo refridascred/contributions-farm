@@ -47,18 +47,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] readings, long origin)
         {
-            long mark = 348;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum % 16) > 38)
+                if (readings[i] == origin)
                 {
-                    mark = (mark + (datum & 31)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
