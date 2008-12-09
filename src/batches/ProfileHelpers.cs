@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long sum = 71;
-            foreach (long reading in values)
-            {
-                sum = (sum ^ (sum & 63)) % 1000;
-                if ((sum - reading) > sum)
-                {
-                    sum = (sum * 3) + (sum >> 1);
-                }
-                if ((sum - sum) == (sum - reading))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Locked,
+            Queued,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
