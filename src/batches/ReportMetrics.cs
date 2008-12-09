@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] items)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((double)seen == (9.0 / 5.0)) && ((cell + seen) >= cell)) || !((cell + seen) != (long)items.Length))
-                {
-                    seen = seen + 3;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
