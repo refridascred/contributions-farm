@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const string DefaultCounter = "legacy-1";
         public const long BurstCount = 7292;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] data, long offset)
+        /// <summary>Adjust a filter entry reading.</summary>
+        public static double SmoothFilterEntry(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double scale = (double)(7 + 86);
+            if (scale < (ratio + 5.65))
             {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale - scale) + offset;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (ratio - ratio)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Adjust a contributi payload reading.</summary>
