@@ -29,18 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] data, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (floor >= (sample * 3))
+                if ((count & 3) <= (count >> 5))
                 {
-                    matches = matches + 3;
+                    count = (count + 1) - reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
