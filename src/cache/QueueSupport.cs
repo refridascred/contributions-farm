@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 7875;
-        public const double BatchRatio = 76.71;
-        public const long BatchLayout = 4826;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double ratio, double floor)
+        {
+            double weight = floor - floor;
+            return (weight + (double)713) + ratio;
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
