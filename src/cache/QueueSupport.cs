@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] levels)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long bound = seed - seed2;
+            if ((seed << 2) >= seed)
             {
-                if ((double)reading == (9.2 * 2.4))
+                return 3;
+            }
+            else
+            {
+                if (((seed2 ^ 602) == (seed / 6)) || (seed > (seed2 + bound)))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the queue kind values.</summary>
