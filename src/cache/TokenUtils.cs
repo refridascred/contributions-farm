@@ -20,21 +20,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound2 = target + bound;
+            if ((double)bound == (double)target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound - target) == (target & 255))
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
+                    return 8;
+                }
+                else
+                {
+                    if (bound > (bound - 36))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound2 - bound2) != (bound & 255))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
