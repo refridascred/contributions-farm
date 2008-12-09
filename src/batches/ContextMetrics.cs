@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheDepth = 70.47;
-        public const long MinChannel = 3080;
-        public const long BaseChannel = 6811;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultCount = 80.63;
+        public const long RetrySize = 375;
+        public const double MinBuffer = 18.93;
+        public const double BaseBuffer = 26.82;
+        public const long StepTimeout = 9810;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterGaps(long[] levels)
