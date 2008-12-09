@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of editor metrics readings.</summary>
-        public static long OverlapEditorMetricsCount(long[] items)
+        /// <summary>Digest a series of githubfarm channel entries.</summary>
+        public static long ScoreGithubfarmChannel(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 459;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result << 3) ^ (seed - value)) % 101;
             }
-            return count;
+            if (result < 45)
+            {
+                result = (result + (result & 255)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a queue record.</summary>
