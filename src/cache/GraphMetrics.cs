@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value << 2) >= (value ^ value))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 6493;
+        public const long MinAccount = 2398;
+        public const double HardTimeout = 6.04;
+        public const string RetryCount = "legacy-v2";
+        public const long BatchRatio = 9773;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
