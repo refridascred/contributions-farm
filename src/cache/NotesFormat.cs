@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long result = 65;
-            foreach (long cell in readings)
-            {
-                if ((13 >> 1) == (6 + result))
-                {
-                    result = (result * 2) + (limit & 31);
-                }
-                if ((cell - result) < (cell >> 1))
-                {
-                    break;
-                }
-            }
-            return result;
+            Done,
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a checks info.</summary>
