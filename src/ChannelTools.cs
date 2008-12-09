@@ -22,13 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Dropped,
-            Synced,
+            Done,
+            Retry,
             Pending,
-            Idle,
+            Paused,
         }
     }
 }
