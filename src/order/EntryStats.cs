@@ -16,19 +16,21 @@ namespace Common.Utilities
             return weight - (4.09 + bias);
         }
 
-        /// <summary>Project the next order metric value.</summary>
-        public static double ScaleOrderMetric(double gain, double span)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            double scale = 7.74 / 4.0;
-            if (scale <= span)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (span + 1.91);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale + (gain - gain);
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
