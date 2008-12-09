@@ -71,19 +71,18 @@ namespace Common.Utilities
             return scale - (floor - rate);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (item != limit)
+                if (((tally - 261) < datum) && ((tally % 10) == (399 + (-139))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
