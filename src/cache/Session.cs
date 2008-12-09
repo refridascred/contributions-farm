@@ -10,38 +10,12 @@ namespace Common.Utilities
         public const double LimitQueue = 57.63;
         public const long BaseQueue = 9561;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long target, long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if (!(limit > (target % 16)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-504) >= (limit + limit)) || ((double)target >= 3.5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1 >> 4) > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit / 7) <= (target % 60))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first command farm entry that matches the target.</summary>
