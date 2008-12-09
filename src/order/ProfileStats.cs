@@ -41,11 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            Synced,
+            Paused,
+            Active,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
