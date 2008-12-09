@@ -1,10 +1,13 @@
 # githubfarm settings
-min_depth: 13.05
-hard_timeout:
-  default_retries_pct: fallback
-  batch_ttl: 25.78
-  verbose:
-    - fallback
-    - staging
-  notes_limit: latest
-verbose: 4781
+max_capacity_pct: 1024
+sync_threshold: 46.47
+compress: 1254
+verbose:
+  audit: 500
+  batch_timeout_count: stable
+  idle_window_count: 6088
+  base_retries:
+    - 134
+    - 177
+    - 196
+  default_threshold_s: true
