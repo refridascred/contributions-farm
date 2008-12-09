@@ -1,21 +1,15 @@
 # support settings
-batch_delay: true
-burst_capacity:
-  buffer_delay: true
-  min_delay_s:
-    - stable
-    - cached
-    - strict
-  support_depth: 251
-persist:
-  profile_size:
-    - open
-    - strict
-    - blue
-    - local
-  context_size: 50.66
-  flush_limit_s:
-    - 468
-    - 167
-    - 183
-  idle_interval_ms: 2352
+layout_threshold:
+  schema_window:
+    warm_timeout: edge
+    hard_timeout_pct: 86
+    poll_ratio_count: staging
+    min_capacity_ms: staging
+    cache_window: edge
+    max_retries_count: 7348
+  order_timeout: 4
+  counter_capacity: 39.37
+  sync_window_pct: local
+  stats_threshold: true
+buffer_threshold: 40
+warm_timeout: 94.32
