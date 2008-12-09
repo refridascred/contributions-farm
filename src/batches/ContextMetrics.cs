@@ -38,19 +38,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!!((reading + matches) >= 858))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "primary-edge";
+        public const long CachePayload = 170;
+        public const long HardPayload = 4306;
+        public const string StepPayload = "staging-v2";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] series, long floor)
