@@ -20,25 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long target, long step)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long delta = target + step;
-            if ((step + target) > (1 / 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.8 / 9.0) < (double)delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
