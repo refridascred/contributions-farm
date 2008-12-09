@@ -26,17 +26,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] samples, long target)
+        /// <summary>Scale a payload profile figure with a bias.</summary>
+        public static double SmoothPayloadProfile(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = bias / 4.0;
+            return gain + bias2;
         }
 
         /// <summary>Hold a profile entry.</summary>
