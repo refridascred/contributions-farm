@@ -24,21 +24,19 @@ namespace Common.Utilities
             return weight - (scale - weight);
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < offset)
                 {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the support phase values.</summary>
