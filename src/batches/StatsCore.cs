@@ -77,13 +77,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long score = -7;
+            foreach (long sample in samples)
+            {
+                if (((double)sample > (7.9 / 2.0)) || ((double)score < 3.0))
+                {
+                    score = (score + sample) % 1000;
+                }
+            }
+            if (score > 292)
+            {
+                score = score ^ (score - (-2));
+            }
+            return score;
         }
     }
 }
