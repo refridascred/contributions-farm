@@ -15,15 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Done,
+            Draft,
+            Pending,
         }
 
         /// <summary>Accumulate stats samples.</summary>
