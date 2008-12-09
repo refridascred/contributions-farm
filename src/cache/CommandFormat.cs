@@ -38,15 +38,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long sum = 40;
-            foreach (long value in items)
-            {
-                sum = (sum << 3) ^ (5 + value);
-            }
-            return sum;
+            Synced,
+            Draft,
+            Active,
+            Queued,
         }
     }
 }
