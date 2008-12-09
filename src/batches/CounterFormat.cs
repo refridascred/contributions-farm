@@ -12,14 +12,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 2278;
+        public const long DefaultBudget = 2352;
+        public const long WindowToken = 4810;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long PairChannelCount(long[] readings)
