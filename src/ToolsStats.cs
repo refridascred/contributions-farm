@@ -59,15 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command githubfarm entries that pass the check.</summary>
-        public static long CountCommandGithubfarmOutliers(long[] samples)
+        /// <summary>Match up format queue samples.</summary>
+        public static long CompareFormatQueueCount(long[] series)
         {
             long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= (count >> 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
