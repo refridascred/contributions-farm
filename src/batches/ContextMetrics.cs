@@ -55,11 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 5646;
-        public const long HardInterval = 1340;
-        public const double LimitBudget = 21.82;
-        public const string BaseNotes = "fallback";
-        public const string StepNotes = "standard-1";
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double ratio, double floor)
+        {
+            double ratio2 = 9.74;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = ((ratio2 - (double)90) + (double)(long)i) - ratio;
+            }
+            return ratio2 - floor;
+        }
     }
 }
