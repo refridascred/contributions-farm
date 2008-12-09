@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank account payload input into a small class.</summary>
-        public static long ClassifyAccountPayload(long bound, long origin)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            long delta = bound + origin;
-            if ((delta ^ bound) < (586 & 255))
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((-6) - 738) >= (bound % 60))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
