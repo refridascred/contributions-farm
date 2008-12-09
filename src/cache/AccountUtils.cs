@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long target, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] values, long step)
         {
-            if ((double)floor < (3.0 / 2.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target * 2) <= (floor ^ floor))
+                if (values[i] == step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target & 15) <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor >= (0 * 3)) || ((floor + floor) == (target + target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
