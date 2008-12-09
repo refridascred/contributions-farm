@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] samples, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (step <= matches)
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            New,
+            Closed,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
