@@ -33,25 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long seed)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long prev = origin + seed;
-            if (!((seed & 1) == (seed + prev)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin - seed) < (684 + 4)) && (prev >= (prev / 9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
