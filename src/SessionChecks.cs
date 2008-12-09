@@ -23,12 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleSpan = 5.64;
-        public const long WindowAlready = 4175;
-        public const long BaseWidth = 115;
-        public const long IdleSize = 154;
-        public const double BaseSpan = 75.57;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a command editor reading.</summary>
         public static double ScaleCommandEditor(double weight, double bias)
