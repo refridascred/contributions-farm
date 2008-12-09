@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinStats = 88.7;
-        public const long BatchStats = 3549;
-        public const double MaxStats = 20.81;
-        public const long CacheRatio = 7072;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Pending,
+            Ready,
+            Paused,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Grade a window account value against two limits.</summary>
         public static long BucketWindowAccount(long bound, long floor)
