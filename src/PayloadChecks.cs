@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Retry,
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
