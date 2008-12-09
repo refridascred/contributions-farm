@@ -23,14 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count profile cache pairs that satisfy a relation.</summary>
+        public static long CompareProfileCacheCount(long[] series)
         {
-            Queued,
-            Dropped,
-            Done,
-            Draft,
-            New,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a already stats.</summary>
