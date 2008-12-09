@@ -20,20 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 5772;
+        public const double BurstCache = 34.6;
+        public const long DefaultFactor = 3538;
+        public const string LimitWidth = "staging";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long FoldOrder(long[] values)
