@@ -16,11 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 5997;
-        public const long CacheCommand = 17;
-        public const long IdleWidth = 698;
-        public const long BatchRatio = 6346;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] samples, long limit)
+        {
+            long state = 7;
+            foreach (long reading in samples)
+            {
+                if ((state << 2) <= (39 / 8))
+                {
+                    state = ((state + (long)samples.Length) ^ reading) - limit;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long HardCount = 6034;
