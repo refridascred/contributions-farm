@@ -1,8 +1,8 @@
-id,token,ratio,score
-1,170,820,88.62
-2,1.78,4.02,745
-3,48,509,blue
-4,cached,stable,873
-5,253,506,696
-6,34.29,open,615
-7,583,63.44,32.79
+id,count,label
+1,17.84,22.0
+2,428,34
+3,61.66,fallback
+4,legacy,311
+5,primary,118
+6,eu-west,77.72
+7,open,staging
