@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools layout samples.</summary>
-        public static long FoldToolsLayout(long[] readings)
-        {
-            long state = -783;
-            foreach (long entry in readings)
-            {
-                state = (state - (1 % 2)) ^ entry;
-            }
-            if (state < (-9))
-            {
-                state = state ^ (state ^ 40);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepLevel = 5900;
+        public const string HardCommits = "local-edge";
+        public const long LimitCommits = 4351;
+        public const long DefaultFactor = 3295;
+        public const string WindowScore = "alpha";
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheOutliers(long[] values)
