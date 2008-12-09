@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Paused,
-            New,
-            Dropped,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepFactor = 8780;
+        public const long StepMetric = 5225;
+        public const long MaxBudget = 3658;
+        public const long BurstInterval = 5518;
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] series)
