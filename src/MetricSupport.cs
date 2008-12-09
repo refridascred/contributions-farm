@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long limit)
-        {
-            long edge = target + limit;
-            if (!((edge * 3) <= (target + limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit == (2.8 / 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-70) / 4) <= (edge + (-13)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 81.78;
+        public const long RetryTimeout = 8613;
+        public const long DefaultSession = 1682;
+        public const double BurstSpan = 82.82;
+        public const long BatchWidth = 490;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] readings)
