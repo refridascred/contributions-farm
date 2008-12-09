@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long sum = 60;
-            foreach (long value in series)
-            {
-                if ((value % 7) < 52)
-                {
-                    sum = (sum ^ 65) % 97;
-                }
-                else
-                {
-                    sum = (sum + 4) % 1000;
-                }
-                if ((-402) < (value / 5))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
