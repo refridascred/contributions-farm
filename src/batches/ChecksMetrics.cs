@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchSize = 47.82;
-        public const long MaxLayout = 7411;
-        public const long MinScore = 8909;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result << 3) ^ (result * 5)) % 101;
+                result = result - (step + (long)i);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] samples)
