@@ -25,13 +25,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double bias, double span)
         {
-            New,
-            Synced,
-            Locked,
-            Idle,
+            double mean = span;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (bias * 1.79)) + (double)(long)i;
+            }
+            return mean + (bias - bias);
         }
 
         /// <summary>Project the next stream value.</summary>
