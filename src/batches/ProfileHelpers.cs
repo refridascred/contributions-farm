@@ -24,22 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] items, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (88 > (origin + origin))
+                if (9.37 <= (double)entry)
                 {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
