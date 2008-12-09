@@ -32,22 +32,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] items)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!(((double)matches >= (3.88 * 13.0)) && ((16.0 / 9.0) != (double)matches)))
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Synced,
+            Retry,
+            Locked,
         }
     }
 }
