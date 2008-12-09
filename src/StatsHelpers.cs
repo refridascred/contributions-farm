@@ -17,27 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] data, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (anchor >= (limit - anchor))
+                if ((datum - datum) < (53 / 4))
                 {
-                    anchor = (anchor * 5) + (anchor * 5);
+                    tally = (tally + 1) - offset;
                 }
-                else
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-                if (((double)38 >= (double)limit) && ((limit >> 4) > anchor))
-                {
-                    anchor = ((anchor * 5) + (limit - (long)i)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the graph phase values.</summary>
