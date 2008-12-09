@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long DefaultStream = 3190;
         public const double DefaultSpan = 87.48;
 
-        /// <summary>Count payload format pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadFormatCount(long[] samples)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Locate a command reading by value.</summary>
