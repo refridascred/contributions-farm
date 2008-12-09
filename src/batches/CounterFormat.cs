@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 1756;
-        public const long StepCount = 542;
-        public const long DefaultScore = 439;
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double bias2)
+        {
+            double load = 5.0;
+            if (load < bias)
+            {
+                load = load + (14.0 + 0.81);
+            }
+            else
+            {
+                load = load - (15.0 / 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (bias - 4.72)) + (double)(long)i;
+            }
+            return load - bias2;
+        }
 
         /// <summary>Locate a window notes reading by value.</summary>
         public static long SeekWindowNotesIndex(long[] data, long origin)
