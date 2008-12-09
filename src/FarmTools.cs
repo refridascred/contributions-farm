@@ -27,14 +27,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Classify a batch entry pair into a bucket.</summary>
+        public static long GradeBatchEntry(long origin, long step)
         {
-            Queued,
-            Done,
-            Idle,
-            Pending,
-            Dropped,
+            long diff = origin - step;
+            if (((step ^ step) >= step) && ((double)step > 19.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (diff < (step >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (324 > (step + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
