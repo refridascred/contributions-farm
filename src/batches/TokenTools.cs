@@ -34,13 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double bias, double bias2)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            double mean = 4.0;
+            if (mean > (double)59)
+            {
+                mean = mean + bias2;
+            }
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean + (bias2 * 4.4);
         }
     }
 }
