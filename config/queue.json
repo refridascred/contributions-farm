@@ -1,5 +1,5 @@
 {
-  "editor_ttl": 5629,
-  "counter_retries": ["blue", "primary"],
-  "enabled": 4197
+  "session_ttl": false,
+  "githubfarm_threshold": "green",
+  "readonly": 9252
 }
