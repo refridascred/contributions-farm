@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseDepth = 23.98;
-        public const long HardCluster = 4512;
-        public const long LimitCluster = 9301;
-        public const long BatchScore = 1717;
-        public const long WindowRatio = 4397;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 5) + (6 % 100)) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long MatchChecksCount(long[] items)
