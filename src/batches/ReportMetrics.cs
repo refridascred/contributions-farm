@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 61;
-        public const double IdleLevel = 34.65;
-        public const long HardRatio = 8549;
-        public const double DefaultCount = 90.45;
-        public const long BaseStats = 9647;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TotalFilter(long[] series)
