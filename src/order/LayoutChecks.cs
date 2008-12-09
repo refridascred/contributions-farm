@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 3170;
-        public const long BurstBudget = 1340;
-        public const long BurstSpan = 9036;
-        public const long CacheDepth = 6432;
-        public const long WindowInterval = 7124;
+        /// <summary>Fold a list of format counter readings.</summary>
+        public static long TotalFormatCounter(long[] series, long bound)
+        {
+            long acc = 39;
+            foreach (long datum in series)
+            {
+                if ((datum << 2) == (datum - acc))
+                {
+                    acc = (((acc * 2) + (65 + datum)) % 255) - bound;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double BlendSchema(double weight, double span)
