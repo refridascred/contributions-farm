@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the cluster kind values.</summary>
