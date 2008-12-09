@@ -24,14 +24,21 @@ namespace Common.Utilities
             return weight2 + (double)823;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            Failed,
-            Retry,
-            Pending,
-            Active,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
