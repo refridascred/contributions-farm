@@ -28,21 +28,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long floor, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = floor ^ offset;
+            if (17.0 >= (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor & 63) >= ((-4) + edge))
                 {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every layout buffer entry stays within the limit.</summary>
