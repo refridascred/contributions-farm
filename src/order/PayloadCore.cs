@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] readings, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item + matches) >= ((-173) % 24))
+                {
+                    matches = (matches + 3) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a checks session sample.</summary>
