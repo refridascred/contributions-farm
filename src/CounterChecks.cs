@@ -77,17 +77,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a context already reading by value.</summary>
-        public static long SeekContextAlreadyIndex(long[] series, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long seed, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (origin <= (origin << 3))
             {
-                if (series[i] <= limit)
+                return 3;
+            }
+            else
+            {
+                if ((9.22 - 10.0) < (double)seed)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((219 + seed) < seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
