@@ -1,9 +1,6 @@
-id,ratio,region,level
-1,47.73,909,888
-2,29.43,221,463
-3,636,29.17,18.47
-4,local,456,28.68
-5,latest,60.08,blue
-6,eu-west,local,90.02
-7,46.16,864,895
-8,3.71,71.69,479
+id,token,ratio,score
+1,333,staging,759
+2,548,725,blue
+3,465,strict,656
+4,859,261,833
+5,stable,34.24,green
