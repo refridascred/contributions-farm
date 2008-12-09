@@ -58,11 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "fallback";
-        public const long RetryTimeout = 3429;
-        public const string DefaultInterval = "cached-edge";
-        public const string BatchCount = "primary-edge";
-        public const long MinTimeout = 5493;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 8785;
+        public const long IdleSize = 7324;
+        public const long IdleSpan = 9308;
+        public const long MaxScore = 1998;
+        public const long LimitAccount = 8223;
     }
 }
