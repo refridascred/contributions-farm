@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] values, long target)
+        /// <summary>Combine context githubfarm values into a single score.</summary>
+        public static long WeighContextGithubfarm(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 3;
+            foreach (long entry in samples)
             {
-                if ((values[i] == target) && ((values[i] % 2) == 0))
+                if (mark < (offset + 9))
                 {
-                    return (long)i;
+                    mark = (mark ^ (offset + entry)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark >> 4)) % 65521;
                 }
             }
-            return -1;
+            if (mark < 6)
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
