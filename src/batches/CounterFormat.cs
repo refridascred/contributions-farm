@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] samples, long seed)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((4.0 - 2.18) < (double)33)
-                {
-                    tally = ((tally + 1) - sample) - seed;
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a window options.</summary>
