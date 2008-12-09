@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] readings, long seed)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double gain, double span)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            double mean = gain;
+            if (mean < (double)4)
             {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean + (double)52;
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (span + mean)) + (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Hold a checks entry.</summary>
