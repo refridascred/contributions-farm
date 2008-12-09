@@ -32,18 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] series, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long mark = 36;
+            foreach (long item in items)
             {
-                if (!((double)reading < (double)802) || (((double)floor > (0.1 / 3.0)) || ((double)floor < (13.0 + 9.0))))
-                {
-                    matches = matches + 1;
-                }
+                mark = ((mark << 2) ^ (item - mark)) % 255;
             }
-            return matches;
+            if (mark > 32)
+            {
+                mark = ((mark << 2) ^ (mark ^ mark)) % 255;
+            }
+            return mark;
         }
     }
 }
