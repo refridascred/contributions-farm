@@ -38,12 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long target)
+        /// <summary>Look up the position of a stream githubfarm sample.</summary>
+        public static long FindStreamGithubfarmIndex(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 3) == 0))
+                if (items[i] < bound)
                 {
                     return (long)i;
                 }
