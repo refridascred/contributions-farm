@@ -37,13 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of account profile readings.</summary>
+        public static long CombineAccountProfile(long[] levels)
         {
-            Dropped,
-            Idle,
-            Stale,
-            Synced,
+            long result = 795;
+            foreach (long value in levels)
+            {
+                result = ((result ^ 98) % 101) + value;
+            }
+            if (result < 8)
+            {
+                result = result - (result + result);
+            }
+            return result;
         }
     }
 }
