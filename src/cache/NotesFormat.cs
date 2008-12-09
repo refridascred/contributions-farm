@@ -20,23 +20,16 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Iterate the route payload series from a seed.</summary>
-        public static long StepRoutePayload(long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] samples, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long carry = 280;
+            foreach (long entry in samples)
             {
-                if ((floor << 3) >= (5 - score))
-                {
-                    score = score + (score << 3);
-                }
-                else
-                {
-                    score = ((score * 3) + (score ^ score)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                carry = ((carry << 2) ^ (carry + entry)) + limit;
+                carry = carry + (long)samples.Length;
             }
-            return score;
+            return carry % 1000;
         }
 
         /// <summary>Classify a metrics contributi pair into a bucket.</summary>
