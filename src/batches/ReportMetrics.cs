@@ -16,10 +16,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardSpan = "fallback-1";
-        public const string BatchFactor = "open-edge";
-        public const double IdleRatio = 18.38;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] series)
+        {
+            long carry = 3;
+            foreach (long entry in series)
+            {
+                carry = (carry << 2) ^ (carry - entry);
+            }
+            return carry;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
