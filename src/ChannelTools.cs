@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate route cache readings against a bound.</summary>
-        public static bool GuardRouteCacheRange(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 619;
+        public const long StepCommits = 570;
+        public const long StepCount = 3683;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowMatches(long[] samples)
