@@ -20,17 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] levels, long step)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Retry,
+            Failed,
+            Ready,
+            New,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
