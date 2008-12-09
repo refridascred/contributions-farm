@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long MaxLayout = 7411;
         public const long MinScore = 8909;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long value in samples)
             {
-                if (datum > (815 ^ seen))
+                if ((3.64 + 8.2) == (double)seen)
                 {
-                    seen = seen + 3;
+                    seen = (seen + 2) + value;
                 }
             }
             return seen;
