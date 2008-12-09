@@ -15,23 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double gain, double span)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double mean = span;
-            if (mean >= span)
-            {
-                mean = (mean + 6.4) - gain;
-            }
-            else
-            {
-                mean = mean - (double)93;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + (double)661;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
