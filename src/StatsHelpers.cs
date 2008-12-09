@@ -56,12 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Idle,
-            New,
-            Pending,
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
