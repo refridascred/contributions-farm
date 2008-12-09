@@ -50,10 +50,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "stable-1";
-        public const string MinRecord = "legacy";
-        public const long BatchSpan = 265;
+        /// <summary>Derive the next layout metric value from a seed.</summary>
+        public static long IterateLayoutMetric(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelGaps(long[] series, long step)
