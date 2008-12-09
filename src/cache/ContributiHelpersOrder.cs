@@ -14,13 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data, long bound)
         {
-            Active,
-            New,
-            Dropped,
-            Closed,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen / 7) >= (seen << 1))
+                {
+                    seen = ((seen + 1) - item) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
