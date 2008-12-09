@@ -34,14 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            Done,
-            Failed,
-            Retry,
-            Locked,
-            Closed,
+            long score = 58;
+            foreach (long cell in readings)
+            {
+                score = ((score << 3) ^ 8) ^ cell;
+            }
+            return score;
         }
 
         /// <summary>Accumulate entry samples.</summary>
