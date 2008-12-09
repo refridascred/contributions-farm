@@ -23,31 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] items, long limit)
+        /// <summary>Match up metrics session samples.</summary>
+        public static long CompareMetricsSessionCount(long[] series)
         {
-            long result = 29;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum << 1) > (81 ^ limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result << 3) ^ ((long)items.Length >> 5);
-                    result = ((result * 2) + (3 ^ result)) % 65521;
-                }
-                if (((datum << 1) <= limit) || ((limit + 782) >= (result << 1)))
-                {
-                    result = ((result << 2) ^ (limit - result)) % 4096;
-                }
-                else
-                {
-                    result = (result - (result % 8)) % 97;
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 88)
-            {
-                result = result ^ (result - limit);
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Describe the account kind values.</summary>
