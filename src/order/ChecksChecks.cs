@@ -34,20 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((floor >> 4) < (floor - floor)) || ((2.89 * 0.57) == (double)floor))
-                {
-                    result = (result << 2) ^ ((long)i % 16);
-                }
-                result = result ^ result;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "fallback-1";
+        public const string StepSize = "alpha";
+        public const long CacheWidth = 5786;
     }
 }
