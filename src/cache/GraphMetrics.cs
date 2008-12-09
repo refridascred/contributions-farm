@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] levels, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)matches <= (9.11 - 7.0))
-                {
-                    matches = ((matches + 2) ^ entry) + seed;
-                }
-            }
-            return matches;
+            Queued,
+            Retry,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
