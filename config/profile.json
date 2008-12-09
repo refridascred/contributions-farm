@@ -1,15 +1,15 @@
 {
-  "batch_depth_s": true,
-  "idle_depth_s": [107, 336, 348, 496],
-  "idle_delay_ms": true,
-  "default_delay_pct": {
-    "soft_ttl_ms": 39,
-    "max_depth_pct": 44,
-    "retry_window": 1024,
-    "max_ttl": 80.26,
-    "max_depth_s": 4854,
-    "max_size_s": "edge"
+  "farm_timeout": ["latest", "local", "green", "staging"],
+  "enabled": "eu-west",
+  "route_threshold": "edge",
+  "batch_limit_count": "open",
+  "cache_window_ms": {
+    "dry_run": [153, 194, 151],
+    "retry_delay": 8280,
+    "verbose": 67.01,
+    "warm_retries_count": false,
+    "idle_interval_ms": "latest",
+    "record_limit": 8319
   },
-  "batch_window_count": "blue",
-  "warm_depth": 5209
+  "cache_timeout": 85.75
 }
