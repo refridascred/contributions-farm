@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const string WindowContributi = "latest-1";
         public const long StepInterval = 3496;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            Pending,
+            Queued,
+            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
