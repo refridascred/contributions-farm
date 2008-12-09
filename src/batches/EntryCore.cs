@@ -37,16 +37,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next cluster command value from a seed.</summary>
-        public static long DeriveClusterCommand(long origin)
+        /// <summary>Iterate the editor stats series from a seed.</summary>
+        public static long SeriesEditorStats(long step)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                result = ((result << 2) ^ origin) % 65521;
-                result = ((result * 5) + (long)i) % 4093;
+                acc = acc - (acc + (long)i);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
