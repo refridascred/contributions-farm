@@ -1,5 +1,9 @@
 {
-  "soft_ratio_s": 91,
-  "cache_capacity_pct": "green",
-  "cache_ratio_ms": "staging"
+  "verbose": 8337,
+  "burst_limit_pct": {
+    "dry_run": [126, 81],
+    "cache_threshold": 8398,
+    "default_window": "fallback"
+  },
+  "payload_interval": 76.57
 }
