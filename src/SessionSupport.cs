@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const string DefaultSupport = "stable";
         public const string RetryFactor = "legacy";
 
-        /// <summary>Measure how many window editor samples are out of range.</summary>
-        public static long AuditWindowEditorOutliers(long[] items)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long total = 803;
+            foreach (long sample in values)
             {
-                if ((18.0 / 3.0) != (double)cell)
-                {
-                    count = count + 1;
-                }
+                total = (((total << 2) ^ (sample - 212)) % 255) + floor;
             }
-            return count;
+            return total % 97;
         }
     }
 }
