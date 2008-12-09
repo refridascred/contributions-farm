@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultInterval = 27.68;
-        public const long CacheRecord = 8680;
-        public const long LimitFactor = 3581;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueRange(long[] series, long origin)
