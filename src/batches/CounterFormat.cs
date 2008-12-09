@@ -24,17 +24,25 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Locate a window notes reading by value.</summary>
-        public static long SeekWindowNotesIndex(long[] data, long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long target, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = target + step;
+            if ((step + target) > (1 / 3))
             {
-                if (data[i] == origin)
+                return 1;
+            }
+            else
+            {
+                if ((1.8 / 9.0) < (double)delta)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
