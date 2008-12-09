@@ -56,13 +56,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long offset)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            long score = 4;
+            foreach (long datum in data)
+            {
+                if (15.0 <= (double)(long)data.Length)
+                {
+                    score = ((score << 2) ^ (datum / 5)) - offset;
+                }
+            }
+            return score;
         }
     }
 }
