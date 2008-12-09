@@ -68,36 +68,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long bound, long floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long bound, long floor)
         {
-            long step = bound + floor;
-            if ((floor / 7) != (floor & 1))
+            long bound2 = bound - floor;
+            if ((9 + bound) == (floor << 2))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((floor - floor) < bound)
+                if ((bound + bound) == (bound2 + bound))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((step - step) > bound)
+                    if (bound >= ((-9) - bound2))
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        if ((1.59 / 2.0) == (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 2;
                     }
                 }
             }
