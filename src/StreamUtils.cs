@@ -15,10 +15,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitInterval = 4871;
-        public const long SoftOrder = 6009;
-        public const long MinOrder = 8033;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long CombineStats(long[] series, long bound)
