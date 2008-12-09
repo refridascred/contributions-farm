@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the record window series from a seed.</summary>
-        public static long IterateRecordWindow(long step)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double scale, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            double rate = floor;
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                rate = (rate + (double)(long)i) - scale;
             }
-            return acc;
+            return rate + floor;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
