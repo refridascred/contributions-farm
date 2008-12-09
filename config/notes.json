@@ -1,8 +1,7 @@
 {
-  "retry_capacity": 25.94,
-  "queue_size": 94,
-  "editor_interval": "cached",
-  "readonly": true,
-  "flush_depth": true,
-  "cache_retries": false
+  "route_limit": 250,
+  "warm_size_ms": "latest",
+  "dry_run": 8490,
+  "farm_interval": false,
+  "burst_window": true
 }
