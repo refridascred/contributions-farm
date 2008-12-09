@@ -27,12 +27,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxInterval = 5732;
-        public const long MaxCommits = 370;
-        public const string SoftCommits = "standard";
-        public const long HardCommits = 5573;
-        public const double StepDepth = 95.85;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double bias)
+        {
+            double load = 6.3;
+            if (load > (double)979)
+            {
+                load = (load - scale) - bias;
+            }
+            else
+            {
+                load = load + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + 5.0;
+        }
 
         /// <summary>Check that every layout buffer entry stays within the limit.</summary>
         public static bool VerifyLayoutBufferRange(long[] data, long target)
