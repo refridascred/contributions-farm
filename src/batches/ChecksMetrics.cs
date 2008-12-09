@@ -56,19 +56,18 @@ namespace Common.Utilities
         public const double SoftLevel = 50.29;
         public const long MinToken = 2052;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Count the token cluster entries that pass the check.</summary>
+        public static long TallyTokenClusterGaps(long[] readings, long origin)
         {
-            long state = 91;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                state = (state << 3) ^ (sample - sample);
+                if ((16.0 - 5.54) > (12.0 - 4.83))
+                {
+                    seen = ((seen + 1) ^ reading) - origin;
+                }
             }
-            if (state > 6)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            return seen;
         }
     }
 }
