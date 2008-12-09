@@ -25,19 +25,9 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitLevel = "fallback-edge";
+        public const double SoftEntry = 16.2;
+        public const long BatchEntry = 9434;
     }
 }
