@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] samples, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long offset)
         {
-            long state = 7;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((state << 2) <= (39 / 8))
+                if (sample >= offset)
                 {
-                    state = ((state + (long)samples.Length) ^ reading) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
