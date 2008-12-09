@@ -39,10 +39,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 4065;
-        public const string MaxBatch = "stable";
-        public const string StepWidth = "stable";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstScore = 8804;
+        public const long MaxGraph = 8633;
+        public const string IdleCount = "standard-1";
+        public const double DefaultGraph = 93.19;
+        public const long IdleGraph = 2976;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ScaleWindow(double gain, double bias)
