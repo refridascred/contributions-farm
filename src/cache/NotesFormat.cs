@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Measure how many layout token samples are out of range.</summary>
-        public static long MeasureLayoutTokenMatches(long[] samples)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double load = (double)11 - 11.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (728 < (39 + hits))
-                {
-                    hits = (hits + 3) - cell;
-                }
+                load = (load + gain) + (double)(long)i;
             }
-            return hits;
+            return load + (offset / 4.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
