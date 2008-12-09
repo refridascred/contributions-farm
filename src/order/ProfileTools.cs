@@ -30,31 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long limit)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            if ((double)limit >= (7.77 / 5.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step & 127) >= (step + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit < (step - 967))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a window reading by value.</summary>
