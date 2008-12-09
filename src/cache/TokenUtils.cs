@@ -37,18 +37,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many schema record samples are out of range.</summary>
-        public static long TallySchemaRecordGaps(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!(floor >= entry) || (floor <= (entry + floor)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxFactor = "fallback";
+        public const long MaxChecks = 3112;
+        public const long LimitCount = 5184;
+        public const long BatchChecks = 8868;
     }
 }
