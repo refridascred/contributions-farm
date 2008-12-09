@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] data)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double drift = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((datum > (long)data.Length) || ((datum - datum) < ((long)data.Length - datum))))
-                {
-                    matches = matches + 3;
-                }
+                drift = ((drift - 0.6) + (double)(long)i) - bias;
             }
-            return matches;
+            return drift + (double)0;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
