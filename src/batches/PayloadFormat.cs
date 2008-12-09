@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
+            Closed,
+            Failed,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the report state values.</summary>
