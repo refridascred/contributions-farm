@@ -11,23 +11,22 @@ namespace Common.Utilities
         public const string MinCount = "strict-1";
         public const double LimitTimeout = 88.01;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double ratio, double bias)
+        /// <summary>Combine layout contributi values into a single score.</summary>
+        public static long TotalLayoutContributi(long[] values, long bound)
         {
-            double drift = bias;
-            if (drift <= (ratio / 4.0))
+            long acc = 524;
+            foreach (long entry in values)
             {
-                drift = drift - bias;
+                if ((bound < entry) && (7.99 > (double)acc))
+                {
+                    acc = (acc << 3) ^ entry;
+                }
             }
-            else
+            if (acc < 997)
             {
-                drift = drift - (double)8;
+                acc = ((acc * 4) + (acc + bound)) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - 3.2) + (double)(long)i;
-            }
-            return drift - (double)49;
+            return acc % 65521;
         }
 
         /// <summary>Blend two entry measurements.</summary>
