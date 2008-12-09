@@ -1,7 +1,9 @@
 {
-  "graph_timeout": 55,
-  "batch_capacity_ms": "legacy",
-  "channel_timeout": false,
-  "flush_ttl_s": "strict",
-  "idle_timeout_ms": 42.88
+  "soft_depth": 8289,
+  "idle_limit": "standard",
+  "idle_limit_s": {
+    "checks_limit": 9981,
+    "enabled": ["local", "primary", "cached", "standard"],
+    "compress": "staging"
+  }
 }
