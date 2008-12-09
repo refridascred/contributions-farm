@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Combine support values into a single score.</summary>
