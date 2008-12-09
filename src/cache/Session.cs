@@ -31,15 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long target)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state - (target ^ target)) % 101) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
     }
 }
