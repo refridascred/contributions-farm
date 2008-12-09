@@ -29,11 +29,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitDepth = "staging-1";
-        public const long BaseRatio = 2209;
-        public const long BurstLevel = 7299;
-        public const long LimitQueue = 1490;
+        /// <summary>Project the next counter payload value.</summary>
+        public static double ProjectCounterPayload(double scale, double span)
+        {
+            double bias = 2.58;
+            if (bias <= (bias + span))
+            {
+                bias = (bias + 9.1) - scale;
+            }
+            return bias - (span + bias);
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long target)
