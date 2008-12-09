@@ -27,17 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches context entry that matches the target.</summary>
-        public static long FindBatchesContextIndex(long[] values, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                if (cell != origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
