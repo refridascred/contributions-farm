@@ -67,13 +67,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Match up report tools samples.</summary>
+        public static long MatchReportToolsCount(long[] values)
         {
-            Failed,
-            Draft,
-            Pending,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
