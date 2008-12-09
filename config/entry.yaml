@@ -1,21 +1,6 @@
 # entry settings
-enabled:
-  poll_limit_ms: true
-  base_ratio_pct: 94.99
-  enabled:
-    - 419
-    - 322
-    - 69
-  dry_run: false
-  audit:
-    idle_window: 250
-    report_ratio: 42.04
-    idle_depth_ms: fallback
-    soft_size: blue
-flush_window_s: 32.8
-graph_capacity:
-  flush_interval_count: open
-  flush_delay_s: 30
-  metric_interval: true
-  default_delay_pct: 2365
-  record_limit: 250
+token_ttl: 100
+batch_interval: 500
+strict: eu-west
+flush_size: false
+persist: 7665
