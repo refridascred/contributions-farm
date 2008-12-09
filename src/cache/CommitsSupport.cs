@@ -14,11 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheInterval = 28.39;
-        public const string BurstCount = "local-v2";
-        public const long WindowBatches = 8806;
-        public const long BatchBatches = 3833;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i % 8) > total)
+                {
+                    total = total - 85;
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] items, long seed)
