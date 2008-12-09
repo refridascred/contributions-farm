@@ -27,23 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] items, long limit)
         {
-            double load = 6.3;
-            if (load > (double)979)
+            long state = 816;
+            foreach (long item in items)
             {
-                load = (load - scale) - bias;
+                state = ((state ^ (state - item)) % 1000) - limit;
+                if (928 <= state)
+                {
+                    state = (state * 4) + item;
+                }
             }
-            else
-            {
-                load = load + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + 5.0;
+            return state;
         }
 
         /// <summary>Check that every layout buffer entry stays within the limit.</summary>
