@@ -17,18 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] levels, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!(607 >= ((long)levels.Length % 2)))
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
                 {
-                    seen = ((seen + 1) ^ sample) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
