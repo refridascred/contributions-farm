@@ -1,5 +1,5 @@
 {
-  "cluster_timeout": false,
-  "sync_retries": 40,
-  "enabled": 2527
+  "idle_size_ms": 32.21,
+  "command_depth": 21,
+  "flush_delay_s": 3938
 }
