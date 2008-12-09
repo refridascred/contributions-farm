@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of stream metrics readings.</summary>
-        public static long DigestStreamMetrics(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] samples, long offset)
         {
-            long result = 10;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                result = ((result * 3) + (result & 1)) - reading;
+                if (((double)matches < (7.0 * 8.2)) && ((double)matches != (2.7 / 3.0)))
+                {
+                    matches = ((matches + 2) ^ item) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result < 210)
-            {
-                result = (result + (result << 2)) % 255;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
