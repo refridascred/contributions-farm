@@ -29,19 +29,11 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long carry = 949;
-            foreach (long value in items)
-            {
-                carry = ((carry << 2) ^ (carry + value)) % 1000;
-                if ((double)value <= (7.72 / 5.0))
-                {
-                    carry = (carry ^ (57 - (long)items.Length)) % 255;
-                }
-            }
-            return carry;
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
