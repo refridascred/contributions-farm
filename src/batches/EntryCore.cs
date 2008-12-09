@@ -16,22 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up window farm samples.</summary>
-        public static long OverlapWindowFarmCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "local-v2";
+        public const long SoftWidth = 6347;
+        public const long CacheNotes = 3954;
+        public const double HardNotes = 65.19;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordOutliers(long[] items)
