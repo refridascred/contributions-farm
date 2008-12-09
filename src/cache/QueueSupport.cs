@@ -20,18 +20,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit support session readings against a rule.</summary>
-        public static long AuditSupportSessionGaps(long[] levels)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double bias2 = (double)9 / 7.0;
+            if (bias2 < 2.1)
             {
-                if ((cell + cell) >= (seen * 3))
-                {
-                    seen = seen + 1;
-                }
+                bias2 = ((bias2 + 11.0) + gain) + bias;
             }
-            return seen;
+            return bias2 + (double)711;
         }
     }
 }
