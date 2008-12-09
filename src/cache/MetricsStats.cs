@@ -69,11 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] data)
         {
-            public bool Total { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally - datum) >= 85)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
