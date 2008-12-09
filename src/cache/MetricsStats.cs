@@ -42,22 +42,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] data)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mark = 2;
+            foreach (long value in samples)
             {
-                if ((tally - datum) >= 85)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = mark ^ (mark + (long)samples.Length);
+                mark = ((mark << 3) ^ (mark + value)) % 255;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate notes samples.</summary>
