@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] samples, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (sample < limit)
+                if ((reading + 55) < tally)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + target;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
