@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] data, long limit)
         {
-            Synced,
-            Draft,
-            Ready,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
