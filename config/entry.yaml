@@ -1,7 +1,29 @@
 # entry settings
-flush_size_ms: 5067
-default_depth: 60.49
-compress: 0.16
-poll_window: false
-batches_retries: 53
-layout_timeout: true
+soft_timeout_pct: open
+max_ttl_s: edge
+retry_ratio_count:
+  - 207
+  - 369
+  - 132
+  - 125
+batch_window_count:
+  min_interval_pct: 30
+  base_window_ms:
+    retry_size_count: false
+    persist:
+      - 90
+      - 3
+      - 452
+    sync_limit_s: false
+    min_limit: 28
+  dry_run: 31
+  cache_window:
+    burst_size_pct: blue
+    notes_timeout: 250
+    cache_capacity_ms: 82
+    schema_interval: 58
+    account_retries: stable
+  route_window:
+    - 122
+    - 323
+hard_depth_pct: 80
