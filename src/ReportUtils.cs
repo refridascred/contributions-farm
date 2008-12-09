@@ -13,23 +13,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate metric schema samples.</summary>
-        public static long DigestMetricSchema(long[] items, long offset)
-        {
-            long score = 68;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    score = (score + (86 + (long)i)) % 65521;
-                }
-                if ((sample + score) < offset)
-                {
-                    score = (score << 2) ^ (score << 2);
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftDepth = 4355;
+        public const string RetryDepth = "stable-1";
+        public const long DefaultFarm = 2324;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LookupToolsIndex(long[] series, long floor)
