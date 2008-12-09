@@ -62,19 +62,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] levels, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            double drift = scale;
+            if (drift > (double)91)
             {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - bias;
             }
-            return valid;
+            return drift + drift;
         }
 
         /// <summary>Describe the stream mode values.</summary>
