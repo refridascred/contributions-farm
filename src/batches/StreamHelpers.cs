@@ -55,18 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] data, long limit)
+        /// <summary>Iterate the stats format series from a seed.</summary>
+        public static long SeriesStatsFormat(long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((limit + 54) < (limit & 1))
-                {
-                    count = (count + 3) + cell;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the entry status values.</summary>
