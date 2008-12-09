@@ -1,8 +1,9 @@
-id,active,label,weight
-1,stable,95.1,stable
-2,standard,75.31,strict
-3,879,strict,931
-4,313,122,145
-5,13.27,71.22,16.98
-6,green,65.06,11.82
-7,599,771,17.13
+id,label,rank
+1,310,stable
+2,fallback,85
+3,94.22,24
+4,latest,473
+5,187,25.9
+6,720,3.2
+7,446,47.74
+8,35.62,latest
