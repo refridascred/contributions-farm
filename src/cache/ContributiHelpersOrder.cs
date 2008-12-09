@@ -35,19 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long origin)
+        /// <summary>Validate context queue readings against a bound.</summary>
+        public static bool VerifyContextQueueRange(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (cell > origin)
+                if (entry > target)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
