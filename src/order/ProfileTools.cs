@@ -62,11 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double ratio, double span)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] items, long floor)
         {
-            double scale = span;
-            return (scale + 1.0) + ratio;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
