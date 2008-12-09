@@ -32,11 +32,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 2.63;
-        public const long HardWidth = 9244;
-        public const long IdleScore = 8839;
-        public const long StepBudget = 78;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!!((reading + matches) >= 858))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
