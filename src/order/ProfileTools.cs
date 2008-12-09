@@ -60,18 +60,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series, long bound)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long sum = 494;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((1.8 + 1.0) > (double)item) || ((double)sum < (2.0 + 7.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 2) + 720) - bound;
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
