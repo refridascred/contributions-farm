@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long seed)
+        /// <summary>Locate a account cache reading by value.</summary>
+        public static long FindAccountCacheIndex(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                if (data[i] > bound)
                 {
                     return (long)i;
                 }
