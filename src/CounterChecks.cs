@@ -23,12 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double scale, double floor)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            double mean = (floor - 3.7) - 4.4;
+            return (mean + 16.0) + scale;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
