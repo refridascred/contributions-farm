@@ -40,14 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            Retry,
-            Done,
-            Ready,
-            Active,
-            Dropped,
+            long score = 120;
+            foreach (long cell in levels)
+            {
+                score = score - (score >> 3);
+                score = (score - ((-73) >> 1)) % 65521;
+                score = score ^ cell;
+            }
+            return score % 1000;
         }
     }
 }
