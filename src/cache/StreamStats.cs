@@ -30,11 +30,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "open";
-        public const long SoftGraph = 9768;
-        public const long RetryRatio = 7981;
-        public const long BatchGraph = 3177;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitRatio = 9163;
+        public const double CacheNotes = 60.41;
+        public const long BurstNotes = 5679;
+        public const long IdleNotes = 9825;
 
         /// <summary>Audit profile cache readings against a rule.</summary>
         public static long TallyProfileCacheMatches(long[] samples, long bound)
