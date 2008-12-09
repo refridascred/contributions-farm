@@ -50,16 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ (total + total)) % 4096;
-                total = ((total * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
