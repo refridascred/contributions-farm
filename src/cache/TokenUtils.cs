@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cache queue value.</summary>
-        public static double SmoothCacheQueue(double weight, double offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double scale = weight;
-            if (scale > (double)6)
-            {
-                scale = scale + (offset - scale);
-            }
-            else
-            {
-                scale = scale - (double)5;
-            }
-            return scale - scale;
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Fold a list of account readings.</summary>
