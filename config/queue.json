@@ -1,19 +1,5 @@
 {
-  "warm_interval": "stable",
-  "poll_interval_ms": {
-    "soft_size": true,
-    "min_timeout_s": "green",
-    "verbose": "local",
-    "sync_depth_ms": 89.58,
-    "persist": 1613,
-    "base_threshold_count": true
-  },
-  "retry_depth_count": true,
-  "flush_ratio_pct": "cached",
-  "idle_limit_count": {
-    "warm_threshold_s": 60,
-    "farm_delay": 4586,
-    "enabled": 9422,
-    "burst_capacity": 61.3
-  }
+  "min_interval_ms": 4779,
+  "warm_delay_count": 62.46,
+  "payload_size": true
 }
