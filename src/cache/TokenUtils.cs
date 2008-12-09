@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long SoftStats = 5818;
         public const long RetryStats = 6890;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] items, long bound)
         {
-            Stale,
-            New,
-            Draft,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate farm samples.</summary>
