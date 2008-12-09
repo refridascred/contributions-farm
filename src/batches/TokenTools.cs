@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] readings, long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
