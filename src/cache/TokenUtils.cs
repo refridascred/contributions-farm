@@ -37,12 +37,9 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1006;
+        public const double CacheAccount = 10.5;
+        public const double BatchAccount = 39.02;
     }
 }
