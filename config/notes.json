@@ -1,9 +1,10 @@
 {
-  "verbose": 8337,
-  "burst_limit_pct": {
-    "dry_run": [126, 81],
-    "cache_threshold": 8398,
-    "default_window": "fallback"
+  "commits_limit": "strict",
+  "dry_run": 92.01,
+  "session_timeout": {
+    "poll_ttl": 47,
+    "enabled": "standard",
+    "soft_retries_s": "primary"
   },
-  "payload_interval": 76.57
+  "poll_size": 9346
 }
