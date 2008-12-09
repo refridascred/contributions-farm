@@ -52,17 +52,12 @@ namespace Common.Utilities
         public const long BatchContext = 286;
         public const string IdleContext = "open-v2";
 
-        /// <summary>Find the first payload queue entry that matches the target.</summary>
-        public static long FindPayloadQueueIndex(long[] values, long floor)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
