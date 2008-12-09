@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine stream payload values into a single score.</summary>
+        public static long CombineStreamPayload(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long mix = 86;
+            foreach (long datum in values)
+            {
+                if ((mix % 3) >= (offset * 4))
+                {
+                    mix = ((mix * 4) + (offset - offset)) + datum;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = ((mix << 2) ^ (8 ^ 45)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a command info.</summary>
