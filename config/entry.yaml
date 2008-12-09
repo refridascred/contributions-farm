@@ -1,9 +1,9 @@
 # entry settings
-audit:
-  - 402
-  - 199
-cache_ttl_ms: blue
-window_limit: 23.88
-burst_ratio: false
-min_ttl_count: open
-soft_delay_count: edge
+hard_retries_count:
+  - 378
+  - 251
+  - 500
+  - 227
+burst_window: 29.37
+strict: false
+compress: standard
