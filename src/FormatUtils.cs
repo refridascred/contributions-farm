@@ -66,10 +66,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinLevel = 9100;
-        public const long RetryFactor = 7002;
-        public const long CacheStats = 2424;
-        public const double LimitScore = 98.69;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] series, long seed)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
