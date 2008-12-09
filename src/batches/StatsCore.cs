@@ -38,31 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] data, long bound)
         {
-            if (3.0 > (double)limit)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)target <= (double)limit) && ((double)limit <= (2.8 + 2.08)))
+                if (datum >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)9 >= (double)target) && ((15.0 + 15.0) == (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of support entries.</summary>
