@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] levels)
         {
-            Retry,
-            Ready,
-            Idle,
-            Stale,
+            long mix = -350;
+            foreach (long value in levels)
+            {
+                if ((double)(long)levels.Length < (double)mix)
+                {
+                    mix = (mix ^ (mix ^ 29)) % 101;
+                }
+                if ((value ^ value) == (value & 1))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
