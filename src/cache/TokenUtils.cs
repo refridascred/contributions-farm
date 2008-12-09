@@ -33,18 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((count ^ floor) != (325 + (-2)))
+                if (datum > limit)
                 {
-                    count = (count + 2) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
