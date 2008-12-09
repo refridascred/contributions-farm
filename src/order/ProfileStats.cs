@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long sum = 178;
-            foreach (long entry in data)
-            {
-                sum = ((sum * 5) + (sum + entry)) % 1000;
-                if ((7.3 - 2.64) < (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
