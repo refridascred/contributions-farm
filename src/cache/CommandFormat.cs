@@ -35,18 +35,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long seed, long bound)
         {
-            long carry = 300;
-            foreach (long sample in levels)
+            if ((seed / 2) != (seed & 255))
             {
-                if (carry <= (510 - carry))
+                return 5;
+            }
+            else
+            {
+                if ((seed + bound) <= (bound * 5))
                 {
-                    carry = carry ^ (carry - sample);
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return carry;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
