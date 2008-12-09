@@ -13,12 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] items)
         {
-            Pending,
-            Ready,
-            Idle,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((16.0 - 4.0) <= (double)hits)
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cluster record.</summary>
