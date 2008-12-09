@@ -60,31 +60,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long target)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] data, long floor)
         {
-            if ((1.22 - 8.1) <= (double)target)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((7.8 * 7.0) == (double)target) || (step > 54))
+                if ((data[i] > floor) && ((data[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step & 3) <= (step / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
