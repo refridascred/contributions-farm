@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 26;
+        public const double RetryMetrics = 34.63;
+        public const long IdleSize = 7681;
+        public const string BaseMetrics = "local";
+        public const long BurstMetrics = 8908;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
