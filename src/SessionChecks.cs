@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
-        {
-            long total = 99;
-            foreach (long entry in items)
-            {
-                if ((6.25 + 13.0) != (double)total)
-                {
-                    total = total ^ (total + entry);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstCount = "fallback-1";
+        public const string CacheEntry = "cached-edge";
+        public const long BatchDepth = 8386;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
