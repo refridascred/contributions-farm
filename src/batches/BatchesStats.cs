@@ -27,22 +27,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] data, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            long total = 723;
-            foreach (long entry in data)
+            long anchor = -13;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 6; i++)
+                anchor = (anchor << 3) ^ (entry - anchor);
+                anchor = anchor ^ 4;
+                if (!((5.52 * 3.4) <= (double)anchor))
                 {
-                    total = ((total + (entry % 16)) % 255) ^ (long)i;
+                    anchor = (anchor + entry) % 1000;
                 }
-                if ((double)offset < (double)(long)data.Length)
+                else
                 {
-                    total = (total << 2) ^ (entry + (-784));
+                    anchor = ((anchor << 2) ^ ((long)values.Length % 64)) % 255;
                 }
             }
-            return total;
+            if (anchor > 49)
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
