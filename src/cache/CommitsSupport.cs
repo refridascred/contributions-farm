@@ -57,18 +57,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (15.0 <= (double)entry)
+                if ((double)item > 3.55)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the filter mode values.</summary>
