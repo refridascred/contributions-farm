@@ -1,15 +1,6 @@
 {
-  "compress": 58.03,
-  "channel_retries": {
-    "base_timeout_pct": "latest",
-    "burst_limit": ["primary", "eu-west", "staging", "staging"],
-    "editor_capacity": 60,
-    "hard_timeout": {
-      "compress": "latest",
-      "burst_threshold_count": ["green", "edge", "local"],
-      "default_retries_count": true,
-      "base_ratio": 66
-    }
-  },
-  "burst_size_s": 9.14
+  "batch_timeout_count": 37.6,
+  "stream_limit": 7484,
+  "audit": 43,
+  "persist": false
 }
