@@ -1,8 +1,10 @@
 # githubfarm settings
-audit: false
-hard_size_ms: strict
-compress:
-  - 485
-  - 43
-  - 312
-idle_ttl: fallback
+flush_window_ms: standard
+max_size_count: 63
+retry_interval: staging
+sync_timeout_s:
+  - 104
+  - 204
+  - 418
+  - 489
+farm_threshold: 31
