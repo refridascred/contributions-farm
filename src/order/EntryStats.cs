@@ -58,18 +58,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] levels, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (limit < (18 ^ (long)levels.Length))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) + datum;
+                    if ((levels[i] + levels[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a layout command figure with a bias.</summary>
