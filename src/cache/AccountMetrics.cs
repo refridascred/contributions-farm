@@ -38,39 +38,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long bound, long offset)
-        {
-            if (bound >= (offset & 31))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound % 16) < offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound <= (5.59 * 3.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound / 2) < bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleFactor = 34.01;
+        public const double RetryLevel = 94.34;
+        public const string CacheSize = "staging-1";
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double rate, double offset)
