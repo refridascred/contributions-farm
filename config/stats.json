@@ -1,5 +1,17 @@
 {
-  "soft_size_count": 500,
-  "persist": 4719,
-  "dry_run": ["blue", "staging"]
+  "session_window": false,
+  "poll_size_ms": {
+    "batch_ttl_pct": 30,
+    "channel_depth": 82.26,
+    "base_ttl": "latest",
+    "readonly": {
+      "checks_retries": 4464,
+      "base_size": 32.66,
+      "hard_depth_ms": "fallback"
+    },
+    "account_ttl": 1026
+  },
+  "readonly": [289, 345],
+  "poll_timeout_s": 62.08,
+  "batch_ttl": ["legacy", "strict"]
 }
