@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double scale, double floor)
+        /// <summary>Count contributi counter pairs that satisfy a relation.</summary>
+        public static long CompareContributiCounterCount(long[] readings)
         {
-            double rate = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + (double)(long)i) - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate + floor;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
