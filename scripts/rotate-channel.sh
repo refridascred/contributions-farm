@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue legacy stable; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=289
+CHANNEL_LIMIT=492
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-local}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in open local fallback strict; do
+    log "checking ${item}"
+done
