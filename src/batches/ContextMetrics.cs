@@ -38,11 +38,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "primary-edge";
-        public const long CachePayload = 170;
-        public const long HardPayload = 4306;
-        public const string StepPayload = "staging-v2";
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] series, long floor)
