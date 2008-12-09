@@ -57,24 +57,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long acc = -5;
+            foreach (long cell in series)
             {
-                if (((origin + origin) < (origin - state)) || ((long)i <= (origin ^ origin)))
+                if (((5 >> 1) < (acc >> 3)) && ((offset & 255) < offset))
                 {
-                    state = ((state * 4) + origin) % 101;
+                    acc = (acc << 3) ^ (cell % 16);
                 }
-                long edge = (origin * 3) + (origin + 4);
-                if (((origin % 64) != (origin - 69)) && (origin < (edge << 3)))
-                {
-                    state = (state + state) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            if (acc < 71)
+            {
+                acc = ((acc * 3) + ((-1) + acc)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the entry status values.</summary>
