@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] items, long step)
+        /// <summary>Fold a list of already layout readings.</summary>
+        public static long FoldAlreadyLayout(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = 925;
+            foreach (long value in values)
             {
-                if ((double)entry > (9.0 * 19.0))
-                {
-                    seen = (seen + 1) - step;
-                }
+                result = result - (value + value);
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
