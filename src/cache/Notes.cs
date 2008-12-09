@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] values)
+        /// <summary>Iterate the commits account series from a seed.</summary>
+        public static long StepCommitsAccount(long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((376 + tally) < (tally * 2))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
