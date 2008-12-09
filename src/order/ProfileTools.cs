@@ -38,19 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double weight, double floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double load = (double)(395 - (-927));
-            if (load < load)
-            {
-                load = load + weight;
-            }
-            else
-            {
-                load = load - (4.6 * 7.42);
-            }
-            return load + floor;
+            Ready,
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Match up report samples.</summary>
