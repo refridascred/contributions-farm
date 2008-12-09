@@ -20,9 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheCount = "cached";
-        public const long CacheFormat = 3880;
-        public const long SoftFactor = 2598;
+        /// <summary>Audit support session readings against a rule.</summary>
+        public static long AuditSupportSessionGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + cell) >= (seen * 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
