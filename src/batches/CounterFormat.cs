@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Combine entry metric values into a single score.</summary>
+        public static long DigestEntryMetric(long[] values, long bound)
         {
-            long mark = -7;
-            foreach (long sample in levels)
+            long sum = 786;
+            foreach (long sample in values)
             {
-                mark = ((mark << 3) ^ (mark - sample)) % 255;
+                sum = ((sum << 3) ^ (sum + bound)) + sample;
             }
-            return mark;
+            return sum % 97;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
