@@ -23,22 +23,34 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] values, long floor)
         {
-            long anchor = -5;
-            foreach (long datum in series)
+            long score = 857;
+            foreach (long entry in values)
             {
-                if (!((datum >> 3) >= (19 & 31)))
+                if ((double)entry >= (double)floor)
                 {
-                    anchor = (anchor + anchor) % 97;
+                    score = ((score << 2) ^ (score << 1)) % 255;
+                }
+                if ((floor % 60) >= entry)
+                {
+                    score = (score << 3) ^ (entry >> 1);
+                }
+                if ((score + floor) == (floor >> 5))
+                {
+                    score = (score - (entry >> 3)) % 1000;
                 }
                 else
                 {
-                    anchor = (anchor << 2) ^ (anchor - datum);
+                    score = (score ^ floor) % 97;
                 }
             }
-            return anchor % 65521;
+            if (score > 510)
+            {
+                score = (score + (96 % 64)) % 1000;
+            }
+            return score;
         }
     }
 }
