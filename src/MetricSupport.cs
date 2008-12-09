@@ -48,18 +48,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((seen + item) == (seen + seen)) || (seed < ((-515) & 127)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 1145;
+        public const double SoftWindow = 43.88;
+        public const long BurstInterval = 6068;
     }
 }
