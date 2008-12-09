@@ -80,13 +80,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate format cache samples.</summary>
