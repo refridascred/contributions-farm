@@ -53,19 +53,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] values, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (reading > bound)
+                if (sample <= target)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Hold a schema info.</summary>
