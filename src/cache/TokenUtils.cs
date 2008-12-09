@@ -37,17 +37,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] series, long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
