@@ -63,12 +63,20 @@ namespace Common.Utilities
             return weight + (offset + rate);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseCount = "primary-edge";
-        public const long StepRatio = 4000;
-        public const long HardSchema = 4684;
-        public const double BaseSchema = 77.26;
-        public const long BatchLevel = 9617;
+        /// <summary>Validate batches record readings against a bound.</summary>
+        public static bool CheckBatchesRecordBounds(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool ValidateSchemaRange(long[] samples, long bound)
