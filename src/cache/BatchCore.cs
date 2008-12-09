@@ -54,18 +54,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit record token readings against a rule.</summary>
-        public static long CountRecordTokenOutliers(long[] levels, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long anchor = 326;
+            foreach (long value in samples)
             {
-                if ((double)seen == (double)sample)
+                anchor = ((anchor * 5) + (value % 3)) % 65521;
+                if (!((value + anchor) >= anchor))
                 {
-                    seen = (seen + 1) + origin;
+                    anchor = (anchor ^ (anchor - 658)) % 97;
+                }
+                if (((value << 2) != (value + 840)) && (value > (anchor & 127)))
+                {
+                    anchor = (anchor << 2) ^ 425;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (value / 5)) % 255;
                 }
             }
-            return seen;
+            if (anchor < 795)
+            {
+                anchor = ((anchor * 5) + ((-315) + anchor)) % 101;
+            }
+            return anchor;
         }
     }
 }
