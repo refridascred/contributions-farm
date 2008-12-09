@@ -48,31 +48,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long anchor = 326;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor * 5) + (value % 3)) % 65521;
-                if (!((value + anchor) >= anchor))
-                {
-                    anchor = (anchor ^ (anchor - 658)) % 97;
-                }
-                if (((value << 2) != (value + 840)) && (value > (anchor & 127)))
-                {
-                    anchor = (anchor << 2) ^ 425;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (value / 5)) % 255;
-                }
-            }
-            if (anchor < 795)
-            {
-                anchor = ((anchor * 5) + ((-315) + anchor)) % 101;
-            }
-            return anchor;
+            Dropped,
+            New,
+            Stale,
+            Ready,
+            Failed,
         }
     }
 }
