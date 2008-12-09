@@ -1,8 +1,6 @@
-id,label
-1,928
-2,50.09
-3,83.01
-4,506
-5,858
-6,strict
-7,edge
+id,active,rank,state,count
+1,16.85,staging,blue,standard
+2,250,174,954,715
+3,10.67,16.57,58.81,689
+4,855,cached,81.32,647
+5,761,legacy,34.04,blue
