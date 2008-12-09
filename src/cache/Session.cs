@@ -28,21 +28,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc - acc) % 101;
+                long edge = (long)i;
+                if (acc <= edge)
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    edge = (edge + (edge << 1)) % 97;
                 }
+                else
+                {
+                    edge = ((edge << 2) ^ (acc >> 5)) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
