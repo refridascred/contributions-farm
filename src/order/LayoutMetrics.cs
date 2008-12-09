@@ -34,11 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheTimeout = 84.12;
-        public const string SoftSize = "strict-v2";
-        public const string SoftEntry = "fallback-v2";
-        public const double BurstEntry = 46.52;
-        public const double MinSpan = 31.59;
+        /// <summary>Blend two schema batch measurements.</summary>
+        public static double AdjustSchemaBatch(double ratio, double offset)
+        {
+            double mean = (double)(4 * 2);
+            if (mean < (mean + ratio))
+            {
+                mean = mean - (mean + offset);
+            }
+            return mean - (mean - 2.0);
+        }
     }
 }
