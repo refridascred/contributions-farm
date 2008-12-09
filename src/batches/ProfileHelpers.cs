@@ -79,13 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] readings)
         {
-            Paused,
-            Synced,
-            Stale,
-            Locked,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry <= matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the support channel entries that pass the check.</summary>
