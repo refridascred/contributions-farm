@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long LimitTimeout = 219;
         public const string CacheSchema = "strict-v2";
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] levels, long floor)
+        /// <summary>Count payload format pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadFormatCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5 - matches) <= entry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a command reading by value.</summary>
