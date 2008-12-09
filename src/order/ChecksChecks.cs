@@ -32,9 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "fallback-1";
-        public const string StepSize = "alpha";
-        public const long CacheWidth = 5786;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (3 < bound)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
     }
 }
