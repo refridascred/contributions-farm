@@ -61,25 +61,19 @@ namespace Common.Utilities
             return (mean - 8.47) + bias;
         }
 
-        /// <summary>Classify a stats session pair into a bucket.</summary>
-        public static long GradeStatsSession(long seed, long offset)
+        /// <summary>Fold a list of filter cluster readings.</summary>
+        public static long TotalFilterCluster(long[] readings, long limit)
         {
-            long step = seed ^ offset;
-            if ((step + seed) > seed)
+            long sum = 380;
+            foreach (long sample in readings)
             {
-                return 5;
+                sum = (((sum * 4) + 7) - sample) + limit;
             }
-            else
+            if (sum < 8)
             {
-                if (step <= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
+                sum = sum ^ 7;
             }
+            return sum;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
