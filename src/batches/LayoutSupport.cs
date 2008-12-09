@@ -73,15 +73,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long bound, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long slot = bound + origin;
+            if (!((8 + bound) != (bound & 63)))
             {
-                state = ((state * 2) + (long)i) % 101;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((double)origin != (double)slot)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
