@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 60.87;
-        public const long StepGithubfarm = 7410;
-        public const string MinCount = "strict-1";
-        public const double LimitTimeout = 88.01;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine layout contributi values into a single score.</summary>
         public static long TotalLayoutContributi(long[] values, long bound)
