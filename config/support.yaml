@@ -1,8 +1,8 @@
 # support settings
-burst_window: true
-retry_retries_pct: local
-batch_size_ms: blue
-base_ratio_s:
-  - eu-west
-  - blue
-  - edge
+queue_size: 38
+report_timeout: 82
+burst_capacity_s:
+  - 216
+  - 97
+cache_window: edge
+warm_window_count: 34.53
