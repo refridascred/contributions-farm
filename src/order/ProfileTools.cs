@@ -45,11 +45,17 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long floor)
         {
-            double drift = bias;
-            return (drift + (5.2 + bias)) + scale;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
