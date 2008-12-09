@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] series, long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long score = 6;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score / 4) != (bound + score))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score + (cell % 10);
-                }
-                else
-                {
-                    score = score + cell;
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Hold a tools info.</summary>
