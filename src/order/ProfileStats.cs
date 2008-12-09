@@ -36,19 +36,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 974;
+        public const long LimitTimeout = 2078;
+        public const long IdleSpan = 5647;
+        public const double MaxRatio = 19.2;
+        public const double SoftScore = 44.71;
     }
 }
