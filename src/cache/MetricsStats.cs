@@ -33,31 +33,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long target)
+        /// <summary>Iterate the stats route series from a seed.</summary>
+        public static long DeriveStatsRoute(long limit)
         {
-            if (target >= (step - step))
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                score = (score + score) % 4096;
+                score = ((score * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (!((target + step) > target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (5.0 >= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
