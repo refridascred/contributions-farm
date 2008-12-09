@@ -49,16 +49,11 @@ namespace Common.Utilities
         public const long BaseRatio = 2252;
         public const double MaxWidth = 71.39;
 
-        /// <summary>Roll a commits account counter forward.</summary>
-        public static long SeriesCommitsAccount(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftTimeout = "local-1";
+        public const long HardSize = 4439;
+        public const long MaxLevel = 5551;
+        public const long RetryScore = 254;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long WeighEditor(long[] data, long floor)
