@@ -1,7 +1,9 @@
-id,rank,state,ratio
-1,71.19,651,78.54
-2,edge,272,stable
-3,blue,green,69.07
-4,standard,legacy,685
-5,674,68,352
-6,70.94,56,green
+id,rank,state,weight,region
+1,primary,strict,latest,628
+2,36.89,419,73.71,46.48
+3,540,21.53,1.29,edge
+4,86.51,471,486,stable
+5,549,255,80.09,658
+6,906,864,cached,45.14
+7,local,64,35.0,primary
+8,89,local,244,93
