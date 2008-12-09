@@ -29,21 +29,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] samples)
+        /// <summary>Compare every pair of githubfarm stream readings.</summary>
+        public static long CompareGithubfarmStreamCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 12)
+                    if ((data[i] + data[j]) != 17)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
