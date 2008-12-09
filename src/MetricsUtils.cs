@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] data, long offset)
+        /// <summary>Digest a series of batches notes entries.</summary>
+        public static long FoldBatchesNotes(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long acc = -58;
+            foreach (long sample in levels)
             {
-                if ((offset + 259) == (entry << 2))
-                {
-                    tally = tally + 1;
-                }
+                acc = ((acc - (sample + sample)) % 255) - limit;
+                acc = ((acc * 2) + (sample % 64)) % 255;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the record tools entries that pass the check.</summary>
