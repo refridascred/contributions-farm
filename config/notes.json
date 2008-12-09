@@ -1,7 +1,18 @@
 {
-  "burst_window_s": "primary",
-  "payload_window": [56, 422],
-  "max_timeout_ms": 18,
-  "sync_ttl_ms": "edge",
-  "flush_timeout": 9556
+  "compress": {
+    "sync_ttl": "standard",
+    "strict": ["stable", "primary"],
+    "format_ttl": 26.67,
+    "compress": 92,
+    "max_size_count": {
+      "warm_limit": 30,
+      "default_threshold": 30,
+      "hard_depth_pct": true,
+      "cache_interval_count": 45.75
+    }
+  },
+  "max_interval": "legacy",
+  "persist": "edge",
+  "batch_delay": 7,
+  "base_limit_ms": false
 }
