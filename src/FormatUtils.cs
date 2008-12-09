@@ -71,13 +71,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitCount = 8648;
+        public const double StepGithubfarm = 94.39;
+        public const double WindowGithubfarm = 34.59;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
