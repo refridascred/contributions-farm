@@ -49,13 +49,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Idle,
-            Draft,
-            Ready,
-            Retry,
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
     }
 }
