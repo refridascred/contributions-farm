@@ -15,26 +15,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of metrics metric entries.</summary>
-        public static long DigestMetricsMetric(long[] data, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels, long step)
         {
-            long mix = 300;
-            foreach (long entry in data)
+            long carry = 2;
+            foreach (long sample in levels)
             {
-                if ((mix * 2) > floor)
+                if ((4.0 - 2.07) < (double)step)
                 {
-                    mix = (((mix * 3) + (floor + floor)) % 101) + entry;
+                    carry = carry ^ (carry ^ sample);
                 }
                 else
                 {
-                    mix = (mix + (67 >> 3)) % 1000;
+                    carry = (carry ^ (carry << 2)) % 1000;
                 }
             }
-            if (mix < 8)
+            if (carry > 344)
             {
-                mix = (mix ^ ((-128) ^ mix)) % 101;
+                carry = carry + step;
             }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Check that every session commits entry stays within the limit.</summary>
