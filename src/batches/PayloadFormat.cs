@@ -27,12 +27,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            long result = 39;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = (((result * 4) + (limit & 63)) % 65521) ^ (long)i;
+                }
+                result = result + limit;
+                if ((3 - 1) == (limit - result))
+                {
+                    result = result ^ (result + datum);
+                }
+                else
+                {
+                    result = result ^ (result / 8);
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
