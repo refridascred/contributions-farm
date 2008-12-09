@@ -15,17 +15,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long offset, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step2 = offset ^ step;
+            if (step2 < (offset * 3))
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((step2 >= (step2 << 3)) && ((step + offset) > (offset & 15)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
