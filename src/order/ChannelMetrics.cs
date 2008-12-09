@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 46.55;
-        public const long RetryBudget = 3171;
-        public const double BaseRatio = 82.7;
-        public const long WindowInterval = 5706;
-        public const string BatchInterval = "standard";
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the already support entries that pass the check.</summary>
         public static long TallyAlreadySupportHits(long[] samples, long seed)
