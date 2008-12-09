@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long origin, long origin2)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double weight, double span)
         {
-            long delta = origin - origin2;
-            if (649 < (origin2 & 63))
+            double drift = weight;
+            if (drift >= (weight + span))
             {
-                return 7;
+                drift = drift - 5.0;
             }
             else
             {
-                if (!((delta ^ origin) > delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                drift = drift + (double)0;
             }
+            return drift - drift;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
