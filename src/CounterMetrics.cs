@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            long prev = floor ^ seed;
+            if (((prev * 4) == (floor + prev)) && ((prev << 2) > prev))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + 38) > (prev / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (0 <= (floor - prev))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter status values.</summary>
