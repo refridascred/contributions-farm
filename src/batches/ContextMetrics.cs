@@ -51,19 +51,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] series, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (cell <= floor)
+                if ((sample / 7) >= (limit << 2))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
