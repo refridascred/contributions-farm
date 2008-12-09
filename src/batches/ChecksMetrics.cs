@@ -106,15 +106,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many buffer token samples are out of range.</summary>
-        public static long MeasureBufferTokenGaps(long[] series, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] values, long limit)
         {
             long tally = 0;
-            foreach (long datum in series)
+            foreach (long cell in values)
             {
-                if (((double)(long)series.Length == (0.53 + 10.0)) || (((datum % 60) >= (tally + limit)) && ((3.4 / 8.0) > (double)limit)))
+                if ((4.27 + 6.75) < (double)tally)
                 {
-                    tally = tally + 1;
+                    tally = ((tally + 2) + cell) - limit;
                 }
             }
             return tally;
