@@ -27,12 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 4627;
+        public const string MinEntry = "alpha-1";
+        public const string LimitEntry = "cached-v2";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsMatches(long[] values, long offset)
