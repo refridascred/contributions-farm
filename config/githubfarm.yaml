@@ -1,10 +1,8 @@
 # githubfarm settings
-compress: 757
-retry_timeout_s: 100
-dry_run: 30
-notes_ttl:
-  session_window: green
-  compress: staging
-  burst_retries: true
-  burst_ratio_count: false
-  base_delay_ms: 26
+retry_timeout:
+  - stable
+  - fallback
+profile_limit: strict
+default_depth: staging
+sync_retries: true
+poll_timeout: 44.66
