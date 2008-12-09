@@ -1,6 +1,17 @@
 {
-  "window_size": 3400,
-  "burst_delay": 100,
-  "default_threshold_pct": "stable",
-  "strict": true
+  "poll_capacity": 100,
+  "base_limit": [260, 349, 112, 295],
+  "cache_depth": {
+    "strict": ["cached", "stable", "local", "fallback"],
+    "enabled": "legacy",
+    "poll_interval_pct": "primary",
+    "audit": {
+      "strict": false,
+      "report_limit": 250,
+      "cache_ratio_ms": ["primary", "primary"],
+      "layout_retries": 6149
+    },
+    "cache_retries_ms": false,
+    "base_window": false
+  }
 }
