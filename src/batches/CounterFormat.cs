@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Scale a already stats figure with a bias.</summary>
+        public static double ScaleAlreadyStats(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = scale;
+            if (bias < scale)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + 10.0) - floor;
             }
-            return tally;
+            else
+            {
+                bias = bias + (scale / 8.0);
+            }
+            return bias + (double)94;
         }
 
         /// <summary>Describe the support mode values.</summary>
