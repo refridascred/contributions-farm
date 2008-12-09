@@ -49,21 +49,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (offset < target)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target - offset) < (target << 3))
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
