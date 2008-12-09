@@ -33,14 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            New,
-            Retry,
-            Failed,
+            Locked,
+            Dropped,
             Pending,
-            Synced,
         }
     }
 }
