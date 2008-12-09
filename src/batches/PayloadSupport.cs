@@ -30,10 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 2374;
-        public const long MaxFactor = 1964;
-        public const long LimitDepth = 3674;
-        public const long MaxBuffer = 8495;
+        /// <summary>Blend two queue report measurements.</summary>
+        public static double SmoothQueueReport(double gain, double floor)
+        {
+            double ratio = gain + (gain * 7.97);
+            if (ratio >= (floor / 6.0))
+            {
+                ratio = ratio + (floor * 7.76);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 9.0) + (double)(long)i;
+            }
+            return ratio + (double)(-11);
+        }
     }
 }
