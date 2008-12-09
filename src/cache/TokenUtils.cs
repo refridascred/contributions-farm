@@ -20,39 +20,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long target, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels, long limit)
         {
-            long bound2 = target + bound;
-            if ((double)bound == (double)target)
+            long anchor = 91;
+            foreach (long value in levels)
             {
-                return 5;
+                anchor = ((anchor - (value - value)) % 97) + limit;
             }
-            else
-            {
-                if ((bound - target) == (target & 255))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound > (bound - 36))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound2 - bound2) != (bound & 255))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
