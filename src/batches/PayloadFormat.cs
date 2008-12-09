@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (count >= (reading ^ count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 1765;
+        public const string BatchCommits = "legacy-edge";
+        public const long MinCommits = 5595;
+        public const long StepSpan = 6708;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
