@@ -1,17 +1,6 @@
 {
-  "filter_retries": ["standard", "open", "open", "strict"],
-  "sync_ttl_ms": {
-    "idle_depth": {
-      "retry_depth_s": 20,
-      "poll_timeout_count": 500,
-      "persist": 71.46,
-      "default_delay": [135, 98, 79, 339]
-    },
-    "commits_retries": "staging",
-    "flush_interval": "blue",
-    "default_ratio_s": 5739,
-    "default_size": "blue"
-  },
-  "token_delay": 33.18,
-  "sync_timeout": "green"
+  "warm_retries_ms": 52.32,
+  "verbose": false,
+  "soft_interval": "edge",
+  "default_capacity_pct": "stable"
 }
