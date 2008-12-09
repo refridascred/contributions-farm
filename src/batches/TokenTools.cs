@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank queue support input into a small class.</summary>
-        public static long BucketQueueSupport(long bound, long floor)
+        /// <summary>Match up farm graph samples.</summary>
+        public static long MatchFarmGraphCount(long[] values)
         {
-            long next = bound - floor;
-            if (((double)bound > (2.3 - 17.0)) || (12 > (next * 5)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((next >> 3) >= (-299)) || ((next >> 4) <= (301 - bound)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)floor > 11.0))
+                    if ((values[i] - values[j]) != 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
