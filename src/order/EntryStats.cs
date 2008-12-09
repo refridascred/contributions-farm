@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] readings, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
+                if ((double)tally == (20.0 / 9.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
