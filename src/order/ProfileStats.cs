@@ -41,12 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a report stats value against two limits.</summary>
