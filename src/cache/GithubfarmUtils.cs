@@ -81,18 +81,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long step)
         {
-            long score = 4;
-            foreach (long datum in data)
+            long bound = seed ^ step;
+            if (9.1 >= (double)step)
             {
-                if (15.0 <= (double)(long)data.Length)
+                return 8;
+            }
+            else
+            {
+                if ((seed + bound) >= (seed + step))
                 {
-                    score = ((score << 2) ^ (datum / 5)) - offset;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound ^ bound) == (27 ^ seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - bound) > (seed - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score;
         }
     }
 }
