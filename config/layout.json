@@ -1,6 +1,6 @@
 {
-  "entry_retries": [469, 368],
-  "readonly": 63,
-  "cluster_threshold": 23.0,
-  "base_timeout_s": "strict"
+  "farm_window": "eu-west",
+  "base_ratio_count": "fallback",
+  "cache_ttl": 60,
+  "batch_limit_count": 30
 }
