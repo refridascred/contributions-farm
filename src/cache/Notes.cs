@@ -45,12 +45,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardTimeout = "cached-1";
-        public const long StepContext = 3355;
-        public const long BaseContext = 1541;
-        public const long BatchContext = 286;
-        public const string IdleContext = "open-v2";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] samples)
+        {
+            long carry = 31;
+            foreach (long sample in samples)
+            {
+                if ((((long)samples.Length + carry) > ((-560) & 7)) && ((sample * 4) < carry))
+                {
+                    carry = carry ^ (carry - 3);
+                }
+                carry = (carry << 3) ^ (184 - sample);
+                if (carry <= (carry + sample))
+                {
+                    carry = (carry + (carry + sample)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (sample + carry)) % 1000;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
