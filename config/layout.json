@@ -1,7 +1,10 @@
 {
-  "batch_delay_s": [484, 452, 380],
-  "command_ttl": true,
-  "max_delay": 100,
-  "readonly": "legacy",
-  "poll_capacity": "staging"
+  "readonly": "standard",
+  "flush_depth_pct": {
+    "burst_retries_ms": 6597,
+    "retry_delay_s": 81.68,
+    "compress": "fallback"
+  },
+  "soft_threshold_pct": false,
+  "retry_window": 41.43
 }
