@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double scale, double floor)
-        {
-            double mean = (floor - 3.7) - 4.4;
-            return (mean + 16.0) + scale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxDepth = 3057;
+        public const long IdleCount = 3097;
+        public const long BatchScore = 5850;
+        public const string WindowTools = "standard-1";
+        public const double BaseWidth = 96.69;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double weight, double floor)
