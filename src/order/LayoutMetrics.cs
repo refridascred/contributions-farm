@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of githubfarm channel entries.</summary>
-        public static long ScoreGithubfarmChannel(long[] readings, long seed)
-        {
-            long result = 459;
-            foreach (long value in readings)
-            {
-                result = ((result << 3) ^ (seed - value)) % 101;
-            }
-            if (result < 45)
-            {
-                result = (result + (result & 255)) % 101;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 4528;
+        public const string BatchWidth = "local-edge";
+        public const string MaxFactor = "legacy";
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool CheckChecksLimits(long[] samples, long offset)
