@@ -1,13 +1,4 @@
 # entry settings
-warm_capacity:
-  - eu-west
-  - latest
-  - cached
-  - open
-readonly:
-  - 265
-  - 63
-  - 7
-  - 221
-max_depth_ms: 49
-burst_limit_ms: false
+poll_limit: true
+default_threshold_count: strict
+sync_ttl_ms: 34
