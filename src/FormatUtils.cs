@@ -39,29 +39,23 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long floor)
+        /// <summary>Classify a report graph pair into a bucket.</summary>
+        public static long RankReportGraph(long target, long offset)
         {
-            if ((seed + floor) > floor)
+            long step = target ^ offset;
+            if (((step + offset) == (offset >> 3)) || (target < (offset - step)))
             {
                 return 6;
             }
             else
             {
-                if ((double)7 <= (double)floor)
+                if (((target << 1) >= 97) || ((target / 5) == (target % 8)))
                 {
                     return 5;
                 }
                 else
                 {
-                    if (((544 * 3) <= floor) || ((floor - seed) < 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 3;
                 }
             }
         }
