@@ -89,23 +89,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long step, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long seed, long seed2)
         {
-            long step2 = step - offset;
-            if (!((step2 / 8) != (160 * 4)))
+            if ((double)seed2 >= (9.0 / 4.0))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (((step2 % 24) < (step >> 5)) || ((offset * 2) < ((-450) + step)))
+                if ((seed + seed) <= 469)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    return 5;
                 }
             }
         }
