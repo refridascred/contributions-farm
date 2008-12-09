@@ -36,14 +36,18 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] levels, long seed)
         {
-            New,
-            Idle,
-            Stale,
-            Done,
-            Locked,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)0 < (double)seed)
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
