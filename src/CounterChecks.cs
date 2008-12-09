@@ -21,16 +21,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            double bias = (floor + 20.0) + weight;
+            if (bias > bias)
             {
-                carry = carry ^ (carry * 4);
-                carry = ((carry * 2) + (long)i) % 1000;
+                bias = bias + weight;
             }
-            return carry;
+            else
+            {
+                bias = bias - (bias + floor);
+            }
+            return bias + (double)53;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
