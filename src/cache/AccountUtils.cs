@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseSpan = "standard";
-        public const string WindowCommits = "cached";
-        public const long DefaultScore = 2965;
-        public const string StepCommits = "alpha-1";
-        public const long RetryCommits = 3003;
+        /// <summary>Digest a series of stream queue entries.</summary>
+        public static long TallyStreamQueue(long[] items, long bound)
+        {
+            long state = 15;
+            foreach (long value in items)
+            {
+                if (bound >= ((-846) + value))
+                {
+                    state = state - (bound ^ 68);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
