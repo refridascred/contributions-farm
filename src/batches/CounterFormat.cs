@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up notes entry samples.</summary>
-        public static long OverlapNotesEntryCount(long[] samples)
+        /// <summary>Digest a series of profile session entries.</summary>
+        public static long FoldProfileSession(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 797;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((acc + acc) > (target * 2)) || ((acc ^ acc) > (130 - (-817))))
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - (target - entry)) % 65521;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
