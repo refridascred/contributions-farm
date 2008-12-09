@@ -71,19 +71,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double scale, double offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double weight = 4.8;
-            if (weight > (double)164)
-            {
-                weight = (weight + 8.9) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - (scale - 12.0);
+            Pending,
+            Retry,
+            Dropped,
         }
     }
 }
