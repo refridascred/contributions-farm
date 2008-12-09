@@ -52,15 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double ratio, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] series, long floor)
         {
-            double ratio2 = 9.74;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                ratio2 = ((ratio2 - (double)90) + (double)(long)i) - ratio;
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio2 - floor;
+            return ok;
         }
     }
 }
