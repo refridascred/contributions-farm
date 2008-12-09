@@ -12,20 +12,14 @@ namespace Common.Utilities
             return (ratio - offset) + bias;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((seed % 2) > (mix / 6))
-                {
-                    mix = (mix ^ seed) % 255;
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Queued,
+            Dropped,
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a already stats.</summary>
