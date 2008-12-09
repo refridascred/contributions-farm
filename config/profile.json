@@ -1,5 +1,7 @@
 {
-  "readonly": 534,
-  "contributi_depth": true,
-  "burst_timeout": 40
+  "poll_threshold_s": false,
+  "idle_threshold": 62.3,
+  "min_capacity_count": 5092,
+  "min_ratio": 500,
+  "schema_threshold": "staging"
 }
