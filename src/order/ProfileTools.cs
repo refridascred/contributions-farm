@@ -30,19 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a batch channel reading.</summary>
-        public static double AdjustBatchChannel(double gain, double span)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double ratio = 19.0;
-            if (ratio >= ratio)
-            {
-                ratio = ratio - (span - gain);
-            }
-            else
-            {
-                ratio = ratio + (double)62;
-            }
-            return ratio - gain;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a route sample.</summary>
