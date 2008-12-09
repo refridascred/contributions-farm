@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long step, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] items, long floor)
         {
-            if ((10 << 2) < (step - 8))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((origin + 5) <= (origin - origin)))
+                if (87 > (hits - hits))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(origin < step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (9.93 <= (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = ((hits + 3) ^ value) + floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a route reading by value.</summary>
