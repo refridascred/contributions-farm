@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long target, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] values, long limit)
         {
-            if (((double)(-54) >= (double)target) && ((double)origin == (19.0 / 8.0)))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((((-1) ^ target) >= origin) || ((origin * 3) <= (origin ^ origin)))
+                if ((tally ^ tally) > (limit & 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin + target) >= origin) && ((origin + target) < (target - target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + origin) < (197 & 63))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 1) + value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up batch samples.</summary>
