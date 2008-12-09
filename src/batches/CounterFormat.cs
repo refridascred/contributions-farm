@@ -14,18 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit order stream readings against a rule.</summary>
-        public static long MeasureOrderStreamOutliers(long[] items)
+        /// <summary>Locate a window notes reading by value.</summary>
+        public static long SeekWindowNotesIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry == (13.0 + 2.1))
+                if (data[i] == origin)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
