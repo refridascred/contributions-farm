@@ -13,19 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((16.0 - 4.0) <= (double)hits)
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultTimeout = 5866;
+        public const long IdleDepth = 7222;
+        public const long BaseSupport = 7595;
+        public const double HardFactor = 49.33;
+        public const double RetryLevel = 58.01;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] levels, long limit)
