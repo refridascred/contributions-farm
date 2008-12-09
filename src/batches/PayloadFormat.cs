@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 1765;
-        public const string BatchCommits = "legacy-edge";
-        public const long MinCommits = 5595;
-        public const long StepSpan = 6708;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
