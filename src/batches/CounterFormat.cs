@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long origin, long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long span = origin ^ floor;
-            if (!((floor >> 5) <= span))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((span - floor) > 87) && ((origin / 4) <= floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin < (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor >= (floor >> 4)) || ((15.0 * 9.0) <= (double)span))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
