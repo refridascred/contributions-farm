@@ -31,38 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long offset, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] series)
         {
-            if ((3.9 + 4.5) >= (double)floor)
+            long sum = 5;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset << 1) <= (9 - offset)) || ((floor + floor) > (floor - 8)))
+                if ((684 << 3) >= (sample - 114))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor % 16) < (offset ^ offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor % 100) > (offset + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = (sum * 2) + sample;
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the token mode values.</summary>
