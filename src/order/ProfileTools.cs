@@ -30,13 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Adjust a batch channel reading.</summary>
+        public static double AdjustBatchChannel(double gain, double span)
         {
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            double ratio = 19.0;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - (span - gain);
+            }
+            else
+            {
+                ratio = ratio + (double)62;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Project the next stream value.</summary>
