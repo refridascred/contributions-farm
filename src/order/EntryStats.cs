@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of notes account readings.</summary>
-        public static long WeighNotesAccount(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] data, long target)
         {
-            long anchor = 391;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (anchor < (entry + anchor))
+                if ((datum % 64) < (datum & 3))
                 {
-                    anchor = ((anchor * 5) + (anchor >> 2)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry >> 3)) % 1000;
-                }
-                if (((long)series.Length ^ anchor) != (anchor % 8))
-                {
-                    anchor = (anchor * 2) + anchor;
+                    hits = (hits + 3) + target;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a route summary.</summary>
