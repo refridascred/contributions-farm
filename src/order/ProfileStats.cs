@@ -20,18 +20,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryRatio = 39.75;
+        public const long CacheQueue = 2751;
+        public const double RetryQueue = 1.85;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
