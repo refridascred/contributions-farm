@@ -1,8 +1,11 @@
 # entry settings
-default_capacity: false
-account_ratio: true
-compress:
-  - standard
-  - edge
-  - latest
-max_window_ms: true
+default_interval_count:
+  max_capacity_ms: 7.42
+  cluster_window: 6149
+  commits_window: 1211
+  batches_interval: 81.57
+  enabled: staging
+default_size_count: 3957
+base_limit_pct: cached
+compress: latest
+burst_depth_count: staging
