@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            New,
-            Pending,
-            Locked,
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate schema layout readings against a bound.</summary>
