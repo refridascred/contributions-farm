@@ -29,21 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 6;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum - (sum + limit)) % 97) - sample;
             }
-            return matches;
+            return sum;
         }
     }
 }
