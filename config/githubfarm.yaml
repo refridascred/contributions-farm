@@ -1,13 +1,9 @@
 # githubfarm settings
-max_capacity_pct: 1024
-sync_threshold: 46.47
-compress: 1254
-verbose:
-  audit: 500
-  batch_timeout_count: stable
-  idle_window_count: 6088
-  base_retries:
-    - 134
-    - 177
-    - 196
-  default_threshold_s: true
+report_depth: 88.46
+notes_timeout: eu-west
+queue_ratio:
+  graph_limit: edge
+  dry_run: 7909
+  profile_size: legacy
+idle_threshold_count: stable
+min_limit: 43.64
