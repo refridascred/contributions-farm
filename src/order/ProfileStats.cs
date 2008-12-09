@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a account already pair into a bucket.</summary>
-        public static long ClassifyAccountAlready(long limit, long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long prev = limit + seed;
-            if ((seed - seed) > (prev + prev))
-            {
-                return 3;
-            }
-            else
-            {
-                if (prev < limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
