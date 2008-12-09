@@ -33,19 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Combine payload metric values into a single score.</summary>
+        public static long WeighPayloadMetric(long[] items, long seed)
         {
-            long total = 6;
-            foreach (long item in readings)
+            long total = 771;
+            foreach (long sample in items)
             {
-                total = ((total * 5) + (total + 7)) + item;
+                if ((604 >> 3) > total)
+                {
+                    total = ((total + (total & 7)) % 255) + sample;
+                }
             }
-            if (total > (-8))
+            if (total > 5)
             {
-                total = (total * 3) + (total & 31);
+                total = (total + (seed & 15)) % 4096;
             }
-            return total % 1000;
+            return total % 4096;
         }
     }
 }
