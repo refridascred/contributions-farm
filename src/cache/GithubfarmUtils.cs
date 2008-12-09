@@ -41,19 +41,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Accumulate token samples.</summary>
