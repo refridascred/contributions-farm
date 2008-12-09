@@ -67,23 +67,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values)
-        {
-            long result = 1;
-            foreach (long value in values)
-            {
-                if ((value > (result & 127)) && ((9.39 - 4.87) != (double)value))
-                {
-                    result = (result + (value - value)) % 255;
-                }
-                else
-                {
-                    result = (result + (value >> 5)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstWidth = 5.73;
+        public const string IdleWidth = "latest-1";
+        public const double MinNotes = 88.78;
+        public const long HardBudget = 7104;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long SeriesChannel(long floor)
