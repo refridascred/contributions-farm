@@ -21,22 +21,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema window samples are out of range.</summary>
-        public static long AuditSchemaWindowMatches(long[] items)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((tally / 5) >= tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
