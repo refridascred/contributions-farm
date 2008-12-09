@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if ((bound / 4) <= seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((seed - bound) <= seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a filter tools counter forward.</summary>
