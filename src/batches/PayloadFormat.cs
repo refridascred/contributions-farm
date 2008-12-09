@@ -13,12 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultTimeout = 5866;
-        public const long IdleDepth = 7222;
-        public const long BaseSupport = 7595;
-        public const double HardFactor = 49.33;
-        public const double RetryLevel = 58.01;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Failed,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
