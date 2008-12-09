@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Failed,
-            New,
-            Closed,
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next window payload value from a seed.</summary>
