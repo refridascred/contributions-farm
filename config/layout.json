@@ -1,17 +1,13 @@
 {
-  "batch_ttl_pct": 100,
-  "soft_limit": ["green", "eu-west", "eu-west"],
-  "retry_ttl_count": 65.43,
-  "farm_ratio": {
-    "base_retries": {
-      "flush_depth_s": "fallback",
-      "soft_interval": 90,
-      "hard_threshold_pct": ["strict", "blue", "eu-west", "blue"],
-      "notes_delay": [147, 393, 406, 42],
-      "min_interval": "edge"
-    },
-    "batch_timeout_s": "eu-west",
-    "metric_capacity": "edge",
-    "cache_retries": "primary"
-  }
+  "min_interval_count": false,
+  "burst_timeout_ms": 84.91,
+  "commits_retries": {
+    "min_depth_count": "cached",
+    "cache_size_ms": false,
+    "metrics_depth": false,
+    "schema_interval": [53, 106, 86],
+    "warm_capacity": "local"
+  },
+  "readonly": [343, 304],
+  "enabled": "fallback"
 }
