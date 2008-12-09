@@ -38,13 +38,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Done,
-            Pending,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 2044;
+        public const double BurstLevel = 52.44;
+        public const long BaseBudget = 6848;
     }
 }
