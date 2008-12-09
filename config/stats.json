@@ -1,8 +1,6 @@
 {
-  "base_limit_count": 6554,
-  "githubfarm_limit": "local",
-  "cache_depth_count": 26,
-  "sync_retries_ms": false,
-  "window_ttl": 33,
-  "dry_run": 30
+  "idle_ttl": "cached",
+  "stream_depth": "edge",
+  "default_window_count": true,
+  "burst_size_pct": false
 }
