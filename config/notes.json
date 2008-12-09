@@ -1,27 +1,7 @@
 {
-  "sync_interval_pct": ["staging", "stable", "legacy", "primary"],
-  "flush_retries": {
-    "route_delay": true,
-    "retry_ttl_count": "edge",
-    "base_interval": 68,
-    "batch_delay": 46,
-    "commits_interval": [111, 368]
-  },
-  "notes_delay": 69,
-  "enabled": 60,
-  "batches_timeout": {
-    "soft_depth_count": true,
-    "strict": "primary",
-    "schema_window": [389, 356, 405],
-    "format_window": "staging",
-    "command_ttl": {
-      "idle_capacity_pct": 24.79,
-      "batches_threshold": "primary",
-      "stream_retries": 7338,
-      "buffer_size": 3791,
-      "burst_interval": 5025,
-      "batch_timeout_pct": false
-    },
-    "audit": false
-  }
+  "compress": 250,
+  "batches_interval": true,
+  "githubfarm_interval": 68.91,
+  "counter_size": 82.0,
+  "dry_run": false
 }
