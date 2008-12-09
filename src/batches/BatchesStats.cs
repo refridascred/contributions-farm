@@ -32,28 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double gain, double span)
         {
-            long anchor = -13;
-            foreach (long entry in values)
+            double gain2 = gain + (gain * 1.5);
+            for (int i = 0; i < 3; i++)
             {
-                anchor = (anchor << 3) ^ (entry - anchor);
-                anchor = anchor ^ 4;
-                if (!((5.52 * 3.4) <= (double)anchor))
-                {
-                    anchor = (anchor + entry) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ ((long)values.Length % 64)) % 255;
-                }
+                gain2 = (gain2 - (span + gain)) + (double)(long)i;
             }
-            if (anchor > 49)
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 255;
-            }
-            return anchor % 1000;
+            return gain2 - (gain2 / 7.0);
         }
 
         /// <summary>Hold a layout info.</summary>
