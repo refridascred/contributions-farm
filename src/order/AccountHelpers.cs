@@ -42,12 +42,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchBudget = 9457;
-        public const long MaxScore = 8794;
-        public const long WindowDepth = 6981;
-        public const long DefaultCommits = 9958;
-        public const long RetryFactor = 8898;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
