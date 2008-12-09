@@ -20,11 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 5772;
-        public const double BurstCache = 34.6;
-        public const long DefaultFactor = 3538;
-        public const string LimitWidth = "staging";
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Ready,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long FoldOrder(long[] values)
