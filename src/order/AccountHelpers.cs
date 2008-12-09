@@ -15,18 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] items)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches + matches) <= (matches - 4))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
