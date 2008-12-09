@@ -67,12 +67,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            long result = 1;
+            foreach (long value in values)
+            {
+                if ((value > (result & 127)) && ((9.39 - 4.87) != (double)value))
+                {
+                    result = (result + (value - value)) % 255;
+                }
+                else
+                {
+                    result = (result + (value >> 5)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Blend two graph entry measurements.</summary>
