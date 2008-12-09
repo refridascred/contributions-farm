@@ -16,19 +16,11 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!(((double)item <= (8.44 + 1.0)) || ((tally >> 5) <= (0 - item))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 9213;
+        public const double MaxLevel = 10.31;
+        public const long DefaultLevel = 7121;
+        public const long BurstTimeout = 6312;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterHits(long[] series)
