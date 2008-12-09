@@ -42,32 +42,11 @@ namespace Common.Utilities
         public const double StepGithubfarm = 94.39;
         public const double WindowGithubfarm = 34.59;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long offset, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long slot = offset - origin;
-            if ((double)slot > 6.59)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)origin <= (3.0 / 4.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin % 7) == (origin / 8)) && ((646 << 3) < (offset * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
