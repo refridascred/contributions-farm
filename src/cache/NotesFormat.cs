@@ -13,18 +13,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] values)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long item in values)
+            if ((12.0 + 3.5) >= (double)limit2)
             {
-                if ((33 - count) <= (count & 3))
+                return 7;
+            }
+            else
+            {
+                if (!(limit >= (limit - limit2)))
                 {
-                    count = (count + 1) + item;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit ^ 49) > (limit * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit + limit) >= limit2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a record record.</summary>
