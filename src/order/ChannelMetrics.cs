@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] series)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((seen / 6) < (seen % 5)) || ((value - seen) <= (846 & 15)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
