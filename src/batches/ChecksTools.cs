@@ -39,21 +39,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((5.01 / 3.0) != (double)floor) || ((bound / 5) >= (bound + bound)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound - 15) > (31 + bound))
                 {
-                    if ((series[i] - series[j]) > 16)
+                    return 7;
+                }
+                else
+                {
+                    if (((double)floor > (1.7 / 2.0)) || ((floor * 5) < (floor + floor)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor + bound) < (floor >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
