@@ -1,12 +1,5 @@
 {
-  "default_ttl_s": false,
-  "already_retries": 57.29,
-  "idle_timeout_count": "local",
-  "audit": [412, 388],
-  "filter_threshold": {
-    "burst_delay": false,
-    "graph_ttl": 8919,
-    "warm_window_count": 3263
-  },
-  "compress": ["cached", "blue", "staging"]
+  "batch_threshold_count": 43.0,
+  "default_limit_count": false,
+  "already_threshold": true
 }
