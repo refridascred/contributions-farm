@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Find the first cluster editor entry that matches the target.</summary>
+        public static long LookupClusterEditorIndex(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
