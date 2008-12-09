@@ -1,10 +1,5 @@
 {
-  "entry_retries": true,
-  "max_timeout_ms": 1024,
-  "min_retries": 60,
-  "soft_retries_s": {
-    "min_depth": 44,
-    "account_window": 54.57,
-    "order_window": "strict"
-  }
+  "readonly": 534,
+  "contributi_depth": true,
+  "burst_timeout": 40
 }
