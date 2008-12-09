@@ -51,25 +51,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a layout filter value against two limits.</summary>
-        public static long SortLayoutFilter(long target, long floor)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            long offset = target ^ floor;
-            if ((40 * 2) >= (offset >> 5))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target / 4) != (target & 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
