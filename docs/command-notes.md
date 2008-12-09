@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the command list.
+Keep tools and githubfarm names short and lowercase.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review profile limits each release
-- Document new cluster fields
-- Validate contributi input early
-- Prefer stream defaults
+- Prefer batches defaults
+- Log every channel change
+- Document new githubfarm fields
+- Validate command input early
