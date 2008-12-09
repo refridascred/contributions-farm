@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a counter graph sample.</summary>
-        public static long LookupCounterGraphIndex(long[] readings, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (readings[i] <= origin)
+                if (((0.35 + 13.0) < (9.0 * 5.2)) || (((item / 8) >= (long)levels.Length) && ((item - 0) <= 7)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a session header.</summary>
