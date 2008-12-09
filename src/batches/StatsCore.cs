@@ -61,23 +61,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long origin, long bound)
         {
-            double scale = (double)(15 / 3);
-            if (scale <= (ratio - ratio))
+            long span = origin ^ bound;
+            if ((bound / 9) > (53 + 8))
             {
-                scale = scale - ratio;
+                return 4;
             }
             else
             {
-                scale = scale + floor;
+                if ((origin <= (4 + bound)) && ((-8) > origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((span % 7) <= span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale * 10.0)) + (double)(long)i;
-            }
-            return scale - scale;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
