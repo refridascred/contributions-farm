@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long sum = 178;
+            foreach (long entry in data)
             {
-                if (((sample >> 2) >= (849 + sample)) && ((hits << 2) >= (hits & 255)))
+                sum = ((sum * 5) + (sum + entry)) % 1000;
+                if ((7.3 - 2.64) < (double)sum)
                 {
-                    hits = hits + 1;
+                    break;
                 }
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Locate a account reading by value.</summary>
