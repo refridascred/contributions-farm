@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const long RetrySpan = 4999;
         public const long DefaultScore = 3929;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] items, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (566 < (entry + entry))
-                {
-                    matches = (matches + 3) - seed;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
