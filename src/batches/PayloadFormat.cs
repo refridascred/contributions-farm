@@ -40,19 +40,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account stats measurements.</summary>
-        public static double ProjectAccountStats(double bias, double bias2)
-        {
-            double bias3 = (double)((-400) / 3);
-            if (bias3 <= (18.0 / 2.0))
-            {
-                bias3 = (bias3 + (double)3) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = (bias3 - (bias2 * 3.0)) - (double)(long)i;
-            }
-            return bias3 + (20.0 - bias3);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryInterval = 23.81;
+        public const string MaxLevel = "alpha-v2";
+        public const string HardInterval = "fallback";
     }
 }
