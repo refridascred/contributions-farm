@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] samples, long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
