@@ -26,12 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 59.86;
-        public const long StepFactor = 4333;
-        public const string DefaultContext = "strict";
-        public const double DefaultDepth = 82.14;
-        public const string BurstContext = "alpha-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 1725;
+        public const long SoftSchema = 5817;
+        public const long BaseBudget = 6489;
+        public const double HardSchema = 94.82;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryFilter = 5812;
