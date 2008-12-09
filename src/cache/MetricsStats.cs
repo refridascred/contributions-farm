@@ -42,19 +42,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double span)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long target)
         {
-            double bias = 4.5 / 7.0;
-            if (bias < bias)
+            if (target >= (step - step))
             {
-                bias = (bias - (bias - weight)) + span;
+                return 2;
             }
             else
             {
-                bias = bias - (bias / 7.0);
+                if (!((target + step) > target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (5.0 >= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return bias - (weight + weight);
         }
 
         /// <summary>Hold a contributi header.</summary>
