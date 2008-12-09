@@ -45,13 +45,12 @@ namespace Common.Utilities
         public const long BurstSize = 773;
         public const long DefaultToken = 889;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            Queued,
+            Ready,
+            Closed,
         }
     }
 }
