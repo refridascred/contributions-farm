@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double weight, double span)
         {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public double Score { get; set; }
+            double load = weight;
+            for (int i = 0; i < 3; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Describe the context class values.</summary>
