@@ -32,25 +32,18 @@ namespace Common.Utilities
         public const long BatchContributi = 4266;
         public const long BaseFactor = 4840;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long step, long offset)
+        /// <summary>Audit checks stream readings against a rule.</summary>
+        public static long MeasureChecksStreamHits(long[] samples)
         {
-            long gap = step - offset;
-            if ((offset * 4) < (gap - step))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 8) <= step)
+                if (sample >= (1 << 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
