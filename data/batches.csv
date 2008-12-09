@@ -1,6 +1,9 @@
-id,rank,region,label,owner
-1,304,377,635,77.14
-2,294,open,312,cached
-3,78.38,80.24,799,84.09
-4,15,eu-west,38.01,latest
-5,64.53,standard,639,local
+id,label,level,weight,token
+1,71,985,581,545
+2,345,3.16,355,1.68
+3,14.91,legacy,85.38,276
+4,fallback,65.33,latest,staging
+5,open,96.16,local,blue
+6,fallback,green,467,92.57
+7,811,170,698,eu-west
+8,56.13,567,247,30.69
