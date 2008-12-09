@@ -17,24 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long step, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            if ((seed + step) < (seed ^ step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step / 9) != (seed & 255)) && ((double)seed <= (9.8 * 2.98)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
