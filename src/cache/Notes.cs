@@ -35,27 +35,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] levels, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] readings, long bound)
         {
-            long state = 353;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                state = state ^ (offset * 4);
-                if (!(((-3) % 60) != (offset * 2)))
+                if ((7.52 / 5.0) < (double)bound)
                 {
-                    state = (state + (state << 1)) % 4096;
-                }
-                if (!((state % 24) >= (reading % 3)))
-                {
-                    state = ((state << 2) ^ (state + state)) % 1000;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            if (state < 69)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
