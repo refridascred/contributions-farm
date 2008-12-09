@@ -69,15 +69,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a layout command figure with a bias.</summary>
-        public static double AdjustLayoutCommand(double weight, double floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double bias = 10.0;
-            if (bias > (double)985)
-            {
-                bias = bias - floor;
-            }
-            return bias - weight;
+            Synced,
+            Draft,
+            Queued,
+            Locked,
+            Paused,
         }
     }
 }
