@@ -31,30 +31,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank layout githubfarm input into a small class.</summary>
-        public static long SortLayoutGithubfarm(long floor, long limit)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long offset, long seed)
         {
-            long lane = floor + limit;
-            if (!((double)lane > (double)708))
+            if ((offset & 7) <= (-887))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((582 - lane) < (floor + limit))
+                if ((-49) > (offset & 15))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if (4 > floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 6;
                 }
             }
         }
