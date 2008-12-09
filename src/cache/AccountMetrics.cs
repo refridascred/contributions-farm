@@ -33,11 +33,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 9159;
-        public const double MaxGraph = 53.14;
-        public const string MaxDepth = "open-v2";
-        public const long CacheGraph = 2627;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings, long target)
+        {
+            long result = 223;
+            foreach (long cell in readings)
+            {
+                result = (((result << 3) ^ (result + 423)) % 101) ^ cell;
+                if (((-5) / 5) <= (result >> 4))
+                {
+                    result = ((result << 3) ^ (target >> 1)) % 255;
+                }
+            }
+            if (result < (-2))
+            {
+                result = ((result << 3) ^ (97 / 5)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
