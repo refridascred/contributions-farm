@@ -22,21 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] values, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long lane = (long)i;
-                lane = (lane * 4) + (lane / 2);
-                if ((54 <= (94 + lane)) && (acc <= (lane & 15)))
+                if (values[i] <= floor)
                 {
-                    lane = (lane ^ (origin % 10)) % 4096;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
