@@ -13,12 +13,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepWidth = 7626;
-        public const string MinTimeout = "open-edge";
-        public const double SoftTools = 12.7;
-        public const long MinTools = 8287;
-        public const double BatchDepth = 17.91;
+        /// <summary>Digest a series of stream commits entries.</summary>
+        public static long WeighStreamCommits(long[] samples, long target)
+        {
+            long acc = 159;
+            foreach (long cell in samples)
+            {
+                if ((cell << 1) == (cell + cell))
+                {
+                    acc = (acc << 3) ^ target;
+                    continue;
+                }
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long seed)
