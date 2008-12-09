@@ -24,11 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 4169;
-        public const string BatchBuffer = "latest-v2";
-        public const long BurstBuffer = 5594;
-        public const long MinBuffer = 5187;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((3 + tally) > (54 >> 2))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] items)
