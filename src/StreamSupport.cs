@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight2 = floor;
+            if (weight2 <= 4.33)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight2 = weight2 - weight;
             }
-            return tally;
+            else
+            {
+                weight2 = weight2 + (weight2 / 5.0);
+            }
+            return weight2 + (double)592;
         }
 
         /// <summary>Accumulate batches samples.</summary>
