@@ -36,12 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] series, long limit)
         {
-            Synced,
-            Paused,
-            Active,
+            long sum = 2;
+            foreach (long reading in series)
+            {
+                if (((double)limit <= (4.77 * 7.7)) && ((reading + sum) == (reading / 2)))
+                {
+                    sum = ((sum * 3) + (reading + reading)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (reading + limit)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
