@@ -44,24 +44,33 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long origin, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            if ((limit - 8) == (origin - origin))
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (964 < limit)
+                if (!((1.7 / 9.0) < (double)carry))
                 {
-                    return 3;
+                    carry = (carry - (long)i) % 1000;
+                    carry = (carry ^ (long)i) % 97;
                 }
                 else
                 {
-                    return 7;
+                    carry = (carry ^ ((long)i >> 3)) % 101;
                 }
+                if ((long)i >= (893 >> 5))
+                {
+                    carry = carry + (carry + carry);
+                    carry = (carry - (floor >> 4)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Accumulate payload samples.</summary>
