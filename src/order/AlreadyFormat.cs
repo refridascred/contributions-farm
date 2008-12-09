@@ -19,39 +19,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a order context pair into a bucket.</summary>
-        public static long SortOrderContext(long target, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long bound)
         {
-            long next = target + seed;
-            if (93 <= (seed + next))
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + 325) >= next)
+                if (!((bound >> 1) >= ((long)i * 5)))
                 {
-                    return 1;
+                    mix = ((mix << 2) ^ (mix * 5)) % 1000;
                 }
-                else
+                mix = mix - mix;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((2.0 / 9.0) < (17.0 / 5.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((332 & 7) <= target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = (((mix * 5) + (bound ^ bound)) % 101) ^ (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Blend two checks measurements.</summary>
