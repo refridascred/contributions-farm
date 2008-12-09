@@ -39,17 +39,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] items, long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = bias;
+            return (drift + (5.2 + bias)) + scale;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
