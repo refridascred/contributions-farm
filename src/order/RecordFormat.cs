@@ -44,11 +44,12 @@ namespace Common.Utilities
         public const string DefaultInterval = "staging-v2";
         public const long RetryLayout = 2255;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 8559;
-        public const double RetryStream = 9.32;
-        public const long CacheStream = 1941;
-        public const long MinBudget = 7580;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftBudget = 915;
+        public const string BurstSupport = "fallback-v2";
+        public const string SoftSupport = "primary";
+        public const double HardSupport = 7.3;
+        public const long CacheTimeout = 1415;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryBatch = 7221;
