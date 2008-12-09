@@ -2,9 +2,7 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER,
-    owner TEXT NOT NULL,
-    token TEXT,
+    weight REAL,
     state TEXT NOT NULL DEFAULT 'new'
 );
 
