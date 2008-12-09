@@ -27,14 +27,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
+        public static bool CheckPayloadClusterRange(long[] levels, long offset)
         {
-            Idle,
-            Ready,
-            Failed,
-            Closed,
-            Retry,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
