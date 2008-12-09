@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metrics tools samples are out of range.</summary>
-        public static long CountMetricsToolsGaps(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)floor >= (8.07 - 14.0))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowBudget = 4737;
+        public const string MaxContributi = "legacy-v2";
+        public const string HardWidth = "open-v2";
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueRange(long[] series, long origin)
