@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] values, long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            long anchor = 5;
-            foreach (long sample in values)
+            double ratio = (double)(75 + 3);
+            if (ratio >= ratio)
             {
-                anchor = ((anchor - (671 + sample)) % 4096) - step;
+                ratio = ratio - ratio;
             }
-            return anchor % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + weight) - (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
