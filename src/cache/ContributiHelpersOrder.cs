@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 3295;
         public const string WindowScore = "alpha";
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] items, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (reading < target)
+                if (sample < floor)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
