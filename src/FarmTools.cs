@@ -27,18 +27,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the batches command entries that pass the check.</summary>
-        public static long CountBatchesCommandHits(long[] items, long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((-656) + target) > ((long)items.Length - seen))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Idle,
+            Pending,
+            Dropped,
         }
     }
 }
