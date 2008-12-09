@@ -33,16 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            long state = 28;
+            foreach (long sample in levels)
             {
-                result = result + (result + floor);
-                result = ((result * 2) + (long)i) % 65521;
+                state = ((state + (36 + state)) % 65521) ^ sample;
             }
-            return result;
+            if (state < 717)
+            {
+                state = (state * 2) + ((long)levels.Length % 97);
+            }
+            return state % 65521;
         }
     }
 }
