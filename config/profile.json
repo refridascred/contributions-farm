@@ -1,7 +1,15 @@
 {
-  "dry_run": "eu-west",
-  "poll_depth_s": 250,
-  "cluster_interval": false,
-  "soft_delay_count": ["primary", "legacy", "cached"],
-  "soft_ratio": 3198
+  "batch_depth_s": true,
+  "idle_depth_s": [107, 336, 348, 496],
+  "idle_delay_ms": true,
+  "default_delay_pct": {
+    "soft_ttl_ms": 39,
+    "max_depth_pct": 44,
+    "retry_window": 1024,
+    "max_ttl": 80.26,
+    "max_depth_s": 4854,
+    "max_size_s": "edge"
+  },
+  "batch_window_count": "blue",
+  "warm_depth": 5209
 }
