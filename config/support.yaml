@@ -1,10 +1,16 @@
 # support settings
-warm_capacity_pct: stable
-max_size: 4230
-hard_threshold_pct: 16
-compress: 500
-audit: 21.79
-poll_threshold:
-  - 147
-  - 303
-  - 340
+flush_interval_s:
+  cache_threshold_pct:
+    max_retries:
+      - 494
+      - 72
+      - 368
+    commits_ttl: edge
+    audit: 30
+  min_delay: true
+  max_retries_count: 57
+  report_window: 60
+  notes_ratio: 94
+warm_size_s: open
+max_delay_s: 3
+verbose: open
