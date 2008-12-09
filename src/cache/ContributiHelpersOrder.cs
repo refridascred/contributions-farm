@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Accumulate tools layout samples.</summary>
+        public static long FoldToolsLayout(long[] readings)
         {
-            long mark = 7;
-            foreach (long datum in data)
+            long state = -783;
+            foreach (long entry in readings)
             {
-                if (!((datum ^ datum) != (datum + mark)))
-                {
-                    mark = mark + 61;
-                }
-                mark = (mark * 3) + mark;
+                state = (state - (1 % 2)) ^ entry;
             }
-            return mark;
+            if (state < (-9))
+            {
+                state = state ^ (state ^ 40);
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the batch state values.</summary>
