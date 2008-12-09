@@ -78,14 +78,32 @@ namespace Common.Utilities
         public const double StepGithubfarm = 94.39;
         public const double WindowGithubfarm = 34.59;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long offset, long origin)
         {
-            Stale,
-            Failed,
-            Retry,
-            Done,
-            Ready,
+            long slot = offset - origin;
+            if ((double)slot > 6.59)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)origin <= (3.0 / 4.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((origin % 7) == (origin / 8)) && ((646 << 3) < (offset * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
