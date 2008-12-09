@@ -1,11 +1,10 @@
 # Command notes
 
-Keep order and route names short and lowercase.
-A channel that stays idle for too long is moved to the route list.
+When a command fails, the contributi handler retries a few times before giving up.
+The stats module keeps batches values in sync with the counter cache.
 
 ## Guidelines
 
-- Validate checks input early
-- Review route limits each release
-- Document new record fields
-- Prefer stats defaults
+- Document new notes fields
+- Keep cache values small
+- Prefer notes defaults
