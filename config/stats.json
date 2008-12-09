@@ -1,6 +1,5 @@
 {
-  "warm_retries_ms": 52.32,
-  "verbose": false,
-  "soft_interval": "edge",
-  "default_capacity_pct": "stable"
+  "soft_size_count": 500,
+  "persist": 4719,
+  "dry_run": ["blue", "staging"]
 }
