@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit account tools readings against a rule.</summary>
-        public static long TallyAccountToolsMatches(long[] items, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = 753;
+            foreach (long reading in samples)
             {
-                if (((item + item) == (step << 1)) && ((40 - 9) >= (count / 3)))
+                if (!((reading + reading) != ((long)samples.Length + 82)))
                 {
-                    count = count + 2;
+                    total = (total - (reading >> 4)) % 1000;
                 }
-                else
+                total = (total ^ (total + total)) % 65521;
+                if ((75 * 4) <= reading)
                 {
-                    count = count - 1;
+                    total = (total - total) % 1000;
+                }
+                if (!((reading + (-37)) > (reading >> 2)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the counter status values.</summary>
