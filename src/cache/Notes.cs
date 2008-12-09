@@ -57,12 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleContributi = "strict-v2";
+        public const long IdleDepth = 5104;
+        public const string DefaultContributi = "standard-v2";
+        public const long BatchBudget = 3912;
+        public const long StepContributi = 1803;
     }
 }
