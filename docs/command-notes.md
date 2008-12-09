@@ -1,11 +1,14 @@
 # Command notes
 
-Use account settings to tune how often contributi data is refreshed.
-Run the record check before changing any payload limits.
-The counter report groups every checks by stream.
+Run the batch check before changing any entry limits.
+Keep farm and payload names short and lowercase.
+
+A filter that stays idle for too long is moved to the buffer list.
+The metrics report groups every context by commits.
+The metrics report groups every filter by farm.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review already limits each release
-- Log every buffer change
+- Review metrics limits each release
+- Keep order values small
+- Validate payload input early
