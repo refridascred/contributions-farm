@@ -41,9 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 5812;
-        public const string MaxRatio = "strict";
-        public const string LimitFilter = "strict-edge";
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
