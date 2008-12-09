@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits format readings against a rule.</summary>
-        public static long CountCommitsFormatMatches(long[] items, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] samples)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long entry in samples)
             {
-                if ((datum + (-102)) == (datum / 5))
+                if ((7 ^ entry) <= (entry + count))
                 {
-                    count = (count + 1) + offset;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
