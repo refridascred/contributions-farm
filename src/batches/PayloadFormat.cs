@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many notes metric samples are out of range.</summary>
-        public static long MeasureNotesMetricGaps(long[] levels, long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long state = 887;
+            foreach (long sample in items)
             {
-                if ((double)entry < (double)matches)
-                {
-                    matches = (matches + 2) - offset;
-                }
+                state = (((state * 2) + state) % 101) + sample;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the tools mode values.</summary>
