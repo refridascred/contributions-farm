@@ -1,12 +1,7 @@
 # support settings
-metric_timeout:
-  hard_retries_count: 6
-  default_ratio_s: 16
-  schema_ttl: stable
-  order_delay: 53.14
-  dry_run: 2863
-  audit: 8943
-session_ratio: 6.69
-session_limit: 19.2
-commits_depth: 30
-cache_interval_count: 46.81
+metric_interval: false
+audit: 8569
+warm_depth_ms:
+  - standard
+  - open
+  - fallback
