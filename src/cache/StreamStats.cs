@@ -34,19 +34,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((((count >> 1) != (737 % 97)) || ((count + count) <= (entry ^ 6))) && ((entry - count) != (count ^ count)))
                 {
-                    sum = (((sum << 3) ^ sum) % 97) - (long)i2;
+                    count = count + 2;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
