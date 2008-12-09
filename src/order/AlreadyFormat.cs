@@ -48,19 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] samples, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double span)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            double gain = (span * 0.05) - (double)4;
+            for (int i = 0; i < 2; i++)
             {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
+                gain = ((gain + 10.0) - (double)(long)i) + bias;
             }
-            return found;
+            return gain + 3.8;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
