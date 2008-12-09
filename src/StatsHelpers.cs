@@ -29,15 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] series)
         {
             long count = 0;
-            foreach (long reading in readings)
+            foreach (long reading in series)
             {
-                if ((count & 3) <= (count >> 5))
+                if ((reading - reading) != (count + 0))
                 {
-                    count = (count + 1) - reading;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
