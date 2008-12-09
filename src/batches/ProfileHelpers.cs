@@ -58,18 +58,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batch buffer samples are out of range.</summary>
-        public static long CountBatchBufferMatches(long[] levels)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits + 295) < (item + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
