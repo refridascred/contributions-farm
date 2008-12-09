@@ -46,11 +46,13 @@ namespace Common.Utilities
             return (weight - (ratio / 5.0)) + span;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
