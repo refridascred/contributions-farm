@@ -1,23 +1,7 @@
 {
-  "checks_depth": 3,
-  "compress": {
-    "soft_size_ms": false,
-    "default_timeout_ms": "strict",
-    "compress": "strict",
-    "base_ratio": 6.8
-  },
-  "persist": false,
-  "hard_depth": {
-    "idle_depth_ms": true,
-    "hard_retries_count": 9526,
-    "hard_capacity": "latest",
-    "cache_delay": {
-      "tools_timeout": 22.16,
-      "window_delay": true,
-      "default_size": 250,
-      "max_limit_count": ["cached", "local", "local", "eu-west"]
-    },
-    "persist": [496, 216, 91]
-  },
-  "flush_depth_ms": 10
+  "hard_window_pct": "primary",
+  "flush_ttl_count": 500,
+  "sync_limit_pct": 1024,
+  "persist": true,
+  "profile_ratio": [306, 495, 443]
 }
