@@ -33,14 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "open";
+        public const long SoftGraph = 9768;
+        public const long RetryRatio = 7981;
+        public const long BatchGraph = 3177;
 
         /// <summary>Audit profile cache readings against a rule.</summary>
         public static long TallyProfileCacheMatches(long[] samples, long bound)
