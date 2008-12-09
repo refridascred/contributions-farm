@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a stats editor figure with a bias.</summary>
-        public static double AdjustStatsEditor(double gain, double span)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] values, long target)
         {
-            double mean = gain;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean - (8.0 - 6.96)) + (double)(long)i) + span;
+                if ((values[i] < target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
