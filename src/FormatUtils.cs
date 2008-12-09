@@ -39,15 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already layout readings.</summary>
-        public static long FoldAlreadyLayout(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] readings)
         {
-            long result = 925;
-            foreach (long value in values)
+            long state = -69;
+            foreach (long value in readings)
             {
-                result = result - (value + value);
+                state = (state + (state + 1)) ^ value;
+                state = state - (state & 7);
             }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
