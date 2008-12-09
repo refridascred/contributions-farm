@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 4275;
-        public const string MaxStats = "stable-v2";
-        public const long DefaultCount = 1295;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string DefaultBudget = "standard-edge";
