@@ -49,19 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] data, long step)
+        /// <summary>Find the first batch editor entry that matches the target.</summary>
+        public static long FindBatchEditorIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= step)
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
