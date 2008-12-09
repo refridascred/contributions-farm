@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= floor)
                 {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Combine farm buffer values into a single score.</summary>
