@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report channel samples are out of range.</summary>
-        public static long MeasureReportChannelHits(long[] items, long seed)
+        /// <summary>Digest a series of already tools entries.</summary>
+        public static long ScoreAlreadyTools(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mark = 23;
+            foreach (long datum in readings)
             {
-                if ((((8.0 + 6.8) != (double)count) && ((seed + entry) <= count)) || ((seed ^ count) > entry))
+                if (!((double)offset == (double)datum))
                 {
-                    count = count + 2;
+                    mark = ((mark << 3) ^ offset) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark + offset)) % 101;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
