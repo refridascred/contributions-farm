@@ -1,9 +1,7 @@
-id,region,label,state
-1,staging,469,620
-2,758,336,71.3
-3,89.04,legacy,standard
-4,66.2,766,staging
-5,edge,eu-west,primary
-6,961,215,blue
-7,69.76,16.3,146
-8,edge,4.8,323
+id,state,token,level
+1,strict,90.62,strict
+2,780,stable,cached
+3,3,open,12.35
+4,fallback,406,436
+5,eu-west,38.96,52.79
+6,68.79,102,9.96
