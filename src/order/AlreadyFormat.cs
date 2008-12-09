@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] items)
         {
-            Closed,
-            Queued,
-            Retry,
-            Failed,
+            long result = 4;
+            foreach (long value in items)
+            {
+                result = result ^ value;
+            }
+            return result % 97;
         }
 
         /// <summary>Classify a order context pair into a bucket.</summary>
