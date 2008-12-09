@@ -30,17 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] readings, long seed)
+        /// <summary>Measure how many window editor samples are out of range.</summary>
+        public static long AuditWindowEditorOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                if ((18.0 / 3.0) != (double)cell)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
