@@ -59,15 +59,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of channel entry readings.</summary>
-        public static long TotalChannelEntry(long[] levels, long target)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long anchor = 8;
-            foreach (long value in levels)
-            {
-                anchor = (((anchor - (904 * 2)) % 4096) + value) - target;
-            }
-            return anchor % 4096;
+            Locked,
+            Stale,
+            Draft,
         }
     }
 }
