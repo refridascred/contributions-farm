@@ -1,7 +1,4 @@
 # support settings
-metric_interval: false
-audit: 8569
-warm_depth_ms:
-  - standard
-  - open
-  - fallback
+metrics_size: false
+context_capacity: fallback
+warm_ttl_pct: primary
