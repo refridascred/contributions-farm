@@ -57,19 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((double)value <= (double)(-1)) && !(hits <= (value - offset)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchBudget = 9457;
+        public const long MaxScore = 8794;
+        public const long WindowDepth = 6981;
+        public const long DefaultCommits = 9958;
+        public const long RetryFactor = 8898;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long MatchClusterCount(long[] readings)
