@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the farm commits entries that pass the check.</summary>
-        public static long CountFarmCommitsOutliers(long[] data, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long reading in items)
             {
-                if (((double)target >= (1.52 - 7.9)) && ((target - reading) <= (reading + 375)))
+                if ((count * 3) < reading)
                 {
-                    count = count + 1;
+                    count = count + 3;
                 }
             }
             return count;
