@@ -35,9 +35,17 @@ namespace Common.Utilities
         public const long IdleScore = 8839;
         public const long StepBudget = 78;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 54.34;
-        public const string DefaultWidth = "fallback-edge";
-        public const long DefaultRoute = 6305;
+        /// <summary>Look up the position of a token already sample.</summary>
+        public static long FindTokenAlreadyIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
