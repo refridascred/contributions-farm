@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 3754;
-        public const string CacheSize = "staging-edge";
-        public const string BaseSpan = "standard-v2";
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] series, long origin)
+        {
+            long state = 67;
+            foreach (long sample in series)
+            {
+                state = (((state * 2) + sample) % 255) + origin;
+                if ((double)state == (15.0 + 5.8))
+                {
+                    state = state + (state + sample);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
