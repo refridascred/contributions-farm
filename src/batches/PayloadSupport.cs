@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample < limit)
                 {
-                    if ((items[i] - items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
