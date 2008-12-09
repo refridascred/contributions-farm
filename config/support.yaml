@@ -1,4 +1,13 @@
 # support settings
-metrics_size: false
-context_capacity: fallback
-warm_ttl_pct: primary
+queue_limit:
+  - 39
+  - 303
+  - 334
+enabled: false
+base_ratio:
+  - edge
+  - eu-west
+  - fallback
+soft_retries_s: true
+token_interval: standard
+batch_ratio: 47.56
