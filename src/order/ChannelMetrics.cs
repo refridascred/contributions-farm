@@ -13,27 +13,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Project the next farm report value.</summary>
+        public static double SmoothFarmReport(double rate, double floor)
         {
-            long acc = 9;
-            foreach (long value in series)
+            double mean = rate;
+            if (mean < (floor / 7.0))
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = (acc ^ (228 - value)) - (long)i;
-                }
-                if ((value - acc) > (acc * 5))
-                {
-                    acc = (acc + (value + acc)) % 65521;
-                    break;
-                }
-                if (value > (value * 4))
-                {
-                    acc = (acc ^ (value >> 5)) % 97;
-                }
+                mean = mean + mean;
             }
-            return acc;
+            else
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + rate) - (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Find the first entry editor entry that matches the target.</summary>
