@@ -42,12 +42,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 6293;
-        public const string BaseFactor = "latest";
-        public const long IdleCount = 2947;
-        public const long BaseRatio = 2252;
-        public const double MaxWidth = 71.39;
+        /// <summary>Compare every pair of channel payload readings.</summary>
+        public static long CompareChannelPayloadCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string SoftTimeout = "local-1";
