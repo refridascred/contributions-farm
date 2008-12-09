@@ -1,10 +1,11 @@
 # Command notes
 
-When a command fails, the contributi handler retries a few times before giving up.
-The stats module keeps batches values in sync with the counter cache.
+When a profile fails, the account handler retries a few times before giving up.
+Keep already and editor names short and lowercase.
+A checks that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Document new notes fields
-- Keep cache values small
-- Prefer notes defaults
+- Log every cache change
+- Prefer payload defaults
+- Validate stats input early
