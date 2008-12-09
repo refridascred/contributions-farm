@@ -28,32 +28,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank metrics schema input into a small class.</summary>
-        public static long RankMetricsSchema(long bound, long floor)
+        /// <summary>Find the first farm record entry that matches the target.</summary>
+        public static long SeekFarmRecordIndex(long[] values, long limit)
         {
-            long gap = bound - floor;
-            if ((double)floor != (7.0 + 2.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)bound < (double)510))
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor << 1) != (gap + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
