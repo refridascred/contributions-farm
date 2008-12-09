@@ -44,15 +44,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit contributi format readings against a rule.</summary>
-        public static long CountContributiFormatHits(long[] readings, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] readings)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long sample in readings)
             {
-                if ((entry * 4) < (floor / 7))
+                if ((hits <= sample) || !(hits < sample))
                 {
-                    hits = hits + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
