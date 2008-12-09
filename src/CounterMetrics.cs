@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] readings)
+        /// <summary>Project the next batches command value.</summary>
+        public static double BlendBatchesCommand(double ratio, double span)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double load = (0.6 + span) / 7.0;
+            if (load <= (double)33)
             {
-                if ((double)(long)readings.Length > (4.0 - 2.2))
-                {
-                    count = (count + 2) - value;
-                }
+                load = load - (ratio - 9.55);
             }
-            return count;
+            else
+            {
+                load = load + load;
+            }
+            return load - (span * 5.4);
         }
 
         /// <summary>Hold a channel entry.</summary>
