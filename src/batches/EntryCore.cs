@@ -58,12 +58,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Locked,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 743;
+        public const long BurstContext = 9243;
+        public const string DefaultSpan = "open-1";
+        public const string SoftContext = "cached-edge";
     }
 }
