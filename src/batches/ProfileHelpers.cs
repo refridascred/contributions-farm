@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double rate, double offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            double drift = offset / 7.0;
-            if (drift <= (7.2 / 8.0))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + offset) - rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
