@@ -51,21 +51,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -88;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((item - 65) > (anchor % 3)))
                 {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - (item + 2)) % 4096;
+                }
+                anchor = ((anchor * 3) + (item + 18)) % 101;
+                if (!((anchor + item) < (item + anchor)))
+                {
+                    anchor = (anchor - item) % 255;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
