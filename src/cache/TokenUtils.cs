@@ -37,18 +37,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] data)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long carry = 525;
+            foreach (long datum in levels)
             {
-                if (!!((hits - hits) < 340))
+                if (((double)datum == (double)carry) && ((datum ^ datum) < (165 - seed)))
                 {
-                    hits = (hits + 3) - datum;
+                    carry = ((carry * 2) + carry) % 97;
                 }
             }
-            return hits;
+            if (carry < 406)
+            {
+                carry = (carry * 2) + (seed + 523);
+            }
+            return carry;
         }
     }
 }
