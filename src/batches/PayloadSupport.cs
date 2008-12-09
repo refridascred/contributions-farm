@@ -33,19 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((1.7 + 0.28) > (double)state)
-                {
-                    state = (state + (step - state)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public double Weight { get; set; }
+            public double Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
