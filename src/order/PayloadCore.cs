@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSpan = 4588;
-        public const long SoftScore = 5273;
-        public const long BurstSchema = 7727;
-        public const string WindowSchema = "legacy-v2";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepCount = 9748;
+        public const string CacheRecord = "primary-1";
+        public const long BatchBudget = 3142;
+        public const string HardBudget = "strict";
+        public const long LimitInterval = 2373;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] values, long limit)
