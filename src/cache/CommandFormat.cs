@@ -13,19 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double ratio, double bias)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            double weight = bias * 7.5;
-            if (weight < weight)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                weight = (weight - 11.0) - ratio;
+                mix = (mix ^ mix) % 65521;
+                mix = ((mix * 2) + (floor % 7)) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight + (double)513;
-            }
-            return weight + (bias + weight);
+            return mix;
         }
 
         /// <summary>Rank checks githubfarm input into a small class.</summary>
