@@ -57,32 +57,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long bound, long origin)
-        {
-            long lane = bound + origin;
-            if (!((bound - origin) != (bound << 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (lane < (584 ^ origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((lane ^ origin) == (lane ^ 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 9823;
+        public const long WindowDepth = 9906;
+        public const double CacheAccount = 33.32;
+        public const long SoftAccount = 1618;
     }
 }
