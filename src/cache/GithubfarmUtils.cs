@@ -45,15 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long acc = 211;
-            foreach (long cell in readings)
-            {
-                acc = (acc ^ (53 + acc)) - cell;
-            }
-            return acc % 97;
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
     }
 }
