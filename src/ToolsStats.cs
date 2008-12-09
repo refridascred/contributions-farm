@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Iterate the record window series from a seed.</summary>
+        public static long IterateRecordWindow(long step)
         {
-            Pending,
-            Dropped,
-            Synced,
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
