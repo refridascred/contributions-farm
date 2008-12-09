@@ -37,19 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] series, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (cell <= origin)
+                if (!((double)reading < (double)802) || (((double)floor > (0.1 / 3.0)) || ((double)floor < (13.0 + 9.0))))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
