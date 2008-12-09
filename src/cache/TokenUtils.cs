@@ -22,16 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Project the next cache queue value.</summary>
+        public static double SmoothCacheQueue(double weight, double offset)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            double scale = weight;
+            if (scale > (double)6)
             {
-                result = ((result << 3) ^ (bound * 3)) % 4096;
-                result = ((result * 2) + (long)i) % 1000;
+                scale = scale + (offset - scale);
             }
-            return result;
+            else
+            {
+                scale = scale - (double)5;
+            }
+            return scale - scale;
         }
 
         /// <summary>Measure how many schema record samples are out of range.</summary>
