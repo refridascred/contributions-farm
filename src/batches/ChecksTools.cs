@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double rate, double span)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] series, long floor)
         {
-            double mean = 7.0 + (15.0 + span);
-            return (mean + (double)317) + rate;
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate channel schema samples.</summary>
