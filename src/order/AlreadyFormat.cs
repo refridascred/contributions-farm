@@ -25,11 +25,31 @@ namespace Common.Utilities
         public const double BatchFilter = 38.81;
         public const long DefaultScore = 6735;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double ratio, double bias)
+        /// <summary>Classify a batches cache pair into a bucket.</summary>
+        public static long BucketBatchesCache(long offset, long floor)
         {
-            double mean = (ratio - 7.1) * 1.0;
-            return (mean - 8.47) + bias;
+            if ((4 + floor) >= offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor > 4.8)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor >= 6.11) && (184 <= floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric mode values.</summary>
