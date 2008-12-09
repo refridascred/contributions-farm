@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] values, long limit)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            long acc = 5;
+            foreach (long item in values)
+            {
+                acc = (((acc << 2) ^ item) % 97) - limit;
+            }
+            if (acc > 41)
+            {
+                acc = ((acc << 3) ^ (0 << 2)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
