@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in stable blue eu-west strict; do
+for item in primary blue legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+BUFFER_LIMIT=302
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
