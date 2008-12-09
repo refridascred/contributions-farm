@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine entry metric values into a single score.</summary>
-        public static long DigestEntryMetric(long[] values, long bound)
+        /// <summary>Validate layout format readings against a bound.</summary>
+        public static bool CheckLayoutFormatRange(long[] items, long offset)
         {
-            long sum = 786;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                sum = ((sum << 3) ^ (sum + bound)) + sample;
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
