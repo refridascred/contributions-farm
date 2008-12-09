@@ -49,19 +49,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a session schema reading.</summary>
-        public static double ProjectSessionSchema(double scale, double floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels, long bound)
         {
-            double mean = floor + (floor - floor);
-            if (mean > (mean + mean))
+            long mark = 9;
+            foreach (long item in levels)
             {
-                mean = mean + (mean + scale);
+                if ((mark & 7) >= (mark * 2))
+                {
+                    mark = (mark - item) % 65521;
+                }
+                mark = (mark ^ (mark + mark)) % 65521;
+                if ((mark + (long)levels.Length) == (bound - mark))
+                {
+                    mark = mark - (item >> 5);
+                }
+                if ((item << 3) >= (bound + mark))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (mean - scale);
-            }
-            return mean + (scale + mean);
+            return mark % 1000;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
