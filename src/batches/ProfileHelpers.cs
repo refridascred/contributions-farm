@@ -52,11 +52,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels, long floor)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits & 3) >= (floor >> 1))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer class values.</summary>
