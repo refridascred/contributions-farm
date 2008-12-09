@@ -1,5 +1,6 @@
 # githubfarm settings
-readonly: cached
-session_retries: 51.96
-cache_depth_count: 96
-default_depth: 30.29
+base_limit_ms: 15.1
+batch_threshold_ms: 496
+editor_limit: false
+retry_timeout: legacy
+idle_retries_count: 9272
