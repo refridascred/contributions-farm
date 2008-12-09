@@ -1,10 +1,13 @@
 {
-  "support_window": "local",
-  "persist": {
-    "already_capacity": "stable",
-    "min_ttl_ms": 14.39,
-    "retry_capacity": 60,
-    "dry_run": 2587
+  "schema_threshold": ["staging", "standard", "blue"],
+  "default_limit": {
+    "burst_depth_ms": [117, 234, 340, 429],
+    "route_window": "staging",
+    "retry_depth": ["primary", "edge"],
+    "stats_depth": ["staging", "eu-west", "stable", "strict"],
+    "sync_ttl_ms": true,
+    "min_size_pct": "edge"
   },
-  "batch_threshold_s": false
+  "min_window_pct": 8266,
+  "burst_interval_ms": "edge"
 }
