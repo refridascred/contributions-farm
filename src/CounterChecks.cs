@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const string WindowTools = "standard-1";
         public const double BaseWidth = 96.69;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels)
         {
-            double bias = (floor + 20.0) + weight;
-            if (bias > bias)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                bias = bias + weight;
+                if ((double)sample <= (double)hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                bias = bias - (bias + floor);
-            }
-            return bias + (double)53;
+            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
