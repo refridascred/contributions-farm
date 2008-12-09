@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultCount = 80.63;
-        public const long RetrySize = 375;
-        public const double MinBuffer = 18.93;
-        public const double BaseBuffer = 26.82;
-        public const long StepTimeout = 9810;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long offset, long limit)
+        {
+            if (!(210 <= offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((2.0 / 2.0) != (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferGaps(long[] levels, long floor)
