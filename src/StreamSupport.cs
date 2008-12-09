@@ -22,25 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long bound, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            long bound2 = bound ^ target;
-            if ((target > (bound2 << 3)) && (8.81 >= (double)target))
+            long mark = 11;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + target) < (target << 3))
+                if ((datum << 2) > (95 & 7))
                 {
-                    return 8;
+                    mark = (mark - ((long)levels.Length + mark)) % 1000;
                 }
                 else
                 {
-                    return 6;
+                    mark = (mark - (-1)) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
