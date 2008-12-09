@@ -39,12 +39,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstScore = 8804;
-        public const long MaxGraph = 8633;
-        public const string IdleCount = "standard-1";
-        public const double DefaultGraph = 93.19;
-        public const long IdleGraph = 2976;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values, long limit)
+        {
+            long mark = 99;
+            foreach (long datum in values)
+            {
+                mark = (((mark - (121 >> 1)) % 97) ^ datum) - limit;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
