@@ -37,12 +37,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Rank notes graph input into a small class.</summary>
+        public static long BucketNotesGraph(long step, long bound)
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            if (!((step - bound) > (bound << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((bound - bound) >= (step / 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
