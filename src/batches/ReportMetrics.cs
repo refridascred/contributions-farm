@@ -27,19 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] values, long origin)
         {
-            long result = 77;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long sample in values)
             {
-                result = result + (value * 3);
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result < 67)
-            {
-                result = (result ^ (result + result)) % 255;
-            }
-            return result % 1000;
+            return found;
         }
     }
 }
