@@ -1,14 +1,10 @@
 {
-  "poll_interval_pct": false,
-  "farm_capacity": [99, 303, 483, 70],
-  "channel_limit": {
-    "poll_threshold": "green",
-    "poll_ratio": 46,
-    "burst_interval_count": 60,
-    "min_size_count": "staging",
-    "record_delay": "stable"
+  "max_threshold_ms": {
+    "min_size": "fallback",
+    "base_interval": "standard",
+    "flush_window_ms": 1224,
+    "sync_threshold_pct": 3199
   },
-  "readonly": 89.41,
-  "poll_delay_pct": 2386,
-  "poll_size_pct": "staging"
+  "sync_timeout": 89,
+  "filter_window": false
 }
