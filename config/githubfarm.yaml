@@ -1,27 +1,10 @@
 # githubfarm settings
-max_threshold_s:
-  stats_limit: local
-  retry_delay_count:
-    - 448
-    - 315
-    - 454
-    - 21
-  verbose: 59.28
-  profile_ttl: false
-audit: strict
-farm_size:
-  payload_depth:
-    hard_ratio: strict
-    verbose: 100
-    cache_interval_ms: false
-    persist: true
-  audit: 500
-  record_depth: eu-west
-  readonly:
-    - 83
-    - 244
-    - 448
-    - 443
-strict: latest
-base_ratio_count: edge
-batch_threshold: true
+min_depth: 13.05
+hard_timeout:
+  default_retries_pct: fallback
+  batch_ttl: 25.78
+  verbose:
+    - fallback
+    - staging
+  notes_limit: latest
+verbose: 4781
