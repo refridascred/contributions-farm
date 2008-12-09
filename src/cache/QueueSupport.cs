@@ -55,13 +55,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Paused,
-            Failed,
-            Active,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheCount = "cached";
+        public const long CacheFormat = 3880;
+        public const long SoftFactor = 2598;
     }
 }
