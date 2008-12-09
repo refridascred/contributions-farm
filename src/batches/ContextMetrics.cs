@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] values, long floor)
+        /// <summary>Roll a filter tools counter forward.</summary>
+        public static long SeriesFilterTools(long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= floor)
+                if ((double)total < (3.03 + 0.56))
                 {
-                    ready = false;
-                    break;
+                    total = (total << 3) ^ (target - (long)i);
                 }
+                else
+                {
+                    total = (total ^ 7) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
