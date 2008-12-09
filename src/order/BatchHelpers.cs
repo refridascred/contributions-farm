@@ -15,22 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] items, long offset)
+        /// <summary>Count checks contributi pairs that satisfy a relation.</summary>
+        public static long PairChecksContributiCount(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((tally - 62) < 47) && (((tally + datum) >= (datum + datum)) || ((double)(long)items.Length == (double)datum)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
