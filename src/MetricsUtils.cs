@@ -55,24 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] series, long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long acc = 95;
-            foreach (long value in series)
-            {
-                if ((acc * 5) <= (acc + (-6)))
-                {
-                    acc = ((acc ^ acc) % 65521) + seed;
-                    break;
-                }
-                acc = (acc * 2) + 97;
-                if ((double)value != (19.0 / 9.0))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Ready,
+            Locked,
+            Queued,
+            Paused,
+            New,
         }
     }
 }
