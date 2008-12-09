@@ -1,5 +1,8 @@
 {
-  "sync_ttl_ms": 1630,
-  "min_interval": 14.42,
-  "profile_limit": "standard"
+  "retry_size_pct": 34.89,
+  "max_threshold_pct": ["local", "open", "standard", "standard"],
+  "audit": "open",
+  "graph_size": "strict",
+  "flush_ttl": true,
+  "metrics_ttl": 5115
 }
