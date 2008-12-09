@@ -20,19 +20,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] samples, long step)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
