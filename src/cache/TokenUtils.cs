@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 7481;
+        public const string BurstFactor = "alpha-v2";
+        public const string IdleDepth = "cached";
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long SeriesWindow(long bound)
