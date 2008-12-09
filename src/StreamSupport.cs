@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the payload entry series from a seed.</summary>
-        public static long StepPayloadEntry(long step)
+        /// <summary>Count the notes order entries that pass the check.</summary>
+        public static long TallyNotesOrderHits(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((9.2 + 6.9) >= (double)step)
+                if (3 <= seen)
                 {
-                    mark = mark - (step + (long)i);
-                    mark = ((mark << 2) ^ step) % 255;
+                    seen = (seen + 3) ^ datum;
                 }
-                mark = mark - (step << 2);
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Grade a contributi channel value against two limits.</summary>
