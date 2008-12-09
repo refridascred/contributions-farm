@@ -70,14 +70,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Idle,
-            Closed,
-            Dropped,
+            Pending,
             Draft,
-            Failed,
+            Retry,
+            Active,
         }
     }
 }
