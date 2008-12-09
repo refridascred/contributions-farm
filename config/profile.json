@@ -1,18 +1,12 @@
 {
-  "flush_size": "edge",
-  "record_ratio": "blue",
-  "already_ttl": "staging",
-  "token_timeout": "local",
-  "hard_timeout": {
-    "idle_timeout": false,
-    "sync_capacity_count": 30.84,
-    "buffer_delay": true,
-    "sync_window": {
-      "contributi_timeout": false,
-      "default_size_count": true,
-      "burst_ratio_s": 45.94
-    },
-    "poll_delay_ms": "local",
-    "soft_ttl_s": ["edge", "eu-west", "strict"]
-  }
+  "max_ttl_s": "green",
+  "githubfarm_ratio": "staging",
+  "profile_ratio": {
+    "hard_ttl_pct": true,
+    "hard_limit": 8840,
+    "base_capacity_pct": true,
+    "verbose": 39,
+    "token_size": 8540
+  },
+  "tools_depth": 8.47
 }
