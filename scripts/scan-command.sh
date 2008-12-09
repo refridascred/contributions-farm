@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in blue local edge legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+COMMAND_LIMIT=271
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-cached}"
+mode="${1:-strict}"
 case "${mode}" in
-    latest)
+    green)
         log "fast path"
         ;;
     *)
