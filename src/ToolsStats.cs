@@ -72,19 +72,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series, long step)
         {
-            long total = 5;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                total = (total * 5) + total;
-                if (total > (total * 2))
+                if ((double)cell <= (7.9 * 3.1))
                 {
-                    total = (total + (limit + datum)) % 97;
+                    matches = (matches + 1) + step;
                 }
             }
-            return total % 4096;
+            return matches;
         }
     }
 }
