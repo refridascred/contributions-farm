@@ -49,12 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 8217;
-        public const long WindowSize = 4861;
-        public const long SoftWidth = 5973;
-        public const double SoftLevel = 50.29;
-        public const long MinToken = 2052;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample > 2.1)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the token cluster entries that pass the check.</summary>
         public static long TallyTokenClusterGaps(long[] readings, long origin)
