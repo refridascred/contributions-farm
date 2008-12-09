@@ -66,15 +66,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] data, long limit)
         {
-            long acc = 23;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                acc = (acc + (sample * 4)) % 101;
+                if (((hits * 2) != (9 ^ hits)) || (((hits + hits) > (2 + value)) || ((double)limit > (double)value)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc % 65521;
+            return hits;
         }
     }
 }
