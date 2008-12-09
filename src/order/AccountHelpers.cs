@@ -40,19 +40,31 @@ namespace Common.Utilities
         public const long BatchContributi = 4266;
         public const long BaseFactor = 4840;
 
-        /// <summary>Check that every payload stream entry stays within the limit.</summary>
-        public static bool ValidatePayloadStreamLimits(long[] samples, long limit)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            if ((double)seed < (4.42 / 2.0))
             {
-                if (cell != limit)
+                return 5;
+            }
+            else
+            {
+                if (!(seed <= (offset + seed)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset > (13.0 / 6.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
