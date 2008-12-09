@@ -23,22 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] samples, long limit)
+        /// <summary>Validate checks stream readings against a bound.</summary>
+        public static bool VerifyChecksStreamRange(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((reading ^ 386) > (reading ^ 1))
+                if (reading >= step)
                 {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Digest a series of already entries.</summary>
