@@ -21,19 +21,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] items, long limit)
+        /// <summary>Measure how many schema window samples are out of range.</summary>
+        public static long AuditSchemaWindowMatches(long[] items)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long entry in items)
             {
-                if (entry < limit)
+                if (!((tally / 5) >= tally))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
