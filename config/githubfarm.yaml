@@ -1,10 +1,8 @@
 # githubfarm settings
-filter_window:
+burst_interval_count: edge
+persist:
+  - cached
   - stable
-  - staging
-  - eu-west
-  - standard
-default_ttl_pct: 87.41
-min_interval_count: 82.58
-poll_threshold_s: true
-persist: staging
+flush_ratio_s:
+  - fallback
+  - local
