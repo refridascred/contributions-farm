@@ -61,22 +61,25 @@ namespace Common.Utilities
             return (mean - 8.47) + bias;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] series, long floor)
+        /// <summary>Classify a stats session pair into a bucket.</summary>
+        public static long GradeStatsSession(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long step = seed ^ offset;
+            if ((step + seed) > seed)
             {
-                if ((double)tally <= (double)datum)
+                return 5;
+            }
+            else
+            {
+                if (step <= seed)
                 {
-                    tally = (tally + 1) + floor;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
