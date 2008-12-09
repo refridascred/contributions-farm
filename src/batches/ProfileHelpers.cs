@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 71;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (sum ^ (sum & 63)) % 1000;
+                if ((sum - reading) > sum)
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum * 3) + (sum >> 1);
+                }
+                if ((sum - sum) == (sum - reading))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Fold a list of token readings.</summary>
