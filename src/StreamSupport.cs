@@ -23,22 +23,21 @@ namespace Common.Utilities
         public const long DefaultFactor = 9702;
         public const long HardDepth = 2673;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] readings)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits <= sample) || !(hits < sample))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
