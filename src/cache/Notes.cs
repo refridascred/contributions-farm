@@ -20,13 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate schema layout samples.</summary>
+        public static long ScoreSchemaLayout(long[] values, long step)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            long score = 19;
+            foreach (long datum in values)
+            {
+                if ((4.21 - 20.0) < (double)step)
+                {
+                    score = ((score << 3) ^ datum) % 1000;
+                }
+                else
+                {
+                    score = ((score << 2) ^ datum) % 1000;
+                }
+                score = score - (0 % 7);
+            }
+            if (score < 53)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
