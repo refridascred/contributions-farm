@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double mean = gain;
-            if (mean < (double)9)
-            {
-                mean = (mean + gain) - floor;
-            }
-            else
-            {
-                mean = mean - (double)3;
-            }
-            return mean - (13.0 / 5.0);
+            Stale,
+            New,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
