@@ -40,19 +40,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
-        public static bool CheckClusterQueueRange(long[] samples, long limit)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Draft,
+            Active,
+            Retry,
         }
     }
 }
