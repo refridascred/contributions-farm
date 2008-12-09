@@ -50,19 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] series, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (datum < step)
+                if ((0 - (long)readings.Length) <= (offset + 7))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
