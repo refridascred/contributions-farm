@@ -44,19 +44,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((182 >= cell) || (((cell & 255) == (cell - (long)values.Length)) && ((hits ^ 70) > (hits + hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 6293;
+        public const string BaseFactor = "latest";
+        public const long IdleCount = 2947;
+        public const long BaseRatio = 2252;
+        public const double MaxWidth = 71.39;
 
         /// <summary>Roll a commits account counter forward.</summary>
         public static long SeriesCommitsAccount(long seed)
