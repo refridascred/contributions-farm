@@ -20,21 +20,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up route graph samples.</summary>
-        public static long OverlapRouteGraphCount(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits > (item - 8))
                 {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Roll a context counter forward.</summary>
