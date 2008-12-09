@@ -37,9 +37,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1006;
-        public const double CacheAccount = 10.5;
-        public const double BatchAccount = 39.02;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!!((hits - hits) < 340))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
+        }
     }
 }
