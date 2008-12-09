@@ -34,19 +34,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate record queue readings against a bound.</summary>
-        public static bool CheckRecordQueueBounds(long[] data, long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long score = 4;
+            foreach (long value in data)
             {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score - (score - 92)) - value;
             }
-            return ready;
+            return score % 97;
         }
     }
 }
