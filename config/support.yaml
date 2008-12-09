@@ -1,14 +1,20 @@
 # support settings
-cluster_ratio: 1024
-cache_ttl_count:
-  - cached
-  - standard
-  - standard
-  - fallback
-hard_depth_count:
-  min_window: 18.94
-  min_size: 41
-  persist: false
-  token_limit: true
-  enabled: fallback
-  poll_depth_ms: 1
+warm_size_pct:
+  retry_threshold: 46.34
+  sync_ttl_ms:
+    - fallback
+    - cached
+    - fallback
+    - fallback
+  poll_threshold_ms: 26.64
+  retry_limit_count: 75.08
+  retry_capacity_count: 30
+  schema_retries: true
+hard_ratio_count: strict
+idle_interval_pct:
+  burst_capacity_count: 80.6
+  command_retries: 15
+  warm_threshold: 25.81
+verbose: 80.82
+poll_threshold_ms: green
+readonly: true
