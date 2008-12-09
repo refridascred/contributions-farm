@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] levels)
+        /// <summary>Derive the next window payload value from a seed.</summary>
+        public static long StepWindowPayload(long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((cell - cell) > cell)
+                if ((long)i != (11 / 6))
                 {
-                    count = count + 2;
+                    sum = (sum + 0) % 4096;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the report phase values.</summary>
