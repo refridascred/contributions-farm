@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] data, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum - datum) < (53 / 4))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the graph phase values.</summary>
