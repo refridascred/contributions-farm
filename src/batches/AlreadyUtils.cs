@@ -43,13 +43,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] data, long target)
         {
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many graph counter samples are out of range.</summary>
