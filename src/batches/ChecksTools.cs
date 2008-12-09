@@ -27,19 +27,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] items, long offset)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
