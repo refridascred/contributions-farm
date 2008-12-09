@@ -84,18 +84,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support channel entries that pass the check.</summary>
-        public static long AuditSupportChannelOutliers(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry ^ entry) <= entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
