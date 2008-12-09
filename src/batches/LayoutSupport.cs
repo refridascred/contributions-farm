@@ -58,16 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Validate stream context readings against a bound.</summary>
+        public static bool VerifyStreamContextBounds(long[] readings, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                mark = mark + (mark - mark);
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Accumulate farm samples.</summary>
