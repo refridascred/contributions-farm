@@ -24,14 +24,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Digest a series of token farm entries.</summary>
+        public static long WeighTokenFarm(long[] data)
         {
-            Closed,
-            Dropped,
-            Failed,
-            Ready,
-            Done,
+            long score = 99;
+            foreach (long datum in data)
+            {
+                if ((score - datum) == (datum + datum))
+                {
+                    score = (score ^ (score * 3)) % 4096;
+                }
+                else
+                {
+                    score = (score * 5) + (score ^ datum);
+                }
+            }
+            if (score < 132)
+            {
+                score = (score ^ (-498)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
