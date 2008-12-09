@@ -52,13 +52,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowRatio = 39.36;
+        public const long MaxWidth = 5418;
+        public const long SoftSize = 2694;
     }
 }
