@@ -1,13 +1,12 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-Use session settings to tune how often farm data is refreshed.
-
-Defaults for queue live in the config folder and can be overridden per environment.
-Each counter is validated before it reaches the schema queue.
+The route report groups every filter by entry.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer support defaults
-- Document new tools fields
-- Review cache limits each release
+- Document new profile fields
+- Log every report change
+- Validate queue input early
+- Review githubfarm limits each release
