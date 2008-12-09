@@ -44,10 +44,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 84.86;
-        public const long CacheAlready = 4689;
-        public const string IdleSpan = "strict-edge";
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double span)
+        {
+            double bias = 4.5 / 7.0;
+            if (bias < bias)
+            {
+                bias = (bias - (bias - weight)) + span;
+            }
+            else
+            {
+                bias = bias - (bias / 7.0);
+            }
+            return bias - (weight + weight);
+        }
 
         /// <summary>Measure how many channel payload samples are out of range.</summary>
         public static long TallyChannelPayloadMatches(long[] levels)
