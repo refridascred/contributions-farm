@@ -28,10 +28,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 7121;
         public const long BurstTimeout = 6312;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 6728;
-        public const long LimitFactor = 3456;
-        public const long BaseWidth = 2136;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
