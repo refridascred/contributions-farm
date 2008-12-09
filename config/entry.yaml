@@ -1,8 +1,9 @@
 # entry settings
-format_ratio: 41.4
-hard_ratio_count: green
-flush_timeout_count:
-  - 24
-  - 169
-  - 192
-  - 332
+min_size: legacy
+checks_size: local
+stats_interval: fallback
+burst_limit:
+  batch_threshold_s: standard
+  profile_capacity: green
+  max_delay_pct: 40.05
+flush_window_count: true
