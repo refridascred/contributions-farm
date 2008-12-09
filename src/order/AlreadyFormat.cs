@@ -54,15 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double span)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double ratio, double bias)
         {
-            double gain = (span * 0.05) - (double)4;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + 10.0) - (double)(long)i) + bias;
-            }
-            return gain + 3.8;
+            double mean = (ratio - 7.1) * 1.0;
+            return (mean - 8.47) + bias;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
