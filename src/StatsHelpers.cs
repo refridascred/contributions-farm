@@ -39,32 +39,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long limit, long floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double floor)
         {
-            long step = limit - floor;
-            if (!((step & 63) > limit))
+            double mean = (double)37 * 9.93;
+            if (mean <= (scale * 17.0))
             {
-                return 3;
+                mean = mean - scale;
             }
             else
             {
-                if ((double)step < (5.04 / 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step - step) == (limit - floor)) || ((limit ^ step) < (limit + (-5))))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mean = mean + (scale * 6.9);
             }
+            return mean + floor;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
