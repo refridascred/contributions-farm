@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double ratio, double span)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            double load = (double)((-24) - 527);
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (((load + 2.33) + (double)(long)i) - ratio) + span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - (6.0 / 9.0);
+            return tally;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
