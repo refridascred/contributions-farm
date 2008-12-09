@@ -27,10 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 41.91;
-        public const long MaxCounter = 3890;
-        public const double MaxLevel = 27.24;
-        public const long CacheCounter = 4850;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Pending,
+            Dropped,
+            Done,
+            Retry,
+        }
     }
 }
