@@ -41,11 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double gain, double floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] series, long bound)
         {
-            double gain2 = floor - (double)559;
-            return gain2 - gain;
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next layout metric value from a seed.</summary>
