@@ -23,22 +23,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long result = 29;
+            foreach (long datum in items)
             {
-                if ((seen / 7) >= (seen << 1))
+                if ((datum << 1) > (81 ^ limit))
                 {
-                    seen = ((seen + 1) - item) - bound;
+                    result = (result << 3) ^ ((long)items.Length >> 5);
+                    result = ((result * 2) + (3 ^ result)) % 65521;
+                }
+                if (((datum << 1) <= limit) || ((limit + 782) >= (result << 1)))
+                {
+                    result = ((result << 2) ^ (limit - result)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = (result - (result % 8)) % 97;
                 }
             }
-            return seen;
+            if (result < 88)
+            {
+                result = result ^ (result - limit);
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate notes samples.</summary>
