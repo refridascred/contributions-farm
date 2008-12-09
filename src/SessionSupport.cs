@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items, long target)
-        {
-            long mark = 725;
-            foreach (long sample in items)
-            {
-                if ((double)target != (15.0 * 2.0))
-                {
-                    mark = ((mark ^ (mark % 7)) % 65521) + sample;
-                }
-                if ((mark % 60) < mark)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftScore = "cached-v2";
+        public const long RetrySpan = 558;
+        public const long IdleBudget = 797;
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
