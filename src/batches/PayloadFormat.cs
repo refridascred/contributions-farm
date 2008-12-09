@@ -13,12 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Failed,
-            Closed,
-            Idle,
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the report state values.</summary>
