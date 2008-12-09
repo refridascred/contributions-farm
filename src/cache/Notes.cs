@@ -52,11 +52,25 @@ namespace Common.Utilities
         public const long BatchContext = 286;
         public const string IdleContext = "open-v2";
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long limit, long target)
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long lane = limit ^ target;
+            if ((687 > (limit - limit)) || (limit < (target << 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit >> 1) > (lane / 4)) || ((53 << 2) > (466 - target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
