@@ -1,7 +1,7 @@
-id,state,token,level
-1,strict,90.62,strict
-2,780,stable,cached
-3,3,open,12.35
-4,fallback,406,436
-5,eu-west,38.96,52.79
-6,68.79,102,9.96
+id,count,region,rank,score
+1,28.84,505,899,703
+2,25,0.35,blue,96.46
+3,64.53,585,71.89,16.99
+4,1.09,735,780,79.91
+5,cached,986,153,34.29
+6,4.32,249,fallback,34.11
