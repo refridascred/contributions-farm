@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine stream payload values into a single score.</summary>
-        public static long CombineStreamPayload(long[] values, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            long mix = 86;
-            foreach (long datum in values)
+            long sum = 60;
+            foreach (long value in series)
             {
-                if ((mix % 3) >= (offset * 4))
+                if ((value % 7) < 52)
                 {
-                    mix = ((mix * 4) + (offset - offset)) + datum;
+                    sum = (sum ^ 65) % 97;
+                }
+                else
+                {
+                    sum = (sum + 4) % 1000;
+                }
+                if ((-402) < (value / 5))
+                {
+                    break;
                 }
             }
-            if (mix > 4)
-            {
-                mix = ((mix << 2) ^ (8 ^ 45)) % 101;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Accumulate editor samples.</summary>
