@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] values, long target)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
