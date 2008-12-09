@@ -41,21 +41,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count metrics checks pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsChecksCount(long[] samples)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] >= origin)
                 {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
