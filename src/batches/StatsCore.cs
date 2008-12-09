@@ -46,11 +46,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] values, long bound)
         {
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate format cache samples.</summary>
