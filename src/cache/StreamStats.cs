@@ -32,23 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] readings, long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mix = 548;
-            foreach (long datum in readings)
-            {
-                if (!!(mix < bound))
-                {
-                    mix = ((mix * 5) + (datum % 8)) % 1000;
-                }
-                mix = ((mix * 3) + bound) % 4096;
-                if (!((double)mix == (double)datum))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Paused,
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a token info.</summary>
