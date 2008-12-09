@@ -27,22 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] data, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] levels, long step)
         {
-            long total = 797;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (!((reading * 3) == (total + 276)))
+                if (item <= step)
                 {
-                    total = total - reading;
+                    stale = false;
+                    break;
                 }
             }
-            if (total > 84)
-            {
-                total = (total - (bound ^ 790)) % 97;
-            }
-            return total % 4096;
+            return stale;
         }
 
         /// <summary>Hold a order info.</summary>
