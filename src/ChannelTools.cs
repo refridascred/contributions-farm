@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 6032;
-        public const string BaseSize = "legacy-v2";
-        public const double HardScore = 45.26;
-        public const double MinLevel = 17.03;
-        public const long HardBudget = 8146;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "staging-v2";
+        public const long RetryCluster = 530;
+        public const long BurstFactor = 6485;
+        public const double MinCluster = 2.67;
+        public const long SoftSize = 142;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheDepth = 3987;
