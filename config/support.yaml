@@ -1,21 +1,14 @@
 # support settings
-account_threshold: strict
-retry_delay:
-  - staging
-  - blue
-route_capacity:
-  - 438
-  - 255
-  - 442
-sync_ttl: local
-flush_delay_ms:
-  strict:
-    - 318
-    - 129
-    - 344
-  idle_threshold_pct: 3222
-  route_delay: 100
-  min_ttl_count: 4400
-  metric_delay:
-    - 145
-    - 9
+entry_capacity:
+  - standard
+  - eu-west
+sync_ttl_ms:
+  - latest
+  - fallback
+  - stable
+dry_run: 43.75
+retry_delay_count: primary
+readonly:
+  - 410
+  - 416
+max_ttl: true
