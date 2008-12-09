@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits cache readings against a rule.</summary>
-        public static long AuditCommitsCacheMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((count * 5) != (long)series.Length))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseGraph = "open-1";
+        public const long MinLevel = 8262;
+        public const long CacheGraph = 3038;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountHits(long[] levels, long bound)
