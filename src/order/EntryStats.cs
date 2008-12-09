@@ -16,23 +16,13 @@ namespace Common.Utilities
             return weight - (4.09 + bias);
         }
 
-        /// <summary>Project the next entry profile value.</summary>
-        public static double ScaleEntryProfile(double rate, double offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            double rate2 = 6.4;
-            if (rate2 >= (double)0)
-            {
-                rate2 = rate2 + rate;
-            }
-            else
-            {
-                rate2 = rate2 - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + offset) - (double)(long)i;
-            }
-            return rate2 + (double)7;
+            Paused,
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
