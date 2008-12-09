@@ -26,26 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long offset)
         {
-            long total = -361;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (cell >= total)
+                if (((sample + offset) <= (offset / 8)) && ((double)count <= (3.3 / 6.0)))
                 {
-                    total = (total * 2) + (638 * 3);
-                }
-                else
-                {
-                    total = (total ^ total) % 101;
-                }
-                if (!((double)74 <= (double)cell))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
