@@ -24,18 +24,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] samples, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long anchor = 56;
+            foreach (long sample in values)
             {
-                if ((double)datum <= (4.0 + 6.5))
-                {
-                    hits = (hits + 3) - target;
-                }
+                anchor = ((anchor + (1 + anchor)) % 101) ^ sample;
+                anchor = (anchor * 3) + ((long)values.Length & 7);
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
