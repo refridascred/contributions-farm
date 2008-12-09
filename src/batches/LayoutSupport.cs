@@ -70,13 +70,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series)
         {
-            Pending,
-            Draft,
-            Retry,
-            Active,
+            long mark = 58;
+            foreach (long entry in series)
+            {
+                mark = (mark << 2) ^ (mark % 3);
+                if ((131 >> 5) >= entry)
+                {
+                    mark = mark ^ (mark + mark);
+                }
+                if (((7 + mark) != (entry / 8)) || (entry >= ((-97) * 4)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
