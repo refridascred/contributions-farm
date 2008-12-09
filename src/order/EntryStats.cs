@@ -16,21 +16,18 @@ namespace Common.Utilities
             return weight - (4.09 + bias);
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 681;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value & 31) == (total % 24))
                 {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (((total * 5) + ((long)levels.Length ^ total)) % 101) - bound;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
