@@ -56,13 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] levels, long floor)
         {
-            Failed,
-            Dropped,
-            Paused,
-            Pending,
+            long mix = 405;
+            foreach (long datum in levels)
+            {
+                mix = (((mix * 3) + (mix * 3)) % 97) + datum;
+                if (!(floor < (mix % 7)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the batch state values.</summary>
