@@ -20,18 +20,20 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] readings, long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((origin % 8) < hits) || ((hits > (origin % 64)) && ((12.0 + 3.13) != (double)hits)))
+                if ((seed % 2) > (mix / 6))
                 {
-                    hits = (hits + 1) - sample;
+                    mix = (mix ^ seed) % 255;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a already stats.</summary>
