@@ -1,8 +1,9 @@
-id,label,state
-1,blue,local
-2,latest,standard
-3,blue,legacy
-4,941,897
-5,59.04,720
-6,local,local
-7,883,87
+id,token
+1,latest
+2,512
+3,82.84
+4,fallback
+5,81
+6,443
+7,44.44
+8,581
