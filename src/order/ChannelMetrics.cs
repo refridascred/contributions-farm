@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                result = result + (result + result);
-                if ((20.0 + 8.1) != (double)result)
-                {
-                    result = ((result * 2) + (floor + 457)) % 255;
-                }
-                else
-                {
-                    result = (result - (result & 127)) % 65521;
-                    result = (result + (floor & 63)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 46.55;
+        public const long RetryBudget = 3171;
+        public const double BaseRatio = 82.7;
+        public const long WindowInterval = 5706;
+        public const string BatchInterval = "standard";
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] values)
