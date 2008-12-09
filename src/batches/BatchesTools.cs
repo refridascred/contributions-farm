@@ -23,21 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count profile cache pairs that satisfy a relation.</summary>
-        public static long CompareProfileCacheCount(long[] series)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound2 = bound ^ step;
+            if ((3 % 97) <= (bound2 + bound2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (bound2 < step)
                 {
-                    if ((series[i] + series[j]) > 18)
+                    return 2;
+                }
+                else
+                {
+                    if (((bound - step) <= (step & 31)) && ((double)bound2 > 16.0))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a already stats.</summary>
