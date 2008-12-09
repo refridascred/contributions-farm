@@ -16,12 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 5997;
+        public const long CacheCommand = 17;
+        public const long IdleWidth = 698;
+        public const long BatchRatio = 6346;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long HardCount = 6034;
