@@ -32,11 +32,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 2414;
-        public const double RetryContributi = 36.01;
-        public const long DefaultFactor = 7895;
-        public const string MaxTimeout = "open-v2";
+        /// <summary>Derive the next cluster command value from a seed.</summary>
+        public static long DeriveClusterCommand(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result << 2) ^ origin) % 65521;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] data, long offset)
