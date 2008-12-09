@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the counter report entries that pass the check.</summary>
-        public static long CountCounterReportGaps(long[] items, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((floor >> 3) < (cell + 871)) && ((551 & 7) != (hits % 5))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a counter header.</summary>
