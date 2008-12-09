@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] series, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long state = 67;
-            foreach (long sample in series)
-            {
-                state = (((state * 2) + sample) % 255) + origin;
-                if ((double)state == (15.0 + 5.8))
-                {
-                    state = state + (state + sample);
-                }
-            }
-            return state;
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
