@@ -33,12 +33,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchLevel = "strict-1";
+        public const string BurstContext = "fallback";
+        public const long MaxFactor = 2993;
     }
 }
