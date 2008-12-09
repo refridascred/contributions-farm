@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count * 3) < reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
