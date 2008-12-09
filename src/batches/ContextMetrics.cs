@@ -51,18 +51,9 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((((8.39 * 1.4) != (double)sample) && ((sample & 31) <= sample)) && ((double)7 > (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 54.34;
+        public const string DefaultWidth = "fallback-edge";
+        public const long DefaultRoute = 6305;
     }
 }
