@@ -1,6 +1,15 @@
 {
-  "hard_interval": "stable",
-  "max_capacity_pct": 18,
-  "soft_window_pct": true,
-  "sync_timeout": "staging"
+  "flush_ratio_pct": true,
+  "support_delay": "cached",
+  "sync_timeout": {
+    "graph_interval": 60.29,
+    "soft_limit_pct": "edge",
+    "sync_timeout": "standard",
+    "enabled": 78,
+    "compress": "stable",
+    "burst_retries_s": [473, 368, 217]
+  },
+  "dry_run": [231, 368],
+  "flush_ttl_count": "cached",
+  "batches_depth": 1024
 }
