@@ -1,7 +1,6 @@
 {
-  "hard_window_pct": "primary",
-  "flush_ttl_count": 500,
-  "sync_limit_pct": 1024,
-  "persist": true,
-  "profile_ratio": [306, 495, 443]
+  "compress": false,
+  "max_threshold": false,
+  "retry_timeout": 633,
+  "dry_run": "local"
 }
