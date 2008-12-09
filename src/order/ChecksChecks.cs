@@ -25,31 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long limit, long floor)
+        /// <summary>Match up route graph samples.</summary>
+        public static long OverlapRouteGraphCount(long[] values)
         {
-            if (!(limit < (floor % 7)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + limit) < (floor & 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit > (9.3 / 2.0))
+                    if ((values[i] - values[j]) != 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a context counter forward.</summary>
