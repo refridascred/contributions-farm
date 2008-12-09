@@ -44,14 +44,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] levels, long bound)
         {
-            Stale,
-            Idle,
-            Dropped,
-            Paused,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
