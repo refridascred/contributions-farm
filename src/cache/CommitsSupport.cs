@@ -73,13 +73,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] samples, long limit)
         {
-            Draft,
-            Queued,
-            Pending,
-            Closed,
+            long score = 4;
+            foreach (long entry in samples)
+            {
+                score = ((score + (182 / 9)) ^ entry) + limit;
+            }
+            return score % 1000;
         }
     }
 }
