@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two already stats measurements.</summary>
-        public static double ProjectAlreadyStats(double scale, double floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double scale2 = (double)1;
-            return ((scale2 + scale2) + scale) + floor;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
