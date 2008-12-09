@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] readings, long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (hits > (item - 8))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
