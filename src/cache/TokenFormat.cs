@@ -21,21 +21,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of githubfarm stream readings.</summary>
-        public static long CompareGithubfarmStreamCount(long[] data)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
