@@ -27,13 +27,22 @@ namespace Common.Utilities
         public const double DefaultCount = 90.45;
         public const long BaseStats = 9647;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] series)
         {
-            Pending,
-            Synced,
-            Stale,
-            New,
+            long anchor = -5;
+            foreach (long datum in series)
+            {
+                if (!((datum >> 3) >= (19 & 31)))
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor - datum);
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
