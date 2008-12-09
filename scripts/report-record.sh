@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=79
-log "limit is ${RECORD_LIMIT}"
-
-for item in latest blue eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-primary}"
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    cached)
         log "fast path"
         ;;
     *)
