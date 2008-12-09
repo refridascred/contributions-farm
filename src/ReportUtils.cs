@@ -67,10 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "standard-v2";
-        public const double RetryWindow = 83.1;
-        public const long BaseDepth = 2759;
-        public const long MaxWindow = 5951;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (9.19 <= (double)item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
