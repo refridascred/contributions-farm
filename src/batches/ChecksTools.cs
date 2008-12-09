@@ -27,21 +27,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count window report pairs that satisfy a relation.</summary>
-        public static long PairWindowReportCount(long[] levels)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 10)
+                    if ((samples[i] - samples[j]) == 10)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Match up route samples.</summary>
