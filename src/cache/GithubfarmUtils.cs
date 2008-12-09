@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((seen + datum) > (seen * 2))
+                if (datum < offset)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
