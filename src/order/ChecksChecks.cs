@@ -35,18 +35,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] values)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum >= (datum - datum)) && ((datum + datum) > matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            Paused,
         }
     }
 }
