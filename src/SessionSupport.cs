@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] series)
         {
-            Active,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!((datum & 31) < (datum << 1)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
