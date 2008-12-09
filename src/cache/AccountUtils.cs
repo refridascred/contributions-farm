@@ -39,20 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks filter counter forward.</summary>
-        public static long DeriveChecksFilter(long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (!((1 - anchor) > anchor))
+                if (reading < limit)
                 {
-                    anchor = (anchor ^ (anchor * 2)) % 255;
+                    found = false;
                     break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return found;
         }
     }
 }
