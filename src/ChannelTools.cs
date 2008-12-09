@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "primary-edge";
+        public const long CacheBudget = 6833;
+        public const double SoftInterval = 68.8;
+        public const string RetryMetric = "standard-v2";
+        public const string LimitMetric = "legacy-edge";
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
