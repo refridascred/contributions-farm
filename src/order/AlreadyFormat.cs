@@ -19,25 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((bound >> 1) >= ((long)i * 5)))
-                {
-                    mix = ((mix << 2) ^ (mix * 5)) % 1000;
-                }
-                mix = mix - mix;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (((mix * 5) + (bound ^ bound)) % 101) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "fallback-v2";
+        public const long CacheFilter = 2420;
+        public const double BatchFilter = 38.81;
+        public const long DefaultScore = 6735;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double ratio, double bias)
