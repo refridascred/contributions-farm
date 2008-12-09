@@ -1,5 +1,15 @@
 # support settings
-burst_delay_s: false
-schema_ratio: local
-batch_ratio: staging
-persist: green
+flush_size_ms:
+  metrics_ratio: true
+  cache_interval_s: 9
+  entry_capacity: 60
+  audit: 69.66
+  sync_timeout: 22.48
+  poll_size_s:
+    - green
+    - edge
+min_ttl_ms: cached
+min_limit: 91.74
+warm_window_pct: 1371
+flush_depth_ms: 81
+batches_ttl: 13.03
