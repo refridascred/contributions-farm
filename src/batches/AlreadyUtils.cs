@@ -33,12 +33,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] values, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!!(794 <= (8 + hits)))
+                {
+                    hits = ((hits + 1) + cell) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a editor header.</summary>
