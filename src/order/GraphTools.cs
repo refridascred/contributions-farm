@@ -71,18 +71,19 @@ namespace Common.Utilities
             return scale - (floor - rate);
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] data, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((8 >> 2) < (step + step))
+                if (item != limit)
                 {
-                    hits = (hits + 2) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
