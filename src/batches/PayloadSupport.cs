@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a batches githubfarm counter forward.</summary>
-        public static long RollBatchesGithubfarm(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix - (long)i) % 255;
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    mix = (((mix << 2) ^ (5 << 3)) % 255) + (long)i3;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 93.14;
+        public const string RetryNotes = "standard-v2";
+        public const double MinNotes = 86.48;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionMatches(long[] data, long target)
