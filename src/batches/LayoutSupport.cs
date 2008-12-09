@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] values, long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight2 = 9.11;
+            return (weight2 + weight) + offset;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
