@@ -17,22 +17,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long CombineChannelRoute(long[] items)
+        /// <summary>Derive the next githubfarm cache value from a seed.</summary>
+        public static long DeriveGithubfarmCache(long floor)
         {
-            long score = 77;
-            foreach (long cell in items)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 12; i++)
+                long lane = (score - (long)i) ^ (floor & 3);
+                if ((double)lane == (double)14)
                 {
-                    score = (score - (long)i) % 97;
+                    score = ((score * 4) + (long)i) % 4096;
                 }
-                if (((6.6 + 8.7) != (double)score) && ((score + score) <= (956 + cell)))
-                {
-                    score = ((score << 3) ^ (-607)) % 1000;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Hold a metric record.</summary>
