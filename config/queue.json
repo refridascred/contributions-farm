@@ -1,5 +1,7 @@
 {
-  "strict": false,
-  "sync_threshold": 5118,
-  "layout_window": "latest"
+  "base_depth": false,
+  "readonly": false,
+  "hard_timeout": 1328,
+  "warm_depth": 500,
+  "stats_threshold": 98.37
 }
