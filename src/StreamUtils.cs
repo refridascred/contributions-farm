@@ -14,26 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long bound, long step)
-        {
-            long span = bound ^ step;
-            if ((span + 5) == (378 ^ (-8)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((2.0 + 8.42) < (double)bound) && (span >= (span + span)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitInterval = 4871;
+        public const long SoftOrder = 6009;
+        public const long MinOrder = 8033;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long CombineStats(long[] series, long bound)
