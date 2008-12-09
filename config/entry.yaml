@@ -1,11 +1,5 @@
 # entry settings
-context_threshold: staging
-editor_window:
-  - strict
-  - stable
-min_size_pct: green
-contributi_interval:
-  burst_ttl: open
-  support_window: 32.79
-  audit: local
-  base_timeout: fallback
+cache_delay: 38.28
+max_threshold: primary
+order_retries: true
+warm_depth: true
