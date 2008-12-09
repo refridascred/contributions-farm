@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] data, long floor)
         {
-            Closed,
-            Dropped,
-            Idle,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry << 3) == ((long)data.Length >> 1))
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
