@@ -51,32 +51,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long origin, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] samples)
         {
-            long edge = origin - step;
-            if ((edge % 24) == (step ^ 1))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(529 > (origin << 3)))
+                if ((double)count != (2.5 + 9.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin >= (edge >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 2) + datum;
                 }
             }
+            return count;
         }
     }
 }
