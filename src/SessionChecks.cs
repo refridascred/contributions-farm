@@ -44,21 +44,19 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = weight * 6.4;
+            if (rate < (9.15 * 4.1))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - (weight / 3.0);
             }
-            return matches;
+            else
+            {
+                rate = rate - 4.0;
+            }
+            return rate - offset;
         }
     }
 }
