@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long CacheDepth = 6432;
         public const long WindowInterval = 7124;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] series, long seed)
         {
-            Closed,
-            Stale,
-            Active,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a command reading by value.</summary>
