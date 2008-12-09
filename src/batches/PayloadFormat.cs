@@ -43,12 +43,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Ready,
-            Retry,
-            Failed,
+            Idle,
+            Pending,
+            Closed,
+            Dropped,
         }
     }
 }
