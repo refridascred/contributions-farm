@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchWidth = 6664;
-        public const double BurstInterval = 44.52;
-        public const string IdleRatio = "legacy-v2";
-        public const double MaxAccount = 51.64;
-        public const double LimitAccount = 63.4;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(235 >= (carry / 2)))
+                {
+                    carry = ((carry * 5) + ((long)i >> 4)) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
