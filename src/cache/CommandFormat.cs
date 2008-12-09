@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next record buffer value.</summary>
-        public static double SmoothRecordBuffer(double rate, double offset)
+        /// <summary>Grade a command tools value against two limits.</summary>
+        public static long BucketCommandTools(long floor, long seed)
         {
-            double rate2 = (double)(731 ^ 331);
-            return (rate2 + rate) + offset;
+            long next = floor + seed;
+            if ((floor > (floor * 2)) || ((next ^ 2) <= (599 ^ next)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed >= (4.55 + 5.79))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5.4 - 8.58) < (double)next)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((-98) + seed) < (floor - floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next account value.</summary>
