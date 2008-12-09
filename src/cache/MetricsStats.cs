@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long result = 76;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.4 * 20.0) != (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result + 8) % 101;
-                }
-                if (result <= (value & 15))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Combine farm buffer values into a single score.</summary>
