@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Done,
-            Stale,
-            Closed,
-            Synced,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Rank filter graph input into a small class.</summary>
