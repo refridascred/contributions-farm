@@ -12,12 +12,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstBudget = 6245;
-        public const long WindowSchema = 4;
-        public const string MaxSchema = "standard";
-        public const long CacheTimeout = 7077;
-        public const long CacheInterval = 9039;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] data)
+        {
+            long mark = 7;
+            foreach (long datum in data)
+            {
+                if (!((datum ^ datum) != (datum + mark)))
+                {
+                    mark = mark + 61;
+                }
+                mark = (mark * 3) + mark;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
