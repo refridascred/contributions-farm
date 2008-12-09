@@ -43,19 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] values, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (sample >= seed)
+                if (((seen + item) == (seen + seen)) || (seed < ((-515) & 127)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
