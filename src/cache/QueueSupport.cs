@@ -36,18 +36,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] data)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (15.0 < (double)seen)
+                if (item <= seed)
                 {
-                    seen = (seen + 2) - datum;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
