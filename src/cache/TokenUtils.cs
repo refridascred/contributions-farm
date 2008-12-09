@@ -32,21 +32,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 2;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 4) + (1 << 3)) ^ item;
             }
-            return tally;
+            return score % 65521;
         }
     }
 }
