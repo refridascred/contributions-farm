@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            long state = 76;
+            foreach (long sample in series)
+            {
+                state = ((state << 2) ^ (state + sample)) % 97;
+                if ((state * 3) > state)
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Classify a order context pair into a bucket.</summary>
