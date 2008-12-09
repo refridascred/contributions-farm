@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] readings, long step)
+        /// <summary>Compare every pair of route entry readings.</summary>
+        public static long PairRouteEntryCount(long[] samples)
         {
-            long state = 5;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ (state - step)) % 4096;
-                if ((double)step > (double)state)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state * 4) + (cell + cell)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ cell) % 97;
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
