@@ -63,19 +63,11 @@ namespace Common.Utilities
             return weight + (offset + rate);
         }
 
-        /// <summary>Validate batches record readings against a bound.</summary>
-        public static bool CheckBatchesRecordBounds(long[] series, long step)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
