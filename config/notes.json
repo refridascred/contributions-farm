@@ -1,7 +1,12 @@
 {
-  "buffer_threshold": 15.05,
-  "cache_depth_s": ["fallback", "fallback"],
-  "cache_limit_count": "stable",
-  "retry_size_count": 48,
-  "audit": ["staging", "stable", "green"]
+  "readonly": "eu-west",
+  "cache_retries": {
+    "layout_interval": true,
+    "strict": 1024,
+    "record_timeout": [170, 478, 257]
+  },
+  "flush_window_pct": true,
+  "cache_interval": "blue",
+  "flush_limit_count": 250,
+  "default_capacity_ms": 13.87
 }
