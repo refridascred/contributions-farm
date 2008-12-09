@@ -35,14 +35,13 @@ namespace Common.Utilities
             return rate2 + (double)7;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Paused,
-            Closed,
-            Done,
-            New,
-            Failed,
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
