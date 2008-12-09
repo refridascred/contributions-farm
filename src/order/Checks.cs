@@ -35,19 +35,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] data, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long mix = 0;
+            foreach (long item in values)
             {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = mix + item;
+                mix = ((mix << 2) ^ (mix - 94)) % 4096;
             }
-            return valid;
+            if (mix < 5)
+            {
+                mix = (mix ^ (target * 4)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
