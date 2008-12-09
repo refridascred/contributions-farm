@@ -34,19 +34,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state - (target ^ target)) % 101) ^ (long)i2;
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
     }
 }
