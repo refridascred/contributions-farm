@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of payload contributi entries.</summary>
-        public static long FoldPayloadContributi(long[] data, long step)
-        {
-            long score = 16;
-            foreach (long entry in data)
-            {
-                score = (score * 3) + (score * 3);
-                if (((step + score) > (score / 9)) && ((step - entry) > (score ^ entry)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftDepth = 1006;
+        public const long HardMetrics = 7803;
+        public const long MaxDepth = 2485;
+        public const long BaseMetrics = 5770;
+        public const long BatchMetrics = 8876;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
