@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((((item + item) >= (count % 60)) && (item >= count)) || (((9.0 / 8.0) < (double)count) || ((item + count) < (item + 521))))
+                if (cell <= (cell - seen))
                 {
-                    count = count + 3;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
