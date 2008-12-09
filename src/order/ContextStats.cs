@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheInterval = 388;
-        public const string WindowContributi = "latest-1";
-        public const long StepInterval = 3496;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 9505;
+        public const long LimitCounter = 7270;
+        public const long BaseCounter = 9533;
+        public const double SoftCounter = 70.59;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
