@@ -25,14 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] samples, long seed)
         {
-            Idle,
-            Retry,
-            Failed,
-            Ready,
-            New,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next commits value.</summary>
