@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long WindowSize = 8495;
         public const long BurstSpan = 616;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] data, long target)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + 55) < tally)
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a cluster info.</summary>
