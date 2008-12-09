@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] series, long offset)
         {
-            Failed,
-            Queued,
-            Draft,
-            Stale,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
