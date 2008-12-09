@@ -1,25 +1,26 @@
 # entry settings
-strict: 1024
-warm_timeout_count:
-  compress:
-    flush_threshold_s:
-      - stable
-      - blue
-    counter_delay: false
-    tools_ratio: primary
-    base_timeout_count: false
-    default_delay_s: 2
-  base_interval:
-    - standard
-    - local
+verbose: 3118
+idle_interval_s:
+  token_depth: stable
+  base_depth_count:
+    batch_interval:
+      - strict
+      - local
+    warm_window_ms: 97.7
+    audit: 64.69
+    soft_limit_pct:
+      - 442
+      - 304
+  max_delay_pct: standard
+  retry_delay: 4.36
+  poll_size_pct:
+    - 42
+    - 324
+  base_interval_pct: local
+default_threshold_count:
+  enabled: 24.4
+  retry_limit:
+    - primary
     - latest
-  poll_timeout_s: blue
-base_depth: local
-stream_window: 87
-soft_timeout_s:
-  base_window_pct: false
-  warm_size: standard
-  poll_ttl_ms: edge
-  persist: primary
-  strict: 60
-  token_delay: stable
+    - standard
+  format_window: 7630
