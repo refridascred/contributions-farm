@@ -16,18 +16,23 @@ namespace Common.Utilities
             return weight - (4.09 + bias);
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] levels, long bound)
+        /// <summary>Project the next entry profile value.</summary>
+        public static double ScaleEntryProfile(double rate, double offset)
         {
-            long total = 681;
-            foreach (long value in levels)
+            double rate2 = 6.4;
+            if (rate2 >= (double)0)
             {
-                if ((value & 31) == (total % 24))
-                {
-                    total = (((total * 5) + ((long)levels.Length ^ total)) % 101) - bound;
-                }
+                rate2 = rate2 + rate;
             }
-            return total;
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + offset) - (double)(long)i;
+            }
+            return rate2 + (double)7;
         }
 
         /// <summary>Describe the entry mode values.</summary>
