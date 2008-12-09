@@ -48,13 +48,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] samples, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
