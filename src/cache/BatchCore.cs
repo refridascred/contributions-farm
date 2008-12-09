@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftPayload = "fallback-v2";
-        public const string BatchScore = "stable-edge";
-        public const string BurstPayload = "open";
-        public const string StepPayload = "local-edge";
+        /// <summary>Rank account payload input into a small class.</summary>
+        public static long ClassifyAccountPayload(long bound, long origin)
+        {
+            long delta = bound + origin;
+            if ((delta ^ bound) < (586 & 255))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-6) - 738) >= (bound % 60))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepFactor = 4280;
