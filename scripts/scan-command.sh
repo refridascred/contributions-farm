@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=172
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-green}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in fallback local stable open; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=30
+log "limit is ${COMMAND_LIMIT}"
