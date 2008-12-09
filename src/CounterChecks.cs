@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] data, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long state = -8;
+            foreach (long item in levels)
             {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (((state - (61 - state)) % 1000) + item) + floor;
             }
-            return valid;
+            if (state > 8)
+            {
+                state = (state - (state & 3)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
