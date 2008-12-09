@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] series, long step)
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long TallyMetricsCommitsMatches(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((double)item != (double)step)
+                if (((-77) & 255) == (target / 7))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the entry status values.</summary>
