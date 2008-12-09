@@ -39,15 +39,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values, long limit)
+        /// <summary>Check that every session commits entry stays within the limit.</summary>
+        public static bool GuardSessionCommitsBounds(long[] levels, long step)
         {
-            long mark = 99;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                mark = (((mark - (121 >> 1)) % 97) ^ datum) - limit;
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a queue entry.</summary>
