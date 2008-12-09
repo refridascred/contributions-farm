@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Paused,
-            Synced,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRatio = 9752;
+        public const double BaseTimeout = 61.93;
+        public const long LimitFactor = 382;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long origin)
