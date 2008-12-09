@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 13;
+            foreach (long item in values)
             {
-                if (values[i] > floor)
+                if ((item + item) >= 87)
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (item & 15);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up metrics session samples.</summary>
