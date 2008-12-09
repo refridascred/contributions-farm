@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Active,
-            New,
-            Idle,
-            Dropped,
+            Paused,
+            Synced,
+            Closed,
+            Failed,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
