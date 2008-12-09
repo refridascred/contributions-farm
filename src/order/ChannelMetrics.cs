@@ -13,21 +13,27 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long acc = 9;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int i = 0; i < 3; i++)
                 {
-                    state = ((state * 4) + offset) ^ (long)i2;
+                    acc = (acc ^ (228 - value)) - (long)i;
                 }
-                state = ((state << 3) ^ offset) % 1000;
-                state = ((state << 2) ^ 48) % 101;
-                state = ((state * 5) + (long)i) % 4093;
+                if ((value - acc) > (acc * 5))
+                {
+                    acc = (acc + (value + acc)) % 65521;
+                    break;
+                }
+                if (value > (value * 4))
+                {
+                    acc = (acc ^ (value >> 5)) % 97;
+                }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
