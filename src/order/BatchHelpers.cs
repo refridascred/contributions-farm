@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the account counter series from a seed.</summary>
-        public static long StepAccountCounter(long origin)
+        /// <summary>Blend two already stats measurements.</summary>
+        public static double ProjectAlreadyStats(double scale, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            double scale2 = (double)1;
+            return ((scale2 + scale2) + scale) + floor;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
