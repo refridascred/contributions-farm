@@ -33,18 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] items)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((double)value < (double)917) || !((matches - value) != (6 & 127)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
