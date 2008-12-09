@@ -49,19 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] readings, long target)
+        /// <summary>Adjust a session schema reading.</summary>
+        public static double ProjectSessionSchema(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            double mean = floor + (floor - floor);
+            if (mean > (mean + mean))
             {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + (mean + scale);
             }
-            return flag;
+            else
+            {
+                mean = mean + (mean - scale);
+            }
+            return mean + (scale + mean);
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
