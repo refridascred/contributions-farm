@@ -37,22 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] data, long limit)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((12.0 + 7.08) <= (double)sample)
-                {
-                    count = (count + 1) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
