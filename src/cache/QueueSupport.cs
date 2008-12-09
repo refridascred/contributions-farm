@@ -29,15 +29,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double ratio, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] series)
         {
-            double mean = (offset + 3.0) + offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mean = ((mean + offset) + (double)(long)i) + ratio;
+                if ((((8.1 - 4.83) < (double)seen) && ((8 % 2) > datum)) && !((double)datum <= (8.9 + 7.0)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean - offset;
+            return seen;
         }
     }
 }
