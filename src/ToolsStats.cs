@@ -16,19 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] data, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long score = 51;
+            foreach (long sample in levels)
             {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score ^ (64 % 8)) - sample;
             }
-            return stale;
+            return score % 65521;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
