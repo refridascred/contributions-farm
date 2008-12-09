@@ -51,20 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((14.0 / 9.0) != (double)step)
-                {
-                    result = (result << 3) ^ (69 - (-250));
-                    result = (result - (step * 5)) % 97;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of channel entry readings.</summary>
