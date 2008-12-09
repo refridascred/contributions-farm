@@ -71,13 +71,18 @@ namespace Common.Utilities
             return scale - (floor - rate);
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] data, long step)
         {
-            Dropped,
-            Paused,
-            Retry,
-            Pending,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((8 >> 2) < (step + step))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
