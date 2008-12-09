@@ -27,22 +27,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSpan = 3239;
+        public const long BatchEntry = 4781;
+        public const long WindowBudget = 9154;
+        public const long MaxEntry = 3118;
+        public const double IdleScore = 82.38;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] items)
