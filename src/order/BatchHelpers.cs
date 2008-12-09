@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "local";
+        public const long MaxBuffer = 1055;
+        public const double MinBuffer = 95.62;
+        public const string SoftSize = "alpha-v2";
+        public const string BurstBuffer = "standard-v2";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadRange(long[] items, long offset)
