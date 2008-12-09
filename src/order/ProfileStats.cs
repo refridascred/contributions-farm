@@ -48,32 +48,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a report stats value against two limits.</summary>
-        public static long GradeReportStats(long seed, long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long span = seed ^ origin;
-            if ((span ^ span) < seed)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed != (19.0 + 9.8))
+                if (7.5 >= (double)limit)
                 {
-                    return 5;
+                    state = (state << 2) ^ limit;
                 }
-                else
-                {
-                    if ((span - span) == ((-960) + 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                state = ((state << 3) ^ (limit << 3)) % 97;
+                state = ((state * 3) + (long)i) % 97;
             }
+            return state;
         }
     }
 }
