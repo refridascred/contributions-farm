@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits metrics samples.</summary>
-        public static long TotalCommitsMetrics(long[] series, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            long carry = 541;
-            foreach (long item in series)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                carry = carry + (limit - item);
-                if ((1.06 - 0.43) >= (double)item)
+                if ((864 << 2) > (seed << 3))
                 {
-                    carry = ((carry * 3) + (carry + item)) % 101;
+                    anchor = ((anchor << 2) ^ ((long)i >> 4)) % 255;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return anchor;
         }
 
         /// <summary>Derive the next cluster command value from a seed.</summary>
