@@ -73,20 +73,11 @@ namespace Common.Utilities
         public const double MinNotes = 88.78;
         public const long HardBudget = 7104;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((result <= (floor * 5)) || (floor <= result))
-                {
-                    result = result ^ ((long)i + 19);
-                }
-                result = (result - (floor << 3)) % 255;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
