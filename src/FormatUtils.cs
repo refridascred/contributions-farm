@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long floor2)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            if (!((floor2 + floor) > (0 + floor2)))
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                mix = (mix + (seed ^ seed)) % 101;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((floor2 & 63) >= (floor + floor2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor2 <= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor * 2) > (floor2 + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
