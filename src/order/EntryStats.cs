@@ -60,18 +60,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long offset, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long offset2 = offset + target;
+            if ((1.0 > (double)offset2) && (offset2 > (offset ^ offset2)))
             {
-                if ((double)count != (2.5 + 9.0))
+                return 3;
+            }
+            else
+            {
+                if ((offset2 + offset2) <= (offset + offset2))
                 {
-                    count = (count + 2) + datum;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
