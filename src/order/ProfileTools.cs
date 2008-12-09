@@ -47,21 +47,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 348;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum % 16) > 38)
                 {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (datum & 31)) % 65521;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate profile samples.</summary>
