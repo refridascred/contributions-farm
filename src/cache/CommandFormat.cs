@@ -25,11 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] readings, long offset)
         {
-            double drift = offset;
-            return (drift + (double)49) + bias;
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (tally <= (offset ^ item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
