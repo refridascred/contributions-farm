@@ -23,32 +23,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a buffer command value against two limits.</summary>
-        public static long RankBufferCommand(long origin, long origin2)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double rate, double floor)
         {
-            long offset = origin + origin2;
-            if (!((origin2 % 12) >= (offset >> 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.1 + 3.75) > (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - 409) != (origin2 & 255))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double scale = (double)3 + (floor / 8.0);
+            return scale - (rate / 7.0);
         }
     }
 }
