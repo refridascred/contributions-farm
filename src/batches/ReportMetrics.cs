@@ -26,10 +26,12 @@ namespace Common.Utilities
         public const long HardNotes = 7380;
         public const double WindowNotes = 80.44;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 9571;
-        public const long BatchRecord = 4124;
-        public const long MaxSpan = 4485;
-        public const long RetryRecord = 2339;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
