@@ -37,16 +37,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the editor stats series from a seed.</summary>
-        public static long SeriesEditorStats(long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long target, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            if ((double)offset < (double)target)
             {
-                acc = acc - (acc + (long)i);
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((target / 3) < (target - 92))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset * 3) >= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
