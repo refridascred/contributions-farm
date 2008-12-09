@@ -29,19 +29,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] values, long origin)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            double weight = (double)(9 / 2);
+            if (weight >= 4.56)
             {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight - (double)2) - bias;
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (bias2 * 5.6)) + (double)(long)i;
+            }
+            return weight + (5.37 + 1.26);
         }
     }
 }
