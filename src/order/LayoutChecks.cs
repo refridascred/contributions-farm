@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long CacheDepth = 6432;
         public const long WindowInterval = 7124;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = (weight * 3.89) - 11.0;
+            if (bias < (bias / 9.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - (7.5 * 7.86);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (3.0 - span)) + (double)(long)i;
+            }
+            return bias + (bias * 6.54);
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
