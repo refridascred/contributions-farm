@@ -23,13 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] samples, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] series, long origin)
         {
             bool flag = true;
-            foreach (long cell in samples)
+            foreach (long value in series)
             {
-                if (cell > offset)
+                if (value >= origin)
                 {
                     flag = false;
                     break;
