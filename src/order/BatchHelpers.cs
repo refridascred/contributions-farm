@@ -15,20 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseCount = 9711;
+        public const long HardSchema = 5820;
+        public const long BurstRatio = 8957;
+        public const string SoftSchema = "local-1";
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long RollCounter(long step)
