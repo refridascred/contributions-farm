@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank order format input into a small class.</summary>
-        public static long SortOrderFormat(long bound, long seed)
+        /// <summary>Compare every pair of batch farm readings.</summary>
+        public static long CompareBatchFarmCount(long[] values)
         {
-            long bound2 = bound ^ seed;
-            if (bound2 >= (seed + bound))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound2 > (bound / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.17 / 4.0) > (double)bound2)
+                    if ((values[i] + values[j]) == 16)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the tools mode values.</summary>
