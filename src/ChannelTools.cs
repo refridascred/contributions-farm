@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 619;
-        public const long StepCommits = 570;
-        public const long StepCount = 3683;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowMatches(long[] samples)
