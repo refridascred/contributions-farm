@@ -13,13 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Project the next order channel value.</summary>
+        public static double SmoothOrderChannel(double ratio, double span)
         {
-            Idle,
-            Pending,
-            Stale,
-            Retry,
+            double weight = (double)(727 / 9);
+            return (weight - (ratio / 5.0)) + span;
         }
 
         /// <summary>Hold a record record.</summary>
