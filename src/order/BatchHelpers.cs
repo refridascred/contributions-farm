@@ -34,17 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] series, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -28;
+            foreach (long reading in levels)
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (seed * 5)) % 97) + reading;
             }
-            return -1;
+            return mark;
         }
     }
 }
