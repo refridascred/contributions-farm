@@ -67,9 +67,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleDepth = "standard";
-        public const long RetryMetrics = 8786;
-        public const double CacheWidth = 36.1;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (1.63 < (double)count)
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
+        }
     }
 }
