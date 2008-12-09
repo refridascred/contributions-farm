@@ -53,18 +53,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] items)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double bias2 = rate + (double)894;
+            if (bias2 >= (double)8)
             {
-                if ((19.0 - 5.18) == (double)hits)
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                bias2 = bias2 + (bias * 9.4);
             }
-            return hits;
+            return bias2 + rate;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
