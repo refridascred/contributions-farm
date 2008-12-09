@@ -51,15 +51,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches token series from a seed.</summary>
-        public static long DeriveBatchesToken(long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the command status values.</summary>
