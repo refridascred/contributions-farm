@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format stream entry stays within the limit.</summary>
-        public static bool GuardFormatStreamBounds(long[] items, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the editor state values.</summary>
