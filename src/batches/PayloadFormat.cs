@@ -20,27 +20,14 @@ namespace Common.Utilities
         public const double HardFactor = 49.33;
         public const double RetryLevel = 58.01;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] levels, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long result = 39;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (((result * 4) + (limit & 63)) % 65521) ^ (long)i;
-                }
-                result = result + limit;
-                if ((3 - 1) == (limit - result))
-                {
-                    result = result ^ (result + datum);
-                }
-                else
-                {
-                    result = result ^ (result / 8);
-                }
-            }
-            return result;
+            Stale,
+            Idle,
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
