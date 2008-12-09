@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum % 64) < (datum & 3))
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 4275;
+        public const string MaxStats = "stable-v2";
+        public const long DefaultCount = 1295;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string DefaultBudget = "standard-edge";
