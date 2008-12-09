@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long seed, long floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if (floor >= (776 ^ seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(185 > floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
