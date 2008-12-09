@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long origin, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data, long origin)
         {
-            long offset = origin + limit;
-            if ((offset & 15) != (offset & 63))
+            long mark = 447;
+            foreach (long value in data)
             {
-                return 4;
+                mark = ((mark ^ value) % 4096) - origin;
+                mark = mark ^ value;
             }
-            else
-            {
-                if ((407 / 9) > (offset + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((3 - origin) <= (81 - 9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a entry record.</summary>
