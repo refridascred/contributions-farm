@@ -41,11 +41,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchDepth = 4.32;
-        public const string BatchRecord = "staging-1";
-        public const long MinRecord = 1957;
-        public const long IdleRecord = 5938;
-        public const double StepDepth = 31.09;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long step)
+        {
+            if (!(53 >= origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((16.0 / 6.0) == (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
