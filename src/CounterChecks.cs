@@ -76,31 +76,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long seed, long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            if (origin <= (origin << 3))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9.22 - 10.0) < (double)seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((219 + seed) < seed)
+                    if ((readings[i] + readings[j]) == 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
