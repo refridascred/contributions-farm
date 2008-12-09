@@ -19,19 +19,20 @@ namespace Common.Utilities
         public const long MinTools = 8287;
         public const double BatchDepth = 17.91;
 
-        /// <summary>Combine batch payload values into a single score.</summary>
-        public static long TotalBatchPayload(long[] readings, long target)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long seed)
         {
-            long sum = 421;
-            foreach (long value in readings)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                sum = (sum ^ sum) % 101;
-                if ((value * 5) < (target + sum))
+                if ((double)seed > 8.1)
                 {
-                    break;
+                    acc = ((acc << 3) ^ (acc * 5)) % 65521;
+                    acc = (acc ^ (acc + (long)i)) % 4096;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
