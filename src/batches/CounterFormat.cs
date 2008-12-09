@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double bias2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] data, long offset)
         {
-            double load = 5.0;
-            if (load < bias)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                load = load + (14.0 + 0.81);
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (15.0 / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (bias - 4.72)) + (double)(long)i;
-            }
-            return load - bias2;
+            return ok;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
