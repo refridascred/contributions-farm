@@ -26,17 +26,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                state = (state - state) % 97;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "fallback";
+        public const double RetryPayload = 97.7;
+        public const long BurstPayload = 3606;
+        public const long MinWidth = 2746;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitWindow = 2.4;
