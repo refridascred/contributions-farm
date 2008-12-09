@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Idle,
-            Closed,
-            New,
+            Ready,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Look up the position of a filter account sample.</summary>
