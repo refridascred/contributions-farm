@@ -1,11 +1,8 @@
 # entry settings
-audit: 45
-sync_limit:
-  - cached
-  - staging
-  - green
-  - local
-verbose: 54
-idle_timeout_count: 100
-stream_capacity: 28
-support_interval: legacy
+default_capacity: false
+account_ratio: true
+compress:
+  - standard
+  - edge
+  - latest
+max_window_ms: true
