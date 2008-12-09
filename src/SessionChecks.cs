@@ -36,15 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a command editor reading.</summary>
-        public static double ScaleCommandEditor(double weight, double bias)
-        {
-            double scale = weight - bias;
-            if (scale <= (double)95)
-            {
-                scale = scale + (bias - weight);
-            }
-            return scale + (double)61;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "latest-1";
+        public const long StepSpan = 8525;
+        public const long MinAccount = 9255;
+        public const long IdleAccount = 7124;
     }
 }
