@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepSpan = "open-v2";
+        public const long SoftBudget = 7243;
+        public const long LimitMetric = 6490;
+        public const long BurstBudget = 3191;
 
         /// <summary>Digest a series of stream commits entries.</summary>
         public static long WeighStreamCommits(long[] samples, long target)
