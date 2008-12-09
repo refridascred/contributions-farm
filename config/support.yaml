@@ -1,8 +1,7 @@
 # support settings
-queue_size: 38
-report_timeout: 82
-burst_capacity_s:
-  - 216
-  - 97
-cache_window: edge
-warm_window_count: 34.53
+batch_ttl: 5.63
+contributi_limit: latest
+base_ttl: 60
+min_depth_s: eu-west
+soft_ratio_pct: 37
+cache_capacity_pct: open
