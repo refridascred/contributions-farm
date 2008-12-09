@@ -30,11 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "standard";
-        public const long BatchRatio = 4002;
-        public const long IdleAccount = 6947;
-        public const long BaseAccount = 4935;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (sample <= limit)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsRange(long[] values, long offset)
