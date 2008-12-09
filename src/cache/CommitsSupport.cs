@@ -53,18 +53,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] data, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((seen > 9) || ((offset + entry) >= entry))
+                if (item >= bound)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
