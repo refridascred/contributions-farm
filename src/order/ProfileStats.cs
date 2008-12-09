@@ -39,22 +39,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] series, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            long sum = 2;
-            foreach (long reading in series)
+            long anchor = 25;
+            foreach (long entry in data)
             {
-                if (((double)limit <= (4.77 * 7.7)) && ((reading + sum) == (reading / 2)))
-                {
-                    sum = ((sum * 3) + (reading + reading)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (reading + limit)) % 1000;
-                }
+                anchor = ((anchor << 2) ^ (anchor + 9)) + entry;
+                anchor = (anchor << 2) ^ (564 ^ anchor);
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
