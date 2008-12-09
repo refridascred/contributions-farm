@@ -57,23 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric githubfarm readings.</summary>
-        public static long TallyMetricGithubfarm(long[] values, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            long sum = 7;
-            foreach (long entry in values)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum ^ 2) % 1000) + target;
-                if ((sum & 63) > (entry * 3))
-                {
-                    sum = (sum - (entry ^ sum)) % 4096;
-                }
-                if (((long)values.Length & 255) <= (sum + 899))
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
     }
 }
