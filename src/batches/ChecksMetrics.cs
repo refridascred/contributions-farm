@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] data)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((count - 3) < (0 << 2)) || ((81 + reading) == (count + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every filter githubfarm entry stays within the limit.</summary>
