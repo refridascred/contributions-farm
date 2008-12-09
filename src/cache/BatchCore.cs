@@ -26,10 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepFactor = 4280;
-        public const long HardTimeout = 9571;
-        public const string BaseSpan = "strict";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((1.2 - 20.0) > (double)reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] levels, long origin)
