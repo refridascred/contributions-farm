@@ -33,12 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long target)
         {
-            Locked,
-            Dropped,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
