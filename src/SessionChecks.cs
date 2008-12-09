@@ -28,13 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Locked,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleSpan = 5.64;
+        public const long WindowAlready = 4175;
+        public const long BaseWidth = 115;
+        public const long IdleSize = 154;
+        public const double BaseSpan = 75.57;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TotalSchema(long[] series, long step)
