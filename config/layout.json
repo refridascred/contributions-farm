@@ -1,13 +1,7 @@
 {
-  "min_interval_count": false,
-  "burst_timeout_ms": 84.91,
-  "commits_retries": {
-    "min_depth_count": "cached",
-    "cache_size_ms": false,
-    "metrics_depth": false,
-    "schema_interval": [53, 106, 86],
-    "warm_capacity": "local"
-  },
-  "readonly": [343, 304],
-  "enabled": "fallback"
+  "flush_interval_pct": 36.94,
+  "metrics_window": 9445,
+  "farm_ttl": 33.55,
+  "sync_threshold_pct": "staging",
+  "retry_capacity": "blue"
 }
