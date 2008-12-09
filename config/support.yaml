@@ -1,7 +1,5 @@
 # support settings
-cache_size_count: 60
-flush_retries_s: cached
-editor_depth: 20.25
-retry_size_ms: stable
-base_retries_ms: 85.3
-hard_timeout_pct: staging
+stats_threshold: strict
+batch_ttl: 60
+batch_threshold: blue
+idle_retries_count: 72.7
