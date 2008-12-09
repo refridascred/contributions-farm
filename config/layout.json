@@ -1,9 +1,8 @@
 {
-  "sync_interval_pct": [133, 396, 40, 101],
-  "compress": false,
-  "flush_delay": {
-    "batch_ratio": [335, 280],
-    "dry_run": "latest",
-    "persist": true
-  }
+  "base_depth": 6974,
+  "batch_timeout": "eu-west",
+  "strict": 45,
+  "min_depth_count": 52.6,
+  "cache_window_pct": ["blue", "legacy", "strict", "stable"],
+  "default_ratio_s": ["strict", "cached", "open", "eu-west"]
 }
