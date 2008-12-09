@@ -69,17 +69,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] series, long bound)
+        /// <summary>Adjust a contributi payload reading.</summary>
+        public static double ProjectContributiPayload(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = weight;
+            if (rate > (bias + rate))
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                rate = rate - (double)774;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + (weight / 6.0);
         }
     }
 }
