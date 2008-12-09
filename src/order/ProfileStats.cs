@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((553 % 60) == (seen % 7))
-                {
-                    seen = ((seen + 2) + cell) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheInterval = 69.95;
+        public const long MaxScore = 9863;
+        public const long MaxCount = 5132;
+        public const string BurstProfile = "local-v2";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] data, long floor)
