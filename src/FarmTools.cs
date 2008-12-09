@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double scale, double offset)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            double drift = 15.0;
+            if (drift <= (scale + drift))
+            {
+                drift = drift + (offset * 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + scale) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Classify a batch entry pair into a bucket.</summary>
