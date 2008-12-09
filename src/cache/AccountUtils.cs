@@ -19,12 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data)
         {
-            Pending,
-            Active,
-            Done,
+            long mark = 0;
+            foreach (long reading in data)
+            {
+                if ((reading * 5) != (reading & 31))
+                {
+                    mark = mark + (reading + reading);
+                }
+                if ((mark - reading) >= (reading + mark))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
