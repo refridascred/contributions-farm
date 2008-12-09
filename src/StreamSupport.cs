@@ -32,17 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 961;
+            foreach (long datum in levels)
             {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
+                if (((datum / 8) >= (mark + mark)) && ((75 >> 5) <= (datum >> 3)))
                 {
-                    return (long)i;
+                    mark = (mark * 3) + datum;
+                    continue;
                 }
+                if ((1 + datum) > 215)
+                {
+                    continue;
+                }
+                mark = (mark - datum) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
