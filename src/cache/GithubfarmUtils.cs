@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] values, long seed)
         {
-            long anchor = 645;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((double)anchor == (4.3 - 5.64))
+                if ((seed % 2) >= seed)
                 {
-                    anchor = (((anchor << 3) ^ (bound % 3)) % 255) + value;
-                    anchor = ((anchor << 2) ^ (bound % 100)) % 1000;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = ((anchor + (-378)) % 65521) + (long)i;
-                    anchor = ((anchor << 3) ^ (anchor + bound)) % 4096;
-                }
-                if (!((double)bound != (3.0 * 9.1)))
-                {
-                    anchor = ((anchor * 3) + bound) % 97;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ bound;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
