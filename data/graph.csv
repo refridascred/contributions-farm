@@ -1,10 +1,7 @@
-id,state,level,rank,label
-1,912,fallback,512,strict
-2,cached,698,56.98,57.94
-3,97.76,legacy,648,675
-4,977,cached,316,109
-5,267,45.97,599,418
-6,305,249,strict,strict
-7,16.47,local,966,177
-8,local,89.95,green,919
-9,65.01,86,standard,879
+id,rank,level,score,label
+1,51.53,54.13,cached,blue
+2,62.21,78.84,887,25.23
+3,741,46.85,41.64,256
+4,437,269,918,local
+5,green,34.19,local,824
+6,40.11,434,90.8,36.25
