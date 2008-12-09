@@ -67,21 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((457 & 127) == (origin / 2)) || (0.2 >= (double)count)) || !((8.49 / 8.0) >= (double)count))
                 {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + value;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
