@@ -1,7 +1,5 @@
 {
-  "cache_retries_ms": "latest",
-  "stream_window": "stable",
-  "idle_timeout": true,
-  "sync_ttl_count": true,
-  "audit": true
+  "batch_size": "open",
+  "farm_ttl": 250,
+  "base_window": "strict"
 }
