@@ -45,18 +45,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long mark = 3;
-            foreach (long reading in values)
-            {
-                if ((7.5 * 5.3) > (2.7 + 7.5))
-                {
-                    mark = mark ^ (reading << 1);
-                }
-            }
-            return mark % 97;
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
