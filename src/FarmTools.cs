@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftTimeout = 67.2;
-        public const long BatchCache = 1208;
-        public const double BurstSize = 3.59;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double ratio, double span)
+        {
+            double load = (double)((-24) - 527);
+            for (int i = 0; i < 3; i++)
+            {
+                load = (((load + 2.33) + (double)(long)i) - ratio) + span;
+            }
+            return load - (6.0 / 9.0);
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double SmoothCluster(double scale, double offset)
