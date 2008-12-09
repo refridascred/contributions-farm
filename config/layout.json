@@ -1,5 +1,6 @@
 {
-  "counter_delay": "local",
-  "max_retries_count": 6362,
-  "queue_window": 30
+  "cache_delay_s": "legacy",
+  "base_timeout_ms": "latest",
+  "retry_ratio_ms": 1024,
+  "min_ttl_ms": "cached"
 }
