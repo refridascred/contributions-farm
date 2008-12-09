@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryScore = 96.6;
-        public const string LimitBatch = "latest-edge";
-        public const long MaxBatch = 255;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Paused,
+            New,
+            Dropped,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] series)
