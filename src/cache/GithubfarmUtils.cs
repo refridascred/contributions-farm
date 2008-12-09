@@ -33,13 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
+            Done,
             Failed,
             Retry,
-            Draft,
-            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Accumulate entry samples.</summary>
