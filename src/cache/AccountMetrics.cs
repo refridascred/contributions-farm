@@ -52,23 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double offset)
         {
-            long result = 223;
-            foreach (long cell in readings)
+            double weight = rate;
+            for (int i = 0; i < 6; i++)
             {
-                result = (((result << 3) ^ (result + 423)) % 101) ^ cell;
-                if (((-5) / 5) <= (result >> 4))
-                {
-                    result = ((result << 3) ^ (target >> 1)) % 255;
-                }
+                weight = (weight - (weight * 1.81)) + (double)(long)i;
             }
-            if (result < (-2))
-            {
-                result = ((result << 3) ^ (97 / 5)) % 255;
-            }
-            return result;
+            return weight + (offset + rate);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
