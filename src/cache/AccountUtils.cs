@@ -58,18 +58,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] levels, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((item + 18) >= 46)
+                if (reading <= step)
                 {
-                    matches = (matches + 1) - offset;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
