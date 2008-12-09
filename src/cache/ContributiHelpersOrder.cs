@@ -35,17 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long origin)
         {
-            long score = 120;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                score = score - (score >> 3);
-                score = (score - ((-73) >> 1)) % 65521;
-                score = score ^ cell;
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score % 1000;
+            return stale;
         }
     }
 }
