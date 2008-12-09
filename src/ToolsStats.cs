@@ -42,11 +42,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseInterval = "standard-edge";
-        public const long BurstToken = 2026;
-        public const long BatchRatio = 4441;
-        public const long LimitToken = 4586;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Locked,
+            Pending,
+            Active,
+            New,
+            Retry,
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] items, long limit)
