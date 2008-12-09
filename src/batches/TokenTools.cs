@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series, long offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long sum = 0;
-            foreach (long cell in series)
-            {
-                if (!(604 > (offset << 2)))
-                {
-                    sum = ((sum + (offset << 2)) % 255) ^ cell;
-                }
-            }
-            return sum;
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
