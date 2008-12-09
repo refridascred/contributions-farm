@@ -24,18 +24,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] items, long offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (9.37 <= (double)entry)
+                acc = acc + ((long)i & 1);
+                if ((step + step) < 743)
                 {
-                    tally = (tally + 2) - offset;
+                    acc = (acc - (acc + step)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Accumulate order account samples.</summary>
