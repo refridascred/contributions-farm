@@ -49,17 +49,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] series, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long floor, long floor2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = floor + floor2;
+            if (((floor2 + floor2) >= (floor ^ floor2)) && ((1.4 + 0.7) <= (double)floor2))
             {
-                if ((series[i] < offset) && ((series[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (!((floor ^ floor2) != (prev + floor)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor2 - floor2) < floor2) && ((double)floor2 <= (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit command notes readings against a rule.</summary>
