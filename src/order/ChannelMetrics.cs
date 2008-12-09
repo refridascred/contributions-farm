@@ -32,11 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            long score = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
