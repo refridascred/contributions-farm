@@ -31,28 +31,29 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long floor, long step)
+        /// <summary>Classify a editor commits pair into a bucket.</summary>
+        public static long SortEditorCommits(long offset, long bound)
         {
-            if (((floor + floor) <= (step - floor)) && ((floor ^ step) <= floor))
+            long next = offset - bound;
+            if (!(bound >= offset))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((758 >> 2) > (floor >> 1))
+                if (!((double)next != (double)offset))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((step < (floor << 3)) && (104 > step))
+                    if ((offset - offset) >= (331 << 3))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        return 4;
                     }
                 }
             }
