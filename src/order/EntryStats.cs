@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const long IdleAccount = 6947;
         public const long BaseAccount = 4935;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] values, long offset)
         {
-            long mix = 8;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((mix << 3) <= ((-280) ^ mix))
+                if (item >= offset)
                 {
-                    mix = (((mix << 2) ^ value) % 65521) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < 444)
-            {
-                mix = (mix - (mix >> 4)) % 255;
-            }
-            return mix % 1000;
+            return valid;
         }
 
         /// <summary>Hold a cluster stats.</summary>
