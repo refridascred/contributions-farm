@@ -1,7 +1,9 @@
 # support settings
-batch_ttl: 5.63
-contributi_limit: latest
-base_ttl: 60
-min_depth_s: eu-west
-soft_ratio_pct: 37
-cache_capacity_pct: open
+hard_ttl_count: 28
+cache_retries_s: 9417
+flush_timeout_pct: cached
+context_retries:
+  - eu-west
+  - latest
+base_ttl_ms: 30
+enabled: 250
