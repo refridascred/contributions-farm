@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Check that every contributi already entry stays within the limit.</summary>
+        public static bool GuardContributiAlreadyLimits(long[] items, long step)
         {
-            Closed,
-            Stale,
-            Ready,
-            Dropped,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every filter session entry stays within the limit.</summary>
