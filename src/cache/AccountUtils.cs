@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Pending,
+            Done,
+            Failed,
         }
     }
 }
