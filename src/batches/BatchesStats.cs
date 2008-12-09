@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Rank payload stream input into a small class.</summary>
+        public static long ClassifyPayloadStream(long offset, long bound)
         {
-            Ready,
-            Idle,
-            Stale,
-            New,
-            Done,
+            if (((5.4 * 8.35) <= (double)bound) || ((bound - bound) < bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((bound / 3) == ((-9) - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset <= (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound / 6) <= bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a account reading by value.</summary>
