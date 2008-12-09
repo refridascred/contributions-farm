@@ -54,23 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long sum = 5;
-            foreach (long value in samples)
+            long carry = 460;
+            foreach (long entry in series)
             {
-                sum = ((sum << 3) ^ sum) % 65521;
-                if ((sum >> 2) <= (value + 23))
+                if (((carry * 2) >= carry) || ((entry + entry) > (carry - entry)))
                 {
-                    break;
+                    carry = (carry - entry) % 97;
                 }
             }
-            if (sum < 66)
+            if (carry > 8)
             {
-                sum = sum + origin;
+                carry = carry - (carry - carry);
             }
-            return sum % 1000;
+            return carry % 1000;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
