@@ -13,31 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long origin)
+        /// <summary>Count metric layout pairs that satisfy a relation.</summary>
+        public static long OverlapMetricLayoutCount(long[] readings)
         {
-            if ((origin <= (origin ^ origin)) || ((floor + floor) > origin))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((-23) >= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin % 7) > (floor << 3))
+                    if ((readings[i] - readings[j]) > 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the filter state values.</summary>
