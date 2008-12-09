@@ -13,28 +13,29 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long target, long target2)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long target, long offset)
         {
-            if (!((double)target != (8.5 + 14.0)))
+            long diff = target + offset;
+            if (((7.1 / 4.0) != (double)target) || ((double)target < (9.4 * 8.13)))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (((5.56 / 2.0) == (double)target2) && ((double)target > (double)(-545)))
+                if ((600 >> 5) <= diff)
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((target < (target / 5)) || (((-46) + 927) >= target))
+                    if ((offset << 3) > (diff * 2))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        return 1;
+                        return 8;
                     }
                 }
             }
