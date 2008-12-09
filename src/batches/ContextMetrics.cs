@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            Locked,
+            Idle,
+            Done,
+            Active,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
