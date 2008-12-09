@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Active,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheScore = 3924;
+        public const double LimitInterval = 55.49;
+        public const long MinTimeout = 6639;
+        public const string BatchBudget = "stable-1";
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
