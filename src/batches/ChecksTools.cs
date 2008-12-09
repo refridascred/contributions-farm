@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit context checks readings against a rule.</summary>
-        public static long CountContextChecksOutliers(long[] data)
+        /// <summary>Fold a list of counter support readings.</summary>
+        public static long DigestCounterSupport(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long state = 938;
+            foreach (long item in levels)
             {
-                if (item > matches)
-                {
-                    matches = matches + 1;
-                }
+                state = ((state + 99) % 255) + item;
             }
-            return matches;
+            if (state > 89)
+            {
+                state = (state + (state >> 2)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a already info.</summary>
