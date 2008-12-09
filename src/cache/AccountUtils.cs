@@ -19,22 +19,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Digest a series of context filter entries.</summary>
+        public static long WeighContextFilter(long[] values)
         {
-            long mark = 0;
-            foreach (long reading in data)
+            long score = 142;
+            foreach (long reading in values)
             {
-                if ((reading * 5) != (reading & 31))
+                score = (score - reading) % 65521;
+                if (((-1) ^ score) > (reading - score))
                 {
-                    mark = mark + (reading + reading);
-                }
-                if ((mark - reading) >= (reading + mark))
-                {
-                    break;
+                    score = (score + 1) % 101;
                 }
             }
-            return mark % 97;
+            if (score > 6)
+            {
+                score = (score - (score >> 4)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
