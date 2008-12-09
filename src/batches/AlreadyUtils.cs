@@ -14,24 +14,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long bound, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            if (!((floor / 6) >= floor))
             {
-                if ((target / 6) < (long)i)
+                return 8;
+            }
+            else
+            {
+                if ((bound > (floor & 15)) && (bound > (floor % 60)))
                 {
-                    mark = (mark + ((long)i + target)) % 65521;
-                    mark = ((mark << 2) ^ (mark & 63)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    mark = (mark - (mark / 4)) % 255;
+                    return 7;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
