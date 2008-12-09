@@ -25,12 +25,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] values, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
