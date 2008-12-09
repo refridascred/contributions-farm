@@ -1,7 +1,6 @@
 {
-  "compress": 250,
-  "batches_interval": true,
-  "githubfarm_interval": 68.91,
-  "counter_size": 82.0,
-  "dry_run": false
+  "min_capacity_ms": "legacy",
+  "default_threshold_count": 61,
+  "soft_window_s": 39.72,
+  "base_depth": "staging"
 }
