@@ -15,11 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            New,
+            Done,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
