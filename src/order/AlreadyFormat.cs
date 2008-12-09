@@ -75,19 +75,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] levels, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (cell < bound)
+                if ((hits / 3) == (cell - 179))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + origin;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
