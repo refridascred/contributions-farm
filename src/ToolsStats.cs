@@ -42,21 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 19;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(sample <= (95 << 3)))
                 {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - (acc - sample)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc - 90)) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Match up format queue samples.</summary>
