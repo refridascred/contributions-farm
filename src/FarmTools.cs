@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double floor)
+        /// <summary>Audit editor window readings against a rule.</summary>
+        public static long CountEditorWindowGaps(long[] data)
         {
-            double weight2 = weight - 6.2;
-            return (weight2 - (double)38) + floor;
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell < (14.0 - 0.1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
