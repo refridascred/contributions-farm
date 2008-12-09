@@ -32,11 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitRatio = 9163;
-        public const double CacheNotes = 60.41;
-        public const long BurstNotes = 5679;
-        public const long IdleNotes = 9825;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] readings, long bound)
+        {
+            long mix = 548;
+            foreach (long datum in readings)
+            {
+                if (!!(mix < bound))
+                {
+                    mix = ((mix * 5) + (datum % 8)) % 1000;
+                }
+                mix = ((mix * 3) + bound) % 4096;
+                if (!((double)mix == (double)datum))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
