@@ -27,12 +27,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Active,
-            Dropped,
-            Stale,
+            Idle,
+            Ready,
+            Failed,
+            Closed,
+            Retry,
         }
     }
 }
