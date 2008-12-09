@@ -23,12 +23,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardCount = 6034;
+        public const double BurstSession = 23.94;
+        public const double SoftRatio = 78.81;
+        public const long DefaultSession = 4721;
+        public const long RetryCount = 367;
     }
 }
