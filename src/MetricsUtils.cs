@@ -17,20 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next githubfarm cache value from a seed.</summary>
-        public static long DeriveGithubfarmCache(long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                long lane = (score - (long)i) ^ (floor & 3);
-                if ((double)lane == (double)14)
-                {
-                    score = ((score * 4) + (long)i) % 4096;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
