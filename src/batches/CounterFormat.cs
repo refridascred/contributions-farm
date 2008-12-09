@@ -17,21 +17,17 @@ namespace Common.Utilities
         public const long DefaultBudget = 2352;
         public const long WindowToken = 4810;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] >= seed) && ((values[i] % 5) == 0))
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
