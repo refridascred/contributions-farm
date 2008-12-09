@@ -50,19 +50,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] data, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total ^ (total + total)) % 4096;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Look up the position of a githubfarm buffer sample.</summary>
