@@ -39,22 +39,23 @@ namespace Common.Utilities
         public const string MinEntry = "alpha-1";
         public const string LimitEntry = "cached-v2";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] values, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (!!(794 <= (8 + hits)))
+                if (((bound + result) == ((long)i >> 3)) && ((bound << 2) <= (result - bound)))
                 {
-                    hits = ((hits + 1) + cell) - offset;
+                    result = result + (bound + result);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result + (54 - result)) % 97;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Fold a list of record readings.</summary>
