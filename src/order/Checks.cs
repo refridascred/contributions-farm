@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Audit support githubfarm readings against a rule.</summary>
+        public static long AuditSupportGithubfarmMatches(long[] readings)
         {
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen ^ 0) < seen)
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batch payload values into a single score.</summary>
