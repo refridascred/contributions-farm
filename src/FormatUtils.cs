@@ -38,25 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report graph pair into a bucket.</summary>
-        public static long RankReportGraph(long target, long offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long step = target ^ offset;
-            if (((step + offset) == (offset >> 3)) || (target < (offset - step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target << 1) >= 97) || ((target / 5) == (target % 8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the cache class values.</summary>
