@@ -36,17 +36,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] readings, long bound)
+        public static long TallyStreamHits(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((7.52 / 5.0) < (double)bound)
+                if (item >= (item + hits))
                 {
-                    seen = (seen + 2) ^ cell;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
