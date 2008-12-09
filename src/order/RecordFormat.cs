@@ -53,11 +53,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 7221;
-        public const long SoftBatch = 1062;
-        public const long HardBudget = 2213;
-        public const long LimitBudget = 5206;
-        public const string MaxBatch = "open-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 77.99;
+        public const double StepBudget = 97.95;
+        public const string HardOrder = "staging-v2";
     }
 }
