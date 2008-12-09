@@ -15,26 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] items, long origin)
         {
-            long carry = 2;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((4.0 - 2.07) < (double)step)
+                if (datum <= origin)
                 {
-                    carry = carry ^ (carry ^ sample);
-                }
-                else
-                {
-                    carry = (carry ^ (carry << 2)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 344)
-            {
-                carry = carry + step;
-            }
-            return carry % 4096;
+            return flag;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
