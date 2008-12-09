@@ -1,23 +1,29 @@
 # entry settings
-cache_interval_count: legacy
-hard_interval: cached
-base_limit_count:
-  flush_limit:
-    - cached
-    - blue
-    - strict
-    - legacy
-  hard_ttl_ms: 67
-  verbose:
-    enabled: true
-    support_ttl: 9884
-    max_delay_pct:
-      - 231
-      - 142
-      - 121
-  base_threshold: primary
-  editor_limit: local
-  readonly: 33
-cache_capacity_s:
-  - legacy
-  - edge
+persist: green
+audit: false
+idle_ratio_count:
+  idle_capacity_s: 92
+  filter_window: 60
+  layout_retries: false
+  default_interval: 51
+  idle_timeout_s: true
+flush_window:
+  - 404
+  - 267
+  - 369
+  - 306
+compress:
+  dry_run: 30
+  soft_delay:
+    stream_size: blue
+    flush_size_count:
+      - 157
+      - 389
+      - 317
+      - 185
+    githubfarm_ratio: open
+    hard_depth_count: open
+  retry_threshold: fallback
+  compress: latest
+  counter_size: local
+  metric_limit: green
