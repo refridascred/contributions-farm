@@ -35,22 +35,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] values, long floor)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long result = 88;
-            foreach (long sample in values)
-            {
-                if ((80 ^ result) == (sample - floor))
-                {
-                    result = (result - (result + floor)) % 97;
-                }
-                else
-                {
-                    result = (result * 2) + (sample ^ 3);
-                }
-            }
-            return result % 4096;
+            Queued,
+            Retry,
+            Failed,
         }
     }
 }
