@@ -55,17 +55,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] samples, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
+                if ((value << 1) < 420)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every stats context entry stays within the limit.</summary>
