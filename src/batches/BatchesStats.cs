@@ -27,14 +27,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Match up report context samples.</summary>
+        public static long MatchReportContextCount(long[] readings)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Idle,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
