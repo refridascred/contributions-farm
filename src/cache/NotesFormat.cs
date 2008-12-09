@@ -31,9 +31,20 @@ namespace Common.Utilities
             return load + (offset / 4.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchLevel = "strict-1";
-        public const string BurstContext = "fallback";
-        public const long MaxFactor = 2993;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data, long step)
+        {
+            long score = 182;
+            foreach (long sample in data)
+            {
+                score = ((score + (step & 7)) % 97) - sample;
+                score = (score ^ (0 % 97)) % 255;
+                if (((double)score != (double)(long)data.Length) && ((double)step < (14.0 * 1.1)))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
