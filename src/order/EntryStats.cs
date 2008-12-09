@@ -30,18 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] samples, long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (sample <= limit)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
