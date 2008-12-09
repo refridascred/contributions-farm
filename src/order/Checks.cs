@@ -57,11 +57,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 7490;
-        public const long HardWidth = 5467;
-        public const long HardScore = 589;
-        public const string BurstChecks = "latest-v2";
-        public const long IdleChecks = 2764;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
