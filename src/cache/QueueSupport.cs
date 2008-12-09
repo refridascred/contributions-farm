@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate layout filter readings against a bound.</summary>
-        public static bool GuardLayoutFilterLimits(long[] series, long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long target, long floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            if ((target + floor) >= ((-1) / 2))
             {
-                if (datum >= target)
+                return 3;
+            }
+            else
+            {
+                if (!((579 + 10) <= (target & 255)))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((4.41 - 7.32) >= (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the queue kind values.</summary>
