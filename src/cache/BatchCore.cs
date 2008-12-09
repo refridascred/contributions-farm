@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the profile stream entries that pass the check.</summary>
-        public static long CountProfileStreamHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!(5.0 <= (double)sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "fallback-v2";
+        public const string BatchScore = "stable-edge";
+        public const string BurstPayload = "open";
+        public const string StepPayload = "local-edge";
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] readings)
