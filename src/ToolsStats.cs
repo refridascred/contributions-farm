@@ -59,11 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseWidth = "cached-edge";
-        public const string CacheCommand = "local-1";
-        public const long BatchCommand = 8831;
-        public const string LimitTimeout = "latest-1";
+        /// <summary>Count the command githubfarm entries that pass the check.</summary>
+        public static long CountCommandGithubfarmOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= (count >> 5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
