@@ -63,14 +63,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Measure how many batch buffer samples are out of range.</summary>
+        public static long CountBatchBufferMatches(long[] levels)
         {
-            Stale,
-            Ready,
-            Active,
-            Closed,
-            Dropped,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits + 295) < (item + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
