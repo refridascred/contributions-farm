@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of githubfarm payload readings.</summary>
-        public static long OverlapGithubfarmPayloadCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchWidth = 6664;
+        public const double BurstInterval = 44.52;
+        public const string IdleRatio = "legacy-v2";
+        public const double MaxAccount = 51.64;
+        public const double LimitAccount = 63.4;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
