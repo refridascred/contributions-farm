@@ -22,11 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 9213;
-        public const double MaxLevel = 10.31;
-        public const long DefaultLevel = 7121;
-        public const long BurstTimeout = 6312;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstWidth = 9203;
+        public const long CacheEditor = 1197;
+        public const long BurstEditor = 7342;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
