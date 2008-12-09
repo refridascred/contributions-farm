@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] series, long offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                if (readings[i] < seed)
                 {
                     return (long)i;
                 }
