@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "local-v2";
-        public const long SoftWidth = 6347;
-        public const long CacheNotes = 3954;
-        public const double HardNotes = 65.19;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 2414;
