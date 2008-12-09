@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long seed)
+        /// <summary>Audit order stream readings against a rule.</summary>
+        public static long MeasureOrderStreamOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (items[i] <= seed)
+                if ((double)entry == (13.0 + 2.1))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
