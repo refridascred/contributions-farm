@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long floor, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] samples)
         {
-            if (floor >= (floor + origin))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 1) != ((-1) >> 5))
+                if ((((double)item >= (1.55 - 11.0)) && ((item >> 3) > seen)) || (((seen ^ item) > (99 ^ seen)) && ((item + item) > (704 / 6))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor * 3) >= (floor + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor + origin) > floor) && (floor > (floor / 8)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
