@@ -1,6 +1,8 @@
 {
-  "flush_ttl_ms": true,
-  "flush_window": "green",
-  "cache_delay_ms": 82.8,
-  "burst_timeout": "strict"
+  "default_depth": 46.14,
+  "payload_depth": 30,
+  "compress": "fallback",
+  "warm_interval": false,
+  "checks_ttl": "staging",
+  "enabled": "stable"
 }
