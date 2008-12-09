@@ -1,7 +1,17 @@
 {
-  "enabled": "cached",
-  "max_size_ms": "cached",
-  "schema_interval": false,
-  "readonly": false,
-  "payload_timeout": [106, 265]
+  "batch_ttl_pct": 100,
+  "soft_limit": ["green", "eu-west", "eu-west"],
+  "retry_ttl_count": 65.43,
+  "farm_ratio": {
+    "base_retries": {
+      "flush_depth_s": "fallback",
+      "soft_interval": 90,
+      "hard_threshold_pct": ["strict", "blue", "eu-west", "blue"],
+      "notes_delay": [147, 393, 406, 42],
+      "min_interval": "edge"
+    },
+    "batch_timeout_s": "eu-west",
+    "metric_capacity": "edge",
+    "cache_retries": "primary"
+  }
 }
