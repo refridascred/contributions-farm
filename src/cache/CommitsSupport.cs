@@ -30,17 +30,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] items, long seed)
+        /// <summary>Combine account notes values into a single score.</summary>
+        public static long FoldAccountNotes(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -33;
+            foreach (long datum in series)
             {
-                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                if (floor <= (carry & 7))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + (545 ^ datum)) % 4096;
+                    continue;
+                }
+                if ((datum * 2) == (floor * 3))
+                {
+                    carry = carry + 66;
+                }
+                else
+                {
+                    carry = carry + carry;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the filter phase values.</summary>
