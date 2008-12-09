@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=488
+RECORD_LIMIT=66
 log "limit is ${RECORD_LIMIT}"
 
-for item in blue local fallback; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in primary stable; do
     log "checking ${item}"
 done
