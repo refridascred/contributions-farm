@@ -14,12 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleWidth = "standard-v2";
-        public const long BatchBudget = 5721;
-        public const long CacheLayout = 9569;
-        public const string IdleSpan = "latest-v2";
-        public const string DefaultCount = "staging-edge";
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                long lane = (long)i;
+                lane = (lane * 4) + (lane / 2);
+                if ((54 <= (94 + lane)) && (acc <= (lane & 15)))
+                {
+                    lane = (lane ^ (origin % 10)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelRange(long[] items, long step)
