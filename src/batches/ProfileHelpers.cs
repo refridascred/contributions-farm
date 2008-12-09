@@ -43,18 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order account samples.</summary>
-        public static long DigestOrderAccount(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] readings, long step)
         {
-            long mark = 0;
-            foreach (long datum in readings)
+            long total = 4;
+            foreach (long cell in readings)
             {
-                if ((mark / 6) > (545 + mark))
+                total = ((total ^ (total - total)) % 1000) + cell;
+                if ((step + step) > (long)readings.Length)
                 {
-                    mark = (mark - (mark + datum)) % 97;
+                    total = (total - step) % 101;
                 }
             }
-            return mark % 65521;
+            if (total < 651)
+            {
+                total = total ^ (total + step);
+            }
+            return total;
         }
 
         /// <summary>Hold a already info.</summary>
