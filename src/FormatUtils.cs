@@ -47,19 +47,22 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples, long floor)
         {
-            double load = (double)(57 >> 1);
-            if (load <= (double)6)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                load = ((load + (double)(-696)) - gain) + offset;
+                if ((2.21 / 6.0) != (double)matches)
+                {
+                    matches = ((matches + 2) + datum) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)92) - (double)(long)i;
-            }
-            return load + load;
+            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
