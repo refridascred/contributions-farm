@@ -23,39 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long floor, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] readings, long offset)
         {
-            long next = floor ^ origin;
-            if (origin >= 90)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((next + origin) == (floor >> 2)))
+                if (readings[i] == offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((next + 883) <= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin / 9) <= (next ^ next))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
