@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a record window counter forward.</summary>
-        public static long StepRecordWindow(long bound)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc ^ (acc >> 1)) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
