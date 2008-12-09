@@ -44,14 +44,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long origin, long limit)
         {
-            Locked,
-            Pending,
-            Active,
-            New,
-            Retry,
+            if ((limit - 8) == (origin - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (964 < limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate payload samples.</summary>
