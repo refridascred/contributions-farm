@@ -1,18 +1,7 @@
 {
-  "cache_window": "open",
-  "sync_threshold_ms": {
-    "account_timeout": {
-      "idle_retries_count": ["legacy", "stable", "fallback"],
-      "flush_depth_ms": ["local", "edge", "local", "standard"],
-      "base_timeout_s": "strict",
-      "flush_delay_ms": "staging",
-      "flush_timeout_count": 8640
-    },
-    "poll_capacity": "primary",
-    "max_capacity_count": 30,
-    "batch_capacity_pct": 1476,
-    "retry_limit_count": ["standard", "latest", "edge"]
-  },
-  "contributi_window": 100,
-  "idle_limit_s": "cached"
+  "max_threshold_ms": [56, 381, 30],
+  "editor_retries": "edge",
+  "burst_capacity_pct": "latest",
+  "min_interval": 30,
+  "hard_ttl_ms": 250
 }
