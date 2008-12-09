@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] items, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long bound = floor + limit;
+            if ((limit ^ floor) >= (628 & 7))
             {
-                if (cell < bound)
+                return 8;
+            }
+            else
+            {
+                if (!((limit + (-62)) >= limit))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(bound >= (31 + 309)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + bound) < (floor * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a route reading by value.</summary>
