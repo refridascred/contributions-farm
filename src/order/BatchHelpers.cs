@@ -15,12 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] items, long offset)
         {
-            Closed,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((tally - 62) < 47) && (((tally + datum) >= (datum + datum)) || ((double)(long)items.Length == (double)datum)))
+                {
+                    tally = (tally + 1) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
