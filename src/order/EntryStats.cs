@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double bias, double span)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double weight = span;
-            if (weight < (bias / 7.0))
-            {
-                weight = weight + (weight * 0.11);
-            }
-            return weight - (4.09 + bias);
+            public double Rank { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
