@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit support githubfarm readings against a rule.</summary>
-        public static long AuditSupportGithubfarmMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen ^ 0) < seen)
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepWidth = 7626;
+        public const string MinTimeout = "open-edge";
+        public const double SoftTools = 12.7;
+        public const long MinTools = 8287;
+        public const double BatchDepth = 17.91;
 
         /// <summary>Combine batch payload values into a single score.</summary>
         public static long TotalBatchPayload(long[] readings, long target)
