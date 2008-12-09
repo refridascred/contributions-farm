@@ -12,15 +12,10 @@ namespace Common.Utilities
         public const double MinLevel = 17.03;
         public const long HardBudget = 8146;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            New,
-            Paused,
-            Synced,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheDepth = 3987;
+        public const long LimitBudget = 5779;
+        public const string SoftContext = "alpha-1";
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
