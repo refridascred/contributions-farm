@@ -24,17 +24,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] items, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (items[i] < origin)
+                if (88 > (origin + origin))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
