@@ -25,22 +25,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum % 2) <= (tally % 10))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 7847;
+        public const double StepCommand = 2.28;
+        public const long LimitCommand = 1591;
+        public const long MaxScore = 2729;
     }
 }
