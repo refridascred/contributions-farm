@@ -21,13 +21,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values, long offset)
         {
-            Done,
-            Retry,
-            Pending,
-            Paused,
+            long score = -84;
+            foreach (long datum in values)
+            {
+                if ((datum % 8) >= offset)
+                {
+                    score = ((score << 2) ^ (datum * 5)) % 255;
+                }
+            }
+            return score;
         }
     }
 }
