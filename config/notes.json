@@ -1,6 +1,7 @@
 {
-  "retry_delay": false,
-  "batches_ratio": "blue",
-  "cache_ratio_ms": 250,
-  "checks_retries": 87.15
+  "burst_window_s": "primary",
+  "payload_window": [56, 422],
+  "max_timeout_ms": 18,
+  "sync_ttl_ms": "edge",
+  "flush_timeout": 9556
 }
